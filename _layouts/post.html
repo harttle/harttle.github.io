@@ -1,9 +1,17 @@
 ---
 layout: default
+nav: blog
 ---
-<h2>{{ page.title }}</h2>
-<p class="meta">{{ page.date | date_to_string }}</p>
 
-<div class="post">
-{{ content }}
+
+<div class="page-header">
+  <h1>{{ page.title }}</h1>
+  <p class="pull-right" style="margin-top: -15px;">{{ page.date | date: "%Y-%m-%d %H:%M:%S" }}</p>
 </div>
+
+
+<p class="lead"></p>
+
+{{ content }}
+
+<p class="pull-right" style="margin: 15px 0;"><a href="/blog.html">返回</a></p>

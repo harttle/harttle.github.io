@@ -1,44 +1,90 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>{{ page.title }}</title>
-        <meta name="viewport" content="width=device-width">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{{ page.title }} - Harttle 的个人主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Bootstrap -->
+    <link href="/static/bootstrap-3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        
+    <!-- Custom styles  -->
+    <link href="/static/css/sticky-footer-navbar.css" rel="stylesheet">
+    <link href="/static/css/main.css" rel="stylesheet">
+        
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="//oss.maxcdn.com/libs/html5shiv/3.6.2/html5shiv.js"></script>
+      <script src="//v3.bootcss.com/docs-assets/js/respond.min.js"></script>
+    <![endif]-->
+    
+  </head>
+  <body>
+    
+    <!-- Wrap all page content here -->
+    <div id="wrap">
 
-        <!-- syntax highlighting CSS -->
-        <link rel="stylesheet" href="/css/syntax.css">
-
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="/css/main.css">
-
-    </head>
-    <body>
-
-        <div class="site">
-          <div class="header">
-            <h1 class="title"><a href="/">{{ site.name }}</a></h1>
-            <a class="extra" href="/">home</a>
+      <!-- Fixed navbar -->
+      <div class="navbar navbar-default navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Harttle Land</a>
           </div>
-
-          {{ content }}
-
-          <div class="footer">
-            <div class="contact">
-              <p>
-                Your Name<br />
-                What You Are<br />
-                you@example.com
-              </p>
-            </div>
-            <div class="contact">
-              <p>
-                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
-                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
-              </p>
-            </div>
-          </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li id="blog"><a href="/blog.html">文章</a></li>
+              <li id="contact"><a href="/contact.html">联系</a></li>
+              <li><a href="//github.com/harttle/harttle.github.io" target="_blank">在 GitHub 上查看</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">有用链接 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="//www.bootcss.com/" target="_blank">Bootstrap 中文</a></li>
+                  <li><a href="http://jekyllrb.com/" target="_blank">Jekyll</a></li>
+                  <li><a href="//jquery.com" target="_blank">jQuery</a></li>
+                  <li><a href="//fortawesome.github.io/Font-Awesome/" target="_blank">Font Awesome</a></li>
+                  <li><a href="//docs.djangoproject.com/en/1.5/" target="_blank">Django</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">我的网站</li>
+                  <li><a href="//harttle.duapp.com" target="_blank">God Notes</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!--/.nav-collapse -->
         </div>
+      </div>
 
-    </body>
+      <!-- Begin page content -->
+      <div class="container">
+        
+        
+        {{ content }}
+        
+        
+      </div>
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted credit">Harttle Land，由 <a href="/">Harttle</a> 创建于2013年10月10日。</p>
+      </div>
+    </div> 
+     
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/static/bootstrap-3.0.0/js/bootstrap.min.js"></script>
+    
+    <script>
+      $(function(){
+        $('.nav #{{page.nav}}').attr('class','active');
+      });
+    </script>
+    
+  </body>
 </html>

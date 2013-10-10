@@ -1,13 +1,48 @@
 ---
 layout: default
-title: Your New Jekyll Site
+title: Harttle Land
+nav: home
 ---
 
-<div id="home">
-  <h1>Blog Posts</h1>
-  <ul class="posts">
-    {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
-  </ul>
+<div class="page-header">
+  <h1>Harttle Land <small>{{ site.name }}</small></h1>
 </div>
+
+<div id="carousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carousel" data-slide-to="0" class=""></li>
+    <li data-target="#carousel" data-slide-to="1" class="active"></li>
+    <li data-target="#carousel" data-slide-to="2" class=""></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="item">
+      <img src="/static/img/slider/1.png">
+      <div class="carousel-caption">
+        <h3>First slide label</h3>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </div>
+    </div>
+    <div class="item active">
+      <img src="/static/img/slider/3.png">
+      <div class="carousel-caption">
+        <h3>Second slide label</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="/static/img/slider/3.png">
+      <div class="carousel-caption">
+        <h3>Third slide label</h3>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      </div>
+    </div>
+  </div>
+   <a class="left carousel-control" href="#carousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+
+<p class="lead"></p>
