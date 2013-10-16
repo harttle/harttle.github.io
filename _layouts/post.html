@@ -3,10 +3,37 @@ layout: default
 nav: blog
 ---
 
+<style>
+.jiathis_style *, .jiathis_style, #uyan_frame, #uyan_frame *{
+    -webkit-box-sizing: content-box!important;
+    -moz-box-sizing: content-box!important;
+    box-sizing: content-box!important;
+}
+.icon-button{
+  color: black!important;
+  text-decoration: none!important;
+}
+#post-toc{
+  background:#f5f5f5;
+  padding:15px;
+}
+#post-toc .header{
+  margin:0;
+}
+#post-toc .content>ol{
+  margin: 10px 0 0 0;
+}
+#post-toc ul{
+  margin-top:5px;
+}
+#post-toc ul, #post-toc li{
+  margin-top:5px;
+}
+</style>
 
 <div class="page-header">
   <h1>{{ page.title }}</h1>
-<div>
+  <div>
     {% for cat in page.categories %}
     <span class="label label-success">{{ cat }}</span>
     {% endfor %}
@@ -16,20 +43,14 @@ nav: blog
     <span class="pull-right label label-info" data-toggle="tooltip" data-placement="right" title="" data-original-title="{{ page.date | date: "%H:%M" }}">
         {{ page.date | date: "%Y年%m月%d日" }}
     </span>
+  </div>
 </div>
 
+<div id="post-toc"></div>
+
+<div id="post-content">
+  {{ content }}
 </div>
-
-{{ content }}
-
-
-<style>
-.jiathis_style *, .jiathis_style, #uyan_frame, #uyan_frame *{
-    -webkit-box-sizing: content-box!important;
-    -moz-box-sizing: content-box!important;
-    box-sizing: content-box!important;
-}
-</style>
 
 <!-- JiaThis Button BEGIN 
 <div class="jiathis_style">
@@ -48,3 +69,53 @@ nav: blog
 <div id="uyan_frame"></div>
 <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1851884"></script>
 <!-- UY END -->
+
+<script>
+  $(function(){
+    $('#post-toc').html(genTOC($('#post-content')));
+    
+    $('#toc_icon').click(function(){
+      $('#post-toc .content').toggle(400);
+      $(this).toggleClass('glyphicon-chevron-up glyphicon-chevron-down');
+    });
+  })
+  
+  // add toc for html content
+  function genTOC($content) {
+    var toc = $('<ol/>');
+    var ul = '';
+
+    var fi = 1;
+    while ($content.find('h' + fi).length < 1 && fi < 7) fi += 1;
+    if (fi == 7) return "";
+    
+    var c = ['H' + fi,'H' + (fi+1),'H' + (fi+2)];
+    $content.find('h' + fi + ',h' + (fi + 1) + ',h' + (fi + 2)).each(function (i) {
+      var $this = $(this);
+      $this.attr('id', i);
+      if (this.nodeName == c[0]) {
+      	var li = new $('<li/>')
+          .append('<a href="#' + i + '" class="animate">' + $this.text() + '</a>')
+          .append($('<ul/>'));
+        toc.append(li);
+      }
+      else if(this.nodeName == c[1]){
+      	var li = new $('<li/>')
+          .append('<a href="#' + i + '" class="animate">' + $this.text() + '</a>')
+          .append($('<ul/>'));
+        toc.find('a[href="#'+$this.prevAll(c[0]).first().attr('id')+'"]')
+                 .next('ul').append(li);
+      }
+      else{ 
+      	var li = new $('<li/>')
+          .append('<a href="#' + i + '" class="animate">' + $this.text() + '</a>')
+          .append($('<ul/>'));
+        toc.find('a[href="#'+$this.prevAll(c[1]).first().attr('id')+'"]')
+                 .next('ul').append(li);
+      }
+    });
+    return '<h4 class="header" style="display:inline;">目录</h4>'
+      + '<span id="toc_icon" class="glyphicon glyphicon-chevron-up" style="margin-left:5px;cursor:pointer;"></span>'
+      + '<div class="content">' + toc[0].outerHTML + '</div>';
+  }
+</script>

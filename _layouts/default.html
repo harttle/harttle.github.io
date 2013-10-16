@@ -15,6 +15,20 @@
     <link href="/assets/css/syntax.css" rel="stylesheet">
     <link rel="shortcut icon" href="/assets/img/favicon.png"> 
 	
+    <style>
+      #scrollUp{
+        position: fixed; 
+        z-index: 2147483647; 
+        display: block;
+        bottom: 40px;  
+        right: 40px; 
+        height: 38px; 
+        width: 38px; 
+        opacity: 0.3;
+        background: url(/assets/img/top.png) no-repeat;
+      }
+    </style>
+  
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="//oss.maxcdn.com/libs/html5shiv/3.6.2/html5shiv.js"></script>
@@ -86,6 +100,7 @@
       </div>
     </div> 
      
+    <script src="/assets/jquery/jquery.scrollUp.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/assets/bootstrap-3.0.0/js/bootstrap.min.js"></script>
     
@@ -93,6 +108,22 @@
       $(function(){
         $('.nav #{{page.nav}}').attr('class','active');
         $('[data-toggle="tooltip"]').tooltip();
+        
+        $.scrollUp({
+		        scrollName: 'scrollUp',topDistance: '300',topSpeed: 300,animation: 'fade',animationInSpeed: 500,
+              	animationOutSpeed: 500,scrollText: '',activeOverlay: false,
+		    });	
+        $('#scrollUp').hover(
+		        function() { $('#scrollUp').css('opacity', '1');}, 
+		        function() { $('#scrollUp').stop().animate({ opacity: '0.3'},300);}
+        );	
+        
+        //add animation to references, set body to avoid flashing in opera 
+        $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
+        $('a.animate').click(function(){
+          $body.animate({scrollTop: $($(this).attr('href')).offset().top - 50}, 500);
+          return false;
+        });
       });
     </script>
     
