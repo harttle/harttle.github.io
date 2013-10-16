@@ -6,23 +6,46 @@ nav: blog
 
 <div class="page-header">
   <h1>{{ page.title }}</h1>
-  <p class="pull-right" style="margin-top: -15px;">
-    <span class="label label-success">{{ page.date | date: "%Y年%m月%d日" }}</span>
-    <span class="label label-info">{{ page.date | date: "%H:%M" }}</span>
-  </p>
-</div>
-
-
-<p class="lead"></p>
-
-{{ content }}
-
-<div style="margin-top: 30px;">
+<div>
+    {% for cat in page.categories %}
+    <span class="label label-success">{{ cat }}</span>
+    {% endfor %}
     {% for tag in page.tags %}
     <span class="label label-default">{{ tag }}</span>
     {% endfor %}
+    <span class="pull-right label label-info" data-toggle="tooltip" data-placement="right" title="" data-original-title="{{ page.date | date: "%H:%M" }}">
+        {{ page.date | date: "%Y年%m月%d日" }}
+    </span>
 </div>
 
-<p class="pull-right">
-    <a href="/blog.html" class="btn btn-primary">返回</a>
-</p>
+</div>
+
+{{ content }}
+
+<hr>
+
+<style>
+.jiathis_style *, .jiathis_style{
+    -webkit-box-sizing: content-box!important;
+    -moz-box-sizing: content-box!important;
+    box-sizing: content-box!important;
+}
+</style>
+
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+	<a class="jiathis_button_fb"></a>
+	<a class="jiathis_button_msn"></a>
+	<a class="jiathis_button_twitter"></a>
+	<a class="jiathis_button_linkedin"></a>
+	<a class="jiathis_button_ydnote"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank">更多</a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js?uid=undefined" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1851884"></script>
+<!-- UY END -->
