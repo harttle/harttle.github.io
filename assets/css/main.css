@@ -1,26 +1,9 @@
 /*main css file for harttle land*/
 
-.post-item *{
-  font-size: 16px;
-}
-
-.post-item .title{
-  word-break:keep-all;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow:ellipsis;
-}
 .time{
   font-family: Georgia, "Times New Roman", Times, serif;	
 }
 
 .page-header h1{
   font-family: cursive;
-}
-
-#carousel{
-  -moz-box-shadow:-5px 5px 15px #333333;
-  -webkit-box-shadow:-5px 5px 15px #333333;
-  box-shadow:-5px 5px 15px #333333;
-  margin: 10px;
 }
