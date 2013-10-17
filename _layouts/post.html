@@ -40,6 +40,9 @@ nav: blog
     {% for tag in page.tags %}
     <span class="label label-default">{{ tag }}</span>
     {% endfor %}
+    <a class="pull-right label label-warning" href="/blog.html" style="margin-left: 10px;">
+        返回
+    </a>
     <span class="pull-right label label-info" data-toggle="tooltip" data-placement="right" title="" data-original-title="{{ page.date | date: "%H:%M" }}">
         {{ page.date | date: "%Y年%m月%d日" }}
     </span>
