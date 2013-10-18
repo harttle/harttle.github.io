@@ -8,6 +8,11 @@
   font-family: cursive;
 }
 
+.thumb-item{
+  margin-bottom: 5px;
+  margin-top: 5px;
+  display: inline;
+}
 
 /* JiaThis & Uyan style fix */
 .jiathis_style *, .jiathis_style, #uyan_frame, #uyan_frame *, #uyan_box, #uyan_box *{
@@ -21,4 +26,49 @@
 
 .panel{
   box-shadow: 15px 15px 50px #888888;
+}
+
+.panel-black {
+  border-color: black;
+}
+.panel-black > .panel-heading {
+  color: #ffffff;
+  background-color: black;
+  border-color: black;
+}
+.panel-black > .panel-heading + .panel-collapse .panel-body {
+  border-top-color: black;
+}
+.panel-black > .panel-footer + .panel-collapse .panel-body {
+  border-bottom-color: black;
+}
+
+.panel-grey {
+  border-color: grey;
+}
+.panel-grey > .panel-heading {
+  color: #ffffff;
+  background-color: grey;
+  border-color: grey;
+}
+.panel-grey > .panel-heading + .panel-collapse .panel-body {
+  border-top-color: grey;
+}
+.panel-grey > .panel-footer + .panel-collapse .panel-body {
+  border-bottom-color: grey;
+}
+
+.panel-green {
+  border-color: green;
+}
+.panel-green > .panel-heading {
+  color: #ffffff;
+  background-color: green;
+  border-color: green;
+}
+.panel-green > .panel-heading + .panel-collapse .panel-body {
+  border-top-color: green;
+}
+.panel-green > .panel-footer + .panel-collapse .panel-body {
+  border-bottom-color: green;
 }

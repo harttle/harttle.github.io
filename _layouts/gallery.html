@@ -17,6 +17,7 @@ nav: album
       display: none;
     }
   }
+  
 </style>
 
 <div class="container">
@@ -40,15 +41,16 @@ nav: album
   
   <p class="lead">{{ content }}</p>
   
-  <div  id="items" class="row">
-  {% for file in page.files %}      
-    <div class="col-sm-6 col-md-3">
-      <a href="/assets/img/{{ file }}" target="_blank" class="thumbnail">
-	<img src="/assets/img/{{ file }}" alt="{{ file }}">
+  <div class="row" id="items">
+    {% for img in page.imgs %}
+    <div class="thumb-item thumb-item col-sm-4 col-md-3 col-lg-2">
+      <a href="{{ page.img-pre }}{{ img }}" target="_blank" class="thumbnail">
+	<img src="{{ page.img-pre }}{{ img }}" alt="{{ img }}">
       </a>
     </div>
-  {% endfor %}
+    {% endfor %}
   </div>
+  <div class="clearfix"></div>
   
   <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
   <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
