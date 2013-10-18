@@ -18,3 +18,7 @@
 #uyan_count{
   float: none;
 }
+
+.panel{
+  box-shadow: 15px 15px 50px #888888;
+}
