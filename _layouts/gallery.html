@@ -46,13 +46,14 @@ nav: album
   
   <div class="row-fluid" id="items">
     {% for img in page.imgs %}
-    <div class="thumb-item col-md-2 col-sm-3 col-xs-12">
+    <div class="thumb-item col-lg-2 col-md-2 col-sm-3 col-xs-12">
       <a href="{{ page.file-pre }}{{ img }}" target="_blank" class="thumbnail">
 	<img class="lazy" data-original="{{ page.file-pre }}{{ img }}" src="/assets/img/loading.gif" alt="{{ img }}">
       </a>
     </div>
     {% assign i6 = forloop.index | modulo: 6 %}
     {% if i6 == 0 %}
+    <div class="clearfix visible-lg"></div>
     <div class="clearfix visible-md"></div>
     {% endif %}
   
