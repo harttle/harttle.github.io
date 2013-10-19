@@ -1,9 +1,11 @@
 ---
-layout: default
+layout: post
 nav: album
+returl: "/album.html"
 ---
 
 <style>
+  /* gallery 样式 */
   #blueimp-gallery .prev,#blueimp-gallery .next{
     color: grey;
     border: 3px solid grey;
@@ -17,96 +19,64 @@ nav: album
       display: none;
     }
   }
-
-  .thumb-item{
-    margin: 5px auto;
-  }
 </style>
 
-<div class="container">
-  
-  <link rel="stylesheet" href="/assets/gallery-2.11.0/css/blueimp-gallery.min.css">
-  
-  <div class="page-header">
-    <h1>{{ page.title }}</h1>
-    <div>
-      {% for tag in page.tags %}
-      <span class="label label-success pull-left" style="margin-right: 10px">{{ tag }}</span>
-      {% endfor %}
-      <a class="pull-right label label-darkgrey" href="/album.html" style="margin-left: 10px;">
-	  返回列表
-      </a>
-      <span class="pull-right label label-default">
-	  {{ page.date | date: "%Y年%m月%d日" }}
-      </span>
-    </div>
-  </div>
-  
-  <p class="lead">{{ content }}</p>
-  
-  <div class="row-fluid" id="items">
-    {% for img in page.imgs %}
-    <div class="thumb-item col-lg-2 col-md-2 col-sm-3 col-xs-12">
-      <a href="{{ page.file-pre }}{{ img }}" target="_blank" class="thumbnail">
-	<img class="lazy" data-original="{{ page.file-pre }}{{ img }}" src="/assets/img/loading.gif" alt="{{ img }}">
-      </a>
-    </div>
-    {% assign i6 = forloop.index | modulo: 6 %}
-    {% if i6 == 0 %}
-    <div class="clearfix visible-lg"></div>
-    <div class="clearfix visible-md"></div>
-    {% endif %}
-  
-    {% assign i4 = forloop.index | modulo: 4 %}
-    {% if i4 == 0 %}
-    <div class="clearfix visible-sm"></div>
-    {% endif %}
-  
-    <div class="clearfix visible-xs"></div>
-    {% endfor %}
-  </div>
-  <div class="clearfix" style="margin-bottom: 15px;"></div>
-  
-  <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
-  <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
-      <div class="slides"></div>
-      <h3 class="title"></h3>
-      <a class="prev">‹</a>
-      <a class="next">›</a>
-      <a class="close">×</a>
-      <a class="play-pause"></a>
-      <ol class="indicator"></ol>
-  </div>  
-  
-  <script src="/assets/gallery-2.11.0/js/blueimp-gallery.min.js"></script>
-  <script>
-     document.getElementById('items').onclick = function (event) {
-      event = event || window.event;
-      var target = event.target || event.srcElement,
-	  link = target.src ? target.parentNode : target,
-	  options = $.extend({index: link, event: event }, galleryOptions);
-	  links = this.getElementsByTagName('a');
-      blueimp.Gallery(links, options);
-    };
-  </script>
-  
-  <script src="/assets/jquery/jquery.lazyload.min.js" type="text/javascript"></script>
-  
-  <!-- UY BEGIN -->
-  <div id="uyan_frame"></div>
-  <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1851884"></script>
-  <!-- UY END -->
-  
-  <script>
-    //galary display
-    var galleryOptions = {
-	fullScreen: true,
-    };
-    
-    $(function(){
-      //lazy load images
-      $("img.lazy").lazyload({effect : "fadeIn", skip_invisible : false});	//bootstrap thumbnail img will be invisible at the begining
-    });
-  </script>
+<link rel="stylesheet" href="/assets/gallery-2.11.0/css/blueimp-gallery.min.css">
 
+<p class="lead">{{ content }}</p>
+<hr/>
+
+<div class="row-fluid" id="items">
+  {% for img in page.imgs %}
+  <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12" style="margin: 5px auto;">
+    <a href="{{ page.file-pre }}{{ img }}" target="_blank" class="thumbnail">
+      <img class="lazy" data-original="{{ page.file-pre }}{{ img }}" src="/assets/img/loading.gif" alt="{{ img }}">
+    </a>
+  </div>
+  {% assign i6 = forloop.index | modulo: 6 %}
+  {% if i6 == 0 %}
+  <div class="clearfix visible-lg"></div>
+  <div class="clearfix visible-md"></div>
+  {% endif %}
+
+  {% assign i4 = forloop.index | modulo: 4 %}
+  {% if i4 == 0 %}
+  <div class="clearfix visible-sm"></div>
+  {% endif %}
+
+  <div class="clearfix visible-xs"></div>
+  {% endfor %}
 </div>
+
+<div class="clearfix" style="margin-bottom: 15px;"></div>
+
+<!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+</div>  
+
+<script src="/assets/gallery-2.11.0/js/blueimp-gallery.min.js"></script>  
+<script src="/assets/jquery/jquery.lazyload.min.js" type="text/javascript"></script>
+
+<script>
+  //galary display
+  document.getElementById('items').onclick = function (event) {
+    event = event || window.event;
+    var target = event.target || event.srcElement,
+	link = target.src ? target.parentNode : target,
+	options = {index: link, event: event, fullScreen: true };
+	links = this.getElementsByTagName('a');
+    blueimp.Gallery(links, options);
+  };    
+  
+  $(function(){
+    //lazy load images
+    $("img.lazy").lazyload({effect : "fadeIn", skip_invisible : false});	//bootstrap thumbnail img will be invisible at the begining
+  });
+</script>
