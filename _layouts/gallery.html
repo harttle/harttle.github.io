@@ -31,7 +31,7 @@ nav: album
     <h1>{{ page.title }}</h1>
     <div>
       {% for tag in page.tags %}
-      <span class="label label-success">{{ tag }}</span>
+      <span class="label label-success pull-left" style="margin-right: 10px">{{ tag }}</span>
       {% endfor %}
       <a class="pull-right label label-darkgrey" href="/album.html" style="margin-left: 10px;">
 	  返回列表
