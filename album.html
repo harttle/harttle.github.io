@@ -27,13 +27,14 @@ nav: album
             </div>
             <div class="panel-body">
               <div class="row">
-                {% for img in post.imgs limit:8 %}      
-                  <div class="thumb-item col-md-3 col-sm-6 col-xs-12">
-                    <a href="{{post.url}}" class="thumbnail">
-                      <img src="{{ post.img-pre }}{{ img }}" class="img-responsive" alt="{{ img }}">
-                    </a>
-                  </div>
-                {% endfor %}
+                <div class="col-xs-12 col-sm-4">
+                  <a href="{{post.url}}" class="thumbnail">
+                    <img src="{{ post.file-pre }}{{ post.thumb }}" class="img-responsive" alt="{{ post.thumb }}">
+                  </a>
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                  <p>{{post.content}}</p>
+                </div>
               </div>
               <div class="clearfix"></div>
               <hr/>

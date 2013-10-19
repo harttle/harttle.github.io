@@ -17,7 +17,10 @@ nav: album
       display: none;
     }
   }
-  
+
+  .thumb-item{
+    margin: 5px auto;
+  }
 </style>
 
 <div class="container">
@@ -30,10 +33,10 @@ nav: album
       {% for tag in page.tags %}
       <span class="label label-success">{{ tag }}</span>
       {% endfor %}
-      <a class="pull-right label label-warning" href="/album.html" style="margin-left: 10px;">
-	  返回
+      <a class="pull-right label label-darkgrey" href="/album.html" style="margin-left: 10px;">
+	  返回列表
       </a>
-      <span class="pull-right label label-info" data-toggle="tooltip" data-placement="right" title="" data-original-title="{{ page.date | date: "%H:%M" }}">
+      <span class="pull-right label label-default">
 	  {{ page.date | date: "%Y年%m月%d日" }}
       </span>
     </div>
@@ -41,16 +44,27 @@ nav: album
   
   <p class="lead">{{ content }}</p>
   
-  <div class="row" id="items">
+  <div class="row-fluid" id="items">
     {% for img in page.imgs %}
-    <div class="thumb-item thumb-item col-sm-4 col-md-3 col-lg-2">
-      <a href="{{ page.img-pre }}{{ img }}" target="_blank" class="thumbnail">
-	<img src="{{ page.img-pre }}{{ img }}" alt="{{ img }}">
+    <div class="thumb-item col-md-2 col-sm-3 col-xs-12">
+      <a href="{{ page.file-pre }}{{ img }}" target="_blank" class="thumbnail">
+	<img class="lazy" data-original="{{ page.file-pre }}{{ img }}" src="/assets/img/loading.gif" alt="{{ img }}">
       </a>
     </div>
+    {% assign i6 = forloop.index | modulo: 6 %}
+    {% if i6 == 0 %}
+    <div class="clearfix visible-md"></div>
+    {% endif %}
+  
+    {% assign i4 = forloop.index | modulo: 4 %}
+    {% if i4 == 0 %}
+    <div class="clearfix visible-sm"></div>
+    {% endif %}
+  
+    <div class="clearfix visible-xs"></div>
     {% endfor %}
   </div>
-  <div class="clearfix"></div>
+  <div class="clearfix" style="margin-bottom: 15px;"></div>
   
   <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
   <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
@@ -61,8 +75,7 @@ nav: album
       <a class="close">×</a>
       <a class="play-pause"></a>
       <ol class="indicator"></ol>
-  </div>
-  
+  </div>  
   
   <script src="/assets/gallery-2.11.0/js/blueimp-gallery.min.js"></script>
   <script>
@@ -76,20 +89,22 @@ nav: album
     };
   </script>
   
+  <script src="/assets/jquery/jquery.lazyload.min.js" type="text/javascript"></script>
+  
   <!-- UY BEGIN -->
   <div id="uyan_frame"></div>
   <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1851884"></script>
   <!-- UY END -->
   
   <script>
+    //galary display
     var galleryOptions = {
 	fullScreen: true,
     };
     
     $(function(){
-      $('#fullscreen-checkbox').on('change', function () {
-	  galleryOptions.fullScreen = $(this).is(':checked');
-      });
+      //lazy load images
+      $("img.lazy").lazyload({effect : "fadeIn", skip_invisible : false});	//bootstrap thumbnail img will be invisible at the begining
     });
   </script>
 
