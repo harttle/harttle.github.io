@@ -1,0 +1,174 @@
+/* 
+Some basic Github styles and syntax highlighting CSS via Pygments.
+*/
+.md * {
+        font-size: 14px;
+        line-height: 1.6;
+        font-family: helvetica,arial,freesans,clean,sans-serif;
+        color: black;
+}
+
+.md h1 {
+        margin: 15px 0;
+        padding-bottom: 2px;
+        font-size: 24px;
+        border-bottom: 1px solid #EEE;
+}
+.md h2 {
+        margin: 20px 0 10px 0;
+        font-size: 18px;
+}
+.md h3 {
+        margin: 20px 0 10px 0;
+        padding-bottom: 2px;
+        font-size: 14px;
+        border-bottom: 1px solid #DDD;
+}
+.md h4 {
+        font-size: 14px;
+        line-height: 26px;
+        padding: 18px 0 4px;
+        font-weight: bold;
+        text-transform: uppercase;
+}
+.md h5 {
+        font-size: 13px;
+        line-height: 26px;
+        padding: 14px 0 0;
+        font-weight: bold;
+        text-transform: uppercase;
+}
+.md h6 {
+        color: #666;
+        font-size: 14px;
+        line-height: 26px;
+        padding: 18px 0 0;
+        font-weight: normal;
+        font-variant: italic;
+}
+.md br+br {
+        line-height:0;
+        height:0;
+        display:none;
+}
+.md p {
+        margin: 1em 0;
+}
+.md blockquote {
+         margin: 14px 0;
+         border-left: 4px solid #DDD;
+         padding-left: 11px;
+         color: #555;
+}
+.md pre,.md  code {
+        font-family: 'Bitstream Vera Sans Mono','Courier',monospace;
+}
+.md pre {
+        background-color: #F8F8F8;
+        border: 1px solid #CCC;
+        font-size: 13px;
+        line-height: 19px;
+        overflow: auto;
+        padding: 6px 10px;
+        border-radius: 3px;
+        color: black;
+}
+.md code {
+        margin: 0 2px;
+        padding: 2px 5px;
+        white-space: nowrap;
+        border: 1px solid #CCC;
+        background-color: #F8F8F8;
+        border-radius: 3px;
+        font-size: 12px !important;
+}
+.md pre > code {
+    margin: 0px;
+        padding: 0px;
+        white-space: pre;
+        border: none;
+        background-color: transparent;
+        border-radius: 0;
+}
+.md a, .md a code {
+        color: #4183C4;
+        text-decoration:none;
+}
+.md a:hover, .md a code:hover {
+        text-decoration:underline;
+}
+.md table {
+        border-collapse: collapse;
+        margin: 20px 0 0;
+        padding: 0;
+}
+.md table tr th,.md  table tr td {
+        border: 1px solid #CCC;
+        text-align: left;
+        margin: 0;
+        padding: 6px 13px;
+}
+.md table tbody tr:nth-child(2n-1) {
+        background-color: #F8F8F8;
+}
+
+.md .c{color:#998;font-style:italic;}
+.md .err{color:#a61717;background-color:#e3d2d2;}
+.md .k{font-weight:bold;}
+.md .o{font-weight:bold;}
+.md .cm{color:#998;font-style:italic;}
+.md .cp{color:#999;font-weight:bold;}
+.md .c1{color:#998;font-style:italic;}
+.md .cs{color:#999;font-weight:bold;font-style:italic;}
+.md .gd{color:#000;background-color:#fdd;}
+.md .gd .x{color:#000;background-color:#faa;}
+.md .ge{font-style:italic;}
+.md .gr{color:#a00;}
+.md .gh{color:#999;}
+.md .gi{color:#000;background-color:#dfd;}
+.md .gi .x{color:#000;background-color:#afa;}
+.md .go{color:#888;}
+.md .gp{color:#555;}
+.md .gs{font-weight:bold;}
+.md .gu{color:#800080;font-weight:bold;}
+.md .gt{color:#a00;}
+.md .kc{font-weight:bold;}
+.md .kd{font-weight:bold;}
+.md .kn{font-weight:bold;}
+.md .kp{font-weight:bold;}
+.md .kr{font-weight:bold;}
+.md .kt{color:#458;font-weight:bold;}
+.md .m{color:#099;}
+.md .s{color:#d14;}
+.md .na{color:#008080;}
+.md .nb{color:#0086B3;}
+.md .nc{color:#458;font-weight:bold;}
+.md .no{color:#008080;}
+.md .ni{color:#800080;}
+.md .ne{color:#900;font-weight:bold;}
+.md .nf{color:#900;font-weight:bold;}
+.md .nn{color:#555;}
+.md .nt{color:#000080;}
+.md .nv{color:#008080;}
+.md .ow{font-weight:bold;}
+.md .w{color:#bbb;}
+.md .mf{color:#099;}
+.md .mh{color:#099;}
+.md .mi{color:#099;}
+.md .mo{color:#099;}
+.md .sb{color:#d14;}
+.md .sc{color:#d14;}
+.md .sd{color:#d14;}
+.md .s2{color:#d14;}
+.md .se{color:#d14;}
+.md .sh{color:#d14;}
+.md .si{color:#d14;}
+.md .sx{color:#d14;}
+.md .sr{color:#009926;}
+.md .s1{color:#d14;}
+.md .ss{color:#990073;}
+.md .bp{color:#999;}
+.md .vc{color:#008080;}
+.md .vg{color:#008080;}
+.md .vi{color:#008080;}
+.md .il{color:#099;}
