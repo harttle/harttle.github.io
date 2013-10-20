@@ -18,7 +18,8 @@ nav: album
   <p class="lead">一些摄影图片，生活纪实。留住白驹过隙的时光印记，记录喜怒哀乐的点滴瞬间。</p>
   
   <div class="row">
-    {% for post in site.posts %}
+    {% for category_name in site.album_categories %}
+    {% for post in site.categories[category_name] %}
       {% if post.layout == 'gallery' %}
         <div class="col-md-6">
           <div class="panel panel-primary">
@@ -46,6 +47,7 @@ nav: album
           </div>
         </div>
       {% endif %}
+    {% endfor %}
     {% endfor %}
   </div>
 </div>
