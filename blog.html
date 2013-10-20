@@ -24,7 +24,8 @@ nav: blog
                   <li class="post-item">
                     <p class="muted time pull-left" style="width: 110px;">{{ post.date | date: "%Y-%m-%d"  }}</p>
                     <p>
-                      <a class="title" href="{{ post.url }}">{{ post.title }}（{{post.subtitle}}）</a>
+                      <a class="title" href="{{ post.url }}">{{ post.title }} 
+                      {% if post.subtitle %}——{{post.subtitle}}{% endif %}</span></a>
                     </p>
                   </li>
                 {% endfor %}

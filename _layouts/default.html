@@ -80,13 +80,20 @@
     </div> 
      
     <script src="/assets/jquery/jquery.scrollUp.min.js"></script>
+    <script src="/assets/jquery/jquery.lazyload.min.js" type="text/javascript"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/assets/bootstrap-3.0.0/js/bootstrap.min.js"></script>
     
     <script>
       $(function(){
+        //更新菜单
         $('.nav #{{page.nav}}').attr('class','active');
+        
+        //激活工具提示
         $('[data-toggle="tooltip"]').tooltip();
+        
+        //图片延迟加载
+        $("img.lazy").lazyload({effect : "fadeIn", skip_invisible : false});	//bootstrap thumbnail img will be invisible at the begining
         
         //回到顶部按钮
         $.scrollUp({
@@ -104,7 +111,6 @@
           $body.animate({scrollTop: $($(this).attr('href')).offset().top - offset}, 500);
           return false;
         });        
-        
       });
     </script>
     
