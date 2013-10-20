@@ -1,6 +1,7 @@
 ---
 layout: article
-title:  "在 GitHub 部署博客"
+title:  "像程序员一样写博客"
+subtitle: "GitHub 博客部署教程"
 categories: web
 tags: "教程"
 published: true
@@ -52,7 +53,8 @@ published: true
 1. 运行 `ssh-keygen -t rsa` 得到 SSH 公钥文件：id_rsa.pub
 1. 登录 GitHub，添加你的 SSH key（account settings -> SSH Keys -> Add SSH Key）
 3. 在 GitHub，创建名为 username.github.io 的仓库（其中username为你的用户名），并拷贝其URL（类似：git@github.com:harttle/harttle.github.io.git）
-4. 在linux下运行 git clone URL\_YOU\_COPIED，得到文件夹 username.github.io
+4. 在linux下运行 `git clone URL_YOU_COPIED`，得到文件夹 username.github.io
+5. 运行 `git remote set-url origin URL_YOU_COPIED`，让git使用密钥验证，省去了每次push时输入密码。
 
 ### 生成站点文件
 

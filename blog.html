@@ -24,7 +24,7 @@ nav: blog
                   <li class="post-item">
                     <p class="muted time pull-left" style="width: 110px;">{{ post.date | date: "%Y-%m-%d"  }}</p>
                     <p>
-                      <a class="title" href="{{ post.url }}">{{ post.title }}</a>
+                      <a class="title" href="{{ post.url }}">{{ post.title }}（{{post.subtitle}}）</a>
                     </p>
                   </li>
                 {% endfor %}
