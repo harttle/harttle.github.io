@@ -24,7 +24,10 @@ layout: default
 
 <div class="fixed-header">
   <div class="page-header container">
-    <h1>{{ page.title }} <small>{{page.subtitle}}</small></h1>
+    <h1 class="nowrap" data-toggle="tooltip" data-placement="bottom" title=""
+      data-original-title="{{ page.title }} ——{{page.subtitle}}">
+      {{ page.title }} <small>{{page.subtitle}}</small>
+    </h1>
     <div>
       {% for cat in page.categories %}
       <span class="label label-info">{{ cat }}</span>
@@ -35,7 +38,7 @@ layout: default
       <a class="pull-right label label-darkgrey" href="{{ page.returl }}" style="margin-left: 10px;">
           返回列表
       </a>
-      <span class="pull-right label label-default">
+      <span class="pull-right label label-default hide-xs">
           {{ page.date | date: "%Y年%m月%d日" }}
       </span>
     </div>

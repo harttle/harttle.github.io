@@ -21,11 +21,10 @@ nav: blog
           <div class="panel-body">
             <ul class="list-unstyled">        
                 {% for post in site.categories[category_name] %}      
-                  <li class="post-item">
-                    <p class="muted time pull-left" style="width: 110px;">{{ post.date | date: "%Y-%m-%d"  }}</p>
-                    <p>
-                      <a class="title" href="{{ post.url }}">{{ post.title }} 
-                      {% if post.subtitle %}——{{post.subtitle}}{% endif %}</span></a>
+                  <li class="post-item row">
+                    <p class="muted time col-xs-4 col-sm-3" >{{ post.date | date: "%Y-%m-%d"  }}</p>
+                    <p class="col-xs-8 col-sm-9">
+                      <a class="title" href="{{ post.url }}">{{ post.title }}{% if post.subtitle %} ——{{post.subtitle}}{% endif %}</span></a>
                     </p>
                   </li>
                 {% endfor %}

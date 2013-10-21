@@ -1,4 +1,4 @@
-"Microsoft YaHei"/*main css file for harttle land*/
+/*main css file for harttle land*/
 
 .time{
   font-family: Georgia, "Times New Roman", Times, serif;	
@@ -90,15 +90,39 @@
 }
 
 #scrollUp{
-  position: fixed; 
-  z-index: 2147483647; 
-  display: block;
   bottom: 40px;  
   right: 40px; 
   height: 38px; 
-  width: 38px; 
+  width: 38px;
+  opacity: 0.5;
   background: url(/assets/img/top.png) no-repeat;
 }
 #scrollUp:hover{
-  background: url(/assets/img/top-active.png) no-repeat;
+  opacity: 1;
+}
+
+.nowrap{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;  
+}
+
+
+.hide, .hide-lg{
+  display: none;
+}
+@media (max-width: 1200px) {
+  .hide-md{
+    display: none;
+  }
+}
+@media (max-width: 992px) {
+  .col-sm-0{
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  .hide-xs{
+    display: none;
+  }
 }

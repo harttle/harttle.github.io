@@ -35,9 +35,6 @@ body {
 .container .credit {
   margin: 20px 0;
   height: 20px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 #footer > .container {
