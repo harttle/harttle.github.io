@@ -4,70 +4,39 @@ title: Harttle Land
 nav: home
 ---
 
-<div class="header-bg"> </div>
-
+<div class="page-header hl-header">
+    <div class="container">
+      <h1>Harttle Land <small>{{ site.name }}</small></h1>
+    </div>
+</div>
+  
 <div class="container">
   <style>
-    .header-bg {
-      position: fixed;
-      z-index: -1;
-      width:100%; 
-      height:400px; 
-      margin-top: 20px;
-      margin-bottom: -400px;
-      background-image:url(/assets/img/bg.jpg); 
-      background-repeat:no-repeat;
-      filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/assets/img/bg.jpg', sizingMethod='scale')\9;   
-      -moz-background-size: 100% 100%; 
-      -o-background-size: 100% 100%; 
-      -webkit-background-size: 100% 100%; 
-      background-size: 100% 100%;      
-      box-shadow: 0 15px 15px #888888;
-      
-      filter:blur(4px);
-      -o-filter:blur(4px);
-      -ms-filter:blur(4px);
-      -moz-filter:blur(4px);
-      -webkit-filter:blur(4px);
+    /* panel style */
+    .panel-body{
+        height: 165px;
     }
-    
-    @media(max-width: 768px) {
-      .header-bg {
-        height:200px; 
-        margin-bottom: -200px;
-      }
-      .carousel-caption{
-        display: none;
-      }
-    }
-
-    .page-header{
-      border-bottom: 0;
-    }
-    .page-header small{
-      color: black;
-    }
-    
     .post-item *{
       font-size: 16px;
-    }
-    
+    }    
     .post-item .title{
       word-break:keep-all;
       white-space: nowrap;
       overflow: hidden;
       text-overflow:ellipsis;
     }
-  
+    
+    /* carousel style */
     #carousel{
       box-shadow: 15px 15px 50px #333333;
       margin: 10px;
     }
+    @media(max-width: 768px) {
+      .carousel-caption{
+        display: none;
+      }
+    }    
   </style>
-  
-  <div class="page-header">
-    <h1>Harttle Land <small>{{ site.name }}</small></h1>
-  </div>
   
   <div id="carousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -112,7 +81,7 @@ nav: home
     </section>
     <div class="row">
       <div class="col-md-6">
-        <div class="panel panel-grey">
+        <div class="panel panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title">感兴趣话题</h3>
           </div>
@@ -131,7 +100,7 @@ nav: home
         </div>
       </div>
       <div class="col-md-6">
-        <div class="panel panel-grey">
+        <div class="panel panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title">项目开发经历</h3>
           </div>

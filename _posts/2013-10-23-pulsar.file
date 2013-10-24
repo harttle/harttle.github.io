@@ -1,0 +1,15 @@
+---
+layout: file
+category: 论文
+tags: 脉冲星 Parkes巡天 数据处理
+title:  Parkes 多波束脉冲星寻天数据再处理 I
+excerpt: 这是我的本科毕业论文。处理了 Parkes 多波束脉冲星寻天数据（3TB）的一小部分，探测到 6 颗脉冲星。
+
+
+file-path: /assets/file/
+files: 
+    - 《Parkes 多波束脉冲星寻天数据在处理 I》: pulsar-data-processing.pdf
+---
+
+这是我的本科毕业论文。处理了 Parkes 多波束脉冲星寻天数据（3TB）的一小部分，探测到 6 颗脉冲星：
+PSRs J0437−4715, J1141−6545, J1359−6038, J1435−5954, J1701−3726 和 J1933+1304。

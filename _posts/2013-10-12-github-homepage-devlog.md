@@ -3,6 +3,7 @@ layout: article
 title:  "GitHub 个人主页开发记录"
 categories: 日志
 tags: 工作记录
+excerpt: 本文记录了开发进度、时间节点，以及任务列表。
 ---
 
 ### 2013-10-12

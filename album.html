@@ -1,55 +1,9 @@
 ---
-layout: default
+layout: category
 title: 相册
+post-icon: picture
 nav: album
+categories: album_categories
 ---
 
-<style>
-    .panel-body hr{
-      margin-bottom: 15px;
-      margin-top: 10px;
-    }
-</style>
-
-<div class="container">
-  <div class="page-header">
-    <h1>相册</h1>
-  </div>
-  <p class="lead">一些摄影图片，生活纪实。留住白驹过隙的时光印记，记录喜怒哀乐的点滴瞬间。</p>
-  
-  <div class="row">
-    {% for category_name in site.album_categories %}
-    {% for post in site.categories[category_name] %}
-      {% if post.layout == 'gallery' %}
-        <div class="col-md-6">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">{{ post.title }} <p class="muted time pull-right">{{ post.date | date: "%Y-%m-%d"  }}</p></h3>            
-            </div>
-            <div class="panel-body">
-              <div class="row">
-                <div class="col-xs-12 col-sm-4">
-                  <a href="{{post.url}}" class="thumbnail" style="margin-bottom: 5px;">
-                    <img  class="lazy img-responsive" data-original="{{ post.file-pre }}{{ post.thumb }}" src="/assets/img/loading.gif"
-                          alt="{{ post.thumb }}">
-                  </a>
-                </div>
-                <div class="col-xs-12 col-sm-8">
-                  <h4>{{post.subtitle}}</h4>
-                  <p>{{post.content}}</p>
-                </div>
-              </div>
-              <div class="clearfix"></div>
-              <hr/>
-              {% for tag in post.tags %}
-                <p class="pull-left"><span style="margin-right: 10px;" class="label label-success">{{ tag }}</span></p>
-              {% endfor %}
-              <a class="btn btn-primary pull-right" href="{{post.url}}" >进入</a>
-            </div>
-          </div>
-        </div>
-      {% endif %}
-    {% endfor %}
-    {% endfor %}
-  </div>
-</div>
+一些摄影图片，生活纪实。留住白驹过隙的时光印记，记录喜怒哀乐的点滴瞬间。

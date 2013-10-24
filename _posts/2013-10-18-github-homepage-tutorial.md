@@ -4,7 +4,7 @@ title:  "像 Geek 一样写博客"
 subtitle: "GitHub 博客部署教程"
 categories: web
 tags: "教程"
-published: true
+excerpt: 本文介绍如何利用 GitHub 提供的文件服务，部署博客系统。采用 git+github+markdown+jekyll 方式构建静态博客站点。
 ---
 
 本文介绍如何利用 GitHub 提供的文件服务，部署博客系统。采用 git+github+markdown+jekyll 方式构建静态博客站点。完成部署后，可以在在线撰写博客，也可以本地离线撰写，然后同步到GitHub。
@@ -127,3 +127,15 @@ published: true
 	git push
 	```
 2. GitHub将会在10分钟内编译你的文件生成静态站点，访问 username.github.io 即可查看博客。
+
+
+## Tips
+
+* 变量定义与访问
+    * 在 `_config.yml` 中定义的变量，可通过 `site.VAL` 访问；
+    * 在子模板（通过 `layout` 继承的页面）中定义的变量，可通过 `page.VAL` 访问；
+    * `content` 为子模板的内容
+    * `page.content` 为经过markdown转换的末级子模板的内容
+
+* Jekyll 插件在 GitHub Pages 中不能使用，因为 GitHub Pages 的编译使用 `--safe` 参数；但可以在本地编译后同步至 GitHub 来取代 GitHub 的自动编译。
+* `{% include %}` 标签参数只能为常量，被包含文件中的 liquid 语句以文件为单元解析。

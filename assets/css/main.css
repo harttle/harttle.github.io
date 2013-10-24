@@ -1,12 +1,52 @@
 /*main css file for harttle land*/
 
-.time{
-  font-family: Georgia, "Times New Roman", Times, serif;	
+/* Page header */
+.hl-header {
+  margin-top: 0;
+  color: #cdbfe3;
+  background-color: #563d7c;
+  background-image: url(/assets/img/bg.jpg);
+}
+.hl-header {
+  padding: 30px 15px 40px; /* side padding builds on .container 15px, so 30px */
+  font-size: 16px;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0,0,0,.15);
+}
+.hl-header h1 {
+  color: #fff;
+}
+.hl-header small{
+  color: lightgrey;
+}
+.hl-header p {
+  font-weight: 300;
+  line-height: 1.5;
+}
+.hl-header .container {
+  position: relative;
+}
+@media (min-width: 768px) {
+  .hl-header {
+    font-size: 21px;
+    text-align: left;
+  }
+  .hl-header h1 {
+    font-size: 45px;
+    line-height: 1;
+  }
+}
+@media (min-width: 992px) {
+  .hl-header h1,
+  .hl-header p {
+    margin-right: 380px;
+  }
 }
 
-.page-header h1{
-  font-family: cursive;
+.global-nav{
+  margin-bottom: 50px;
 }
+
 
 /* JiaThis & Uyan style fix */
 .jiathis_style *, .jiathis_style, #uyan_frame, #uyan_frame *, #uyan_box, #uyan_box *{
@@ -18,75 +58,25 @@
   float: none;
 }
 
+/* custom css */
+.time{
+  font-family: Georgia, "Times New Roman", Times, serif;	
+}
+
+.page-header h1{
+  font-family: cursive;
+}
 .panel{
   box-shadow: 10px 10px 30px #888888;
 }
 .panel:hover{
-    -webkit-animation-name: glow;
-    -webkit-animation-duration: 0.3s;
-    -webkit-animation-iteration-count: 2;
-    -webkit-animation-direction: alternate;
-    -webkit-animation-timing-function: ease-in-out;    
-}
-@-webkit-keyframes glow {
-    0% {
-        box-shadow: 10px 10px 30px #888;
-    }
-    100% {
-        box-shadow: 10px 10px 50px #555;
-    }
+  box-shadow: 10px 10px 50px #555;
 }
 
-.panel-black {
-  border-color: black;
-}
-.panel-black > .panel-heading {
-  color: #ffffff;
-  background-color: black;
-  border-color: black;
-}
-.panel-black > .panel-heading + .panel-collapse .panel-body {
-  border-top-color: black;
-}
-.panel-black > .panel-footer + .panel-collapse .panel-body {
-  border-bottom-color: black;
-}
-
-.panel-grey {
-  border-color: grey;
-}
-.panel-grey > .panel-heading {
-  color: #ffffff;
-  background-color: grey;
-  border-color: grey;
-}
-.panel-grey > .panel-heading + .panel-collapse .panel-body {
-  border-top-color: grey;
-}
-.panel-grey > .panel-footer + .panel-collapse .panel-body {
-  border-bottom-color: grey;
-}
-
-.panel-green {
-  border-color: green;
-}
-.panel-green > .panel-heading {
-  color: #ffffff;
-  background-color: green;
-  border-color: green;
-}
-.panel-green > .panel-heading + .panel-collapse .panel-body {
-  border-top-color: green;
-}
-.panel-green > .panel-footer + .panel-collapse .panel-body {
-  border-bottom-color: green;
-}
-
-.label-darkgrey{
-  background-color: #4E4E4E;
-}
-.label-darkgrey:hover{
-  background-color: black;
+/* panel with tool bar */
+.panel-toolbar .panel-body hr{
+    margin-bottom: 15px;
+    margin-top: 10px;
 }
 
 #scrollUp{
@@ -107,7 +97,7 @@
   text-overflow: ellipsis;  
 }
 
-
+/* device-awire hide */
 .hide, .hide-lg{
   display: none;
 }

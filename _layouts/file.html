@@ -1,0 +1,18 @@
+---
+layout: post
+nav: resource
+returl: "/resource.html"
+---
+
+<div class="list-group">
+
+  {% for file in page.files %}
+    {% for link in file %}
+      <a href="{{ page.file-path }}{{ link[1] }}" target="_blank" class="list-group-item">
+        {{ link[0] }}
+        <span class="glyphicon glyphicon-download-alt"></span>
+      </a>
+    {% endfor %}
+  {% endfor %}
+
+</div>

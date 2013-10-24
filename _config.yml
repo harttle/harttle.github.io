@@ -2,7 +2,11 @@ name: Harttle 的个人主页
 markdown: redcarpet
 pygments: true
 blog_categories:
-    - "日志"
+    - 日志
     - web
 album_categories:
-    - "相册"
+    - 校园
+    - 摄影
+resource_categories:
+    - 论文
+    - 作业

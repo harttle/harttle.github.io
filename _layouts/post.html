@@ -15,9 +15,10 @@ layout: default
 .fixed-header .page-header{
   border-bottom: 0;
   margin-bottom: 0px;
+  margin-top: 10px;
 }
 #page-content{
-  margin-top: 100px;
+  margin-top: 140px;
   margin-bottom: 15px;
 }
 </style>
@@ -30,16 +31,16 @@ layout: default
     </h1>
     <div>
       {% for cat in page.categories %}
-      <span class="label label-info">{{ cat }}</span>
+      <span class="label label-info pull-left" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> {{ cat }}</span>
       {% endfor %}
       {% for tag in page.tags %}
-      <span class="label label-success">{{ tag }}</span>
+      <span class="label label-success pull-left hide-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> {{ tag }}</span>
       {% endfor %}
-      <a class="pull-right label label-darkgrey" href="{{ page.returl }}" style="margin-left: 10px;">
-          返回列表
+      <a class="pull-right label label-warning" href="{{ page.returl }}" style="margin-left: 10px;">
+          返回列表 <span class="glyphicon glyphicon-hand-left"></span>
       </a>
       <span class="pull-right label label-default hide-xs">
-          {{ page.date | date: "%Y年%m月%d日" }}
+          <span class="glyphicon glyphicon-time"></span> {{ page.date | date: "%Y年%m月%d日" }}
       </span>
     </div>
   </div>
