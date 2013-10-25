@@ -18,7 +18,7 @@ layout: default
         
         <div class="row-fluid">
             {% for post in site.categories[category_name] %}
-                <div class="col-sm-6">                                                                           
+                <div class="col-md-6">                                                                           
                                                                                                                  
                     <div class="panel panel-primary panel-toolbar">                                              
                         <div class="panel-heading">                                                              
@@ -67,7 +67,7 @@ layout: default
                 
                 {% assign i2 = forloop.index | modulo: 2 %}
                 {% if i2 == 0 %}
-                <div class="clearfix visible-sm"></div>
+                <div class="clearfix visible-md"></div>
                 {% endif %}
                 
             {% endfor %}
