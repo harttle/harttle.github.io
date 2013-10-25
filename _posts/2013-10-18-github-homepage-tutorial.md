@@ -2,8 +2,8 @@
 layout: article
 title:  "像 Geek 一样写博客"
 subtitle: "GitHub 博客部署教程"
-categories: web
-tags: "教程" GitHub 博客
+category: web
+tags: GitHub 博客 教程
 excerpt: 本文介绍如何利用 GitHub 提供的文件服务，部署博客系统。采用 git+github+markdown+jekyll 方式构建静态博客站点。
 ---
 
