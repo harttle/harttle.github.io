@@ -4,9 +4,9 @@ pygments: true
 blog_categories:
     - 日志
     - web
+    - linux
 album_categories:
-    - 校园
-    - 摄影
+    - 相册
 resource_categories:
     - 论文
     - 作业

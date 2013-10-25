@@ -10,6 +10,8 @@ returl: "/blog.html"
 #post-toc{
   background:#f5f5f5;
   padding:15px;
+  margin-bottom: 15px;
+  display: none;
 }
 #post-toc .header{
   margin:0;
@@ -19,9 +21,6 @@ returl: "/blog.html"
 }
 #post-toc ul, #post-toc li{
   margin-top:5px;
-}
-#post-content{
-  margin-top:15px;
 }
 </style>
 
@@ -34,7 +33,11 @@ returl: "/blog.html"
 <script>
   $(function(){
     //添加目录
-    $('#post-toc').html(genTOC($('#post-content')));
+    $toc = $('#post-toc');
+    $toc.html(genTOC($('#post-content')));
+    if ($toc.children().length>0) {
+      $toc.show();
+    }
     
     //目录折叠
     $('#toc_icon').click(function(){
@@ -58,20 +61,20 @@ returl: "/blog.html"
       $this.attr('id', i);
       if (this.nodeName == c[0]) {
         var li = new $('<li/>')
-          .append('<a href="#' + i + '" offset="100" class="animate">' + $this.text() + '</a>')
+          .append('<a href="#' + i + '" offset="15" class="animate">' + $this.text() + '</a>')
           .append($('<ul/>'));
         toc.append(li);
       }
       else if(this.nodeName == c[1]){
         var li = new $('<li/>')
-          .append('<a href="#' + i + '" offset="100" class="animate">' + $this.text() + '</a>')
+          .append('<a href="#' + i + '" offset="15" class="animate">' + $this.text() + '</a>')
           .append($('<ul/>'));
         toc.find('a[href="#'+$this.prevAll(c[0]).first().attr('id')+'"]')
                  .next('ul').append(li);
       }
       else{ 
         var li = new $('<li/>')
-          .append('<a href="#' + i + '" offset="100" class="animate">' + $this.text() + '</a>')
+          .append('<a href="#' + i + '" offset="15" class="animate">' + $this.text() + '</a>')
           .append($('<ul/>'));
         toc.find('a[href="#'+$this.prevAll(c[1]).first().attr('id')+'"]')
                  .next('ul').append(li);

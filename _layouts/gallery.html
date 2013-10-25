@@ -29,8 +29,8 @@ returl: "/album.html"
 <div class="row-fluid" id="items">
   {% for img in page.imgs %}
   <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12" style="margin: 5px auto;">
-    <a href="{{ page.file-pre }}{{ img }}" target="_blank" class="thumbnail">
-      <img class="lazy" data-original="{{ page.file-pre }}{{ img }}" src="/assets/img/loading.gif" alt="{{ img }}">
+    <a href="{{ page.file-pre }}file/{{ img }}" target="_blank" class="thumbnail">
+      <img class="lazy" data-original="{{ page.file-pre }}thumb/{{ img }}" src="/assets/img/loading.gif" alt="{{ img }}">
     </a>
   </div>
   {% assign i6 = forloop.index | modulo: 6 %}
