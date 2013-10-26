@@ -2,6 +2,78 @@
 layout: default
 ---
 
+	<style>
+      /* Sidenav for Docs
+-------------------------------------------------- */
+
+.sidenav {
+  width: 228px;
+  margin: 20px 0 20px;
+  padding: 0;
+  background-color: #fff;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+     -moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
+          box-shadow: 0 1px 4px rgba(0,0,0,.065);
+}
+.sidenav > li > a {
+  display: block;
+  width: 190px \9;
+  margin: 0 0 -1px;
+  padding: 8px 14px;
+  border: 1px solid #e5e5e5;
+}
+.sidenav > li:first-child > a {
+  -webkit-border-radius: 6px 6px 0 0;
+     -moz-border-radius: 6px 6px 0 0;
+          border-radius: 6px 6px 0 0;
+}
+.sidenav > li:last-child > a {
+  -webkit-border-radius: 0 0 6px 6px;
+     -moz-border-radius: 0 0 6px 6px;
+          border-radius: 0 0 6px 6px;
+}
+.sidenav > .active > a {
+  position: relative;
+  z-index: 2;
+  padding: 9px 15px;
+  border: 0;
+    background: #428bca!important;
+    color: white;
+  text-shadow: 0 1px 0 rgba(0,0,0,.15);
+  -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+     -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+          box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+}
+/* Chevrons */
+.sidenav .glyphicon-chevron-right {
+  float: right;
+  margin-top: 2px;
+  margin-right: -6px;
+  opacity: .25;
+}
+.sidenav > li > a:hover {
+  background-color: #f5f5f5;
+}
+.sidenav a:hover .glyphicon-chevron-right {
+  opacity: .5;
+}
+.sidenav .active .glyphicon-chevron-right,
+.sidenav .active a:hover .glyphicon-chevron-right {
+  opacity: 1;
+}
+.sidenav.affix {
+  top: 50px;
+}
+.sidenav.affix-bottom {
+  position: absolute;
+  top: auto;
+  bottom: 60px;
+}      
+</style>
+
 <div class="page-header hl-header">
     <div class="container">
         <h1>{{ page.title }}</h1>
@@ -9,71 +81,96 @@ layout: default
     </div>
 </div>
 
-<div class="container">
-  
-    {% for category_name in site[page.categories] %}
-        <div class="page-header">
-          <h2>{{ category_name }}</h2>
-        </div>    
-        
-        <div class="row-fluid">
-            {% for post in site.categories[category_name] %}
-                <div class="col-md-6">                                                                           
-                                                                                                                 
-                    <div class="panel panel-primary panel-toolbar">                                              
-                        <div class="panel-heading">                                                              
-                            <h3 class="panel-title"  data-toggle="tooltip" data-placement="top" title=""
-                                data-original-title="{{post.subtitle}}">
-                                <span class="glyphicon glyphicon-{{ page.post-icon }}"></span> 
-                                {{ post.title }}
-                                <p class="muted time pull-right">{{ post.date | date: "%Y-%m-%d"  }}</p>         
-                            </h3>                                                                                
-                        </div>                                                                                   
-                        <div class="panel-body">                                                                     
-                            
-                            {% case page.nav %}
-                                {% when 'album' %}                                                           
-                                    <div class="row"> 
-                                        <div class="col-xs-12 col-sm-4">
-                                          <a href="{{post.url}}" class="thumbnail" style="margin-bottom: 5px;">
-                                            <img  class="lazy img-responsive" data-original="{{ post.file-pre }}thumb/{{ post.thumb }}"
-                                                  src="/assets/img/loading.gif" alt="{{ post.thumb }}">
-                                          </a>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-8" >
-                                          <h4>{% if post.subtitle %}{{post.subtitle}}{% else %}{{post.title}}{% endif %}</h4>
-                                          <p>{{post.content}}</p>
-                                        </div>
-                                    </div>                    
-                                {% else %}
-                                    <p>{{post.excerpt}}</p>
-                            {% endcase %}
-                                                                                       
-                            <div class="clearfix"></div>                                                         
-                            <hr/>                                                                                
-                            {% for tag in post.tags %}                                                           
-                              <span style="margin-right: 10px;" class="label label-success pull-left">           
-                                  <span class="glyphicon glyphicon-tag"></span> {{ tag }}                                                                                                                                           
-                              </span>
-                            {% endfor %}
-                            <a class="label label-primary pull-right" href="{{post.url}}" >
-                              进入              
-                              <span class="glyphicon glyphicon-hand-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                  
-                </div>
-                
-                {% assign i2 = forloop.index | modulo: 2 %}
-                {% if i2 == 0 %}
-                <div class="clearfix visible-md"></div>
-                {% endif %}
-                
+<div class="container row-fluid">
+    <div class="col-lg-3 col-md-4 sidebar" >
+        <ul class="nav nav-list sidenav">
+            {% for category_name in site[page.categories] %}
+                <li>
+                    <a class="list-group-item animate" offset="50" href="#cate_{{ forloop.index }}">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        {{ category_name }}
+                    </a>
+                </li>
             {% endfor %}
-        </div>
-      
-        <div class="clearfix"></div>
-    {% endfor %}
-    
+        </ul>
+    </div>
+    <div class="col-lg-9 col-md-8">
+        {% for category_name in site[page.categories] %}
+            <div class="page-header">
+              <h2 id="cate_{{ forloop.index }}">{{ category_name }}</h2>
+            </div>    
+            
+            <div class="row-fluid">
+                {% for post in site.categories[category_name] %}
+                    <div class="col-sm-12">                                                                           
+                                                                                                                     
+                        <div class="panel panel-primary panel-toolbar">                                              
+                            <div class="panel-heading">                                                              
+                                <h3 class="panel-title"  data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="{{post.subtitle}}">
+                                    <span class="glyphicon glyphicon-{{ page.post-icon }}"></span> 
+                                    {{ post.title }}
+                                    <p class="muted time pull-right">{{ post.date | date: "%Y-%m-%d"  }}</p>         
+                                </h3>                                                                                
+                            </div>                                                                                   
+                            <div class="panel-body">                                                                     
+                                
+                                {% case page.nav %}
+                                    {% when 'album' %}                                                           
+                                        <div class="row"> 
+                                            <div class="col-xs-12 col-sm-4">
+                                              <a href="{{post.url}}" class="thumbnail" style="margin-bottom: 5px;">
+                                                <img  class="lazy img-responsive" data-original="{{ post.file-pre }}thumb/{{ post.thumb }}"
+                                                      src="/assets/img/loading.gif" alt="{{ post.thumb }}">
+                                              </a>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-8" >
+                                              <h4>{% if post.subtitle %}{{post.subtitle}}{% else %}{{post.title}}{% endif %}</h4>
+                                              <p>{{post.content}}</p>
+                                            </div>
+                                        </div>                    
+                                    {% else %}
+                                        <p>{{post.excerpt}}</p>
+                                {% endcase %}
+                                                                                           
+                                <div class="clearfix"></div>                                                         
+                                <hr/>                                                                                
+                                {% for tag in post.tags %}                                                           
+                                  <span style="margin-right: 10px;" class="label label-success pull-left">           
+                                      <span class="glyphicon glyphicon-tag"></span> {{ tag }}                                                                                                                                           
+                                  </span>
+                                {% endfor %}
+                                <a class="label label-primary pull-right" href="{{post.url}}" >
+                                  进入              
+                                  <span class="glyphicon glyphicon-hand-right"></span>
+                                </a>
+                            </div>
+                        </div>
+                      
+                    </div>
+                    
+                    {% assign i2 = forloop.index | modulo: 2 %}
+                    {% if i2 == 0 %}
+                    <div class="clearfix visible-lg"></div>
+                    {% endif %}
+                    
+                {% endfor %}
+            </div>
+          
+            <div class="clearfix"></div>
+        {% endfor %}
+    </div>
 </div>
+
+
+<script>
+    $(function(){
+        //enable scroll spy, this offset is only for spying
+        $('body').attr('data-spy',"scroll").attr('data-target',".sidebar").attr('data-offset','60');
+        
+        //enable sidebar affix, this offset is for sidebar position recognition
+        $('.sidenav').affix({
+            offset: {top: 250, bottom: 70}
+        });
+    });
+</script>
