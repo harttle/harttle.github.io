@@ -5,12 +5,12 @@
   margin-top: 0;
   color: #cdbfe3;
   background-image: url(/assets/img/bg.jpg);
-}
-.hl-header {
   padding: 30px 15px 40px; /* side padding builds on .container 15px, so 30px */
   font-size: 16px;
   text-align: center;
   text-shadow: 0 1px 0 rgba(0,0,0,.15);
+  border-bottom: 3px solid #fff;
+  box-shadow: inset 0 -1px 0 white, 0 1px 5px rgba(0,0,0,.3);
 }
 .hl-header h1 {
   color: #fff;

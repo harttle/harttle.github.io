@@ -4,6 +4,33 @@ title: Harttle Land
 nav: home
 ---
 
+<style>
+  /* panel style */
+  .panel-body{
+      height: 165px;
+  }
+  .post-item *{
+    font-size: 16px;
+  }    
+  .post-item .title{
+    word-break:keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
+  }
+  
+  /* carousel style */
+  #carousel{
+    box-shadow: 15px 15px 50px #333333;
+  }
+  @media(max-width: 768px) {
+    .carousel-caption{
+      display: none;
+    }
+  }
+</style>
+
+
 <div class="page-header hl-header">
     <div class="container">
       <h1>Harttle Land <small>{{ site.name }}</small></h1>
@@ -11,32 +38,6 @@ nav: home
 </div>
   
 <div class="container">
-  <style>
-    /* panel style */
-    .panel-body{
-        height: 165px;
-    }
-    .post-item *{
-      font-size: 16px;
-    }    
-    .post-item .title{
-      word-break:keep-all;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow:ellipsis;
-    }
-    
-    /* carousel style */
-    #carousel{
-      box-shadow: 15px 15px 50px #333333;
-    }
-    @media(max-width: 768px) {
-      .carousel-caption{
-        display: none;
-      }
-    }    
-  </style>
-  
   <div id="carousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carousel" data-slide-to="0" class=""></li>
