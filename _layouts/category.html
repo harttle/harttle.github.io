@@ -65,7 +65,7 @@ layout: default
   opacity: 1;
 }
 .sidenav.affix {
-  top: 50px;
+  top: 70px;
 }
 .sidenav.affix-bottom {
   position: absolute;
@@ -96,8 +96,8 @@ layout: default
     </div>
     <div class="col-lg-9 col-md-8">
         {% for category_name in site[page.categories] %}
-            <div class="page-header">
-              <h2 id="cate_{{ forloop.index }}">{{ category_name }}</h2>
+            <div id="cate_{{ forloop.index }}" class="page-header">
+              <h2>{{ category_name }}</h2>
             </div>    
             
             <div class="row-fluid">
@@ -166,11 +166,11 @@ layout: default
 <script>
     $(function(){
         //enable scroll spy, this offset is only for spying
-        $('body').attr('data-spy',"scroll").attr('data-target',".sidebar").attr('data-offset','60');
+        $('body').attr('data-spy',"scroll").attr('data-target',".sidebar").attr('data-offset','110');
         
         //enable sidebar affix, this offset is for sidebar position recognition
         $('.sidenav').affix({
-            offset: {top: 250, bottom: 70}
+            offset: {top: 240, bottom: 80}
         });
     });
 </script>
