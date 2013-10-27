@@ -18,16 +18,16 @@ pacman -S xf86-input-synaptics
 
 ## 管理工具
 
-    ```
-    # 命令行管理工具：Synclient 
-    pacman -S xf86-input-synaptics    
+```bash
+# 命令行管理工具：Synclient 
+pacman -S xf86-input-synaptics    
     
-    # 图形管理工具：GPointing Device Settings
-    yaourt -S gpointing-device-settings
+# 图形管理工具：GPointing Device Settings
+yaourt -S gpointing-device-settings
     
-    # KDE 触摸板控制模块
-    yaourt -S kcm_touchpad
-    ```
+# KDE 触摸板控制模块
+yaourt -S kcm_touchpad
+```
     
 # 环境配置
 
