@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Linux 下的触摸板设置 
+title: Linux下的触摸板设置 
 subtitle: 以 Arch Linux 为例
 categories: linux
 tags: 触摸板 udev arch synaptics 
@@ -68,6 +68,7 @@ EndSection
 
 通过 `man synaptics` 了解更多信息。
 
+**注意**：同时安装 `kcm_synaptics` 会覆盖掉该配置信息。
 
 ## 输入时禁止触摸板敲击
 
@@ -98,6 +99,15 @@ ACTION=="remove", SUBSYSTEM=="input", KERNEL=="mouse[0-9]", ENV{DISPLAY}=":0.0",
 
 **注意**：该文件中每个操作必须单独一行，可以使用 `\` 来折行；`SUBSYSTEM` 与 `KERNEL` 指定了设备 `/dev/input/mouse[0-9]`（archwiki的中文页面中此处有误，我会找时间去修改）。了解更多 udev rules 语法：https://wiki.archlinux.org/index.php/Udev
 
+### 开机时鼠标检测
+
+PS/2 鼠标在开机时不会出发 udev 规则。我们做一个桌面环境的启动脚本，在 .xinitrc，profile 中调用，或者放在  KDE 的 Autostart 中：
+
+```bash
+#!/bin/bash
+ids=`ls /dev/input/by-id | grep -E '.*-mouse'`
+[ "$ids" ] && synclient TouchpadOff=1
+```
 
 ## 触摸板识别错误
 
