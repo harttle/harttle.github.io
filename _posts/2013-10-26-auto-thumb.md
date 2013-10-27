@@ -1,6 +1,6 @@
 ---
 layout: article
-title: 批量更新缩略图 
+title: 批量更新站点缩略图 
 subtitle: 网站图片管理
 categories: linux
 tags: web ImageMagick Makefile
