@@ -6,6 +6,12 @@ tags: 工作记录
 excerpt: 本文记录了开发进度、时间节点，以及任务列表。
 ---
 
+- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
+- [x] list syntax required (any unordered or ordered list supported)
+- [x] this is a complete item
+- [ ] this is an incomplete item
+
+
 ### 2013-10-12
 
 基本完成了个人主页在 github 的部署。
