@@ -6,83 +6,41 @@ tags: 工作记录
 excerpt: 本文记录了开发进度、时间节点，以及任务列表。
 ---
 
-- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
-- [x] list syntax required (any unordered or ordered list supported)
-- [x] this is a complete item
-- [ ] this is an incomplete item
-
+2013年10月采用jekyll静态站点工具开始了github个人主页的开发。这里记录了各时间结点完成的工作，以及未来的工作列表。
 
 ### 2013-10-12
 
 基本完成了个人主页在 github 的部署。
 
-#### 已完成模块
-
-* 首页
-* 博文
-* 关于
-* 链接
-
-#### 已实现功能
-
+* 主要页面
+    * 首页
+    * 博文
+    * 关于
+    * 链接
 * 识别文章目录，生成博文分类
 
-#### 未来的工作
-
-* 实现照片展示和 Picture-aware
-* 社会化评论
-* 分享链接
-* 文章添加Github样式
-* 添加自动目录生成
-
----
 
 ### 2013-10-16
 
-#### 已完成
-
 * 社会化评论
-
-
-#### 已忽略
-
-* 文章添加Github样式：与bootstrap整体风格相悖
-* 分享链接：与社会化评论不协调
-* 添加自动目录生成
-
-#### 未来的工作
-
-* 实现照片展示和 Picture-aware
-
----
 
 ### 2013-10-17
 
-#### 已完成
-
 * 照片展示
-
----
+    * 延迟载入
+    * gallery浏览
 
 ### 2013-10-25
-
-#### 已完成
 
 * 博客、相册、资源的category模板
   * 页面布局：header、side-nav、content
   * affix 滚动导航
-* 相册文件的自动更新
-
-#### 未来的工作
-
-* 首页完善
-
+* 相册图片缩略图的自动更新（make+imageMagick）
 
 ### 2013-10-28
 
-- [ ] a task list item
-- [ ] list syntax required
-- [ ] normal **formatting**, @mentions, #1234 refs
-- [ ] incomplete
-- [x] completed
+* * 404页面
 
+### 未来的工作
+
+* 首页完善：简历时间线

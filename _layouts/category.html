@@ -102,8 +102,7 @@ layout: default
             
             <div class="row-fluid">
                 {% for post in site.categories[category_name] %}
-                    <div class="col-sm-12">                                                                           
-                                                                                                                     
+                    <div class="col-sm-12">
                         <div class="panel panel-primary panel-toolbar">                                              
                             <div class="panel-heading">                                                              
                                 <h3 class="panel-title"  data-toggle="tooltip" data-placement="top" title=""
@@ -116,7 +115,7 @@ layout: default
                             <div class="panel-body">                                                                     
                                 
                                 {% case page.nav %}
-                                    {% when 'album' %}                                                           
+                                    {% when 'album' %}
                                         <div class="row"> 
                                             <div class="col-xs-12 col-sm-4">
                                               <a href="{{post.url}}" class="thumbnail" style="margin-bottom: 5px;">
