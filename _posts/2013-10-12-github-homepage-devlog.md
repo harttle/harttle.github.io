@@ -70,3 +70,13 @@ excerpt: 本文记录了开发进度、时间节点，以及任务列表。
 #### 未来的工作
 
 * 首页完善
+
+
+### 2013-10-28
+
+- [ ] a task list item
+- [ ] list syntax required
+- [ ] normal **formatting**, @mentions, #1234 refs
+- [ ] incomplete
+- [x] completed
+
