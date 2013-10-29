@@ -1,9 +1,12 @@
 name: Harttle 的个人主页
 markdown: redcarpet
+redcarpet:
+  extensions: [no_intra_emphasis,tables,autolink]
 pygments: true
 blog_categories:
     - linux
     - web
+    - "笔记"
     - "日志"
 album_categories:
     - "个人"

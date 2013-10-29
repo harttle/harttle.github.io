@@ -2,8 +2,8 @@
 layout: default
 ---
 
-	<style>
-      /* Sidenav for Docs
+<style>
+/* Sidenav for Docs
 -------------------------------------------------- */
 
 .sidenav {
@@ -47,7 +47,6 @@ layout: default
      -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
           box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
 }
-/* Chevrons */
 .sidenav .glyphicon-chevron-right {
   float: right;
   margin-top: 2px;
@@ -64,10 +63,11 @@ layout: default
 .sidenav .active a:hover .glyphicon-chevron-right {
   opacity: 1;
 }
-.sidenav.affix {
+
+.sidebar.affix {
   top: 70px;
 }
-.sidenav.affix-bottom {
+.sidebar.affix-bottom {
   position: absolute;
   top: auto;
   bottom: 60px;
@@ -81,18 +81,21 @@ layout: default
     </div>
 </div>
 
-<div class="container row-fluid">
-    <div class="col-lg-3 col-md-4 sidebar" >
-        <ul class="nav nav-list sidenav">
-            {% for category_name in site[page.categories] %}
-                <li>
-                    <a class="list-group-item animate" offset="50" href="#cate_{{ forloop.index }}">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                        {{ category_name }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
+<div class="container">
+    <div class="row">
+    <div class="col-lg-3 col-md-4" >
+        <div class="sidebar">
+            <ul class="nav sidenav">
+                {% for category_name in site[page.categories] %}
+                    <li>
+                        <a class="animate" offset="50" href="#cate_{{ forloop.index }}">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            {{ category_name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
     <div class="col-lg-9 col-md-8">
         {% for category_name in site[page.categories] %}
@@ -160,7 +163,7 @@ layout: default
         {% endfor %}
     </div>
 </div>
-
+</div>
 
 <script>
     $(function(){
@@ -168,8 +171,22 @@ layout: default
         $('body').attr('data-spy',"scroll").attr('data-target',".sidebar").attr('data-offset','110');
         
         //enable sidebar affix, this offset is for sidebar position recognition
-        $('.sidenav').affix({
-            offset: {top: 240, bottom: 80}
-        });
+        setTimeout(function () {
+            var $sideBar = $('.sidebar')
+            $sideBar.affix({
+                offset: {
+                    top: function () {                    
+                        var offsetTop      = $sideBar.offset().top;
+                        var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10);
+                        sideBarMargin     += parseInt($('.hl-header').css('margin-bottom'), 10);
+                        
+                        return (this.top = offsetTop - navHeight - sideBarMargin);
+                    },
+                    bottom: function(){
+                        return (this.bottom = $('#footer').outerHeight(true))
+                    }
+                }
+            });
+        },100);
     });
 </script>
