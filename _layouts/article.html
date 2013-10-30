@@ -1,7 +1,7 @@
 ---
 layout: post
 nav: blog
-returl: "/blog.html"
+returl: "/blog"
 ---
 
 <link rel="stylesheet" href="/assets/css/markdown.css">
@@ -41,9 +41,9 @@ returl: "/blog.html"
   .sidebar .nav > .active:hover > a,
   .sidebar .nav > .active:focus > a {
     font-weight: bold;
-    color: #464646;
+    color: #555;
     background-color: transparent;
-    border-right: 1px solid #464646;
+    border-right: 1px solid #000;
   }
   
   /* Nav: second level (shown on .active) */
@@ -122,10 +122,8 @@ returl: "/blog.html"
     var toc = getTOC($('.content'));
     if (toc != null) {
       $('.sidebar').append(toc);
-      $('body').attr('data-spy',"scroll").attr('data-target',".sidenav").attr('data-offset','75');
       
-      
-      //enable sidebar affix, this offset is for sidebar position recognition
+      //sidebar affix, this offset is for sidebar position recognition
       setTimeout(function () {
           var $sideBar = $('.sidebar')
           $sideBar.affix({
@@ -144,6 +142,13 @@ returl: "/blog.html"
           });
       },100);
       
+      //sidebr scroll spy
+      setTimeout(function(){
+        $('body').scrollspy({
+          target: '.sidebar',
+          offset: 100});       //offset from window top when actived
+      },500);
+            
     }
     else{
       $('.content').removeClass('col-md-9')
@@ -176,6 +181,7 @@ returl: "/blog.html"
     return $toc;
   }
 </script>
+
 
 <!-- latex render begin -->
 <script type="text/x-mathjax-config">
