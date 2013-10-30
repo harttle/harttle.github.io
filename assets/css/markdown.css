@@ -57,7 +57,7 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
 .md blockquote {
          margin: 14px 0;
          border-left: 4px solid #DDD;
-         padding-left: 11px;
+         padding: 0 0 0 11px;
          color: #555;
 }
 .md pre,.md  code {
