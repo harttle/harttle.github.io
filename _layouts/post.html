@@ -29,12 +29,12 @@ layout: default
       <span class="label label-info pull-left" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> {{ cat }}</span>
       {% endfor %}
       {% for tag in page.tags %}
-      <span class="label label-success pull-left visible-sm" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> {{ tag }}</span>
+      <span class="label label-success pull-left hidden-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> {{ tag }}</span>
       {% endfor %}
       <a class="pull-right label label-warning" href="{{ page.returl }}" style="margin-left: 10px;">
           返回列表 <span class="glyphicon glyphicon-hand-left"></span>
       </a>
-      <span class="pull-right label label-default visible-sm">
+      <span class="pull-right label label-default hidden-xs">
           <span class="glyphicon glyphicon-time"></span> {{ page.date | date: "%Y年%m月%d日" }}
       </span>
     </div>
