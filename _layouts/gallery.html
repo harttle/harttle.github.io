@@ -19,6 +19,15 @@ returl: "/album.html"
       display: none;
     }
   }
+  
+  /* thumb items */
+  .items .item{
+    margin: 5px auto;
+    text-align: center;
+  }
+  .items .item>a{
+    display: inline-block;
+  }
 </style>
 
 <link rel="stylesheet" href="/assets/gallery-2.11.0/css/blueimp-gallery.min.css">
@@ -26,9 +35,9 @@ returl: "/album.html"
 <p class="lead">{{ content }}</p>
 <hr/>
 
-<div class="row-fluid" id="items">
+<div class="row items">
   {% for img in page.imgs %}
-  <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12" style="margin: 5px auto;">
+  <div class="item col-lg-2 col-md-2 col-sm-3 col-xs-12">
     <a href="{{ page.file-pre }}file/{{ img }}" target="_blank" class="thumbnail">
       <img class="lazy" data-original="{{ page.file-pre }}thumb/{{ img }}" src="/assets/img/loading.gif" alt="{{ img }}">
     </a>
@@ -65,7 +74,7 @@ returl: "/album.html"
 
 <script>
   //galary display
-  document.getElementById('items').onclick = function (event) {
+  $('.items')[0].onclick = function (event) {
     event = event || window.event;
     var target = event.target || event.srcElement,
 	link = target.src ? target.parentNode : target,
@@ -73,7 +82,4 @@ returl: "/album.html"
 	links = this.getElementsByTagName('a');
     blueimp.Gallery(links, options);
   };    
-  
-  $(function(){
-  });
 </script>
