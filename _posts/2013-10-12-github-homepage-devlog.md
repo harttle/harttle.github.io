@@ -47,6 +47,13 @@ excerpt: 本文记录了开发进度、时间节点，以及任务列表。
 * 添加 CDN
 * 添加文章列表动态导航
 
+### 2013-10-30
+
+* 解决 affix-bottom 失效
+
+    > 问题出自 sticky footer 中的 `body{height:100%}`，解决：
+    > Replace `document.body.offsetHeight` with `document.body.scrollHeight` in bootstrap.min.js
+
 ### 未来的工作
 
 * 首页完善：简历时间线

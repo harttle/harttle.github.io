@@ -5,8 +5,7 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
         font-size: 14px;
         line-height: 1.6;
         font-family: helvetica,arial,freesans,clean,sans-serif;
-        color: black;
-        overflow-wrap: break-word;      //防止一行太长影响响应式布局
+        overflow-wrap: break-word;      /*防止一行太长影响响应式布局*/
 }
 
 .md h1 {
