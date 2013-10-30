@@ -78,10 +78,12 @@ layout: default
     }
     .sidebar.affix {
       position: fixed; /* Undo the static from mobile first approach */
-      top: 70px;
+      top: 90px;
     }
     .sidebar.affix-bottom {
       position: absolute; /* Undo the static from mobile first approach */
+      top:auto;
+      bottom: 90px;
     }
     .sidebar.affix-bottom .sidenav,
     .sidebar.affix .sidenav {
@@ -113,7 +115,7 @@ layout: default
                 <ul class="nav sidenav">
                     {% for category_name in site[page.categories] %}
                         <li>
-                            <a class="animate" offset="50" href="#cate_{{ forloop.index }}">
+                            <a class="animate" href="#cate_{{ forloop.index }}">
                                 <span class="glyphicon glyphicon-chevron-right"></span>
                                 {{ category_name }}
                             </a>
@@ -193,7 +195,11 @@ layout: default
 <script>
     $(function(){
         //enable scroll spy, this offset is only for spying
-        $('body').attr('data-spy',"scroll").attr('data-target',".sidebar").attr('data-offset','110');
+        $('body').scrollspy({
+          target: '.sidebar',
+          offset: navHeight + 10  //make sure to spy the element when scrolled to
+        }); 
+        
         
         //enable sidebar affix, this offset is for sidebar position recognition
         setTimeout(function () {
@@ -203,12 +209,12 @@ layout: default
                     top: function () {                    
                         var offsetTop      = $sideBar.offset().top;
                         var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10);
-                        sideBarMargin     += parseInt($('.hl-header').css('margin-bottom'), 10);
-                        
+                        sideBarMargin     += parseInt($('.hl-header').css('margin-bottom'), 10);                        
                         return (this.top = offsetTop - navHeight - sideBarMargin);
-                    },
+                    },                    
                     bottom: function(){
-                        return (this.bottom = $('#footer').outerHeight(true))
+                        var sideBarMargin  = parseInt($sideBar.children(0).css('margin-bottom'), 10);
+                        return (this.bottom = footHeight + sideBarMargin);
                     }
                 }
             });

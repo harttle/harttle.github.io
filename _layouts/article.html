@@ -7,8 +7,6 @@ returl: "/blog.html"
 <link rel="stylesheet" href="/assets/css/markdown.css">
 
 <style>
-  
-
   /* By default it's not affixed in mobile views, so undo that */
   .sidebar.affix {
     position: static;
@@ -17,7 +15,7 @@ returl: "/blog.html"
   /* First level of nav */
   .sidenav {
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;  /* hr has a margin of 20 both top and bottom */
     padding-top:    10px;
     padding-bottom: 10px;
     text-shadow: 0 1px 0 #fff;
@@ -127,28 +125,26 @@ returl: "/blog.html"
       setTimeout(function () {
           var $sideBar = $('.sidebar')
           $sideBar.affix({
-              offset: {
+              offset: {                
                   top: function () {                    
                       var offsetTop      = $sideBar.offset().top;
                       var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10);
                       sideBarMargin     += parseInt($('#page-content').css('margin-top'), 10);
-                      
                       return (this.top = offsetTop - navHeight - sideBarMargin);
                   },
                   bottom: function(){
-                      return (this.bottom = $('#footer').outerHeight(true));
+                    var sideBarMargin  = parseInt($sideBar.children(0).css('margin-bottom'), 10);
+                    return (this.bottom = footHeight + sideBarMargin);
                   }
               }
           });
       },100);
       
-      //sidebr scroll spy
-      setTimeout(function(){
-        $('body').scrollspy({
-          target: '.sidebar',
-          offset: 100});       //offset from window top when actived
-      },500);
-            
+      //sidebar scroll spy
+      $('body').scrollspy({
+        target: '.sidebar',
+        offset: navHeight + 10  //make sure to spy the element when scrolled to
+      }); 
     }
     else{
       $('.content').removeClass('col-md-9')
@@ -173,7 +169,7 @@ returl: "/blog.html"
       var offset = level - base_level;
       
       var li = new $('<li/>')
-          .append('<a href="#' + i + '" offset="15" class="animate">' + $this.text() + '</a>')
+          .append('<a href="#' + i + '" class="animate">' + $this.text() + '</a>')
           .append($('<ul class="nav level-'+(offset+1)+'"/>'));
       
       $('<div>').append($toc).find('ul.level-'+offset+':last').append(li);

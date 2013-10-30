@@ -87,11 +87,11 @@
     </div>
     
     <!-- Bootstrap -->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="/assets/bootstrap-3.0.0/js/bootstrap.min.js"></script>
     
     <script>
       var navHeight = 50;
-      
+      var footHeight = $('#footer').outerHeight(true);
       $(function(){
         //更新菜单
         $('.nav #{{page.nav}}').attr('class','active');
@@ -104,11 +104,11 @@
         
         //回到顶部按钮
         $.scrollUp({
-		        scrollName: 'scrollUp',topDistance: '300',topSpeed: 300,animation: 'fade',animationInSpeed: 500,
-              	animationOutSpeed: 500,scrollText: '',activeOverlay: false,
-		    });	
+	  scrollName: 'scrollUp',topDistance: '300',topSpeed: 300,animation: 'fade',animationInSpeed: 500,
+	  animationOutSpeed: 500,scrollText: '',activeOverlay: false,
+	});	
         
-        //文章内链接
+        //页面内链接滑动效果
         $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
         $('a.animate').click(function(){
           var offset = navHeight;
