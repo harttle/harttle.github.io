@@ -4,6 +4,7 @@ category: 作业
 tags: MIPS 汇编 插入排序
 title: MIPS 实现插入排序
 
+icon: pdf
 file-path: /assets/file/
 files:
     - 《MIPS 汇编语言实现插入排序》: mips.pdf

@@ -5,7 +5,7 @@ tags: 脉冲星 Parkes巡天 数据处理
 title:  Parkes 多波束脉冲星寻天数据再处理 I
 excerpt: 这是我的本科毕业论文。处理了 Parkes 多波束脉冲星寻天数据（3TB）的一小部分，探测到 6 颗脉冲星。
 
-
+icon: pdf
 file-path: /assets/file/
 files: 
     - 《Parkes 多波束脉冲星寻天数据在处理 I》: pulsar-data-processing.pdf

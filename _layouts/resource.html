@@ -3,10 +3,18 @@ layout: post
 nav: resource
 ---
 
+<!-- style -->
+<style>
+  .file-list{
+    margin-bottom: 0px;
+  }
+</style>
+<!-- style -->
+
 <!-- content -->
 <p class="lead">{{ content }}</p>
 
-<div class="list-group">
+<div class="list-group pull-right file-list">
 
   {% for file in page.files %}
     {% for link in file %}
@@ -18,4 +26,5 @@ nav: resource
   {% endfor %}
 
 </div>
+<div class="clearfix"></div>
 <!-- content -->
