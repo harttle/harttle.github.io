@@ -54,8 +54,11 @@ excerpt: 本文记录了开发进度、时间节点，以及任务列表。
     > 问题出自 sticky footer 中的 `body{height:100%}`，解决：
     > Replace `document.body.offsetHeight` with `document.body.scrollHeight` in bootstrap.min.js
 
+### 2013-10-31
+
+* 载入优化：script 后置
+* 通用化 category：采用部分视图
+
 ### 未来的工作
 
 * 首页完善：简历时间线
-* 载入优化：script 后置
-* 通用化 category：采用部分视图
