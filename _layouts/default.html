@@ -3,13 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>{{ page.title }} - {{ site.name }}</title>
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.name }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- style -->
     <!-- Bootstrap -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-
+    
+    <!-- font-awesome -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+      
     <!-- Custom styles  -->
     <link href="/assets/css/sticky-footer-navbar.css" rel="stylesheet">
     <link href="/assets/css/main.css" rel="stylesheet">
@@ -48,14 +51,25 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">链接 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="//github.com/harttle/harttle.github.io" target="_blank">本站源码</a></li>
+                  <li><a href="//harttle.duapp.com" target="_blank">God Notes</a></li>
                   <li class="divider"></li>
                   <li class="dropdown-header">友情链接</li>
-                  <li><a href="//harttle.duapp.com" target="_blank">God Notes</a></li>
                   <li><a href="//www.pku.edu.cn/" target="_blank">北京大学</a></li>
                 </ul>
               </li>
             </ul>
+	    <ul class="nav navbar-nav pull-right">
+	      <li>
+		<a href="//github.com/harttle/harttle.github.io" target="_blank">
+		  <i class="fa fa-github-alt fa-lg"></i> 源码
+		</a>
+	      </li>
+	      <li>
+		<a href="/feed.xml" target="_blank">
+		  <i class="fa fa-rss-square fa-lg"></i> 订阅
+		</a>
+	      </li>
+	    </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
