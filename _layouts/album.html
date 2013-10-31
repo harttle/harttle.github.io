@@ -1,9 +1,10 @@
 ---
 layout: post
 nav: album
-returl: "/album.html"
 ---
 
+<!-- style -->
+<link rel="stylesheet" href="/assets/gallery-2.11.0/css/blueimp-gallery.min.css">
 <style>
   /* gallery 样式 */
   #blueimp-gallery .prev,#blueimp-gallery .next{
@@ -29,9 +30,9 @@ returl: "/album.html"
     display: inline-block;
   }
 </style>
+<!-- style -->
 
-<link rel="stylesheet" href="/assets/gallery-2.11.0/css/blueimp-gallery.min.css">
-
+<!-- content -->
 <p class="lead">{{ content }}</p>
 <hr/>
 
@@ -68,10 +69,11 @@ returl: "/album.html"
     <a class="close">×</a>
     <a class="play-pause"></a>
     <ol class="indicator"></ol>
-</div>  
+</div>
+<!-- content -->
 
+<!-- script -->
 <script src="/assets/gallery-2.11.0/js/blueimp-gallery.min.js"></script>  
-
 <script>
   //galary display
   $('.items')[0].onclick = function (event) {
@@ -83,3 +85,4 @@ returl: "/album.html"
     blueimp.Gallery(links, options);
   };    
 </script>
+<!-- script -->

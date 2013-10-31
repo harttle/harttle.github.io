@@ -2,6 +2,7 @@
 layout: default
 ---
 
+<!-- style -->
 <style>
 .headerbar{
   background: rgba(255, 255, 255, 0.75);
@@ -17,7 +18,11 @@ layout: default
   margin-bottom: 15px;
 }
 </style>
+{% assign block = content | split: '<!-- style -->' %}
+{{ block[1] }}
+<!-- style -->
 
+<!-- content -->
 <div class="headerbar">
   <div class="page-header container">
     <h1 class="nowrap">
@@ -30,7 +35,7 @@ layout: default
       {% for tag in page.tags %}
       <span class="label label-success pull-left hidden-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> {{ tag }}</span>
       {% endfor %}
-      <a class="pull-right label label-warning" href="{{ page.returl }}" style="margin-left: 10px;">
+      <a class="pull-right label label-warning" href="/category/{{page.nav}}.html" style="margin-left: 10px;">
           返回列表 <span class="glyphicon glyphicon-hand-left"></span>
       </a>
       <span class="pull-right label label-default hidden-xs">
@@ -42,13 +47,21 @@ layout: default
 
 <div class="container">
  
-  <div id="page-content">{{ content }}</div>
+  <div id="page-content">
+    {% assign block = content | split: '<!-- content -->' %}
+    {{ block[1] }}
+  </div>
 
   <hr/>
 
-  <!-- UY BEGIN -->
+  <!-- Uyan-->
   <div id="uyan_frame"></div>
-  <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1851884"></script>
-  <!-- UY END -->
   
 </div>
+<!-- content -->
+
+<!-- script -->
+{% assign block = content | split: '<!-- script -->' %}
+{{ block[1] }}
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1851884"></script>
+<!-- script -->

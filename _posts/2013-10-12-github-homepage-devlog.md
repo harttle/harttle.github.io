@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: blog
 title:  "GitHub 个人主页开发记录"
 categories: 日志
 tags: 工作记录
@@ -57,3 +57,5 @@ excerpt: 本文记录了开发进度、时间节点，以及任务列表。
 ### 未来的工作
 
 * 首页完善：简历时间线
+* 载入优化：script 后置
+* 通用化 category：采用部分视图

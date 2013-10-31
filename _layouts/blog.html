@@ -1,11 +1,10 @@
 ---
 layout: post
 nav: blog
-returl: "/blog.html"
 ---
 
+<!-- style -->
 <link rel="stylesheet" href="/assets/css/markdown.css">
-
 <style>
   /* By default it's not affixed in mobile views, so undo that */
   .sidebar.affix {
@@ -105,7 +104,9 @@ returl: "/blog.html"
     color: black!important;  
   }
 </style>
+<!-- style -->
 
+<!-- content -->
 <div class="row">
     <div class="col-md-3" >
       <div class="sidebar"></div>
@@ -115,6 +116,10 @@ returl: "/blog.html"
     </div>
 </div>
 
+<!-- content -->
+
+
+<!-- script -->
 <script>
   $(function(){    
     var toc = getTOC($('.content'));
@@ -178,14 +183,12 @@ returl: "/blog.html"
   }
 </script>
 
-
 <!-- latex render begin -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
   });
 </script>
-<script type="text/javascript"
-  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG">
-</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
 <!-- latex render end -->
+<!-- script -->

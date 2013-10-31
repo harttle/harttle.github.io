@@ -1,5 +1,5 @@
 ---
-layout: file
+layout: resource
 category: 作业
 tags: MIPS 汇编 插入排序
 title: MIPS 实现插入排序
