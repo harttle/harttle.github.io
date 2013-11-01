@@ -60,6 +60,11 @@ excerpt: 本文记录了开发进度、时间节点，以及任务列表。
 * 通用化 category：采用部分视图
 * 资源页面图标
 
+### 2013-11-1
+
+* 社会化：添加 linkedIn facebook google+ follow
+* SEO：添加 meta、添加sitemap.xml和robots.txt、导入搜索引擎、创建RSS 
+
 ### 未来的工作
 
 * 首页完善：简历时间线
