@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+    {% if page.description %}
+    <meta name="description" content="{{ page.description }}">
+    {% else if page.excerpt %}
+    <meta name="description" content="{{ page.excerpt }}">
+    {% endif %}
+    <meta name="keywords" content="Linux Web 计算机 开发 编程">
+    <meta name="author" content="harttle">      
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.name }}</title>
@@ -51,6 +58,10 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">链接 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
+		  <li>
+		    <a href="//github.com/harttle/harttle.github.io" target="_blank">
+		      <i class="fa fa-github"></i> View On GitHub</a>
+		  </li>
                   <li><a href="//harttle.duapp.com" target="_blank">God Notes</a></li>
                   <li class="divider"></li>
                   <li class="dropdown-header">友情链接</li>
@@ -58,15 +69,25 @@
                 </ul>
               </li>
             </ul>
-	    <ul class="nav navbar-nav pull-right">
+	    <ul class="nav navbar-nav pull-right">	 
 	      <li>
-		<a href="//github.com/harttle/harttle.github.io" target="_blank">
-		  <i class="fa fa-github-alt fa-lg"></i> 源码
+		<a href="https://www.facebook.com/harttle" target="_blank">
+		  <i class="fa fa-facebook-square fa-lg"></i>
+		</a>
+	      </li>
+	      <li>
+		<a href="http://www.linkedin.com/profile/view?id=294339963" target="_blank">
+		  <i class="fa fa-linkedin-square fa-lg"></i>
+		</a>
+	      </li>     
+	      <li>
+		<a href="https://plus.google.com/113657098095399233141?rel=author" target="_blank">
+		  <i class="fa fa-google-plus-square fa-lg"></i>
 		</a>
 	      </li>
 	      <li>
 		<a href="/feed.xml" target="_blank">
-		  <i class="fa fa-rss-square fa-lg"></i> 订阅
+		  <i class="fa fa-rss-square fa-lg"></i> 
 		</a>
 	      </li>
 	    </ul>
@@ -119,9 +140,10 @@
       var navHeight = 50;
       var footHeight = $('#footer').outerHeight(true);
       $(function(){
+	{% if page.nav %}
         //更新菜单
         $('.nav #{{page.nav}}').attr('class','active');
-        
+        {% endif %}
         //激活工具提示
         $('[data-toggle="tooltip"]').tooltip();
         
