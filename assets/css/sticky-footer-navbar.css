@@ -28,16 +28,7 @@ body {
 /* Page adjustment and footer style
 -------------------------------------------------- */
 
-.container .credit {
-  margin: 20px 0;
-  height: 20px;
-}
-
 #footer > .container {
   padding-left: 15px;
   padding-right: 15px;
-}
-
-code {
-  font-size: 80%;
 }

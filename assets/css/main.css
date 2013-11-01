@@ -100,3 +100,19 @@ body{
   overflow: hidden;
   text-overflow: ellipsis;  
 }
+
+.credit {
+  margin: 20px 0;
+  height: 20px;
+}
+.credit p{
+  display: inline;
+}
+.credit .follow a{
+  color: #999;
+  margin-left: 5px;
+}
+.credit .follow a:hover{
+  color: black;
+  text-decoration: none;
+}
