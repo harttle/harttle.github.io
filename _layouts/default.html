@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    {% if page.description %}
-    <meta name="description" content="{{ page.description }}">
-    {% else if page.excerpt %}
+    {% if page.excerpt %}
     <meta name="description" content="{{ page.excerpt }}">
+    {% else %}
+    <meta name="description" content="{{ site.description }}">
     {% endif %}
     <meta name="keywords" content="Linux Web 计算机 开发 编程">
     <meta name="author" content="harttle">      

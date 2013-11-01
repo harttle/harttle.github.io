@@ -25,7 +25,7 @@ layout: default
 <!-- content -->
 <div class="headerbar">
   <div class="page-header container">
-    <h1 class="nowrap">
+    <h1>
       {{ page.title }} <small>{{page.subtitle}}</small>
     </h1>
     <div>
@@ -52,16 +52,10 @@ layout: default
     {{ block[1] }}
   </div>
 
-  <hr/>
-
-  <!-- Uyan-->
-  <div id="uyan_frame"></div>
-  
 </div>
 <!-- content -->
 
 <!-- script -->
 {% assign block = content | split: '<!-- script -->' %}
 {{ block[1] }}
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1851884"></script>
 <!-- script -->

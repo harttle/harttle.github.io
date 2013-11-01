@@ -14,7 +14,7 @@ nav: blog
   /* First level of nav */
   .sidenav {
     margin-top: 20px;
-    margin-bottom: 40px;  /* hr has a margin of 20 both top and bottom */
+    margin-bottom: 20px; 
     padding-top:    10px;
     padding-bottom: 10px;
     text-shadow: 0 1px 0 #fff;
@@ -113,6 +113,8 @@ nav: blog
     </div>
     <div class="col-md-9 content md">
       {{ content }}
+    
+      {% include social-sharing.html %}
     </div>
 </div>
 
@@ -190,5 +192,6 @@ nav: blog
   });
 </script>
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
+<!-- html config: TeX-MML-AM_HTMLorMML -->
 <!-- latex render end -->
 <!-- script -->

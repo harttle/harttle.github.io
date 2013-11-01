@@ -53,7 +53,9 @@ body{
 
 
 /* JiaThis & Uyan style fix */
-.jiathis_style *, .jiathis_style, #uyan_frame, #uyan_frame *, #uyan_box, #uyan_box *{
+.jiathis_style_32x32 *, .jiathis_style_32x32,
+.jiathis_style *, .jiathis_style,
+#uyan_frame, #uyan_frame *, #uyan_box, #uyan_box *{
     -webkit-box-sizing: content-box!important;
     -moz-box-sizing: content-box!important;
     box-sizing: content-box!important;
