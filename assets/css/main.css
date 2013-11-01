@@ -51,19 +51,6 @@ body{
   margin-bottom: 50px;
 }
 
-
-/* JiaThis & Uyan style fix */
-.jiathis_style_32x32 *, .jiathis_style_32x32,
-.jiathis_style *, .jiathis_style,
-#uyan_frame, #uyan_frame *, #uyan_box, #uyan_box *{
-    -webkit-box-sizing: content-box!important;
-    -moz-box-sizing: content-box!important;
-    box-sizing: content-box!important;
-}
-#uyan_count{
-  float: none;
-}
-
 /* custom css */
 .time{
   font-family: Georgia, "Times New Roman", Times, serif;	

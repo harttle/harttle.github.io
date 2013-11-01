@@ -150,7 +150,7 @@ nav: blog
       //sidebar scroll spy
       $('body').scrollspy({
         target: '.sidebar',
-        offset: navHeight + 30  //make sure to spy the element when scrolled to
+        offset: navHeight + 10  //make sure to spy the element when scrolled to
       }); 
     }
     else{
@@ -189,6 +189,9 @@ nav: blog
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+  MathJax.Hub.Queue(function () {
+    $('body').scrollspy('refresh');
   });
 </script>
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
