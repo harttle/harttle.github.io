@@ -1,3 +1,5 @@
 _site
 .*
 *test*
+build.sh
+serve.sh
