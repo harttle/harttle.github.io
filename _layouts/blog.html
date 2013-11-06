@@ -107,11 +107,11 @@ nav: blog
 <!-- style -->
 
 <!-- content -->
-<div class="row">
-    <div class="col-md-3" >
+<div class="row post-display">
+    <div class="col-md-3 left" >
       <div class="sidebar"></div>
     </div>
-    <div class="col-md-9 content md">
+    <div class="col-md-9 right md">
       {{ content }}
     
       {% include social-sharing.html %}
@@ -124,7 +124,7 @@ nav: blog
 <!-- script -->
 <script>
   $(function(){    
-    var toc = getTOC($('.content'));
+    var toc = getTOC($('.post-display .right'));
     if (toc != null) {
       $('.sidebar').append(toc);
       
@@ -154,9 +154,9 @@ nav: blog
       }); 
     }
     else{
-      $('.content').removeClass('col-md-9')
-        .closest('.container').removeClass('row-fluid')
-        .find('div:first').remove();
+      $('.post-display .right').removeClass('col-md-9');
+      $('.post-display').removeClass('row-fluid');
+      $('.post-display .left').remove();
     }
   });
   
