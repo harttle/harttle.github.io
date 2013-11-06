@@ -2,6 +2,7 @@
 layout: blog
 title: 搜索引擎搭建
 category: web
+tags: 爬虫 搜索引擎
 ---
 
 采用 heritix+pagerank+lucene 方式搭建搜索引擎原型，并评估其性能。
