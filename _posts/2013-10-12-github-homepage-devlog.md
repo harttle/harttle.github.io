@@ -65,6 +65,10 @@ excerpt: 本文记录了开发进度、时间节点，以及任务列表。
 * 社会化：添加 linkedIn facebook google+ follow
 * SEO：添加 meta、添加sitemap.xml和robots.txt、导入搜索引擎、创建RSS 
 
+### 2013-11-06
+
+* 添加google analysis
+
 ### 未来的工作
 
 * 首页完善：简历时间线
