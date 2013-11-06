@@ -5,6 +5,7 @@ tags: VPN windows linux
 title: Linux 连接 Windows Server VPN
 ---
 
+Linux 连接 Windows Server VPN，以 archLinux 为例，适用于 Ubuntu。
 
 1. 安装 pptp
 
