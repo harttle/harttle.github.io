@@ -131,6 +131,9 @@ excerpt: 本文介绍如何利用 GitHub 提供的文件服务，部署博客系
 
 ## Tips
 
+
+### Jekyll的使用
+
 * 变量定义与访问
     * 在 `_config.yml` 中定义的变量，可通过 `site.VAL` 访问；
     * 在子模板（通过 `layout` 继承的页面）中定义的变量，可通过 `page.VAL` 访问；
@@ -139,3 +142,46 @@ excerpt: 本文介绍如何利用 GitHub 提供的文件服务，部署博客系
 
 * Jekyll 插件在 GitHub Pages 中不能使用，因为 GitHub Pages 的编译使用 `--safe` 参数；但可以在本地编译后同步至 GitHub 来取代 GitHub 的自动编译。
 * `{% include %}` 标签参数只能为常量，被包含文件中的 liquid 语句以文件为单元解析。
+
+### Jekyll plugin
+
+GitHub 出于安全性的考虑，jekyll 引擎默认采用 `--safe` 参数，这会禁用 Jekyll 的插件。如果希望开启 Jekyll 插件来获得更多的支持，只能关闭 GitHub 的 Jekyll 引擎。
+
+我们选择在 username.github.io repo 中新建一个叫 `dev` 的 branch 来做开发，把生成的静态站点 `_site` push 到 master 分支。当然，我们需要把master上的jekyll文件复制过来。
+
+1. 新建 branch
+
+    ```bash
+    # 建立dev目录
+    mkdir dev   
+    cd dev
+
+    # 建立git仓库，并连接到github
+    git init    
+    git remote add origin git@github.com:harttle/harttle.github.io.git 
+
+    # 新建分支
+    git checkout -b dev 
+    git push --set-upstream origin dev
+
+    # 现在可以开始工作了
+    git push origin dev
+    git pull origin dev
+    ```
+
+2. 迁移 Jekyll 站点
+
+    ```bash
+    # 关闭 github 的 jekyll 引擎
+    touch dev/.nojekyll
+
+    # 拷贝文件
+    cp -r harttle.github.io/. dev/
+
+    # 编译站点
+    cd dev/
+    jekyll build -d ../harttle.github.io/
+
+    # 运行站点
+    jekyll serve -d ../harttle.github.io/
+    ```
