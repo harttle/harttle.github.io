@@ -1,27 +1,199 @@
----
-layout: nil
----
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  {% for post in site.posts %}
+  
     <url>
-      <loc>{{ site.url }}{{ post.url }}</loc>
-      {% if post.lastmod == null %}
-      <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
-      {% else %}
-      <lastmod>{{ post.lastmod | date_to_xmlschema }}</lastmod>
-      {% endif %}
+      <loc>http://harttle.github.io/%E7%AC%94%E8%AE%B0/modern-os.html</loc>
+      
+      <lastmod>2013-11-07T21:50:38+08:00</lastmod>
+      
       <changefreq>daily</changefreq>
       <priority>1.0</priority>
     </url>
-  {% endfor %}
-
-  {% for page in site.pages %}
+  
     <url>
-      <loc>{{ site.url }}{{ page.url }}</loc>
-      <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+      <loc>http://harttle.github.io/%E7%AC%94%E8%AE%B0/computer-organization-and-design.html</loc>
+      
+      <lastmod>2013-11-07T21:50:38+08:00</lastmod>
+      
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+    </url>
+  
+    <url>
+      <loc>http://harttle.github.io/linux/arch-install.html</loc>
+      
+      <lastmod>2013-11-07T00:00:00+08:00</lastmod>
+      
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+    </url>
+  
+    <url>
+      <loc>http://harttle.github.io/%E6%97%A5%E5%BF%97/vpn-linux-to-windows.html</loc>
+      
+      <lastmod>2013-11-06T00:00:00+08:00</lastmod>
+      
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+    </url>
+  
+    <url>
+      <loc>http://harttle.github.io/web/se-project.html</loc>
+      
+      <lastmod>2013-11-05T00:00:00+08:00</lastmod>
+      
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+    </url>
+  
+    <url>
+      <loc>http://harttle.github.io/%E6%97%A5%E5%BF%97/test.html</loc>
+      
+      <lastmod>2013-10-29T00:00:00+08:00</lastmod>
+      
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+    </url>
+  
+    <url>
+      <loc>http://harttle.github.io/%E7%AC%94%E8%AE%B0/introduction-to-algorithms.html</loc>
+      
+      <lastmod>2013-10-28T00:00:00+08:00</lastmod>
+      
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+    </url>
+  
+    <url>
+      <loc>http://harttle.github.io/%E7%AC%94%E8%AE%B0/computer-network.html</loc>
+      
+      <lastmod>2013-10-28T00:00:00+08:00</lastmod>
+      
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+    </url>
+  
+    <url>
+      <loc>http://harttle.github.io/linux/synaptics-settings-linux.html</loc>
+      
+      <lastmod>2013-10-27T00:00:00+08:00</lastmod>
+      
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+    </url>
+  
+    <url>
+      <loc>http://harttle.github.io/%E4%B8%AA%E4%BA%BA/flute.html</loc>
+      
+      <lastmod>2013-10-26T00:00:00+08:00</lastmod>
+      
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+    </url>
+  
+    <url>
+      <loc>http://harttle.github.io/linux/auto-thumb.html</loc>
+      
+      <lastmod>2013-10-26T00:00:00+08:00</lastmod>
+      
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+    </url>
+  
+    <url>
+      <loc>http://harttle.github.io/%E4%B8%AA%E4%BA%BA/me.html</loc>
+      
+      <lastmod>2013-10-25T00:00:00+08:00</lastmod>
+      
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+    </url>
+  
+    <url>
+      <loc>http://harttle.github.io/%E6%91%84%E5%BD%B1/pku.html</loc>
+      
+      <lastmod>2013-10-18T00:00:00+08:00</lastmod>
+      
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+    </url>
+  
+    <url>
+      <loc>http://harttle.github.io/web/github-homepage-tutorial.html</loc>
+      
+      <lastmod>2013-10-18T00:00:00+08:00</lastmod>
+      
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+    </url>
+  
+    <url>
+      <loc>http://harttle.github.io/%E6%91%84%E5%BD%B1/landscape.html</loc>
+      
+      <lastmod>2013-10-17T00:00:00+08:00</lastmod>
+      
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+    </url>
+  
+    <url>
+      <loc>http://harttle.github.io/%E6%97%A5%E5%BF%97/github-homepage-devlog.html</loc>
+      
+      <lastmod>2013-10-12T00:00:00+08:00</lastmod>
+      
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+    </url>
+  
+
+  
+    <url>
+      <loc>http://harttle.github.io/feed.xml</loc>
+      <lastmod>2013-11-07T22:23:56+08:00</lastmod>
       <changefreq>always</changefreq>
       <priority>0.7</priority>
     </url>
-  {% endfor %}
+  
+    <url>
+      <loc>http://harttle.github.io/index.html</loc>
+      <lastmod>2013-11-07T22:23:56+08:00</lastmod>
+      <changefreq>always</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>http://harttle.github.io/404.html</loc>
+      <lastmod>2013-11-07T22:23:56+08:00</lastmod>
+      <changefreq>always</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>http://harttle.github.io/about.html</loc>
+      <lastmod>2013-11-07T22:23:56+08:00</lastmod>
+      <changefreq>always</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>http://harttle.github.io/category/blog.html</loc>
+      <lastmod>2013-11-07T22:23:56+08:00</lastmod>
+      <changefreq>always</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>http://harttle.github.io/category/album.html</loc>
+      <lastmod>2013-11-07T22:23:56+08:00</lastmod>
+      <changefreq>always</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>http://harttle.github.io/sitemap.xml</loc>
+      <lastmod>2013-11-07T22:23:56+08:00</lastmod>
+      <changefreq>always</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
 </urlset>
