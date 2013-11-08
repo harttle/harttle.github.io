@@ -7,6 +7,256 @@
 		<atom:link href="http://harttle.github.io/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>Vim 使用</title>
+				<description>&lt;p&gt;Vim是从vi发展出来的一个文本编辑器。代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。和Emacs并列成为类Unix系统用户最喜欢的编辑器。&lt;/p&gt;
+
+&lt;p&gt;文档参见：&lt;a href=&quot;http://vimdoc.sourceforge.net/&quot;&gt;http://vimdoc.sourceforge.net/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1&gt;基础使用&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/vim-key.png&quot; alt=&quot;vim-key&quot;&gt;&lt;/p&gt;
+
+&lt;h1&gt;配置文件&lt;/h1&gt;
+
+&lt;p&gt;正如多数 linux 软件，vim 的配置文件分为系统配置文件 &lt;code&gt;/etc/vimrc&lt;/code&gt;，&lt;code&gt;/usr/share/vim/&lt;/code&gt; 和用户配置文件 &lt;code&gt;~/.vimrc&lt;/code&gt;，&lt;code&gt;~/.vim/&lt;/code&gt;。一个示例配置文件如下：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;vim language-vim&quot; data-lang=&quot;vim&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot; .vimrc&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot; See: http://vimdoc.sourceforge.net/htmldoc/options.html for details&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;quot; For multi-byte character support (CJK support, for example):&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;tabstop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;&amp;quot; Number of spaces that a &amp;lt;Tab&amp;gt; in the file counts for.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;shiftwidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;&amp;quot; Number of spaces to use for each step of (auto)indent.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;expandtab&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;&amp;quot; Use the appropriate number of spaces to insert a &amp;lt;Tab&amp;gt;.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; Spaces are used in indents with the &amp;#39;&amp;gt;&amp;#39; and &amp;#39;&amp;lt;&amp;#39; commands&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; and when &amp;#39;autoindent&amp;#39; is on. To insert a real tab when&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; &amp;#39;expandtab&amp;#39; is on, use CTRL-V &amp;lt;Tab&amp;gt;.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;smarttab&lt;/span&gt;        &lt;span class=&quot;c&quot;&gt;&amp;quot; When on, a &amp;lt;Tab&amp;gt; in front of a line inserts blanks&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; according to &amp;#39;shiftwidth&amp;#39;. &amp;#39;tabstop&amp;#39; is used in other&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; places. A &amp;lt;BS&amp;gt; will delete a &amp;#39;shiftwidth&amp;#39; worth of space&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; at the start of the line.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;showcmd&lt;/span&gt;         &lt;span class=&quot;c&quot;&gt;&amp;quot; Show (partial) command in status line.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;number&lt;/span&gt;          &lt;span class=&quot;c&quot;&gt;&amp;quot; Show line numbers.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;showmatch&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;&amp;quot; When a bracket is inserted, briefly jump to the matching&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; one. The jump is only done if the match can be seen on the&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; screen. The time to show the match can be set with&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; &amp;#39;matchtime&amp;#39;.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;hlsearch&lt;/span&gt;        &lt;span class=&quot;c&quot;&gt;&amp;quot; When there is a previous search pattern, highlight all&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; its matches.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;incsearch&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;&amp;quot; While typing a search command, show immediately where the&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; so far typed pattern matches.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ignorecase&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;&amp;quot; Ignore case in search patterns.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;smartcase&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;&amp;quot; Override the &amp;#39;ignorecase&amp;#39; option if the search pattern&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; contains upper case characters.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;backspace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;     &lt;span class=&quot;c&quot;&gt;&amp;quot; Influences the working of &amp;lt;BS&amp;gt;, &amp;lt;Del&amp;gt;, CTRL-W&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; and CTRL-U in Insert mode. This is a list of items,&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; separated by commas. Each item allows a way to backspace&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; over something.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;autoindent&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;&amp;quot; Copy indent from current line when starting a new line&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; (typing &amp;lt;CR&amp;gt; in Insert mode or when using the &amp;quot;o&amp;quot; or &amp;quot;O&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; command).&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;textwidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;79&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;&amp;quot; Maximum width of text that is being inserted. A longer&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; line will be broken after white space to get this width.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;formatoptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;&amp;quot; This is a sequence of letters which describes how&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; automatic formatting is to be done.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; letter    meaning when present in &amp;#39;formatoptions&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; ------    ---------------------------------------&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; c         Auto-wrap comments using textwidth, inserting&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot;           the current comment leader automatically.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; q         Allow formatting of comments with &amp;quot;gq&amp;quot;.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; r         Automatically insert the current comment leader&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot;           after hitting &amp;lt;Enter&amp;gt; in Insert mode. &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; t         Auto-wrap text using textwidth (does not apply&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot;           to comments)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ruler&lt;/span&gt;           &lt;span class=&quot;c&quot;&gt;&amp;quot; Show the line and column number of the cursor position,&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; separated by a comma.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dark&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot; When set to &amp;quot;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dark&lt;/span&gt;&amp;quot;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; Vim will &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;to&lt;/span&gt; use &lt;span class=&quot;k&quot;&gt;colors&lt;/span&gt; that look
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; good on a dark background. When set to &amp;quot;light&amp;quot;, Vim will&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; try to use colors that look good on a light background.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; Any other value is illegal.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;mouse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;a&lt;/span&gt;         &lt;span class=&quot;c&quot;&gt;&amp;quot; Enable the use of the mouse.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;filetype&lt;/span&gt; plugin indent &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;syntax&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;进阶技巧&lt;/h1&gt;
+
+&lt;h2&gt;块编辑&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;可视&lt;/strong&gt; 模式：&lt;code&gt;v&lt;/code&gt; 可进入visual模式，使用标准快捷键移动光标可选择文本块，之后可输入标准编辑命令。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;列编辑&lt;/strong&gt; 模式：&lt;code&gt;&amp;lt;Ctrl&amp;gt;v&lt;/code&gt; 进入列编辑模式，移动光标将按列进行选中。例如：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;删除块注释：&lt;code&gt;&amp;lt;Ctrl&amp;gt;v&lt;/code&gt; 进入列编辑模式，&lt;code&gt;ikjl&lt;/code&gt; 选中注释列，&lt;code&gt;&amp;lt;N&amp;gt;x&lt;/code&gt; 删除N个字符；&lt;/p&gt;
+
+&lt;p&gt;添加块注释：&lt;code&gt;&amp;lt;Ctrl&amp;gt;v&lt;/code&gt; 进入列编辑模式，&lt;code&gt;ikjl&lt;/code&gt; 选中要注释的行，&lt;code&gt;I&lt;/code&gt; 进入插入模式，输入几个注释字符，&lt;code&gt;&amp;lt;Esc&amp;gt;&lt;/code&gt; 推出列编辑。&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;文件识别&lt;/h2&gt;
+
+&lt;p&gt;Vim可针对特定的文件，加载指定的配置。例如 .plt 文件：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;~/.vimrc&lt;/code&gt; 中加入&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;vim language-vim&quot; data-lang=&quot;vim&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot; BufNewFile 对应读取 *.plt&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot; BufRead 对应新建 *.plt&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;au&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;BufNewFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;BufRead&lt;/span&gt; *.plt  source &lt;span class=&quot;p&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/.vim/&lt;/span&gt;after&lt;span class=&quot;sr&quot;&gt;/ftplugin/&lt;/span&gt;plt.&lt;span class=&quot;k&quot;&gt;vim&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在 &lt;code&gt;～/.vim/after/ftplugin&lt;/code&gt; 中加入 *.plt 的配置文件 &lt;code&gt;plt.vim&lt;/code&gt;。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+				<pubDate>Fri, 08 Nov 2013 00:00:00 +0800</pubDate>
+				<link>http://harttle.github.io/linux/vim-advanced.html</link>
+				<guid isPermaLink="true">http://harttle.github.io/linux/vim-advanced.html</guid>
+			</item>
+		
+			<item>
+				<title>Modern Operating Systems</title>
+				<description></description>
+				<pubDate>Thu, 07 Nov 2013 21:50:38 +0800</pubDate>
+				<link>http://harttle.github.io/%E7%AC%94%E8%AE%B0/modern-os.html</link>
+				<guid isPermaLink="true">http://harttle.github.io/%E7%AC%94%E8%AE%B0/modern-os.html</guid>
+			</item>
+		
+			<item>
+				<title>Computer Organization and Design</title>
+				<description>&lt;h1&gt;Computer Abstractions and Technology&lt;/h1&gt;
+
+&lt;h2&gt;Concepts&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Moore&amp;#39;s law&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Over the history of computing hardware, the number of transistors on integrated circuits doubles approximately every two years.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Compiler&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A program that translates high-level language statements into assembly language statements.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Assembler&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A program that translates a symbolic version of instructions into the binary version.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;High-level programming langrage&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A portable language that is composed of words and algebraic notation that can be translated by a compiler into assembly language.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Assembly language&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Asymbolic representation of machine instructions.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Machine language&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A binary representation of machine instructions.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;5 components of a computer&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Input&lt;/li&gt;
+&lt;li&gt;Output&lt;/li&gt;
+&lt;li&gt;Memory&lt;/li&gt;
+&lt;li&gt;Datapath&lt;/li&gt;
+&lt;li&gt;Control&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The last two sometimes combined and called the processor.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Instruction set architecture&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;One key interface between the levels of abstraction is the instruction set architecture-the interface between the hardware and low-level software.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2&gt;Performance&lt;/h2&gt;
+
+&lt;h3&gt;Measurement and Limitation&lt;/h3&gt;
+
+&lt;p&gt;$$
+\begin{eqnarray}
+CPU~time &amp;amp;=&amp;amp; Instruction~count \times CPI \times Clock~cycle~time\\
+        &amp;amp;=&amp;amp; \frac{Instruction~count \times CPI}{Clock~rate}
+\end{eqnarray}
+$$&lt;/p&gt;
+
+&lt;p&gt;$$
+Power = Capacitive~load \times Voltage^2 \times Frequency~switched
+$$&lt;/p&gt;
+
+&lt;h3&gt;Fallacies and Pitfalls&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Pitfall&lt;/strong&gt;: Expecting the improvement of one aspect of a computer to increse overall performance by an amount proportional to the size of the improvement.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Amdahl&amp;#39;s law&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;$$
+Execution~time~after~improvement = \\
+\frac{Execution~time~affected~by~improvement}{Amount~of~improvement} + Execution~time~unaffected
+$$&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Pitfall&lt;/strong&gt;: Using a subset of the performance equation as a performance metric.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;For example:&lt;/p&gt;
+
+&lt;p&gt;$$
+\begin{eqnarray}
+MIPS &amp;amp;=&amp;amp; \frac{Instruction~count}{Execution~time \times 10^6} \\
+    &amp;amp;=&amp;amp; \frac{Clock~rate}{CPI \times 10^6}
+\end{eqnarray}
+$$&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Instruction per program is not considered.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Execution time is the only valid and unimpeachable measure of performance.&lt;/p&gt;
+
+&lt;h1&gt;Instructions: Language of the Computer&lt;/h1&gt;
+
+&lt;h2&gt;Introduction&lt;/h2&gt;
+</description>
+				<pubDate>Thu, 07 Nov 2013 21:50:38 +0800</pubDate>
+				<link>http://harttle.github.io/%E7%AC%94%E8%AE%B0/computer-organization-and-design.html</link>
+				<guid isPermaLink="true">http://harttle.github.io/%E7%AC%94%E8%AE%B0/computer-organization-and-design.html</guid>
+			</item>
+		
+			<item>
 				<title>安装 Arch Linux</title>
 				<description>&lt;p&gt;本文介绍如何安装 Arch Linux，一个轻量级、简单的 Linux 发行版。&lt;/p&gt;
 
@@ -4677,133 +4927,6 @@ sudo dkms autoinstall
 				<pubDate>Sun, 27 Oct 2013 00:00:00 +0800</pubDate>
 				<link>http://harttle.github.io/linux/synaptics-settings-linux.html</link>
 				<guid isPermaLink="true">http://harttle.github.io/linux/synaptics-settings-linux.html</guid>
-			</item>
-		
-			<item>
-				<title>笛箫</title>
-				<description>细雨饧箫，斜阳牧笛，一径穿桃李。风吹花落，落花风又吹起。
-——郑燮</description>
-				<pubDate>Sat, 26 Oct 2013 00:00:00 +0800</pubDate>
-				<link>http://harttle.github.io/%E4%B8%AA%E4%BA%BA/flute.html</link>
-				<guid isPermaLink="true">http://harttle.github.io/%E4%B8%AA%E4%BA%BA/flute.html</guid>
-			</item>
-		
-			<item>
-				<title>批量更新站点缩略图</title>
-				<description>&lt;h1&gt;背景&lt;/h1&gt;
-
-&lt;p&gt;网站中通常会产生大量的多媒体文件，尤其是图片。维护和更新这些文件却是很繁琐的事情。本文介绍如何批量地更新用于web的缩略图：采用 ImageMagick + Makefile 的方式，既能及时地更新缩略图，又避免了不必要的文件操作。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;ImageMagick：是一款命令行图片处理工具，其功能复杂强大，毫不逊色于Ps。在Linux服务器中，通常采用 ImageMagick 来进行web后台的图片操作。&lt;/li&gt;
-&lt;li&gt;Makefile：在 Unix 系统中，通常用 make 来自动化建构软件。make 根据依赖文件的修改时间进行判断是否执行更新，避免了不必要的更新操作。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1&gt;实例&lt;/h1&gt;
-
-&lt;p&gt;假设我们的目录有两级结构，所有图片文件都在第二级目录下，例如：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;imgs
-├── 2012
-│   ├── a.jpg
-│   └── b.png
-└── 2013
-    └── c.JPG
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;我们希望该目录下的图片文件发生改动或者添加时，自动地重新生成其缩略图，并且忽略不需要更新的文件。下面利用 ImageMagick 进行缩略图的生成，同时借助于 Makefile 的依赖关系检查，完成缩略图的更新。&lt;/p&gt;
-
-&lt;h2&gt;更新当前目录图片的缩略图&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;在文件夹 &lt;code&gt;2012&lt;/code&gt; 下建立 makefile 文件：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;makefile language-makefile&quot; data-lang=&quot;makefile&quot;&gt;&lt;span class=&quot;c&quot;&gt;# get all jpg|png files&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;items&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;shell ls *.* | grep -E &lt;span class=&quot;s1&quot;&gt;&amp;#39;*.[j][pP][gG]|*.[J][pP][gG]&amp;#39;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;thumbs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;addprefix thumb/,&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;items&lt;span class=&quot;k&quot;&gt;))&lt;/span&gt;
-
-&lt;span class=&quot;nf&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;$(thumbs) list&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# generate thumbs for web&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;thumbs&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;: thumb/%: %
-        &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; ! -d &lt;span class=&quot;s1&quot;&gt;&amp;#39;thumb&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; mkdir thumb;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-        convert -resize 240x160 &lt;span class=&quot;nv&quot;&gt;$&amp;lt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$@&lt;/span&gt;
-
-.PHONY: list clean
-
-list: 
-        &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;imgs:&amp;#39;&lt;/span&gt; &amp;gt; list.yml;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;item in &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;items&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;;&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-                &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; -e &lt;span class=&quot;s1&quot;&gt;&amp;#39;\t- &amp;#39;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$$&lt;/span&gt;item &amp;gt;&amp;gt; list.yml;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-
-clean:
-        -rm -rf thumb list.yml
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;执行 &lt;code&gt;make&lt;/code&gt; 即可在当前目录创建 &lt;code&gt;thumb&lt;/code&gt; 子目录，并保存生成的缩略图。为了便于批量导入，同时产生了图片列表 &lt;code&gt;list.yml&lt;/code&gt;（YAML格式）。
-执行 &lt;code&gt;make clean&lt;/code&gt; 即可清空所有缩略图，以及图片列表。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;生成的效果如下：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;2012
-├── makefile
-├── a.jpg
-├── b.png
-└── thumb
-    ├── a.jpg
-    └── b.png
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2&gt;更新所有子目录&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;我们将上述 makefile 在每个子目录拷贝一份。然后在 &lt;code&gt;imgs&lt;/code&gt; 下建立**总控 Makefile**，来执行其所有子目录的make：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;makefile language-makefile&quot; data-lang=&quot;makefile&quot;&gt;&lt;span class=&quot;c&quot;&gt;# dirs to exclude&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;exclude_dirs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; include bin
-
-&lt;span class=&quot;c&quot;&gt;# find subfolders&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;dirs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;shell find . -maxdepth 1 -type d&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;dirs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;basename &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;patsubst ./%,%,&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dirs&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)))&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;dirs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;filter-out &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;exclude_dirs&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;,&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dirs&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;))&lt;/span&gt;
-
-&lt;span class=&quot;nf&quot;&gt;.PHONY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;all clean&lt;/span&gt;
-
-&lt;span class=&quot;nf&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;$(dirs)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;dir in &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dirs&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;;&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -f &lt;span class=&quot;nv&quot;&gt;$$&lt;/span&gt;dir/Makefile &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;;&lt;span class=&quot;k&quot;&gt;then&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;MAKE&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; -C &lt;span class=&quot;nv&quot;&gt;$$&lt;/span&gt;dir;fi;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
-
-&lt;span class=&quot;nf&quot;&gt;clean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; 
-        &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;dir in &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dirs&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;;&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -f &lt;span class=&quot;nv&quot;&gt;$$&lt;/span&gt;dir/Makefile &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;;&lt;span class=&quot;k&quot;&gt;then&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;MAKE&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; clean -C &lt;span class=&quot;nv&quot;&gt;$$&lt;/span&gt;dir;fi;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;在 &lt;code&gt;imgs&lt;/code&gt; 执行 &lt;code&gt;make&lt;/code&gt;，即可以更新所有子目录的缩略图；执行 &lt;code&gt;make clean&lt;/code&gt;，即可清空所有缩略图，以及图片列表。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;生成的效果如下：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;imgs
-├── makefile
-├── 2012
-│   ├── makefile
-│   ├── a.jpg
-│   ├── b.png
-│   └── thumb
-│       ├── a.jpg
-│       └── b.png
-└── 2013
-    ├── makefile
-    ├── c.JPG
-    └── thumb
-        └── c.JPG
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-				<pubDate>Sat, 26 Oct 2013 00:00:00 +0800</pubDate>
-				<link>http://harttle.github.io/linux/auto-thumb.html</link>
-				<guid isPermaLink="true">http://harttle.github.io/linux/auto-thumb.html</guid>
-			</item>
-		
-			<item>
-				<title>我</title>
-				<description>这里是我的一些照片。感谢 Rea。</description>
-				<pubDate>Fri, 25 Oct 2013 00:00:00 +0800</pubDate>
-				<link>http://harttle.github.io/%E4%B8%AA%E4%BA%BA/me.html</link>
-				<guid isPermaLink="true">http://harttle.github.io/%E4%B8%AA%E4%BA%BA/me.html</guid>
 			</item>
 		
 	</channel>

@@ -2,13 +2,14 @@
 <html>
   <head>
     
-    <meta name="description" content="采用 ImageMagick + Makefile 的方式，批量地更新用于web的缩略图。">
+    <meta name="description" content="<p>Vim是从vi发展出来的一个文本编辑器。代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。和Emacs并列成为类Unix系统用户最喜欢的编辑器。</p>
+">
     
     <meta name="keywords" content="Linux Web 计算机 开发 编程">
     <meta name="author" content="harttle">      
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>批量更新站点缩略图 - Harttle Land</title>
+    <title>Vim 使用 - Harttle Land</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- style -->
@@ -204,24 +205,18 @@
 <div class="headerbar">
   <div class="page-header container">
     <h1>
-      批量更新站点缩略图 <small>网站图片管理</small>
+      Vim 使用 <small></small>
     </h1>
     <div>
       
       <span class="label label-info pull-left" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> linux</span>
       
       
-      <span class="label label-success pull-left hidden-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> web</span>
-      
-      <span class="label label-success pull-left hidden-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> ImageMagick</span>
-      
-      <span class="label label-success pull-left hidden-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> Makefile</span>
-      
       <a class="pull-right label label-warning" href="/category/blog.html" style="margin-left: 10px;">
           返回列表 <span class="glyphicon glyphicon-hand-left"></span>
       </a>
       <span class="pull-right label label-default hidden-xs">
-          <span class="glyphicon glyphicon-time"></span> 2013年10月26日
+          <span class="glyphicon glyphicon-time"></span> 2013年11月08日
       </span>
     </div>
   </div>
@@ -237,118 +232,121 @@
       <div class="sidebar"></div>
     </div>
     <div class="col-md-9 right md">
-      <h1>背景</h1>
+      <p>Vim是从vi发展出来的一个文本编辑器。代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。和Emacs并列成为类Unix系统用户最喜欢的编辑器。</p>
 
-<p>网站中通常会产生大量的多媒体文件，尤其是图片。维护和更新这些文件却是很繁琐的事情。本文介绍如何批量地更新用于web的缩略图：采用 ImageMagick + Makefile 的方式，既能及时地更新缩略图，又避免了不必要的文件操作。</p>
+<p>文档参见：<a href="http://vimdoc.sourceforge.net/">http://vimdoc.sourceforge.net/</a></p>
+
+<h1>基础使用</h1>
+
+<p><img src="/assets/img/blog/vim-key.png" alt="vim-key"></p>
+
+<h1>配置文件</h1>
+
+<p>正如多数 linux 软件，vim 的配置文件分为系统配置文件 <code>/etc/vimrc</code>，<code>/usr/share/vim/</code> 和用户配置文件 <code>~/.vimrc</code>，<code>~/.vim/</code>。一个示例配置文件如下：</p>
+<div class="highlight"><pre><code class="vim language-vim" data-lang="vim"><span class="c">&quot; .vimrc</span>
+<span class="c">&quot; See: http://vimdoc.sourceforge.net/htmldoc/options.html for details</span>
+
+<span class="c">&quot; For multi-byte character support (CJK support, for example):</span>
+<span class="c">&quot;set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1</span>
+
+<span class="k">set</span> <span class="nb">tabstop</span><span class="p">=</span><span class="m">4</span>       <span class="c">&quot; Number of spaces that a &lt;Tab&gt; in the file counts for.</span>
+
+<span class="k">set</span> <span class="nb">shiftwidth</span><span class="p">=</span><span class="m">4</span>    <span class="c">&quot; Number of spaces to use for each step of (auto)indent.</span>
+
+<span class="k">set</span> <span class="nb">expandtab</span>       <span class="c">&quot; Use the appropriate number of spaces to insert a &lt;Tab&gt;.</span>
+<span class="c">                    &quot; Spaces are used in indents with the &#39;&gt;&#39; and &#39;&lt;&#39; commands</span>
+<span class="c">                    &quot; and when &#39;autoindent&#39; is on. To insert a real tab when</span>
+<span class="c">                    &quot; &#39;expandtab&#39; is on, use CTRL-V &lt;Tab&gt;.</span>
+
+<span class="k">set</span> <span class="nb">smarttab</span>        <span class="c">&quot; When on, a &lt;Tab&gt; in front of a line inserts blanks</span>
+<span class="c">                    &quot; according to &#39;shiftwidth&#39;. &#39;tabstop&#39; is used in other</span>
+<span class="c">                    &quot; places. A &lt;BS&gt; will delete a &#39;shiftwidth&#39; worth of space</span>
+<span class="c">                    &quot; at the start of the line.</span>
+
+<span class="k">set</span> <span class="nb">showcmd</span>         <span class="c">&quot; Show (partial) command in status line.</span>
+
+<span class="k">set</span> <span class="k">number</span>          <span class="c">&quot; Show line numbers.</span>
+
+<span class="k">set</span> <span class="nb">showmatch</span>       <span class="c">&quot; When a bracket is inserted, briefly jump to the matching</span>
+<span class="c">                    &quot; one. The jump is only done if the match can be seen on the</span>
+<span class="c">                    &quot; screen. The time to show the match can be set with</span>
+<span class="c">                    &quot; &#39;matchtime&#39;.</span>
+
+<span class="k">set</span> <span class="nb">hlsearch</span>        <span class="c">&quot; When there is a previous search pattern, highlight all</span>
+<span class="c">                    &quot; its matches.</span>
+
+<span class="k">set</span> <span class="nb">incsearch</span>       <span class="c">&quot; While typing a search command, show immediately where the</span>
+<span class="c">                    &quot; so far typed pattern matches.</span>
+
+<span class="k">set</span> <span class="nb">ignorecase</span>      <span class="c">&quot; Ignore case in search patterns.</span>
+
+<span class="k">set</span> <span class="nb">smartcase</span>       <span class="c">&quot; Override the &#39;ignorecase&#39; option if the search pattern</span>
+<span class="c">                    &quot; contains upper case characters.</span>
+
+<span class="k">set</span> <span class="nb">backspace</span><span class="p">=</span><span class="m">2</span>     <span class="c">&quot; Influences the working of &lt;BS&gt;, &lt;Del&gt;, CTRL-W</span>
+<span class="c">                    &quot; and CTRL-U in Insert mode. This is a list of items,</span>
+<span class="c">                    &quot; separated by commas. Each item allows a way to backspace</span>
+<span class="c">                    &quot; over something.</span>
+
+<span class="k">set</span> <span class="nb">autoindent</span>      <span class="c">&quot; Copy indent from current line when starting a new line</span>
+<span class="c">                    &quot; (typing &lt;CR&gt; in Insert mode or when using the &quot;o&quot; or &quot;O&quot;</span>
+<span class="c">                    &quot; command).</span>
+
+<span class="k">set</span> <span class="nb">textwidth</span><span class="p">=</span><span class="m">79</span>    <span class="c">&quot; Maximum width of text that is being inserted. A longer</span>
+<span class="c">                    &quot; line will be broken after white space to get this width.</span>
+
+<span class="k">set</span> <span class="nb">formatoptions</span><span class="p">=</span><span class="k">c</span><span class="p">,</span><span class="k">q</span><span class="p">,</span><span class="k">r</span><span class="p">,</span><span class="k">t</span> <span class="c">&quot; This is a sequence of letters which describes how</span>
+<span class="c">                    &quot; automatic formatting is to be done.</span>
+<span class="c">                    &quot;</span>
+<span class="c">                    &quot; letter    meaning when present in &#39;formatoptions&#39;</span>
+<span class="c">                    &quot; ------    ---------------------------------------</span>
+<span class="c">                    &quot; c         Auto-wrap comments using textwidth, inserting</span>
+<span class="c">                    &quot;           the current comment leader automatically.</span>
+<span class="c">                    &quot; q         Allow formatting of comments with &quot;gq&quot;.</span>
+<span class="c">                    &quot; r         Automatically insert the current comment leader</span>
+<span class="c">                    &quot;           after hitting &lt;Enter&gt; in Insert mode. </span>
+<span class="c">                    &quot; t         Auto-wrap text using textwidth (does not apply</span>
+<span class="c">                    &quot;           to comments)</span>
+
+<span class="k">set</span> <span class="nb">ruler</span>           <span class="c">&quot; Show the line and column number of the cursor position,</span>
+<span class="c">                    &quot; separated by a comma.</span>
+
+<span class="k">set</span> <span class="nb">background</span><span class="p">=</span><span class="nb">dark</span> <span class="s2">&quot; When set to &quot;</span><span class="nb">dark</span>&quot;<span class="p">,</span> Vim will <span class="k">try</span> <span class="k">to</span> use <span class="k">colors</span> that look
+<span class="c">                    &quot; good on a dark background. When set to &quot;light&quot;, Vim will</span>
+<span class="c">                    &quot; try to use colors that look good on a light background.</span>
+<span class="c">                    &quot; Any other value is illegal.</span>
+
+<span class="k">set</span> <span class="nb">mouse</span><span class="p">=</span><span class="k">a</span>         <span class="c">&quot; Enable the use of the mouse.</span>
+
+<span class="k">filetype</span> plugin indent <span class="k">on</span>
+<span class="nb">syntax</span> <span class="k">on</span>
+</code></pre></div>
+<h1>进阶技巧</h1>
+
+<h2>块编辑</h2>
 
 <ul>
-<li>ImageMagick：是一款命令行图片处理工具，其功能复杂强大，毫不逊色于Ps。在Linux服务器中，通常采用 ImageMagick 来进行web后台的图片操作。</li>
-<li>Makefile：在 Unix 系统中，通常用 make 来自动化建构软件。make 根据依赖文件的修改时间进行判断是否执行更新，避免了不必要的更新操作。</li>
+<li><p><strong>可视</strong> 模式：<code>v</code> 可进入visual模式，使用标准快捷键移动光标可选择文本块，之后可输入标准编辑命令。</p></li>
+<li><p><strong>列编辑</strong> 模式：<code>&lt;Ctrl&gt;v</code> 进入列编辑模式，移动光标将按列进行选中。例如：</p>
+
+<blockquote>
+<p>删除块注释：<code>&lt;Ctrl&gt;v</code> 进入列编辑模式，<code>ikjl</code> 选中注释列，<code>&lt;N&gt;x</code> 删除N个字符；</p>
+
+<p>添加块注释：<code>&lt;Ctrl&gt;v</code> 进入列编辑模式，<code>ikjl</code> 选中要注释的行，<code>I</code> 进入插入模式，输入几个注释字符，<code>&lt;Esc&gt;</code> 推出列编辑。</p>
+</blockquote></li>
 </ul>
 
-<h1>实例</h1>
+<h2>文件识别</h2>
 
-<p>假设我们的目录有两级结构，所有图片文件都在第二级目录下，例如：</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">imgs
-├── 2012
-│   ├── a.jpg
-│   └── b.png
-└── 2013
-    └── c.JPG
-</code></pre></div>
-<p>我们希望该目录下的图片文件发生改动或者添加时，自动地重新生成其缩略图，并且忽略不需要更新的文件。下面利用 ImageMagick 进行缩略图的生成，同时借助于 Makefile 的依赖关系检查，完成缩略图的更新。</p>
-
-<h2>更新当前目录图片的缩略图</h2>
+<p>Vim可针对特定的文件，加载指定的配置。例如 .plt 文件：</p>
 
 <ol>
-<li><p>在文件夹 <code>2012</code> 下建立 makefile 文件：</p>
-<div class="highlight"><pre><code class="makefile language-makefile" data-lang="makefile"><span class="c"># get img files</span>
-<span class="nv">items</span> <span class="o">:=</span> <span class="k">$(</span>shell ls *.* | grep -E <span class="s1">&#39;*.[j][pP][gG]|*.[J][pP][gG]&#39;</span><span class="k">)</span>
-<span class="nv">thumbs</span> <span class="o">:=</span> <span class="k">$(</span>addprefix thumb/,<span class="k">$(</span>items<span class="k">))</span>
-
-<span class="nf">all</span><span class="o">:</span> <span class="m">$(thumbs) list</span>
-
-<span class="c"># generate thumbs</span>
-<span class="k">$(</span>thumbs<span class="k">)</span>: thumb/%: %
-        <span class="o">[</span> ! -d <span class="s1">&#39;thumb&#39;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> mkdir thumb;<span class="se">\</span>
-        convert -resize 240x160 <span class="nv">$&lt;</span> <span class="nv">$@</span>
-
-.PHONY: list clean
-
-<span class="c"># generate thumb list</span>
-list: 
-        <span class="nb">echo</span> <span class="s1">&#39;imgs:&#39;</span> &gt; list.yml;<span class="se">\</span>
-        <span class="k">for </span>item in <span class="k">$(</span>items<span class="k">)</span>;<span class="k">do</span><span class="se">\</span>
-                <span class="nb">echo</span> -e <span class="s1">&#39;\t- &#39;</span><span class="nv">$$</span>item &gt;&gt; list.yml;<span class="se">\</span>
-        <span class="k">done</span>;<span class="se">\</span>
-
-<span class="c"># clean redundant thumbs</span>
-clean:
-        ls thumb | grep -E <span class="s1">&#39;*.*&#39;</span> | grep -x -v <span class="s2">&quot;`ls *.*`&quot;</span> | xargs -l -i rm thumb/<span class="o">{}</span>;
-
-<span class="c"># clean all thumbs</span>
-clean-all:
-        -rm -rf file thumb list.yml
+<li><p><code>~/.vimrc</code> 中加入</p>
+<div class="highlight"><pre><code class="vim language-vim" data-lang="vim"><span class="c">&quot; BufNewFile 对应读取 *.plt</span>
+<span class="c">&quot; BufRead 对应新建 *.plt</span>
+<span class="k">au</span> <span class="nb">BufNewFile</span><span class="p">,</span><span class="nb">BufRead</span> *.plt  source <span class="p">~</span><span class="sr">/.vim/</span>after<span class="sr">/ftplugin/</span>plt.<span class="k">vim</span>
 </code></pre></div></li>
-<li><p>执行 <code>make</code> 即可在当前目录创建 <code>thumb</code> 子目录，并保存生成的缩略图。为了便于批量导入，同时产生了图片列表 <code>list.yml</code>（YAML格式）。
-执行 <code>make clean</code> 即可清空多余的缩略图，执行 <code>make clean-all</code> 即可清空所有缩略图以及图片列表。</p></li>
-<li><p>生成的效果如下：</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">2012
-├── makefile
-├── a.jpg
-├── b.png
-└── thumb
-    ├── a.jpg
-    └── b.png
-</code></pre></div></li>
-</ol>
-
-<h2>递归更新目录</h2>
-
-<ol>
-<li><p>我们将上述 makefile 在每个子目录软链接（<code>ln -s</code>）一份。然后在 <code>imgs</code> 下建立**总控 Makefile**，来执行其所有子目录的make：</p>
-<div class="highlight"><pre><code class="makefile language-makefile" data-lang="makefile"><span class="c"># dirs to exclude</span>
-<span class="nv">exclude_dirs</span> <span class="o">:=</span> include bin
-
-<span class="c"># find subfolders</span>
-<span class="nv">dirs</span> <span class="o">:=</span> <span class="k">$(</span>shell find . -maxdepth 1 -type d<span class="k">)</span>
-<span class="nv">dirs</span> <span class="o">:=</span> <span class="k">$(</span>basename <span class="k">$(</span>patsubst ./%,%,<span class="k">$(</span><span class="nb">dirs</span><span class="k">)))</span>
-<span class="nv">dirs</span> <span class="o">:=</span> <span class="k">$(</span>filter-out <span class="k">$(</span>exclude_dirs<span class="k">)</span>,<span class="k">$(</span><span class="nb">dirs</span><span class="k">))</span>
-
-<span class="nf">.PHONY</span><span class="o">:</span> <span class="m">all clean</span>
-
-<span class="nf">all</span><span class="o">:</span> <span class="m">$(dirs)</span>
-        <span class="k">for </span>dir in <span class="k">$(</span><span class="nb">dirs</span><span class="k">)</span>;<span class="k">do</span><span class="se">\</span>
-                <span class="k">if</span> <span class="o">[</span> -f <span class="nv">$$</span>dir/Makefile <span class="o">]</span>;<span class="k">then</span> <span class="k">$(</span>MAKE<span class="k">)</span> -C <span class="nv">$$</span>dir;fi;<span class="se">\</span>
-        <span class="k">done</span>
-
-<span class="nf">clean</span><span class="o">:</span> 
-        <span class="k">for </span>dir in <span class="k">$(</span><span class="nb">dirs</span><span class="k">)</span>;<span class="k">do</span><span class="se">\</span>
-                <span class="k">if</span> <span class="o">[</span> -f <span class="nv">$$</span>dir/Makefile <span class="o">]</span>;<span class="k">then</span> <span class="k">$(</span>MAKE<span class="k">)</span> clean -C <span class="nv">$$</span>dir;fi;<span class="se">\</span>
-        <span class="k">done</span>
-
-<span class="nf">clean-all</span><span class="o">:</span> 
-<span class="err">for</span> <span class="err">dir</span> <span class="err">in</span> <span class="k">$(</span><span class="nb">dirs</span><span class="k">)</span>;<span class="k">do</span><span class="se">\</span>
-    <span class="k">$(</span>MAKE<span class="k">)</span> clean-all -C <span class="nv">$$</span>dir;<span class="se">\</span>
-<span class="k">done</span>
-</code></pre></div></li>
-<li><p>在 <code>imgs</code> 执行 <code>make</code>，即可以更新所有子目录的缩略图；执行 <code>make clean</code>，即可清空所有缩略图，以及图片列表。</p></li>
-<li><p>生成的效果如下：</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">imgs
-├── makefile
-├── 2012
-│   ├── makefile
-│   ├── a.jpg
-│   ├── b.png
-│   └── thumb
-│       ├── a.jpg
-│       └── b.png
-└── 2013
-    ├── makefile
-    ├── c.JPG
-    └── thumb
-        └── c.JPG
-</code></pre></div></li>
+<li><p>在 <code>～/.vim/after/ftplugin</code> 中加入 *.plt 的配置文件 <code>plt.vim</code>。</p></li>
 </ol>
 
     

@@ -399,14 +399,11 @@ git checkout -b dev
 git push --set-upstream origin dev
 
 <span class="c"># 现在可以开始工作了</span>
-git push origin dev
-git pull origin dev
+git push
+git pull
 </code></pre></div></li>
 <li><p>迁移 Jekyll 站点</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c"># 关闭 github 的 jekyll 引擎</span>
-touch dev/.nojekyll
-
-<span class="c"># 拷贝文件</span>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c"># 拷贝文件</span>
 cp -r harttle.github.io/. dev/
 
 <span class="c"># 编译站点</span>

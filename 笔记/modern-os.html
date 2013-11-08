@@ -2,13 +2,13 @@
 <html>
   <head>
     
-    <meta name="description" content="采用 ImageMagick + Makefile 的方式，批量地更新用于web的缩略图。">
+    <meta name="description" content=""Modern Operating Systems", Andrew S. Tanenbaum, 机械工业出版社">
     
     <meta name="keywords" content="Linux Web 计算机 开发 编程">
     <meta name="author" content="harttle">      
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>批量更新站点缩略图 - Harttle Land</title>
+    <title>Modern Operating Systems - Harttle Land</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- style -->
@@ -204,24 +204,22 @@
 <div class="headerbar">
   <div class="page-header container">
     <h1>
-      批量更新站点缩略图 <small>网站图片管理</small>
+      Modern Operating Systems <small></small>
     </h1>
     <div>
       
-      <span class="label label-info pull-left" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> linux</span>
+      <span class="label label-info pull-left" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> 笔记</span>
       
       
-      <span class="label label-success pull-left hidden-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> web</span>
+      <span class="label label-success pull-left hidden-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 读书笔记</span>
       
-      <span class="label label-success pull-left hidden-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> ImageMagick</span>
-      
-      <span class="label label-success pull-left hidden-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> Makefile</span>
+      <span class="label label-success pull-left hidden-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 操作系统</span>
       
       <a class="pull-right label label-warning" href="/category/blog.html" style="margin-left: 10px;">
           返回列表 <span class="glyphicon glyphicon-hand-left"></span>
       </a>
       <span class="pull-right label label-default hidden-xs">
-          <span class="glyphicon glyphicon-time"></span> 2013年10月26日
+          <span class="glyphicon glyphicon-time"></span> 2013年11月07日
       </span>
     </div>
   </div>
@@ -237,120 +235,7 @@
       <div class="sidebar"></div>
     </div>
     <div class="col-md-9 right md">
-      <h1>背景</h1>
-
-<p>网站中通常会产生大量的多媒体文件，尤其是图片。维护和更新这些文件却是很繁琐的事情。本文介绍如何批量地更新用于web的缩略图：采用 ImageMagick + Makefile 的方式，既能及时地更新缩略图，又避免了不必要的文件操作。</p>
-
-<ul>
-<li>ImageMagick：是一款命令行图片处理工具，其功能复杂强大，毫不逊色于Ps。在Linux服务器中，通常采用 ImageMagick 来进行web后台的图片操作。</li>
-<li>Makefile：在 Unix 系统中，通常用 make 来自动化建构软件。make 根据依赖文件的修改时间进行判断是否执行更新，避免了不必要的更新操作。</li>
-</ul>
-
-<h1>实例</h1>
-
-<p>假设我们的目录有两级结构，所有图片文件都在第二级目录下，例如：</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">imgs
-├── 2012
-│   ├── a.jpg
-│   └── b.png
-└── 2013
-    └── c.JPG
-</code></pre></div>
-<p>我们希望该目录下的图片文件发生改动或者添加时，自动地重新生成其缩略图，并且忽略不需要更新的文件。下面利用 ImageMagick 进行缩略图的生成，同时借助于 Makefile 的依赖关系检查，完成缩略图的更新。</p>
-
-<h2>更新当前目录图片的缩略图</h2>
-
-<ol>
-<li><p>在文件夹 <code>2012</code> 下建立 makefile 文件：</p>
-<div class="highlight"><pre><code class="makefile language-makefile" data-lang="makefile"><span class="c"># get img files</span>
-<span class="nv">items</span> <span class="o">:=</span> <span class="k">$(</span>shell ls *.* | grep -E <span class="s1">&#39;*.[j][pP][gG]|*.[J][pP][gG]&#39;</span><span class="k">)</span>
-<span class="nv">thumbs</span> <span class="o">:=</span> <span class="k">$(</span>addprefix thumb/,<span class="k">$(</span>items<span class="k">))</span>
-
-<span class="nf">all</span><span class="o">:</span> <span class="m">$(thumbs) list</span>
-
-<span class="c"># generate thumbs</span>
-<span class="k">$(</span>thumbs<span class="k">)</span>: thumb/%: %
-        <span class="o">[</span> ! -d <span class="s1">&#39;thumb&#39;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> mkdir thumb;<span class="se">\</span>
-        convert -resize 240x160 <span class="nv">$&lt;</span> <span class="nv">$@</span>
-
-.PHONY: list clean
-
-<span class="c"># generate thumb list</span>
-list: 
-        <span class="nb">echo</span> <span class="s1">&#39;imgs:&#39;</span> &gt; list.yml;<span class="se">\</span>
-        <span class="k">for </span>item in <span class="k">$(</span>items<span class="k">)</span>;<span class="k">do</span><span class="se">\</span>
-                <span class="nb">echo</span> -e <span class="s1">&#39;\t- &#39;</span><span class="nv">$$</span>item &gt;&gt; list.yml;<span class="se">\</span>
-        <span class="k">done</span>;<span class="se">\</span>
-
-<span class="c"># clean redundant thumbs</span>
-clean:
-        ls thumb | grep -E <span class="s1">&#39;*.*&#39;</span> | grep -x -v <span class="s2">&quot;`ls *.*`&quot;</span> | xargs -l -i rm thumb/<span class="o">{}</span>;
-
-<span class="c"># clean all thumbs</span>
-clean-all:
-        -rm -rf file thumb list.yml
-</code></pre></div></li>
-<li><p>执行 <code>make</code> 即可在当前目录创建 <code>thumb</code> 子目录，并保存生成的缩略图。为了便于批量导入，同时产生了图片列表 <code>list.yml</code>（YAML格式）。
-执行 <code>make clean</code> 即可清空多余的缩略图，执行 <code>make clean-all</code> 即可清空所有缩略图以及图片列表。</p></li>
-<li><p>生成的效果如下：</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">2012
-├── makefile
-├── a.jpg
-├── b.png
-└── thumb
-    ├── a.jpg
-    └── b.png
-</code></pre></div></li>
-</ol>
-
-<h2>递归更新目录</h2>
-
-<ol>
-<li><p>我们将上述 makefile 在每个子目录软链接（<code>ln -s</code>）一份。然后在 <code>imgs</code> 下建立**总控 Makefile**，来执行其所有子目录的make：</p>
-<div class="highlight"><pre><code class="makefile language-makefile" data-lang="makefile"><span class="c"># dirs to exclude</span>
-<span class="nv">exclude_dirs</span> <span class="o">:=</span> include bin
-
-<span class="c"># find subfolders</span>
-<span class="nv">dirs</span> <span class="o">:=</span> <span class="k">$(</span>shell find . -maxdepth 1 -type d<span class="k">)</span>
-<span class="nv">dirs</span> <span class="o">:=</span> <span class="k">$(</span>basename <span class="k">$(</span>patsubst ./%,%,<span class="k">$(</span><span class="nb">dirs</span><span class="k">)))</span>
-<span class="nv">dirs</span> <span class="o">:=</span> <span class="k">$(</span>filter-out <span class="k">$(</span>exclude_dirs<span class="k">)</span>,<span class="k">$(</span><span class="nb">dirs</span><span class="k">))</span>
-
-<span class="nf">.PHONY</span><span class="o">:</span> <span class="m">all clean</span>
-
-<span class="nf">all</span><span class="o">:</span> <span class="m">$(dirs)</span>
-        <span class="k">for </span>dir in <span class="k">$(</span><span class="nb">dirs</span><span class="k">)</span>;<span class="k">do</span><span class="se">\</span>
-                <span class="k">if</span> <span class="o">[</span> -f <span class="nv">$$</span>dir/Makefile <span class="o">]</span>;<span class="k">then</span> <span class="k">$(</span>MAKE<span class="k">)</span> -C <span class="nv">$$</span>dir;fi;<span class="se">\</span>
-        <span class="k">done</span>
-
-<span class="nf">clean</span><span class="o">:</span> 
-        <span class="k">for </span>dir in <span class="k">$(</span><span class="nb">dirs</span><span class="k">)</span>;<span class="k">do</span><span class="se">\</span>
-                <span class="k">if</span> <span class="o">[</span> -f <span class="nv">$$</span>dir/Makefile <span class="o">]</span>;<span class="k">then</span> <span class="k">$(</span>MAKE<span class="k">)</span> clean -C <span class="nv">$$</span>dir;fi;<span class="se">\</span>
-        <span class="k">done</span>
-
-<span class="nf">clean-all</span><span class="o">:</span> 
-<span class="err">for</span> <span class="err">dir</span> <span class="err">in</span> <span class="k">$(</span><span class="nb">dirs</span><span class="k">)</span>;<span class="k">do</span><span class="se">\</span>
-    <span class="k">$(</span>MAKE<span class="k">)</span> clean-all -C <span class="nv">$$</span>dir;<span class="se">\</span>
-<span class="k">done</span>
-</code></pre></div></li>
-<li><p>在 <code>imgs</code> 执行 <code>make</code>，即可以更新所有子目录的缩略图；执行 <code>make clean</code>，即可清空所有缩略图，以及图片列表。</p></li>
-<li><p>生成的效果如下：</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">imgs
-├── makefile
-├── 2012
-│   ├── makefile
-│   ├── a.jpg
-│   ├── b.png
-│   └── thumb
-│       ├── a.jpg
-│       └── b.png
-└── 2013
-    ├── makefile
-    ├── c.JPG
-    └── thumb
-        └── c.JPG
-</code></pre></div></li>
-</ol>
-
+      
     
       <style>
   /* JiaThis & Uyan bootstrap fix */
