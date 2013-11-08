@@ -1,4 +1,6 @@
 #!/bin/bash
 
-cd ../harttle.github.io
-ls
+cd -P ../harttle.github.io
+git add -A
+git commit -a -m 'latest'
+git push
