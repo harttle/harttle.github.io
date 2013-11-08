@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <meta name="description" content="本文介绍如何利用 GitHub 提供的文件服务，部署博客系统。采用 git+github+markdown+jekyll 方式构建静态博客站点。">
+    
+    <meta name="keywords" content="Linux Web 计算机 开发 编程">
+    <meta name="author" content="harttle">      
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>像 Geek 一样写博客 - Harttle Land</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- style -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    
+    <!-- font-awesome -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+      
+    <!-- Custom styles  -->
+    <link href="/assets/css/sticky-footer-navbar.css" rel="stylesheet">
+    <link href="/assets/css/main.css" rel="stylesheet">
+
+    <!-- Icon -->
+    <link rel="shortcut icon" href="/assets/img/favicon.png"> 
+
+    
+    
+<style>
+.headerbar{
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: inset 0 -1px 0 white, 0 1px 5px rgba(0,0,0,.3);
+}
+.headerbar .page-header{
+  border-bottom: 0;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+#page-content{
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+</style>
+
+
+<link rel="stylesheet" href="/assets/css/markdown.css">
+<style>
+  /* By default it's not affixed in mobile views, so undo that */
+  .sidebar.affix {
+    position: static;
+  }
+  
+  /* First level of nav */
+  .sidenav {
+    margin-top: 20px;
+    margin-bottom: 20px; 
+    padding-top:    10px;
+    padding-bottom: 10px;
+    text-shadow: 0 1px 0 #fff;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+  }
+  
+  /* All levels of nav */
+  .sidebar .nav > li > a {
+    display: block;
+    color: #6c6c6c;
+    padding: 5px 20px;
+  }
+  .sidebar .nav > li > a:hover,
+  .sidebar .nav > li > a:focus {
+    text-decoration: none;
+    background-color: #e5e5e5;
+    border-right: 1px solid #d5d5d5;
+  }
+  .sidebar .nav > .active > a,
+  .sidebar .nav > .active:hover > a,
+  .sidebar .nav > .active:focus > a {
+    font-weight: bold;
+    color: #555;
+    background-color: transparent;
+    border-right: 1px solid #000;
+  }
+  
+  /* Nav: second level (shown on .active) */
+  .sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+    margin-bottom: 8px;
+  }
+  .sidebar .nav .nav > li > a {
+    padding-top:    3px;
+    padding-bottom: 3px;
+    padding-left: 30px;
+    font-size: 90%;
+  }
+  .sidebar .nav .nav .nav > li > a {
+    padding-left: 40px;
+  }
+  .sidebar .nav .nav .nav .nav > li > a {
+    padding-left: 50px;
+  }
+  .sidebar .nav .nav .nav .nav .nav > li > a {
+    padding-left: 60px;
+  }
+  .sidebar .nav .nav .nav .nav .nav .nav> li > a {
+    padding-left: 70px;
+  }  
+  
+  /* Show and affix the side nav when space allows it */
+  @media (min-width: 992px) {
+    .sidebar .nav > .active > ul {
+      display: block;
+    }
+    /* Widen the fixed sidebar */
+    .sidebar.affix,
+    .sidebar.affix-top,
+    .sidebar.affix-bottom {
+      width: 213px;
+    }
+    .sidebar.affix {
+      position: fixed; /* Undo the static from mobile first approach */
+      top: 90px;
+    }
+    .sidebar.affix-bottom {
+      position: absolute; /* Undo the static from mobile first approach */
+    }
+    .sidebar.affix-bottom .sidenav,
+    .sidebar.affix .sidenav {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+  @media (min-width: 1200px) {
+    /* Widen the fixed sidebar again */
+    .sidebar.affix-bottom,
+    .sidebar.affix-top,
+    .sidebar.affix {
+      width: 263px;
+    }
+  } 
+    
+  .MathJax *{
+    color: black!important;  
+  }
+</style>
+
+
+    <!-- style -->
+  </head>
+  
+  <body>
+  
+  <!-- content -->  
+    <!-- Wrap all page content here -->
+    <div id="wrap">
+
+      <!-- Fixed navbar -->
+      <div class="navbar navbar-default navbar-inverse navbar-fixed-top global-nav">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Harttle Land</a>
+          </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li id="blog"><a href="/category/blog.html">博客</a></li>
+              <li id="album"><a href="/category/album.html">相册</a></li>
+              <li id="about"><a href="/about.html">关于</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">链接 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="//harttle.duapp.com" target="_blank">God Notes</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">友情链接</li>
+                  <li><a href="//www.pku.edu.cn/" target="_blank">北京大学</a></li>
+                </ul>
+              </li>
+            </ul>
+	    <ul class="nav navbar-nav pull-right">	 
+	      <li>
+		<a href="//github.com/harttle/harttle.github.io" target="_blank">
+		  <i class="fa fa-github fa-lg"></i> GitHub
+		</a>
+	      </li>
+	      <li>
+		<a href="/feed.xml" target="_blank">
+		  <i class="fa fa-rss-square fa-lg"></i> RSS
+		</a>
+	      </li>
+	    </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+
+      <!-- Begin page content -->
+      <div id="main-content">
+	
+	
+<div class="headerbar">
+  <div class="page-header container">
+    <h1>
+      像 Geek 一样写博客 <small>GitHub 博客部署教程</small>
+    </h1>
+    <div>
+      
+      <span class="label label-info pull-left" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> web</span>
+      
+      
+      <span class="label label-success pull-left hidden-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> GitHub</span>
+      
+      <span class="label label-success pull-left hidden-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 博客</span>
+      
+      <span class="label label-success pull-left hidden-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 教程</span>
+      
+      <a class="pull-right label label-warning" href="/category/blog.html" style="margin-left: 10px;">
+          返回列表 <span class="glyphicon glyphicon-hand-left"></span>
+      </a>
+      <span class="pull-right label label-default hidden-xs">
+          <span class="glyphicon glyphicon-time"></span> 2013年10月18日
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+ 
+  <div id="page-content">
+    
+    
+<div class="row post-display">
+    <div class="col-md-3 left" >
+      <div class="sidebar"></div>
+    </div>
+    <div class="col-md-9 right md">
+      <p>本文介绍如何利用 GitHub 提供的文件服务，部署博客系统。采用 git+github+markdown+jekyll 方式构建静态博客站点。完成部署后，可以在在线撰写博客，也可以本地离线撰写，然后同步到GitHub。</p>
+
+<h2>一些背景</h2>
+
+<ul>
+<li><strong>Git</strong> 是一个分布式版本控制/软件配置管理软件，最初用户linux内核开发，至今已广泛用于项目源码管理。</li>
+<li><strong><a href="http://github.com/">GitHub</a></strong> 是一个用于使用Git版本控制系统项目的共享虚拟主机服务，提供了无限的存储空间以及网络流量。</li>
+<li><strong>markdown</strong> 是一种轻量级标记语言，可用少量的编辑工作生成美观的 HTML 文件。已经成为 GitHub 托管的项目中默认的文档格式，当然 GitHub 也扩展了该语言（GFM）并提供渲染支持。</li>
+<li><strong><a href="http://jekyllrb.com/">Jekyll</a></strong> 是基于 Ruby 的 package，用于编译生成静态站点。GitHub 提供了静态站点支持，并采用 Jekyll 作为其编译引擎。于是，在 GitHub 提交文件后，在10分钟内 GitHub 将编译生成静态站点并开始提供服务。</li>
+</ul>
+
+<h2>环境配置</h2>
+
+<h3>准备工作</h3>
+
+<ol>
+<li>GitHub 账号</li>
+<li>Linux 操作系统（在windows也可完成，但为了方便强烈推荐采用Linux系统）：Ubuntu、OpenSuse、CentOS、Arch...均可。</li>
+</ol>
+
+<h3>应用程序安装</h3>
+
+<ol>
+<li><p>Ruby</p>
+
+<ul>
+<li>如果已经安装过ruby，请确认版本为 1.9.3 或 2.0.0（通过运行 <code>ruby --version</code> 得到ruby版本）</li>
+<li><p>否则，安装Ruby</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c">#ubuntu</span>
+sudo apt-get install ruby
+<span class="c">#centos</span>
+yum install ruby
+<span class="c">#arch</span>
+yaourt -S ruby  
+</code></pre></div></li>
+</ul></li>
+<li><p>Jekyll
+安装 Jekyll</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">gem install jekyll
+</code></pre></div></li>
+</ol>
+
+<h2>建立站点</h2>
+
+<h3>创建 GitHub 仓库</h3>
+
+<ol>
+<li>运行 <code>ssh-keygen -t rsa</code> 得到 SSH 公钥文件：id_rsa.pub</li>
+<li>登录 GitHub，添加你的 SSH key（account settings -&gt; SSH Keys -&gt; Add SSH Key）</li>
+<li>在 GitHub，创建名为 username.github.io 的仓库（其中username为你的用户名），并拷贝其URL（类似：<a href="mailto:git@github.com">git@github.com</a>:harttle/harttle.github.io.git）</li>
+<li>在linux下运行 <code>git clone URL_YOU_COPIED</code>，得到文件夹 username.github.io</li>
+<li>运行 <code>git remote set-url origin URL_YOU_COPIED</code>，让git使用密钥验证，省去了每次push时输入密码。</li>
+</ol>
+
+<h3>生成站点文件</h3>
+
+<ol>
+<li><p>生成站点文件</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c"># 建立站点</span>
+jekyll new my-site
+<span class="c"># 拷贝至 GitHub 仓库</span>
+cp -r my-site/. username.github.io
+rm -r my-site
+<span class="c"># 添加编译生成的文件至 gitignore</span>
+<span class="nb">echo</span> <span class="s1">&#39;_site&#39;</span> &gt;&gt; .gitignore
+</code></pre></div></li>
+<li><p>编译站点，并运行本地服务</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c"># 编译生成静态站点，-w 选项可以监测文件变化并自动重新生成</span>
+jekyll build -w
+<span class="c"># 运行服务</span>
+jekyll serve
+</code></pre></div></li>
+<li><p>打开浏览器，访问 localhost:4000，将看到 jekyll 生成的默认站点。</p></li>
+</ol>
+
+<h3>自定义开发</h3>
+
+<ul>
+<li><p>文档</p>
+
+<ul>
+<li>了解 jekyll 静态站点框架：<a href="http://jekyllrb.com/docs/home/">http://jekyllrb.com/docs/home/</a></li>
+<li>视图模板使用 Liquid 模板语言：<a href="http://docs.shopify.com/themes/liquid-basics">http://docs.shopify.com/themes/liquid-basics</a></li>
+<li>博文采用 Markdown 语言：<a href="http://daringfireball.net/projects/markdown/">http://daringfireball.net/projects/markdown/</a></li>
+</ul></li>
+<li><p>jekyll 站点文件结构</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">.
+├── _config.yml       //站点的配置文件
+├── _drafts       //博客草稿
+|   ├── begin-with-the-crazy-ideas.textile
+|   └── on-simplicity-in-technology.markdown
+├── _includes     //供引入的html模块
+|   ├── footer.html
+|   └── header.html
+├── _layouts      //视图模板
+|   ├── default.html
+|   └── post.html
+├── _posts        //博客文章
+|   ├── 2007-10-29-why-every-programmer-should-play-nethack.textile
+|   └── 2009-04-26-barcamp-boston-4-roundup.textile
+├── _site     //jekyll 编译生成的站点
+└── index.html
+</code></pre></div></li>
+<li><p>站点配置文件：_config.yml
+该文件采用 <strong><a href="http://www.yaml.org/spec/1.2/spec.html">YAML</a></strong> 标记语言组织内容，在该文件修改站点保留变量，或者添加自定义变量。这里定义的变量在模板中可通过 <code>site.VARIABLE_NAME</code> 访问（记住重启jekyll服务）。</p>
+<div class="highlight"><pre><code class="yaml language-yaml" data-lang="yaml"><span class="c1"># GitHUb Pages 默认的 Markdown 引擎（即 GFM）    </span>
+<span class="l-Scalar-Plain">markdown</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">redcarpet</span>
+<span class="c1"># Latex 支持</span>
+<span class="l-Scalar-Plain">markdown</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">maruku</span>
+</code></pre></div></li>
+</ul>
+
+<h3>同步至 GitHub</h3>
+
+<ol>
+<li><p>运行 git 提交至GitHub</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c"># 提交改动至HEAD版本</span>
+git commit -a
+<span class="c"># 同步HEAD至服务器</span>
+git push
+</code></pre></div></li>
+<li><p>GitHub将会在10分钟内编译你的文件生成静态站点，访问 username.github.io 即可查看博客。</p></li>
+</ol>
+
+<h2>Tips</h2>
+
+<h3>Jekyll的使用</h3>
+
+<ul>
+<li><p>变量定义与访问</p>
+
+<ul>
+<li>在 <code>_config.yml</code> 中定义的变量，可通过 <code>site.VAL</code> 访问；</li>
+<li>在子模板（通过 <code>layout</code> 继承的页面）中定义的变量，可通过 <code>page.VAL</code> 访问；</li>
+<li><code>content</code> 为子模板的内容</li>
+<li><code>page.content</code> 为经过markdown转换的末级子模板的内容</li>
+</ul></li>
+<li><p>Jekyll 插件在 GitHub Pages 中不能使用，因为 GitHub Pages 的编译使用 <code>--safe</code> 参数；但可以在本地编译后同步至 GitHub 来取代 GitHub 的自动编译。</p></li>
+<li><p><code>Include file &#39;&#39; contains invalid characters or sequences</code> 标签参数只能为常量，被包含文件中的 liquid 语句以文件为单元解析。</p></li>
+</ul>
+
+<h3>Jekyll plugin</h3>
+
+<p>GitHub 出于安全性的考虑，jekyll 引擎默认采用 <code>--safe</code> 参数，这会禁用 Jekyll 的插件。如果希望开启 Jekyll 插件来获得更多的支持，只能关闭 GitHub 的 Jekyll 引擎。</p>
+
+<p>我们选择在 username.github.io repo 中新建一个叫 <code>dev</code> 的 branch 来做开发，把生成的静态站点 <code>_site</code> push 到 master 分支。当然，我们需要把master上的jekyll文件复制过来。</p>
+
+<ol>
+<li><p>新建 branch</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c"># 建立dev目录</span>
+mkdir dev   
+<span class="nb">cd </span>dev
+
+<span class="c"># 建立git仓库，并连接到github</span>
+git init    
+git remote add origin git@github.com:harttle/harttle.github.io.git 
+
+<span class="c"># 新建分支</span>
+git checkout -b dev 
+git push --set-upstream origin dev
+
+<span class="c"># 现在可以开始工作了</span>
+git push origin dev
+git pull origin dev
+</code></pre></div></li>
+<li><p>迁移 Jekyll 站点</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c"># 关闭 github 的 jekyll 引擎</span>
+touch dev/.nojekyll
+
+<span class="c"># 拷贝文件</span>
+cp -r harttle.github.io/. dev/
+
+<span class="c"># 编译站点</span>
+<span class="nb">cd </span>dev/
+jekyll build -d ../harttle.github.io/
+
+<span class="c"># 运行站点</span>
+jekyll serve -d ../harttle.github.io/
+</code></pre></div></li>
+</ol>
+
+    
+      <style>
+  /* JiaThis & Uyan bootstrap fix */
+	.jiathis_style *, .jiathis_style,
+  .jiathis_style_24x24 *, .jiathis_style_24x24{
+      -webkit-box-sizing: content-box!important;
+      -moz-box-sizing: content-box!important;
+      box-sizing: content-box!important;
+  }
+  .jiathis_style_24x24{
+          margin-top: 20px;
+  }
+</style>
+
+
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_24x24 pull-right">
+	<a class="jiathis_button_fb"></a>
+	<a class="jiathis_button_linkedin"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<!--a class="jiathis_button_tsina"></a-->
+	<a class="jiathis_button_weixin"></a>
+	<!--a href="http://www.jiathis.com/share?uid=1851884" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a-->
+	<!--a class="jiathis_counter_style"></a-->
+</div>
+<script type="text/javascript">
+var jiathis_config = {data_track_clickback:'true'};
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js?uid=1372495112151668" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+
+<div class="clearfix"></div>
+<hr/>
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'harttleland'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    </div>
+</div>
+
+
+  </div>
+
+</div>
+
+      </div>
+      
+    </div>
+
+    <div id="footer">
+      <div class="container">
+	<div class="credit nowrap">
+	  <p class="text-muted" title="Copyright © 2013 Harttle. Hosted by GitHub and powered by Jekyll.">
+	    Copyright © 2013 
+	    <a href="//harttle.github.io">Harttle</a>. Hosted by
+	    <a href="//github.com/" target="_blank">GitHub</a>
+	    and powered by
+	    <a href="//jekyllrb.com/">Jekyll</a>.
+	    
+	  </p>
+	  <div class="pull-right hidden-xs follow">
+	    <a href="https://www.facebook.com/harttle" target="_blank">
+	      <i class="fa fa-facebook-square fa-lg"></i>
+	    </a>
+	    <a href="http://www.linkedin.com/profile/view?id=294339963" target="_blank">
+	      <i class="fa fa-linkedin-square fa-lg"></i>
+	    </a>
+	    <a href="https://plus.google.com/113657098095399233141?rel=author" target="_blank">
+	      <i class="fa fa-google-plus-square fa-lg"></i>
+	    </a>
+	  </div>	  
+	</div>
+      </div>
+    </div>
+<!-- content -->
+
+<!-- script -->
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="//oss.maxcdn.com/libs/html5shiv/3.6.2/html5shiv.js"></script>
+      <script src="//v3.bootcss.com/docs-assets/js/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="/assets/jquery/jquery.scrollUp.min.js"></script>
+    <script src="/assets/jquery/jquery.lazyload.min.js" type="text/javascript"></script>
+    
+    <!-- Bootstrap -->
+    <script src="/assets/bootstrap-3.0.0/js/bootstrap.min.js"></script>
+    
+    
+    
+
+
+<script>
+  $(function(){    
+    var toc = getTOC($('.post-display .right'));
+    if (toc != null) {
+      $('.sidebar').append(toc);
+      
+      //sidebar affix, this offset is for sidebar position recognition
+      setTimeout(function () {
+          var $sideBar = $('.sidebar')
+          $sideBar.affix({
+              offset: {                
+                  top: function () {                    
+                      var offsetTop      = $sideBar.offset().top;
+                      var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10);
+                      sideBarMargin     += parseInt($('#page-content').css('margin-top'), 10);
+                      return (this.top = offsetTop - navHeight - sideBarMargin);
+                  },
+                  bottom: function(){
+                    var sideBarMargin  = parseInt($sideBar.children(0).css('margin-bottom'), 10);
+                    return (this.bottom = footHeight + sideBarMargin);
+                  }
+              }
+          });
+      },100);
+      
+      //sidebar scroll spy
+      $('body').scrollspy({
+        target: '.sidebar',
+        offset: navHeight + 10  //make sure to spy the element when scrolled to
+      }); 
+    }
+    else{
+      $('.post-display .right').removeClass('col-md-9');
+      $('.post-display').removeClass('row-fluid');
+      $('.post-display .left').remove();
+    }
+  });
+  
+  //生成目录
+  function getTOC($content) {    
+    var $toc = $('<ul class="nav level-0" >').addClass("nav sidenav");
+
+    var base_level = 1;
+    while ($content.find('h' + base_level).length < 1 && base_level < 7) base_level += 1;
+    if (base_level == 7) return null;
+    
+    $content.find(':header').each(function (i) {
+      var $this = $(this);
+      $this.attr('id', i);
+      
+      var level = parseInt(this.nodeName.substr(1));
+      var offset = level - base_level;
+      
+      var li = new $('<li/>')
+          .append('<a href="#' + i + '" class="animate">' + $this.text() + '</a>')
+          .append($('<ul class="nav level-'+(offset+1)+'"/>'));
+      
+      $('<div>').append($toc).find('ul.level-'+offset+':last').append(li);
+    });
+    return $toc;
+  }
+</script>
+
+<!-- latex render begin -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+  MathJax.Hub.Queue(function () {
+    $('body').scrollspy('refresh');
+  });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
+<!-- html config: TeX-MML-AM_HTMLorMML -->
+<!-- latex render end -->
+
+
+    
+    <script>
+      var navHeight = 50;
+      var footHeight = $('#footer').outerHeight(true);
+      $(function(){
+	
+        //更新菜单
+        $('.nav #blog').attr('class','active');
+        
+        //激活工具提示
+        $('[data-toggle="tooltip"]').tooltip();
+        
+        //图片延迟加载
+        $("img.lazy").lazyload({effect : "fadeIn", skip_invisible : false});	//bootstrap thumbnail img will be invisible at the begining
+        
+        //回到顶部按钮
+        $.scrollUp({
+	  scrollName: 'scrollUp',topDistance: '300',topSpeed: 300,animation: 'fade',animationInSpeed: 500,
+	  animationOutSpeed: 500,scrollText: '',activeOverlay: false,
+	});	
+        
+        //页面内链接滑动效果
+        $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
+        $('a.animate').click(function(){
+          var offset = navHeight;
+          if ($(this).attr('offset')) {
+            offset += parseInt($(this).attr('offset')); 
+          }
+          $body.animate({scrollTop: $($(this).attr('href')).offset().top - offset}, 500);
+          return false;
+        });        
+      });
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-45491170-1', 'harttle.github.io');
+      ga('send', 'pageview');
+    </script>
+<!-- script -->
+
+  </body>
+</html>
