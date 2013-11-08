@@ -342,8 +342,7 @@
 
 <ol>
 <li><p><code>~/.vimrc</code> 中加入</p>
-<div class="highlight"><pre><code class="vim language-vim" data-lang="vim"><span class="c">&quot; BufNewFile 对应读取 *.plt</span>
-<span class="c">&quot; BufRead 对应新建 *.plt</span>
+<div class="highlight"><pre><code class="vim language-vim" data-lang="vim"><span class="c">&quot; BufNewFile 对应读取 *.plt，BufRead 对应新建 *.plt</span>
 <span class="k">au</span> <span class="nb">BufNewFile</span><span class="p">,</span><span class="nb">BufRead</span> *.plt  source <span class="p">~</span><span class="sr">/.vim/</span>after<span class="sr">/ftplugin/</span>plt.<span class="k">vim</span>
 </code></pre></div></li>
 <li><p>在 <code>～/.vim/after/ftplugin</code> 中加入 *.plt 的配置文件 <code>plt.vim</code>。</p></li>

@@ -118,8 +118,7 @@
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;&lt;code&gt;~/.vimrc&lt;/code&gt; 中加入&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;vim language-vim&quot; data-lang=&quot;vim&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot; BufNewFile 对应读取 *.plt&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;&amp;quot; BufRead 对应新建 *.plt&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;vim language-vim&quot; data-lang=&quot;vim&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot; BufNewFile 对应读取 *.plt，BufRead 对应新建 *.plt&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;au&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;BufNewFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;BufRead&lt;/span&gt; *.plt  source &lt;span class=&quot;p&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/.vim/&lt;/span&gt;after&lt;span class=&quot;sr&quot;&gt;/ftplugin/&lt;/span&gt;plt.&lt;span class=&quot;k&quot;&gt;vim&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;在 &lt;code&gt;～/.vim/after/ftplugin&lt;/code&gt; 中加入 *.plt 的配置文件 &lt;code&gt;plt.vim&lt;/code&gt;。&lt;/p&gt;&lt;/li&gt;

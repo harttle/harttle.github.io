@@ -9,7 +9,7 @@ body{
 .hl-header {
   margin-top: 0;
   color: #cdbfe3;
-  background-image: url(/assets/img/bg.jpg);
+  background-image: url(/assets/img/bg.png);
   padding: 30px 15px 40px; /* side padding builds on .container 15px, so 30px */
   font-size: 16px;
   text-align: center;
