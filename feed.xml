@@ -8,7 +8,7 @@
 		
 			<item>
 				<title>Computer Organization and Design</title>
-				<description>&lt;h1&gt;Computer Abstractions and Technology&lt;/h1&gt;
+				<description>&lt;h1&gt;Abstractions&lt;/h1&gt;
 
 &lt;h2&gt;Concepts&lt;/h2&gt;
 
@@ -115,13 +115,306 @@ $$&lt;/p&gt;
 
 &lt;p&gt;Execution time is the only valid and unimpeachable measure of performance.&lt;/p&gt;
 
-&lt;h1&gt;Instructions: Language of the Computer&lt;/h1&gt;
+&lt;h1&gt;Instructions&lt;/h1&gt;
 
-&lt;h2&gt;Introduction&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Common goal of computer designers: to find a language that makes it easy to build the hardware and the compiler while maximizing performance and minimizing cost and power.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Stored-program concept&lt;/strong&gt; &lt;/p&gt;
+
+&lt;p&gt;The idea that instructions and data of many types can be stored in memory as numbers, leading to the stored-program computer.&lt;/p&gt;
+
+&lt;h2&gt;Design Principle&lt;/h2&gt;
+
+&lt;p&gt;Each category of MIPS instructions is associates with constructs that appear in programming language:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The arithmetic: assignment statements.&lt;/li&gt;
+&lt;li&gt;Data transfer: dealing with data structures like arrays or structures.&lt;/li&gt;
+&lt;li&gt;Conditional branches: &lt;em&gt;if&lt;/em&gt; statement.&lt;/li&gt;
+&lt;li&gt;Unconditional jumps: procedure call and returns and &lt;em&gt;for&lt;/em&gt;, &lt;em&gt;case/switch&lt;/em&gt; statements.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Simplicity favors regularity&lt;/p&gt;
+
+&lt;p&gt;Requiring every instruction to have exactly three operands, no more and no less, conforms to the philosophy of keeping the hardware simple.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Smaller is faster&lt;/p&gt;
+
+&lt;p&gt;Number of registers is limited in 32. A large number of registerss may increse the clock cycle time simply because it takes electronic signals longer when they must travel farther.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Big-endian and Small-endian&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Big-endian: computers use the address of the leftmost byte ( or &amp;quot;big end&amp;quot; ) as the word address.
+Small-endian: otherwise.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;MIPS is in the big-endian camp.&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Make the common case fast&lt;/p&gt;
+
+&lt;p&gt;Avoid the load instruction when arithmetic instruction&amp;#39;s one operand is a constant.&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;addi    $s3,    $s3,    4
+
+# instead of
+lw      $t0,    AddrConst4($s1)
+add     $s3,    $s3,    $t0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;One&amp;#39;s complement&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A notation that represents the most negative value by 10...000 and the most positive value by 01...11, leaving an equal number of negatives and positives but ending up with two 0s. &lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The term is also used to mean the inversion of every bit.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;two&amp;#39;s complement&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;$-x = \bar{x}+1$, leading 0s mean positive, and leading 1s mean negative.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Two&amp;#39;s complement gets its name from the rule that the unsigned sum of an n-bit number and its negative is $2^n$.&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Good design demands good compromises&lt;/p&gt;
+
+&lt;p&gt;The compromise chosen by the MIPS designers is to keep &lt;strong&gt;all instructions the same length&lt;/strong&gt; , thereby requiring different kinds of instruction formats for different kinds of instructions.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;R-type: op-6bits, rs-5bits, rt-5bits, rd-5bits, shamt-5bits, funct-6bits.&lt;/li&gt;
+&lt;li&gt;I-type: op-6bits, rs-5bits, rt-5bits, const or addr-16bits&lt;/li&gt;
+&lt;li&gt;J-type: op-6bits, addr-26bits&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;The simplicity of the &amp;quot;equipment&amp;quot;&lt;/strong&gt; : MIPS doesn&amp;#39;t include branch on less than (&lt;code&gt;blt&lt;/code&gt; is a pseudo-instruction) because it&amp;#39;s too complicated; either it would stretch the clock cycle time or it would take extra clock cycles per instruction. Two faster instructions (&lt;code&gt;slt&lt;/code&gt; and &lt;code&gt;beq&lt;/code&gt;) are more usefull.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2&gt;Register usage&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Spilling registers&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The process of putting less commonly used variables (or those needed later) into memory.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Dada-transfer instruction&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A command that moves data between memory and registers.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Sign extension&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Copy the sign repeatedly to fill the rest of the bits in the left.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Alignment restriction&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;MIPS tries to keep the stack aligned to word addresses, allowing the program to always use &lt;code&gt;lw&lt;/code&gt; and &lt;code&gt;sw&lt;/code&gt; to access the stack.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;C string variable or an array of bytes will pack 4 bytes per word, and a Java variable or array of shorts packs 2 halfwords per word.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;Stack spilling&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;$sp&lt;/code&gt; is a stack pointer, which is adjusted by one word for each register that is saved or restored.&lt;/p&gt;
+
+&lt;h3&gt;Procedure call&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;preserved by caller  &lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$t0-$t9&lt;/code&gt;: ten temporary registers, &lt;code&gt;$a0-$a3&lt;/code&gt;: four argument registers, &lt;code&gt;$v0-v1&lt;/code&gt;: two return registers&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Not preserved by the calee on a procedure call. The caller will push them.&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;preserved by callee  &lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$s0-$s7&lt;/code&gt;: eight saved registers, &lt;code&gt;$ra&lt;/code&gt;: return address, &lt;code&gt;$sp&lt;/code&gt;: the stack pointer and stack above &lt;code&gt;$sp&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Must be preserved on a procedure call. If used, the callee saves and restores them.  &lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Iteration can significantly improve performance by removing the overhead associated with procedure calls.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;Data allocate&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/mips-mem.gif&quot; alt=&quot;mips-mem&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$gp&lt;/code&gt;: the global pointer that is reserved to point to the static area.  &lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$fp&lt;/code&gt;: A value denoting the location of the saved registers and local variables for a given procedure.&lt;/p&gt;
+
+&lt;p&gt;The frame point is convenient because all references to variables in the stack within a procedure will have the same offset.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;more than 4 paras: the trailing params are stored at &lt;code&gt;$fp+1&lt;/code&gt;, &lt;code&gt;$fp+2&lt;/code&gt;, etc.
+Pointers vs Arrays: we calculate address (index multiply 4) in array addressing, while add 4 directly in pointer addressing.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2&gt;Addressing Mode&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Basic block&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Basic block is a sequence of instructions without branches, except possibly at the end , and without branch targets or branch labels, except possibly at the begining.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;One of the first early phases of compilation is breaking the program into basic blocks.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;Branch instruction&lt;/h3&gt;
+
+&lt;p&gt;Branch instructions use 16-bit field address, which means no program will larger than 2^16.&lt;/p&gt;
+
+&lt;p&gt;While the destination of branch instructions is likely to be close to the branch. If we use &lt;strong&gt;PC-relative addressing&lt;/strong&gt; , the sum will allow the program to be as large as 2^32.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;While the &lt;code&gt;L1&lt;/code&gt; in &lt;code&gt;beq    $s0,    $s1,    L1&lt;/code&gt; could be bigger than 2^16, MIPS will break it into 2 instructions like:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;    bne     $s0,    $s1,    L2
+    j       L1
+L2:
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/blockquote&gt;
+
+&lt;h3&gt;Jump instruction&lt;/h3&gt;
+
+&lt;p&gt;Jump instructions use 26-bit field adress, MIPS stretch the distance by having it refer to the number of &lt;em&gt;words&lt;/em&gt; to the next instruction instead of number of &lt;em&gt;bytes&lt;/em&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The loader and linker must be careful to avoid placing a program across an address boundary of 256MB, which is 2^28 bit. &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;Summary&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Register addresing: &lt;code&gt;jr   $ra&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;PC-relative addressing: &lt;code&gt;bne  $s0,    $s1,    Label&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Pseudodirect addressing: &lt;code&gt;j   Label&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Parallelism and Synchronization&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Data Race&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Two memory accesses form a data race if they are from different threads to ssame location, at least one is a write, and they occur one after another.&lt;/p&gt;
+
+&lt;p&gt;One typical operation for building synchronization operations is the &lt;em&gt;atomic exchange&lt;/em&gt; or &lt;em&gt;atomic swap&lt;/em&gt;, while the challenge lies in that it requires both a memory read and a write in a single, uninterruptible instruction.&lt;/p&gt;
+
+&lt;p&gt;MIPS contains a pair of instructions called a &lt;em&gt;load linked&lt;/em&gt; and &lt;em&gt;store conditional&lt;/em&gt;. These are used in sequence: if the content of the memory specified by &lt;em&gt;load linked&lt;/em&gt; is changed before the &lt;em&gt;store conditional&lt;/em&gt;, then the store fails.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Although it was presented for multi-processor sync, atomic exchange is also useful for the OS in dealing with multiple processes in a single processor. To ensure nothing interferes in a single processor, the &lt;em&gt;store conditional&lt;/em&gt; also fails if the processor does a context switch between the two instructions.&lt;/p&gt;
+
+&lt;p&gt;Store conditional will fail after either another attempted store or any exception, in particular, only register-register instructions can safely be permited between the two instructions; otherwise, it is possible to create deadlock situations.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2&gt;Translating &amp;amp; Starting&lt;/h2&gt;
+
+&lt;h3&gt;Compiler&lt;/h3&gt;
+
+&lt;p&gt;The compiler transforms the C program to &lt;em&gt;assembly language program&lt;/em&gt;, a symbolic form of what the machine understands.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Assembly Language&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A symbolic language that can be translated into binary machine language.&lt;/p&gt;
+
+&lt;h3&gt;Assembler&lt;/h3&gt;
+
+&lt;p&gt;Assembler translate the &lt;em&gt;assembly language program&lt;/em&gt; into machine language program, called object file.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Pseudoinstructions give MIPS a richer set of assembly language instructions than those implemented by the hardware. The only cost is reserving one register, &lt;code&gt;$at&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;Linker&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Linker&lt;/strong&gt;, also called &lt;em&gt;link editor&lt;/em&gt;, is a systems program that combines independenty assembled machine language programs and resolves all undefined labels into an executable file. There are 3 steps for the linker:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Place code and data modules symbolically in memory.&lt;/li&gt;
+&lt;li&gt;Determine the addresses of data and instrucion labels.&lt;/li&gt;
+&lt;li&gt;Patch both the internal and external references.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Linker allows compiling and assembling each procedure independently, particulaly library routines, avoiding processing the whole program every time a small routine changes.
+Typically, the &lt;em&gt;executable file&lt;/em&gt; has the same format as an object file, except that it contains no unresolved references.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;Loader&lt;/h3&gt;
+
+&lt;p&gt;A systems program that places an object program in main memory so that it is ready to execute.&lt;/p&gt;
+
+&lt;h3&gt;Dynamically linked libraries&lt;/h3&gt;
+
+&lt;p&gt;The static libraries has a few cons:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The library routines become part of the exe file. The program need re-compiled when library updated.&lt;/li&gt;
+&lt;li&gt;It loads all libs that are called anywhere in the exe, even not called.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Lazy procedure linkage of DLLs:&lt;/p&gt;
+
+&lt;p&gt;The first time the lib is called, the program calls the dummy entry and follows the indirect jump. It points to code that puts a number in a register to identify the desired lib and jumps to the dynamic linker/loader. The linker/loader finds the lib, remap it, and chages the address in the indirect jump location to the lib.&lt;/p&gt;
+
+&lt;h3&gt;Starging a Java Program&lt;/h3&gt;
+
+&lt;p&gt;Rather than compile to the assemly language of a target computer, Java is compiled first to the instructions that are easy tointerpret: the &lt;em&gt;Java bytecode&lt;/em&gt; instruction set. A interpreter called &lt;em&gt;Java Virtual Machine&lt;/em&gt; can execute Java bytecodes.&lt;/p&gt;
+
+&lt;p&gt;Pro: portability; Con: lower performance. &lt;em&gt;Just In Time compilers (JIT)&lt;/em&gt; typically find the &amp;quot;hot&amp;quot; methods and compile them into native instruction set, and is saved for next run.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Typically, the unoptimized C program is faster than the interpreted Java code. Using the JIT compiler makes Java faster than the unoptimized C and slightly slower than highest optimized C code.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2&gt;Fallacies and Pitfalls&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Fallacy: More powerful instructions mean higher performance.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Complex instructions consume more time.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Fallacy: Write in assembly language to obtain the highest performance.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This battle between compilers and assembly language coders is one situation in which humans are losing ground. Today&amp;#39;s C compilers generally ignore register hints made by programmers.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Fallacy: The importance of commercial binary compatibility means successful instruction set don&amp;#39;t change.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;While backwards binary compatibility is sacrosanct, the x86 architecture has grown dramatically.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Fallacy: Forgetting that sequential word addresses in machines with byte addressing do not differ by one.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The address of next word can be found by incrementing the address in a register by the size of word, not one.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Pitfall: Using a pointer to an automatic variable outside its defining procedure.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The memory that contains the an array that is local to that procedure will be reused as soon as the procedure returns.&lt;/p&gt;
 </description>
-				<pubDate>Mon, 11 Nov 2013 23:43:16 +0800</pubDate>
+				<pubDate>Wed, 13 Nov 2013 00:39:05 +0800</pubDate>
 				<link>http://harttle.github.io/%E7%AC%94%E8%AE%B0/computer-organization-and-design.html</link>
 				<guid isPermaLink="true">http://harttle.github.io/%E7%AC%94%E8%AE%B0/computer-organization-and-design.html</guid>
+			</item>
+		
+			<item>
+				<title>Modern Operating Systems</title>
+				<description></description>
+				<pubDate>Tue, 12 Nov 2013 20:17:08 +0800</pubDate>
+				<link>http://harttle.github.io/%E7%AC%94%E8%AE%B0/modern-os.html</link>
+				<guid isPermaLink="true">http://harttle.github.io/%E7%AC%94%E8%AE%B0/modern-os.html</guid>
 			</item>
 		
 			<item>
@@ -334,14 +627,6 @@ map &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;F8&lt;span class=&quot;
 				<pubDate>Fri, 08 Nov 2013 00:00:00 +0800</pubDate>
 				<link>http://harttle.github.io/linux/vim-advanced.html</link>
 				<guid isPermaLink="true">http://harttle.github.io/linux/vim-advanced.html</guid>
-			</item>
-		
-			<item>
-				<title>Modern Operating Systems</title>
-				<description></description>
-				<pubDate>Thu, 07 Nov 2013 21:50:38 +0800</pubDate>
-				<link>http://harttle.github.io/%E7%AC%94%E8%AE%B0/modern-os.html</link>
-				<guid isPermaLink="true">http://harttle.github.io/%E7%AC%94%E8%AE%B0/modern-os.html</guid>
 			</item>
 		
 			<item>
@@ -908,165 +1193,23 @@ java org.apache.lucene.demo.SearchFiles
 		
 			<item>
 				<title>test</title>
-				<description>&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;h1&gt;h1&lt;/h1&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;h2&gt;h2&lt;/h2&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;h3&gt;h3&lt;/h3&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;h3&gt;h3&lt;/h3&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;h1&gt;h1&lt;/h1&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;h2&gt;h2&lt;/h2&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;h3&gt;h3&lt;/h3&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;h3&gt;h3&lt;/h3&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
-
-&lt;p&gt;contents&lt;/p&gt;
+				<description>&lt;ol&gt;
+&lt;li&gt;Stack spilling&lt;br&gt;
+&lt;code&gt;$sp&lt;/code&gt; is a stack pointer, which is adjusted by one word for each register that is saved or restored.&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Procedure call  &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;preserved by caller&lt;br&gt;
+fdsafsa  &lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;fad&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;fdas&lt;br&gt;
+fdasf&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;df&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
 </description>
 				<pubDate>Tue, 29 Oct 2013 00:00:00 +0800</pubDate>
 				<link>http://harttle.github.io/%E6%97%A5%E5%BF%97/test.html</link>

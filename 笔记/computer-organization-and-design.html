@@ -219,7 +219,7 @@
           返回列表 <span class="glyphicon glyphicon-hand-left"></span>
       </a>
       <span class="pull-right label label-default hidden-xs">
-          <span class="glyphicon glyphicon-time"></span> 2013年11月11日
+          <span class="glyphicon glyphicon-time"></span> 2013年11月13日
       </span>
     </div>
   </div>
@@ -235,7 +235,7 @@
       <div class="sidebar"></div>
     </div>
     <div class="col-md-9 right md">
-      <h1>Computer Abstractions and Technology</h1>
+      <h1>Abstractions</h1>
 
 <h2>Concepts</h2>
 
@@ -342,9 +342,294 @@ $$</p>
 
 <p>Execution time is the only valid and unimpeachable measure of performance.</p>
 
-<h1>Instructions: Language of the Computer</h1>
+<h1>Instructions</h1>
 
-<h2>Introduction</h2>
+<blockquote>
+<p>Common goal of computer designers: to find a language that makes it easy to build the hardware and the compiler while maximizing performance and minimizing cost and power.</p>
+</blockquote>
+
+<p><strong>Stored-program concept</strong> </p>
+
+<p>The idea that instructions and data of many types can be stored in memory as numbers, leading to the stored-program computer.</p>
+
+<h2>Design Principle</h2>
+
+<p>Each category of MIPS instructions is associates with constructs that appear in programming language:</p>
+
+<ul>
+<li>The arithmetic: assignment statements.</li>
+<li>Data transfer: dealing with data structures like arrays or structures.</li>
+<li>Conditional branches: <em>if</em> statement.</li>
+<li>Unconditional jumps: procedure call and returns and <em>for</em>, <em>case/switch</em> statements.</li>
+</ul>
+
+<ol>
+<li><p>Simplicity favors regularity</p>
+
+<p>Requiring every instruction to have exactly three operands, no more and no less, conforms to the philosophy of keeping the hardware simple.</p></li>
+<li><p>Smaller is faster</p>
+
+<p>Number of registers is limited in 32. A large number of registerss may increse the clock cycle time simply because it takes electronic signals longer when they must travel farther.</p>
+
+<p><strong>Big-endian and Small-endian</strong></p>
+
+<p>Big-endian: computers use the address of the leftmost byte ( or &quot;big end&quot; ) as the word address.
+Small-endian: otherwise.</p>
+
+<blockquote>
+<p>MIPS is in the big-endian camp.</p>
+</blockquote></li>
+<li><p>Make the common case fast</p>
+
+<p>Avoid the load instruction when arithmetic instruction&#39;s one operand is a constant.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">addi    $s3,    $s3,    4
+
+# instead of
+lw      $t0,    AddrConst4($s1)
+add     $s3,    $s3,    $t0
+</code></pre></div>
+<p><strong>One&#39;s complement</strong></p>
+
+<p>A notation that represents the most negative value by 10...000 and the most positive value by 01...11, leaving an equal number of negatives and positives but ending up with two 0s. </p>
+
+<blockquote>
+<p>The term is also used to mean the inversion of every bit.</p>
+</blockquote>
+
+<p><strong>two&#39;s complement</strong></p>
+
+<p>$-x = \bar{x}+1$, leading 0s mean positive, and leading 1s mean negative.</p>
+
+<blockquote>
+<p>Two&#39;s complement gets its name from the rule that the unsigned sum of an n-bit number and its negative is $2^n$.</p>
+</blockquote></li>
+<li><p>Good design demands good compromises</p>
+
+<p>The compromise chosen by the MIPS designers is to keep <strong>all instructions the same length</strong> , thereby requiring different kinds of instruction formats for different kinds of instructions.</p>
+
+<ul>
+<li>R-type: op-6bits, rs-5bits, rt-5bits, rd-5bits, shamt-5bits, funct-6bits.</li>
+<li>I-type: op-6bits, rs-5bits, rt-5bits, const or addr-16bits</li>
+<li>J-type: op-6bits, addr-26bits</li>
+</ul>
+
+<p><strong>The simplicity of the &quot;equipment&quot;</strong> : MIPS doesn&#39;t include branch on less than (<code>blt</code> is a pseudo-instruction) because it&#39;s too complicated; either it would stretch the clock cycle time or it would take extra clock cycles per instruction. Two faster instructions (<code>slt</code> and <code>beq</code>) are more usefull.</p></li>
+</ol>
+
+<h2>Register usage</h2>
+
+<p><strong>Spilling registers</strong></p>
+
+<blockquote>
+<p>The process of putting less commonly used variables (or those needed later) into memory.</p>
+</blockquote>
+
+<p><strong>Dada-transfer instruction</strong></p>
+
+<p>A command that moves data between memory and registers.</p>
+
+<p><strong>Sign extension</strong></p>
+
+<p>Copy the sign repeatedly to fill the rest of the bits in the left.</p>
+
+<p><strong>Alignment restriction</strong></p>
+
+<p>MIPS tries to keep the stack aligned to word addresses, allowing the program to always use <code>lw</code> and <code>sw</code> to access the stack.</p>
+
+<blockquote>
+<p>C string variable or an array of bytes will pack 4 bytes per word, and a Java variable or array of shorts packs 2 halfwords per word.</p>
+</blockquote>
+
+<h3>Stack spilling</h3>
+
+<p><code>$sp</code> is a stack pointer, which is adjusted by one word for each register that is saved or restored.</p>
+
+<h3>Procedure call</h3>
+
+<ul>
+<li><p>preserved by caller  </p>
+
+<p><code>$t0-$t9</code>: ten temporary registers, <code>$a0-$a3</code>: four argument registers, <code>$v0-v1</code>: two return registers</p>
+
+<blockquote>
+<p>Not preserved by the calee on a procedure call. The caller will push them.</p>
+</blockquote></li>
+<li><p>preserved by callee  </p>
+
+<p><code>$s0-$s7</code>: eight saved registers, <code>$ra</code>: return address, <code>$sp</code>: the stack pointer and stack above <code>$sp</code></p>
+
+<blockquote>
+<p>Must be preserved on a procedure call. If used, the callee saves and restores them.  </p>
+</blockquote></li>
+</ul>
+
+<blockquote>
+<p>Iteration can significantly improve performance by removing the overhead associated with procedure calls.</p>
+</blockquote>
+
+<h3>Data allocate</h3>
+
+<p><img src="/assets/img/blog/mips-mem.gif" alt="mips-mem"></p>
+
+<p><code>$gp</code>: the global pointer that is reserved to point to the static area.  </p>
+
+<p><code>$fp</code>: A value denoting the location of the saved registers and local variables for a given procedure.</p>
+
+<p>The frame point is convenient because all references to variables in the stack within a procedure will have the same offset.</p>
+
+<blockquote>
+<p>more than 4 paras: the trailing params are stored at <code>$fp+1</code>, <code>$fp+2</code>, etc.
+Pointers vs Arrays: we calculate address (index multiply 4) in array addressing, while add 4 directly in pointer addressing.</p>
+</blockquote>
+
+<h2>Addressing Mode</h2>
+
+<p><strong>Basic block</strong></p>
+
+<p>Basic block is a sequence of instructions without branches, except possibly at the end , and without branch targets or branch labels, except possibly at the begining.</p>
+
+<blockquote>
+<p>One of the first early phases of compilation is breaking the program into basic blocks.</p>
+</blockquote>
+
+<h3>Branch instruction</h3>
+
+<p>Branch instructions use 16-bit field address, which means no program will larger than 2^16.</p>
+
+<p>While the destination of branch instructions is likely to be close to the branch. If we use <strong>PC-relative addressing</strong> , the sum will allow the program to be as large as 2^32.</p>
+
+<blockquote>
+<p>While the <code>L1</code> in <code>beq    $s0,    $s1,    L1</code> could be bigger than 2^16, MIPS will break it into 2 instructions like:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">    bne     $s0,    $s1,    L2
+    j       L1
+L2:
+</code></pre></div></blockquote>
+
+<h3>Jump instruction</h3>
+
+<p>Jump instructions use 26-bit field adress, MIPS stretch the distance by having it refer to the number of <em>words</em> to the next instruction instead of number of <em>bytes</em></p>
+
+<blockquote>
+<p>The loader and linker must be careful to avoid placing a program across an address boundary of 256MB, which is 2^28 bit. </p>
+</blockquote>
+
+<h3>Summary</h3>
+
+<ul>
+<li>Register addresing: <code>jr   $ra</code></li>
+<li>PC-relative addressing: <code>bne  $s0,    $s1,    Label</code></li>
+<li>Pseudodirect addressing: <code>j   Label</code></li>
+</ul>
+
+<h2>Parallelism and Synchronization</h2>
+
+<p><strong>Data Race</strong></p>
+
+<p>Two memory accesses form a data race if they are from different threads to ssame location, at least one is a write, and they occur one after another.</p>
+
+<p>One typical operation for building synchronization operations is the <em>atomic exchange</em> or <em>atomic swap</em>, while the challenge lies in that it requires both a memory read and a write in a single, uninterruptible instruction.</p>
+
+<p>MIPS contains a pair of instructions called a <em>load linked</em> and <em>store conditional</em>. These are used in sequence: if the content of the memory specified by <em>load linked</em> is changed before the <em>store conditional</em>, then the store fails.</p>
+
+<blockquote>
+<p>Although it was presented for multi-processor sync, atomic exchange is also useful for the OS in dealing with multiple processes in a single processor. To ensure nothing interferes in a single processor, the <em>store conditional</em> also fails if the processor does a context switch between the two instructions.</p>
+
+<p>Store conditional will fail after either another attempted store or any exception, in particular, only register-register instructions can safely be permited between the two instructions; otherwise, it is possible to create deadlock situations.</p>
+</blockquote>
+
+<h2>Translating &amp; Starting</h2>
+
+<h3>Compiler</h3>
+
+<p>The compiler transforms the C program to <em>assembly language program</em>, a symbolic form of what the machine understands.</p>
+
+<p><strong>Assembly Language</strong></p>
+
+<p>A symbolic language that can be translated into binary machine language.</p>
+
+<h3>Assembler</h3>
+
+<p>Assembler translate the <em>assembly language program</em> into machine language program, called object file.</p>
+
+<blockquote>
+<p>Pseudoinstructions give MIPS a richer set of assembly language instructions than those implemented by the hardware. The only cost is reserving one register, <code>$at</code>.</p>
+</blockquote>
+
+<h3>Linker</h3>
+
+<p><strong>Linker</strong>, also called <em>link editor</em>, is a systems program that combines independenty assembled machine language programs and resolves all undefined labels into an executable file. There are 3 steps for the linker:</p>
+
+<ol>
+<li>Place code and data modules symbolically in memory.</li>
+<li>Determine the addresses of data and instrucion labels.</li>
+<li>Patch both the internal and external references.</li>
+</ol>
+
+<blockquote>
+<p>Linker allows compiling and assembling each procedure independently, particulaly library routines, avoiding processing the whole program every time a small routine changes.
+Typically, the <em>executable file</em> has the same format as an object file, except that it contains no unresolved references.</p>
+</blockquote>
+
+<h3>Loader</h3>
+
+<p>A systems program that places an object program in main memory so that it is ready to execute.</p>
+
+<h3>Dynamically linked libraries</h3>
+
+<p>The static libraries has a few cons:</p>
+
+<ul>
+<li>The library routines become part of the exe file. The program need re-compiled when library updated.</li>
+<li>It loads all libs that are called anywhere in the exe, even not called.</li>
+</ul>
+
+<p>Lazy procedure linkage of DLLs:</p>
+
+<p>The first time the lib is called, the program calls the dummy entry and follows the indirect jump. It points to code that puts a number in a register to identify the desired lib and jumps to the dynamic linker/loader. The linker/loader finds the lib, remap it, and chages the address in the indirect jump location to the lib.</p>
+
+<h3>Starging a Java Program</h3>
+
+<p>Rather than compile to the assemly language of a target computer, Java is compiled first to the instructions that are easy tointerpret: the <em>Java bytecode</em> instruction set. A interpreter called <em>Java Virtual Machine</em> can execute Java bytecodes.</p>
+
+<p>Pro: portability; Con: lower performance. <em>Just In Time compilers (JIT)</em> typically find the &quot;hot&quot; methods and compile them into native instruction set, and is saved for next run.</p>
+
+<blockquote>
+<p>Typically, the unoptimized C program is faster than the interpreted Java code. Using the JIT compiler makes Java faster than the unoptimized C and slightly slower than highest optimized C code.</p>
+</blockquote>
+
+<h2>Fallacies and Pitfalls</h2>
+
+<blockquote>
+<p>Fallacy: More powerful instructions mean higher performance.</p>
+</blockquote>
+
+<p>Complex instructions consume more time.</p>
+
+<blockquote>
+<p>Fallacy: Write in assembly language to obtain the highest performance.</p>
+</blockquote>
+
+<p>This battle between compilers and assembly language coders is one situation in which humans are losing ground. Today&#39;s C compilers generally ignore register hints made by programmers.</p>
+
+<blockquote>
+<p>Fallacy: The importance of commercial binary compatibility means successful instruction set don&#39;t change.</p>
+</blockquote>
+
+<p>While backwards binary compatibility is sacrosanct, the x86 architecture has grown dramatically.</p>
+
+<blockquote>
+<p>Fallacy: Forgetting that sequential word addresses in machines with byte addressing do not differ by one.</p>
+</blockquote>
+
+<p>The address of next word can be found by incrementing the address in a register by the size of word, not one.</p>
+
+<blockquote>
+<p>Pitfall: Using a pointer to an automatic variable outside its defining procedure.</p>
+</blockquote>
+
+<p>The memory that contains the an array that is local to that procedure will be reused as soon as the procedure returns.</p>
 
     
       <style>
