@@ -7,137 +7,6 @@
 		<atom:link href="http://harttle.github.io/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
-				<title>Vim 使用</title>
-				<description>&lt;p&gt;Vim是从vi发展出来的一个文本编辑器。代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。和Emacs并列成为类Unix系统用户最喜欢的编辑器。&lt;/p&gt;
-
-&lt;p&gt;文档参见：&lt;a href=&quot;http://vimdoc.sourceforge.net/&quot;&gt;http://vimdoc.sourceforge.net/&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1&gt;基础使用&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/img/blog/vim-key.png&quot; alt=&quot;vim-key&quot;&gt;&lt;/p&gt;
-
-&lt;h1&gt;配置文件&lt;/h1&gt;
-
-&lt;p&gt;正如多数 linux 软件，vim 的配置文件分为系统配置文件 &lt;code&gt;/etc/vimrc&lt;/code&gt;，&lt;code&gt;/usr/share/vim/&lt;/code&gt; 和用户配置文件 &lt;code&gt;~/.vimrc&lt;/code&gt;，&lt;code&gt;~/.vim/&lt;/code&gt;。一个示例配置文件如下：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;vim language-vim&quot; data-lang=&quot;vim&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot; .vimrc&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;&amp;quot; See: http://vimdoc.sourceforge.net/htmldoc/options.html for details&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;&amp;quot; For multi-byte character support (CJK support, for example):&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;&amp;quot;set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;tabstop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;&amp;quot; Number of spaces that a &amp;lt;Tab&amp;gt; in the file counts for.&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;shiftwidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;&amp;quot; Number of spaces to use for each step of (auto)indent.&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;expandtab&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;&amp;quot; Use the appropriate number of spaces to insert a &amp;lt;Tab&amp;gt;.&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; Spaces are used in indents with the &amp;#39;&amp;gt;&amp;#39; and &amp;#39;&amp;lt;&amp;#39; commands&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; and when &amp;#39;autoindent&amp;#39; is on. To insert a real tab when&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; &amp;#39;expandtab&amp;#39; is on, use CTRL-V &amp;lt;Tab&amp;gt;.&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;smarttab&lt;/span&gt;        &lt;span class=&quot;c&quot;&gt;&amp;quot; When on, a &amp;lt;Tab&amp;gt; in front of a line inserts blanks&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; according to &amp;#39;shiftwidth&amp;#39;. &amp;#39;tabstop&amp;#39; is used in other&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; places. A &amp;lt;BS&amp;gt; will delete a &amp;#39;shiftwidth&amp;#39; worth of space&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; at the start of the line.&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;showcmd&lt;/span&gt;         &lt;span class=&quot;c&quot;&gt;&amp;quot; Show (partial) command in status line.&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;number&lt;/span&gt;          &lt;span class=&quot;c&quot;&gt;&amp;quot; Show line numbers.&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;showmatch&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;&amp;quot; When a bracket is inserted, briefly jump to the matching&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; one. The jump is only done if the match can be seen on the&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; screen. The time to show the match can be set with&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; &amp;#39;matchtime&amp;#39;.&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;hlsearch&lt;/span&gt;        &lt;span class=&quot;c&quot;&gt;&amp;quot; When there is a previous search pattern, highlight all&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; its matches.&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;incsearch&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;&amp;quot; While typing a search command, show immediately where the&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; so far typed pattern matches.&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ignorecase&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;&amp;quot; Ignore case in search patterns.&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;smartcase&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;&amp;quot; Override the &amp;#39;ignorecase&amp;#39; option if the search pattern&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; contains upper case characters.&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;backspace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;     &lt;span class=&quot;c&quot;&gt;&amp;quot; Influences the working of &amp;lt;BS&amp;gt;, &amp;lt;Del&amp;gt;, CTRL-W&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; and CTRL-U in Insert mode. This is a list of items,&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; separated by commas. Each item allows a way to backspace&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; over something.&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;autoindent&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;&amp;quot; Copy indent from current line when starting a new line&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; (typing &amp;lt;CR&amp;gt; in Insert mode or when using the &amp;quot;o&amp;quot; or &amp;quot;O&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; command).&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;textwidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;79&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;&amp;quot; Maximum width of text that is being inserted. A longer&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; line will be broken after white space to get this width.&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;formatoptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;&amp;quot; This is a sequence of letters which describes how&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; automatic formatting is to be done.&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot;&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; letter    meaning when present in &amp;#39;formatoptions&amp;#39;&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; ------    ---------------------------------------&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; c         Auto-wrap comments using textwidth, inserting&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot;           the current comment leader automatically.&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; q         Allow formatting of comments with &amp;quot;gq&amp;quot;.&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; r         Automatically insert the current comment leader&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot;           after hitting &amp;lt;Enter&amp;gt; in Insert mode. &lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; t         Auto-wrap text using textwidth (does not apply&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot;           to comments)&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ruler&lt;/span&gt;           &lt;span class=&quot;c&quot;&gt;&amp;quot; Show the line and column number of the cursor position,&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; separated by a comma.&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dark&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot; When set to &amp;quot;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dark&lt;/span&gt;&amp;quot;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; Vim will &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;to&lt;/span&gt; use &lt;span class=&quot;k&quot;&gt;colors&lt;/span&gt; that look
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; good on a dark background. When set to &amp;quot;light&amp;quot;, Vim will&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; try to use colors that look good on a light background.&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;                    &amp;quot; Any other value is illegal.&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;mouse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;a&lt;/span&gt;         &lt;span class=&quot;c&quot;&gt;&amp;quot; Enable the use of the mouse.&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;filetype&lt;/span&gt; plugin indent &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;syntax&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h1&gt;进阶技巧&lt;/h1&gt;
-
-&lt;h2&gt;块编辑&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;可视&lt;/strong&gt; 模式：&lt;code&gt;v&lt;/code&gt; 可进入visual模式，使用标准快捷键移动光标可选择文本块，之后可输入标准编辑命令。&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;列编辑&lt;/strong&gt; 模式：&lt;code&gt;&amp;lt;Ctrl&amp;gt;v&lt;/code&gt; 进入列编辑模式，移动光标将按列进行选中。例如：&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;删除块注释：&lt;code&gt;&amp;lt;Ctrl&amp;gt;v&lt;/code&gt; 进入列编辑模式，&lt;code&gt;ikjl&lt;/code&gt; 选中注释列，&lt;code&gt;&amp;lt;N&amp;gt;x&lt;/code&gt; 删除N个字符；&lt;/p&gt;
-
-&lt;p&gt;添加块注释：&lt;code&gt;&amp;lt;Ctrl&amp;gt;v&lt;/code&gt; 进入列编辑模式，&lt;code&gt;ikjl&lt;/code&gt; 选中要注释的行，&lt;code&gt;I&lt;/code&gt; 进入插入模式，输入几个注释字符，&lt;code&gt;&amp;lt;Esc&amp;gt;&lt;/code&gt; 推出列编辑。&lt;/p&gt;
-&lt;/blockquote&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2&gt;文件识别&lt;/h2&gt;
-
-&lt;p&gt;Vim可针对特定的文件，加载指定的配置。例如 .plt 文件：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;~/.vimrc&lt;/code&gt; 中加入&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;vim language-vim&quot; data-lang=&quot;vim&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot; BufNewFile 对应读取 *.plt，BufRead 对应新建 *.plt&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;au&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;BufNewFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;BufRead&lt;/span&gt; *.plt  source &lt;span class=&quot;p&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/.vim/&lt;/span&gt;after&lt;span class=&quot;sr&quot;&gt;/ftplugin/&lt;/span&gt;plt.&lt;span class=&quot;k&quot;&gt;vim&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;在 &lt;code&gt;～/.vim/after/ftplugin&lt;/code&gt; 中加入 *.plt 的配置文件 &lt;code&gt;plt.vim&lt;/code&gt;。&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
-				<pubDate>Fri, 08 Nov 2013 00:00:00 +0800</pubDate>
-				<link>http://harttle.github.io/linux/vim-advanced.html</link>
-				<guid isPermaLink="true">http://harttle.github.io/linux/vim-advanced.html</guid>
-			</item>
-		
-			<item>
-				<title>Modern Operating Systems</title>
-				<description></description>
-				<pubDate>Thu, 07 Nov 2013 21:50:38 +0800</pubDate>
-				<link>http://harttle.github.io/%E7%AC%94%E8%AE%B0/modern-os.html</link>
-				<guid isPermaLink="true">http://harttle.github.io/%E7%AC%94%E8%AE%B0/modern-os.html</guid>
-			</item>
-		
-			<item>
 				<title>Computer Organization and Design</title>
 				<description>&lt;h1&gt;Computer Abstractions and Technology&lt;/h1&gt;
 
@@ -250,9 +119,229 @@ $$&lt;/p&gt;
 
 &lt;h2&gt;Introduction&lt;/h2&gt;
 </description>
-				<pubDate>Thu, 07 Nov 2013 21:50:38 +0800</pubDate>
+				<pubDate>Mon, 11 Nov 2013 23:43:16 +0800</pubDate>
 				<link>http://harttle.github.io/%E7%AC%94%E8%AE%B0/computer-organization-and-design.html</link>
 				<guid isPermaLink="true">http://harttle.github.io/%E7%AC%94%E8%AE%B0/computer-organization-and-design.html</guid>
+			</item>
+		
+			<item>
+				<title>Vim 使用</title>
+				<description>&lt;p&gt;Vim是从vi发展出来的一个文本编辑器。代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。和Emacs并列成为类Unix系统用户最喜欢的编辑器。&lt;/p&gt;
+
+&lt;p&gt;文档参见：&lt;a href=&quot;http://vimdoc.sourceforge.net/htmldoc/&quot;&gt;http://vimdoc.sourceforge.net/htmldoc/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;中文文档：&lt;a href=&quot;http://vimcdoc.sourceforge.net/doc/&quot;&gt;http://vimcdoc.sourceforge.net/doc/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1&gt;基础使用&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/vim-key.png&quot; alt=&quot;vim-key&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;查看帮助：&lt;code&gt;:help&lt;/code&gt;，&lt;code&gt;&amp;lt;Ctrl&amp;gt;]&lt;/code&gt; 进入标签，&lt;code&gt;&amp;lt;Ctrl&amp;gt;O&lt;/code&gt; 返回。&lt;/p&gt;
+
+&lt;h1&gt;配置文件&lt;/h1&gt;
+
+&lt;h2&gt;初始化过程&lt;/h2&gt;
+
+&lt;p&gt;正如多数 linux 软件，vim 的配置文件分为系统配置文件 &lt;code&gt;/etc/vimrc&lt;/code&gt;，&lt;code&gt;/usr/share/vim/&lt;/code&gt; 和用户配置文件 &lt;code&gt;~/.vimrc&lt;/code&gt;，&lt;code&gt;~/.vim/&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;vim 的配置文件载入过程为：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;/etc/vimrc&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$HOME/.vim/&lt;/code&gt;，&lt;code&gt;$HOME/.vimrc&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$VIMRUNTIME/.vim&lt;/code&gt;，&lt;code&gt;$VIMRUNTIME/.vimrc&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$HOME/.vim/after/&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;通过运行 &lt;code&gt;vim -V&lt;/code&gt; 可查看整个初始化过程。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2&gt;示例配置&lt;/h2&gt;
+
+&lt;p&gt;一个示例配置文件如下：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;vim language-vim&quot; data-lang=&quot;vim&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot; .vimrc&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot; See: http://vimdoc.sourceforge.net/htmldoc/options.html for details&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;quot; For multi-byte character support (CJK support, for example):&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot; set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;tabstop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;&amp;quot; Number of spaces that a &amp;lt;Tab&amp;gt; in the file counts for.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;shiftwidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;&amp;quot; Number of spaces to use for each step of (auto)indent.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;expandtab&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;&amp;quot; Use the appropriate number of spaces to insert a &amp;lt;Tab&amp;gt;.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; Spaces are used in indents with the &amp;#39;&amp;gt;&amp;#39; and &amp;#39;&amp;lt;&amp;#39; commands&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; and when &amp;#39;autoindent&amp;#39; is on. To insert a real tab when&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; &amp;#39;expandtab&amp;#39; is on, use CTRL-V &amp;lt;Tab&amp;gt;.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;smarttab&lt;/span&gt;        &lt;span class=&quot;c&quot;&gt;&amp;quot; When on, a &amp;lt;Tab&amp;gt; in front of a line inserts blanks&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; according to &amp;#39;shiftwidth&amp;#39;. &amp;#39;tabstop&amp;#39; is used in other&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; places. A &amp;lt;BS&amp;gt; will delete a &amp;#39;shiftwidth&amp;#39; worth of space&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; at the start of the line.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;showcmd&lt;/span&gt;         &lt;span class=&quot;c&quot;&gt;&amp;quot; Show (partial) command in status line.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;number&lt;/span&gt;          &lt;span class=&quot;c&quot;&gt;&amp;quot; Show line numbers.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;showmatch&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;&amp;quot; When a bracket is inserted, briefly jump to the matching&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; one. The jump is only done if the match can be seen on the&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; screen. The time to show the match can be set with&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; &amp;#39;matchtime&amp;#39;.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;hlsearch&lt;/span&gt;        &lt;span class=&quot;c&quot;&gt;&amp;quot; When there is a previous search pattern, highlight all&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; its matches.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;incsearch&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;&amp;quot; While typing a search command, show immediately where the&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; so far typed pattern matches.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ignorecase&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;&amp;quot; Ignore case in search patterns.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;smartcase&lt;/span&gt;       &lt;span class=&quot;c&quot;&gt;&amp;quot; Override the &amp;#39;ignorecase&amp;#39; option if the search pattern&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; contains upper case characters.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;backspace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;     &lt;span class=&quot;c&quot;&gt;&amp;quot; Influences the working of &amp;lt;BS&amp;gt;, &amp;lt;Del&amp;gt;, CTRL-W&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; and CTRL-U in Insert mode. This is a list of items,&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; separated by commas. Each item allows a way to backspace&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; over something.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;autoindent&lt;/span&gt;      &lt;span class=&quot;c&quot;&gt;&amp;quot; Copy indent from current line when starting a new line&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; (typing &amp;lt;CR&amp;gt; in Insert mode or when using the &amp;quot;o&amp;quot; or &amp;quot;O&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; command).&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;textwidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;79&lt;/span&gt;    &lt;span class=&quot;c&quot;&gt;&amp;quot; Maximum width of text that is being inserted. A longer&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; line will be broken after white space to get this width.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;formatoptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;&amp;quot; This is a sequence of letters which describes how&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; automatic formatting is to be done.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; letter    meaning when present in &amp;#39;formatoptions&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; ------    ---------------------------------------&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; c         Auto-wrap comments using textwidth, inserting&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot;           the current comment leader automatically.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; q         Allow formatting of comments with &amp;quot;gq&amp;quot;.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; r         Automatically insert the current comment leader&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot;           after hitting &amp;lt;Enter&amp;gt; in Insert mode. &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; t         Auto-wrap text using textwidth (does not apply&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot;           to comments)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ruler&lt;/span&gt;           &lt;span class=&quot;c&quot;&gt;&amp;quot; Show the line and column number of the cursor position,&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; separated by a comma.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dark&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot; When set to &amp;quot;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dark&lt;/span&gt;&amp;quot;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; Vim will &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;to&lt;/span&gt; use &lt;span class=&quot;k&quot;&gt;colors&lt;/span&gt; that look
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; good on a dark background. When set to &amp;quot;light&amp;quot;, Vim will&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; try to use colors that look good on a light background.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;                    &amp;quot; Any other value is illegal.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;mouse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;a&lt;/span&gt;         &lt;span class=&quot;c&quot;&gt;&amp;quot; Enable the use of the mouse.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;filetype&lt;/span&gt; plugin indent &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;syntax&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;进阶技巧&lt;/h1&gt;
+
+&lt;h2&gt;块编辑&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;可视&lt;/strong&gt; 模式：&lt;code&gt;v&lt;/code&gt; 可进入visual模式，使用标准快捷键移动光标可选择文本块，之后可输入标准编辑命令。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;列编辑&lt;/strong&gt; 模式：&lt;code&gt;&amp;lt;Ctrl&amp;gt;v&lt;/code&gt; 进入列编辑模式，移动光标将按列进行选中。例如：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;删除块注释：&lt;code&gt;&amp;lt;Ctrl&amp;gt;v&lt;/code&gt; 进入列编辑模式，&lt;code&gt;ikjl&lt;/code&gt; 选中注释列，&lt;code&gt;&amp;lt;N&amp;gt;x&lt;/code&gt; 删除N个字符；&lt;/p&gt;
+
+&lt;p&gt;添加块注释：&lt;code&gt;&amp;lt;Ctrl&amp;gt;v&lt;/code&gt; 进入列编辑模式，&lt;code&gt;ikjl&lt;/code&gt; 选中要注释的行，&lt;code&gt;I&lt;/code&gt; 进入插入模式，输入几个注释字符，&lt;code&gt;&amp;lt;Esc&amp;gt;&lt;/code&gt; 推出列编辑。&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;文件识别&lt;/h2&gt;
+
+&lt;p&gt;Vim可针对特定的文件，加载指定插件。以此来实现文件类型的特殊配置以及语法高亮。&lt;/p&gt;
+
+&lt;p&gt;参见：&lt;a href=&quot;http://vimcdoc.sourceforge.net/doc/filetype.html#filetype-plugins&quot;&gt;http://vimcdoc.sourceforge.net/doc/filetype.html#filetype-plugins&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;filetype on&lt;/code&gt; 将开启文件识别，Vim 会在载入时做如下工作：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;执行&lt;code&gt;$RUNTIMEPATH/filetype.vim&lt;/code&gt;，根据文件名判断类型&lt;/li&gt;
+&lt;li&gt;如果需要的话，执行 &lt;code&gt;$RUNTIMEPATH/scripts.vim&lt;/code&gt;，进一步判断文件类型&lt;/li&gt;
+&lt;li&gt;设置 Vim 的 &lt;code&gt;filetype&lt;/code&gt; 变量&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;我们也可以通过诸如 &lt;code&gt;:set filetype=c&lt;/code&gt; 的命令来手动设置文件类型
+如果不使用文件识别，我们可以运行 &lt;code&gt;au BufNewFile,BufRead *.plt  source ~/.vim/after/ftplugin/plt.vim&lt;/code&gt; 来使用 &lt;code&gt;plt.vim&lt;/code&gt; 初始化 &lt;code&gt;*.plt&lt;/code&gt; 文件。&lt;/p&gt;
+
+&lt;p&gt;更多关于&lt;code&gt;RUNTIMEPATH&lt;/code&gt; ：&lt;a href=&quot;http://vimcdoc.sourceforge.net/doc/options.html#&amp;#x27;runtimepath&quot;&gt;http://vimcdoc.sourceforge.net/doc/options.html#&amp;#39;runtimepath&lt;/a&gt;&amp;#39;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2&gt;插件加载&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;filetype plugin on&lt;/code&gt; 允许Vim加载文件类型的插件，Vim会在载入时寻找并加载 &lt;code&gt;$RUNTIMEPATH/ftplugin.vim&lt;/code&gt;，该脚本会寻找并加载 &lt;code&gt;$RUNTIMEPATH/ftplugin/&amp;lt;filetype&amp;gt;.vim&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;例如：&lt;code&gt;~/.vim/ftplugin/cpp.vim&lt;/code&gt; 将在 cpp 文件类型被识别后自动载入。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;同样，&lt;code&gt;~/.vim/after/ftplugin/cpp.vim&lt;/code&gt; 会在最后被调用，进而覆盖之前的配置。
+另外，&lt;code&gt;filetype indent on&lt;/code&gt; 允许Vim加载该文件类型的缩进设置。即执行&lt;code&gt;RUNTIMEPATH/indent.vim&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2&gt;语法高亮&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;syntax on&lt;/code&gt; 允许 Vim 加载文件类型的语法高亮配置，Vim会在载入时寻找并加载 &lt;code&gt;RUNTIMEPATH/syntax/&amp;lt;filetype&amp;gt;.vim&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;例如：&lt;code&gt;~/.vim/syntax/markdown.vim&lt;/code&gt; 将会对文件类型&lt;code&gt;markdown&lt;/code&gt; 进行语法高亮。&lt;/p&gt;
+
+&lt;h2&gt;键盘映射&lt;/h2&gt;
+
+&lt;p&gt;Vim支持定义键盘映射来完成快捷键的功能，也就是将特定的按键映射为一系列按键与函数的序列。&lt;/p&gt;
+
+&lt;p&gt;例如将 &lt;code&gt;F7&lt;/code&gt; 映射为编译当前java文件：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;vim language-vim&quot; data-lang=&quot;vim&quot;&gt;map &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;F7&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Esc&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;:&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt;javac %&lt;span class=&quot;p&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;:&lt;/code&gt; 为进入Ex模式，&lt;code&gt;!&lt;/code&gt; 指定下面的命令在vim外执行，&lt;code&gt;%&lt;/code&gt; 为当前文件名，&lt;code&gt;%&amp;lt;&lt;/code&gt; 为不带扩展名的当前文件名，&lt;code&gt;&amp;lt;CR&amp;gt;&lt;/code&gt; 为回车。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2&gt;函数&lt;/h2&gt;
+
+&lt;p&gt;现在我们可以自定义快捷键了，如果希望在键盘映射中执行更复杂的功能，我们需要定义Vim函数。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;函数名必须以大写字母开始&lt;/li&gt;
+&lt;li&gt;函数可以有返回值：&lt;code&gt;return something&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;函数可以有范围前缀。定义：&lt;code&gt;function s:Save()&lt;/code&gt;，调用：&lt;code&gt;call s:Save()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;下面是函数调用的例子，按键F8时，进入拷贝模式（取消行号，鼠标进入visual模式）。&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;vim language-vim&quot; data-lang=&quot;vim&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot; key mapping&lt;/span&gt;
+map &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;F8&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;Esc&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;:&lt;span class=&quot;k&quot;&gt;call&lt;/span&gt; ToggleCopy&lt;span class=&quot;p&quot;&gt;()&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;quot; global variable&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:copymode&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;quot; function&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; ToggleCopy&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:copymode
+        &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;number&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;mouse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;a&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;nonumber&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;mouse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:copymode&lt;span class=&quot;p&quot;&gt;=!&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:copymode
+&lt;span class=&quot;k&quot;&gt;endfunction&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+				<pubDate>Fri, 08 Nov 2013 00:00:00 +0800</pubDate>
+				<link>http://harttle.github.io/linux/vim-advanced.html</link>
+				<guid isPermaLink="true">http://harttle.github.io/linux/vim-advanced.html</guid>
+			</item>
+		
+			<item>
+				<title>Modern Operating Systems</title>
+				<description></description>
+				<pubDate>Thu, 07 Nov 2013 21:50:38 +0800</pubDate>
+				<link>http://harttle.github.io/%E7%AC%94%E8%AE%B0/modern-os.html</link>
+				<guid isPermaLink="true">http://harttle.github.io/%E7%AC%94%E8%AE%B0/modern-os.html</guid>
 			</item>
 		
 			<item>
@@ -567,7 +656,7 @@ pacman -S extra/networkmanager-pptp
 				<title>搜索引擎搭建</title>
 				<description>&lt;p&gt;采用 heritix+pagerank+lucene 方式搭建搜索引擎原型，并评估其性能。&lt;/p&gt;
 
-&lt;h1&gt;Heritrix&lt;/h1&gt;
+&lt;h1&gt;爬虫（Heritrix）&lt;/h1&gt;
 
 &lt;p&gt;heritrix 是用作web归档的爬虫框架，java语言实现，具有 Apache License 自由软件许可。我们采用heritrix抓取网页数据。&lt;/p&gt;
 
@@ -642,6 +731,7 @@ bin/heritrix -a harttle:123456 -j /home/harttle/search-engine/pages/
      &amp;lt;value&amp;gt;.*&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;?i&lt;span class=&quot;o&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;swf&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$&amp;lt;&lt;/span&gt;/value&amp;gt;
      &amp;lt;value&amp;gt;.*&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;?i&lt;span class=&quot;o&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;js|css&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$&amp;lt;&lt;/span&gt;/value&amp;gt;
      &amp;lt;value&amp;gt;.*&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;?i&lt;span class=&quot;o&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;bmp|gif|jpe?g|png|svg|tiff?&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$&amp;lt;&lt;/span&gt;/value&amp;gt;
+     &amp;lt;value&amp;gt;.*&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;?i&lt;span class=&quot;o&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;docx?|xlsx?|pptx?&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$&amp;lt;&lt;/span&gt;/value&amp;gt;
    &amp;lt;/list&amp;gt;
   &amp;lt;/property&amp;gt;
 &amp;lt;/bean&amp;gt;
@@ -672,7 +762,144 @@ bin/heritrix -a harttle:123456 -j /home/harttle/search-engine/pages/
 &lt;p&gt;在 Web-based UI 中，依次执行 build、launch、unpause 即可启动 heritix。&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1&gt;Page-Rank&lt;/h1&gt;
+&lt;h1&gt;网站排名（Page-Rank）&lt;/h1&gt;
+
+&lt;h2&gt;提取链接关系&lt;/h2&gt;
+
+&lt;p&gt;我们现在要进行 Page-Rank，需要获得网页之间的链接关系。可以通过heritrix生成的日志文件（&lt;code&gt;crawl.log&lt;/code&gt;）来提取。&lt;/p&gt;
+
+&lt;p&gt;参见：&lt;a href=&quot;https://webarchive.jira.com/wiki/display/Heritrix/Logs&quot;&gt;https://webarchive.jira.com/wiki/display/Heritrix/Logs&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash language-bash&quot; data-lang=&quot;bash&quot;&gt;cat crawl.log | awk &lt;span class=&quot;s1&quot;&gt;&amp;#39;$7==&amp;quot;text/html&amp;quot;{print $6 &amp;quot; =&amp;gt; &amp;quot; $4}&amp;#39;&lt;/span&gt; &amp;gt; links
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;现在我们得到了包含链接关系的文件 &lt;code&gt;links&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h2&gt;进行 Page Rank&lt;/h2&gt;
+
+&lt;p&gt;Page Rank 是 Google 搜索引擎进行网站排名的重要算法之一。&lt;a href=&quot;http://en.wikipedia.org/wiki/Pagerank&quot;&gt;wiki&lt;/a&gt; 给出了 Matlab 实现：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;matlab language-matlab&quot; data-lang=&quot;matlab&quot;&gt;&lt;span class=&quot;c&quot;&gt;% Parameter M adjacency matrix where M_i,j represents the link from &amp;#39;j&amp;#39; to &amp;#39;i&amp;#39;, such that for all &amp;#39;j&amp;#39; sum(i, M_i,j) = 1&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;% Parameter d damping factor&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;% Parameter v_quadratic_error quadratic error for v&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;% Return v, a vector of ranks such that v_i is the i-th rank from [0, 1]&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;[v] &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;rank&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;M, d, v_quadratic_error&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;M&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;% N is equal to half the size of M&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;./&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;last_v&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ones&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;inf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;M_hat&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;M&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(((&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.*&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ones&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;last_v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v_quadratic_error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;last_v&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;M_hat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;./&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;endfunction&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;[v] &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;rank2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;M, d, v_quadratic_error&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;M&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;% N is equal to half the size of M&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;./&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;% This is now L1, not L2&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;last_v&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ones&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;inf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;M_hat&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;M&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(((&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.*&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ones&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;last_v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v_quadratic_error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;last_v&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;M_hat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  
+        &lt;span class=&quot;c&quot;&gt;% removed the L2 norm of the iterated PR&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;endfunction&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;以下是调用过程代码：&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;matlab language-matlab&quot; data-lang=&quot;matlab&quot;&gt;&lt;span class=&quot;n&quot;&gt;M&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;rank&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;M&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.001&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Page Rank 的其他语言实现可以从 GitHub 获得：&lt;a href=&quot;https://github.com/louridas/pagerank&quot;&gt;https://github.com/louridas/pagerank&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1&gt;倒排索引（Lucene）&lt;/h1&gt;
+
+&lt;p&gt;倒排索引（Inverted index）被广泛应用在搜索引擎中，它存储着在全文搜索下某个单词在一个文档或者一组文档中的存储位置的映射。以下通过 Lucene 框架实现索引以及查询。&lt;/p&gt;
+
+&lt;p&gt;官方 Guide：&lt;a href=&quot;http://lucene.apache.org/core/4_5_1/demo/overview-summary.html&quot;&gt;http://lucene.apache.org/core/4_5_1/demo/overview-summary.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;获取页面文件&lt;/h2&gt;
+
+&lt;p&gt;在使用 Lucene 进行全文索引之前，我们需要得到包含页面文件的目录。下面的 shell 脚本将完成 &lt;code&gt;.warc.gz&lt;/code&gt; 到页面文件目录的转换。运行该脚本将产生 &lt;code&gt;files&lt;/code&gt; 目录，其中包含所有的页面文件。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;页面文件将以编号命名，第一行为 URL，其后为 HTML 内容。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+less *.warc.gz | sed &lt;span class=&quot;s1&quot;&gt;&amp;#39;s/\r//g&amp;#39;&lt;/span&gt; &amp;gt; pages.txt
+
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; ! -d files &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; mkdir files
+
+&lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read&lt;/span&gt; -r line
+&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;i++
+    lines&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$line&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt; &amp;lt; pages.txt
+
+&lt;span class=&quot;nv&quot;&gt;nline&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;none&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;ndoc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1;i&amp;lt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;nline;i++ &lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lines&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;$line&amp;quot;&lt;/span&gt; in
+        &lt;span class=&quot;s2&quot;&gt;&amp;quot;WARC/1.0&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;nv&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;warc&amp;#39;&lt;/span&gt;
+            ;;
+        &lt;span class=&quot;s2&quot;&gt;&amp;quot;WARC-Type: response&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;nv&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;warc-valid&amp;#39;&lt;/span&gt;
+            &lt;span class=&quot;nv&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;lines&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;+1]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;nv&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;#*: &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;ndoc++
+            &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$url&lt;/span&gt; &amp;gt;&amp;gt; files/&lt;span class=&quot;nv&quot;&gt;$ndoc&lt;/span&gt;
+            &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &amp;gt;&amp;gt; files/&lt;span class=&quot;nv&quot;&gt;$ndoc&lt;/span&gt;
+            ;;
+        &lt;span class=&quot;s2&quot;&gt;&amp;quot;HTTP/1.1 200 OK&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;warc-valid&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http&amp;#39;&lt;/span&gt;
+            ;;
+        &lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;http&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;doc&amp;#39;&lt;/span&gt;
+            ;;
+        *&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;doc&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$line&lt;/span&gt; &amp;gt;&amp;gt; files/&lt;span class=&quot;nv&quot;&gt;$ndoc&lt;/span&gt;
+            ;;
+    &lt;span class=&quot;k&quot;&gt;esac&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;建立索引&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;安装与配置&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# 下载后解压&lt;/span&gt;
+tar -xzvf lucene-xxx.tar.gz
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;lucene
+
+&lt;span class=&quot;c&quot;&gt;# 设置环境变量，直接加入所有的 jar 包&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;CLASSPATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;find -name &lt;span class=&quot;s1&quot;&gt;&amp;#39;*.jar&amp;#39;&lt;/span&gt; | sed &lt;span class=&quot;s2&quot;&gt;&amp;quot;s@^.@$dir@g&amp;quot;&lt;/span&gt; | sed &lt;span class=&quot;s1&quot;&gt;&amp;#39;:a;N;s/\n/:/;ta&amp;#39;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;建立索引与搜索&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# 建立索引，files 为页面文件所在目录，会在当前目录产生 index 目录来保存索引信息&lt;/span&gt;
+java org.apache.lucene.demo.IndexFiles -docs files
+
+&lt;span class=&quot;c&quot;&gt;# 搜索，将进入交互式搜索程序&lt;/span&gt;
+java org.apache.lucene.demo.SearchFiles
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
 </description>
 				<pubDate>Tue, 05 Nov 2013 00:00:00 +0800</pubDate>
 				<link>http://harttle.github.io/web/se-project.html</link>

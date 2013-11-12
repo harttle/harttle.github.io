@@ -238,7 +238,7 @@
     <div class="col-md-9 right md">
       <p>采用 heritix+pagerank+lucene 方式搭建搜索引擎原型，并评估其性能。</p>
 
-<h1>Heritrix</h1>
+<h1>爬虫（Heritrix）</h1>
 
 <p>heritrix 是用作web归档的爬虫框架，java语言实现，具有 Apache License 自由软件许可。我们采用heritrix抓取网页数据。</p>
 
@@ -313,6 +313,7 @@ bin/heritrix -a harttle:123456 -j /home/harttle/search-engine/pages/
      &lt;value&gt;.*<span class="o">(</span>?i<span class="o">)(</span><span class="se">\.</span><span class="o">(</span>swf<span class="o">))</span><span class="nv">$&lt;</span>/value&gt;
      &lt;value&gt;.*<span class="o">(</span>?i<span class="o">)(</span><span class="se">\.</span><span class="o">(</span>js|css<span class="o">))</span><span class="nv">$&lt;</span>/value&gt;
      &lt;value&gt;.*<span class="o">(</span>?i<span class="o">)(</span><span class="se">\.</span><span class="o">(</span>bmp|gif|jpe?g|png|svg|tiff?<span class="o">))</span><span class="nv">$&lt;</span>/value&gt;
+     &lt;value&gt;.*<span class="o">(</span>?i<span class="o">)(</span><span class="se">\.</span><span class="o">(</span>docx?|xlsx?|pptx?<span class="o">))</span><span class="nv">$&lt;</span>/value&gt;
    &lt;/list&gt;
   &lt;/property&gt;
 &lt;/bean&gt;
@@ -343,7 +344,144 @@ bin/heritrix -a harttle:123456 -j /home/harttle/search-engine/pages/
 <p>在 Web-based UI 中，依次执行 build、launch、unpause 即可启动 heritix。</p></li>
 </ul>
 
-<h1>Page-Rank</h1>
+<h1>网站排名（Page-Rank）</h1>
+
+<h2>提取链接关系</h2>
+
+<p>我们现在要进行 Page-Rank，需要获得网页之间的链接关系。可以通过heritrix生成的日志文件（<code>crawl.log</code>）来提取。</p>
+
+<p>参见：<a href="https://webarchive.jira.com/wiki/display/Heritrix/Logs">https://webarchive.jira.com/wiki/display/Heritrix/Logs</a></p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">cat crawl.log | awk <span class="s1">&#39;$7==&quot;text/html&quot;{print $6 &quot; =&gt; &quot; $4}&#39;</span> &gt; links
+</code></pre></div>
+<p>现在我们得到了包含链接关系的文件 <code>links</code>。</p>
+
+<h2>进行 Page Rank</h2>
+
+<p>Page Rank 是 Google 搜索引擎进行网站排名的重要算法之一。<a href="http://en.wikipedia.org/wiki/Pagerank">wiki</a> 给出了 Matlab 实现：</p>
+<div class="highlight"><pre><code class="matlab language-matlab" data-lang="matlab"><span class="c">% Parameter M adjacency matrix where M_i,j represents the link from &#39;j&#39; to &#39;i&#39;, such that for all &#39;j&#39; sum(i, M_i,j) = 1</span>
+<span class="c">% Parameter d damping factor</span>
+<span class="c">% Parameter v_quadratic_error quadratic error for v</span>
+<span class="c">% Return v, a vector of ranks such that v_i is the i-th rank from [0, 1]</span>
+
+<span class="k">function</span><span class="w"> </span>[v] <span class="p">=</span><span class="w"> </span><span class="nf">rank</span><span class="p">(</span>M, d, v_quadratic_error<span class="p">)</span><span class="w"></span>
+
+<span class="n">N</span> <span class="p">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c">% N is equal to half the size of M</span>
+<span class="n">v</span> <span class="p">=</span> <span class="nb">rand</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">v</span> <span class="p">=</span> <span class="n">v</span> <span class="o">./</span> <span class="n">norm</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="n">last_v</span> <span class="p">=</span> <span class="nb">ones</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="nb">inf</span><span class="p">;</span>
+<span class="n">M_hat</span> <span class="p">=</span> <span class="p">(</span><span class="n">d</span> <span class="o">.*</span> <span class="n">M</span><span class="p">)</span> <span class="o">+</span> <span class="p">(((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">d</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span> <span class="o">.*</span> <span class="nb">ones</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">));</span>
+
+<span class="k">while</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">v</span> <span class="o">-</span> <span class="n">last_v</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">v_quadratic_error</span><span class="p">)</span>
+        <span class="n">last_v</span> <span class="p">=</span> <span class="n">v</span><span class="p">;</span>
+        <span class="n">v</span> <span class="p">=</span> <span class="n">M_hat</span> <span class="o">*</span> <span class="n">v</span><span class="p">;</span>
+        <span class="n">v</span> <span class="p">=</span> <span class="n">v</span> <span class="o">./</span> <span class="n">norm</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="k">end</span>
+
+<span class="n">endfunction</span>
+
+<span class="k">function</span><span class="w"> </span>[v] <span class="p">=</span><span class="w"> </span><span class="nf">rank2</span><span class="p">(</span>M, d, v_quadratic_error<span class="p">)</span><span class="w"></span>
+
+<span class="n">N</span> <span class="p">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c">% N is equal to half the size of M</span>
+<span class="n">v</span> <span class="p">=</span> <span class="nb">rand</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">v</span> <span class="p">=</span> <span class="n">v</span> <span class="o">./</span> <span class="n">norm</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>   <span class="c">% This is now L1, not L2</span>
+<span class="n">last_v</span> <span class="p">=</span> <span class="nb">ones</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="nb">inf</span><span class="p">;</span>
+<span class="n">M_hat</span> <span class="p">=</span> <span class="p">(</span><span class="n">d</span> <span class="o">.*</span> <span class="n">M</span><span class="p">)</span> <span class="o">+</span> <span class="p">(((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">d</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span> <span class="o">.*</span> <span class="nb">ones</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">));</span>
+
+<span class="k">while</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">v</span> <span class="o">-</span> <span class="n">last_v</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">v_quadratic_error</span><span class="p">)</span>
+        <span class="n">last_v</span> <span class="p">=</span> <span class="n">v</span><span class="p">;</span>
+        <span class="n">v</span> <span class="p">=</span> <span class="n">M_hat</span> <span class="o">*</span> <span class="n">v</span><span class="p">;</span>  
+        <span class="c">% removed the L2 norm of the iterated PR</span>
+<span class="k">end</span>
+
+<span class="n">endfunction</span>
+</code></pre></div>
+<p>以下是调用过程代码：</p>
+<div class="highlight"><pre><code class="matlab language-matlab" data-lang="matlab"><span class="n">M</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="p">;</span> <span class="mf">0.5</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="p">;</span> <span class="mf">0.5</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="p">;</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mf">0.5</span> <span class="mi">0</span> <span class="mi">0</span> <span class="p">;</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.5</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">];</span>
+<span class="n">rank</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="mf">0.80</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>Page Rank 的其他语言实现可以从 GitHub 获得：<a href="https://github.com/louridas/pagerank">https://github.com/louridas/pagerank</a></p>
+</blockquote>
+
+<h1>倒排索引（Lucene）</h1>
+
+<p>倒排索引（Inverted index）被广泛应用在搜索引擎中，它存储着在全文搜索下某个单词在一个文档或者一组文档中的存储位置的映射。以下通过 Lucene 框架实现索引以及查询。</p>
+
+<p>官方 Guide：<a href="http://lucene.apache.org/core/4_5_1/demo/overview-summary.html">http://lucene.apache.org/core/4_5_1/demo/overview-summary.html</a></p>
+
+<h2>获取页面文件</h2>
+
+<p>在使用 Lucene 进行全文索引之前，我们需要得到包含页面文件的目录。下面的 shell 脚本将完成 <code>.warc.gz</code> 到页面文件目录的转换。运行该脚本将产生 <code>files</code> 目录，其中包含所有的页面文件。</p>
+
+<blockquote>
+<p>页面文件将以编号命名，第一行为 URL，其后为 HTML 内容。</p>
+</blockquote>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c">#!/bin/bash</span>
+
+less *.warc.gz | sed <span class="s1">&#39;s/\r//g&#39;</span> &gt; pages.txt
+
+<span class="o">[</span> ! -d files <span class="o">]</span> <span class="o">&amp;&amp;</span> mkdir files
+
+<span class="k">while </span><span class="nb">read</span> -r line
+<span class="k">do</span>
+<span class="k">    </span><span class="nb">let </span>i++
+    lines<span class="o">[</span><span class="nv">$i</span><span class="o">]=</span><span class="nv">$line</span>
+<span class="k">done</span> &lt; pages.txt
+
+<span class="nv">nline</span><span class="o">=</span><span class="nv">$i</span>
+
+<span class="nv">url</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+<span class="nv">state</span><span class="o">=</span><span class="s1">&#39;none&#39;</span>
+<span class="nv">ndoc</span><span class="o">=</span>0
+
+<span class="k">for</span> <span class="o">((</span> <span class="nv">i</span><span class="o">=</span>1;i&lt;<span class="o">=</span>nline;i++ <span class="o">))</span>
+<span class="k">do</span>
+<span class="k">    </span><span class="nv">line</span><span class="o">=</span><span class="k">${</span><span class="nv">lines</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span><span class="k">}</span>
+
+    <span class="k">case</span> <span class="s2">&quot;$line&quot;</span> in
+        <span class="s2">&quot;WARC/1.0&quot;</span><span class="o">)</span>
+            <span class="nv">state</span><span class="o">=</span><span class="s1">&#39;warc&#39;</span>
+            ;;
+        <span class="s2">&quot;WARC-Type: response&quot;</span><span class="o">)</span>
+            <span class="nv">state</span><span class="o">=</span><span class="s1">&#39;warc-valid&#39;</span>
+            <span class="nv">url</span><span class="o">=</span><span class="k">${</span><span class="nv">lines</span><span class="p">[</span><span class="nv">$i</span><span class="p">+1]</span><span class="k">}</span>
+            <span class="nv">url</span><span class="o">=</span><span class="k">${</span><span class="nv">url</span><span class="p">#*: </span><span class="k">}</span>
+            <span class="nb">let </span>ndoc++
+            <span class="nb">echo</span> <span class="nv">$url</span> &gt;&gt; files/<span class="nv">$ndoc</span>
+            <span class="nb">echo</span> &gt;&gt; files/<span class="nv">$ndoc</span>
+            ;;
+        <span class="s2">&quot;HTTP/1.1 200 OK&quot;</span><span class="o">)</span>
+            <span class="o">[</span> <span class="nv">$state</span> <span class="o">=</span> <span class="s1">&#39;warc-valid&#39;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">state</span><span class="o">=</span><span class="s1">&#39;http&#39;</span>
+            ;;
+        <span class="s2">&quot;&quot;</span><span class="o">)</span>
+            <span class="o">[</span> <span class="nv">$state</span> <span class="o">=</span> <span class="s1">&#39;http&#39;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nv">state</span><span class="o">=</span><span class="s1">&#39;doc&#39;</span>
+            ;;
+        *<span class="o">)</span>
+            <span class="o">[</span> <span class="nv">$state</span> <span class="o">=</span> <span class="s1">&#39;doc&#39;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="nv">$line</span> &gt;&gt; files/<span class="nv">$ndoc</span>
+            ;;
+    <span class="k">esac</span>
+<span class="k">done</span>
+</code></pre></div>
+<h2>建立索引</h2>
+
+<ol>
+<li><p>安装与配置</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c"># 下载后解压</span>
+tar -xzvf lucene-xxx.tar.gz
+<span class="nb">cd </span>lucene
+
+<span class="c"># 设置环境变量，直接加入所有的 jar 包</span>
+<span class="nv">dir</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>
+<span class="nb">export </span><span class="nv">CLASSPATH</span><span class="o">=</span><span class="sb">`</span>find -name <span class="s1">&#39;*.jar&#39;</span> | sed <span class="s2">&quot;s@^.@$dir@g&quot;</span> | sed <span class="s1">&#39;:a;N;s/\n/:/;ta&#39;</span><span class="sb">`</span> 
+</code></pre></div></li>
+<li><p>建立索引与搜索</p>
+<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c"># 建立索引，files 为页面文件所在目录，会在当前目录产生 index 目录来保存索引信息</span>
+java org.apache.lucene.demo.IndexFiles -docs files
+
+<span class="c"># 搜索，将进入交互式搜索程序</span>
+java org.apache.lucene.demo.SearchFiles
+</code></pre></div></li>
+</ol>
 
     
       <style>
