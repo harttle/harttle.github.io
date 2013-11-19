@@ -257,6 +257,12 @@ add     $s3,    $s3,    $t0
 Pointers vs Arrays: we calculate address (index multiply 4) in array addressing, while add 4 directly in pointer addressing.&lt;/p&gt;
 &lt;/blockquote&gt;
 
+&lt;h3&gt;Reserved registers&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;$zero&lt;/code&gt; always equals 0.
+&lt;code&gt;$at&lt;/code&gt; is reserved by the assembler to handle large constants in immediate instructions and addresses in load/store instructions.
+&lt;code&gt;$k0, $k1&lt;/code&gt; reserved for the operating system to handle exception procedure. They&amp;#39;re used to retain the address of instruction that causes the exception (which can be get from EPC register), when exception procedure exits and restores all registers before the exception. Thus the program can jump back to the normal procedure.&lt;/p&gt;
+
 &lt;h2&gt;Addressing Mode&lt;/h2&gt;
 
 &lt;p&gt;&lt;strong&gt;Basic block&lt;/strong&gt;&lt;/p&gt;
@@ -403,8 +409,131 @@ Typically, the &lt;em&gt;executable file&lt;/em&gt; has the same format as an ob
 &lt;/blockquote&gt;
 
 &lt;p&gt;The memory that contains the an array that is local to that procedure will be reused as soon as the procedure returns.&lt;/p&gt;
+
+&lt;h1&gt;Arithmetic for Computers&lt;/h1&gt;
+
+&lt;h2&gt;Addition and Subtraction&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Add (&lt;code&gt;add&lt;/code&gt;), and immediate (&lt;code&gt;addi&lt;/code&gt;), and subtract (&lt;code&gt;sub&lt;/code&gt;) cause exceptions on overflow.
+MIPS detects overflow with an &lt;em&gt;exception&lt;/em&gt; (or &lt;em&gt;interrupt&lt;/em&gt; ),  which is an unscheduled procedure call. The address of current instruction is saved and the computer jumps to predefined address to invoke the appropriate routine for that exception.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;MIPS uses &lt;em&gt;exception program counter&lt;/em&gt; (EPC) to contain the address of the instruction that causes the exception. The instruction &lt;em&gt;move from system control&lt;/em&gt; (&lt;code&gt;mfc0&lt;/code&gt;) is used to copy EPC into a general-purpose register.&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Add unsigned (&lt;code&gt;addu&lt;/code&gt;), add immediate unsigned (&lt;code&gt;addiu&lt;/code&gt;), and subtract unsigned (&lt;code&gt;subu&lt;/code&gt;) do not cause exceptions on overflow.
+Programmers can trap overflow anyway: when overflow occurs, the sign bit of the result is not properly set. Compairing with sign bits of operands, the sign bit of the result can be determined. &lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;SIMD (single instruction, multiple data): By partitioning the carry chains within a 64-bit adder, a processor could perform simultaneous operations on a short vecters of eight 8-bit operands, four 16-bit operands, etc. Vectors and 8-bit data often appears in multimedia routine.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2&gt;Multiplication&lt;/h2&gt;
+
+&lt;p&gt;multiplicand * multiplier = product&lt;/p&gt;
+
+&lt;h3&gt;Sequential Version of the Multiplication&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/multi1.png&quot; alt=&quot;sequential-multiply&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/multi-illu.png&quot; alt=&quot;sequential-multiply-illu&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Refined version:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Init: put multiplier to the left 32-bit of the product register.&lt;/li&gt;
+&lt;li&gt;Cycle: 
+
+&lt;ol&gt;
+&lt;li&gt;if the last bit of product register is 1, add the left 32-bit with the multiplicand&lt;/li&gt;
+&lt;li&gt;shift right the product register&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Final: the product register contains the 64-bit product&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/multi2.png&quot; alt=&quot;refined&quot;&gt;&lt;/p&gt;
+
+&lt;h3&gt;Faster Multiplication&lt;/h3&gt;
+
+&lt;p&gt;A way to organize these 32 addtions is in a parallel tree:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/multi3.png&quot; alt=&quot;parallel&quot;&gt;&lt;/p&gt;
+
+&lt;h3&gt;Multiply in MIPS&lt;/h3&gt;
+
+&lt;p&gt;The registers &lt;code&gt;Hi&lt;/code&gt; and &lt;code&gt;Lo&lt;/code&gt; contains the 64-bit product. Call &lt;code&gt;mflo&lt;/code&gt; to fetch the 32-bit product, &lt;code&gt;mfhi&lt;/code&gt; can be used to get &lt;code&gt;Hi&lt;/code&gt; to test for overflow.&lt;/p&gt;
+
+&lt;h2&gt;Division&lt;/h2&gt;
+
+&lt;p&gt;Dividend = Quotient * Divisor + Remainder&lt;/p&gt;
+
+&lt;h3&gt;Division Algorithm&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/divide1.png&quot; alt=&quot;divide&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/divide-illu.png&quot; alt=&quot;divide-illu&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;Improved version:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Init: put the dividend in the right 32-bit of remainder register.&lt;/li&gt;
+&lt;li&gt;Cycle: 
+
+&lt;ol&gt;
+&lt;li&gt;subtract the left 32-bit of remainder by the divisor&lt;/li&gt;
+&lt;li&gt;shift left the remaider register&lt;/li&gt;
+&lt;li&gt;set the last bit as new quotient bit&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Final: the left 32-bit contains the remainder, right 32-bit contains the quotient.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/divide2.png&quot; alt=&quot;divede-improved&quot;&gt;&lt;/p&gt;
+
+&lt;h3&gt;Faster Division&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;SRT division&lt;/strong&gt;: try to guess several quotient bits per step, using a table lookup based on the upper bits of the dividend and remainder. The key is guessing the value to subtract.&lt;/p&gt;
+
+&lt;h3&gt;Divide in MIPS&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;Hi&lt;/code&gt; contains the remainder, and &lt;code&gt;Lo&lt;/code&gt; contains the quotient after the divide instruction complete.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;MIPS divide instructions ignore overflow. MIPS software must check the divisor to discover division by 0 as well as overflow.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2&gt;Floating Point&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;scientific notation&lt;/strong&gt; A notation that renders numbers with a single digit to the left of the decimal point.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;normalized&lt;/strong&gt; A number in floating-point notation that has no leading 0s.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;fraction&lt;/strong&gt; The value, generally between 0 and 1, placed in the fraction field.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;exponent&lt;/strong&gt; In the numerical representation system of floating-point arithmetic, the value that is placed in the exponent field.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;overflow&lt;/em&gt; the exponent is too large to be represented in the exponent field.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;floating point&lt;/strong&gt; Computer arithmetic that represents numbers in which the binary point is not fixed.&lt;/p&gt;
+
+&lt;p&gt;In general, floating-point numbers are of the form: $(-1)^S \times F \times 2^E$&lt;/p&gt;
+
+&lt;p&gt;MIPS float: sign(1 bit) + exponent(8 bit) + fraction(23 bit)
+MIPS double: s(1 bit) + exponent(11 bit) + fraction(52 bit)&lt;/p&gt;
+
+&lt;p&gt;IEEE 754 uses a bias of 127 for single precesion, and makes the leading 1 implicit. Since 0 has no leading 1, it&amp;#39;s given the reserved exponent 0 so that hardware won&amp;#39;t attach a leading 1.&lt;/p&gt;
+
+&lt;p&gt;Thus 00...00 represents 0; the representation of the rest are in the following form:&lt;/p&gt;
+
+&lt;p&gt;$(-1)^S \times (1 + Fraction)\times 2^(Exponent - Bias)$&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The exponent is located left and the bias is for comparison convenience.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1&gt;The Processor&lt;/h1&gt;
 </description>
-				<pubDate>Wed, 13 Nov 2013 00:39:05 +0800</pubDate>
+				<pubDate>Sat, 16 Nov 2013 16:05:24 +0800</pubDate>
 				<link>http://harttle.github.io/%E7%AC%94%E8%AE%B0/computer-organization-and-design.html</link>
 				<guid isPermaLink="true">http://harttle.github.io/%E7%AC%94%E8%AE%B0/computer-organization-and-design.html</guid>
 			</item>

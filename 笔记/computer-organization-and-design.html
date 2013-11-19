@@ -219,7 +219,7 @@
           返回列表 <span class="glyphicon glyphicon-hand-left"></span>
       </a>
       <span class="pull-right label label-default hidden-xs">
-          <span class="glyphicon glyphicon-time"></span> 2013年11月13日
+          <span class="glyphicon glyphicon-time"></span> 2013年11月16日
       </span>
     </div>
   </div>
@@ -484,6 +484,12 @@ add     $s3,    $s3,    $t0
 Pointers vs Arrays: we calculate address (index multiply 4) in array addressing, while add 4 directly in pointer addressing.</p>
 </blockquote>
 
+<h3>Reserved registers</h3>
+
+<p><code>$zero</code> always equals 0.
+<code>$at</code> is reserved by the assembler to handle large constants in immediate instructions and addresses in load/store instructions.
+<code>$k0, $k1</code> reserved for the operating system to handle exception procedure. They&#39;re used to retain the address of instruction that causes the exception (which can be get from EPC register), when exception procedure exits and restores all registers before the exception. Thus the program can jump back to the normal procedure.</p>
+
 <h2>Addressing Mode</h2>
 
 <p><strong>Basic block</strong></p>
@@ -630,6 +636,129 @@ Typically, the <em>executable file</em> has the same format as an object file, e
 </blockquote>
 
 <p>The memory that contains the an array that is local to that procedure will be reused as soon as the procedure returns.</p>
+
+<h1>Arithmetic for Computers</h1>
+
+<h2>Addition and Subtraction</h2>
+
+<ol>
+<li><p>Add (<code>add</code>), and immediate (<code>addi</code>), and subtract (<code>sub</code>) cause exceptions on overflow.
+MIPS detects overflow with an <em>exception</em> (or <em>interrupt</em> ),  which is an unscheduled procedure call. The address of current instruction is saved and the computer jumps to predefined address to invoke the appropriate routine for that exception.</p>
+
+<blockquote>
+<p>MIPS uses <em>exception program counter</em> (EPC) to contain the address of the instruction that causes the exception. The instruction <em>move from system control</em> (<code>mfc0</code>) is used to copy EPC into a general-purpose register.</p>
+</blockquote></li>
+<li><p>Add unsigned (<code>addu</code>), add immediate unsigned (<code>addiu</code>), and subtract unsigned (<code>subu</code>) do not cause exceptions on overflow.
+Programmers can trap overflow anyway: when overflow occurs, the sign bit of the result is not properly set. Compairing with sign bits of operands, the sign bit of the result can be determined. </p></li>
+</ol>
+
+<blockquote>
+<p>SIMD (single instruction, multiple data): By partitioning the carry chains within a 64-bit adder, a processor could perform simultaneous operations on a short vecters of eight 8-bit operands, four 16-bit operands, etc. Vectors and 8-bit data often appears in multimedia routine.</p>
+</blockquote>
+
+<h2>Multiplication</h2>
+
+<p>multiplicand * multiplier = product</p>
+
+<h3>Sequential Version of the Multiplication</h3>
+
+<p><img src="/assets/img/blog/multi1.png" alt="sequential-multiply"></p>
+
+<p><img src="/assets/img/blog/multi-illu.png" alt="sequential-multiply-illu"></p>
+
+<p>Refined version:</p>
+
+<ul>
+<li>Init: put multiplier to the left 32-bit of the product register.</li>
+<li>Cycle: 
+
+<ol>
+<li>if the last bit of product register is 1, add the left 32-bit with the multiplicand</li>
+<li>shift right the product register</li>
+</ol></li>
+<li>Final: the product register contains the 64-bit product</li>
+</ul>
+
+<p><img src="/assets/img/blog/multi2.png" alt="refined"></p>
+
+<h3>Faster Multiplication</h3>
+
+<p>A way to organize these 32 addtions is in a parallel tree:</p>
+
+<p><img src="/assets/img/blog/multi3.png" alt="parallel"></p>
+
+<h3>Multiply in MIPS</h3>
+
+<p>The registers <code>Hi</code> and <code>Lo</code> contains the 64-bit product. Call <code>mflo</code> to fetch the 32-bit product, <code>mfhi</code> can be used to get <code>Hi</code> to test for overflow.</p>
+
+<h2>Division</h2>
+
+<p>Dividend = Quotient * Divisor + Remainder</p>
+
+<h3>Division Algorithm</h3>
+
+<p><img src="/assets/img/blog/divide1.png" alt="divide"></p>
+
+<p><img src="/assets/img/blog/divide-illu.png" alt="divide-illu"></p>
+
+<p>Improved version:</p>
+
+<ul>
+<li>Init: put the dividend in the right 32-bit of remainder register.</li>
+<li>Cycle: 
+
+<ol>
+<li>subtract the left 32-bit of remainder by the divisor</li>
+<li>shift left the remaider register</li>
+<li>set the last bit as new quotient bit</li>
+</ol></li>
+<li>Final: the left 32-bit contains the remainder, right 32-bit contains the quotient.</li>
+</ul>
+
+<p><img src="/assets/img/blog/divide2.png" alt="divede-improved"></p>
+
+<h3>Faster Division</h3>
+
+<p><strong>SRT division</strong>: try to guess several quotient bits per step, using a table lookup based on the upper bits of the dividend and remainder. The key is guessing the value to subtract.</p>
+
+<h3>Divide in MIPS</h3>
+
+<p><code>Hi</code> contains the remainder, and <code>Lo</code> contains the quotient after the divide instruction complete.</p>
+
+<blockquote>
+<p>MIPS divide instructions ignore overflow. MIPS software must check the divisor to discover division by 0 as well as overflow.</p>
+</blockquote>
+
+<h2>Floating Point</h2>
+
+<p><strong>scientific notation</strong> A notation that renders numbers with a single digit to the left of the decimal point.</p>
+
+<p><strong>normalized</strong> A number in floating-point notation that has no leading 0s.</p>
+
+<p><strong>fraction</strong> The value, generally between 0 and 1, placed in the fraction field.</p>
+
+<p><strong>exponent</strong> In the numerical representation system of floating-point arithmetic, the value that is placed in the exponent field.</p>
+
+<p><em>overflow</em> the exponent is too large to be represented in the exponent field.</p>
+
+<p><strong>floating point</strong> Computer arithmetic that represents numbers in which the binary point is not fixed.</p>
+
+<p>In general, floating-point numbers are of the form: $(-1)^S \times F \times 2^E$</p>
+
+<p>MIPS float: sign(1 bit) + exponent(8 bit) + fraction(23 bit)
+MIPS double: s(1 bit) + exponent(11 bit) + fraction(52 bit)</p>
+
+<p>IEEE 754 uses a bias of 127 for single precesion, and makes the leading 1 implicit. Since 0 has no leading 1, it&#39;s given the reserved exponent 0 so that hardware won&#39;t attach a leading 1.</p>
+
+<p>Thus 00...00 represents 0; the representation of the rest are in the following form:</p>
+
+<p>$(-1)^S \times (1 + Fraction)\times 2^(Exponent - Bias)$</p>
+
+<blockquote>
+<p>The exponent is located left and the bias is for comparison convenience.</p>
+</blockquote>
+
+<h1>The Processor</h1>
 
     
       <style>
@@ -812,9 +941,10 @@ var jiathis_config = {data_track_clickback:'true'};
     $('body').scrollspy('refresh');
   });
 </script>
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script>
-<!-- html config: TeX-MML-AM_HTMLorMML -->
+<!--script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script-->
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 <!-- latex render end -->
+
 
 
     
