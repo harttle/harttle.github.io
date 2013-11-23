@@ -532,8 +532,151 @@ MIPS double: s(1 bit) + exponent(11 bit) + fraction(52 bit)&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h1&gt;The Processor&lt;/h1&gt;
+
+&lt;h2&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;A abstract view of the implementation of the MIPS subset showing the major functional units and the major connections between them:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/mips-abs.png&quot; alt=&quot;abstract-view&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;The basic implementation of the MIPS subset, including the necessary multiplexors and control lines:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/mips-basic.png&quot; alt=&quot;mips-basic&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;asserted&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The signal is logically high or true.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;deasserted&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The signal is logically low or false.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Clocking methodology&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The approach used to determine when data is valid and stable relative to the clock.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Edge-triggered clocking&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A clocking scheme in which all state changes occur on a clock edge.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;control signal&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A signal used for multiplexor selection or for directing the operation of a functional unit; contrasts with a &lt;strong&gt;data signal&lt;/strong&gt; , which contains information that is operated on by a funcional unit. &lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The state element is changed only when the write control signal is asserted and a clock edge occurs.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2&gt;A Simple Implementation Scheme&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;ALUOp&lt;/strong&gt; indicates whether the operation to be performed should be add for loas and stores, substract for beq, or determined by the operation encoded in the funct field.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Multiple levels of decoding&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The main control unit generates the ALUOp bits, which then are used as input to the ALU control that generates the actual signals to control the ALU unit.&lt;/p&gt;
+
+&lt;p&gt;The datapath with all necessary multiplexors and all control lines identified:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/mips-all.png&quot; alt=&quot;mips-all&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Single-cycle implementation&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Also called single clock cycle implementation. An implementation in which an instruction is executed in one clock cycle.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The clock cycle is determined by the longest possible path in the processor.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2&gt;An Overview of Pipelining&lt;/h2&gt;
+
+&lt;p&gt;Assuming ideal conditions:&lt;/p&gt;
+
+&lt;p&gt;Time between instructions(pipelined) = Time between instructions(nonpipelined) / Number of pipe states&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Pipelining improves performance by increasing instruction throughput, as opposed to decreasing the execution time of an individual instruction, also called latency.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Structual Hazards&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;When a planned instruction cannot execute in the proper clock cycle because the hardware does not support the combination of instructions that are set to execute.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Data Hazards&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Data Hazards occure when the pipeline must be stalled because one step must wait for another to complete.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Control Hazards&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Arising from the need to make a decision based on the results of one instruction while others are executing.&lt;/p&gt;
+
+&lt;h2&gt;Pipelined Datapath and Control&lt;/h2&gt;
+
+&lt;p&gt;The datapath is separated into 5 pieces:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;IF: Instruction fetch&lt;/li&gt;
+&lt;li&gt;ID: Instruction decode and register file read&lt;/li&gt;
+&lt;li&gt;EX: Execution or address calculation&lt;/li&gt;
+&lt;li&gt;MEM: Data memory access&lt;/li&gt;
+&lt;li&gt;WB: Write back&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;We can divede the control lines into 5 groups according to the pipeline state&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;IF: Signals to read instruction memory and write PC are always asserted, nothing to control.&lt;/li&gt;
+&lt;li&gt;ID: As in the previous state, the same thing happens at every clock cycle, no optional control lines to set.&lt;/li&gt;
+&lt;li&gt;EX: The signals to be set are RegDst, ALUOp, and ALUSrc. The signals select the Result register, the ALU operation, and either Read data 2 or a sign-extended immediate for the ALU.&lt;/li&gt;
+&lt;li&gt;MEM: The control lines set are: Branch, MemRead, and MemWrite. These signals are set by the branch equal, load, and store instructions.&lt;/li&gt;
+&lt;li&gt;WB: MemtoReg, which decides between sending the ALU result or the memory value to the register file; Reg Write, which writes the chosen value.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Multiple-clock-cycle pipeline diagram&lt;/strong&gt; gives overviews of pipelining situations:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/multiple-clock-cycle-pipeline.png&quot; alt=&quot;multiple-clock-cycle-pipeline&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Single-clock-cycle diagram&lt;/strong&gt; represents a vertical slice through a set of multiple-clock-cycle diagrams, showing the usage of the datapath by each of the instructions in the pipeline at the designated clock cycle.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/single-clock-cycle-pipeline.png&quot; alt=&quot;single-clock-cycle-pipeline&quot;&gt;&lt;/p&gt;
+
+&lt;h2&gt;Data Hazards&lt;/h2&gt;
+
+&lt;h3&gt;Forwarding&lt;/h3&gt;
+
+&lt;p&gt;When the result required by the current instruction is computed during EX stage of the previous instruction( or previous previous instruction), forwarding is used. See the two pairs of hazard conditions:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;EX/MEM.RegisterRd = ID/EX.RegisterRs&lt;/li&gt;
+&lt;li&gt;EX/MEM.RegisterRd = ID/EX.RegisterRt&lt;/li&gt;
+&lt;li&gt;MEM/WB.RegisterRd = ID/EX.RegisterRs&lt;/li&gt;
+&lt;li&gt;MEM/WB.RegisterRd = ID/EX.RegisterRt&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The &lt;strong&gt;fowarding unit&lt;/strong&gt; is used to forward new values from EX/MEM and MEM/WB pipeline-register to ID/EX pipeline-register when the conditions above occured.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Note that the values in EX/MEM is newer than MEM/WB, we will forward MEM/WB only when EX/MEM needn&amp;#39;t to be forwarded.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;Stalls&lt;/h3&gt;
+
+&lt;p&gt;When the result required by the current instruction is computed during MEM stage of the previous instruction, we must stall the pipeline.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;hazard detection unit&lt;/strong&gt; operates during the ID stage, checking for load instructions and insert the stall between the load and its use. The single condition is:&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;if( ID/EX.MemRead and 
+    ((ID/EX.RegisterRt = IF/ID.RegisterRs) or
+     (ID/EX.RegisterRt = IF/ID.RegisterRt)))
+        stall the pipeline
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;By identifying the hazard in the ID stage, we can insert a bubble into the pipeline by changing the EX, MEM and WB control fields of the ID/EX pipeline registeer to 0.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Actually, only the signals RegWrite and MemWrite need be 0, while the other control signals can be don&amp;#39;t cares.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/pipe-control.png&quot; alt=&quot;pipe-control&quot;&gt;&lt;/p&gt;
 </description>
-				<pubDate>Sat, 16 Nov 2013 16:05:24 +0800</pubDate>
+				<pubDate>Sat, 23 Nov 2013 23:09:50 +0800</pubDate>
 				<link>http://harttle.github.io/%E7%AC%94%E8%AE%B0/computer-organization-and-design.html</link>
 				<guid isPermaLink="true">http://harttle.github.io/%E7%AC%94%E8%AE%B0/computer-organization-and-design.html</guid>
 			</item>

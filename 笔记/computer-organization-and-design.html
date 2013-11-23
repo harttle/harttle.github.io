@@ -219,7 +219,7 @@
           返回列表 <span class="glyphicon glyphicon-hand-left"></span>
       </a>
       <span class="pull-right label label-default hidden-xs">
-          <span class="glyphicon glyphicon-time"></span> 2013年11月16日
+          <span class="glyphicon glyphicon-time"></span> 2013年11月23日
       </span>
     </div>
   </div>
@@ -759,6 +759,149 @@ MIPS double: s(1 bit) + exponent(11 bit) + fraction(52 bit)</p>
 </blockquote>
 
 <h1>The Processor</h1>
+
+<h2>Introduction</h2>
+
+<p>A abstract view of the implementation of the MIPS subset showing the major functional units and the major connections between them:</p>
+
+<p><img src="/assets/img/blog/mips-abs.png" alt="abstract-view"></p>
+
+<p>The basic implementation of the MIPS subset, including the necessary multiplexors and control lines:</p>
+
+<p><img src="/assets/img/blog/mips-basic.png" alt="mips-basic"></p>
+
+<p><strong>asserted</strong></p>
+
+<p>The signal is logically high or true.</p>
+
+<p><strong>deasserted</strong></p>
+
+<p>The signal is logically low or false.</p>
+
+<p><strong>Clocking methodology</strong></p>
+
+<p>The approach used to determine when data is valid and stable relative to the clock.</p>
+
+<p><strong>Edge-triggered clocking</strong></p>
+
+<p>A clocking scheme in which all state changes occur on a clock edge.</p>
+
+<p><strong>control signal</strong></p>
+
+<p>A signal used for multiplexor selection or for directing the operation of a functional unit; contrasts with a <strong>data signal</strong> , which contains information that is operated on by a funcional unit. </p>
+
+<blockquote>
+<p>The state element is changed only when the write control signal is asserted and a clock edge occurs.</p>
+</blockquote>
+
+<h2>A Simple Implementation Scheme</h2>
+
+<p><strong>ALUOp</strong> indicates whether the operation to be performed should be add for loas and stores, substract for beq, or determined by the operation encoded in the funct field.</p>
+
+<p><strong>Multiple levels of decoding</strong></p>
+
+<p>The main control unit generates the ALUOp bits, which then are used as input to the ALU control that generates the actual signals to control the ALU unit.</p>
+
+<p>The datapath with all necessary multiplexors and all control lines identified:</p>
+
+<p><img src="/assets/img/blog/mips-all.png" alt="mips-all"></p>
+
+<p><strong>Single-cycle implementation</strong></p>
+
+<p>Also called single clock cycle implementation. An implementation in which an instruction is executed in one clock cycle.</p>
+
+<blockquote>
+<p>The clock cycle is determined by the longest possible path in the processor.</p>
+</blockquote>
+
+<h2>An Overview of Pipelining</h2>
+
+<p>Assuming ideal conditions:</p>
+
+<p>Time between instructions(pipelined) = Time between instructions(nonpipelined) / Number of pipe states</p>
+
+<blockquote>
+<p>Pipelining improves performance by increasing instruction throughput, as opposed to decreasing the execution time of an individual instruction, also called latency.</p>
+</blockquote>
+
+<p><strong>Structual Hazards</strong></p>
+
+<p>When a planned instruction cannot execute in the proper clock cycle because the hardware does not support the combination of instructions that are set to execute.</p>
+
+<p><strong>Data Hazards</strong></p>
+
+<p>Data Hazards occure when the pipeline must be stalled because one step must wait for another to complete.</p>
+
+<p><strong>Control Hazards</strong></p>
+
+<p>Arising from the need to make a decision based on the results of one instruction while others are executing.</p>
+
+<h2>Pipelined Datapath and Control</h2>
+
+<p>The datapath is separated into 5 pieces:</p>
+
+<ol>
+<li>IF: Instruction fetch</li>
+<li>ID: Instruction decode and register file read</li>
+<li>EX: Execution or address calculation</li>
+<li>MEM: Data memory access</li>
+<li>WB: Write back</li>
+</ol>
+
+<p>We can divede the control lines into 5 groups according to the pipeline state</p>
+
+<ol>
+<li>IF: Signals to read instruction memory and write PC are always asserted, nothing to control.</li>
+<li>ID: As in the previous state, the same thing happens at every clock cycle, no optional control lines to set.</li>
+<li>EX: The signals to be set are RegDst, ALUOp, and ALUSrc. The signals select the Result register, the ALU operation, and either Read data 2 or a sign-extended immediate for the ALU.</li>
+<li>MEM: The control lines set are: Branch, MemRead, and MemWrite. These signals are set by the branch equal, load, and store instructions.</li>
+<li>WB: MemtoReg, which decides between sending the ALU result or the memory value to the register file; Reg Write, which writes the chosen value.</li>
+</ol>
+
+<p><strong>Multiple-clock-cycle pipeline diagram</strong> gives overviews of pipelining situations:</p>
+
+<p><img src="/assets/img/blog/multiple-clock-cycle-pipeline.png" alt="multiple-clock-cycle-pipeline"></p>
+
+<p><strong>Single-clock-cycle diagram</strong> represents a vertical slice through a set of multiple-clock-cycle diagrams, showing the usage of the datapath by each of the instructions in the pipeline at the designated clock cycle.</p>
+
+<p><img src="/assets/img/blog/single-clock-cycle-pipeline.png" alt="single-clock-cycle-pipeline"></p>
+
+<h2>Data Hazards</h2>
+
+<h3>Forwarding</h3>
+
+<p>When the result required by the current instruction is computed during EX stage of the previous instruction( or previous previous instruction), forwarding is used. See the two pairs of hazard conditions:</p>
+
+<ol>
+<li>EX/MEM.RegisterRd = ID/EX.RegisterRs</li>
+<li>EX/MEM.RegisterRd = ID/EX.RegisterRt</li>
+<li>MEM/WB.RegisterRd = ID/EX.RegisterRs</li>
+<li>MEM/WB.RegisterRd = ID/EX.RegisterRt</li>
+</ol>
+
+<p>The <strong>fowarding unit</strong> is used to forward new values from EX/MEM and MEM/WB pipeline-register to ID/EX pipeline-register when the conditions above occured.</p>
+
+<blockquote>
+<p>Note that the values in EX/MEM is newer than MEM/WB, we will forward MEM/WB only when EX/MEM needn&#39;t to be forwarded.</p>
+</blockquote>
+
+<h3>Stalls</h3>
+
+<p>When the result required by the current instruction is computed during MEM stage of the previous instruction, we must stall the pipeline.</p>
+
+<p>The <strong>hazard detection unit</strong> operates during the ID stage, checking for load instructions and insert the stall between the load and its use. The single condition is:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">if( ID/EX.MemRead and 
+    ((ID/EX.RegisterRt = IF/ID.RegisterRs) or
+     (ID/EX.RegisterRt = IF/ID.RegisterRt)))
+        stall the pipeline
+</code></pre></div>
+<p>By identifying the hazard in the ID stage, we can insert a bubble into the pipeline by changing the EX, MEM and WB control fields of the ID/EX pipeline registeer to 0.</p>
+
+<blockquote>
+<p>Actually, only the signals RegWrite and MemWrite need be 0, while the other control signals can be don&#39;t cares.</p>
+</blockquote>
+
+<p><img src="/assets/img/blog/pipe-control.png" alt="pipe-control"></p>
 
     
       <style>
