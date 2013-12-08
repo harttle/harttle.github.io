@@ -8,8 +8,777 @@
 		
 			<item>
 				<title>Modern Operating Systems</title>
-				<description></description>
-				<pubDate>Tue, 12 Nov 2013 20:17:08 +0800</pubDate>
+				<description>&lt;h1&gt;Introduction&lt;/h1&gt;
+
+&lt;h2&gt;What is OS&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;extendes machines&lt;/strong&gt; : providing programmers(and programs) a clean abstract set of resources instead of the messy hardware&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;resource manager&lt;/strong&gt; : managing hardware resources&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2&gt;History of OS&lt;/h2&gt;
+
+&lt;p&gt;The first digital computer was designed by Charles Babbage. Ada Lovelace was the first programmer(hired by Babbage).&lt;/p&gt;
+
+&lt;h3&gt;1st Generation Vacuum Tubes&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The first functioning digital computer, by John Atanasoff and Clifford Berry, Iowa State University.&lt;/li&gt;
+&lt;li&gt;Z3, Konrad Zuse, Berlin.&lt;/li&gt;
+&lt;li&gt;Colossus, a group at Bletchey Park, England&lt;/li&gt;
+&lt;li&gt;Mark I, Howard Aiken, Harvard&lt;/li&gt;
+&lt;li&gt;ENIAC, William Mauchley and J. Presper Eckert, University of Pennsylvania&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;2nd Generation Transistors and Batch System&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;batch system&lt;/strong&gt; &lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Programmers bring cards to IBM 1401&lt;/li&gt;
+&lt;li&gt;1401 read batch of jobs onto tape&lt;/li&gt;
+&lt;li&gt;Operator carries input tape to IBM 7094&lt;/li&gt;
+&lt;li&gt;7094 does computing&lt;/li&gt;
+&lt;li&gt;Operator carries output tape to 1401&lt;/li&gt;
+&lt;li&gt;1401 prints output&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;3rd Generation ICs and Multiprogramming&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;IBM System/360&lt;/strong&gt; &lt;/p&gt;
+
+&lt;p&gt;A series of software-compatible machines differed only in price and performance.&lt;/p&gt;
+
+&lt;p&gt;360 was the first major computer line to use &lt;strong&gt;ICs(Integrated Circuits)&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;OS/360&lt;/strong&gt; had to work on all models, the result was an enormous and complex OS, each release fixed some bugs and introduced new ones.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;multiprogramming&lt;/strong&gt; &lt;/p&gt;
+
+&lt;p&gt;Partition memory into several pieces, with a different job in each partition. While one job was waiting for I/O, another job could be using the CPU.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;spooling&lt;/strong&gt; &lt;/p&gt;
+
+&lt;p&gt;Simultaneous Peripheral Operation On Line, OS read jobs from cards onto the disk as soon as they were brought to the computer room, whenever a running job finished, the operating system could load a new job from the disk and run it.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;timesharing&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Proveding quick response time. The 1st general-purpose timesharing system, **CTSS(Compatible Time Sharing System) was developed at MIT.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;MULTICS(MULTiplexed Information and Computing Service)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Developed by MIT, Bell Labs, and General Electric, MULTICS supports handreds of uses on a machine only slightly powerful than an Intel 386-based PC.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;minicomputer&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;DEC PDP-1(1961) and other PDPs(all incompatible)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;UNIX&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Developed by Ken Thompson(based on PDP-7  minicomputer). There are 2 major versions: &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;System V&lt;/strong&gt;(from AT&amp;amp;T) and &lt;strong&gt;BSD&lt;/strong&gt;(Berkeley Software Distribution)&lt;/p&gt;
+
+&lt;p&gt;1987, &lt;strong&gt;MINIX&lt;/strong&gt; was released for educational purposes.&lt;/p&gt;
+
+&lt;h3&gt;4th Generation Personal Computers&lt;/h3&gt;
+
+&lt;p&gt;With the development of &lt;strong&gt;LSI&lt;/strong&gt;(Large Scale Integration) circuits, &lt;strong&gt;microcomputers&lt;/strong&gt; appears.&lt;/p&gt;
+
+&lt;p&gt;Kildall developed &lt;strong&gt;CP/M&lt;/strong&gt;(Control Program for Microcomputers, disk-based OS), which later supports 8080, Zilog Z80, and other CPU chips.&lt;/p&gt;
+
+&lt;p&gt;Bill Gates offered &lt;strong&gt;DOS&lt;/strong&gt;(Disk Operating System, which renamed to MS-DOS later) to IBM.&lt;/p&gt;
+
+&lt;p&gt;Engelbart invented the &lt;strong&gt;GUI&lt;/strong&gt;(Graphical User Interface), which was adopted by Xerox PARC.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Apple&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Steve Jobs visited PARC and embarked on building an Apple with a GUI.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Windows&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Microsoft released Windows 95, Windows 98(with 16-bit Intel CPU), Windows NT(New Technology, 32-bit), Windows Me(Millennium edition), Windows 2000(1999,renamed from Windows NT5), and Windows XP(2001).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;UNIX&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;FreeBSD, originating from BSD project at Berkeley. X Window System(X11), MIT.&lt;/p&gt;
+
+&lt;h2&gt;OS ZOO&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Mainframe OS&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Oriented toward process many jobs at once, most of which need prodigious amounts of I/O.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Server OS&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Serve multiple users at once over a network and allow the users to share hardware and software resources.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mutiprocessor OS&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Special features for communication, connectivity, and consistency.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Personal Computer OS&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Provide good surport to a single user.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Handheld Computer OS&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;PDA&lt;/strong&gt;(Personal Digital Assistant) and mobiles.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Embedded OS&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Donot accept user-installed software.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Sensor Node OS&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Tiny computers that communicate with each other and with a base station using wireless communication.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Real-Time OS&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;hard real-time&lt;/strong&gt; the action absolutely must occur at a certain moment.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;soft real-time&lt;/strong&gt; missing an occasional deadline is acceptable and does not cause any permanent damage.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Smart Card OS&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Some are Java-oriented. The ROM holds an interpreter for the JVM. 
+Resource management and protection.&lt;/p&gt;
+
+&lt;h2&gt;OS Structure&lt;/h2&gt;
+
+&lt;h3&gt;Monolithic Systems&lt;/h3&gt;
+
+&lt;p&gt;Basic sturctures&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;A main program that invokes requested service procedure.&lt;/li&gt;
+&lt;li&gt;A set of service procedures that carry out the system calls.&lt;/li&gt;
+&lt;li&gt;A set of utility procedures that help the service procedures.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;Layered Systems&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;THE&lt;/strong&gt; system built by E. W. Dijkstra.&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;center&quot;&gt;layer&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;function&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;5&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;The operator&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;4&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;User programs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;3&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;I/O management&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;2&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;Operator-process communication&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;1&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;Memory and drum management&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;0&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;Processor allocation and multiprogramming&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;MULTICS&lt;/strong&gt; was described as having a series of concentric rings, with the inner ones being more privileged than the outer ones.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The advantage is that it can be easily extended to structure user subsystems.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;Microkernels&lt;/h3&gt;
+
+&lt;p&gt;Achieve high reliability by spilitting the OS into small, well-defined modules, only one of which(the microkernel) runs in kernel mode.&lt;/p&gt;
+
+&lt;p&gt;An idea related to having a minimal kernal is to put the &lt;strong&gt;mechanism&lt;/strong&gt; for doing something in the kernel but not &lt;strong&gt;policy&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A few of better-known microkernels: Integrity, K42, Symbian, and MINIX 3.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;Client-Server Model&lt;/h3&gt;
+
+&lt;p&gt;A slight variantion of the microkernel idea is to distinguish 2 classes of processes, the &lt;strong&gt;servers&lt;/strong&gt;(providing services), and the &lt;strong&gt;clients&lt;/strong&gt;(use these services).&lt;/p&gt;
+
+&lt;h3&gt;Virtual Machines&lt;/h3&gt;
+
+&lt;h4&gt;Type 1 hypervisor&lt;/h4&gt;
+
+&lt;p&gt;Also known as &lt;strong&gt;virtual machine monitor&lt;/strong&gt;, runs upon th e hardware.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/370-cms.png&quot; alt=&quot;370-cms&quot;&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;CP/CMS&lt;/strong&gt; , later renamed VM/370 is a timesharing system provedes &lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;multiprogramming &lt;/li&gt;
+&lt;li&gt;extended machine with a more convenient interface than the bare hardware&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;CMS&lt;/strong&gt; (Conversational Monitor System), a single-user, interactive processing OS.&lt;/p&gt;
+
+&lt;h4&gt;Type 2 hypervisor&lt;/h4&gt;
+
+&lt;p&gt;Runs upon the Host OS, like other applications.&lt;/p&gt;
+
+&lt;h3&gt;Exokernels&lt;/h3&gt;
+
+&lt;p&gt;Rather than cloning the actual machine, another strategy is pratitioning it, giving each user a subset of the resources.&lt;/p&gt;
+
+&lt;p&gt;At the bottom layer, running in kernel mode, is a program called the &lt;strong&gt;exokernal&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h1&gt;Processes and Threads&lt;/h1&gt;
+
+&lt;h2&gt;Processes&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;pseudoparallelism&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The illusion of parallelism while CPU is switching from process to process quickly.&lt;/p&gt;
+
+&lt;h3&gt;The Process Model&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;process&lt;/strong&gt; is an instance of an executing program, is the activity of a program.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;If a program is running twice, it counts as two processes.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;Process Creation&lt;/h3&gt;
+
+&lt;p&gt;When processes are created&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;System init&lt;/li&gt;
+&lt;li&gt;Process creation system call by a running process&lt;/li&gt;
+&lt;li&gt;A user request to create a new process.&lt;/li&gt;
+&lt;li&gt;Init of a batch job.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;fork&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In Unix, this call creates an exact clone of the calling process. &lt;code&gt;execve&lt;/code&gt; is another syscall used to change its memory image and run a new program.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;This separation allows the child to manipulate its file descriptors after &lt;code&gt;fork&lt;/code&gt; but before the &lt;code&gt;execve&lt;/code&gt; in order to accomplish redirections.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;CreateProcess&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In Windows, this call handles both process creation and loading with 10 parameters.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;It&amp;#39;s possible for a newly created process to share resources such as open files.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;Process Termination&lt;/h3&gt;
+
+&lt;p&gt;When processes terminate&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Normal exit (voluntary)&lt;/li&gt;
+&lt;li&gt;Error exit (voluntary)&lt;/li&gt;
+&lt;li&gt;Fatal error (involuntary)&lt;/li&gt;
+&lt;li&gt;Killed by another process (involuntary)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Voluntary termination: &lt;code&gt;exit&lt;/code&gt; in UNIX and &lt;code&gt;ExitProcess&lt;/code&gt; in Windows. Kill someother process: &lt;code&gt;kill&lt;/code&gt; in UNIX and &lt;code&gt;TerminateProcess&lt;/code&gt; in Windows.&lt;/p&gt;
+
+&lt;h3&gt;Process Hierarchies&lt;/h3&gt;
+
+&lt;p&gt;In UNIX, a process and all its children and further descendants form a process group. User signals are sends to all members in the group.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;init&lt;/code&gt; is the first process created in boottime. Thus all processes in the whole system belong to a single tree with &lt;code&gt;init&lt;/code&gt; as the root.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Windows has no concept of process hierarchy, despite that a handle(a special token used to control the child) is returnd when creating a new process.&lt;/p&gt;
+
+&lt;h3&gt;Process States&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Running (actually using the CPU)&lt;/li&gt;
+&lt;li&gt;Ready (runnable; temporariy stopped to let another process run)&lt;/li&gt;
+&lt;li&gt;Blocked (unable to run util some external event happens)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;Implementation of Processes&lt;/h3&gt;
+
+&lt;p&gt;The OS maintains a &lt;strong&gt;process table&lt;/strong&gt; , with one entry ( &lt;strong&gt;process control block&lt;/strong&gt; ) per process. Each entry contains program counter, stack pointer, memory allocation, status of open files, scheduling information registers, and everything need to save when swapped out.&lt;/p&gt;
+
+&lt;p&gt;Interrupt routine&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Hardware stacks program counter, etc&lt;/li&gt;
+&lt;li&gt;Hardware loads new program counter from interrupt vector&lt;/li&gt;
+&lt;li&gt;Assembly language procedure saves registers.&lt;/li&gt;
+&lt;li&gt;Assembly language procudure sets up new stack.&lt;/li&gt;
+&lt;li&gt;C interrupt service runs (typically reads and buffers input).&lt;/li&gt;
+&lt;li&gt;Scheduler decides which process is to run next.&lt;/li&gt;
+&lt;li&gt;C procedure returns to the assembly code.&lt;/li&gt;
+&lt;li&gt;Assembly language procedure starts up new current processes.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;Modeling Multiprogramming&lt;/h3&gt;
+
+&lt;p&gt;Suppose p is the fraction of I/O time for a process. n is current count of processes. Then&lt;/p&gt;
+
+&lt;p&gt;$CPU~utilization = 1 - p^n$&lt;/p&gt;
+
+&lt;p&gt;where n is called the &lt;strong&gt;degree of multiprogramming&lt;/strong&gt; .&lt;/p&gt;
+
+&lt;h2&gt;Threads&lt;/h2&gt;
+
+&lt;h3&gt;Thread Usage&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Multiple activities going on at once with the ability to share an address space&lt;/li&gt;
+&lt;li&gt;Lighter weight than processes, easy to create and destroy.&lt;/li&gt;
+&lt;li&gt;Overlap activities with substantial I/O to speeding up the application.&lt;/li&gt;
+&lt;li&gt;Useful on systems with multiple CPUs.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Three ways to construct a server&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Thread. Parallelism, blocking system calls.&lt;/li&gt;
+&lt;li&gt;Single-threaded process. No parallelism, blocking system calls.&lt;/li&gt;
+&lt;li&gt;Finite-state machine. Parallelism, nonblocking system calles, use interrupts to simulate thread.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;Classical Thread Model&lt;/h3&gt;
+
+&lt;p&gt;Processes are used to group resources together; threads are the entities scheduled for execution on the CPU. There are no protection betwwen threads because (1) it&amp;#39;s impossible, and (2) it should not be nessessary.&lt;/p&gt;
+
+&lt;p&gt;While threads share one memory space, it takes fewer space to maintain a thread, including Program Counter, Registers, Stack and State.&lt;/p&gt;
+
+&lt;h3&gt;POSIX Threads&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;Pthread_create&lt;/code&gt;: create a new thread.
+&lt;code&gt;Pthread_exit&lt;/code&gt;: terminate the calling thread.
+&lt;code&gt;Pthread_join&lt;/code&gt;: wait for a specific thread to exit.
+&lt;code&gt;Pthread_yield&lt;/code&gt;: release the CPU.
+&lt;code&gt;Pthread_attr_init&lt;/code&gt;: create and initialize a thread&amp;#39;s attribute structure.
+&lt;code&gt;Pthread_attr_destroy&lt;/code&gt;: remove a thread&amp;#39;s attribute structure.&lt;/p&gt;
+
+&lt;h3&gt;Implementing Threads in User Space&lt;/h3&gt;
+
+&lt;p&gt;Advantages&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;useful on an OS that doesn&amp;#39;t support threads&lt;/li&gt;
+&lt;li&gt;switching is faster than trapping to the kernal&lt;/li&gt;
+&lt;li&gt;allow process have its own scheduling algorithm&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Problems&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Implementation of blocking sys-calls. &lt;/p&gt;
+
+&lt;p&gt;These calles intended to block the process (all threads in it) since the kernal know nothing about threads. This problem could be solved by adding &lt;strong&gt;wrappers&lt;/strong&gt; to all blocking sys-calls.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Page faults.&lt;/p&gt;
+
+&lt;p&gt;The same as above.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A running thread never voluntarily gives up the CPU since no clock interrupts in user space.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Substantial sys-calles are needed generally in threads. It&amp;#39;s hardly any more work for the kernel to switch threads.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;Implementing Threads in the Kernel&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Due to the relatively greater cost of creating and destroying threads in the kernel, some systems take an environmentally correct approach and recycle their threads.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Problems&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;When a multithreades process forks&lt;/li&gt;
+&lt;li&gt;Signals sent to a multithread process&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;Hybrid Implementations&lt;/h3&gt;
+
+&lt;p&gt;Programmers can determine how many kernel threads to use and how many user-level threads to multiplex on each one.&lt;/p&gt;
+
+&lt;h3&gt;Scheduler Activations&lt;/h3&gt;
+
+&lt;p&gt;The kernel notifies the process&amp;#39; run-time system to switch thread, thus avoiding unnecessary transitions between user and kernel space.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;This implementation violates the structure inherent in any layered system.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;Pop-Up Threads&lt;/h3&gt;
+
+&lt;p&gt;On arrival of a message, the system creates a new thread to handle it. Since a pop-up thread has no history, it&amp;#39;s quicker to create than swap.&lt;/p&gt;
+
+&lt;h3&gt;Making Single-Threaded Code Multithread&lt;/h3&gt;
+
+&lt;p&gt;Problems should be solved&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;global variables&lt;/p&gt;
+
+&lt;p&gt;Private global variables. A new library to create, set, read these variables is needed.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;many library procedures are not reentrant&lt;/p&gt;
+
+&lt;p&gt;A jacket for each of these procedures is needed.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;signals&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;stack management&lt;/p&gt;
+
+&lt;p&gt;overflows could not be awared.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2&gt;Interprocess Communication&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;race conditions&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Two or more processes are reading or writing some shared data and the final result depends on who runs precisely when.&lt;/p&gt;
+
+&lt;h3&gt;Critical Regions&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;mutual exclusion&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Prohibit more than one process from reading and writing the shared data at the same time.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;critical region&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Also called &lt;strong&gt;critical section&lt;/strong&gt; , the part of the program where the shared memory is accessed.&lt;/p&gt;
+
+&lt;p&gt;Conditions to a good solution&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;No two processes may be simultaneously inside their critical regions&lt;/li&gt;
+&lt;li&gt;No assumptions may be made about speeds or the number of CPUs&lt;/li&gt;
+&lt;li&gt;No process running outside its critical region may block other processes&lt;/li&gt;
+&lt;li&gt;No process should have to wait forever to enter its critical region&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;Mutual Exclusion with Busy Waiting&lt;/h3&gt;
+
+&lt;h4&gt;Disable Interrupts&lt;/h4&gt;
+
+&lt;p&gt;Problems&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;It&amp;#39;s unwise to give user processes the power to turn off interrupts.&lt;/li&gt;
+&lt;li&gt;It&amp;#39;s convenient for the kernel itself to disable interrupts for a few instructions, when race conditions could occur.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4&gt;Lock Variables&lt;/h4&gt;
+
+&lt;p&gt;This would not take place without atom operations.&lt;/p&gt;
+
+&lt;h4&gt;Strict Alternation&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//Process 1&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;turn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;critical_region&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;turn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;noncritical_region&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//Process 2&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;turn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;critical_region&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;turn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;noncritical_regino&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Problem: neither of them could run twice in a row, which violates condition 3.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Continuously testing a variable until some value apperas is called &lt;strong&gt;busy waiting&lt;/strong&gt; , a lock that uses busy waiting is called a &lt;strong&gt;spin lock&lt;/strong&gt; .&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4&gt;Peterson&amp;#39;s Solution&lt;/h4&gt;
+
+&lt;p&gt;Busy waiting lock variables.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;cpp language-cpp&quot; data-lang=&quot;cpp&quot;&gt;&lt;span class=&quot;cp&quot;&gt;#define FALSE 0&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#define TRUE 1&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#define N 2&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;turn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;interested&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;enter_region&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;other&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;interested&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;turn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;turn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;process&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;interested&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;other&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;leave_region&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;interested&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FALSE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;TSL Instruction&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;TSL RX, LOCK 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Test and lock lock instruction reads the content of the memory word &lt;code&gt;lock&lt;/code&gt; into register &lt;code&gt;RX&lt;/code&gt; and then stores a nonzero value at the memory address &lt;code&gt;lock&lt;/code&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;It&amp;#39;s guaranteed by the hardware that the read and set operations are indivisible.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;enter_region:
+    TSL REGISTER, LOCK
+    JNE REGISTER, #0, enter_region
+    RET     &amp;#39;return
+
+leave_region:
+    MOVE LOCK, #0
+    RET
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;An alternative instruction to &lt;code&gt;TSL&lt;/code&gt; is &lt;code&gt;XCHG&lt;/code&gt;. The implementations are similiar.&lt;/p&gt;
+
+&lt;h3&gt;Sleep and Wakeup&lt;/h3&gt;
+
+&lt;p&gt;Problems in busy waiting:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;wasting CPU time&lt;/li&gt;
+&lt;li&gt;process with higer priority will keep busy waiting while lower priority process never run&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4&gt;The Product-Consumer Problem&lt;/h4&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;python language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;n&quot;&gt;Producer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;loop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;produce&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;one&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;wakeup&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;consumer&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;Consumer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;loop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;consume&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;one&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;wakeup&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;producer&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Since &lt;code&gt;count&lt;/code&gt; is unconstrained, race condition could occur. When consumer is about to sleep, wakeup signal from producer is lost, causing both of them sleeping.&lt;/p&gt;
+
+&lt;h4&gt;Semaphores&lt;/h4&gt;
+
+&lt;p&gt;Semaphores are used to buffer signals, keep them from losing. Value 0 indicating that no wakeups were saved; positive value if some wakeups were pending.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;down&lt;/code&gt;(Proberen, try in Dutch) operation: checking the value and cosume one or sleep to wait one.
+&lt;code&gt;up&lt;/code&gt;(Verhogen, raise in Dutch) operation: produce one, if someone&amp;#39;s waiting, wake him.&lt;/p&gt;
+
+&lt;h3&gt;Mutexes&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;mutex&lt;/strong&gt; &lt;/p&gt;
+
+&lt;p&gt;A kind of semaphore, a variable that can be in 1 of 2 states: unlocked or locked, used when the semaphore&amp;#39;s ability to count is not needed.&lt;/p&gt;
+
+&lt;h3&gt;Monitors&lt;/h3&gt;
+
+&lt;p&gt;When several mutexes are refered to, deadlock could occur by a subtle error. &lt;strong&gt;Monitors&lt;/strong&gt; are provided by some programming languages to manage a group of mutual exclusive threads. &lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Only one of the threads in this group would run in a certain time. It&amp;#39;s up to the compiler to arrange mutexes to accomplish the monitor.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3&gt;Message Passing&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;message passing&lt;/strong&gt; is used for information exchange between machines. This method of interprocess communication uses 2 primitives, &lt;code&gt;send&lt;/code&gt; and &lt;code&gt;receive&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Approaches:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;mailbox&lt;/strong&gt; &lt;/p&gt;
+
+&lt;p&gt;A mailbox is a place to buffer a certian number of messages.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;rendezvous&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;No buffering, either of each primitive is blocked until the other occurs.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;Barriers&lt;/h3&gt;
+
+&lt;p&gt;With multiple processes, a &lt;strong&gt;barrier&lt;/strong&gt; can be placed at the end of each phase. When a process reaches the barrier, it&amp;#39;s blocked until all processes have reached the barrier.&lt;/p&gt;
+
+&lt;h2&gt;Scheduling&lt;/h2&gt;
+
+&lt;h3&gt;Introduction to Scheduling&lt;/h3&gt;
+
+&lt;h4&gt;Personal Computer&lt;/h4&gt;
+
+&lt;p&gt;Scheduling is simpler in personal computers because (1) there is only one active process, (2) CPU is more faster than I/O.&lt;/p&gt;
+
+&lt;h4&gt;Process Behavior&lt;/h4&gt;
+
+&lt;p&gt;Compute-bound: long CPU bursts and thus infrequent I/O waits.
+I/O-bound: short CPU bursts and thus frequent I/O waits.&lt;/p&gt;
+
+&lt;h4&gt;When to Schedule&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;A new process is created&lt;/li&gt;
+&lt;li&gt;A process exits&lt;/li&gt;
+&lt;li&gt;A process blocks on I/O&lt;/li&gt;
+&lt;li&gt;I/O interrupt occurs&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Types of schedule algorithm&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;nonpreemptive&lt;/strong&gt; scheduling algorithm: picks a process to run until it blocks, exit, or voluntarily release the CPU.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;preemptive&lt;/strong&gt; scheduling algorithm: picks a process and lets it run for a maximum of some fixed time.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4&gt;Goals of Scheduling Algorithms&lt;/h4&gt;
+
+&lt;p&gt;All systems&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Fainess - giving each process a fair share of the CPU&lt;/li&gt;
+&lt;li&gt;Policy enforcement - seeing that stated policy is carried out&lt;/li&gt;
+&lt;li&gt;Balance - keeping all parts of the system busy&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Batch systems&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Throughput - maximize jobs per hour&lt;/li&gt;
+&lt;li&gt;Turnaround tiem - minimize time between submission and termination&lt;/li&gt;
+&lt;li&gt;CPU utilization - keep the CPU busy all the time&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Interactive systems&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Response time - respond to requests quickly&lt;/li&gt;
+&lt;li&gt;Propertionality - meets user&amp;#39;s expectations&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Real-time systems&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Meeting deadlines - avoid losing data&lt;/li&gt;
+&lt;li&gt;Predictability - avoid quality degradation in multimedia systems&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Scheduling in Batch Systems&lt;/h3&gt;
+
+&lt;h4&gt;First-Come First-Served&lt;/h4&gt;
+
+&lt;h4&gt;Shortest Job First&lt;/h4&gt;
+
+&lt;p&gt;Reduce the mean turnaround time.&lt;/p&gt;
+
+&lt;h4&gt;Shortest Remaining Time Next&lt;/h4&gt;
+
+&lt;p&gt;When new process enterd, its executime is compared with the remaining time of current process.&lt;/p&gt;
+
+&lt;h3&gt;Scheduling in Interactive Systems&lt;/h3&gt;
+
+&lt;h4&gt;Round-Robin Scheduling&lt;/h4&gt;
+
+&lt;p&gt;Each process is assigned a time interval, called its &lt;strong&gt;quantum&lt;/strong&gt; , during which it is allowed to run. The CPU switches when the process blocks, of course.&lt;/p&gt;
+
+&lt;p&gt;Setting the quantum too short causes too many process switches and lowers the CPU efficiency, but setting it too long may cause poor response to short interactive requests. A quantum arount 20-50 msec is often a resnable compromise.&lt;/p&gt;
+
+&lt;h4&gt;Priority Scheduling&lt;/h4&gt;
+
+&lt;p&gt;Each process is assigned a priority, and the runable process with the highest priority is allowed to run. The priority of the running process decreases at each clock tick.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A simple algorithm for giving a good service to I/O bound processes is to set the priority to 1/f, where f is the fraction of the last quantum that a process used.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4&gt;Multiple Queues&lt;/h4&gt;
+
+&lt;p&gt;Set up priority classes, a group of processes sorted by priority in each class. &lt;/p&gt;
+
+&lt;p&gt;Whenever a process used up all the quanta allocted to it, it was moved down one class, saving the CPU for short, interactive processes.&lt;/p&gt;
+
+&lt;p&gt;Whenever a carriage return was typed at a terminal, the process belonging to that terminal was moved to the highest priority class. &lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;This prevents a process that needed to run for a long time when it first started but became interactive later, from being punished forever.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4&gt;Shorted Process Next&lt;/h4&gt;
+
+&lt;p&gt;To a certain extent, it would be nice if this algorithm used in batch systems could be used for interactive processes.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;aging&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Estimating running time as $t = aT_0 + (1-a)T_1$&lt;/p&gt;
+
+&lt;h4&gt;Guaranteed Scheduling&lt;/h4&gt;
+
+&lt;p&gt;Make real promises to the users about performance ahd then live up to those promises.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Compute the ratio of actual CPU time consumed to CPU time entitled.&lt;/li&gt;
+&lt;li&gt;Run the process with the lowest ratio until its ratio is no longer the lowest.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4&gt;Lottery Scheduling&lt;/h4&gt;
+
+&lt;p&gt;Give processes lottery tickets for various system resources. Whenever a scheduling decision has to be made, a lottery ticket is chosen at random, and the process holding that ticket gets the resource.&lt;/p&gt;
+
+&lt;p&gt;Advantages&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;lottery scheduling is highly responsive, the process have more lottery tickets is more likely to get the turn.&lt;/li&gt;
+&lt;li&gt;processes can exchange lottery tickets, the server and the client for example.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4&gt;Fair-Share Scheduling&lt;/h4&gt;
+
+&lt;p&gt;Each user is allocated some fraction of the CPU and the scheduler picks processes in such a way to enforce it.&lt;/p&gt;
+
+&lt;p&gt;For example, user 1 created process A B C D, while user 2 only created process E, the scheduling sequence should be:&lt;/p&gt;
+
+&lt;p&gt;A E B E C E ...&lt;/p&gt;
+
+&lt;p&gt;If user 1 is entitled to twice as much CPU time as user 2, the sequence should be:&lt;/p&gt;
+
+&lt;p&gt;A B E C D E ...&lt;/p&gt;
+
+&lt;h3&gt;Scheduling in Real-Time Systems&lt;/h3&gt;
+
+&lt;p&gt;The events that a real-time system may have to respond to can be categorized as &lt;strong&gt;periodic&lt;/strong&gt; (occurring at regular intevals) or &lt;strong&gt;aperiodic&lt;/strong&gt; (occurring unpredictably).&lt;/p&gt;
+
+&lt;p&gt;Depending on how much time each event requires for processing, it may not even be possible to handle them all. A real-time system that meets this requirement is said to be &lt;strong&gt;schedulable&lt;/strong&gt; .&lt;/p&gt;
+
+&lt;h3&gt;Policy versus Mechanism&lt;/h3&gt;
+
+&lt;p&gt;Separate the scheduling mechanism from the scheduling policy to alow more flexible scheduling. What this means is that the scheduling algorithm is parameterized in some way.&lt;/p&gt;
+
+&lt;h3&gt;Thread Scheduling&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/thread-scheduling.png&quot; alt=&quot;thread-scheduling&quot;&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Kernel-level thread doesn&amp;#39;t block the entire process when blocking sys-calls are made, unlike user-level thread.&lt;/li&gt;
+&lt;li&gt;Since the kernel knows that switching from a thread in process A to a thread in process B is more expensive than running a second thread in process A, it can take this into account when making a decision.&lt;/li&gt;
+&lt;li&gt;User-level threads can employ an application-specific thread scheduler.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;Memory Management&lt;/h1&gt;
+</description>
+				<pubDate>Mon, 09 Dec 2013 00:39:21 +0800</pubDate>
 				<link>http://harttle.github.io/%E7%AC%94%E8%AE%B0/modern-os.html</link>
 				<guid isPermaLink="true">http://harttle.github.io/%E7%AC%94%E8%AE%B0/modern-os.html</guid>
 			</item>
