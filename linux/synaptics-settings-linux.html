@@ -64,8 +64,10 @@
   /* All levels of nav */
   .sidebar .nav > li > a {
     display: block;
-    color: #6c6c6c;
+    /*color: #6c6c6c;*/
     padding: 5px 20px;
+    color: #428bca;
+    text-decoration: none;
   }
   .sidebar .nav > li > a:hover,
   .sidebar .nav > li > a:focus {
@@ -73,13 +75,20 @@
     background-color: #e5e5e5;
     border-right: 1px solid #d5d5d5;
   }
+  
   .sidebar .nav > .active > a,
   .sidebar .nav > .active:hover > a,
   .sidebar .nav > .active:focus > a {
     font-weight: bold;
-    color: #555;
-    background-color: transparent;
-    border-right: 1px solid #000;
+    /*color: #555;
+    background-color: transparent;*/
+    color: white;
+    background: #428bca;
+    text-shadow: 0 1px 0 rgba(0,0,0,.15);
+    -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+       -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+            box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
+    border-right: 1px solid #009;
   }
   
   /* Nav: second level (shown on .active) */
