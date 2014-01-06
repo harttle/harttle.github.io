@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    
-    <meta name="description" content=""Modern Operating Systems", Andrew S. Tanenbaum, 机械工业出版社">
-    
+    <meta name="description" content="欢迎访问 Harttle 的个人主页，这里记录了 harttle 关于计算机技术的文章、个人信息与相册，以及有用的资源分享和下载。">
     <meta name="keywords" content="Linux Web 计算机 开发 编程">
     <meta name="author" content="harttle">      
     <meta charset="utf-8">
@@ -45,6 +43,7 @@
 
 
 <link rel="stylesheet" href="/assets/css/markdown.css">
+<link rel="stylesheet" href="/assets/css/syntax.css">
 <style>
   /* By default it's not affixed in mobile views, so undo that */
   .sidebar.affix {
@@ -175,8 +174,6 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">链接 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="//harttle.duapp.com" target="_blank">God Notes</a></li>
-                  <li class="divider"></li>
-                  <li class="dropdown-header">友情链接</li>
                   <li><a href="//www.pku.edu.cn/" target="_blank">北京大学</a></li>
                 </ul>
               </li>
@@ -219,7 +216,7 @@
           返回列表 <span class="glyphicon glyphicon-hand-left"></span>
       </a>
       <span class="pull-right label label-default hidden-xs">
-          <span class="glyphicon glyphicon-time"></span> 2013年12月09日
+          <span class="glyphicon glyphicon-time"></span> 2014年01月06日
       </span>
     </div>
   </div>
@@ -236,20 +233,14 @@
     </div>
     <div class="col-md-9 right md">
       <h1>Introduction</h1>
-
 <h2>What is OS</h2>
-
 <ol>
 <li><strong>extendes machines</strong> : providing programmers(and programs) a clean abstract set of resources instead of the messy hardware</li>
 <li><strong>resource manager</strong> : managing hardware resources</li>
 </ol>
-
 <h2>History of OS</h2>
-
 <p>The first digital computer was designed by Charles Babbage. Ada Lovelace was the first programmer(hired by Babbage).</p>
-
 <h3>1st Generation Vacuum Tubes</h3>
-
 <ul>
 <li>The first functioning digital computer, by John Atanasoff and Clifford Berry, Iowa State University.</li>
 <li>Z3, Konrad Zuse, Berlin.</li>
@@ -257,11 +248,8 @@
 <li>Mark I, Howard Aiken, Harvard</li>
 <li>ENIAC, William Mauchley and J. Presper Eckert, University of Pennsylvania</li>
 </ul>
-
 <h3>2nd Generation Transistors and Batch System</h3>
-
 <p><strong>batch system</strong> </p>
-
 <ol>
 <li>Programmers bring cards to IBM 1401</li>
 <li>1401 read batch of jobs onto tape</li>
@@ -270,283 +258,177 @@
 <li>Operator carries output tape to 1401</li>
 <li>1401 prints output</li>
 </ol>
-
 <h3>3rd Generation ICs and Multiprogramming</h3>
-
 <p><strong>IBM System/360</strong> </p>
-
 <p>A series of software-compatible machines differed only in price and performance.</p>
-
 <p>360 was the first major computer line to use <strong>ICs(Integrated Circuits)</strong>.</p>
-
 <p><strong>OS/360</strong> had to work on all models, the result was an enormous and complex OS, each release fixed some bugs and introduced new ones.</p>
-
 <p><strong>multiprogramming</strong> </p>
-
 <p>Partition memory into several pieces, with a different job in each partition. While one job was waiting for I/O, another job could be using the CPU.</p>
-
 <p><strong>spooling</strong> </p>
-
 <p>Simultaneous Peripheral Operation On Line, OS read jobs from cards onto the disk as soon as they were brought to the computer room, whenever a running job finished, the operating system could load a new job from the disk and run it.</p>
-
 <p><strong>timesharing</strong></p>
-
 <p>Proveding quick response time. The 1st general-purpose timesharing system, **CTSS(Compatible Time Sharing System) was developed at MIT.</p>
-
 <p><strong>MULTICS(MULTiplexed Information and Computing Service)</strong></p>
-
 <p>Developed by MIT, Bell Labs, and General Electric, MULTICS supports handreds of uses on a machine only slightly powerful than an Intel 386-based PC.</p>
-
 <p><strong>minicomputer</strong></p>
-
 <p>DEC PDP-1(1961) and other PDPs(all incompatible)</p>
-
 <p><strong>UNIX</strong></p>
-
 <p>Developed by Ken Thompson(based on PDP-7  minicomputer). There are 2 major versions: </p>
-
 <p><strong>System V</strong>(from AT&amp;T) and <strong>BSD</strong>(Berkeley Software Distribution)</p>
-
 <p>1987, <strong>MINIX</strong> was released for educational purposes.</p>
-
 <h3>4th Generation Personal Computers</h3>
-
 <p>With the development of <strong>LSI</strong>(Large Scale Integration) circuits, <strong>microcomputers</strong> appears.</p>
-
-<p>Kildall developed <strong>CP/M</strong>(Control Program for Microcomputers, disk-based OS), which later supports 8080, Zilog Z80, and other CPU chips.</p>
-
+<p> Kildall developed <strong>CP/M</strong>(Control Program for Microcomputers, disk-based OS), which later supports 8080, Zilog Z80, and other CPU chips.</p>
 <p>Bill Gates offered <strong>DOS</strong>(Disk Operating System, which renamed to MS-DOS later) to IBM.</p>
-
 <p>Engelbart invented the <strong>GUI</strong>(Graphical User Interface), which was adopted by Xerox PARC.</p>
-
 <p><strong>Apple</strong></p>
-
 <p>Steve Jobs visited PARC and embarked on building an Apple with a GUI.</p>
-
 <p><strong>Windows</strong></p>
-
 <p>Microsoft released Windows 95, Windows 98(with 16-bit Intel CPU), Windows NT(New Technology, 32-bit), Windows Me(Millennium edition), Windows 2000(1999,renamed from Windows NT5), and Windows XP(2001).</p>
-
 <p><strong>UNIX</strong></p>
-
 <p>FreeBSD, originating from BSD project at Berkeley. X Window System(X11), MIT.</p>
-
 <h2>OS ZOO</h2>
-
 <p><strong>Mainframe OS</strong></p>
-
 <p>Oriented toward process many jobs at once, most of which need prodigious amounts of I/O.</p>
-
 <p><strong>Server OS</strong></p>
-
 <p>Serve multiple users at once over a network and allow the users to share hardware and software resources.</p>
-
 <p><strong>Mutiprocessor OS</strong></p>
-
 <p>Special features for communication, connectivity, and consistency.</p>
-
 <p><strong>Personal Computer OS</strong></p>
-
 <p>Provide good surport to a single user.</p>
-
 <p><strong>Handheld Computer OS</strong></p>
-
 <p><strong>PDA</strong>(Personal Digital Assistant) and mobiles.</p>
-
 <p><strong>Embedded OS</strong></p>
-
 <p>Donot accept user-installed software.</p>
-
 <p><strong>Sensor Node OS</strong></p>
-
 <p>Tiny computers that communicate with each other and with a base station using wireless communication.</p>
-
 <p><strong>Real-Time OS</strong></p>
-
 <p><strong>hard real-time</strong> the action absolutely must occur at a certain moment.</p>
-
 <p><strong>soft real-time</strong> missing an occasional deadline is acceptable and does not cause any permanent damage.</p>
-
 <p><strong>Smart Card OS</strong></p>
-
-<p>Some are Java-oriented. The ROM holds an interpreter for the JVM. 
-Resource management and protection.</p>
-
+<p>Some are Java-oriented. The ROM holds an interpreter for the JVM.<br>Resource management and protection.</p>
 <h2>OS Structure</h2>
-
 <h3>Monolithic Systems</h3>
-
 <p>Basic sturctures</p>
-
 <ol>
 <li>A main program that invokes requested service procedure.</li>
 <li>A set of service procedures that carry out the system calls.</li>
 <li>A set of utility procedures that help the service procedures.</li>
 </ol>
-
 <h3>Layered Systems</h3>
-
 <p><strong>THE</strong> system built by E. W. Dijkstra.</p>
-
-<table><thead>
+<table>
+<thead>
 <tr>
-<th align="center">layer</th>
-<th align="left">function</th>
+<th style="text-align:center">layer</th>
+<th style="text-align:left">function</th>
 </tr>
-</thead><tbody>
+</thead>
+<tbody>
 <tr>
-<td align="center">5</td>
-<td align="left">The operator</td>
-</tr>
-<tr>
-<td align="center">4</td>
-<td align="left">User programs</td>
+<td style="text-align:center">5</td>
+<td style="text-align:left">The operator</td>
 </tr>
 <tr>
-<td align="center">3</td>
-<td align="left">I/O management</td>
+<td style="text-align:center">4</td>
+<td style="text-align:left">User programs</td>
 </tr>
 <tr>
-<td align="center">2</td>
-<td align="left">Operator-process communication</td>
+<td style="text-align:center">3</td>
+<td style="text-align:left">I/O management</td>
 </tr>
 <tr>
-<td align="center">1</td>
-<td align="left">Memory and drum management</td>
+<td style="text-align:center">2</td>
+<td style="text-align:left">Operator-process communication</td>
 </tr>
 <tr>
-<td align="center">0</td>
-<td align="left">Processor allocation and multiprogramming</td>
+<td style="text-align:center">1</td>
+<td style="text-align:left">Memory and drum management</td>
 </tr>
-</tbody></table>
-
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:left">Processor allocation and multiprogramming</td>
+</tr>
+</tbody>
+</table>
 <p><strong>MULTICS</strong> was described as having a series of concentric rings, with the inner ones being more privileged than the outer ones.</p>
-
 <blockquote>
 <p>The advantage is that it can be easily extended to structure user subsystems.</p>
 </blockquote>
-
 <h3>Microkernels</h3>
-
 <p>Achieve high reliability by spilitting the OS into small, well-defined modules, only one of which(the microkernel) runs in kernel mode.</p>
-
 <p>An idea related to having a minimal kernal is to put the <strong>mechanism</strong> for doing something in the kernel but not <strong>policy</strong>.</p>
-
 <blockquote>
 <p>A few of better-known microkernels: Integrity, K42, Symbian, and MINIX 3.</p>
 </blockquote>
-
 <h3>Client-Server Model</h3>
-
 <p>A slight variantion of the microkernel idea is to distinguish 2 classes of processes, the <strong>servers</strong>(providing services), and the <strong>clients</strong>(use these services).</p>
-
 <h3>Virtual Machines</h3>
-
 <h4>Type 1 hypervisor</h4>
-
 <p>Also known as <strong>virtual machine monitor</strong>, runs upon th e hardware.</p>
-
-<p><img src="/assets/img/blog/370-cms.png" alt="370-cms"></p>
-
 <p><strong>CP/CMS</strong> , later renamed VM/370 is a timesharing system provedes </p>
-
 <ol>
 <li>multiprogramming </li>
 <li>extended machine with a more convenient interface than the bare hardware</li>
 </ol>
-
 <p><strong>CMS</strong> (Conversational Monitor System), a single-user, interactive processing OS.</p>
-
 <h4>Type 2 hypervisor</h4>
-
 <p>Runs upon the Host OS, like other applications.</p>
-
 <h3>Exokernels</h3>
-
 <p>Rather than cloning the actual machine, another strategy is pratitioning it, giving each user a subset of the resources.</p>
-
 <p>At the bottom layer, running in kernel mode, is a program called the <strong>exokernal</strong>.</p>
-
 <h1>Processes and Threads</h1>
-
 <h2>Processes</h2>
-
 <p><strong>pseudoparallelism</strong></p>
-
 <p>The illusion of parallelism while CPU is switching from process to process quickly.</p>
-
 <h3>The Process Model</h3>
-
 <p><strong>process</strong> is an instance of an executing program, is the activity of a program.</p>
-
 <blockquote>
 <p>If a program is running twice, it counts as two processes.</p>
 </blockquote>
-
 <h3>Process Creation</h3>
-
 <p>When processes are created</p>
-
 <ol>
 <li>System init</li>
 <li>Process creation system call by a running process</li>
 <li>A user request to create a new process.</li>
 <li>Init of a batch job.</li>
 </ol>
-
 <p><strong>fork</strong></p>
-
 <p>In Unix, this call creates an exact clone of the calling process. <code>execve</code> is another syscall used to change its memory image and run a new program.</p>
-
 <blockquote>
 <p>This separation allows the child to manipulate its file descriptors after <code>fork</code> but before the <code>execve</code> in order to accomplish redirections.</p>
 </blockquote>
-
 <p><strong>CreateProcess</strong></p>
-
 <p>In Windows, this call handles both process creation and loading with 10 parameters.</p>
-
 <blockquote>
 <p>It&#39;s possible for a newly created process to share resources such as open files.</p>
 </blockquote>
-
 <h3>Process Termination</h3>
-
 <p>When processes terminate</p>
-
 <ol>
 <li>Normal exit (voluntary)</li>
 <li>Error exit (voluntary)</li>
 <li>Fatal error (involuntary)</li>
 <li>Killed by another process (involuntary)</li>
 </ol>
-
 <p>Voluntary termination: <code>exit</code> in UNIX and <code>ExitProcess</code> in Windows. Kill someother process: <code>kill</code> in UNIX and <code>TerminateProcess</code> in Windows.</p>
-
 <h3>Process Hierarchies</h3>
-
 <p>In UNIX, a process and all its children and further descendants form a process group. User signals are sends to all members in the group.</p>
-
 <blockquote>
 <p><code>init</code> is the first process created in boottime. Thus all processes in the whole system belong to a single tree with <code>init</code> as the root.</p>
 </blockquote>
-
 <p>Windows has no concept of process hierarchy, despite that a handle(a special token used to control the child) is returnd when creating a new process.</p>
-
 <h3>Process States</h3>
-
 <ol>
 <li>Running (actually using the CPU)</li>
 <li>Ready (runnable; temporariy stopped to let another process run)</li>
 <li>Blocked (unable to run util some external event happens)</li>
 </ol>
-
 <h3>Implementation of Processes</h3>
-
 <p>The OS maintains a <strong>process table</strong> , with one entry ( <strong>process control block</strong> ) per process. Each entry contains program counter, stack pointer, memory allocation, status of open files, scheduling information registers, and everything need to save when swapped out.</p>
-
 <p>Interrupt routine</p>
-
 <ol>
 <li>Hardware stacks program counter, etc</li>
 <li>Hardware loads new program counter from interrupt vector</li>
@@ -557,213 +439,151 @@ Resource management and protection.</p>
 <li>C procedure returns to the assembly code.</li>
 <li>Assembly language procedure starts up new current processes.</li>
 </ol>
-
 <h3>Modeling Multiprogramming</h3>
-
 <p>Suppose p is the fraction of I/O time for a process. n is current count of processes. Then</p>
-
-<p>$CPU~utilization = 1 - p^n$</p>
-
+<p><span class="mathjax">\(CPU~utilization = 1 - p^n\)</span></p>
 <p>where n is called the <strong>degree of multiprogramming</strong> .</p>
-
 <h2>Threads</h2>
-
 <h3>Thread Usage</h3>
-
 <ol>
 <li>Multiple activities going on at once with the ability to share an address space</li>
 <li>Lighter weight than processes, easy to create and destroy.</li>
 <li>Overlap activities with substantial I/O to speeding up the application.</li>
 <li>Useful on systems with multiple CPUs.</li>
 </ol>
-
 <p>Three ways to construct a server</p>
-
 <ol>
 <li>Thread. Parallelism, blocking system calls.</li>
 <li>Single-threaded process. No parallelism, blocking system calls.</li>
 <li>Finite-state machine. Parallelism, nonblocking system calles, use interrupts to simulate thread.</li>
 </ol>
-
 <h3>Classical Thread Model</h3>
-
 <p>Processes are used to group resources together; threads are the entities scheduled for execution on the CPU. There are no protection betwwen threads because (1) it&#39;s impossible, and (2) it should not be nessessary.</p>
-
 <p>While threads share one memory space, it takes fewer space to maintain a thread, including Program Counter, Registers, Stack and State.</p>
-
 <h3>POSIX Threads</h3>
-
-<p><code>Pthread_create</code>: create a new thread.
-<code>Pthread_exit</code>: terminate the calling thread.
-<code>Pthread_join</code>: wait for a specific thread to exit.
-<code>Pthread_yield</code>: release the CPU.
-<code>Pthread_attr_init</code>: create and initialize a thread&#39;s attribute structure.
-<code>Pthread_attr_destroy</code>: remove a thread&#39;s attribute structure.</p>
-
+<p><code>Pthread_create</code>: create a new thread.<br><code>Pthread_exit</code>: terminate the calling thread.<br><code>Pthread_join</code>: wait for a specific thread to exit.<br><code>Pthread_yield</code>: release the CPU.<br><code>Pthread_attr_init</code>: create and initialize a thread&#39;s attribute structure.<br><code>Pthread_attr_destroy</code>: remove a thread&#39;s attribute structure.</p>
 <h3>Implementing Threads in User Space</h3>
-
 <p>Advantages</p>
-
 <ol>
 <li>useful on an OS that doesn&#39;t support threads</li>
 <li>switching is faster than trapping to the kernal</li>
 <li>allow process have its own scheduling algorithm</li>
 </ol>
-
 <p>Problems</p>
-
 <ol>
 <li><p>Implementation of blocking sys-calls. </p>
-
-<p>These calles intended to block the process (all threads in it) since the kernal know nothing about threads. This problem could be solved by adding <strong>wrappers</strong> to all blocking sys-calls.</p></li>
+<p> These calles intended to block the process (all threads in it) since the kernal know nothing about threads. This problem could be solved by adding <strong>wrappers</strong> to all blocking sys-calls.</p>
+</li>
 <li><p>Page faults.</p>
-
-<p>The same as above.</p></li>
-<li><p>A running thread never voluntarily gives up the CPU since no clock interrupts in user space.</p></li>
-<li><p>Substantial sys-calles are needed generally in threads. It&#39;s hardly any more work for the kernel to switch threads.</p></li>
+<p> The same as above.</p>
+</li>
+<li>A running thread never voluntarily gives up the CPU since no clock interrupts in user space.</li>
+<li>Substantial sys-calles are needed generally in threads. It&#39;s hardly any more work for the kernel to switch threads.</li>
 </ol>
-
 <h3>Implementing Threads in the Kernel</h3>
-
 <blockquote>
 <p>Due to the relatively greater cost of creating and destroying threads in the kernel, some systems take an environmentally correct approach and recycle their threads.</p>
 </blockquote>
-
 <p>Problems</p>
-
 <ol>
 <li>When a multithreades process forks</li>
 <li>Signals sent to a multithread process</li>
 </ol>
-
 <h3>Hybrid Implementations</h3>
-
 <p>Programmers can determine how many kernel threads to use and how many user-level threads to multiplex on each one.</p>
-
 <h3>Scheduler Activations</h3>
-
 <p>The kernel notifies the process&#39; run-time system to switch thread, thus avoiding unnecessary transitions between user and kernel space.</p>
-
 <blockquote>
 <p>This implementation violates the structure inherent in any layered system.</p>
 </blockquote>
-
 <h3>Pop-Up Threads</h3>
-
 <p>On arrival of a message, the system creates a new thread to handle it. Since a pop-up thread has no history, it&#39;s quicker to create than swap.</p>
-
 <h3>Making Single-Threaded Code Multithread</h3>
-
 <p>Problems should be solved</p>
-
 <ol>
 <li><p>global variables</p>
-
-<p>Private global variables. A new library to create, set, read these variables is needed.</p></li>
+<p> Private global variables. A new library to create, set, read these variables is needed.</p>
+</li>
 <li><p>many library procedures are not reentrant</p>
-
-<p>A jacket for each of these procedures is needed.</p></li>
-<li><p>signals</p></li>
+<p> A jacket for each of these procedures is needed.</p>
+</li>
+<li>signals</li>
 <li><p>stack management</p>
-
-<p>overflows could not be awared.</p></li>
+<p> overflows could not be awared.</p>
+</li>
 </ol>
-
 <h2>Interprocess Communication</h2>
-
 <p><strong>race conditions</strong></p>
-
 <p>Two or more processes are reading or writing some shared data and the final result depends on who runs precisely when.</p>
-
 <h3>Critical Regions</h3>
-
 <p><strong>mutual exclusion</strong></p>
-
 <p>Prohibit more than one process from reading and writing the shared data at the same time.</p>
-
 <p><strong>critical region</strong></p>
-
 <p>Also called <strong>critical section</strong> , the part of the program where the shared memory is accessed.</p>
-
 <p>Conditions to a good solution</p>
-
 <ol>
 <li>No two processes may be simultaneously inside their critical regions</li>
 <li>No assumptions may be made about speeds or the number of CPUs</li>
 <li>No process running outside its critical region may block other processes</li>
 <li>No process should have to wait forever to enter its critical region</li>
 </ol>
-
 <h3>Mutual Exclusion with Busy Waiting</h3>
-
 <h4>Disable Interrupts</h4>
-
 <p>Problems</p>
-
 <ol>
 <li>It&#39;s unwise to give user processes the power to turn off interrupts.</li>
 <li>It&#39;s convenient for the kernel itself to disable interrupts for a few instructions, when race conditions could occur.</li>
 </ol>
-
 <h4>Lock Variables</h4>
-
 <p>This would not take place without atom operations.</p>
-
 <h4>Strict Alternation</h4>
-<div class="highlight"><pre><code class="cpp language-cpp" data-lang="cpp"><span class="c1">//Process 1</span>
-<span class="k">while</span><span class="p">(</span><span class="n">TRUE</span><span class="p">){</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">turn</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="n">critical_region</span><span class="p">();</span>
-    <span class="n">turn</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="n">noncritical_region</span><span class="p">();</span>
-<span class="p">}</span>
+<pre><code><span class="comment">//Process 1</span>
+<span class="keyword">while</span>(TRUE){
+    <span class="keyword">while</span> (turn != <span class="number">0</span>);
+    critical_region();
+    turn = <span class="number">1</span>;
+    noncritical_region();
+}
 
-<span class="c1">//Process 2</span>
-<span class="k">while</span><span class="p">(</span><span class="n">TRUE</span><span class="p">){</span>
-    <span class="k">while</span><span class="p">(</span><span class="n">turn</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="n">critical_region</span><span class="p">();</span>
-    <span class="n">turn</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="n">noncritical_regino</span><span class="p">();</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Problem: neither of them could run twice in a row, which violates condition 3.</p>
-
+<span class="comment">//Process 2</span>
+<span class="keyword">while</span>(TRUE){
+    <span class="keyword">while</span>(turn != <span class="number">1</span>);
+    critical_region();
+    turn = <span class="number">0</span>;
+    noncritical_regino();
+}
+</code></pre><p>Problem: neither of them could run twice in a row, which violates condition 3.</p>
 <blockquote>
 <p>Continuously testing a variable until some value apperas is called <strong>busy waiting</strong> , a lock that uses busy waiting is called a <strong>spin lock</strong> .</p>
 </blockquote>
-
 <h4>Peterson&#39;s Solution</h4>
-
 <p>Busy waiting lock variables.</p>
-<div class="highlight"><pre><code class="cpp language-cpp" data-lang="cpp"><span class="cp">#define FALSE 0</span>
-<span class="cp">#define TRUE 1</span>
-<span class="cp">#define N 2</span>
+<pre><code><span class="preprocessor">#define FALSE 0</span>
+<span class="preprocessor">#define TRUE 1</span>
+<span class="preprocessor">#define N 2</span>
 
-<span class="kt">int</span> <span class="n">turn</span><span class="p">;</span>
-<span class="kt">int</span> <span class="n">interested</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
+<span class="keyword">int</span> turn;
+<span class="keyword">int</span> interested[N];
 
-<span class="kt">void</span> <span class="nf">enter_region</span><span class="p">(</span><span class="kt">int</span> <span class="n">process</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">int</span> <span class="n">other</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">process</span><span class="p">;</span>
-    <span class="n">interested</span><span class="p">[</span><span class="n">process</span><span class="p">]</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">;</span>
-    <span class="n">turn</span> <span class="o">=</span> <span class="n">process</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">turn</span> <span class="o">==</span> <span class="n">process</span> <span class="o">&amp;&amp;</span> <span class="n">interested</span><span class="p">[</span><span class="n">other</span><span class="p">]</span> <span class="o">==</span> <span class="n">TRUE</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="keyword">void</span> enter_region(<span class="keyword">int</span> process)
+{
+    <span class="keyword">int</span> other = <span class="number">1</span> - process;
+    interested[process] = TRUE;
+    turn = process;
+    <span class="keyword">while</span> (turn == process &amp;&amp; interested[other] == TRUE);
+}
 
-<span class="kt">void</span> <span class="nf">leave_region</span><span class="p">(</span><span class="kt">int</span> <span class="n">process</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">interested</span><span class="p">[</span><span class="n">process</span><span class="p">]</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<h4>TSL Instruction</h4>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">TSL RX, LOCK 
-</code></pre></div>
-<p>Test and lock lock instruction reads the content of the memory word <code>lock</code> into register <code>RX</code> and then stores a nonzero value at the memory address <code>lock</code>.</p>
-
+<span class="keyword">void</span> leave_region(<span class="keyword">int</span> process)
+{
+    interested[process] = FALSE;
+}
+</code></pre><h4>TSL Instruction</h4>
+<pre><code>TSL RX, LOCK
+</code></pre><p>Test and lock lock instruction reads the content of the memory word <code>lock</code> into register <code>RX</code> and then stores a nonzero value at the memory address <code>lock</code>.</p>
 <blockquote>
 <p>It&#39;s guaranteed by the hardware that the read and set operations are indivisible.</p>
 </blockquote>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">enter_region:
+<pre><code>enter_region:
     TSL REGISTER, LOCK
     JNE REGISTER, #0, enter_region
     RET     &#39;return
@@ -771,239 +591,154 @@ Resource management and protection.</p>
 leave_region:
     MOVE LOCK, #0
     RET
-</code></pre></div>
-<p>An alternative instruction to <code>TSL</code> is <code>XCHG</code>. The implementations are similiar.</p>
-
+</code></pre><p>An alternative instruction to <code>TSL</code> is <code>XCHG</code>. The implementations are similiar.</p>
 <h3>Sleep and Wakeup</h3>
-
 <p>Problems in busy waiting:</p>
-
 <ol>
 <li>wasting CPU time</li>
 <li>process with higer priority will keep busy waiting while lower priority process never run</li>
 </ol>
-
 <h4>The Product-Consumer Problem</h4>
-<div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="n">Producer</span> <span class="n">loop</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="n">N</span><span class="p">:</span>
-        <span class="n">sleep</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">produce</span> <span class="n">one</span>
-    <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">wakeup</span> <span class="n">consumer</span>
+<pre><code>Producer loop:
+    <span class="keyword">if</span> count == N:
+        sleep
+    <span class="keyword">else</span>:
+        produce one
+    <span class="keyword">if</span> count == <span class="number">1</span>:
+        wakeup consumer
 
-<span class="n">Consumer</span> <span class="n">loop</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">sleep</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">consume</span> <span class="n">one</span>
-    <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span>
-        <span class="n">wakeup</span> <span class="n">producer</span>
-</code></pre></div>
-<p>Since <code>count</code> is unconstrained, race condition could occur. When consumer is about to sleep, wakeup signal from producer is lost, causing both of them sleeping.</p>
-
+Consumer loop:
+    <span class="keyword">if</span> count == <span class="number">0</span>:
+        sleep
+    <span class="keyword">else</span>:
+        consume one
+    <span class="keyword">if</span> count == N-<span class="number">1</span>
+        wakeup producer
+</code></pre><p>Since <code>count</code> is unconstrained, race condition could occur. When consumer is about to sleep, wakeup signal from producer is lost, causing both of them sleeping.</p>
 <h4>Semaphores</h4>
-
 <p>Semaphores are used to buffer signals, keep them from losing. Value 0 indicating that no wakeups were saved; positive value if some wakeups were pending.</p>
-
-<p><code>down</code>(Proberen, try in Dutch) operation: checking the value and cosume one or sleep to wait one.
-<code>up</code>(Verhogen, raise in Dutch) operation: produce one, if someone&#39;s waiting, wake him.</p>
-
+<p><code>down</code>(Proberen, try in Dutch) operation: checking the value and cosume one or sleep to wait one.<br><code>up</code>(Verhogen, raise in Dutch) operation: produce one, if someone&#39;s waiting, wake him.</p>
 <h3>Mutexes</h3>
-
 <p><strong>mutex</strong> </p>
-
 <p>A kind of semaphore, a variable that can be in 1 of 2 states: unlocked or locked, used when the semaphore&#39;s ability to count is not needed.</p>
-
 <h3>Monitors</h3>
-
 <p>When several mutexes are refered to, deadlock could occur by a subtle error. <strong>Monitors</strong> are provided by some programming languages to manage a group of mutual exclusive threads. </p>
-
 <blockquote>
 <p>Only one of the threads in this group would run in a certain time. It&#39;s up to the compiler to arrange mutexes to accomplish the monitor.</p>
 </blockquote>
-
 <h3>Message Passing</h3>
-
 <p><strong>message passing</strong> is used for information exchange between machines. This method of interprocess communication uses 2 primitives, <code>send</code> and <code>receive</code>.</p>
-
 <p>Approaches:</p>
-
 <ol>
 <li><p><strong>mailbox</strong> </p>
-
-<p>A mailbox is a place to buffer a certian number of messages.</p></li>
+<p> A mailbox is a place to buffer a certian number of messages.</p>
+</li>
 <li><p><strong>rendezvous</strong></p>
-
-<p>No buffering, either of each primitive is blocked until the other occurs.</p></li>
+<p> No buffering, either of each primitive is blocked until the other occurs.</p>
+</li>
 </ol>
-
 <h3>Barriers</h3>
-
 <p>With multiple processes, a <strong>barrier</strong> can be placed at the end of each phase. When a process reaches the barrier, it&#39;s blocked until all processes have reached the barrier.</p>
-
 <h2>Scheduling</h2>
-
 <h3>Introduction to Scheduling</h3>
-
 <h4>Personal Computer</h4>
-
 <p>Scheduling is simpler in personal computers because (1) there is only one active process, (2) CPU is more faster than I/O.</p>
-
 <h4>Process Behavior</h4>
-
-<p>Compute-bound: long CPU bursts and thus infrequent I/O waits.
-I/O-bound: short CPU bursts and thus frequent I/O waits.</p>
-
+<p>Compute-bound: long CPU bursts and thus infrequent I/O waits.<br>I/O-bound: short CPU bursts and thus frequent I/O waits.</p>
 <h4>When to Schedule</h4>
-
 <ol>
 <li>A new process is created</li>
 <li>A process exits</li>
 <li>A process blocks on I/O</li>
 <li>I/O interrupt occurs</li>
 </ol>
-
 <p>Types of schedule algorithm</p>
-
 <ol>
 <li><strong>nonpreemptive</strong> scheduling algorithm: picks a process to run until it blocks, exit, or voluntarily release the CPU.</li>
 <li><strong>preemptive</strong> scheduling algorithm: picks a process and lets it run for a maximum of some fixed time.</li>
 </ol>
-
 <h4>Goals of Scheduling Algorithms</h4>
-
 <p>All systems</p>
-
 <ul>
 <li>Fainess - giving each process a fair share of the CPU</li>
 <li>Policy enforcement - seeing that stated policy is carried out</li>
 <li>Balance - keeping all parts of the system busy</li>
 </ul>
-
 <p>Batch systems</p>
-
 <ul>
 <li>Throughput - maximize jobs per hour</li>
 <li>Turnaround tiem - minimize time between submission and termination</li>
 <li>CPU utilization - keep the CPU busy all the time</li>
 </ul>
-
 <p>Interactive systems</p>
-
 <ul>
 <li>Response time - respond to requests quickly</li>
 <li>Propertionality - meets user&#39;s expectations</li>
 </ul>
-
 <p>Real-time systems</p>
-
 <ul>
 <li>Meeting deadlines - avoid losing data</li>
 <li>Predictability - avoid quality degradation in multimedia systems</li>
 </ul>
-
 <h3>Scheduling in Batch Systems</h3>
-
 <h4>First-Come First-Served</h4>
-
 <h4>Shortest Job First</h4>
-
 <p>Reduce the mean turnaround time.</p>
-
 <h4>Shortest Remaining Time Next</h4>
-
 <p>When new process enterd, its executime is compared with the remaining time of current process.</p>
-
 <h3>Scheduling in Interactive Systems</h3>
-
 <h4>Round-Robin Scheduling</h4>
-
 <p>Each process is assigned a time interval, called its <strong>quantum</strong> , during which it is allowed to run. The CPU switches when the process blocks, of course.</p>
-
 <p>Setting the quantum too short causes too many process switches and lowers the CPU efficiency, but setting it too long may cause poor response to short interactive requests. A quantum arount 20-50 msec is often a resnable compromise.</p>
-
 <h4>Priority Scheduling</h4>
-
 <p>Each process is assigned a priority, and the runable process with the highest priority is allowed to run. The priority of the running process decreases at each clock tick.</p>
-
 <blockquote>
 <p>A simple algorithm for giving a good service to I/O bound processes is to set the priority to 1/f, where f is the fraction of the last quantum that a process used.</p>
 </blockquote>
-
 <h4>Multiple Queues</h4>
-
 <p>Set up priority classes, a group of processes sorted by priority in each class. </p>
-
 <p>Whenever a process used up all the quanta allocted to it, it was moved down one class, saving the CPU for short, interactive processes.</p>
-
 <p>Whenever a carriage return was typed at a terminal, the process belonging to that terminal was moved to the highest priority class. </p>
-
 <blockquote>
 <p>This prevents a process that needed to run for a long time when it first started but became interactive later, from being punished forever.</p>
 </blockquote>
-
 <h4>Shorted Process Next</h4>
-
 <p>To a certain extent, it would be nice if this algorithm used in batch systems could be used for interactive processes.</p>
-
 <p><strong>aging</strong></p>
-
-<p>Estimating running time as $t = aT_0 + (1-a)T_1$</p>
-
+<p>Estimating running time as <span class="mathjax">\(t = aT_0 + (1-a)T_1\)</span></p>
 <h4>Guaranteed Scheduling</h4>
-
 <p>Make real promises to the users about performance ahd then live up to those promises.</p>
-
 <ol>
 <li>Compute the ratio of actual CPU time consumed to CPU time entitled.</li>
 <li>Run the process with the lowest ratio until its ratio is no longer the lowest.</li>
 </ol>
-
 <h4>Lottery Scheduling</h4>
-
 <p>Give processes lottery tickets for various system resources. Whenever a scheduling decision has to be made, a lottery ticket is chosen at random, and the process holding that ticket gets the resource.</p>
-
 <p>Advantages</p>
-
 <ol>
 <li>lottery scheduling is highly responsive, the process have more lottery tickets is more likely to get the turn.</li>
 <li>processes can exchange lottery tickets, the server and the client for example.</li>
 </ol>
-
 <h4>Fair-Share Scheduling</h4>
-
 <p>Each user is allocated some fraction of the CPU and the scheduler picks processes in such a way to enforce it.</p>
-
 <p>For example, user 1 created process A B C D, while user 2 only created process E, the scheduling sequence should be:</p>
-
 <p>A E B E C E ...</p>
-
 <p>If user 1 is entitled to twice as much CPU time as user 2, the sequence should be:</p>
-
 <p>A B E C D E ...</p>
-
 <h3>Scheduling in Real-Time Systems</h3>
-
 <p>The events that a real-time system may have to respond to can be categorized as <strong>periodic</strong> (occurring at regular intevals) or <strong>aperiodic</strong> (occurring unpredictably).</p>
-
 <p>Depending on how much time each event requires for processing, it may not even be possible to handle them all. A real-time system that meets this requirement is said to be <strong>schedulable</strong> .</p>
-
 <h3>Policy versus Mechanism</h3>
-
 <p>Separate the scheduling mechanism from the scheduling policy to alow more flexible scheduling. What this means is that the scheduling algorithm is parameterized in some way.</p>
-
 <h3>Thread Scheduling</h3>
-
 <p><img src="/assets/img/blog/thread-scheduling.png" alt="thread-scheduling"></p>
-
 <ul>
 <li>Kernel-level thread doesn&#39;t block the entire process when blocking sys-calls are made, unlike user-level thread.</li>
 <li>Since the kernel knows that switching from a thread in process A to a thread in process B is more expensive than running a second thread in process A, it can take this into account when making a decision.</li>
 <li>User-level threads can employ an application-specific thread scheduler.</li>
 </ul>
-
 <h1>Memory Management</h1>
+
 
     
       <style>
@@ -1180,11 +915,21 @@ var jiathis_config = {data_track_clickback:'true'};
 <!-- latex render begin -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
-    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    //skipStartupTypeset: true
+    //tex2jax: {inlineMath: [['\\(','\\)']]}
   });
+  
   MathJax.Hub.Queue(function () {
+    //update scrollspy
     $('body').scrollspy('refresh');
   });
+</script>
+<script>
+  $(function(){
+    $('.md .mathjax').each(function (i, v) {
+        //MathJax.Hub.Queue(["Typeset", MathJax.Hub, v]);
+    })
+  })
 </script>
 <!--script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script-->
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>

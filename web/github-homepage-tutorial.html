@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    
-    <meta name="description" content="本文介绍如何利用 GitHub 提供的文件服务，部署博客系统。采用 git+github+markdown+jekyll 方式构建静态博客站点。">
-    
+    <meta name="description" content="欢迎访问 Harttle 的个人主页，这里记录了 harttle 关于计算机技术的文章、个人信息与相册，以及有用的资源分享和下载。">
     <meta name="keywords" content="Linux Web 计算机 开发 编程">
     <meta name="author" content="harttle">      
     <meta charset="utf-8">
@@ -45,6 +43,7 @@
 
 
 <link rel="stylesheet" href="/assets/css/markdown.css">
+<link rel="stylesheet" href="/assets/css/syntax.css">
 <style>
   /* By default it's not affixed in mobile views, so undo that */
   .sidebar.affix {
@@ -175,8 +174,6 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">链接 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="//harttle.duapp.com" target="_blank">God Notes</a></li>
-                  <li class="divider"></li>
-                  <li class="dropdown-header">友情链接</li>
                   <li><a href="//www.pku.edu.cn/" target="_blank">北京大学</a></li>
                 </ul>
               </li>
@@ -238,182 +235,159 @@
     </div>
     <div class="col-md-9 right md">
       <p>本文介绍如何利用 GitHub 提供的文件服务，部署博客系统。采用 git+github+markdown+jekyll 方式构建静态博客站点。完成部署后，可以在在线撰写博客，也可以本地离线撰写，然后同步到GitHub。</p>
-
 <h2>一些背景</h2>
-
 <ul>
 <li><strong>Git</strong> 是一个分布式版本控制/软件配置管理软件，最初用户linux内核开发，至今已广泛用于项目源码管理。</li>
 <li><strong><a href="http://github.com/">GitHub</a></strong> 是一个用于使用Git版本控制系统项目的共享虚拟主机服务，提供了无限的存储空间以及网络流量。</li>
 <li><strong>markdown</strong> 是一种轻量级标记语言，可用少量的编辑工作生成美观的 HTML 文件。已经成为 GitHub 托管的项目中默认的文档格式，当然 GitHub 也扩展了该语言（GFM）并提供渲染支持。</li>
 <li><strong><a href="http://jekyllrb.com/">Jekyll</a></strong> 是基于 Ruby 的 package，用于编译生成静态站点。GitHub 提供了静态站点支持，并采用 Jekyll 作为其编译引擎。于是，在 GitHub 提交文件后，在10分钟内 GitHub 将编译生成静态站点并开始提供服务。</li>
 </ul>
-
 <h2>环境配置</h2>
-
 <h3>准备工作</h3>
-
 <ol>
 <li>GitHub 账号</li>
 <li>Linux 操作系统（在windows也可完成，但为了方便强烈推荐采用Linux系统）：Ubuntu、OpenSuse、CentOS、Arch...均可。</li>
 </ol>
-
 <h3>应用程序安装</h3>
-
 <ol>
 <li><p>Ruby</p>
-
 <ul>
 <li>如果已经安装过ruby，请确认版本为 1.9.3 或 2.0.0（通过运行 <code>ruby --version</code> 得到ruby版本）</li>
 <li><p>否则，安装Ruby</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c">#ubuntu</span>
-sudo apt-get install ruby
-<span class="c">#centos</span>
-yum install ruby
-<span class="c">#arch</span>
-yaourt -S ruby  
-</code></pre></div></li>
-</ul></li>
-<li><p>Jekyll
-安装 Jekyll</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">gem install jekyll
-</code></pre></div></li>
+<pre><code>  <span class="comment">#ubuntu</span>
+  <span class="built_in">sudo</span> apt-get install ruby
+  <span class="comment">#centos</span>
+  yum install ruby
+  <span class="comment">#arch</span>
+  yaourt -S ruby
+</code></pre></li>
+</ul>
+</li>
+<li><p>Jekyll<br> 安装 Jekyll</p>
+<pre><code> gem install jekyll
+</code></pre></li>
 </ol>
-
 <h2>建立站点</h2>
-
 <h3>创建 GitHub 仓库</h3>
-
 <ol>
 <li>运行 <code>ssh-keygen -t rsa</code> 得到 SSH 公钥文件：id_rsa.pub</li>
 <li>登录 GitHub，添加你的 SSH key（account settings -&gt; SSH Keys -&gt; Add SSH Key）</li>
-<li>在 GitHub，创建名为 username.github.io 的仓库（其中username为你的用户名），并拷贝其URL（类似：<a href="mailto:git@github.com">git@github.com</a>:harttle/harttle.github.io.git）</li>
+<li>在 GitHub，创建名为 username.github.io 的仓库（其中username为你的用户名），并拷贝其URL（类似：git@github.com:harttle/harttle.github.io.git）</li>
 <li>在linux下运行 <code>git clone URL_YOU_COPIED</code>，得到文件夹 username.github.io</li>
 <li>运行 <code>git remote set-url origin URL_YOU_COPIED</code>，让git使用密钥验证，省去了每次push时输入密码。</li>
 </ol>
-
 <h3>生成站点文件</h3>
-
 <ol>
 <li><p>生成站点文件</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c"># 建立站点</span>
-jekyll new my-site
-<span class="c"># 拷贝至 GitHub 仓库</span>
-cp -r my-site/. username.github.io
-rm -r my-site
-<span class="c"># 添加编译生成的文件至 gitignore</span>
-<span class="nb">echo</span> <span class="s1">&#39;_site&#39;</span> &gt;&gt; .gitignore
-</code></pre></div></li>
+<pre><code> <span class="comment"># 建立站点</span>
+ jekyll new my-site
+ <span class="comment"># 拷贝至 GitHub 仓库</span>
+ cp -r my-site/. username.github.io
+ rm -r my-site
+ <span class="comment"># 添加编译生成的文件至 gitignore</span>
+ <span class="built_in">echo</span> <span class="string">'_site'</span> &gt;&gt; .gitignore
+</code></pre></li>
 <li><p>编译站点，并运行本地服务</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c"># 编译生成静态站点，-w 选项可以监测文件变化并自动重新生成</span>
-jekyll build -w
-<span class="c"># 运行服务</span>
-jekyll serve
-</code></pre></div></li>
-<li><p>打开浏览器，访问 localhost:4000，将看到 jekyll 生成的默认站点。</p></li>
+<pre><code> <span class="comment"># 编译生成静态站点，-w 选项可以监测文件变化并自动重新生成</span>
+ jekyll build -w
+ <span class="comment"># 运行服务</span>
+ jekyll serve
+</code></pre></li>
+<li>打开浏览器，访问 localhost:4000，将看到 jekyll 生成的默认站点。</li>
 </ol>
-
 <h3>自定义开发</h3>
-
 <ul>
 <li><p>文档</p>
-
 <ul>
 <li>了解 jekyll 静态站点框架：<a href="http://jekyllrb.com/docs/home/">http://jekyllrb.com/docs/home/</a></li>
 <li>视图模板使用 Liquid 模板语言：<a href="http://docs.shopify.com/themes/liquid-basics">http://docs.shopify.com/themes/liquid-basics</a></li>
 <li>博文采用 Markdown 语言：<a href="http://daringfireball.net/projects/markdown/">http://daringfireball.net/projects/markdown/</a></li>
-</ul></li>
-<li><p>jekyll 站点文件结构</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">.
-├── _config.yml       //站点的配置文件
-├── _drafts       //博客草稿
-|   ├── begin-with-the-crazy-ideas.textile
-|   └── on-simplicity-in-technology.markdown
-├── _includes     //供引入的html模块
-|   ├── footer.html
-|   └── header.html
-├── _layouts      //视图模板
-|   ├── default.html
-|   └── post.html
-├── _posts        //博客文章
-|   ├── 2007-10-29-why-every-programmer-should-play-nethack.textile
-|   └── 2009-04-26-barcamp-boston-4-roundup.textile
-├── _site     //jekyll 编译生成的站点
-└── index.html
-</code></pre></div></li>
-<li><p>站点配置文件：_config.yml
-该文件采用 <strong><a href="http://www.yaml.org/spec/1.2/spec.html">YAML</a></strong> 标记语言组织内容，在该文件修改站点保留变量，或者添加自定义变量。这里定义的变量在模板中可通过 <code>site.VARIABLE_NAME</code> 访问（记住重启jekyll服务）。</p>
-<div class="highlight"><pre><code class="yaml language-yaml" data-lang="yaml"><span class="c1"># GitHUb Pages 默认的 Markdown 引擎（即 GFM）    </span>
-<span class="l-Scalar-Plain">markdown</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">redcarpet</span>
-<span class="c1"># Latex 支持</span>
-<span class="l-Scalar-Plain">markdown</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">maruku</span>
-</code></pre></div></li>
 </ul>
-
+</li>
+<li><p>jekyll 站点文件结构</p>
+<pre><code>  .
+  ├── _config.yml        //站点的配置文件
+  ├── _drafts        //博客草稿
+  |   ├── begin-with-the-crazy-ideas.textile
+  |   └── on-simplicity-in-technology.markdown
+  ├── _includes        //供引入的html模块
+  |   ├── footer.html
+  |   └── header.html
+  ├── _layouts        //视图模板
+  |   ├── default.html
+  |   └── post.html
+  ├── _posts        //博客文章
+  |   ├── 2007-10-29-why-every-programmer-should-play-nethack.textile
+  |   └── 2009-04-26-barcamp-boston-4-roundup.textile
+  ├── _site        //jekyll 编译生成的站点
+  └── index.html
+</code></pre></li>
+<li><p>站点配置文件：_config.yml<br>  该文件采用 <strong><a href="http://www.yaml.org/spec/1.2/spec.html">YAML</a></strong> 标记语言组织内容，在该文件修改站点保留变量，或者添加自定义变量。这里定义的变量在模板中可通过 <code>site.VARIABLE_NAME</code> 访问（记住重启jekyll服务）。</p>
+<pre><code>  # GitHUb Pages 默认的 Markdown 引擎（即 GFM）    
+  markdown: redcarpet
+  # Latex 支持
+  markdown: maruku
+</code></pre></li>
+</ul>
 <h3>同步至 GitHub</h3>
-
 <ol>
 <li><p>运行 git 提交至GitHub</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c"># 提交改动至HEAD版本</span>
-git commit -a
-<span class="c"># 同步HEAD至服务器</span>
-git push
-</code></pre></div></li>
-<li><p>GitHub将会在10分钟内编译你的文件生成静态站点，访问 username.github.io 即可查看博客。</p></li>
+<pre><code> <span class="comment"># 提交改动至HEAD版本</span>
+ git commit <span class="operator">-a</span>
+ <span class="comment"># 同步HEAD至服务器</span>
+ git push
+</code></pre></li>
+<li>GitHub将会在10分钟内编译你的文件生成静态站点，访问 username.github.io 即可查看博客。</li>
 </ol>
-
 <h2>Tips</h2>
-
 <h3>Jekyll的使用</h3>
-
 <ul>
 <li><p>变量定义与访问</p>
-
 <ul>
 <li>在 <code>_config.yml</code> 中定义的变量，可通过 <code>site.VAL</code> 访问；</li>
 <li>在子模板（通过 <code>layout</code> 继承的页面）中定义的变量，可通过 <code>page.VAL</code> 访问；</li>
 <li><code>content</code> 为子模板的内容</li>
 <li><code>page.content</code> 为经过markdown转换的末级子模板的内容</li>
-</ul></li>
-<li><p>Jekyll 插件在 GitHub Pages 中不能使用，因为 GitHub Pages 的编译使用 <code>--safe</code> 参数；但可以在本地编译后同步至 GitHub 来取代 GitHub 的自动编译。</p></li>
-<li><p><code>Include file &#39;&#39; contains invalid characters or sequences</code> 标签参数只能为常量，被包含文件中的 liquid 语句以文件为单元解析。</p></li>
 </ul>
-
+</li>
+<li><p>Jekyll 插件在 GitHub Pages 中不能使用，因为 GitHub Pages 的编译使用 <code>--safe</code> 参数；但可以在本地编译后同步至 GitHub 来取代 GitHub 的自动编译。</p>
+</li>
+<li><code>Include file &#39;&#39; contains invalid characters or sequences</code> 标签参数只能为常量，被包含文件中的 liquid 语句以文件为单元解析。</li>
+</ul>
 <h3>Jekyll plugin</h3>
-
 <p>GitHub 出于安全性的考虑，jekyll 引擎默认采用 <code>--safe</code> 参数，这会禁用 Jekyll 的插件。如果希望开启 Jekyll 插件来获得更多的支持，只能关闭 GitHub 的 Jekyll 引擎。</p>
-
 <p>我们选择在 username.github.io repo 中新建一个叫 <code>dev</code> 的 branch 来做开发，把生成的静态站点 <code>_site</code> push 到 master 分支。当然，我们需要把master上的jekyll文件复制过来。</p>
-
 <ol>
 <li><p>新建 branch</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c"># 建立dev目录</span>
-mkdir dev   
-<span class="nb">cd </span>dev
+<pre><code> <span class="comment"># 建立dev目录</span>
+ mkdir dev   
+ <span class="built_in">cd</span> dev
 
-<span class="c"># 建立git仓库，并连接到github</span>
-git init    
-git remote add origin git@github.com:harttle/harttle.github.io.git 
+ <span class="comment"># 建立git仓库，并连接到github</span>
+ git init    
+ git remote add origin git@github.com:harttle/harttle.github.io.git 
 
-<span class="c"># 新建分支</span>
-git checkout -b dev 
-git push --set-upstream origin dev
+ <span class="comment"># 新建分支</span>
+ git checkout -b dev 
+ git push --set-upstream origin dev
 
-<span class="c"># 现在可以开始工作了</span>
-git push
-git pull
-</code></pre></div></li>
+ <span class="comment"># 现在可以开始工作了</span>
+ git push
+ git pull
+</code></pre></li>
 <li><p>迁移 Jekyll 站点</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c"># 拷贝文件</span>
-cp -r harttle.github.io/. dev/
+<pre><code> <span class="comment"># 拷贝文件</span>
+ cp -r harttle.github.io/. dev/
 
-<span class="c"># 编译站点</span>
-<span class="nb">cd </span>dev/
-jekyll build -d ../harttle.github.io/
+ <span class="comment"># 编译站点</span>
+ <span class="built_in">cd</span> dev/
+ jekyll build <span class="operator">-d</span> ../harttle.github.io/
 
-<span class="c"># 运行站点</span>
-jekyll serve -d ../harttle.github.io/
-</code></pre></div></li>
+ <span class="comment"># 运行站点</span>
+ jekyll serve <span class="operator">-d</span> ../harttle.github.io/
+</code></pre></li>
 </ol>
+
 
     
       <style>
@@ -590,11 +564,21 @@ var jiathis_config = {data_track_clickback:'true'};
 <!-- latex render begin -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
-    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    //skipStartupTypeset: true
+    //tex2jax: {inlineMath: [['\\(','\\)']]}
   });
+  
   MathJax.Hub.Queue(function () {
+    //update scrollspy
     $('body').scrollspy('refresh');
   });
+</script>
+<script>
+  $(function(){
+    $('.md .mathjax').each(function (i, v) {
+        //MathJax.Hub.Queue(["Typeset", MathJax.Hub, v]);
+    })
+  })
 </script>
 <!--script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script-->
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>

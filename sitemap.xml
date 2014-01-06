@@ -4,7 +4,16 @@
     <url>
       <loc>http://harttle.github.io/%E7%AC%94%E8%AE%B0/modern-os.html</loc>
       
-      <lastmod>2013-12-09T00:39:21+08:00</lastmod>
+      <lastmod>2014-01-06T19:57:02+08:00</lastmod>
+      
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+    </url>
+  
+    <url>
+      <loc>http://harttle.github.io/linux/makefile.html</loc>
+      
+      <lastmod>2014-01-01T00:00:00+08:00</lastmod>
       
       <changefreq>daily</changefreq>
       <priority>1.0</priority>
@@ -41,15 +50,6 @@
       <loc>http://harttle.github.io/web/se-project.html</loc>
       
       <lastmod>2013-11-05T00:00:00+08:00</lastmod>
-      
-      <changefreq>daily</changefreq>
-      <priority>1.0</priority>
-    </url>
-  
-    <url>
-      <loc>http://harttle.github.io/%E6%97%A5%E5%BF%97/test.html</loc>
-      
-      <lastmod>2013-10-29T00:00:00+08:00</lastmod>
       
       <changefreq>daily</changefreq>
       <priority>1.0</priority>
@@ -128,15 +128,6 @@
     </url>
   
     <url>
-      <loc>http://harttle.github.io/%E6%91%84%E5%BD%B1/landscape.html</loc>
-      
-      <lastmod>2013-10-17T00:00:00+08:00</lastmod>
-      
-      <changefreq>daily</changefreq>
-      <priority>1.0</priority>
-    </url>
-  
-    <url>
       <loc>http://harttle.github.io/%E6%97%A5%E5%BF%97/github-homepage-devlog.html</loc>
       
       <lastmod>2013-10-12T00:00:00+08:00</lastmod>
@@ -149,49 +140,49 @@
   
     <url>
       <loc>http://harttle.github.io/feed.xml</loc>
-      <lastmod>2013-12-09T00:39:21+08:00</lastmod>
+      <lastmod>2014-01-06T21:36:16+08:00</lastmod>
       <changefreq>always</changefreq>
       <priority>0.7</priority>
     </url>
   
     <url>
       <loc>http://harttle.github.io/index.html</loc>
-      <lastmod>2013-12-09T00:39:21+08:00</lastmod>
+      <lastmod>2014-01-06T21:36:16+08:00</lastmod>
       <changefreq>always</changefreq>
       <priority>0.7</priority>
     </url>
   
     <url>
       <loc>http://harttle.github.io/404.html</loc>
-      <lastmod>2013-12-09T00:39:21+08:00</lastmod>
+      <lastmod>2014-01-06T21:36:16+08:00</lastmod>
       <changefreq>always</changefreq>
       <priority>0.7</priority>
     </url>
   
     <url>
       <loc>http://harttle.github.io/about.html</loc>
-      <lastmod>2013-12-09T00:39:21+08:00</lastmod>
+      <lastmod>2014-01-06T21:36:16+08:00</lastmod>
       <changefreq>always</changefreq>
       <priority>0.7</priority>
     </url>
   
     <url>
       <loc>http://harttle.github.io/category/blog.html</loc>
-      <lastmod>2013-12-09T00:39:21+08:00</lastmod>
+      <lastmod>2014-01-06T21:36:16+08:00</lastmod>
       <changefreq>always</changefreq>
       <priority>0.7</priority>
     </url>
   
     <url>
       <loc>http://harttle.github.io/category/album.html</loc>
-      <lastmod>2013-12-09T00:39:21+08:00</lastmod>
+      <lastmod>2014-01-06T21:36:16+08:00</lastmod>
       <changefreq>always</changefreq>
       <priority>0.7</priority>
     </url>
   
     <url>
       <loc>http://harttle.github.io/sitemap.xml</loc>
-      <lastmod>2013-12-09T00:39:21+08:00</lastmod>
+      <lastmod>2014-01-06T21:36:16+08:00</lastmod>
       <changefreq>always</changefreq>
       <priority>0.7</priority>
     </url>

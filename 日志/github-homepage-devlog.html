@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    
-    <meta name="description" content="本文记录了开发进度、时间节点，以及任务列表。">
-    
+    <meta name="description" content="欢迎访问 Harttle 的个人主页，这里记录了 harttle 关于计算机技术的文章、个人信息与相册，以及有用的资源分享和下载。">
     <meta name="keywords" content="Linux Web 计算机 开发 编程">
     <meta name="author" content="harttle">      
     <meta charset="utf-8">
@@ -45,6 +43,7 @@
 
 
 <link rel="stylesheet" href="/assets/css/markdown.css">
+<link rel="stylesheet" href="/assets/css/syntax.css">
 <style>
   /* By default it's not affixed in mobile views, so undo that */
   .sidebar.affix {
@@ -175,8 +174,6 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">链接 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="//harttle.duapp.com" target="_blank">God Notes</a></li>
-                  <li class="divider"></li>
-                  <li class="dropdown-header">友情链接</li>
                   <li><a href="//www.pku.edu.cn/" target="_blank">北京大学</a></li>
                 </ul>
               </li>
@@ -234,103 +231,77 @@
     </div>
     <div class="col-md-9 right md">
       <p>2013年10月采用jekyll静态站点工具开始了github个人主页的开发。这里记录了各时间结点完成的工作，以及未来的工作列表。</p>
-
 <h3>2013-10-12</h3>
-
 <p>基本完成了个人主页在 github 的部署。</p>
-
 <ul>
-<li>主要页面
-
-<ul>
+<li>主要页面<ul>
 <li>首页</li>
 <li>博文</li>
 <li>关于</li>
 <li>链接</li>
-</ul></li>
+</ul>
+</li>
 <li>识别文章目录，生成博文分类</li>
 </ul>
-
 <h3>2013-10-16</h3>
-
 <ul>
 <li>社会化评论</li>
 </ul>
-
 <h3>2013-10-17</h3>
-
 <ul>
-<li>照片展示
-
-<ul>
+<li>照片展示<ul>
 <li>延迟载入</li>
 <li>gallery浏览</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <h3>2013-10-25</h3>
-
 <ul>
-<li>博客、相册、资源的category模板
-
-<ul>
+<li>博客、相册、资源的category模板<ul>
 <li>页面布局：header、side-nav、content</li>
 <li>affix 滚动导航</li>
-</ul></li>
+</ul>
+</li>
 <li>相册图片缩略图的自动更新（make+imageMagick）</li>
 </ul>
-
 <h3>2013-10-28</h3>
-
 <ul>
 <li>404页面</li>
 </ul>
-
 <h3>2013-10-29</h3>
-
 <ul>
 <li>latex显示：采用mathJax</li>
 <li>添加 CDN</li>
 <li>添加文章列表动态导航</li>
 </ul>
-
 <h3>2013-10-30</h3>
-
 <ul>
 <li><p>解决 affix-bottom 失效</p>
-
 <blockquote>
-<p>问题出自 sticky footer 中的 <code>body{height:100%}</code>，解决：
-Replace <code>document.body.offsetHeight</code> with <code>document.body.scrollHeight</code> in bootstrap.min.js</p>
-</blockquote></li>
+<p>问题出自 sticky footer 中的 <code>body{height:100%}</code>，解决：<br>Replace <code>document.body.offsetHeight</code> with <code>document.body.scrollHeight</code> in bootstrap.min.js</p>
+</blockquote>
+</li>
 </ul>
-
 <h3>2013-10-31</h3>
-
 <ul>
 <li>载入优化：script 后置</li>
 <li>通用化 category：采用部分视图</li>
 <li>资源页面图标</li>
 </ul>
-
 <h3>2013-11-1</h3>
-
 <ul>
 <li>社会化：添加 linkedIn facebook google+ follow</li>
 <li>SEO：添加 meta、添加sitemap.xml和robots.txt、导入搜索引擎、创建RSS </li>
 </ul>
-
 <h3>2013-11-06</h3>
-
 <ul>
 <li>添加google analysis</li>
 </ul>
-
 <h3>未来的工作</h3>
-
 <ul>
 <li>首页完善：简历时间线</li>
 </ul>
+
 
     
       <style>
@@ -507,11 +478,21 @@ var jiathis_config = {data_track_clickback:'true'};
 <!-- latex render begin -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
-    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    //skipStartupTypeset: true
+    //tex2jax: {inlineMath: [['\\(','\\)']]}
   });
+  
   MathJax.Hub.Queue(function () {
+    //update scrollspy
     $('body').scrollspy('refresh');
   });
+</script>
+<script>
+  $(function(){
+    $('.md .mathjax').each(function (i, v) {
+        //MathJax.Hub.Queue(["Typeset", MathJax.Hub, v]);
+    })
+  })
 </script>
 <!--script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script-->
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>

@@ -53,17 +53,18 @@ body{
 
 /* custom css */
 .time{
-  font-family: Georgia, "Times New Roman", Times, serif;	
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 14px;
 }
 
 .page-header h1{
   font-family: cursive;
 }
-.panel{
-  box-shadow: 10px 10px 30px #888888;
+.panel-active{
+  box-shadow: 5px 5px 10px #888;
 }
-.panel:hover{
-  box-shadow: 10px 10px 50px #555;
+.panel-active:hover{
+  box-shadow: 10px 10px 15px #888;
 }
 
 /* panel with tool bar */

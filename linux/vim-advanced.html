@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    
-    <meta name="description" content="<p>Vim是从vi发展出来的一个文本编辑器。代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。和Emacs并列成为类Unix系统用户最喜欢的编辑器。</p>
-">
-    
+    <meta name="description" content="欢迎访问 Harttle 的个人主页，这里记录了 harttle 关于计算机技术的文章、个人信息与相册，以及有用的资源分享和下载。">
     <meta name="keywords" content="Linux Web 计算机 开发 编程">
     <meta name="author" content="harttle">      
     <meta charset="utf-8">
@@ -46,6 +43,7 @@
 
 
 <link rel="stylesheet" href="/assets/css/markdown.css">
+<link rel="stylesheet" href="/assets/css/syntax.css">
 <style>
   /* By default it's not affixed in mobile views, so undo that */
   .sidebar.affix {
@@ -176,8 +174,6 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">链接 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="//harttle.duapp.com" target="_blank">God Notes</a></li>
-                  <li class="divider"></li>
-                  <li class="dropdown-header">友情链接</li>
                   <li><a href="//www.pku.edu.cn/" target="_blank">北京大学</a></li>
                 </ul>
               </li>
@@ -233,210 +229,175 @@
     </div>
     <div class="col-md-9 right md">
       <p>Vim是从vi发展出来的一个文本编辑器。代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。和Emacs并列成为类Unix系统用户最喜欢的编辑器。</p>
-
 <p>文档参见：<a href="http://vimdoc.sourceforge.net/htmldoc/">http://vimdoc.sourceforge.net/htmldoc/</a></p>
-
 <p>中文文档：<a href="http://vimcdoc.sourceforge.net/doc/">http://vimcdoc.sourceforge.net/doc/</a></p>
-
 <h1>基础使用</h1>
-
 <p><img src="/assets/img/blog/vim-key.png" alt="vim-key"></p>
-
 <p>查看帮助：<code>:help</code>，<code>&lt;Ctrl&gt;]</code> 进入标签，<code>&lt;Ctrl&gt;O</code> 返回。</p>
-
 <h1>配置文件</h1>
-
 <h2>初始化过程</h2>
-
 <p>正如多数 linux 软件，vim 的配置文件分为系统配置文件 <code>/etc/vimrc</code>，<code>/usr/share/vim/</code> 和用户配置文件 <code>~/.vimrc</code>，<code>~/.vim/</code>。</p>
-
 <p>vim 的配置文件载入过程为：</p>
-
 <ol>
 <li><code>/etc/vimrc</code></li>
 <li><code>$HOME/.vim/</code>，<code>$HOME/.vimrc</code></li>
 <li><code>$VIMRUNTIME/.vim</code>，<code>$VIMRUNTIME/.vimrc</code></li>
 <li><code>$HOME/.vim/after/</code></li>
 </ol>
-
 <blockquote>
 <p>通过运行 <code>vim -V</code> 可查看整个初始化过程。</p>
 </blockquote>
-
 <h2>示例配置</h2>
-
 <p>一个示例配置文件如下：</p>
-<div class="highlight"><pre><code class="vim language-vim" data-lang="vim"><span class="c">&quot; .vimrc</span>
-<span class="c">&quot; See: http://vimdoc.sourceforge.net/htmldoc/options.html for details</span>
+<pre><code>&quot; .vimrc
+&quot; See: http://vimdoc.sourceforge.net/htmldoc/options.html for details
 
-<span class="c">&quot; For multi-byte character support (CJK support, for example):</span>
-<span class="c">&quot; set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1</span>
+&quot; For multi-byte character support (CJK support, for example):
+&quot; set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1
 
-<span class="k">set</span> <span class="nb">tabstop</span><span class="p">=</span><span class="m">4</span>       <span class="c">&quot; Number of spaces that a &lt;Tab&gt; in the file counts for.</span>
+set tabstop=4       &quot; Number of spaces that a &lt;Tab&gt; in the file counts for.
 
-<span class="k">set</span> <span class="nb">shiftwidth</span><span class="p">=</span><span class="m">4</span>    <span class="c">&quot; Number of spaces to use for each step of (auto)indent.</span>
+set shiftwidth=4    &quot; Number of spaces to use for each step of (auto)indent.
 
-<span class="k">set</span> <span class="nb">expandtab</span>       <span class="c">&quot; Use the appropriate number of spaces to insert a &lt;Tab&gt;.</span>
-<span class="c">                    &quot; Spaces are used in indents with the &#39;&gt;&#39; and &#39;&lt;&#39; commands</span>
-<span class="c">                    &quot; and when &#39;autoindent&#39; is on. To insert a real tab when</span>
-<span class="c">                    &quot; &#39;expandtab&#39; is on, use CTRL-V &lt;Tab&gt;.</span>
+set expandtab       &quot; Use the appropriate number of spaces to insert a &lt;Tab&gt;.
+                    &quot; Spaces are used in indents with the &#39;&gt;&#39; and &#39;&lt;&#39; commands
+                    &quot; and when &#39;autoindent&#39; is on. To insert a real tab when
+                    &quot; &#39;expandtab&#39; is on, use CTRL-V &lt;Tab&gt;.
 
-<span class="k">set</span> <span class="nb">smarttab</span>        <span class="c">&quot; When on, a &lt;Tab&gt; in front of a line inserts blanks</span>
-<span class="c">                    &quot; according to &#39;shiftwidth&#39;. &#39;tabstop&#39; is used in other</span>
-<span class="c">                    &quot; places. A &lt;BS&gt; will delete a &#39;shiftwidth&#39; worth of space</span>
-<span class="c">                    &quot; at the start of the line.</span>
+set smarttab        &quot; When on, a &lt;Tab&gt; in front of a line inserts blanks
+                    &quot; according to &#39;shiftwidth&#39;. &#39;tabstop&#39; is used in other
+                    &quot; places. A &lt;BS&gt; will delete a &#39;shiftwidth&#39; worth of space
+                    &quot; at the start of the line.
 
-<span class="k">set</span> <span class="nb">showcmd</span>         <span class="c">&quot; Show (partial) command in status line.</span>
+set showcmd         &quot; Show (partial) command in status line.
 
-<span class="k">set</span> <span class="k">number</span>          <span class="c">&quot; Show line numbers.</span>
+set number          &quot; Show line numbers.
 
-<span class="k">set</span> <span class="nb">showmatch</span>       <span class="c">&quot; When a bracket is inserted, briefly jump to the matching</span>
-<span class="c">                    &quot; one. The jump is only done if the match can be seen on the</span>
-<span class="c">                    &quot; screen. The time to show the match can be set with</span>
-<span class="c">                    &quot; &#39;matchtime&#39;.</span>
+set showmatch       &quot; When a bracket is inserted, briefly jump to the matching
+                    &quot; one. The jump is only done if the match can be seen on the
+                    &quot; screen. The time to show the match can be set with
+                    &quot; &#39;matchtime&#39;.
 
-<span class="k">set</span> <span class="nb">hlsearch</span>        <span class="c">&quot; When there is a previous search pattern, highlight all</span>
-<span class="c">                    &quot; its matches.</span>
+set hlsearch        &quot; When there is a previous search pattern, highlight all
+                    &quot; its matches.
 
-<span class="k">set</span> <span class="nb">incsearch</span>       <span class="c">&quot; While typing a search command, show immediately where the</span>
-<span class="c">                    &quot; so far typed pattern matches.</span>
+set incsearch       &quot; While typing a search command, show immediately where the
+                    &quot; so far typed pattern matches.
 
-<span class="k">set</span> <span class="nb">ignorecase</span>      <span class="c">&quot; Ignore case in search patterns.</span>
+set ignorecase      &quot; Ignore case in search patterns.
 
-<span class="k">set</span> <span class="nb">smartcase</span>       <span class="c">&quot; Override the &#39;ignorecase&#39; option if the search pattern</span>
-<span class="c">                    &quot; contains upper case characters.</span>
+set smartcase       &quot; Override the &#39;ignorecase&#39; option if the search pattern
+                    &quot; contains upper case characters.
 
-<span class="k">set</span> <span class="nb">backspace</span><span class="p">=</span><span class="m">2</span>     <span class="c">&quot; Influences the working of &lt;BS&gt;, &lt;Del&gt;, CTRL-W</span>
-<span class="c">                    &quot; and CTRL-U in Insert mode. This is a list of items,</span>
-<span class="c">                    &quot; separated by commas. Each item allows a way to backspace</span>
-<span class="c">                    &quot; over something.</span>
+set backspace=2     &quot; Influences the working of &lt;BS&gt;, &lt;Del&gt;, CTRL-W
+                    &quot; and CTRL-U in Insert mode. This is a list of items,
+                    &quot; separated by commas. Each item allows a way to backspace
+                    &quot; over something.
 
-<span class="k">set</span> <span class="nb">autoindent</span>      <span class="c">&quot; Copy indent from current line when starting a new line</span>
-<span class="c">                    &quot; (typing &lt;CR&gt; in Insert mode or when using the &quot;o&quot; or &quot;O&quot;</span>
-<span class="c">                    &quot; command).</span>
+set autoindent      &quot; Copy indent from current line when starting a new line
+                    &quot; (typing &lt;CR&gt; in Insert mode or when using the &quot;o&quot; or &quot;O&quot;
+                    &quot; command).
 
-<span class="k">set</span> <span class="nb">textwidth</span><span class="p">=</span><span class="m">79</span>    <span class="c">&quot; Maximum width of text that is being inserted. A longer</span>
-<span class="c">                    &quot; line will be broken after white space to get this width.</span>
+set textwidth=79    &quot; Maximum width of text that is being inserted. A longer
+                    &quot; line will be broken after white space to get this width.
 
-<span class="k">set</span> <span class="nb">formatoptions</span><span class="p">=</span><span class="k">c</span><span class="p">,</span><span class="k">q</span><span class="p">,</span><span class="k">r</span><span class="p">,</span><span class="k">t</span> <span class="c">&quot; This is a sequence of letters which describes how</span>
-<span class="c">                    &quot; automatic formatting is to be done.</span>
-<span class="c">                    &quot;</span>
-<span class="c">                    &quot; letter    meaning when present in &#39;formatoptions&#39;</span>
-<span class="c">                    &quot; ------    ---------------------------------------</span>
-<span class="c">                    &quot; c         Auto-wrap comments using textwidth, inserting</span>
-<span class="c">                    &quot;           the current comment leader automatically.</span>
-<span class="c">                    &quot; q         Allow formatting of comments with &quot;gq&quot;.</span>
-<span class="c">                    &quot; r         Automatically insert the current comment leader</span>
-<span class="c">                    &quot;           after hitting &lt;Enter&gt; in Insert mode. </span>
-<span class="c">                    &quot; t         Auto-wrap text using textwidth (does not apply</span>
-<span class="c">                    &quot;           to comments)</span>
+set formatoptions=c,q,r,t &quot; This is a sequence of letters which describes how
+                    &quot; automatic formatting is to be done.
+                    &quot;
+                    &quot; letter    meaning when present in &#39;formatoptions&#39;
+                    &quot; ------    ---------------------------------------
+                    &quot; c         Auto-wrap comments using textwidth, inserting
+                    &quot;           the current comment leader automatically.
+                    &quot; q         Allow formatting of comments with &quot;gq&quot;.
+                    &quot; r         Automatically insert the current comment leader
+                    &quot;           after hitting &lt;Enter&gt; in Insert mode. 
+                    &quot; t         Auto-wrap text using textwidth (does not apply
+                    &quot;           to comments)
 
-<span class="k">set</span> <span class="nb">ruler</span>           <span class="c">&quot; Show the line and column number of the cursor position,</span>
-<span class="c">                    &quot; separated by a comma.</span>
+set ruler           &quot; Show the line and column number of the cursor position,
+                    &quot; separated by a comma.
 
-<span class="k">set</span> <span class="nb">background</span><span class="p">=</span><span class="nb">dark</span> <span class="s2">&quot; When set to &quot;</span><span class="nb">dark</span>&quot;<span class="p">,</span> Vim will <span class="k">try</span> <span class="k">to</span> use <span class="k">colors</span> that look
-<span class="c">                    &quot; good on a dark background. When set to &quot;light&quot;, Vim will</span>
-<span class="c">                    &quot; try to use colors that look good on a light background.</span>
-<span class="c">                    &quot; Any other value is illegal.</span>
+set background=dark &quot; When set to &quot;dark&quot;, Vim will try to use colors that look
+                    &quot; good on a dark background. When set to &quot;light&quot;, Vim will
+                    &quot; try to use colors that look good on a light background.
+                    &quot; Any other value is illegal.
 
-<span class="k">set</span> <span class="nb">mouse</span><span class="p">=</span><span class="k">a</span>         <span class="c">&quot; Enable the use of the mouse.</span>
+set mouse=a         &quot; Enable the use of the mouse.
 
-<span class="k">filetype</span> plugin indent <span class="k">on</span>
-<span class="nb">syntax</span> <span class="k">on</span>
-</code></pre></div>
-<h1>进阶技巧</h1>
-
+filetype plugin indent on
+syntax on
+</code></pre><h1>进阶技巧</h1>
 <h2>块编辑</h2>
-
 <ul>
-<li><p><strong>可视</strong> 模式：<code>v</code> 可进入visual模式，使用标准快捷键移动光标可选择文本块，之后可输入标准编辑命令。</p></li>
+<li><p><strong>可视</strong> 模式：<code>v</code> 可进入visual模式，使用标准快捷键移动光标可选择文本块，之后可输入标准编辑命令。</p>
+</li>
 <li><p><strong>列编辑</strong> 模式：<code>&lt;Ctrl&gt;v</code> 进入列编辑模式，移动光标将按列进行选中。例如：</p>
-
 <blockquote>
 <p>删除块注释：<code>&lt;Ctrl&gt;v</code> 进入列编辑模式，<code>ikjl</code> 选中注释列，<code>&lt;N&gt;x</code> 删除N个字符；</p>
-
+</blockquote>
+<blockquote>
 <p>添加块注释：<code>&lt;Ctrl&gt;v</code> 进入列编辑模式，<code>ikjl</code> 选中要注释的行，<code>I</code> 进入插入模式，输入几个注释字符，<code>&lt;Esc&gt;</code> 推出列编辑。</p>
-</blockquote></li>
+</blockquote>
+</li>
 </ul>
-
 <h2>文件识别</h2>
-
 <p>Vim可针对特定的文件，加载指定插件。以此来实现文件类型的特殊配置以及语法高亮。</p>
-
 <p>参见：<a href="http://vimcdoc.sourceforge.net/doc/filetype.html#filetype-plugins">http://vimcdoc.sourceforge.net/doc/filetype.html#filetype-plugins</a></p>
-
 <p><code>filetype on</code> 将开启文件识别，Vim 会在载入时做如下工作：</p>
-
 <ol>
 <li>执行<code>$RUNTIMEPATH/filetype.vim</code>，根据文件名判断类型</li>
 <li>如果需要的话，执行 <code>$RUNTIMEPATH/scripts.vim</code>，进一步判断文件类型</li>
 <li>设置 Vim 的 <code>filetype</code> 变量</li>
 </ol>
-
 <blockquote>
-<p>我们也可以通过诸如 <code>:set filetype=c</code> 的命令来手动设置文件类型
-如果不使用文件识别，我们可以运行 <code>au BufNewFile,BufRead *.plt  source ~/.vim/after/ftplugin/plt.vim</code> 来使用 <code>plt.vim</code> 初始化 <code>*.plt</code> 文件。</p>
-
-<p>更多关于<code>RUNTIMEPATH</code> ：<a href="http://vimcdoc.sourceforge.net/doc/options.html#&#x27;runtimepath">http://vimcdoc.sourceforge.net/doc/options.html#&#39;runtimepath</a>&#39;</p>
+<p>我们也可以通过诸如 <code>:set filetype=c</code> 的命令来手动设置文件类型<br>如果不使用文件识别，我们可以运行 <code>au BufNewFile,BufRead *.plt  source ~/.vim/after/ftplugin/plt.vim</code> 来使用 <code>plt.vim</code> 初始化 <code>*.plt</code> 文件。</p>
 </blockquote>
-
+<blockquote>
+<p>更多关于<code>RUNTIMEPATH</code> ：<a href="http://vimcdoc.sourceforge.net/doc/options.html#&#39;runtimepath">http://vimcdoc.sourceforge.net/doc/options.html#&#39;runtimepath</a>&#39;</p>
+</blockquote>
 <h2>插件加载</h2>
-
 <p><code>filetype plugin on</code> 允许Vim加载文件类型的插件，Vim会在载入时寻找并加载 <code>$RUNTIMEPATH/ftplugin.vim</code>，该脚本会寻找并加载 <code>$RUNTIMEPATH/ftplugin/&lt;filetype&gt;.vim</code>。</p>
-
 <p>例如：<code>~/.vim/ftplugin/cpp.vim</code> 将在 cpp 文件类型被识别后自动载入。</p>
-
 <blockquote>
-<p>同样，<code>~/.vim/after/ftplugin/cpp.vim</code> 会在最后被调用，进而覆盖之前的配置。
-另外，<code>filetype indent on</code> 允许Vim加载该文件类型的缩进设置。即执行<code>RUNTIMEPATH/indent.vim</code>。</p>
+<p>同样，<code>~/.vim/after/ftplugin/cpp.vim</code> 会在最后被调用，进而覆盖之前的配置。<br>另外，<code>filetype indent on</code> 允许Vim加载该文件类型的缩进设置。即执行<code>RUNTIMEPATH/indent.vim</code>。</p>
 </blockquote>
-
 <h2>语法高亮</h2>
-
 <p><code>syntax on</code> 允许 Vim 加载文件类型的语法高亮配置，Vim会在载入时寻找并加载 <code>RUNTIMEPATH/syntax/&lt;filetype&gt;.vim</code>。</p>
-
 <p>例如：<code>~/.vim/syntax/markdown.vim</code> 将会对文件类型<code>markdown</code> 进行语法高亮。</p>
-
 <h2>键盘映射</h2>
-
 <p>Vim支持定义键盘映射来完成快捷键的功能，也就是将特定的按键映射为一系列按键与函数的序列。</p>
-
 <p>例如将 <code>F7</code> 映射为编译当前java文件：</p>
-<div class="highlight"><pre><code class="vim language-vim" data-lang="vim">map <span class="p">&lt;</span>F7<span class="p">&gt;</span> <span class="p">&lt;</span>Esc<span class="p">&gt;</span>:<span class="p">!</span>javac %<span class="p">&lt;&lt;</span>CR<span class="p">&gt;</span>
-</code></pre></div>
-<blockquote>
+<pre><code>map &lt;F7&gt; &lt;Esc&gt;:!javac %&lt;&lt;CR&gt;
+</code></pre><blockquote>
 <p><code>:</code> 为进入Ex模式，<code>!</code> 指定下面的命令在vim外执行，<code>%</code> 为当前文件名，<code>%&lt;</code> 为不带扩展名的当前文件名，<code>&lt;CR&gt;</code> 为回车。</p>
 </blockquote>
-
 <h2>函数</h2>
-
 <p>现在我们可以自定义快捷键了，如果希望在键盘映射中执行更复杂的功能，我们需要定义Vim函数。</p>
-
 <ul>
 <li>函数名必须以大写字母开始</li>
 <li>函数可以有返回值：<code>return something</code></li>
 <li>函数可以有范围前缀。定义：<code>function s:Save()</code>，调用：<code>call s:Save()</code></li>
 </ul>
-
 <p>下面是函数调用的例子，按键F8时，进入拷贝模式（取消行号，鼠标进入visual模式）。</p>
-<div class="highlight"><pre><code class="vim language-vim" data-lang="vim"><span class="c">&quot; key mapping</span>
-map <span class="p">&lt;</span>F8<span class="p">&gt;</span> <span class="p">&lt;</span>Esc<span class="p">&gt;</span>:<span class="k">call</span> ToggleCopy<span class="p">()&lt;</span>CR<span class="p">&gt;</span>
+<pre><code>&quot; key mapping
+map &lt;F8&gt; &lt;Esc&gt;:call ToggleCopy()&lt;CR&gt;
 
-<span class="c">&quot; global variable</span>
-<span class="k">let</span> <span class="k">g</span>:copymode<span class="p">=</span><span class="m">0</span>
+&quot; global variable
+let g:copymode=0
 
-<span class="c">&quot; function</span>
-<span class="k">function</span> ToggleCopy<span class="p">()</span>
-    <span class="k">if</span> <span class="k">g</span>:copymode
-        <span class="k">set</span> <span class="k">number</span>
-        <span class="k">set</span> <span class="nb">mouse</span><span class="p">=</span><span class="k">a</span>
-    <span class="k">else</span>
-        <span class="k">set</span> <span class="nb">nonumber</span>
-        <span class="k">set</span> <span class="nb">mouse</span><span class="p">=</span><span class="k">v</span>
-    <span class="k">endif</span>
-    <span class="k">let</span> <span class="k">g</span>:copymode<span class="p">=!</span><span class="k">g</span>:copymode
-<span class="k">endfunction</span>
-</code></pre></div>
+&quot; function
+function ToggleCopy()
+    if g:copymode
+        set number
+        set mouse=a
+    else
+        set nonumber
+        set mouse=v
+    endif
+    let g:copymode=!g:copymode
+endfunction
+</code></pre>
+
     
       <style>
   /* JiaThis & Uyan bootstrap fix */
@@ -612,11 +573,21 @@ var jiathis_config = {data_track_clickback:'true'};
 <!-- latex render begin -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
-    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    //skipStartupTypeset: true
+    //tex2jax: {inlineMath: [['\\(','\\)']]}
   });
+  
   MathJax.Hub.Queue(function () {
+    //update scrollspy
     $('body').scrollspy('refresh');
   });
+</script>
+<script>
+  $(function(){
+    $('.md .mathjax').each(function (i, v) {
+        //MathJax.Hub.Queue(["Typeset", MathJax.Hub, v]);
+    })
+  })
 </script>
 <!--script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script-->
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>

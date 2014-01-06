@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    
-    <meta name="description" content="Arch Linux 下的触摸板配置：基本设置、输入时禁止触摸板敲击、外接鼠标时禁用触摸板。">
-    
+    <meta name="description" content="欢迎访问 Harttle 的个人主页，这里记录了 harttle 关于计算机技术的文章、个人信息与相册，以及有用的资源分享和下载。">
     <meta name="keywords" content="Linux Web 计算机 开发 编程">
     <meta name="author" content="harttle">      
     <meta charset="utf-8">
@@ -45,6 +43,7 @@
 
 
 <link rel="stylesheet" href="/assets/css/markdown.css">
+<link rel="stylesheet" href="/assets/css/syntax.css">
 <style>
   /* By default it's not affixed in mobile views, so undo that */
   .sidebar.affix {
@@ -175,8 +174,6 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">链接 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="//harttle.duapp.com" target="_blank">God Notes</a></li>
-                  <li class="divider"></li>
-                  <li class="dropdown-header">友情链接</li>
                   <li><a href="//www.pku.edu.cn/" target="_blank">北京大学</a></li>
                 </ul>
               </li>
@@ -240,114 +237,93 @@
     </div>
     <div class="col-md-9 right md">
       <h1>软件安装</h1>
-
 <h2>安装 Synaptics 驱动</h2>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c"># arch linux:</span>
+<pre><code><span class="comment"># arch linux:</span>
 pacman -S xf86-input-synaptics
-</code></pre></div>
-<h2>管理工具</h2>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c"># 命令行管理工具：Synclient </span>
+</code></pre><h2>管理工具</h2>
+<pre><code><span class="comment"># 命令行管理工具：Synclient </span>
 pacman -S xf86-input-synaptics    
 
-<span class="c"># 图形管理工具：GPointing Device Settings</span>
+<span class="comment"># 图形管理工具：GPointing Device Settings</span>
 yaourt -S gpointing-device-settings
 
-<span class="c"># KDE 触摸板控制模块</span>
+<span class="comment"># KDE 触摸板控制模块</span>
 yaourt -S kcm_touchpad
-</code></pre></div>
-<h1>环境配置</h1>
-
+</code></pre><h1>环境配置</h1>
 <p>一般的设置工作可通过图形管理工具完成，如单击、双击、右键的识别，横向和纵向滚动、双指滚动。下面介绍一些高级配置。</p>
-
 <h2>基本触摸板配置</h2>
-
 <p>可通过修改 synaptics 的配置文件，修改触摸板配置。包括多指敲击、滚动、避免手掌触摸、精确度与快速滚动。</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c">#file: /etc/X11/xorg.conf.d/50-synaptics.conf</span>
-Section <span class="s2">&quot;InputClass&quot;</span>
-        Identifier <span class="s2">&quot;touchpad catchall&quot;</span>
-        Driver <span class="s2">&quot;synaptics&quot;</span>
-        MatchIsTouchpad <span class="s2">&quot;on&quot;</span>
+<pre><code><span class="comment">#file: /etc/X11/xorg.conf.d/50-synaptics.conf</span>
+Section <span class="string">"InputClass"</span>
+        Identifier <span class="string">"touchpad catchall"</span>
+        Driver <span class="string">"synaptics"</span>
+        MatchIsTouchpad <span class="string">"on"</span>
 
-        Option <span class="s2">&quot;TapButton1&quot;</span> <span class="s2">&quot;1&quot;</span>            <span class="c">#单指敲击产生左键事件</span>
-        Option <span class="s2">&quot;TapButton2&quot;</span> <span class="s2">&quot;2&quot;</span>            <span class="c">#双指敲击产生中键事件</span>
-        Option <span class="s2">&quot;TapButton3&quot;</span> <span class="s2">&quot;3&quot;</span>            <span class="c">#三指敲击产生右键事件</span>
+        Option <span class="string">"TapButton1"</span> <span class="string">"1"</span>            <span class="comment">#单指敲击产生左键事件</span>
+        Option <span class="string">"TapButton2"</span> <span class="string">"2"</span>            <span class="comment">#双指敲击产生中键事件</span>
+        Option <span class="string">"TapButton3"</span> <span class="string">"3"</span>            <span class="comment">#三指敲击产生右键事件</span>
 
-        Option <span class="s2">&quot;VertEdgeScroll&quot;</span> <span class="s2">&quot;on&quot;</span>       <span class="c">#滚动操作：横向、纵向、环形</span>
-        Option <span class="s2">&quot;VertTwoFingerScroll&quot;</span> <span class="s2">&quot;on&quot;</span>
-        Option <span class="s2">&quot;HorizEdgeScroll&quot;</span> <span class="s2">&quot;on&quot;</span>
-        Option <span class="s2">&quot;HorizTwoFingerScroll&quot;</span> <span class="s2">&quot;on&quot;</span>
-        Option <span class="s2">&quot;CircularScrolling&quot;</span> <span class="s2">&quot;on&quot;</span>  
-        Option <span class="s2">&quot;CircScrollTrigger&quot;</span> <span class="s2">&quot;2&quot;</span>
+        Option <span class="string">"VertEdgeScroll"</span> <span class="string">"on"</span>       <span class="comment">#滚动操作：横向、纵向、环形</span>
+        Option <span class="string">"VertTwoFingerScroll"</span> <span class="string">"on"</span>
+        Option <span class="string">"HorizEdgeScroll"</span> <span class="string">"on"</span>
+        Option <span class="string">"HorizTwoFingerScroll"</span> <span class="string">"on"</span>
+        Option <span class="string">"CircularScrolling"</span> <span class="string">"on"</span>  
+        Option <span class="string">"CircScrollTrigger"</span> <span class="string">"2"</span>
 
-        Option <span class="s2">&quot;EmulateTwoFingerMinZ&quot;</span> <span class="s2">&quot;40&quot;</span> <span class="c">#精确度</span>
-        Option <span class="s2">&quot;EmulateTwoFingerMinW&quot;</span> <span class="s2">&quot;8&quot;</span>
-        Option <span class="s2">&quot;CoastingSpeed&quot;</span> <span class="s2">&quot;20&quot;</span>        <span class="c">#触发快速滚动的滚动速度</span>
+        Option <span class="string">"EmulateTwoFingerMinZ"</span> <span class="string">"40"</span> <span class="comment">#精确度</span>
+        Option <span class="string">"EmulateTwoFingerMinW"</span> <span class="string">"8"</span>
+        Option <span class="string">"CoastingSpeed"</span> <span class="string">"20"</span>        <span class="comment">#触发快速滚动的滚动速度</span>
 
-        Option <span class="s2">&quot;PalmDetect&quot;</span> <span class="s2">&quot;1&quot;</span>            <span class="c">#避免手掌触发触摸板</span>
-        Option <span class="s2">&quot;PalmMinWidth&quot;</span> <span class="s2">&quot;3&quot;</span>          <span class="c">#认定为手掌的最小宽度</span>
-        Option <span class="s2">&quot;PalmMinZ&quot;</span> <span class="s2">&quot;200&quot;</span>            <span class="c">#认定为手掌的最小压力值</span>
+        Option <span class="string">"PalmDetect"</span> <span class="string">"1"</span>            <span class="comment">#避免手掌触发触摸板</span>
+        Option <span class="string">"PalmMinWidth"</span> <span class="string">"3"</span>          <span class="comment">#认定为手掌的最小宽度</span>
+        Option <span class="string">"PalmMinZ"</span> <span class="string">"200"</span>            <span class="comment">#认定为手掌的最小压力值</span>
 EndSection
-</code></pre></div>
-<p>通过 <code>man synaptics</code> 了解更多信息。</p>
-
+</code></pre><p>通过 <code>man synaptics</code> 了解更多信息。</p>
 <p><strong>注意</strong>：同时安装 <code>kcm_synaptics</code> 会覆盖掉该配置信息。</p>
-
 <h2>输入时禁止触摸板敲击</h2>
-
 <p>这样可以避免焦点变化，影响当前的输入。</p>
-
 <p>对于使用 <code>startx</code> 来启动的桌面系统，可以修改其 <code>.xinitrc</code> 初始化配置文件来完成：</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">syndaemon -t -k -i 2 -d &amp;
-</code></pre></div>
-<p>其中的 <code>-i 2</code> 表示两秒空闲，即键盘事件后的两秒内不允许响应触摸板 Tap。更多信息请参照手册页：</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">man syndaemon
-</code></pre></div>
-<h2>外接鼠标时禁用触摸板</h2>
-
+<pre><code>syndaemon -t -k -i <span class="number">2</span> <span class="operator">-d</span> &amp;
+</code></pre><p>其中的 <code>-i 2</code> 表示两秒空闲，即键盘事件后的两秒内不允许响应触摸板 Tap。更多信息请参照手册页：</p>
+<pre><code>man syndaemon
+</code></pre><h2>外接鼠标时禁用触摸板</h2>
 <p>在 arch linux 中，使用 udev 监测硬件的热拔插，通过修改其规则文件，来响应外接鼠标事件，从而禁用和启用触摸板。如下的规则文件，调用了 synclient。</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c">#file: /etc/udev/rules.d/01-touchpad.rules</span>
-<span class="nv">ACTION</span><span class="o">==</span><span class="s2">&quot;add&quot;</span>, <span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;input&quot;</span>, <span class="nv">KERNEL</span><span class="o">==</span><span class="s2">&quot;mouse[0-9]&quot;</span>, ENV<span class="o">{</span>DISPLAY<span class="o">}=</span><span class="s2">&quot;:0.0&quot;</span>, ENV<span class="o">{</span>XAUTHORITY<span class="o">}=</span><span class="s2">&quot;/home/harttle/.Xauthority&quot;</span>, ENV<span class="o">{</span>ID_CLASS<span class="o">}=</span><span class="s2">&quot;mouse&quot;</span>, RUN+<span class="o">=</span><span class="s2">&quot;/usr/bin/synclient TouchpadOff=1&quot;</span>
-<span class="nv">ACTION</span><span class="o">==</span><span class="s2">&quot;remove&quot;</span>, <span class="nv">SUBSYSTEM</span><span class="o">==</span><span class="s2">&quot;input&quot;</span>, <span class="nv">KERNEL</span><span class="o">==</span><span class="s2">&quot;mouse[0-9]&quot;</span>, ENV<span class="o">{</span>DISPLAY<span class="o">}=</span><span class="s2">&quot;:0.0&quot;</span>, ENV<span class="o">{</span>XAUTHORITY<span class="o">}=</span><span class="s2">&quot;/home/harttle/.Xauthority&quot;</span>, ENV<span class="o">{</span>ID_CLASS<span class="o">}=</span><span class="s2">&quot;mouse&quot;</span>, RUN+<span class="o">=</span><span class="s2">&quot;/usr/bin/synclient TouchpadOff=0&quot;</span>
-</code></pre></div>
-<p><strong>注意</strong>：该文件中每个操作必须单独一行，可以使用 <code>\</code> 来折行；<code>SUBSYSTEM</code> 与 <code>KERNEL</code> 指定了设备 <code>/dev/input/mouse[0-9]</code>（archwiki的中文页面中此处有误，我会找时间去修改）。了解更多 udev rules 语法：<a href="https://wiki.archlinux.org/index.php/Udev">https://wiki.archlinux.org/index.php/Udev</a></p>
-
+<pre><code><span class="comment">#file: /etc/udev/rules.d/01-touchpad.rules</span>
+ACTION==<span class="string">"add"</span>, SUBSYSTEM==<span class="string">"input"</span>, KERNEL==<span class="string">"mouse[0-9]"</span>, ENV{DISPLAY}=<span class="string">":0.0"</span>, ENV{XAUTHORITY}=<span class="string">"/home/harttle/.Xauthority"</span>, ENV{ID_CLASS}=<span class="string">"mouse"</span>, RUN+=<span class="string">"/usr/bin/synclient TouchpadOff=1"</span>
+ACTION==<span class="string">"remove"</span>, SUBSYSTEM==<span class="string">"input"</span>, KERNEL==<span class="string">"mouse[0-9]"</span>, ENV{DISPLAY}=<span class="string">":0.0"</span>, ENV{XAUTHORITY}=<span class="string">"/home/harttle/.Xauthority"</span>, ENV{ID_CLASS}=<span class="string">"mouse"</span>, RUN+=<span class="string">"/usr/bin/synclient TouchpadOff=0"</span>
+</code></pre><p><strong>注意</strong>：该文件中每个操作必须单独一行，可以使用 <code>\</code> 来折行；<code>SUBSYSTEM</code> 与 <code>KERNEL</code> 指定了设备 <code>/dev/input/mouse[0-9]</code>（archwiki的中文页面中此处有误，我会找时间去修改）。了解更多 udev rules 语法：<a href="https://wiki.archlinux.org/index.php/Udev">https://wiki.archlinux.org/index.php/Udev</a></p>
 <h3>开机时鼠标检测</h3>
-
 <p>PS/2 鼠标在开机时不会出发 udev 规则。我们做一个桌面环境的启动脚本，在 .xinitrc，profile 中调用，或者放在  KDE 的 Autostart 中：</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c">#!/bin/bash</span>
-<span class="nv">ids</span><span class="o">=</span><span class="sb">`</span>ls /dev/input/by-id | grep -E <span class="s1">&#39;.*-mouse&#39;</span><span class="sb">`</span>
-<span class="o">[</span> <span class="s2">&quot;$ids&quot;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> synclient <span class="nv">TouchpadOff</span><span class="o">=</span>1
-</code></pre></div>
-<h2>触摸板识别错误</h2>
-
-<p>对于某些型号的机器，Arch 下触摸板识别会有问题（内核bug），官方建议从 AUR 安装 <code>psmouse-alps-driver</code>。
-受影响的机器有：</p>
-
+<pre><code><span class="shebang">#!/bin/bash</span>
+ids=`ls /dev/input/by-id | grep -E <span class="string">'.*-mouse'</span>`
+[ <span class="string">"<span class="variable">$ids</span>"</span> ] &amp;&amp; synclient TouchpadOff=<span class="number">1</span>
+</code></pre><h2>触摸板识别错误</h2>
+<p>对于某些型号的机器，Arch 下触摸板识别会有问题（内核bug），官方建议从 AUR 安装 <code>psmouse-alps-driver</code>。<br>受影响的机器有：</p>
 <ul>
 <li>Acer Aspire 7750G</li>
 <li>Dell Latitude E6230, E6520, E6430 and E6530 (ALPS DualPoint TouchPad), Inspiron N5110 (ALPS GlidePoint),  Inspiron 14R Turbo SE7420/SE7520 (ALPS GlidePoint)</li>
 <li>Samsung NC110/NF210/QX310/QX410/QX510/SF310/SF410/SF510/RF410/RF510/RF710/RV515</li>
 </ul>
-
 <p>如果问题还没有解决，可以手动编译该模块载入内核。</p>
-
 <ol>
 <li><p>卸载原有 Alps 触摸板驱动</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">pacman -R psmouse-alps-driver
-</code></pre></div></li>
-<li><p>从这里下载：<a href="http://www.dahetral.com/public-download">http://www.dahetral.com/public-download</a></p></li>
+<pre><code> pacman -R psmouse-alps-driver
+</code></pre></li>
+<li><p>从这里下载：<a href="http://www.dahetral.com/public-download">http://www.dahetral.com/public-download</a></p>
+</li>
 <li><p>解压缩，并拷贝至 <code>/usr/src</code></p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">tar -xvf alps-xxx.tar
-sudo cp -r usr /
-</code></pre></div></li>
+<pre><code> tar -xvf alps-xxx.tar
+ <span class="built_in">sudo</span> cp -r usr /
+</code></pre></li>
 <li><p>加入编译树，并进行编译</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">sudo dkms add psmouse/alps-xxx
-sudo dkms autoinstall
-</code></pre></div></li>
+<pre><code> <span class="built_in">sudo</span> dkms add psmouse/alps-xxx
+ <span class="built_in">sudo</span> dkms autoinstall
+</code></pre></li>
 <li><p>卸载原有模块并载入新的内核模块</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">sudo rmmod psmouse <span class="o">||</span> sudo modprobe psmouse
-</code></pre></div></li>
+<pre><code> <span class="built_in">sudo</span> rmmod psmouse || <span class="built_in">sudo</span> modprobe psmouse
+</code></pre></li>
 </ol>
+
 
     
       <style>
@@ -524,11 +500,21 @@ var jiathis_config = {data_track_clickback:'true'};
 <!-- latex render begin -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
-    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    //skipStartupTypeset: true
+    //tex2jax: {inlineMath: [['\\(','\\)']]}
   });
+  
   MathJax.Hub.Queue(function () {
+    //update scrollspy
     $('body').scrollspy('refresh');
   });
+</script>
+<script>
+  $(function(){
+    $('.md .mathjax').each(function (i, v) {
+        //MathJax.Hub.Queue(["Typeset", MathJax.Hub, v]);
+    })
+  })
 </script>
 <!--script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script-->
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>

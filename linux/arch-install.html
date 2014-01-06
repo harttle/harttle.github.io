@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    
-    <meta name="description" content="<p>本文介绍如何安装 Arch Linux，一个轻量级、简单的 Linux 发行版。</p>
-">
-    
+    <meta name="description" content="欢迎访问 Harttle 的个人主页，这里记录了 harttle 关于计算机技术的文章、个人信息与相册，以及有用的资源分享和下载。">
     <meta name="keywords" content="Linux Web 计算机 开发 编程">
     <meta name="author" content="harttle">      
     <meta charset="utf-8">
@@ -46,6 +43,7 @@
 
 
 <link rel="stylesheet" href="/assets/css/markdown.css">
+<link rel="stylesheet" href="/assets/css/syntax.css">
 <style>
   /* By default it's not affixed in mobile views, so undo that */
   .sidebar.affix {
@@ -176,8 +174,6 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">链接 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="//harttle.duapp.com" target="_blank">God Notes</a></li>
-                  <li class="divider"></li>
-                  <li class="dropdown-header">友情链接</li>
                   <li><a href="//www.pku.edu.cn/" target="_blank">北京大学</a></li>
                 </ul>
               </li>
@@ -235,281 +231,246 @@
     </div>
     <div class="col-md-9 right md">
       <p>本文介绍如何安装 Arch Linux，一个轻量级、简单的 Linux 发行版。</p>
-
-<p>相关链接<br>
-<a href="https://wiki.archlinux.org/index.php/Beginners&#x27;_Guide">Beginner&#39;s Guide</a><br>
-<a href="https://wiki.archlinux.org/index.php/Arch_Linux_Localization_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87">汉化</a></p>
-
+<p>相关链接<br><a href="https://wiki.archlinux.org/index.php/Beginners&#39;_Guide">Beginner&#39;s Guide</a><br><a href="https://wiki.archlinux.org/index.php/Arch_Linux_Localization_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87">汉化</a></p>
 <h2>制作镜像并启动</h2>
-
 <p>在arch官方或者bjtu下载到镜像（X86和64）是同一镜像。然后刻录安装盘：</p>
-
 <ul>
 <li><p>linux:   </p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">dd <span class="k">if</span><span class="o">=</span>/path/to/iso <span class="nv">of</span><span class="o">=</span>/dev/sdc  <span class="c"># 确认 sdc 为你的U盘</span>
-</code></pre></div></li>
-<li><p>windows:</p>
-
-<ol>
+<pre><code>  dd <span class="keyword">if</span>=/path/to/iso of=/dev/sdc  <span class="comment"># 确认 sdc 为你的U盘</span>
+</code></pre></li>
+<li>windows:<ol>
 <li>下载 dd4dos</li>
 <li><code>dd if=/path/to/iso of=&quot;\\.\G:&quot;   # 确认G盘为你的U盘</code></li>
-</ol></li>
+</ol>
+</li>
 </ul>
-
 <blockquote>
 <p>另外，启动不了很正常，和U盘有关。 </p>
 </blockquote>
-
 <h2>连接网络</h2>
-
 <ul>
-<li>无线网络
-<code>bash
-netcfg(wifi-menu连接无线网）
-cd /etc/network.d
-cp ./examples/wireless_XXX ./    
-vi wireless_XXX  #修改参数
-netcfg wireless_XXX
-</code></li>
-<li>对于内核没有支持的无线网卡，安装ndiswrapper使用windows驱动<br>
-
-<ol>
+<li>无线网络<pre><code>  netcfg(wifi-menu连接无线网）
+  <span class="built_in">cd</span> /etc/network.d
+  cp ./examples/wireless_XXX ./    
+  vi wireless_XXX  <span class="comment">#修改参数</span>
+  netcfg wireless_XXX
+</code></pre></li>
+<li>对于内核没有支持的无线网卡，安装ndiswrapper使用windows驱动  <ol>
 <li>安装    <code>pacman -S ndiswrapper</code></li>
 <li>加载    <code>ndiswrapper -i winXP_driver.inf(可以从windows目录下或驱动安装包找到)</code></li>
 <li>确认    <code>ndiswrapper -l</code> </li>
-<li>载入模块    <code>modprobe ndiswrapper</code><br></li>
+<li>载入模块    <code>modprobe ndiswrapper</code>  </li>
 <li>若无线网卡的状态指示灯不亮，重新载入网卡    <code>cardctl eject &amp;&amp; cardctl insert</code></li>
-</ol></li>
+</ol>
+</li>
 </ul>
-
 <blockquote>
 <p>使用 <code>iwconfig</code> 可查看网络设备(wlan0,eth0等)，若没有识别请参照wiki</p>
 </blockquote>
-
 <h2>准备硬盘</h2>
-
 <ol>
 <li><p>磁盘分区：</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">cfdisk /dev/sda <span class="c">#至少一个主分区。</span>
-</code></pre></div></li>
+<pre><code> cfdisk /dev/sda <span class="comment">#至少一个主分区。</span>
+</code></pre></li>
 <li><p>格式化：</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">mkfs.ext4 /dev/sda1，mkswap /dev/sda2（之后可用 lsblk /dev/sda 查看分区）
-</code></pre></div></li>
+<pre><code> mkfs.ext4 /dev/sda1，mkswap /dev/sda2（之后可用 lsblk /dev/sda 查看分区）
+</code></pre></li>
 <li><p>挂载：</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">mount /dev/sda1 /mnt，swapon /dev/sda2
-</code></pre></div></li>
+<pre><code> mount /dev/sda1 /mnt，swapon /dev/sda2
+</code></pre></li>
 <li><p>安装</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">/etc/pacmand./mirrorlist    <span class="c">#配置源</span>
-pacstrap -i /mnt base base-devel    <span class="c">#安装</span>
-</code></pre></div></li>
+<pre><code> /etc/pacmand./mirrorlist    <span class="comment">#配置源</span>
+ pacstrap -i /mnt base base-devel    <span class="comment">#安装</span>
+</code></pre></li>
 <li><p>更新静态文件系统信息</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">genfstab -U -p /mnt &gt;&gt; /mnt/etc/fstab
-</code></pre></div></li>
+<pre><code> genfstab -U -p /mnt &gt;&gt; /mnt/etc/fstab
+</code></pre></li>
 </ol>
-
 <h3>可能出现的问题</h3>
-
 <ul>
 <li><p>GPGME error  </p>
-
 <blockquote>
 <p>No data：error: failed to update core (invalid or corrupted database (PGP signature))</p>
 </blockquote>
-
-<p>在 <code>/etc/pacman.conf</code> 的 <code>[options]</code> 加入 <code>SigLevel = Never</code></p></li>
+<p>  在 <code>/etc/pacman.conf</code> 的 <code>[options]</code> 加入 <code>SigLevel = Never</code></p>
+</li>
 <li><p>使用交换文件</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c"># 建立swap文件</span>
-fallocate -l 512M /swapfile
-<span class="c"># 或者</span>
-dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>/swapfile <span class="nv">bs</span><span class="o">=</span>1M <span class="nv">count</span><span class="o">=</span>512
+<pre><code>  <span class="comment"># 建立swap文件</span>
+  fallocate <span class="operator">-l</span> <span class="number">512</span>M /swapfile
+  <span class="comment"># 或者</span>
+  dd <span class="keyword">if</span>=/dev/zero of=/swapfile bs=<span class="number">1</span>M count=<span class="number">512</span>
 
-<span class="c"># 设置swap</span>
-chmod 600 /swapfile
-mkswap /swapfile
-swapon /swapfile
+  <span class="comment"># 设置swap</span>
+  chmod <span class="number">600</span> /swapfile
+  mkswap /swapfile
+  swapon /swapfile
 
-<span class="c"># 更新静态文件系统信息 /etc/fstab 中加入：</span>
-/swapfile none swap defaults 0 0
-</code></pre></div></li>
+  <span class="comment"># 更新静态文件系统信息 /etc/fstab 中加入：</span>
+  /swapfile none swap defaults <span class="number">0</span> <span class="number">0</span>
+</code></pre></li>
 </ul>
-
 <h2>配置系统</h2>
-
 <ol>
 <li><p>进入新系统</p>
-
-<p>更换主目录：<code>arch-chroot /mnt</code>
-更新系统：<code>配置/etc/pacman.d/mirrorlist并pacman -Syu</code></p></li>
+<p> 更换主目录：<code>arch-chroot /mnt</code><br> 更新系统：<code>配置/etc/pacman.d/mirrorlist并pacman -Syu</code></p>
+</li>
 <li><p>设置区域</p>
-
 <ul>
 <li>设置地区：<code>ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</code></li>
-<li>设置硬件时钟：<code>hwclock --systohc --utc</code>
-
-<ul>
+<li>设置硬件时钟：<code>hwclock --systohc --utc</code><ul>
 <li>自动同步时间：<code>sudo systemctl enable ntpd（需要ntp）</code></li>
-<li>fix windows:<br>
-
-<ul>
-<li>add a DWORD value with hexadecimal value 1 to the registry:
-<code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\RealTimeIsUniversal</code></li>
+<li>fix windows:   <ul>
+<li>add a DWORD value with hexadecimal value 1 to the registry:<br>  <code>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\RealTimeIsUniversal</code></li>
 <li>disable time auto sync</li>
-</ul></li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li><p>设置语言</p>
-
 <ul>
 <li>设置语言选项：修改 <code>/etc/locale.gen</code> 并 <code>locale-gen</code></li>
 <li>设置语言：<code>echo LANG=en_US.UTF-8 &gt; /etc/locale.conf</code></li>
 <li>设置主机：<code>echo myhostname &gt; /etc/hostname</code></li>
-</ul></li>
+</ul>
+</li>
 <li><p>配置网络</p>
-
 <ul>
 <li>安装netcfg用到的工具包：<code>pacman -S wireless_tools wpa_supplicant wpa_actiond ifplugd dialog</code></li>
-<li>启用自动连接
-
-<ul>
+<li>启用自动连接<ul>
 <li>单一网络：<code>systemctl enable dhcpcd@eth0.service</code></li>
-<li>变化网络：自动连接在 <code>/etc/network.d</code> 下的网络
-<code>bash
-systemctl enable net-auto-wired.service
-systemctl enable net-auto-wired.service
-systemctl enable net-auto-wireless.service
-</code></li>
-</ul></li>
-</ul></li>
+<li>变化网络：自动连接在 <code>/etc/network.d</code> 下的网络<pre><code>  systemctl enable net-auto-wired.service
+  systemctl enable net-auto-wired.service
+  systemctl enable net-auto-wireless.service
+</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><p>设置用户</p>
-
 <ul>
 <li>设置root密码：<code>passwd</code></li>
 <li>添加用户：<code>useradd -m -g users -s /bin/bash harttle</code>，设置用户密码：<code>passwd harttle</code></li>
 <li>删除用户：<code>userdel -r harttle</code></li>
-</ul></li>
+</ul>
+</li>
 </ol>
-
 <h2>重建引导</h2>
-
 <p>以grub为例，可选syslinux</p>
-
 <ul>
 <li>安装grub：<code>pacman -S grub-bios</code></li>
 <li>写入主引导：<code>grub-install --target=i386-pc --recheck /dev/sda</code></li>
 <li><p>设置grub区域：</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">cp /usr/share/locale/en<span class="se">\@</span>quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
-</code></pre></div></li>
+<pre><code>  cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
+</code></pre></li>
 <li><p>更新启动列表</p>
-
 <ul>
 <li>搜索windows：<code>pacman -S os-prober</code></li>
 <li>更新列表：<code>grub-mkconfig -o /boot/grub/grub.cfg</code></li>
-</ul></li>
-<li><p>重启：<code>exit;umount /mnt{boot,home,};reboot</code></p></li>
 </ul>
-
+</li>
+<li>重启：<code>exit;umount /mnt{boot,home,};reboot</code></li>
+</ul>
 <h2>安装工具</h2>
-
 <ul>
 <li><p>AUR</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c"># /etc/pacman.conf 中加入</span>
-<span class="o">[</span>archlinuxfr<span class="o">]</span>
-<span class="nv">SigLevel</span> <span class="o">=</span> Optional TrustAll
-<span class="nv">Server</span> <span class="o">=</span> http://repo.archlinux.fr/<span class="nv">$arch</span>
-pacman -Syu yaourt
-</code></pre></div></li>
+<pre><code>  <span class="comment"># /etc/pacman.conf 中加入</span>
+  [archlinuxfr]
+  SigLevel = Optional TrustAll
+  Server = http://repo.archlinux.fr/<span class="variable">$arch</span>
+  pacman -Syu yaourt
+</code></pre></li>
 <li><p><code>sudo</code></p>
-
-<p>安装：<code>pacman -S sudo</code>
-配置：<code>etc/sudoers</code> 添加 <code>harttle ALL=(ALL) ALL</code>，使harttle可以使用sudo</p></li>
-<li><p><code>bash</code> 自动补全：<code>bash-completion</code></p></li>
-<li><p><code>vim</code></p></li>
+<p>  安装：<code>pacman -S sudo</code><br>  配置：<code>etc/sudoers</code> 添加 <code>harttle ALL=(ALL) ALL</code>，使harttle可以使用sudo</p>
+</li>
+<li><p><code>bash</code> 自动补全：<code>bash-completion</code></p>
+</li>
+<li><p><code>vim</code></p>
+</li>
 </ul>
-
 <h2>安装图形界面</h2>
-
 <p>以KDE为例，可选gnome</p>
-
 <ol>
-<li><p>安装驱动：<code>mesa(3D)</code>,<code>xf86-video-vesa(Default)</code>,<code>xf86-video-nouveau(open nvidia)</code>,<code>nouveau-dri</code>(open nvidia)</p></li>
-<li><p>安装图形界面的底层协议实现：<code>pacman -S xorg</code></p></li>
+<li><p>安装驱动：<code>mesa(3D)</code>,<code>xf86-video-vesa(Default)</code>,<code>xf86-video-nouveau(open nvidia)</code>,<code>nouveau-dri</code>(open nvidia)</p>
+</li>
+<li><p>安装图形界面的底层协议实现：<code>pacman -S xorg</code></p>
+</li>
 <li><p>安装kde及其语言包：<code>pacman -S kde kde-l10n-zh_cn</code></p>
-
 <ul>
 <li>最小安装：<code>kdebase</code>，<code>phonon-gstreamer</code>，<code>kde-l10n-zh_cn</code></li>
-</ul></li>
+</ul>
+</li>
 <li><p>设置启动</p>
-
 <ul>
 <li>采用 <code>startx</code>：<code>~/.xinitrc</code> 加入 <code>exec ck-launch-session startx</code></li>
-<li>采用kdm(kde)，可选gdm(gnome)
-
-<ul>
+<li>采用kdm(kde)，可选gdm(gnome)<ul>
 <li>安装 <code>kdebase-workspace</code>，编辑 <code>~/.xprofile</code></li>
 <li>设置 kdm 启动：<code>systemctl enable kdm</code></li>
-</ul></li>
-</ul></li>
-<li><p>kde的gtk支持：安装 <code>oxygen-gtk2</code>，<code>oxygen-gtk3</code>，<code>kde-gtk-config</code>(AUR) 进入系统设置-&gt;公共外观行为-&gt;应用程序外观-&gt;gtk configuration相关设置</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>kde的gtk支持：安装 <code>oxygen-gtk2</code>，<code>oxygen-gtk3</code>，<code>kde-gtk-config</code>(AUR) 进入系统设置-&gt;公共外观行为-&gt;应用程序外观-&gt;gtk configuration相关设置</p>
+</li>
 <li><p>kde网络管理</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">pacman -S networkmanager kdeplasma-applets-networkmanagement
-systemctl <span class="nb">enable </span>NetworkManager.service 
-</code></pre></div></li>
-<li><p>设置登录屏幕主题：<code>archlinux-themes-kdm(AUR)</code>，kde systemsettings 中的设置不起作用</p></li>
+<pre><code> pacman -S networkmanager kdeplasma-applets-networkmanagement
+ systemctl enable NetworkManager.service
+</code></pre></li>
+<li><p>设置登录屏幕主题：<code>archlinux-themes-kdm(AUR)</code>，kde systemsettings 中的设置不起作用</p>
+</li>
 <li><p>在fstab加入开机挂载的分区，需要 <code>ntfs-3g</code>(AUR)</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">/dev/hda1        /mnt/winC        ntfs-3g <span class="nv">iocharset</span><span class="o">=</span>utf8,umask<span class="o">=</span>022,noatime 0 0
-</code></pre></div></li>
+<pre><code> /dev/hda1        /mnt/winC        ntfs-<span class="number">3</span>g iocharset=utf8,umask=<span class="number">022</span>,noatime <span class="number">0</span> <span class="number">0</span>
+</code></pre></li>
 </ol>
-
 <h2>汉化</h2>
-
 <ul>
 <li><p>设置X默认字符集：在 <code>~/.bashrc</code>、<code>~/.xinitrc</code> 或 <code>~/.xprofile</code> 中加入</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nv">LOCALE</span><span class="o">=</span>en_US.UTF-8
-<span class="nb">export </span><span class="nv">LANG</span><span class="o">=</span>zh_CN.UTF-8
-<span class="nb">export </span><span class="nv">LC_ALL</span><span class="o">=</span><span class="s2">&quot;zh_CN.UTF-8&quot;</span>
-</code></pre></div></li>
+<pre><code>  LOCALE=en_US.UTF-<span class="number">8</span>
+  <span class="keyword">export</span> LANG=zh_CN.UTF-<span class="number">8</span>
+  <span class="keyword">export</span> LC_ALL=<span class="string">"zh_CN.UTF-8"</span>
+</code></pre></li>
 <li><p>安装字体库</p>
-
-<p><code>wqy-bitmapfont</code>，<code>wqy-zenhei</code>，<code>ttf-arphic-ukai</code>，<code>ttf-arphic-uming</code>，<code>ttf-fireflysung</code>，<code>wqy-microhei</code>（AUR），<code>wqy-microhei-lite</code>（AUR）</p></li>
+<p>  <code>wqy-bitmapfont</code>，<code>wqy-zenhei</code>，<code>ttf-arphic-ukai</code>，<code>ttf-arphic-uming</code>，<code>ttf-fireflysung</code>，<code>wqy-microhei</code>（AUR），<code>wqy-microhei-lite</code>（AUR）</p>
+</li>
 <li><p>输入法</p>
-
 <ol>
 <li><p>安装 fcitx</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">pacman -S fcitx fcitx-gtk2 fcitx-gtk3 fcitx-qt
-</code></pre></div></li>
-<li><p>安装配置工具：<code>fcitx-configtool</code>(基于gtk3), <code>fcitx-configtool-gtk2</code>(基于gtk2), <code>kcm-fcitx</code>(基于KDE的KCM)</p></li>
+<pre><code> pacman -S fcitx fcitx-gtk2 fcitx-gtk3 fcitx-qt
+</code></pre></li>
+<li>安装配置工具：<code>fcitx-configtool</code>(基于gtk3), <code>fcitx-configtool-gtk2</code>(基于gtk2), <code>kcm-fcitx</code>(基于KDE的KCM)</li>
 <li><p>设置X的输入法：在 <code>~/.xinitrc</code> 或 <code>~/.xprofile</code> 中加入：</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="nb">export </span><span class="nv">XMODIFIERS</span><span class="o">=</span>@im<span class="o">=</span>fcitx
-<span class="nb">export </span><span class="nv">GTK_IM_MODULE</span><span class="o">=</span>fcitx
-<span class="nb">export </span><span class="nv">QT_IM_MODULE</span><span class="o">=</span>fcitx
-</code></pre></div></li>
-<li><p>设置启动：<code>cp /etc/xdg/autostart/fcitx-autostart.desktop ~/.config/autostart/</code></p></li>
-</ol></li>
+<pre><code> <span class="keyword">export</span> XMODIFIERS=@im=fcitx
+ <span class="keyword">export</span> GTK_IM_MODULE=fcitx
+ <span class="keyword">export</span> QT_IM_MODULE=fcitx
+</code></pre></li>
+<li>设置启动：<code>cp /etc/xdg/autostart/fcitx-autostart.desktop ~/.config/autostart/</code></li>
+</ol>
+</li>
 <li><p>终端输入法：fbterm</p>
-
 <ul>
 <li><p>安装</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash">yaourt -S fbterm fcitx-fbterm
-sudo gpasswd -a YOUR_USERNAME video <span class="c">#非根用户运行fbterm</span>
-sudo setcap <span class="s1">&#39;cap_sys_tty_config+ep&#39;</span> /usr/bin/fbterm 或：sudo chmod u+s /usr/bin/fbterm <span class="c">#非根用户可使用键盘快捷方式</span>
-</code></pre></div></li>
+<pre><code>  yaourt -S fbterm fcitx-fbterm
+  <span class="built_in">sudo</span> gpasswd <span class="operator">-a</span> YOUR_USERNAME video <span class="comment">#非根用户运行fbterm</span>
+  <span class="built_in">sudo</span> setcap <span class="string">'cap_sys_tty_config+ep'</span> /usr/bin/fbterm 或：<span class="built_in">sudo</span> chmod u+s /usr/bin/fbterm <span class="comment">#非根用户可使用键盘快捷方式</span>
+</code></pre></li>
 <li><p>配置</p>
-<div class="highlight"><pre><code class="bash language-bash" data-lang="bash"><span class="c"># ~/.fbtermrc</span>
-font-names <span class="o">=</span> Consolas（Monaco）,微软雅黑
-font-size<span class="o">=</span>15
+<pre><code>  <span class="comment"># ~/.fbtermrc</span>
+  font-names = Consolas（Monaco）,微软雅黑
+  font-size=<span class="number">15</span>
 
-<span class="c"># ~/.bashrc</span>
-<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;$TERM&quot;</span> <span class="o">=</span> <span class="s2">&quot;linux&quot;</span> <span class="o">]</span>; <span class="k">then  </span>
-<span class="nb">alias </span><span class="nv">fbterm</span><span class="o">=</span><span class="s1">&#39;LANG=zh_CN.UTF-8 fbterm&#39;</span>  
-fbterm  
-<span class="k">fi</span>
-</code></pre></div></li>
-</ul></li>
+  <span class="comment"># ~/.bashrc</span>
+  <span class="keyword">if</span> [ <span class="string">"<span class="variable">$TERM</span>"</span> = <span class="string">"linux"</span> ]; <span class="keyword">then</span>  
+  alias fbterm=<span class="string">'LANG=zh_CN.UTF-8 fbterm'</span>  
+  fbterm  
+  <span class="keyword">fi</span>
+</code></pre></li>
 </ul>
-
+</li>
+</ul>
 <h2>字体</h2>
-
 <p>可在AUR中直接安装 Ubuntu字体、开源字体、Adobe字体，甚至 Windows 字体。</p>
+
 
     
       <style>
@@ -686,11 +647,21 @@ var jiathis_config = {data_track_clickback:'true'};
 <!-- latex render begin -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
-    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    //skipStartupTypeset: true
+    //tex2jax: {inlineMath: [['\\(','\\)']]}
   });
+  
   MathJax.Hub.Queue(function () {
+    //update scrollspy
     $('body').scrollspy('refresh');
   });
+</script>
+<script>
+  $(function(){
+    $('.md .mathjax').each(function (i, v) {
+        //MathJax.Hub.Queue(["Typeset", MathJax.Hub, v]);
+    })
+  })
 </script>
 <!--script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script-->
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
