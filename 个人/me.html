@@ -486,14 +486,14 @@ var jiathis_config = {data_track_clickback:'true'};
 <script src="/assets/gallery-2.11.0/js/blueimp-gallery.min.js"></script>  
 <script>
   //galary display
-  $('.items')[0].onclick = function (event) {
+  $('.item>a').click(function (event) {
     event = event || window.event;
     var target = event.target || event.srcElement,
 	link = target.src ? target.parentNode : target,
 	options = {index: link, event: event, fullScreen: true };
-	links = this.getElementsByTagName('a');
+	links = $(this).closest('.items').find('.item>a');
     blueimp.Gallery(links, options);
-  };    
+  });    
 </script>
 
 

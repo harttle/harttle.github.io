@@ -58,7 +58,7 @@ body{
 }
 
 .page-header h1{
-  font-family: cursive;
+  /*font-family: cursive;*/
 }
 .panel-active{
   box-shadow: 5px 5px 10px #888;
