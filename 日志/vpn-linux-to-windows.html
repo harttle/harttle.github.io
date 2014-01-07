@@ -247,8 +247,8 @@
 <ol>
 <li><p>安装 pptp</p>
 <pre><code> <span class="comment"># kde in arch</span>
- pacman -S extra/networkmanager-pptp
-</code></pre></li>
+ pacman -S extra/networkmanager-pptp</code>
+</pre></li>
 <li><p>新建 VPN 连接</p>
 <p> 网关：服务器IP或域名<br> 登录：用户名<br> 密码：密码<br> 域：空<br> 认证方式：MSCHAP MSCHAPv2<br> 使用 MPPE 加密</p>
 </li>
@@ -430,18 +430,9 @@ var jiathis_config = {data_track_clickback:'true'};
 <!-- latex render begin -->
 <script type="text/x-mathjax-config">  
   MathJax.Hub.Queue(function () {
-    //update scrollspy
-    $('body').scrollspy('refresh');
+    $('body').scrollspy('refresh'); 
   });
 </script>
-<script>
-  $(function(){
-    $('.md .mathjax').each(function (i, v) {
-        //MathJax.Hub.Queue(["Typeset", MathJax.Hub, v]);
-    })
-  })
-</script>
-<!--script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script-->
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 <!-- latex render end -->
 

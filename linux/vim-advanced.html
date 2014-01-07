@@ -582,18 +582,9 @@ var jiathis_config = {data_track_clickback:'true'};
 <!-- latex render begin -->
 <script type="text/x-mathjax-config">  
   MathJax.Hub.Queue(function () {
-    //update scrollspy
-    $('body').scrollspy('refresh');
+    $('body').scrollspy('refresh'); 
   });
 </script>
-<script>
-  $(function(){
-    $('.md .mathjax').each(function (i, v) {
-        //MathJax.Hub.Queue(["Typeset", MathJax.Hub, v]);
-    })
-  })
-</script>
-<!--script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script-->
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 <!-- latex render end -->
 

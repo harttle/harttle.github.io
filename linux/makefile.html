@@ -261,8 +261,8 @@
 </blockquote>
 <h2>示例</h2>
 <pre><code>target: require1 require2
-    shell command
-</code></pre><p><code>make</code> 命令会寻找当前目录下的 makefile，寻找其中的第一条规则，然后执行 <code>shell command</code> 来生成 <code>target</code>。如果发现 <code>requireN</code> 同时也依赖于其他项，则会自动调用其对应的 <code>shell command</code> 并生成它。另外，在整个过程中，<code>make</code> 会比较 <code>target</code> 与 <code>requireN</code> 的时间戳，以判断是否需要重新生成。</p>
+    shell command</code>
+</pre><p><code>make</code> 命令会寻找当前目录下的 makefile，寻找其中的第一条规则，然后执行 <code>shell command</code> 来生成 <code>target</code>。如果发现 <code>requireN</code> 同时也依赖于其他项，则会自动调用其对应的 <code>shell command</code> 并生成它。另外，在整个过程中，<code>make</code> 会比较 <code>target</code> 与 <code>requireN</code> 的时间戳，以判断是否需要重新生成。</p>
 <h2>变量</h2>
 <p>变量的定义与引用：</p>
 <pre><code>
@@ -273,14 +273,14 @@
 <span class="constant">objects2</span> = <span class="variable">$(objects)</span> c.o
 
 main.o: $(objects)
-    gcc -o main.o $(objects2)
-</code></pre><ul>
+    gcc -o main.o $(objects2)</code>
+</pre><ul>
 <li><p>如果要在makefile中真实的 <code>$</code>，需要用 <code>$$</code> 来表示。</p>
 </li>
 <li><p>注意变量赋值时不能使用通配符。但是在规则中，通配符是可以使用的：</p>
 <pre><code>  print: *.c
-      some command
-</code></pre></li>
+      some command</code>
+</pre></li>
 </ul>
 <h2>自动化变量</h2>
 <ul>
@@ -295,28 +295,28 @@ main.o: $(objects)
 <h2>隐含规则</h2>
 <p><code>make</code> 会通过隐含规则自动推导依赖关系，可以帮助我们简化 <code>makefile</code>。例如：</p>
 <pre><code>foo : foo.o bar.o 
-    cc –o foo foo.o bar.o $(CFLAGS) $(LDFLAGS)
-</code></pre><p>并没有指明如何生成 <code>.o</code> 文件，这时 <code>make</code> 会生成：</p>
+    cc –o foo foo.o bar.o $(CFLAGS) $(LDFLAGS)</code>
+</pre><p>并没有指明如何生成 <code>.o</code> 文件，这时 <code>make</code> 会生成：</p>
 <pre><code>foo.o : foo.c 
     cc –c foo.c $(CFLAGS) 
 
 bar.o : bar.c 
-    cc –c bar.c $(CFLAGS)
-</code></pre><p>隐含规则中的编译器与上一级依赖中的相同，因此产生 <code>foo</code> 的规则中，<code>cc</code> 命令是不可省略的。</p>
+    cc –c bar.c $(CFLAGS)</code>
+</pre><p>隐含规则中的编译器与上一级依赖中的相同，因此产生 <code>foo</code> 的规则中，<code>cc</code> 命令是不可省略的。</p>
 <h2>使用函数</h2>
 <p>可以使用 <code>make</code> 内建函数来完成某些功能。语法如下：</p>
-<pre><code>$(&lt;function&gt; &lt;arguments&gt;)
-</code></pre><p>如：</p>
-<pre><code><span class="constant">sources</span> := <span class="variable">$(shell ls *.c)</span>
-</code></pre><p><code>make</code> 中的函数包括：字符串处理，文件名操作，流程控制，call函数，origin函数，shell函数。</p>
+<pre><code>$(&lt;function&gt; &lt;arguments&gt;)</code>
+</pre><p>如：</p>
+<pre><code><span class="constant">sources</span> := <span class="variable">$(shell ls *.c)</span></code>
+</pre><p><code>make</code> 中的函数包括：字符串处理，文件名操作，流程控制，call函数，origin函数，shell函数。</p>
 <h1>进阶技巧</h1>
 <h2>伪目标</h2>
 <p>伪目标不是一个文件，而只是一个标签，使得依赖关系的书写更加灵活。<code>.PHONY</code> 用来声明伪目标（但不是必须的），这时可以避免 make 去检查同名的文件。例如：</p>
 <pre><code><span class="phony"><span class="keyword">.PHONY</span>: clean </span>
 
 <span class="title">clean: </span>
-    rm *.o temp
-</code></pre><h2>多目标</h2>
+    rm *.o temp</code>
+</pre><h2>多目标</h2>
 <pre><code>bigoutput littleoutput : text.g 
     generate text.g -$(subst output,,$@) &gt; $@
 
@@ -325,31 +325,31 @@ bar.o : bar.c
 bigoutput : text.g 
     generate text.g -big &gt; bigoutput 
 littleoutput : text.g 
-    generate text.g -little &gt; littleoutput
-</code></pre><h2>静态模式</h2>
+    generate text.g -little &gt; littleoutput</code>
+</pre><h2>静态模式</h2>
 <p>静态模式可以更加容易地定义多目标的规则，语法如下：</p>
 <pre><code>&lt;targets ...&gt;: &lt;target-pattern&gt;: &lt;prereq-patterns ...&gt; 
-    &lt;commands&gt;
-</code></pre><p>例如，下面的makefile将对所有的 <code>.o</code> 文件分别生成一条依赖关系。</p>
+    &lt;commands&gt;</code>
+</pre><p>例如，下面的makefile将对所有的 <code>.o</code> 文件分别生成一条依赖关系。</p>
 <pre><code><span class="constant">objects</span> = foo.o bar.o 
 
 all: $(objects) 
 $(objects): %.o: %.c 
-    $(CC) -c $(CFLAGS) $&lt; -o $@
-</code></pre><h2>总控 makefile</h2>
+    $(CC) -c $(CFLAGS) $&lt; -o $@</code>
+</pre><h2>总控 makefile</h2>
 <p>在makefile中，可以执行子文件夹的makefile：</p>
 <pre><code><span class="title">subsystem: </span>
-    $(MAKE) -C subdir
-</code></pre><p>这里的<code>$(MAKE)</code>是为了方便维护make的参数。总控makefile的变量可以传递到下级：</p>
+    $(MAKE) -C subdir</code>
+</pre><p>这里的<code>$(MAKE)</code>是为了方便维护make的参数。总控makefile的变量可以传递到下级：</p>
 <pre><code>export variable = value
 
 <span class="comment"># or use the following</span>
 <span class="constant">variable</span> = value 
-export variable
-</code></pre><h2>自动生成依赖</h2>
+export variable</code>
+</pre><h2>自动生成依赖</h2>
 <p>对于每个 <code>.c</code> 文件，我们一般会需要如下的依赖关系：</p>
-<pre><code>main.o : main.c defs.h
-</code></pre><p>然而，有时候存在大量的 <code>.c</code> 文件，我们需要得到每个 <code>.c</code> 对应的 <code>.h</code>。借助于 <code>gcc</code>，可以自动探测这些依赖：</p>
+<pre><code>main.o : main.c defs.h</code>
+</pre><p>然而，有时候存在大量的 <code>.c</code> 文件，我们需要得到每个 <code>.c</code> 对应的 <code>.h</code>。借助于 <code>gcc</code>，可以自动探测这些依赖：</p>
 <pre><code><span class="constant">sources</span> = main.c stack.c maze.c
 
 include $(sources:.c=.d)
@@ -358,8 +358,8 @@ include $(sources:.c=.d)
     set -e; rm -f $@; \
     $(CC) -MM $(CPPFLAGS) $&lt; &gt; $@.$$$$; \
     sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' &lt; $@.$$$$ &gt; $@; \
-    rm -f $@.$$$$
-</code></pre><p>如上的makefile定义了 <code>.c</code> 的列表变量，然后载入对应的 <code>.d</code> 文件，这时会有文件不存在的警告产生，此时 make 会采用下面的模式生成 <code>.d</code>：</p>
+    rm -f $@.$$$$</code>
+</pre><p>如上的makefile定义了 <code>.c</code> 的列表变量，然后载入对应的 <code>.d</code> 文件，这时会有文件不存在的警告产生，此时 make 会采用下面的模式生成 <code>.d</code>：</p>
 <ul>
 <li>设置shell，发生错误立即退出</li>
 <li>得到依赖关系（如 <code>main.o main.c defs.h</code>），存为 <code>.d.XXXX</code>（<code>XXXX</code>为当前进程号）</li>
@@ -543,18 +543,9 @@ var jiathis_config = {data_track_clickback:'true'};
 <!-- latex render begin -->
 <script type="text/x-mathjax-config">  
   MathJax.Hub.Queue(function () {
-    //update scrollspy
-    $('body').scrollspy('refresh');
+    $('body').scrollspy('refresh'); 
   });
 </script>
-<script>
-  $(function(){
-    $('.md .mathjax').each(function (i, v) {
-        //MathJax.Hub.Queue(["Typeset", MathJax.Hub, v]);
-    })
-  })
-</script>
-<!--script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script-->
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 <!-- latex render end -->
 

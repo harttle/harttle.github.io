@@ -225,7 +225,7 @@
           返回列表 <span class="glyphicon glyphicon-hand-left"></span>
       </a>
       <span class="pull-right label label-default hidden-xs">
-          <span class="glyphicon glyphicon-time"></span> 2014年01月06日
+          <span class="glyphicon glyphicon-time"></span> 2014年01月07日
       </span>
     </div>
   </div>
@@ -560,8 +560,8 @@
     critical_region();
     turn = <span class="number">0</span>;
     noncritical_regino();
-}
-</code></pre><p>Problem: neither of them could run twice in a row, which violates condition 3.</p>
+}</code>
+</pre><p>Problem: neither of them could run twice in a row, which violates condition 3.</p>
 <blockquote>
 <p>Continuously testing a variable until some value apperas is called <strong>busy waiting</strong> , a lock that uses busy waiting is called a <strong>spin lock</strong> .</p>
 </blockquote>
@@ -585,8 +585,8 @@
 <span class="keyword">void</span> leave_region(<span class="keyword">int</span> process)
 {
     interested[process] = FALSE;
-}
-</code></pre><h4>TSL Instruction</h4>
+}</code>
+</pre><h4>TSL Instruction</h4>
 <pre><code>TSL RX, LOCK
 </code></pre><p>Test and lock lock instruction reads the content of the memory word <code>lock</code> into register <code>RX</code> and then stores a nonzero value at the memory address <code>lock</code>.</p>
 <blockquote>
@@ -622,8 +622,8 @@ Consumer loop:
     <span class="keyword">else</span>:
         consume one
     <span class="keyword">if</span> count == N-<span class="number">1</span>
-        wakeup producer
-</code></pre><p>Since <code>count</code> is unconstrained, race condition could occur. When consumer is about to sleep, wakeup signal from producer is lost, causing both of them sleeping.</p>
+        wakeup producer</code>
+</pre><p>Since <code>count</code> is unconstrained, race condition could occur. When consumer is about to sleep, wakeup signal from producer is lost, causing both of them sleeping.</p>
 <h4>Semaphores</h4>
 <p>Semaphores are used to buffer signals, keep them from losing. Value 0 indicating that no wakeups were saved; positive value if some wakeups were pending.</p>
 <p><code>down</code>(Proberen, try in Dutch) operation: checking the value and cosume one or sleep to wait one.<br><code>up</code>(Verhogen, raise in Dutch) operation: produce one, if someone&#39;s waiting, wake him.</p>
@@ -924,18 +924,9 @@ var jiathis_config = {data_track_clickback:'true'};
 <!-- latex render begin -->
 <script type="text/x-mathjax-config">  
   MathJax.Hub.Queue(function () {
-    //update scrollspy
-    $('body').scrollspy('refresh');
+    $('body').scrollspy('refresh'); 
   });
 </script>
-<script>
-  $(function(){
-    $('.md .mathjax').each(function (i, v) {
-        //MathJax.Hub.Queue(["Typeset", MathJax.Hub, v]);
-    })
-  })
-</script>
-<!--script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script-->
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 <!-- latex render end -->
 

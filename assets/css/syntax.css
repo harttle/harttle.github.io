@@ -8,7 +8,6 @@ code {
   overflow: auto;
   margin: 0 0.15em;
   padding: 0 0.3em;
-  white-space: nowrap;
   border: 1px solid #EAEAEA;
   background-color: #F8F8F8;
   border-radius: 3px;
@@ -23,11 +22,10 @@ pre {
 }
 
 pre code {
-  white-space: pre;
   border-radius: 3px;
   border: 1px solid #CCC;
   padding: 0.5em 0.7em;
-  display: block; padding: 0.5em;color: black;
+  padding: 0.5em;color: black;
   /*background:#fff;*/
   font-size: 0.85em;
   font-family: Consolas, Inconsolata, Courier, monospace;

@@ -80,7 +80,6 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
 .md code {
 	margin: 0 2px;
 	padding: 2px 5px;
-	/*white-space: nowrap;*/
 	white-space: normal;
 	border: 1px solid #CCC;
 	background-color: #F8F8F8;
@@ -95,6 +94,7 @@ margin: 0px;
 	background-color: transparent;
 	border-radius: 0;
 }
+
 .md a, .md a code {
 	color: #4183C4;
 	text-decoration:none;

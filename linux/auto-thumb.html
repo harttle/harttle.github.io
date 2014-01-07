@@ -287,8 +287,8 @@
 
  <span class="comment"># clean all thumbs</span>
  clean-all:
-         -rm -rf file thumb list.yml
-</code></pre></li>
+         -rm -rf file thumb list.yml</code>
+</pre></li>
 <li><p>执行 <code>make</code> 即可在当前目录创建 <code>thumb</code> 子目录，并保存生成的缩略图。为了便于批量导入，同时产生了图片列表 <code>list.yml</code>（YAML格式）。<br> 执行 <code>make clean</code> 即可清空多余的缩略图，执行 <code>make clean-all</code> 即可清空所有缩略图以及图片列表。</p>
 </li>
 <li><p>生成的效果如下：</p>
@@ -327,8 +327,8 @@
  clean-all: 
  for dir in $(dirs);do\
      $(MAKE) clean-all -C $$dir;\
- done
-</code></pre></li>
+ done</code>
+</pre></li>
 <li><p>在 <code>imgs</code> 执行 <code>make</code>，即可以更新所有子目录的缩略图；执行 <code>make clean</code>，即可清空所有缩略图，以及图片列表。</p>
 </li>
 <li><p>生成的效果如下：</p>
@@ -525,18 +525,9 @@ var jiathis_config = {data_track_clickback:'true'};
 <!-- latex render begin -->
 <script type="text/x-mathjax-config">  
   MathJax.Hub.Queue(function () {
-    //update scrollspy
-    $('body').scrollspy('refresh');
+    $('body').scrollspy('refresh'); 
   });
 </script>
-<script>
-  $(function(){
-    $('.md .mathjax').each(function (i, v) {
-        //MathJax.Hub.Queue(["Typeset", MathJax.Hub, v]);
-    })
-  })
-</script>
-<!--script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG"></script-->
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 <!-- latex render end -->
 
