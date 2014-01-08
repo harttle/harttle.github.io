@@ -43,7 +43,8 @@
 
 
 <link rel="stylesheet" href="/assets/css/markdown.css">
-<link rel="stylesheet" href="/assets/css/syntax.css">
+<!--link rel="stylesheet" href="/assets/css/highlight/ir_black.css"-->
+<link rel="stylesheet" href="http://highlightjs.org/static/styles/tomorrow-night-eighties.css">
 <style>
   /* By default it's not affixed in mobile views, so undo that */
   .sidebar.affix {
@@ -250,26 +251,22 @@
 <pre><code><span class="comment"># open jdk</span>
 <span class="built_in">sudo</span> apt-get install open-jdk-<span class="number">7</span> <span class="comment"># ubuntu</span>
 <span class="built_in">sudo</span> pacman -S open-jdk-<span class="number">7</span>       <span class="comment"># arch linux</span>
-<span class="built_in">sudo</span> rpm -ivh open-jdk-<span class="number">7</span>        <span class="comment"># centos</span></code>
-</pre><p>oracle jre 安装可参考 <a href="http://www.liberiangeek.net/2012/04/install-oracle-java-runtime-jre-7-in-ubuntu-12-04-precise-pangolin/">http://www.liberiangeek.net/2012/04/install-oracle-java-runtime-jre-7-in-ubuntu-12-04-precise-pangolin/</a></p>
+<span class="built_in">sudo</span> rpm -ivh open-jdk-<span class="number">7</span>        <span class="comment"># centos</span></code></pre><p>oracle jre 安装可参考 <a href="http://www.liberiangeek.net/2012/04/install-oracle-java-runtime-jre-7-in-ubuntu-12-04-precise-pangolin/">http://www.liberiangeek.net/2012/04/install-oracle-java-runtime-jre-7-in-ubuntu-12-04-precise-pangolin/</a></p>
 <h2>安装</h2>
 <ol>
 <li><p>下载并解压</p>
 <p> 在 <a href="https://webarchive.jira.com/wiki/display/Heritrix/Heritrix">https://webarchive.jira.com/wiki/display/Heritrix/Heritrix</a> 可以得到最新的版本。下载后解压。</p>
-<pre><code> tar -xzvf heritrix-xxx.tar.gz</code>
-</pre></li>
+<pre><code> tar -xzvf heritrix-xxx.tar.gz</code></pre></li>
 <li><p>设置环境变量</p>
 <pre><code> <span class="comment"># 在 ~/.bashrc 中加入以下环境变量</span>
  <span class="keyword">export</span> JAVA_HOME=/path/to/your/jre
  <span class="keyword">export</span> HERITRIX_HOME=/path/to/your/heritrix
- <span class="keyword">export</span> JAVA_OPTS=-Xmx1024M  <span class="comment"># 可选，指定使用的内存上限</span></code>
-</pre></li>
+ <span class="keyword">export</span> JAVA_OPTS=-Xmx1024M  <span class="comment"># 可选，指定使用的内存上限</span></code></pre></li>
 <li><p>启动 UI</p>
 <p> 参照：<a href="https://webarchive.jira.com/wiki/display/Heritrix/A+Quick+Guide+to+Running+Your+First+Crawl+Job">https://webarchive.jira.com/wiki/display/Heritrix/A+Quick+Guide+to+Running+Your+First+Crawl+Job</a></p>
 <pre><code> <span class="built_in">cd</span> <span class="variable">$HERITRIX_HOME</span>
  <span class="comment"># -a 设置用户名和密码，-j 设置抓取到的网页的路径，例如：</span>
- bin/heritrix <span class="operator">-a</span> harttle:<span class="number">123456</span> -j /home/harttle/search-engine/pages/</code>
-</pre><p> 然后在浏览器打开 <a href="https://localhost:8843，登录后根据提示新建一个job。">https://localhost:8843，登录后根据提示新建一个job。</a></p>
+ bin/heritrix <span class="operator">-a</span> harttle:<span class="number">123456</span> -j /home/harttle/search-engine/pages/</code></pre><p> 然后在浏览器打开 <a href="https://localhost:8843，登录后根据提示新建一个job。">https://localhost:8843，登录后根据提示新建一个job。</a></p>
 </li>
 </ol>
 <h2>配置</h2>
@@ -305,8 +302,7 @@
        &lt;value&gt;.*(?i)(\.(docx?|xlsx?|pptx?))$&lt;/value&gt;
      &lt;/list&gt;
     &lt;/property&gt;
-  &lt;/bean&gt;</code>
-</pre></li>
+  &lt;/bean&gt;</code></pre></li>
 <li><p>只归档 <code>Content-Type</code> 为 <code>text/html</code> 的文件</p>
 <p>  <code>warcWriter</code> 字段指定了写入归档的规则，为了只匹配特定 <code>Content-Type</code> 的文件，可以为该字段添加如下规则：</p>
 <pre><code>  &lt;bean id=<span class="string">"warcWriter"</span> class=<span class="string">"org.archive.modules.writer.WARCWriterProcessor"</span>&gt;
@@ -325,8 +321,7 @@
        &lt;/bean&gt;
      &lt;/property&gt;
      &lt;!-- other properties --&gt;
-  &lt;/bean&gt;</code>
-</pre></li>
+  &lt;/bean&gt;</code></pre></li>
 <li><p>启动 heritrix</p>
 <p>  在 Web-based UI 中，依次执行 build、launch、unpause 即可启动 heritix。</p>
 </li>
@@ -335,8 +330,7 @@
 <h2>提取链接关系</h2>
 <p>我们现在要进行 Page-Rank，需要获得网页之间的链接关系。可以通过heritrix生成的日志文件（<code>crawl.log</code>）来提取。</p>
 <p>参见：<a href="https://webarchive.jira.com/wiki/display/Heritrix/Logs">https://webarchive.jira.com/wiki/display/Heritrix/Logs</a></p>
-<pre><code>cat crawl.log | awk <span class="string">'$7=="text/html"{print $6 " =&gt; " $4}'</span> &gt; links</code>
-</pre><p>现在我们得到了包含链接关系的文件 <code>links</code>。</p>
+<pre><code>cat crawl.log | awk <span class="string">'$7=="text/html"{print $6 " =&gt; " $4}'</span> &gt; links</code></pre><p>现在我们得到了包含链接关系的文件 <code>links</code>。</p>
 <h2>进行 Page Rank</h2>
 <p>Page Rank 是 Google 搜索引擎进行网站排名的重要算法之一。<a href="http://en.wikipedia.org/wiki/Pagerank">wiki</a> 给出了 Matlab 实现：</p>
 <pre><code>% Parameter M adjacency matrix where M_i,j represents the link from &#39;j&#39; to &#39;i&#39;, such that for all &#39;j&#39; sum(i, M_i,j) = 1
@@ -374,11 +368,9 @@ while(norm(v - last_v, 2) &gt; v_quadratic_error)
         % removed the L2 norm of the iterated PR
 end
 
-endfunction
-</code></pre><p>以下是调用过程代码：</p>
+endfunction</code></pre><p>以下是调用过程代码：</p>
 <pre><code>M = [0 0 0 0 1 ; 0.5 0 0 0 0 ; 0.5 0 0 0 0 ; 0 1 0.5 0 0 ; 0 0 0.5 1 0];
-rank(M, 0.80, 0.001)
-</code></pre><blockquote>
+rank(M, 0.80, 0.001)</code></pre><blockquote>
 <p>Page Rank 的其他语言实现可以从 GitHub 获得：<a href="https://github.com/louridas/pagerank">https://github.com/louridas/pagerank</a></p>
 </blockquote>
 <h1>倒排索引（Lucene）</h1>
@@ -433,8 +425,7 @@ ndoc=<span class="number">0</span>
             [ <span class="variable">$state</span> = <span class="string">'doc'</span> ] &amp;&amp; <span class="built_in">echo</span> <span class="variable">$line</span> &gt;&gt; files/<span class="variable">$ndoc</span>
             ;;
     <span class="keyword">esac</span>
-<span class="keyword">done</span></code>
-</pre><h2>建立索引</h2>
+<span class="keyword">done</span></code></pre><h2>建立索引</h2>
 <ol>
 <li><p>安装与配置</p>
 <pre><code> <span class="comment"># 下载后解压</span>
@@ -443,15 +434,13 @@ ndoc=<span class="number">0</span>
 
  <span class="comment"># 设置环境变量，直接加入所有的 jar 包</span>
  dir=`<span class="built_in">pwd</span>`
- <span class="keyword">export</span> CLASSPATH=`find -name <span class="string">'*.jar'</span> | sed <span class="string">"s@^.@<span class="variable">$dir</span>@g"</span> | sed <span class="string">':a;N;s/\n/:/;ta'</span>`</code>
-</pre></li>
+ <span class="keyword">export</span> CLASSPATH=`find -name <span class="string">'*.jar'</span> | sed <span class="string">"s@^.@<span class="variable">$dir</span>@g"</span> | sed <span class="string">':a;N;s/\n/:/;ta'</span>`</code></pre></li>
 <li><p>建立索引与搜索</p>
 <pre><code> <span class="comment"># 建立索引，files 为页面文件所在目录，会在当前目录产生 index 目录来保存索引信息</span>
  java org.apache.lucene.demo.IndexFiles -docs files
 
  <span class="comment"># 搜索，将进入交互式搜索程序</span>
- java org.apache.lucene.demo.SearchFiles</code>
-</pre></li>
+ java org.apache.lucene.demo.SearchFiles</code></pre></li>
 </ol>
 
 

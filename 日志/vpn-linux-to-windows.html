@@ -43,7 +43,8 @@
 
 
 <link rel="stylesheet" href="/assets/css/markdown.css">
-<link rel="stylesheet" href="/assets/css/syntax.css">
+<!--link rel="stylesheet" href="/assets/css/highlight/ir_black.css"-->
+<link rel="stylesheet" href="http://highlightjs.org/static/styles/tomorrow-night-eighties.css">
 <style>
   /* By default it's not affixed in mobile views, so undo that */
   .sidebar.affix {
@@ -247,8 +248,7 @@
 <ol>
 <li><p>安装 pptp</p>
 <pre><code> <span class="comment"># kde in arch</span>
- pacman -S extra/networkmanager-pptp</code>
-</pre></li>
+ pacman -S extra/networkmanager-pptp</code></pre></li>
 <li><p>新建 VPN 连接</p>
 <p> 网关：服务器IP或域名<br> 登录：用户名<br> 密码：密码<br> 域：空<br> 认证方式：MSCHAP MSCHAPv2<br> 使用 MPPE 加密</p>
 </li>

@@ -43,7 +43,8 @@
 
 
 <link rel="stylesheet" href="/assets/css/markdown.css">
-<link rel="stylesheet" href="/assets/css/syntax.css">
+<!--link rel="stylesheet" href="/assets/css/highlight/ir_black.css"-->
+<link rel="stylesheet" href="http://highlightjs.org/static/styles/tomorrow-night-eighties.css">
 <style>
   /* By default it's not affixed in mobile views, so undo that */
   .sidebar.affix {
@@ -268,13 +269,11 @@
   <span class="comment">#centos</span>
   yum install ruby
   <span class="comment">#arch</span>
-  yaourt -S ruby</code>
-</pre></li>
+  yaourt -S ruby</code></pre></li>
 </ul>
 </li>
 <li><p>Jekyll<br> 安装 Jekyll</p>
-<pre><code> gem install jekyll</code>
-</pre></li>
+<pre><code> gem install jekyll</code></pre></li>
 </ol>
 <h2>建立站点</h2>
 <h3>创建 GitHub 仓库</h3>
@@ -294,14 +293,12 @@
  cp -r my-site/. username.github.io
  rm -r my-site
  <span class="comment"># 添加编译生成的文件至 gitignore</span>
- <span class="built_in">echo</span> <span class="string">'_site'</span> &gt;&gt; .gitignore</code>
-</pre></li>
+ <span class="built_in">echo</span> <span class="string">'_site'</span> &gt;&gt; .gitignore</code></pre></li>
 <li><p>编译站点，并运行本地服务</p>
 <pre><code> <span class="comment"># 编译生成静态站点，-w 选项可以监测文件变化并自动重新生成</span>
  jekyll build -w
  <span class="comment"># 运行服务</span>
- jekyll serve</code>
-</pre></li>
+ jekyll serve</code></pre></li>
 <li>打开浏览器，访问 localhost:4000，将看到 jekyll 生成的默认站点。</li>
 </ol>
 <h3>自定义开发</h3>
@@ -329,14 +326,12 @@
   |   ├── 2007-10-29-why-every-programmer-should-play-nethack.textile
   |   └── 2009-04-26-barcamp-boston-4-roundup.textile
   ├── _site        //jekyll 编译生成的站点
-  └── index.html
-</code></pre></li>
+  └── index.html</code></pre></li>
 <li><p>站点配置文件：_config.yml<br>  该文件采用 <strong><a href="http://www.yaml.org/spec/1.2/spec.html">YAML</a></strong> 标记语言组织内容，在该文件修改站点保留变量，或者添加自定义变量。这里定义的变量在模板中可通过 <code>site.VARIABLE_NAME</code> 访问（记住重启jekyll服务）。</p>
 <pre><code>  # GitHUb Pages 默认的 Markdown 引擎（即 GFM）    
   markdown: redcarpet
   # Latex 支持
-  markdown: maruku
-</code></pre></li>
+  markdown: maruku</code></pre></li>
 </ul>
 <h3>同步至 GitHub</h3>
 <ol>
@@ -344,8 +339,7 @@
 <pre><code> <span class="comment"># 提交改动至HEAD版本</span>
  git commit <span class="operator">-a</span>
  <span class="comment"># 同步HEAD至服务器</span>
- git push</code>
-</pre></li>
+ git push</code></pre></li>
 <li>GitHub将会在10分钟内编译你的文件生成静态站点，访问 username.github.io 即可查看博客。</li>
 </ol>
 <h2>Tips</h2>
@@ -382,8 +376,7 @@
 
  <span class="comment"># 现在可以开始工作了</span>
  git push
- git pull</code>
-</pre></li>
+ git pull</code></pre></li>
 <li><p>迁移 Jekyll 站点</p>
 <pre><code> <span class="comment"># 拷贝文件</span>
  cp -r harttle.github.io/. dev/
@@ -393,8 +386,7 @@
  jekyll build <span class="operator">-d</span> ../harttle.github.io/
 
  <span class="comment"># 运行站点</span>
- jekyll serve <span class="operator">-d</span> ../harttle.github.io/</code>
-</pre></li>
+ jekyll serve <span class="operator">-d</span> ../harttle.github.io/</code></pre></li>
 </ol>
 
 

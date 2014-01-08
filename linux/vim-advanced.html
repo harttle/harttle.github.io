@@ -43,7 +43,8 @@
 
 
 <link rel="stylesheet" href="/assets/css/markdown.css">
-<link rel="stylesheet" href="/assets/css/syntax.css">
+<!--link rel="stylesheet" href="/assets/css/highlight/ir_black.css"-->
+<link rel="stylesheet" href="http://highlightjs.org/static/styles/tomorrow-night-eighties.css">
 <style>
   /* By default it's not affixed in mobile views, so undo that */
   .sidebar.affix {
@@ -334,8 +335,7 @@ set background=dark &quot; When set to &quot;dark&quot;, Vim will try to use col
 set mouse=a         &quot; Enable the use of the mouse.
 
 filetype plugin indent on
-syntax on
-</code></pre><h1>进阶技巧</h1>
+syntax on</code></pre><h1>进阶技巧</h1>
 <h2>块编辑</h2>
 <ul>
 <li><p><strong>可视</strong> 模式：<code>v</code> 可进入visual模式，使用标准快捷键移动光标可选择文本块，之后可输入标准编辑命令。</p>
@@ -376,8 +376,7 @@ syntax on
 <h2>键盘映射</h2>
 <p>Vim支持定义键盘映射来完成快捷键的功能，也就是将特定的按键映射为一系列按键与函数的序列。</p>
 <p>例如将 <code>F7</code> 映射为编译当前java文件：</p>
-<pre><code>map &lt;F7&gt; &lt;Esc&gt;:!javac %&lt;&lt;CR&gt;
-</code></pre><blockquote>
+<pre><code>map &lt;F7&gt; &lt;Esc&gt;:!javac %&lt;&lt;CR&gt;</code></pre><blockquote>
 <p><code>:</code> 为进入Ex模式，<code>!</code> 指定下面的命令在vim外执行，<code>%</code> 为当前文件名，<code>%&lt;</code> 为不带扩展名的当前文件名，<code>&lt;CR&gt;</code> 为回车。</p>
 </blockquote>
 <h2>函数</h2>
@@ -404,8 +403,7 @@ function ToggleCopy()
         set mouse=v
     endif
     let g:copymode=!g:copymode
-endfunction
-</code></pre>
+endfunction</code></pre>
 
     
       <style>

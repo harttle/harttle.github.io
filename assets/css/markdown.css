@@ -64,37 +64,22 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
 	 padding: 0 0 0 11px;
 	 color: #555;
 }
-.md pre,.md  code {
-	font-family: 'Bitstream Vera Sans Mono','Courier',monospace;
+.md pre{
+	padding: 0;
+	border: 0;
 }
-.md pre {
-	background-color: #F8F8F8;
-	border: 1px solid #CCC;
-	font-size: 13px;
-	line-height: 19px;
-	overflow: auto;
-	padding: 6px 10px;
+.md tt,.md code,.md pre {
+	font-family: Consolas, "Liberation Mono", Courier, monospace;
+	font-size: 12px;
+}
+.md *:not(pre)>code{
+	border: 1px solid #ddd;
+	color: #333333;
+	background-color: #f8f8f8;
 	border-radius: 3px;
-	color: black;
+	white-space: normal;/*overcome bootstrap nowrap*/
+	padding: 3px 4px 0px 4px;/*overcome bootstrap padding*/
 }
-.md code {
-	margin: 0 2px;
-	padding: 2px 5px;
-	white-space: normal;
-	border: 1px solid #CCC;
-	background-color: #F8F8F8;
-	border-radius: 3px;
-	font-size: 12px !important;
-}
-.md pre > code {
-margin: 0px;
-	padding: 0px;
-	white-space: pre;
-	border: none;
-	background-color: transparent;
-	border-radius: 0;
-}
-
 .md a, .md a code {
 	color: #4183C4;
 	text-decoration:none;

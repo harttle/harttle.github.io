@@ -43,7 +43,8 @@
 
 
 <link rel="stylesheet" href="/assets/css/markdown.css">
-<link rel="stylesheet" href="/assets/css/syntax.css">
+<!--link rel="stylesheet" href="/assets/css/highlight/ir_black.css"-->
+<link rel="stylesheet" href="http://highlightjs.org/static/styles/tomorrow-night-eighties.css">
 <style>
   /* By default it's not affixed in mobile views, so undo that */
   .sidebar.affix {
@@ -245,8 +246,7 @@
 <p>在arch官方或者bjtu下载到镜像（X86和64）是同一镜像。然后刻录安装盘：</p>
 <ul>
 <li><p>linux:   </p>
-<pre><code>  dd <span class="keyword">if</span>=/path/to/iso of=/dev/sdc  <span class="comment"># 确认 sdc 为你的U盘</span></code>
-</pre></li>
+<pre><code>  dd <span class="keyword">if</span>=/path/to/iso of=/dev/sdc  <span class="comment"># 确认 sdc 为你的U盘</span></code></pre></li>
 <li>windows:<ol>
 <li>下载 dd4dos</li>
 <li><code>dd if=/path/to/iso of=&quot;\\.\G:&quot;   # 确认G盘为你的U盘</code></li>
@@ -262,8 +262,7 @@
   <span class="built_in">cd</span> /etc/network.d
   cp ./examples/wireless_XXX ./    
   vi wireless_XXX  <span class="comment">#修改参数</span>
-  netcfg wireless_XXX</code>
-</pre></li>
+  netcfg wireless_XXX</code></pre></li>
 <li>对于内核没有支持的无线网卡，安装ndiswrapper使用windows驱动  <ol>
 <li>安装    <code>pacman -S ndiswrapper</code></li>
 <li>加载    <code>ndiswrapper -i winXP_driver.inf(可以从windows目录下或驱动安装包找到)</code></li>
@@ -279,21 +278,16 @@
 <h2>准备硬盘</h2>
 <ol>
 <li><p>磁盘分区：</p>
-<pre><code> cfdisk /dev/sda <span class="comment">#至少一个主分区。</span></code>
-</pre></li>
+<pre><code> cfdisk /dev/sda <span class="comment">#至少一个主分区。</span></code></pre></li>
 <li><p>格式化：</p>
-<pre><code> mkfs.ext4 /dev/sda1，mkswap /dev/sda2（之后可用 lsblk /dev/sda 查看分区）</code>
-</pre></li>
+<pre><code> mkfs.ext4 /dev/sda1，mkswap /dev/sda2（之后可用 lsblk /dev/sda 查看分区）</code></pre></li>
 <li><p>挂载：</p>
-<pre><code> mount /dev/sda1 /mnt，swapon /dev/sda2</code>
-</pre></li>
+<pre><code> mount /dev/sda1 /mnt，swapon /dev/sda2</code></pre></li>
 <li><p>安装</p>
 <pre><code> /etc/pacmand./mirrorlist    <span class="comment">#配置源</span>
- pacstrap -i /mnt base base-devel    <span class="comment">#安装</span></code>
-</pre></li>
+ pacstrap -i /mnt base base-devel    <span class="comment">#安装</span></code></pre></li>
 <li><p>更新静态文件系统信息</p>
-<pre><code> genfstab -U -p /mnt &gt;&gt; /mnt/etc/fstab</code>
-</pre></li>
+<pre><code> genfstab -U -p /mnt &gt;&gt; /mnt/etc/fstab</code></pre></li>
 </ol>
 <h3>可能出现的问题</h3>
 <ul>
@@ -315,8 +309,7 @@
   swapon /swapfile
 
   <span class="comment"># 更新静态文件系统信息 /etc/fstab 中加入：</span>
-  /swapfile none swap defaults <span class="number">0</span> <span class="number">0</span></code>
-</pre></li>
+  /swapfile none swap defaults <span class="number">0</span> <span class="number">0</span></code></pre></li>
 </ul>
 <h2>配置系统</h2>
 <ol>
@@ -351,8 +344,7 @@
 <li>单一网络：<code>systemctl enable dhcpcd@eth0.service</code></li>
 <li>变化网络：自动连接在 <code>/etc/network.d</code> 下的网络<pre><code>  systemctl enable net-auto-wired.service
   systemctl enable net-auto-wired.service
-  systemctl enable net-auto-wireless.service</code>
-</pre></li>
+  systemctl enable net-auto-wireless.service</code></pre></li>
 </ul>
 </li>
 </ul>
@@ -371,8 +363,7 @@
 <li>安装grub：<code>pacman -S grub-bios</code></li>
 <li>写入主引导：<code>grub-install --target=i386-pc --recheck /dev/sda</code></li>
 <li><p>设置grub区域：</p>
-<pre><code>  cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo</code>
-</pre></li>
+<pre><code>  cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo</code></pre></li>
 <li><p>更新启动列表</p>
 <ul>
 <li>搜索windows：<code>pacman -S os-prober</code></li>
@@ -388,8 +379,7 @@
   [archlinuxfr]
   SigLevel = Optional TrustAll
   Server = http://repo.archlinux.fr/<span class="variable">$arch</span>
-  pacman -Syu yaourt</code>
-</pre></li>
+  pacman -Syu yaourt</code></pre></li>
 <li><p><code>sudo</code></p>
 <p>  安装：<code>pacman -S sudo</code><br>  配置：<code>etc/sudoers</code> 添加 <code>harttle ALL=(ALL) ALL</code>，使harttle可以使用sudo</p>
 </li>
@@ -424,35 +414,30 @@
 </li>
 <li><p>kde网络管理</p>
 <pre><code> pacman -S networkmanager kdeplasma-applets-networkmanagement
- systemctl enable NetworkManager.service</code>
-</pre></li>
+ systemctl enable NetworkManager.service</code></pre></li>
 <li><p>设置登录屏幕主题：<code>archlinux-themes-kdm(AUR)</code>，kde systemsettings 中的设置不起作用</p>
 </li>
 <li><p>在fstab加入开机挂载的分区，需要 <code>ntfs-3g</code>(AUR)</p>
-<pre><code> /dev/hda1        /mnt/winC        ntfs-<span class="number">3</span>g iocharset=utf8,umask=<span class="number">022</span>,noatime <span class="number">0</span> <span class="number">0</span></code>
-</pre></li>
+<pre><code> /dev/hda1        /mnt/winC        ntfs-<span class="number">3</span>g iocharset=utf8,umask=<span class="number">022</span>,noatime <span class="number">0</span> <span class="number">0</span></code></pre></li>
 </ol>
 <h2>汉化</h2>
 <ul>
 <li><p>设置X默认字符集：在 <code>~/.bashrc</code>、<code>~/.xinitrc</code> 或 <code>~/.xprofile</code> 中加入</p>
 <pre><code>  LOCALE=en_US.UTF-<span class="number">8</span>
   <span class="keyword">export</span> LANG=zh_CN.UTF-<span class="number">8</span>
-  <span class="keyword">export</span> LC_ALL=<span class="string">"zh_CN.UTF-8"</span></code>
-</pre></li>
+  <span class="keyword">export</span> LC_ALL=<span class="string">"zh_CN.UTF-8"</span></code></pre></li>
 <li><p>安装字体库</p>
 <p>  <code>wqy-bitmapfont</code>，<code>wqy-zenhei</code>，<code>ttf-arphic-ukai</code>，<code>ttf-arphic-uming</code>，<code>ttf-fireflysung</code>，<code>wqy-microhei</code>（AUR），<code>wqy-microhei-lite</code>（AUR）</p>
 </li>
 <li><p>输入法</p>
 <ol>
 <li><p>安装 fcitx</p>
-<pre><code> pacman -S fcitx fcitx-gtk2 fcitx-gtk3 fcitx-qt</code>
-</pre></li>
+<pre><code> pacman -S fcitx fcitx-gtk2 fcitx-gtk3 fcitx-qt</code></pre></li>
 <li>安装配置工具：<code>fcitx-configtool</code>(基于gtk3), <code>fcitx-configtool-gtk2</code>(基于gtk2), <code>kcm-fcitx</code>(基于KDE的KCM)</li>
 <li><p>设置X的输入法：在 <code>~/.xinitrc</code> 或 <code>~/.xprofile</code> 中加入：</p>
 <pre><code> <span class="keyword">export</span> XMODIFIERS=@im=fcitx
  <span class="keyword">export</span> GTK_IM_MODULE=fcitx
- <span class="keyword">export</span> QT_IM_MODULE=fcitx</code>
-</pre></li>
+ <span class="keyword">export</span> QT_IM_MODULE=fcitx</code></pre></li>
 <li>设置启动：<code>cp /etc/xdg/autostart/fcitx-autostart.desktop ~/.config/autostart/</code></li>
 </ol>
 </li>
@@ -461,8 +446,7 @@
 <li><p>安装</p>
 <pre><code>  yaourt -S fbterm fcitx-fbterm
   <span class="built_in">sudo</span> gpasswd <span class="operator">-a</span> YOUR_USERNAME video <span class="comment">#非根用户运行fbterm</span>
-  <span class="built_in">sudo</span> setcap <span class="string">'cap_sys_tty_config+ep'</span> /usr/bin/fbterm 或：<span class="built_in">sudo</span> chmod u+s /usr/bin/fbterm <span class="comment">#非根用户可使用键盘快捷方式</span></code>
-</pre></li>
+  <span class="built_in">sudo</span> setcap <span class="string">'cap_sys_tty_config+ep'</span> /usr/bin/fbterm 或：<span class="built_in">sudo</span> chmod u+s /usr/bin/fbterm <span class="comment">#非根用户可使用键盘快捷方式</span></code></pre></li>
 <li><p>配置</p>
 <pre><code>  <span class="comment"># ~/.fbtermrc</span>
   font-names = Consolas（Monaco）,微软雅黑
@@ -472,8 +456,7 @@
   <span class="keyword">if</span> [ <span class="string">"<span class="variable">$TERM</span>"</span> = <span class="string">"linux"</span> ]; <span class="keyword">then</span>  
   alias fbterm=<span class="string">'LANG=zh_CN.UTF-8 fbterm'</span>  
   fbterm  
-  <span class="keyword">fi</span></code>
-</pre></li>
+  <span class="keyword">fi</span></code></pre></li>
 </ul>
 </li>
 </ul>

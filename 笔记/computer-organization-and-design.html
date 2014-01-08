@@ -43,7 +43,8 @@
 
 
 <link rel="stylesheet" href="/assets/css/markdown.css">
-<link rel="stylesheet" href="/assets/css/syntax.css">
+<!--link rel="stylesheet" href="/assets/css/highlight/ir_black.css"-->
+<link rel="stylesheet" href="http://highlightjs.org/static/styles/tomorrow-night-eighties.css">
 <style>
   /* By default it's not affixed in mobile views, so undo that */
   .sidebar.affix {
@@ -338,8 +339,7 @@ MIPS &=& \frac{Instruction~count}{Execution~time \times 10^6} \\\\
 
  # instead of
  lw      $t0,    AddrConst4($s1)
- add     $s3,    $s3,    $t0
-</code></pre><p> <strong>One&#39;s complement</strong></p>
+ add     $s3,    $s3,    $t0</code></pre><p> <strong>One&#39;s complement</strong></p>
 <p> A notation that represents the most negative value by 10...000 and the most positive value by 01...11, leaving an equal number of negatives and positives but ending up with two 0s. </p>
 <blockquote>
 <p>The term is also used to mean the inversion of every bit.</p>
@@ -420,8 +420,7 @@ MIPS &=& \frac{Instruction~count}{Execution~time \times 10^6} \\\\
 <p>While the <code>L1</code> in <code>beq    $s0,    $s1,    L1</code> could be bigger than 2^16, MIPS will break it into 2 instructions like:</p>
 <pre><code>    bne     $s0,    $s1,    L2
     j       L1
-L2:
-</code></pre></blockquote>
+L2:</code></pre></blockquote>
 <h3>Jump instruction</h3>
 <p>Jump instructions use 26-bit field adress, MIPS stretch the distance by having it refer to the number of <em>words</em> to the next instruction instead of number of <em>bytes</em></p>
 <blockquote>
@@ -657,8 +656,7 @@ L2:
 <pre><code>if( ID/EX.MemRead and 
     ((ID/EX.RegisterRt = IF/ID.RegisterRs) or
      (ID/EX.RegisterRt = IF/ID.RegisterRt)))
-        stall the pipeline
-</code></pre><p>By identifying the hazard in the ID stage, we can insert a bubble into the pipeline by changing the EX, MEM and WB control fields of the ID/EX pipeline registeer to 0.</p>
+        stall the pipeline</code></pre><p>By identifying the hazard in the ID stage, we can insert a bubble into the pipeline by changing the EX, MEM and WB control fields of the ID/EX pipeline registeer to 0.</p>
 <blockquote>
 <p>Actually, only the signals RegWrite and MemWrite need be 0, while the other control signals can be don&#39;t cares.</p>
 </blockquote>

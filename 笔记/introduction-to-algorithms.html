@@ -43,7 +43,8 @@
 
 
 <link rel="stylesheet" href="/assets/css/markdown.css">
-<link rel="stylesheet" href="/assets/css/syntax.css">
+<!--link rel="stylesheet" href="/assets/css/highlight/ir_black.css"-->
+<link rel="stylesheet" href="http://highlightjs.org/static/styles/tomorrow-night-eighties.css">
 <style>
   /* By default it's not affixed in mobile views, so undo that */
   .sidebar.affix {
@@ -254,8 +255,7 @@
     <span class="keyword">while</span> i &gt; <span class="number">0</span> and A[i] &gt; key
         A[i + <span class="number">1</span>] = A[i]
         i = i - <span class="number">1</span>
-    A[i+<span class="number">1</span>] = key</code>
-</pre><ul>
+    A[i+<span class="number">1</span>] = key</code></pre><ul>
 <li>循环不变式：初始化、保持、终止</li>
 </ul>
 <h3>分析算法</h3>
@@ -285,14 +285,12 @@ R[n2+<span class="number">1</span>] = MAX
         i = i+<span class="number">1</span>
     <span class="keyword">else</span>
         A[k] = R[j]
-        j = j+<span class="number">1</span></code>
-</pre><pre><code><span class="comment">//MERGE-SORT(A,p,r)</span>
+        j = j+<span class="number">1</span></code></pre><pre><code><span class="comment">//MERGE-SORT(A,p,r)</span>
 <span class="keyword">if</span> p&lt;r
     q=(p+r)/<span class="number">2</span>
     MERGE-SORT(A,p,q)
     MERGE-SORT(A,q+<span class="number">1</span>,r)
-    MERGE(A,p,q,r)</code>
-</pre><h4>分析分支算法</h4>
+    MERGE(A,p,q,r)</code></pre><h4>分析分支算法</h4>
 <p>归并排序算法的分析</p>
 <ul>
 <li>分解：计算子数组的中间位置，D(n) = O(1)</li>
@@ -384,8 +382,7 @@ best = <span class="number">0</span>    <span class="comment">//candidate 0 is a
     interview candidate i
     <span class="keyword">if</span> candidate i is better than candidate best
         best = i
-        hire candidate i</code>
-</pre><h4>最坏的情形</h4>
+        hire candidate i</code></pre><h4>最坏的情形</h4>
 <p>总费用为<span class="mathjax">\(O(c_hn)\)</span></p>
 <h4>平均情形</h4>
 <ul>
@@ -419,20 +416,17 @@ best = <span class="number">0</span>    <span class="comment">//candidate 0 is a
     interview candidate i
     <span class="keyword">if</span> candidate i is better than candidate best
         best = i
-        hire candidate i</code>
-</pre><p>产生 <strong>均匀随机排列</strong> （等可能地产生数字1~n的每一种排列）</p>
+        hire candidate i</code></pre><p>产生 <strong>均匀随机排列</strong> （等可能地产生数字1~n的每一种排列）</p>
 <pre><code>PERMUTE-BY-SORTING(A)
 n = A.length
 let P[<span class="number">1.</span>..n] be a <span class="keyword">new</span> <span class="built_in">array</span>
 <span class="keyword">for</span> i = <span class="number">1</span> to n
     P[i] = RANDOM(<span class="number">1</span>, n**<span class="number">3</span>)
-sort A, <span class="keyword">using</span> P as sort keys</code>
-</pre><p> 可以证明，P中所有元素都唯一的概率至少是 <span class="mathjax">\(1-1/n\)</span>。假设所有优先级都不同，则过程PERMUTE-BY-SORTING产生输入的均匀随机排列。</p>
+sort A, <span class="keyword">using</span> P as sort keys</code></pre><p> 可以证明，P中所有元素都唯一的概率至少是 <span class="mathjax">\(1-1/n\)</span>。假设所有优先级都不同，则过程PERMUTE-BY-SORTING产生输入的均匀随机排列。</p>
 <pre><code>RANDOMIZE-IN-PLACE(A)
 n = A.length
 <span class="keyword">for</span> i =<span class="number">1</span> to n
-    swap A[i] with A[RANDOM(i, n)]</code>
-</pre><p>可以证明，过程RANDOMIZE-IN-PLACE可计算出一个均匀随机排列。</p>
+    swap A[i] with A[RANDOM(i, n)]</code></pre><p>可以证明，过程RANDOMIZE-IN-PLACE可计算出一个均匀随机排列。</p>
 <p>具有n个元素的 <strong>k排列</strong>（k-permutation）是包含这n个元素中的k个元素的序列，并且不重复，一共有 <span class="mathjax">\(n!/(n-k)!\)</span>种可能的k排列。</p>
 <h1>排序和顺序统计量</h1>
 <ul>
@@ -522,8 +516,7 @@ n = A.length
       <span class="keyword">return</span> <span class="number">2</span>i
 
   RIGHT(i)
-      <span class="keyword">return</span> <span class="number">2</span>i+<span class="number">1</span></code>
-</pre></li>
+      <span class="keyword">return</span> <span class="number">2</span>i+<span class="number">1</span></code></pre></li>
 <li><strong>最大堆</strong><br>  除了根以外的所有节点 i 满足：<span class="mathjax">\(A[\rm{PARENT}(i)]\geq A[i]\)</span></li>
 <li><strong>最小堆</strong><br>  除了根以外的所有节点 i 满足：<span class="mathjax">\(A[\rm{PARENT}(i)]\leq A[i]\)</span></li>
 <li>对于完全二叉树，叶节点数 = 非叶节点数 或 非叶节点数+1</li>
@@ -541,16 +534,14 @@ r = RIGHT(i)
     largest = r
 <span class="keyword">if</span> largest != i
     exchange A[i] with A[largest]
-    MAX-HEAPIFY(A, largest)</code>
-</pre><p>每个孩子的子树的大小最多为 <span class="mathjax">\(2n/3\)</span>（最坏情况发生在树的最底层半满的时候），故MAX-HEAPIFY运行时间<br><span class="mathjax">\(T(n) \leq T(2n/3) + \Theta(1)\)</span>，解为<span class="mathjax">\(T(n) = O(\lg n)\)</span>。</p>
+    MAX-HEAPIFY(A, largest)</code></pre><p>每个孩子的子树的大小最多为 <span class="mathjax">\(2n/3\)</span>（最坏情况发生在树的最底层半满的时候），故MAX-HEAPIFY运行时间<br><span class="mathjax">\(T(n) \leq T(2n/3) + \Theta(1)\)</span>，解为<span class="mathjax">\(T(n) = O(\lg n)\)</span>。</p>
 <h3>建堆</h3>
 <p>MAX-HEAPIFY 把大小为 n = A.length 的数组 A[1..n] 转换为最大堆。</p>
 <pre><code>BUILD-MAX-HEAP(A)
     A.heap-size = A.length
     <span class="comment">// 子数组 $A(n/2+1..n)$ 中的元素都是叶节点</span>
     <span class="keyword">for</span> i = A.length/<span class="number">2</span> downto <span class="number">1</span>
-        MAX-HEAPIFY(A, i)</code>
-</pre><ul>
+        MAX-HEAPIFY(A, i)</code></pre><ul>
 <li>渐近上界<br>  BUILD-MAX-HEAP 需要调用MAX-HEAPIFY O(n) 次，故总的时间复杂度为 <span class="mathjax">\(O(n\lg n)\)</span>，或者<span class="mathjax">\(O(h)\)</span>。</li>
 <li>更加紧确<br>  含n个元素的堆高度为 <span class="mathjax">\(\lfloor \lg n\rfloor\)</span>，高度为h的元素数最多为 <span class="mathjax">\(\lceil n/2^{h+1} \rceil\)</span>，于是 BUILD-MAX-HEAP的时间复杂度为<br>  <span class="mathjax">\(O\left( \sum_{h=0}^{\lfloor \lg n\rfloor} \lceil n/2^{h+1} \rceil O(h) \right) = O\left(n\sum_{h=0}^{\lfloor \lg n\rfloor}\frac{h}{2^h}\right) = O\left(n\sum_{h=0}^{\infty}\frac{h}{2^h}\right) = O(n)\)</span></li>
 </ul>
@@ -560,8 +551,7 @@ r = RIGHT(i)
     <span class="keyword">for</span> i = A.length downto <span class="number">2</span>
         exchange A[<span class="number">1</span>] wiith A[i]
         A.heap-size = A.heap-size - <span class="number">1</span>
-        MAX-HEAPIFY(A, <span class="number">1</span>)</code>
-</pre><p>MAX-HEAPIFY 时间复杂度为 <span class="mathjax">\(O(\lg n)\)</span>，被HEAPSORT n-1 次调用，故 HEAPSORT 的时间复杂度为 <span class="mathjax">\(O(n\lg n)\)</span></p>
+        MAX-HEAPIFY(A, <span class="number">1</span>)</code></pre><p>MAX-HEAPIFY 时间复杂度为 <span class="mathjax">\(O(\lg n)\)</span>，被HEAPSORT n-1 次调用，故 HEAPSORT 的时间复杂度为 <span class="mathjax">\(O(n\lg n)\)</span></p>
 <h3>优先队列</h3>
 <ul>
 <li><strong>优先队列</strong> 是一种用来维护由一组元素构成的集合S的数据结构，每个元素有一个相关的值，称为 <strong>关键字</strong>（key）。优先队列同样有两种形式： <strong>最大优先队列</strong>和 <strong>最小优先队列</strong>。</li>
@@ -584,21 +574,18 @@ HEAP-EXTRACT-MAX(A)
     A[<span class="number">1</span>] = A[A.heap-size]
     A.heap-size = A.heap-size - <span class="number">1</span>
     MAX-HEAPIFY(A, <span class="number">1</span>)
-    <span class="keyword">return</span> max</code>
-</pre><p>HEAP-EXTRACT-MAX 的时间复杂度为 <span class="mathjax">\(O(\lg n)\)</span>（取决于MAX-HEAPIFY的时间复杂度）。</p>
+    <span class="keyword">return</span> max</code></pre><p>HEAP-EXTRACT-MAX 的时间复杂度为 <span class="mathjax">\(O(\lg n)\)</span>（取决于MAX-HEAPIFY的时间复杂度）。</p>
 <pre><code>HEAP-INCREASE-KEY(A, i, key)
     <span class="keyword">if</span> key &lt; A[i]
         error <span class="string">"new key is smaller than current key"</span>
     A[i] = key
     <span class="keyword">while</span> i &gt; <span class="number">1</span> and A[PARENT(i)] &lt; A[i]
         exchange A[i] with A[PARENT(i)]
-        i = PARENT(i)</code>
-</pre><p>HEAP-INCREASE-KEY 中当前元素不断与父元素比较，当前元素大则将二者交换，直至当前元素的关键字小于父节点。时间复杂度为<span class="mathjax">\(O(\lg n)\)</span>。</p>
+        i = PARENT(i)</code></pre><p>HEAP-INCREASE-KEY 中当前元素不断与父元素比较，当前元素大则将二者交换，直至当前元素的关键字小于父节点。时间复杂度为<span class="mathjax">\(O(\lg n)\)</span>。</p>
 <pre><code>MAX-HEAP-INSERT(A, key)
     A.heap-size = A.heap-size + <span class="number">1</span>
     A[A.heap-size] = - MAX_INT
-    HEAP-INCREASE-KEY(A, A.heap-size, key)</code>
-</pre><p>MAX-HEAP-INSERT的时间复杂度为<span class="mathjax">\(O(\lg n)\)</span>。</p>
+    HEAP-INCREASE-KEY(A, A.heap-size, key)</code></pre><p>MAX-HEAP-INSERT的时间复杂度为<span class="mathjax">\(O(\lg n)\)</span>。</p>
 <h2>快速排序</h2>
 <p>快速排序的时间复杂度为<span class="mathjax">\(\Theta(n\lg n)\)</span>，能够进行原址排序。</p>
 <h3>快速排序的描述</h3>
@@ -617,8 +604,7 @@ PARTITION(A, p, r)
             i = i+<span class="number">1</span>    <span class="comment">//增加小于主元子数组的大小</span>
             exchange A[i] with A[j]    <span class="comment">//将A[j]加入小于主元的子数组</span>
     exchange A[i+<span class="number">1</span>] with A[r]    <span class="comment">//将主元从数组末尾移动至子数组之间</span>
-    <span class="keyword">return</span> i + <span class="number">1</span></code>
-</pre><p>为了排序一个数组A，初始调用为：QUICKSORT(A, 1, A.length)。</p>
+    <span class="keyword">return</span> i + <span class="number">1</span></code></pre><p>为了排序一个数组A，初始调用为：QUICKSORT(A, 1, A.length)。</p>
 <h3>快速排序的性能</h3>
 <h4>最坏情况</h4>
 <p>当划分产生的两个子问题分别包含 n-1 和 0 个元素时，最坏情况发生。划分操作的时间复杂度为<span class="mathjax">\(\Theta(n)\)</span>，<span class="mathjax">\(T(0)=\Theta(1)\)</span>，这时算法运行时间的递归式为<br><span class="mathjax">\(T(n) = T(n-1) + T(0) + \Theta(n) = T(n-1) + \Theta(n)\)</span>，解为<span class="mathjax">\(T(n) = \Theta(n^2)\)</span>。</p>
@@ -641,8 +627,7 @@ PARTITION(A, p, r)
 RANDOMIZED-PARTITION(A, p, r)
     i = RANDOM(p, r)
     exchange A[r] with A[i]
-    <span class="keyword">return</span> PARTITION(A, p, r)</code>
-</pre><h3>快速排序分析</h3>
+    <span class="keyword">return</span> PARTITION(A, p, r)</code></pre><h3>快速排序分析</h3>
 <h4>最坏情况分析</h4>
 <p>使用代入法证明快速排序的时间复杂度为<span class="mathjax">\(O(n^2)\)</span>。假设T(n)为最坏情况下 QUICKSORT 在输入规模为 n 的数据集合上所花费的时间，则有<br><span class="mathjax">\(T(n) = \max_{0\leq q \leq n-1}(T(q) + T(n-q-1)) + \Theta(n)\)</span><br>将<span class="mathjax">\(T(n)\leq cn^2\)</span>带入右侧，得到<br><span class="mathjax">\(T(n) \leq \max_{0\leq q \leq n-1}(cq^2 + c(n-q-1)^2) + \Theta(n) = cn^2 - c(2n-1) + \Theta(n) \leq cn^2\)</span>。<br>故<span class="mathjax">\(T(n) = O(n^2)\)</span></p>
 <h4>期望运行时间</h4>
@@ -690,8 +675,7 @@ let C[<span class="number">0.</span>.k] be a <span class="keyword">new</span> <s
 <span class="comment">//now C[i] contains the number of elements &lt;= i</span>
 <span class="keyword">for</span> j = A.length downto <span class="number">1</span>
     B[C[A[j]]]=A[j]
-    C[A[j]]=C[A[j]]-<span class="number">1</span></code>
-</pre><ul>
+    C[A[j]]=C[A[j]]-<span class="number">1</span></code></pre><ul>
 <li>计数排序遍历了两次A和C，故总时间代价为<span class="mathjax">\(\Theta(k+n)\)</span>。</li>
 <li>计数排序是  <strong>稳定的</strong>。</li>
 </ul>
@@ -705,8 +689,7 @@ let C[<span class="number">0.</span>.k] be a <span class="keyword">new</span> <s
 </blockquote>
 <pre><code>RADIX-SORT(A, d)
     <span class="keyword">for</span> i = <span class="number">1</span> to d
-        use a stable sort to sort <span class="built_in">array</span> A on digit i</code>
-</pre><p>给定n个k进制d位数，如果使用的稳定排序算法耗时<span class="mathjax">\(\Theta(n+k)\)</span>，那么RADIX-SORT的时间代价为<span class="mathjax">\(\Theta(d(n+k))\)</span>。</p>
+        use a stable sort to sort <span class="built_in">array</span> A on digit i</code></pre><p>给定n个k进制d位数，如果使用的稳定排序算法耗时<span class="mathjax">\(\Theta(n+k)\)</span>，那么RADIX-SORT的时间代价为<span class="mathjax">\(\Theta(d(n+k))\)</span>。</p>
 <p>给定一个b位2进制数（k=2）和正整数r&lt;=b，如果使用的稳定排序算法耗时<span class="mathjax">\(\Theta(n+k)\)</span>，那么RADIX-SORT的时间代价为<span class="mathjax">\(\Theta((b/r)(n+2^r))\)</span>。</p>
 <blockquote>
 <p>将b位2进制数转化为b/2位<span class="mathjax">\(2^r\)</span>进制数。</p>
@@ -729,8 +712,7 @@ let C[<span class="number">0.</span>.k] be a <span class="keyword">new</span> <s
         insert A[i] into <span class="built_in">list</span> B[nA[i]]
     <span class="keyword">for</span> i = <span class="number">0</span> to n-<span class="number">1</span>
         sort <span class="built_in">list</span> B[i] with insertion sort
-    concatenate the lists B[<span class="number">0</span>],B[<span class="number">1</span>],...,B[n-<span class="number">1</span>] together in order</code>
-</pre><p>桶排序的时间代价为：<br><span class="mathjax">\(T(n) = \Theta(n) + \sum^{n-1}_{i=0}O(n_i^2)\)</span><br>期望运行时间：<br><span class="mathjax">\(E[T(n)] = E\left[ \Theta(n) + \sum^{n-1}_{i=0}O(n_i^2) \right] = \Theta(n)+ \sum^{n-1}_{i=0}O(E[n_i^2])\)</span></p>
+    concatenate the lists B[<span class="number">0</span>],B[<span class="number">1</span>],...,B[n-<span class="number">1</span>] together in order</code></pre><p>桶排序的时间代价为：<br><span class="mathjax">\(T(n) = \Theta(n) + \sum^{n-1}_{i=0}O(n_i^2)\)</span><br>期望运行时间：<br><span class="mathjax">\(E[T(n)] = E\left[ \Theta(n) + \sum^{n-1}_{i=0}O(n_i^2) \right] = \Theta(n)+ \sum^{n-1}_{i=0}O(E[n_i^2])\)</span></p>
 <p>定义指示器随机变量 <span class="mathjax">\(X_{ij} = I\{A[j] in bucket i\}\)</span>，则<span class="mathjax">\(n_i = \sum^n_{j=1}X_{ij}\)</span>，<br><span class="mathjax">\(E[n^2_i] = E\left[ \left( \sum_{j=1}^n X_{ij} \right)^2 \right] = \sum^n_{j=1}E[X_{ij}^2] + \sum_{1\leq j \leq n} \sum_{1\leq k \leq n, k \neq j} E[X_{ij}X_{ik}]\)</span></p>
 <p>而<span class="mathjax">\(E[X_{ij}X_{ik}] = E[X_{ij}^2]=\frac{1}{n^2}\)</span>，<span class="mathjax">\(E[X_{ij}^2] = 1^2\cdot \frac{1}{n} + 0^2\cdot \left( 1-\frac{1}{n}) \right) = \frac{1}{n}\)</span>，<br>故<span class="mathjax">\(E[n^2_i] = 2 - 1/n\)</span>，桶排序的期望运行时间 <span class="mathjax">\(E[T(n)] = \Theta(n) + n\cdot O(2-1/n) = \Theta(n)\)</span>。</p>
 <blockquote>
@@ -752,8 +734,7 @@ let C[<span class="number">0.</span>.k] be a <span class="keyword">new</span> <s
     <span class="keyword">for</span> i = <span class="number">2</span> to A.length
         <span class="keyword">if</span> min &gt; A[i]
             min = A[i]
-    <span class="keyword">return</span> min</code>
-</pre><ul>
+    <span class="keyword">return</span> min</code></pre><ul>
 <li>找到最小值比较次数上界为 n-1</li>
 <li>同时找出最大值和最小值比较次数上界为<span class="mathjax">\(3\lfloor n/2 \rfloor\)</span><blockquote>
 <p>如果n为奇数，将最大值最小值设为第一个元素，成对比较其余元素，将较大者与最大值比较，将较小者与最小值比较；如果n为偶数，比较前两个，将最大值设为较大者，最小值设为较小者，此后继续成对比较。</p>
@@ -771,8 +752,7 @@ let C[<span class="number">0.</span>.k] be a <span class="keyword">new</span> <s
         <span class="keyword">return</span> A[q]
     <span class="keyword">else</span> <span class="keyword">if</span> i &lt; k
         <span class="keyword">return</span> RANDOMIZED-SELECT(A, p, q-<span class="number">1</span>, i)
-    <span class="keyword">else</span> <span class="keyword">return</span> RANDOMIZED-SELECT(A, q+<span class="number">1</span>, r, i-k)</code>
-</pre><p>RANDOMIZED-SELECT的最坏情况运行时间为<span class="mathjax">\(\Theta(n^2)\)</span>，即使找最小元素也是如此，因为在每次划分时极不走运地总是按余下元素中最大的来进行划分，而划分操作需要<span class="mathjax">\(\Theta(n)\)</span>时间。</p>
+    <span class="keyword">else</span> <span class="keyword">return</span> RANDOMIZED-SELECT(A, q+<span class="number">1</span>, r, i-k)</code></pre><p>RANDOMIZED-SELECT的最坏情况运行时间为<span class="mathjax">\(\Theta(n^2)\)</span>，即使找最小元素也是如此，因为在每次划分时极不走运地总是按余下元素中最大的来进行划分，而划分操作需要<span class="mathjax">\(\Theta(n)\)</span>时间。</p>
 <p>假设所有元素都是互异的，在期望线性时间内，我们可以找到任一顺序统计量，特别是中位数。即RANDOMIZED-SELECT算法的期望运行时间为<span class="mathjax">\(\Theta(n)\)</span>。</p>
 <blockquote>
 <p>可通过定义子数组A[p..q]正好包含k个元素的顺序统计量来得到递归式并使用归纳法加以证明。直观地讲，因为平均每次只保留一半，每层调用的执行时间将是等比数列，求和后得到总时间为2n。</p>
@@ -807,8 +787,7 @@ POP(S)
     <span class="keyword">if</span> STACK-EMPTY(S)
         error <span class="string">"underflow"</span>
     <span class="keyword">else</span> S.top = S.top - <span class="number">1</span>
-        <span class="keyword">return</span> S[S.top +<span class="number">1</span>]</code>
-</pre><p><strong>队列</strong>（queue）实现的是一种先进先出策略。</p>
+        <span class="keyword">return</span> S[S.top +<span class="number">1</span>]</code></pre><p><strong>队列</strong>（queue）实现的是一种先进先出策略。</p>
 <pre><code>ENQUEUE(Q, x)
     Q[Q.tail] = x
     <span class="keyword">if</span> Q.tail == Q.length
@@ -820,8 +799,7 @@ DEQUEUE(Q)
     <span class="keyword">if</span> Q.head == Q.length
         Q.head = <span class="number">1</span>
     <span class="keyword">else</span> Q.head = Q.head + <span class="number">1</span>
-    <span class="keyword">return</span> x</code>
-</pre><h3>链表</h3>
+    <span class="keyword">return</span> x</code></pre><h3>链表</h3>
 <p><strong>双向链表</strong>（doubly linked list）的每个元素都是一个对象，每个对象有一个关键字key和两个指针：next和prev。</p>
 <blockquote>
 <ul>
@@ -848,8 +826,7 @@ LIST-DELETE(L, x)
         x.prev.next = x.next
     <span class="keyword">else</span> L.head = x.next
     <span class="keyword">if</span> x.next != NIL
-        x.next.prev = x.prev</code>
-</pre><p>对于存在 <strong>哨兵</strong>（sentinel）的双向循环链表（circular，doubly linked list with a sentinel），L.nil.next指向表头，L.nil.prev指向表尾。</p>
+        x.next.prev = x.prev</code></pre><p>对于存在 <strong>哨兵</strong>（sentinel）的双向循环链表（circular，doubly linked list with a sentinel），L.nil.next指向表头，L.nil.prev指向表尾。</p>
 <blockquote>
 <p>慎用哨兵，假如有许多个很短的链表，哨兵将造成严重的存储浪费。仅当可以真正简化代码时才使用哨兵。</p>
 </blockquote>
@@ -867,8 +844,7 @@ LIST-INSERT'(L, x)
     x.next = L.nil.next
     L.nil.next.prev = x
     L.nil.next = x
-    x.prev = L.nil</code>
-</pre><h3>指针和对象的实现</h3>
+    x.prev = L.nil</code></pre><h3>指针和对象的实现</h3>
 <ul>
 <li>对象的单数组表示</li>
 <li>对象的多数组表示</li>
@@ -886,8 +862,7 @@ ALLOCATE-OBJECT()
 
 FREE-OBJECT(x)
   x.next = free
-  free = x</code>
-</pre></li>
+  free = x</code></pre></li>
 </ul>
 </li>
 </ul>
@@ -916,8 +891,7 @@ DIRECT-ADDRESS-INSEART(T, x)
     T[x.key] = x
 
 DIRECT-ADDRESS-DELETE(T, x)
-    T[x.key]=NIL</code>
-</pre><h3>散列表</h3>
+    T[x.key]=NIL</code></pre><h3>散列表</h3>
 <p>在散列方式下，具有关键字k的元素方舟子槽 h(k) 中。即利用 <strong>散列函数</strong>（hash function）h，由关键字 k 计算出槽的位置。函数h将关键字的全域U映射到 <strong>散列表</strong>（hash table）T的槽位上：<br>h: U -&gt; {0,1,...,m-1}</p>
 <h4>通过链接法解决冲突</h4>
 <pre><code>CHAINED-HASH-INSERT(T, x)
@@ -927,8 +901,7 @@ CHAINED-HASH-SEARCH(T, k)
     search <span class="keyword">for</span> an element with key k in <span class="built_in">list</span> T[h(k)]
 
 CHAINED-HASH-DELETE(T, x)
-    <span class="keyword">delete</span> x from the <span class="built_in">list</span> T[h(x.key)]</code>
-</pre><h4>链接法散列的分析</h4>
+    <span class="keyword">delete</span> x from the <span class="built_in">list</span> T[h(x.key)]</code></pre><h4>链接法散列的分析</h4>
 <ul>
 <li>定义一个能存放n个元素的，具有m个槽位的散列表T的 <strong>装载因子</strong>（load factor）<span class="mathjax">\(\alpha = n/m\)</span>。</li>
 <li>简单均匀散列（simple uniform hashing）：任何一个给定元素等可能地散列到m个槽位中的任何一个，且与其他元素被散列到什么位置上无关。</li>
@@ -990,8 +963,7 @@ HASH-SEARCH(T, k)
             <span class="keyword">return</span> j
         i = i+<span class="number">1</span>
     until T[j] == NIL or i==m
-    <span class="keyword">return</span> NIL</code>
-</pre><p>删除操作比较困难。可以将删除的元素赋值为DELETED而不是NIL，使得在此仍可以插入元素，而SEARCH则会跳过该槽。</p>
+    <span class="keyword">return</span> NIL</code></pre><p>删除操作比较困难。可以将删除的元素赋值为DELETED而不是NIL，使得在此仍可以插入元素，而SEARCH则会跳过该槽。</p>
 <blockquote>
 <p>此时，查找时间不再依赖于装载因子了。为此，在必须删除关键字的应用中，更常见的做法是采用链接法来解决冲突。</p>
 </blockquote>
@@ -1033,8 +1005,7 @@ HASH-SEARCH(T, k)
     <span class="keyword">if</span> x != NIL
         INORDER-TREE-WALK(x.left)
         print x.key    
-        INORDER-TREE-WALK(x.left)</code>
-</pre><h3>查询二叉搜索树</h3>
+        INORDER-TREE-WALK(x.left)</code></pre><h3>查询二叉搜索树</h3>
 <h4>查找关键字k</h4>
 <blockquote>
 <p>输入一个指向树根的指针x和关键字k，如果这个结点存在，TREE-SEARCH返回一个指向关键字为k的结点的指针；否则返回NIL。</p>
@@ -1044,8 +1015,7 @@ HASH-SEARCH(T, k)
         <span class="keyword">return</span> x
     <span class="keyword">if</span> k &lt; x.key
         <span class="keyword">return</span> TREE-SEARCH(x.left, k)
-    <span class="keyword">else</span> <span class="keyword">return</span> TREE-SEARCH(x.right, k)</code>
-</pre><p>或者采用非递归方式</p>
+    <span class="keyword">else</span> <span class="keyword">return</span> TREE-SEARCH(x.right, k)</code></pre><p>或者采用非递归方式</p>
 <blockquote>
 <p>在大多数计算机，接待版本的效率要高得多</p>
 </blockquote>
@@ -1054,8 +1024,7 @@ HASH-SEARCH(T, k)
         <span class="keyword">if</span> k&lt;x.key
             x = x.left
         <span class="keyword">else</span> x = x.right
-    <span class="keyword">return</span> x</code>
-</pre><h4>查找最小和最大元素</h4>
+    <span class="keyword">return</span> x</code></pre><h4>查找最小和最大元素</h4>
 <pre><code>TREE-MINIMUM(x)
     <span class="keyword">while</span> x.left != NIL
         x = x.left
@@ -1064,8 +1033,7 @@ HASH-SEARCH(T, k)
 TREE-MAXIMUM(x)
     <span class="keyword">while</span> x.right != NIL
         x = x.right
-    <span class="keyword">return</span> x</code>
-</pre><h4>先驱和后继</h4>
+    <span class="keyword">return</span> x</code></pre><h4>先驱和后继</h4>
 <pre><code>TREE-SUCCESSOR(x)
     <span class="keyword">if</span> x.right != NIL    <span class="comment">//右子树存在：返回右子树最小值</span>
         <span class="keyword">return</span> TREE-MINIMUM(x, right)
@@ -1073,8 +1041,7 @@ TREE-MAXIMUM(x)
     <span class="keyword">while</span> y != NIL and x == y.right    <span class="comment">//右子树不存在：返回第一个在右侧的祖父结点</span>
         x = y
         y = y.p
-    <span class="keyword">return</span> y</code>
-</pre><p>在一棵高度为h的二叉搜索树上，动态集合上的操作 SEARCH、MINIMUM、MAXIMUM、SUCCESSOR和PREDECESSOR可以在O(h)时间内完成。</p>
+    <span class="keyword">return</span> y</code></pre><p>在一棵高度为h的二叉搜索树上，动态集合上的操作 SEARCH、MINIMUM、MAXIMUM、SUCCESSOR和PREDECESSOR可以在O(h)时间内完成。</p>
 <h3>插入和删除</h3>
 <h4>插入</h4>
 <pre><code>TREE-INSERT(T, z)
@@ -1090,8 +1057,7 @@ TREE-MAXIMUM(x)
         T.root = z
     elseif z.key &lt; y.key
         y.left = z
-    <span class="keyword">else</span> y.right = z</code>
-</pre><h4>删除</h4>
+    <span class="keyword">else</span> y.right = z</code></pre><h4>删除</h4>
 <p>从二叉搜索树T中删除结点x分为以下4中情况：</p>
 <ol>
 <li>x无左子树<br> 使用x的右子树代替x</li>
@@ -1137,8 +1103,7 @@ TREE-MAXIMUM(x)
         <span class="keyword">return</span> x
     elseif i&lt; r
         <span class="keyword">return</span> OS-SELECT(x.left, i)
-    <span class="keyword">else</span> <span class="keyword">return</span> OS-SELECT(x.right, i-r)</code>
-</pre><h4>确定一个元素的秩</h4>
+    <span class="keyword">else</span> <span class="keyword">return</span> OS-SELECT(x.right, i-r)</code></pre><h4>确定一个元素的秩</h4>
 <p>过程OS-RANK返回对T中序遍历对应的线性序列中x的位置。</p>
 <pre><code>OS-RANK(T, x)
     r = x.left.size +<span class="number">1</span>
@@ -1147,8 +1112,7 @@ TREE-MAXIMUM(x)
         <span class="keyword">if</span> y == y.p.right
             r = r + y.p.left.size +<span class="number">1</span>
         y = y.p
-    <span class="keyword">return</span> r</code>
-</pre><h3>如何扩张数据结构</h3>
+    <span class="keyword">return</span> r</code></pre><h3>如何扩张数据结构</h3>
 <p>扩张一种数据结构可以分为四个步骤</p>
 <ol>
 <li>选择一种基础数据结构</li>
@@ -1176,8 +1140,7 @@ TREE-MAXIMUM(x)
             x = x.left
         <span class="keyword">else</span>
             x = x.right
-    <span class="keyword">return</span> x</code>
-</pre><h1>高级设计和分析技术</h1>
+    <span class="keyword">return</span> x</code></pre><h1>高级设计和分析技术</h1>
 <h2>动态规划</h2>
 <p>动态规划方法通常用来求解 <strong>最优化问题</strong>（optimization problem），通常有四个步骤：</p>
 <ol>
@@ -1199,8 +1162,7 @@ TREE-MAXIMUM(x)
     q = -MAX
     <span class="keyword">for</span> i=<span class="number">1</span> to n
         q = max(q,p[i]+CUT-ROD(p,n-i))
-    <span class="keyword">return</span> q</code>
-</pre><p>该算法的运行时间为 <span class="mathjax">\(T(n)=2^n\)</span>。</p>
+    <span class="keyword">return</span> q</code></pre><p>该算法的运行时间为 <span class="mathjax">\(T(n)=2^n\)</span>。</p>
 <h4>带备忘的自顶向下法</h4>
 <pre><code>MEMOIZED-CUT-ROD(p,n)
     let r[<span class="number">0.</span>.n] be a <span class="keyword">new</span> <span class="built_in">array</span>
@@ -1217,8 +1179,7 @@ MEMOIZED-CUT-ROD-AUX(p,n,r)
         <span class="keyword">for</span> i=<span class="number">1</span> to n
             q = max(q,p[i]+MEMOIZED-CUT-ROD-AUX(p,n-i,r))
     r[n] = q
-    <span class="keyword">return</span> q</code>
-</pre><p>该算法的渐近运行时间为 <span class="mathjax">\(\Theta(n^2)\)</span>。</p>
+    <span class="keyword">return</span> q</code></pre><p>该算法的渐近运行时间为 <span class="mathjax">\(\Theta(n^2)\)</span>。</p>
 <h4>自底向上法</h4>
 <pre><code>BOTTOM-UP-CUT-ROD(p,n)
     let r[<span class="number">0.</span>.n] be a <span class="keyword">new</span> <span class="built_in">array</span>
@@ -1228,8 +1189,7 @@ MEMOIZED-CUT-ROD-AUX(p,n,r)
         <span class="keyword">for</span> i=<span class="number">1</span> to j
             q = max(q,p[i]+r[j-i])
         r[j] = q
-    <span class="keyword">return</span> r[n]</code>
-</pre><p>该算法与自顶向下法有相同的渐近运行时间。</p>
+    <span class="keyword">return</span> r[n]</code></pre><p>该算法与自顶向下法有相同的渐近运行时间。</p>
 <h4>重构解</h4>
 <p>扩展 BOTTOM-UP-CUT-ROD 算法，计算最大收益<span class="mathjax">\(r_j\)</span>同时，记录最优解对应的第一段钢条的切割长度 <span class="mathjax">\(s_j\)</span>。</p>
 <pre><code>EXTENDED-BOTTOM-UP-CUT-ROD(p,n)
@@ -1242,14 +1202,12 @@ MEMOIZED-CUT-ROD-AUX(p,n,r)
                 q = p[i]+r[j-i]
                 s[j] = i
         r[j] = q
-    <span class="keyword">return</span> r and s</code>
-</pre><p>输出长度为n的钢条的完整的最优切割方案</p>
+    <span class="keyword">return</span> r and s</code></pre><p>输出长度为n的钢条的完整的最优切割方案</p>
 <pre><code>PRINT-CUT-ROD-SOLUTION(p,n)
     (r,s) = EXTENDED-BOTTOM-UP-CUT-ROD(p,n)
     <span class="keyword">while</span> n&gt;<span class="number">0</span>
         print s[n]
-        n=n-s[n]</code>
-</pre><h3>矩阵链乘法</h3>
+        n=n-s[n]</code></pre><h3>矩阵链乘法</h3>
 <p><strong>矩阵链乘法</strong>（matrix-chain multiplication problem）可描述如下：给定n个矩阵的链 <A1,A2,...An>，矩阵 Ai 的规模为 <span class="mathjax">\(p_{i-1}\times p_i\)</span>，求完全括号化方案，使得计算乘积 A1A2...An 所需的标量乘法次数最少。</p>
 <p>我们称有如下性质的矩阵乘积链为 <strong>完全括号化</strong>（fully parenthesized）：它是单一矩阵，或者两个完全括号化的矩阵乘积链的积，且已外加括号。括号化方案的数量与n呈指数关系，通过暴力搜索穷尽所有可能的括号化方案来寻找最优方案，是一个糟糕的策略。</p>
 <blockquote>
@@ -1272,16 +1230,14 @@ MEMOIZED-CUT-ROD-AUX(p,n,r)
                 <span class="keyword">if</span> q&lt; m[i,j]
                     m[i,j] = q
                     s[i,j] = k
-    <span class="keyword">return</span> m and s</code>
-</pre><p>构造最优解</p>
+    <span class="keyword">return</span> m and s</code></pre><p>构造最优解</p>
 <pre><code>PRINT-OPTIMAL-PARENS(s, i, j)
     <span class="keyword">if</span> i==j
         print <span class="string">"Ai"</span>
     <span class="keyword">else</span> print <span class="string">"("</span>
         PRINT-OPTIMAL-PARENS(s, i, s[i,j])
         PRINT-OPTIMAL-PARENS(s, s[i,j]+<span class="number">1</span>, j)
-        print <span class="string">")"</span></code>
-</pre><h3>动态规划原理</h3>
+        print <span class="string">")"</span></code></pre><h3>动态规划原理</h3>
 <p>适合应用动态规划方法求解的最优化问题应该具备两个要素：最优子结构和子问题重叠。</p>
 <p>给定一个有向图 G=(V,E) 和两个顶点 <span class="mathjax">\(u,~v\in V\)</span>。<br><strong>无权最短路径</strong>：找到一条从 u 到 v 的边数最少的路径。这条路径必然是简单路径。<br><strong>无权最长路径</strong>：找到一条从 u 到 v 的边数最多的路径，这条路径要求是简单路径。</p>
 <p>无权最短路径具有最优子结构性质，而无权最长路径没有该性质。原因在于，虽然最长路径问题和最短路径问题的解都用到了两个子问题，但两个最长简单路径子问题是相关的，而两个最短路径子问题是 <strong>无关的</strong>（independent）。</p>
@@ -1321,8 +1277,7 @@ max\{ c[i,k]+c[k,j]+1 \},~if S_{ij} \neq \emptyset
         m++
     <span class="keyword">if</span> m&lt;=n
         <span class="keyword">return</span> {a[m]} U RECURSIVE-ACTIVITY-SELECTOR(s,f,m,n)
-    <span class="keyword">else</span> <span class="keyword">return</span> null</code>
-</pre><p>可以转换为迭代贪心算法</p>
+    <span class="keyword">else</span> <span class="keyword">return</span> null</code></pre><p>可以转换为迭代贪心算法</p>
 <pre><code>GREEDY-ACTIVITY-SELECTOR(s,f)
     n = s.length
     A={a[<span class="number">1</span>]}
@@ -1331,8 +1286,7 @@ max\{ c[i,k]+c[k,j]+1 \},~if S_{ij} \neq \emptyset
         <span class="keyword">if</span> s[m] &gt;= f[k]
             A = A U {a[m]}
             k = m
-    <span class="keyword">return</span> A</code>
-</pre><h3>贪心算法原理</h3>
+    <span class="keyword">return</span> A</code></pre><h3>贪心算法原理</h3>
 <p>如果一个问题的最优解包含其子问题的最优解，则称此问题具有 <strong>最优子结构</strong>星坠，此性质是能否应用动态规划和贪心方法的关键要素。两者的差别在于 <strong>贪心选择性质</strong>（greedy-choice property）：我们可以通过做出局部最优（贪心）选择来构造全局最优解。</p>
 <h4>贪心与动态规划</h4>
 <p><strong>0-1 背包问题</strong>（0-1 knapsack problem）：正在抢劫商店的小偷发现n个商品，第i个商品价值v[i]美元，重w[i]磅。小偷希望拿走尽量多的物品，而他的背包最多容纳W磅的物品。对于每个商品小偷要么完整拿走，要么把它留下，不能部分拿走或拿走多次。<br><strong>分数背包问题</strong>（fractional knapsack problem）中，设定于 0-1背包问题一样，但低于每一个商品，小偷可以拿走其一部分。</p>
@@ -1353,8 +1307,7 @@ max\{ c[i,k]+c[k,j]+1 \},~if S_{ij} \neq \emptyset
         z.right = y = EXTRACT-MIN(Q)
         z.freq = x.freq + y.freq
         INSERT(Q,z)
-    <span class="keyword">return</span> EXTRACT-MIN(Q)    <span class="comment">//return the root of the tree</span></code>
-</pre><p>假定 Q 使用最小二叉堆实现，则堆操作时间为 O(n)，HUFFMAN的运行时间为 O（n lg n)，如果将最小二叉堆换为 van Emde Boas 树，可以将运行时间将为 O(n lg lg n)。</p>
+    <span class="keyword">return</span> EXTRACT-MIN(Q)    <span class="comment">//return the root of the tree</span></code></pre><p>假定 Q 使用最小二叉堆实现，则堆操作时间为 O(n)，HUFFMAN的运行时间为 O（n lg n)，如果将最小二叉堆换为 van Emde Boas 树，可以将运行时间将为 O(n lg lg n)。</p>
 <h4>HUFFMAN算法的正确性</h4>
 <p>引理1：令C为一个字母表，其中的每个字符c有一个频率c.freq。x和y为频率最低的两个字符。那么存在C的一个最优前缀码，x和y有相同的码字长度，且只有最有一个二进制位不同。</p>
 <blockquote>
@@ -1394,16 +1347,14 @@ max\{ c[i,k]+c[k,j]+1 \},~if S_{ij} \neq \emptyset
     elseif x.leaf
         <span class="keyword">return</span> NIL
     <span class="keyword">else</span> DISK-READ(x,c[i])
-        <span class="keyword">return</span> B-TREE-SEARCH(x.c[i],k)</code>
-</pre><p>循环所用时间为 O(t)，访问磁盘页数为 <span class="mathjax">\(O(\log_t n)\)</span>，总的CPU时间为 <span class="mathjax">\(O(t\log_t n)\)</span>。</p>
+        <span class="keyword">return</span> B-TREE-SEARCH(x.c[i],k)</code></pre><p>循环所用时间为 O(t)，访问磁盘页数为 <span class="mathjax">\(O(\log_t n)\)</span>，总的CPU时间为 <span class="mathjax">\(O(t\log_t n)\)</span>。</p>
 <h4>创建</h4>
 <pre><code>B-TREE-CREATE(T)
     x = ALLOCATE-NODE()
     x.leaf = TRUE
     x.n = <span class="number">00</span>
     DISK-WRITE(x)
-    T.root = x</code>
-</pre><p>CPU时间为 O(1)。</p>
+    T.root = x</code></pre><p>CPU时间为 O(1)。</p>
 <h4>插入</h4>
 <p><strong>分裂 B 树中的结点</strong></p>
 <p>B-TREE-SPLIT-CHILD(x,i)</p>
@@ -1469,8 +1420,7 @@ max\{ c[i,k]+c[k,j]+1 \},~if S_{ij} \neq \emptyset
                 v.d = u.d + <span class="number">1</span>
                 v.pi = u
                 ENQUEUE(Q,v)
-        u.color = BLACK</code>
-</pre><p>扫描邻接链表的总时间为 O(E)，初始化成本为 O(V)，故BFS的总运行时间为 O(V+E)。</p>
+        u.color = BLACK</code></pre><p>扫描邻接链表的总时间为 O(E)，初始化成本为 O(V)，故BFS的总运行时间为 O(V+E)。</p>
 <h4>最短路径</h4>
 <p><strong>最短路径距离</strong> <span class="mathjax">\(\delta(s,v)\)</span>为从源点s到结点v之间所有路径里面最少的边数。称从源点s到结点v的长度为<span class="mathjax">\(\delta(s,v)\)</span>的路径为 <strong>最短路径</strong>。</p>
 <p><strong>引理</strong> 给定有向图或无向图G=(V,E)，任意结点<span class="mathjax">\(s\in V\)</span>，则对于任意边 <span class="mathjax">\((u,v) \in E\)</span>，<span class="mathjax">\(\delta(s,v)\leq \delta(s,u)+1\)</span>。</p>
@@ -1490,8 +1440,7 @@ max\{ c[i,k]+c[k,j]+1 \},~if S_{ij} \neq \emptyset
     elseif v.pi == NIL
         print <span class="string">"no path from"</span> s <span class="string">"to"</span> v <span class="string">"exists"</span>
     <span class="keyword">else</span> PRINT-PATH(G,s,v.pi)
-        print v</code>
-</pre><h3>深度优先搜索</h3>
+        print v</code></pre><h3>深度优先搜索</h3>
 <p><strong>深度优先搜索的前驱子图</strong>：<span class="mathjax">\(G_\pi  = (V, E_\pi)\)</span>，其中 <span class="mathjax">\(E_\pi = \{ (v.\pi,v): v \in V~and~v.\pi \neq NIL\}\)</span>。</p>
 <p>深度优先搜索会在每个结点盖上两个 <strong>时间戳</strong>：第一个时间戳 v.d 记录v第一次被发现的时间（涂上灰色）；第二个时间戳 v.f 记录完成对 v 的邻接链表扫描的时间（涂上黑色）。</p>
 <p>DFS输入G是无向图或有向图，time为全局变量用来计算时间戳。</p>
@@ -1514,8 +1463,7 @@ DFS-VISIT(G,u)
             DFS-VISIT(G,v)
     u.color = BLACK
     time++
-    u.f = time</code>
-</pre><p>初始化时间为 <span class="mathjax">\(\Theta(V)\)</span>，遍历邻接链表时间为 <span class="mathjax">\(\Theta(E)\)</span>，故算法运行时间为 <span class="mathjax">\(\Theta(V+E)\)</span>。</p>
+    u.f = time</code></pre><p>初始化时间为 <span class="mathjax">\(\Theta(V)\)</span>，遍历邻接链表时间为 <span class="mathjax">\(\Theta(E)\)</span>，故算法运行时间为 <span class="mathjax">\(\Theta(V+E)\)</span>。</p>
 <h4>深度优先搜索的性质</h4>
 <p><strong>定理</strong> 在对有向图或无向图 G=(V,E) 进行DFS时，对任意结点 u 和 v：以下三种情况只有一种成立：</p>
 <ol>
@@ -1548,8 +1496,7 @@ DFS-VISIT(G,u)
 <pre><code>TOPOLOGICAL-SORT(G)
     call DFS(G) to compute finishing times v.f <span class="keyword">for</span> each vertex v
     as each vertex is finished, insert it onto the front of a linked <span class="built_in">list</span>
-    <span class="keyword">return</span> the linked <span class="built_in">list</span> of vertex</code>
-</pre><p><strong>引理</strong> 有向图G是无环的当且仅当对其DFS不产生后向边。</p>
+    <span class="keyword">return</span> the linked <span class="built_in">list</span> of vertex</code></pre><p><strong>引理</strong> 有向图G是无环的当且仅当对其DFS不产生后向边。</p>
 <h3>强连通分量</h3>
 <p>有向图G=(V,E)的 <strong>强连通分量</strong>为一个最大结点集合 <span class="mathjax">\(C \subset V\)</span>，对于该集合中任意两点可以互相到达。</p>
 <p>定义图G=(V,E)的转置为<span class="mathjax">\(G^T=(V,E^T)\)</span>，其中 <span class="mathjax">\(E^T = \{ (u,v): (v,u) \in E \}\)</span>。下面的线性时间（<span class="mathjax">\(\Theta(V+E)\)</span>）算法使用两次DFS计算G的强连通分量。分别运行在G和<span class="mathjax">\(G^T\)</span>上。</p>
@@ -1557,8 +1504,7 @@ DFS-VISIT(G,u)
     call DFS(G) to compute finishing times u.f <span class="keyword">for</span> each vertex u
     compute G^T
     call DFS(G^T), but in the main loop of DFS, consider the vertices in order of decreasing u.f
-    output the vertices of each tree in the DFS forest formed in line <span class="number">3</span> as a separate strongly connected component</code>
-</pre><blockquote>
+    output the vertices of each tree in the DFS forest formed in line <span class="number">3</span> as a separate strongly connected component</code></pre><blockquote>
 <p>对G的DFS建立了深度优先森林，计算 <span class="mathjax">\(G^T\)</span> 将该森林中所有边反转，对 <span class="mathjax">\(G^T\)</span> 的DFS选择从上述森林的根结点出发，尝试到达原来的叶结点，能走通的结点加入到强连通分量。</p>
 </blockquote>
 <p><strong>引理</strong> C和C&#39;为G的两个不同的强连通分量，<span class="mathjax">\(u,v\in C\)</span>，<span class="mathjax">\(u‘,v’\in C‘\)</span>。如果G包含u到u’的路径，则不可能包含 v&#39; 到 u&#39; 的路径。</p>
@@ -1580,8 +1526,7 @@ DFS-VISIT(G,u)
     <span class="keyword">while</span> A does not form a spanning tree
         find an edge(u,v) that is safe <span class="keyword">for</span> A
         A = A U {(u,v)}
-    <span class="keyword">return</span> A</code>
-</pre><p>无向图G=(V,E)的一个 <strong>切割</strong>(S,V-S)是集合V的一个划分。如果一条边 <span class="mathjax">\((u,v)\in E\)</span> 的一个端点位于S，另一个端点位于V-S，则称该边 <strong>横跨</strong>该切割。如果集合A中不存在横跨该切割的边，则称该切割 <strong>尊重</strong>集合A。在横跨一个切割的所有边中，权重最小的边称为 <strong>轻量级边</strong>。</p>
+    <span class="keyword">return</span> A</code></pre><p>无向图G=(V,E)的一个 <strong>切割</strong>(S,V-S)是集合V的一个划分。如果一条边 <span class="mathjax">\((u,v)\in E\)</span> 的一个端点位于S，另一个端点位于V-S，则称该边 <strong>横跨</strong>该切割。如果集合A中不存在横跨该切割的边，则称该切割 <strong>尊重</strong>集合A。在横跨一个切割的所有边中，权重最小的边称为 <strong>轻量级边</strong>。</p>
 <p><strong>定理</strong> 设G=(V,E)是一个在边E上定义了实数权重函w的连通无向图。A为E的子集，且在G的某棵最小生成树中。(S,V-S)为尊重集合A的任意一个切割。(u,v)是横跨该切割的一条轻量级边。则边(u,v)对于集合A是安全的。</p>
 <blockquote>
 <p>假设(u.v)不在最小生成树T中，因u v必然在树中相连，故(u,v)与树中两者的连线构成环。至少有两边横跨该切割，一边为(u,v)，设另一边为(x,y)。考虑新的一棵生成树：T&#39;=T-{(x,y)}+{(u,v)}，因(u,v)是轻量级边，故w(T&#39;)不大于w(T)，即T&#39;也是最小生成树。显然(x,y)不在A中，于是A与(u,v)都在T&#39;中，即(u,v)对于集合A是安全的。</p>
@@ -1600,8 +1545,7 @@ DFS-VISIT(G,u)
         <span class="keyword">if</span> FIND-SET(u) != FIND-SET(v)
             A = A U {(u,v)}
             UNION(u,v)
-    <span class="keyword">return</span> A</code>
-</pre><p>共有O(E)个FIND-SET和UNION操作，|V|个MAKE-SET操作，故总运行时间为 O(E lgV + V lgV) = O(E lgE)（对于连通图：<span class="mathjax">\(E \geq V-1\)</span>）。注意到 <span class="mathjax">\(|E|&lt;|V|^2\)</span>，运行时间为O(E lgV)。</p>
+    <span class="keyword">return</span> A</code></pre><p>共有O(E)个FIND-SET和UNION操作，|V|个MAKE-SET操作，故总运行时间为 O(E lgV + V lgV) = O(E lgE)（对于连通图：<span class="mathjax">\(E \geq V-1\)</span>）。注意到 <span class="mathjax">\(|E|&lt;|V|^2\)</span>，运行时间为O(E lgV)。</p>
 <h4>Prim 算法</h4>
 <p>集合A中的边总是构成一棵树，每次选择一条轻量级边加入A。Prim算法属于贪心算法。</p>
 <p>所有不在A中的结点存放于以key为权值的最小优先队列Q中。对每一个结点v，v.key保存连接v和树中结点的所有边中最小边的权重。</p>
@@ -1616,8 +1560,7 @@ DFS-VISIT(G,u)
         <span class="keyword">for</span> each v in G.Adj[u]
             <span class="keyword">if</span> v in Q and w(u,v) &lt; v.key
                 v.pi = u
-                v.key = w(u,v)</code>
-</pre><blockquote>
+                v.key = w(u,v)</code></pre><blockquote>
 <p>每次循环结束后，保证了下一次循环中EXTRACT-MIN得到的u都是最小生成树中的结点（因为本次循环中(u,v)为轻量级边）。</p>
 </blockquote>
 <p>建造堆的时间为 O(V)；EXTRACT-MIN的时间为 O(lg V)，遍历结点循环次数为 |V|；修改key用到的DECREASE-KEY在二叉最小堆的时间为 O(lg V)，在斐波那契堆的时间为 O(1)，遍历边循环次数为|E|。故算法MST-PRIM的运行时间为 O(V + V lgV + E lgV)=O(E lgV)（最小二叉堆实现）或者 O(E + V lgV)（斐波那契堆实现）。</p>
@@ -1640,13 +1583,11 @@ DFS-VISIT(G,u)
     <span class="keyword">for</span> each vertex v in G.V
         v.d = MAX
         v.pi = NIL
-    s.d = <span class="number">0</span></code>
-</pre><p>对一条边(u,v)的 <strong>松弛</strong>操作：</p>
+    s.d = <span class="number">0</span></code></pre><p>对一条边(u,v)的 <strong>松弛</strong>操作：</p>
 <pre><code>RELAX(u,v,w)
     <span class="keyword">if</span> v.d &gt; u.d+w(u,v)
         v.d = u.d+w(u,v)
-        v.pi = u</code>
-</pre><h3>Bellman-Ford算法</h3>
+        v.pi = u</code></pre><h3>Bellman-Ford算法</h3>
 <p>Bellman-Ford算法解决的是一般情况下的单源最短路径问题。该算法返回TRUE当且仅当输入图不包含可以从源结点到达的权重为负值的环路。</p>
 <pre><code>BELLMAN-FORD(G,w,s)
     INITIALIZE-SINGLE-SOURCE(G,s)
@@ -1656,8 +1597,7 @@ DFS-VISIT(G,u)
     <span class="keyword">for</span> each edge(u,v) in G.E
         <span class="keyword">if</span> v.d&gt;u.d+w(u.v)
             <span class="keyword">return</span> FALSE
-    <span class="keyword">return</span> TRUE</code>
-</pre><p>总运行时间为 O(VE)。</p>
+    <span class="keyword">return</span> TRUE</code></pre><p>总运行时间为 O(VE)。</p>
 <p><strong>推论</strong> 设G=(V,E)为一个带权重的源结点为s的有向图，其权重函数为 <span class="mathjax">\(\omega: E \to \vec{\bm{R}}\)</span>。图G不包含从 s 可以到达的权重为负值的环路，则对于所有结点 v，存在一条从 s 到 v 的路径当且仅当 BELLMAN-FRD 算法终止时有 <span class="mathjax">\(v.d&lt;\infty\)</span>。</p>
 <p><strong>定理</strong>（Bellman-Ford算法的正确性）设BELLMAN-FORD算法运行在一带权重的源结点为 s 的有向图 G=(V,E) 上，该图的权重函数为 <span class="mathjax">\(\omega: E \to \vec{\bm{R}}\)</span>。如果图G不包含从 s 可以到达的权重为负值的环路，则算法返回 TRUE，且对于所有结点 v，前驱子图 <span class="mathjax">\(G_\pi\)</span> 是一棵根为 s 的最短路径树。如果G包含一条从 s 可以到达的权重为负值的环路，则算法返回FALSE。</p>
 <h3>有向无环图中的单源最短路径问题</h3>
@@ -1667,8 +1607,7 @@ DFS-VISIT(G,u)
     INITIALIZE-SINGLE-SOURCE(G,s)
     <span class="keyword">for</span> each vertex u, taken in topologically sorted order
         <span class="keyword">for</span> each vertex v in G.Adj[u]
-            RELAX(u,v,w)</code>
-</pre><p>算法的总运行时间为<span class="mathjax">\(\Theta(V+E)\)</span>。</p>
+            RELAX(u,v,w)</code></pre><p>算法的总运行时间为<span class="mathjax">\(\Theta(V+E)\)</span>。</p>
 <p><strong>定理</strong> 如果带权重无环路的有向图G=(V,E)有一个源结点s，则在算法DAG-SHORTEST-PATHS终止时，对于所有结点v，我们有 <span class="mathjax">\(v.d=\delta(s,v)\)</span>，且前驱子图 <span class="mathjax">\(G_\pi\)</span> 是一棵最短路径树。</p>
 <h3>Dijkstra 算法</h3>
 <p>Dijkstra算法解决的是带权重的有向图上单源最短路径问题，该算法要求所有边的权重都为非负值。Dijkstra 算法在运行过程中维持的关键信息是一组结点集合S：从源结点 s 到该集合中每个结点之间的最短路径已经被找到。</p>
@@ -1680,8 +1619,7 @@ DFS-VISIT(G,u)
         u = EXTRACT-MIN(Q)
         S=S U {u}
         <span class="keyword">for</span> each vertex v in G.Adj[u]
-            RELAX(u,v,w)</code>
-</pre><p><strong>定理</strong>（Dijkstra算法的正确性）Dijkstra算法运行在带权重的有向图G=(V,E)时，如果所有权重为非负值，则在算法终止时，对于所有结点 u，有 <span class="mathjax">\(u.d=\delta(s,u)\)</span>。</p>
+            RELAX(u,v,w)</code></pre><p><strong>定理</strong>（Dijkstra算法的正确性）Dijkstra算法运行在带权重的有向图G=(V,E)时，如果所有权重为非负值，则在算法终止时，对于所有结点 u，有 <span class="mathjax">\(u.d=\delta(s,u)\)</span>。</p>
 <blockquote>
 <p>可通过循环不变式证明：4~8行的while语句每次循环开始前，对于每个结点 <span class="mathjax">\(v \in S\)</span>，有 <span class="mathjax">\(v.d = \delta(s,v)\)</span>。<br>Q中最小结点所有连接到S的路径已被探测过，且pi已经标记为最短路径上的前驱结点。</p>
 </blockquote>
@@ -1735,8 +1673,7 @@ DFS-VISIT(G,u)
     elseif PI[i,j] == NIL
         print <span class="string">"no path from"</span> i <span class="string">"to"</span> j <span class="string">"exists"</span>
     <span class="keyword">else</span> PRINT-ALL-PAIRS-SHORTEST-PATH(PI, i, PI[i,j])
-        print j j</code>
-</pre><h3>最短路径和矩阵算法</h3>
+        print j j</code></pre><h3>最短路径和矩阵算法</h3>
 <h4>递归解</h4>
 <p>定义 <span class="mathjax">\(l_{ij}^{(m)}\)</span> 为 i 到 j 的至多包含 m 条边的所有路径中最小的权重，则：<br><span class="mathjax">\(l_{ij}^{(0)} = \begin{cases}
 0 \quad if~i=j\\
@@ -1754,8 +1691,7 @@ DFS-VISIT(G,u)
             l'[i,j] = MAX
             for k=1 to n
                 l'[i,j] = min(l'[i,j], l[i,k]+w[k,j])
-    return L'</code>
-</pre><p>该算法运行时间为 <span class="mathjax">\(\Theta(n^3)\)</span>。</p>
+    return L'</code></pre><p>该算法运行时间为 <span class="mathjax">\(\Theta(n^3)\)</span>。</p>
 <p>下面伪代码程序在 <span class="mathjax">\(\Theta(n^4)\)</span> 时间内计算出 <span class="mathjax">\(L^{(n-1)}\)</span>：</p>
 <pre><code>SLOW-ALL-PAIRS-SHORTEST-PATHS(W)
     n = W.rows
@@ -1763,8 +1699,7 @@ DFS-VISIT(G,u)
     <span class="keyword">for</span> m=<span class="number">2</span> to n-<span class="number">1</span>
         let Lm be a <span class="keyword">new</span> nXn matrix
         Lm = EXTEND-SHORTEST-PATHS(L(m-<span class="number">1</span>),W)
-    <span class="keyword">return</span> L(n-<span class="number">1</span>)</code>
-</pre><h4>矩阵转换</h4>
+    <span class="keyword">return</span> L(n-<span class="number">1</span>)</code></pre><h4>矩阵转换</h4>
 <p>注意到递归式相似于矩阵相乘的规则：<span class="mathjax">\(c_{ij} = \sum_{k=1}^n a_{ik} \cdot b_{kj}\)</span>。且算法结构与 SQUARE-MATRIX-MULTIPLY(A,B) 一致。可以使用矩阵乘法的交换性改进算法性能。仅用 <span class="mathjax">\(\lceil \lg (n-1) \rceil\)</span> 次矩阵乘积计算矩阵 <span class="mathjax">\(L^{(n-1)}\)</span>。计算方法如下：</p>
 <p><span class="mathjax">\(L^{(1)} = W\)</span><br><span class="mathjax">\(L^{(2)} = L^{(1)} \cdot L^{(1)}\)</span><br><span class="mathjax">\(L^{(4)} = L^{(2)} \cdot L^{(2)}\)</span><br><span class="mathjax">\(\cdot \cdot \cdot\)</span></p>
 <p>下面过程使用 <strong>重复平方</strong>技术来计算上述矩阵序列。</p>
@@ -1776,8 +1711,7 @@ DFS-VISIT(G,u)
         let L(<span class="number">2</span>m) be a <span class="keyword">new</span> nXn matrix
         L(<span class="number">2</span>m) = EXTEND-SHORTEST-PATHS(L(m), L(m))
         m = <span class="number">2</span>m
-    <span class="keyword">return</span> L(m)</code>
-</pre><p>算法运行时间为 <span class="mathjax">\(\Theta(n^3 \lg n)\)</span></p>
+    <span class="keyword">return</span> L(m)</code></pre><p>算法运行时间为 <span class="mathjax">\(\Theta(n^3 \lg n)\)</span></p>
 <h3>Floyd-Warshall 算法</h3>
 <h4>递归解</h4>
 <p>设 <span class="mathjax">\(d_{ij}^{(k)}\)</span> 为 i 到 j 的中间结点都在 {1,2,...,k} 的最短路径的权重。显然 <span class="mathjax">\(d_{ij}^{(0)}=\omega_{ij}\)</span>，<br><span class="mathjax">\(d_{ij}^{(k)} = \begin{cases}
@@ -1795,8 +1729,7 @@ DFS-VISIT(G,u)
         <span class="keyword">for</span> i=<span class="number">1</span> to n
             <span class="keyword">for</span> j=<span class="number">1</span> to n
                 d[i,j](k) = min(d[i,j](k-<span class="number">1</span>), d[i,k](k-<span class="number">1</span>) + d[k,j](k-<span class="number">1</span>))
-    <span class="keyword">return</span> D(n)</code>
-</pre><p>该算法运行时间为 <span class="mathjax">\(\Theta(n^3)\)</span>。</p>
+    <span class="keyword">return</span> D(n)</code></pre><p>该算法运行时间为 <span class="mathjax">\(\Theta(n^3)\)</span>。</p>
 <h4>构建最短路径</h4>
 <p>我们可以在计算矩阵 <span class="mathjax">\(D^{(k)}\)</span> 的同时计算前驱矩阵 <span class="mathjax">\(\Pi\)</span>，下面给出 <span class="mathjax">\(\pi_{ij}^{(k)}\)</span> 的递归式：</p>
 <p><span class="mathjax">\(\pi_{ij}^{(0)} = \begin{cases}
@@ -1839,8 +1772,7 @@ i \quad if~i \neq j ~ and ~ \omega_{ij}&lt;\infty
         <span class="keyword">for</span> i=<span class="number">1</span> to n
             <span class="keyword">for</span> j=<span class="number">1</span> to n
                 t[i,j](k) = t[i,j](k-<span class="number">1</span>) or (t[i,k](k-<span class="number">1</span>) and t[k,j](k-<span class="number">1</span>))
-    <span class="keyword">return</span> T(n)</code>
-</pre><h3>用于稀疏图的 Johnson 算法</h3>
+    <span class="keyword">return</span> T(n)</code></pre><h3>用于稀疏图的 Johnson 算法</h3>
 <p>Johnson算法使用的技术成为 <strong>重新赋予权重</strong>：</p>
 <ol>
 <li>如果图G的所有边权重为非负值，对每个结点运行一次 Dijkstra 算法得到最短路径。使用斐波那契堆时的算法运行时间为 <span class="mathjax">\(V^2 \lg V + VE\)</span>。</li>
@@ -1877,8 +1809,7 @@ i \quad if~i \neq j ~ and ~ \omega_{ij}&lt;\infty
             run DIJKSTRA(G,w',u) to compute delta'(u,v) for v in G.V
             for each v in G.V
                 d[u,v] = delta'[u,v] + h(v) -h(u) //recover the weight
-    return D</code>
-</pre><p>使用斐波那契堆实现 Dijkstra 算法的最小优先队列，则 Johnson 算法的运行时间为 <span class="mathjax">\(O(V^2 \lg V + VE)\)</span>；使用二叉最小堆实现则运行时间为 <span class="mathjax">\(O(VE \lg V)\)</span>。在稀疏图情况下，仍比 Floyd-Warshall 算法的时间表现好。</p>
+    return D</code></pre><p>使用斐波那契堆实现 Dijkstra 算法的最小优先队列，则 Johnson 算法的运行时间为 <span class="mathjax">\(O(V^2 \lg V + VE)\)</span>；使用二叉最小堆实现则运行时间为 <span class="mathjax">\(O(VE \lg V)\)</span>。在稀疏图情况下，仍比 Floyd-Warshall 算法的时间表现好。</p>
 
 
     
