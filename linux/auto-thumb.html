@@ -43,8 +43,7 @@
 
 
 <link rel="stylesheet" href="/assets/css/markdown.css">
-<!--link rel="stylesheet" href="/assets/css/highlight/ir_black.css"-->
-<link rel="stylesheet" href="http://highlightjs.org/static/styles/tomorrow-night-eighties.css">
+<link rel="stylesheet" href="/assets/css/highlight/tomorrow-night-eighties.css">
 <style>
   /* By default it's not affixed in mobile views, so undo that */
   .sidebar.affix {
@@ -65,8 +64,7 @@
   /* All levels of nav */
   .sidebar .nav > li > a {
     display: block;
-    /*color: #6c6c6c;*/
-    padding: 5px 20px;
+    padding: 5px 15px;
     color: #428bca;
     text-decoration: none;
   }
@@ -80,9 +78,8 @@
   .sidebar .nav > .active > a,
   .sidebar .nav > .active:hover > a,
   .sidebar .nav > .active:focus > a {
+    margin-bottom:1px;
     font-weight: bold;
-    /*color: #555;
-    background-color: transparent;*/
     color: white;
     background: #428bca;
     text-shadow: 0 1px 0 rgba(0,0,0,.15);
@@ -100,20 +97,20 @@
   .sidebar .nav .nav > li > a {
     padding-top:    3px;
     padding-bottom: 3px;
-    padding-left: 30px;
+    margin-left: 10px;
     font-size: 90%;
   }
   .sidebar .nav .nav .nav > li > a {
-    padding-left: 40px;
+    margin-left: 20px;
   }
   .sidebar .nav .nav .nav .nav > li > a {
-    padding-left: 50px;
+    margin-left: 30px;
   }
   .sidebar .nav .nav .nav .nav .nav > li > a {
-    padding-left: 60px;
+    margin-left: 40px;
   }
   .sidebar .nav .nav .nav .nav .nav .nav> li > a {
-    padding-left: 70px;
+    margin-left: 50px;
   }  
   
   /* Show and affix the side nav when space allows it */
@@ -252,60 +249,60 @@
 </ul>
 <h1>实例</h1>
 <p>假设我们的目录有两级结构，所有图片文件都在第二级目录下，例如：</p>
-<pre><code>imgs
-├── 2012
-│   ├── a.jpg
-│   └── b.png
-└── 2013
-    └── c.JPG</code></pre><p>我们希望该目录下的图片文件发生改动或者添加时，自动地重新生成其缩略图，并且忽略不需要更新的文件。下面利用 ImageMagick 进行缩略图的生成，同时借助于 Makefile 的依赖关系检查，完成缩略图的更新。</p>
+<pre><code class="hljs">imgs
+├── <span class="hljs-number">2012</span>
+│   ├── a<span class="hljs-preprocessor">.jpg</span>
+│   └── b<span class="hljs-preprocessor">.png</span>
+└── <span class="hljs-number">2013</span>
+    └── c<span class="hljs-preprocessor">.JPG</span></code></pre><p>我们希望该目录下的图片文件发生改动或者添加时，自动地重新生成其缩略图，并且忽略不需要更新的文件。下面利用 ImageMagick 进行缩略图的生成，同时借助于 Makefile 的依赖关系检查，完成缩略图的更新。</p>
 <h2>更新当前目录图片的缩略图</h2>
 <ol>
 <li><p>在文件夹 <code>2012</code> 下建立 makefile 文件：</p>
-<pre><code> <span class="comment"># get img files</span>
+<pre><code class="hljs"> <span class="hljs-comment"># get img files</span>
  items := $(shell ls *.* | grep -E '*.[j][pP][gG]|*.[J][pP][gG]')
  thumbs := $(addprefix thumb/,$(items))
 
  all: $(thumbs) list
 
- <span class="comment"># generate thumbs</span>
+ <span class="hljs-comment"># generate thumbs</span>
  $(thumbs): thumb/%: %
          [ ! -d 'thumb' ] &amp;&amp; mkdir thumb;\
          convert -resize 240x160 $&lt; $@
 
  .PHONY: list clean
 
- <span class="comment"># generate thumb list</span>
+ <span class="hljs-comment"># generate thumb list</span>
  list: 
          echo 'imgs:' &gt; list.yml;\
          for item in $(items);do\
                  echo -e '\t- '$$item &gt;&gt; list.yml;\
          done;\
 
- <span class="comment"># clean redundant thumbs</span>
+ <span class="hljs-comment"># clean redundant thumbs</span>
  clean:
          ls thumb | grep -E '*.*' | grep -x -v "`ls *.*`" | xargs -l -i rm thumb/{};
 
- <span class="comment"># clean all thumbs</span>
+ <span class="hljs-comment"># clean all thumbs</span>
  clean-all:
          -rm -rf file thumb list.yml</code></pre></li>
 <li><p>执行 <code>make</code> 即可在当前目录创建 <code>thumb</code> 子目录，并保存生成的缩略图。为了便于批量导入，同时产生了图片列表 <code>list.yml</code>（YAML格式）。<br> 执行 <code>make clean</code> 即可清空多余的缩略图，执行 <code>make clean-all</code> 即可清空所有缩略图以及图片列表。</p>
 </li>
 <li><p>生成的效果如下：</p>
-<pre><code> 2012
+<pre><code class="hljs"> <span class="hljs-number">2012</span>
  ├── makefile
- ├── a.jpg
- ├── b.png
+ ├── a<span class="hljs-preprocessor">.jpg</span>
+ ├── b<span class="hljs-preprocessor">.png</span>
  └── thumb
-     ├── a.jpg
-     └── b.png</code></pre></li>
+     ├── a<span class="hljs-preprocessor">.jpg</span>
+     └── b<span class="hljs-preprocessor">.png</span></code></pre></li>
 </ol>
 <h2>递归更新目录</h2>
 <ol>
 <li><p>我们将上述 makefile 在每个子目录软链接（<code>ln -s</code>）一份。然后在 <code>imgs</code> 下建立<strong>总控 Makefile</strong>，来执行其所有子目录的make：</p>
-<pre><code> <span class="comment"># dirs to exclude</span>
+<pre><code class="hljs"> <span class="hljs-comment"># dirs to exclude</span>
  exclude_dirs := include bin
 
- <span class="comment"># find subfolders</span>
+ <span class="hljs-comment"># find subfolders</span>
  dirs := $(shell find . -maxdepth 1 -type d)
  dirs := $(basename $(patsubst ./%,%,$(dirs)))
  dirs := $(filter-out $(exclude_dirs),$(dirs))
@@ -329,20 +326,20 @@
 <li><p>在 <code>imgs</code> 执行 <code>make</code>，即可以更新所有子目录的缩略图；执行 <code>make clean</code>，即可清空所有缩略图，以及图片列表。</p>
 </li>
 <li><p>生成的效果如下：</p>
-<pre><code> imgs
+<pre><code class="hljs"> imgs
  ├── makefile
- ├── 2012
+ ├── <span class="hljs-number">2012</span>
  │   ├── makefile
- │   ├── a.jpg
- │   ├── b.png
+ │   ├── a<span class="hljs-preprocessor">.jpg</span>
+ │   ├── b<span class="hljs-preprocessor">.png</span>
  │   └── thumb
- │       ├── a.jpg
- │       └── b.png
- └── 2013
+ │       ├── a<span class="hljs-preprocessor">.jpg</span>
+ │       └── b<span class="hljs-preprocessor">.png</span>
+ └── <span class="hljs-number">2013</span>
      ├── makefile
-     ├── c.JPG
+     ├── c<span class="hljs-preprocessor">.JPG</span>
      └── thumb
-         └── c.JPG</code></pre></li>
+         └── c<span class="hljs-preprocessor">.JPG</span></code></pre></li>
 </ol>
 
 

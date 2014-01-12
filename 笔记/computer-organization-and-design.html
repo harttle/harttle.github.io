@@ -43,8 +43,7 @@
 
 
 <link rel="stylesheet" href="/assets/css/markdown.css">
-<!--link rel="stylesheet" href="/assets/css/highlight/ir_black.css"-->
-<link rel="stylesheet" href="http://highlightjs.org/static/styles/tomorrow-night-eighties.css">
+<link rel="stylesheet" href="/assets/css/highlight/tomorrow-night-eighties.css">
 <style>
   /* By default it's not affixed in mobile views, so undo that */
   .sidebar.affix {
@@ -65,8 +64,7 @@
   /* All levels of nav */
   .sidebar .nav > li > a {
     display: block;
-    /*color: #6c6c6c;*/
-    padding: 5px 20px;
+    padding: 5px 15px;
     color: #428bca;
     text-decoration: none;
   }
@@ -80,9 +78,8 @@
   .sidebar .nav > .active > a,
   .sidebar .nav > .active:hover > a,
   .sidebar .nav > .active:focus > a {
+    margin-bottom:1px;
     font-weight: bold;
-    /*color: #555;
-    background-color: transparent;*/
     color: white;
     background: #428bca;
     text-shadow: 0 1px 0 rgba(0,0,0,.15);
@@ -100,20 +97,20 @@
   .sidebar .nav .nav > li > a {
     padding-top:    3px;
     padding-bottom: 3px;
-    padding-left: 30px;
+    margin-left: 10px;
     font-size: 90%;
   }
   .sidebar .nav .nav .nav > li > a {
-    padding-left: 40px;
+    margin-left: 20px;
   }
   .sidebar .nav .nav .nav .nav > li > a {
-    padding-left: 50px;
+    margin-left: 30px;
   }
   .sidebar .nav .nav .nav .nav .nav > li > a {
-    padding-left: 60px;
+    margin-left: 40px;
   }
   .sidebar .nav .nav .nav .nav .nav .nav> li > a {
-    padding-left: 70px;
+    margin-left: 50px;
   }  
   
   /* Show and affix the side nav when space allows it */
@@ -279,27 +276,24 @@
 <blockquote>
 <p>The last two sometimes combined and called the processor.</p>
 </blockquote>
-<p><strong>Instruction set architecture</strong></p>
-<blockquote>
-<p>One key interface between the levels of abstraction is the instruction set architecture-the interface between the hardware and low-level software.</p>
-</blockquote>
+<p><strong>Instruction set architecture</strong><br>One key interface between the levels of abstraction is the instruction set architecture-the interface between the hardware and low-level software.</p>
 <h2>Performance</h2>
 <h3>Measurement and Limitation</h3>
 <div class="mathjax">\[\begin{eqnarray}
-CPU~time &=& Instruction~count \times CPI \times Clock~cycle~time\\\\
-        &=& \frac{Instruction~count \times CPI}{Clock~rate}
-\end{eqnarray}\]</div><div class="mathjax">\[Power = Capacitive~load \times Voltage^2 \times Frequency~switched\]</div><h3>Fallacies and Pitfalls</h3>
+CPU~time &=& IC \times CPI \times Clock~cycle~time\\\\
+        &=& \frac{IC \times CPI}{Clock~rate}
+\end{eqnarray}\]</div><div class="mathjax">\[Power = Capacitive \times Voltage^2 \times Frequency\]</div><h2>Fallacies and Pitfalls</h2>
 <blockquote>
 <p><strong>Pitfall</strong>: Expecting the improvement of one aspect of a computer to increse overall performance by an amount proportional to the size of the improvement.</p>
 </blockquote>
 <p><strong>Amdahl&#39;s law</strong></p>
-<div class="mathjax">\[Execution~time~after~improvement = \\\\
-\frac{Execution~time~affected~by~improvement}{Amount~of~improvement} + Execution~time~unaffected\]</div><blockquote>
+<div class="mathjax">\[ET~after~improvement = \\\\
+\frac{ET~affected}{Amount~of~improvement} + ET~unaffected\]</div><blockquote>
 <p><strong>Pitfall</strong>: Using a subset of the performance equation as a performance metric.</p>
 </blockquote>
 <p>For example:</p>
 <div class="mathjax">\[\begin{eqnarray}
-MIPS &=& \frac{Instruction~count}{Execution~time \times 10^6} \\\\
+MIPS &=& \frac{IC}{ET \times 10^6} \\\\
     &=& \frac{Clock~rate}{CPI \times 10^6}
 \end{eqnarray}\]</div><blockquote>
 <p>Instruction per program is not considered.</p>
@@ -317,8 +311,9 @@ MIPS &=& \frac{Instruction~count}{Execution~time \times 10^6} \\\\
 <li>The arithmetic: assignment statements.</li>
 <li>Data transfer: dealing with data structures like arrays or structures.</li>
 <li>Conditional branches: <em>if</em> statement.</li>
-<li><p>Unconditional jumps: procedure call and returns and <em>for</em>, <em>case/switch</em> statements.</p>
-</li>
+<li>Unconditional jumps: procedure call and returns and <em>for</em>, <em>case/switch</em> statements.</li>
+</ul>
+<ol>
 <li><p>Simplicity favors regularity</p>
 <p> Requiring every instruction to have exactly three operands, no more and no less, conforms to the philosophy of keeping the hardware simple.</p>
 </li>
@@ -330,16 +325,14 @@ MIPS &=& \frac{Instruction~count}{Execution~time \times 10^6} \\\\
 <p>MIPS is in the big-endian camp.</p>
 </blockquote>
 </li>
-</ul>
-<ol>
 <li><p>Make the common case fast</p>
 <p> Avoid the load instruction when arithmetic instruction&#39;s one operand is a constant.</p>
 <p> Example:</p>
-<pre><code> addi    $s3,    $s3,    4
+<pre><code class="hljs"> addi    <span class="hljs-variable">$s3</span>,    <span class="hljs-variable">$s3</span>,    <span class="hljs-number">4</span>
 
- # instead of
- lw      $t0,    AddrConst4($s1)
- add     $s3,    $s3,    $t0</code></pre><p> <strong>One&#39;s complement</strong></p>
+ <span class="hljs-comment"># instead of</span>
+ lw      <span class="hljs-variable">$t0</span>,    AddrConst4(<span class="hljs-variable">$s1</span>)
+ add     <span class="hljs-variable">$s3</span>,    <span class="hljs-variable">$s3</span>,    <span class="hljs-variable">$t0</span></code></pre><p> <strong>One&#39;s complement</strong></p>
 <p> A notation that represents the most negative value by 10...000 and the most positive value by 01...11, leaving an equal number of negatives and positives but ending up with two 0s. </p>
 <blockquote>
 <p>The term is also used to mean the inversion of every bit.</p>
@@ -350,8 +343,6 @@ MIPS &=& \frac{Instruction~count}{Execution~time \times 10^6} \\\\
 <p>Two&#39;s complement gets its name from the rule that the unsigned sum of an n-bit number and its negative is <span class="mathjax">\(2^n\)</span>.</p>
 </blockquote>
 </li>
-</ol>
-<ol>
 <li><p>Good design demands good compromises</p>
 <p> The compromise chosen by the MIPS designers is to keep <strong>all instructions the same length</strong> , thereby requiring different kinds of instruction formats for different kinds of instructions.</p>
 <ul>
@@ -365,9 +356,7 @@ MIPS &=& \frac{Instruction~count}{Execution~time \times 10^6} \\\\
 </ol>
 <h2>Register usage</h2>
 <p><strong>Spilling registers</strong></p>
-<blockquote>
 <p>The process of putting less commonly used variables (or those needed later) into memory.</p>
-</blockquote>
 <p><strong>Dada-transfer instruction</strong></p>
 <p>A command that moves data between memory and registers.</p>
 <p><strong>Sign extension</strong></p>
@@ -414,21 +403,23 @@ MIPS &=& \frac{Instruction~count}{Execution~time \times 10^6} \\\\
 <p>One of the first early phases of compilation is breaking the program into basic blocks.</p>
 </blockquote>
 <h3>Branch instruction</h3>
-<p>Branch instructions use 16-bit field address, which means no program will larger than 2^16.</p>
-<p>While the destination of branch instructions is likely to be close to the branch. If we use <strong>PC-relative addressing</strong> , the sum will allow the program to be as large as 2^32.</p>
+<p>Branch instructions use 16-bit field address, which means no program will larger than <span class="mathjax">\(2^{16}\)</span>.</p>
+<p>While the destination of branch instructions is likely to be close to the branch. If we use <strong>PC-relative addressing</strong> , the sum will allow the program to be as large as <span class="mathjax">\(2^{32}\)</span>.</p>
 <blockquote>
-<p>While the <code>L1</code> in <code>beq    $s0,    $s1,    L1</code> could be bigger than 2^16, MIPS will break it into 2 instructions like:</p>
-<pre><code>    bne     $s0,    $s1,    L2
+<p>As the same time, the <code>L1</code> in <code>beq    $s0,    $s1,    L1</code> could be bigger than <span class="mathjax">\(2^{16}\)</span>, MIPS will break it into 2 instructions:</p>
+<pre><code class="hljs">    bne     <span class="hljs-variable">$s0</span>,    <span class="hljs-variable">$s1</span>,    L2
     j       L1
 L2:</code></pre></blockquote>
 <h3>Jump instruction</h3>
-<p>Jump instructions use 26-bit field adress, MIPS stretch the distance by having it refer to the number of <em>words</em> to the next instruction instead of number of <em>bytes</em></p>
+<p>Jump instructions use 26-bit field adress, MIPS stretch the distance by having it refer to the number of <em>words</em> to the next instruction instead of number of <em>bytes</em>. The address now becomes 28-bit, MIPS will add the first 4-bit of PC automatically to get a 32-bit address(<strong>pseudodirect addressing</strong>).</p>
 <blockquote>
-<p>The loader and linker must be careful to avoid placing a program across an address boundary of 256MB, which is 2^28 bit. </p>
+<p>The loader and linker must be careful to avoid placing a program across an address boundary of 256MB, which is <span class="mathjax">\(2^{28}\)</span> bit. </p>
 </blockquote>
 <h3>Summary</h3>
 <ul>
+<li>Immediate addressing: <code>addi $rs,  rt,   imm</code></li>
 <li>Register addresing: <code>jr   $ra</code></li>
+<li>Base addressing: <code>lw $rt, addr</code></li>
 <li>PC-relative addressing: <code>bne  $s0,    $s1,    Label</code></li>
 <li>Pseudodirect addressing: <code>j   Label</code></li>
 </ul>
@@ -436,9 +427,9 @@ L2:</code></pre></blockquote>
 <p><strong>Data Race</strong></p>
 <p>Two memory accesses form a data race if they are from different threads to ssame location, at least one is a write, and they occur one after another.</p>
 <p>One typical operation for building synchronization operations is the <em>atomic exchange</em> or <em>atomic swap</em>, while the challenge lies in that it requires both a memory read and a write in a single, uninterruptible instruction.</p>
-<p>MIPS contains a pair of instructions called a <em>load linked</em> and <em>store conditional</em>. These are used in sequence: if the content of the memory specified by <em>load linked</em> is changed before the <em>store conditional</em>, then the store fails.</p>
+<p>MIPS contains a pair of instructions called a <code>load linked</code> and <code>store conditional</code>. These are used in sequence: if the content of the memory specified by <code>load linked</code> is changed before the <code>store conditional</code>, then the store fails.</p>
 <blockquote>
-<p>Although it was presented for multi-processor sync, atomic exchange is also useful for the OS in dealing with multiple processes in a single processor. To ensure nothing interferes in a single processor, the <em>store conditional</em> also fails if the processor does a context switch between the two instructions.</p>
+<p>Although it was presented for multi-processor sync, atomic exchange is also useful for the OS in dealing with multiple processes in a single processor. To ensure nothing interferes in a single processor, the <code>store conditional</code> also fails if the processor does a context switch between the two instructions.</p>
 </blockquote>
 <blockquote>
 <p>Store conditional will fail after either another attempted store or any exception, in particular, only register-register instructions can safely be permited between the two instructions; otherwise, it is possible to create deadlock situations.</p>
@@ -589,12 +580,12 @@ L2:</code></pre></blockquote>
 <p><strong>Edge-triggered clocking</strong></p>
 <p>A clocking scheme in which all state changes occur on a clock edge.</p>
 <p><strong>control signal</strong></p>
-<p>A signal used for multiplexor selection or for directing the operation of a functional unit; contrasts with a <strong>data signal</strong> , which contains information that is operated on by a funcional unit. </p>
+<p>A signal used for multiplexor selection or for directing the operation of a functional unit; contrasts with a <em>data signal</em> , which contains information that is operated on by a funcional unit. </p>
 <blockquote>
 <p>The state element is changed only when the write control signal is asserted and a clock edge occurs.</p>
 </blockquote>
 <h2>A Simple Implementation Scheme</h2>
-<p><strong>ALUOp</strong> indicates whether the operation to be performed should be add for loas and stores, substract for beq, or determined by the operation encoded in the funct field.</p>
+<p><em>ALUOp</em> indicates whether the operation to be performed should be add for loas and stores, substract for beq, or determined by the operation encoded in the funct field.</p>
 <p><strong>Multiple levels of decoding</strong></p>
 <p>The main control unit generates the ALUOp bits, which then are used as input to the ALU control that generates the actual signals to control the ALU unit.</p>
 <p>The datapath with all necessary multiplexors and all control lines identified:</p>
@@ -646,16 +637,16 @@ L2:</code></pre></blockquote>
 <li>MEM/WB.RegisterRd = ID/EX.RegisterRs</li>
 <li>MEM/WB.RegisterRd = ID/EX.RegisterRt</li>
 </ol>
-<p>The <strong>fowarding unit</strong> is used to forward new values from EX/MEM and MEM/WB pipeline-register to ID/EX pipeline-register when the conditions above occured.</p>
+<p>The <em>forwarding unit</em> is used to forward new values from EX/MEM and MEM/WB pipeline-register to ID/EX pipeline-register when the conditions above occured.</p>
 <blockquote>
 <p>Note that the values in EX/MEM is newer than MEM/WB, we will forward MEM/WB only when EX/MEM needn&#39;t to be forwarded.</p>
 </blockquote>
 <h3>Stalls</h3>
 <p>When the result required by the current instruction is computed during MEM stage of the previous instruction, we must stall the pipeline.</p>
-<p>The <strong>hazard detection unit</strong> operates during the ID stage, checking for load instructions and insert the stall between the load and its use. The single condition is:</p>
-<pre><code>if( ID/EX.MemRead and 
-    ((ID/EX.RegisterRt = IF/ID.RegisterRs) or
-     (ID/EX.RegisterRt = IF/ID.RegisterRt)))
+<p>The <em>hazard detection unit</em> operates during the ID stage, checking for load instructions and insert the stall between the load and its use. The single condition is:</p>
+<pre><code class="hljs">if( ID/EX<span class="hljs-preprocessor">.MemRead</span> <span class="hljs-keyword">and</span> 
+    ((ID/EX<span class="hljs-preprocessor">.RegisterRt</span> = IF/ID<span class="hljs-preprocessor">.RegisterRs</span>) <span class="hljs-keyword">or</span>
+     (ID/EX<span class="hljs-preprocessor">.RegisterRt</span> = IF/ID<span class="hljs-preprocessor">.RegisterRt</span>)))
         stall the pipeline</code></pre><p>By identifying the hazard in the ID stage, we can insert a bubble into the pipeline by changing the EX, MEM and WB control fields of the ID/EX pipeline registeer to 0.</p>
 <blockquote>
 <p>Actually, only the signals RegWrite and MemWrite need be 0, while the other control signals can be don&#39;t cares.</p>
@@ -667,8 +658,8 @@ L2:</code></pre></blockquote>
 <p><strong>Dynamic branch prediction</strong></p>
 <p>Prediction of branches at runtime using runtime information.</p>
 <p><strong>Dynamic prediction buffer</strong></p>
-<p>Also called <strong>branch history table</strong> , a small memory that is indexed by the lower portion of the branch instruction and that contains one or more bits indicating whether the branch was recently taken or not.</p>
-<p>The simple <strong>1-bit prediction</strong> scheme has a performance shortcoming: even if a branch is almost always taken, we can predict incorrectly twice, rather than once, when it is not taken.</p>
+<p>Also called <em>branch history table</em> , a small memory that is indexed by the lower portion of the branch instruction and that contains one or more bits indicating whether the branch was recently taken or not.</p>
+<p>The simple <em>1-bit prediction</em> scheme has a performance shortcoming: even if a branch is almost always taken, we can predict incorrectly twice, rather than once, when it is not taken.</p>
 <p>In a <em>2-bit scheme*</em>, a prediction must be wrong twice before it is changed.</p>
 <p><strong>branch delay slot</strong></p>
 <p>The slot directly after a delayed branch instruction, which in the MIPS architecture is filled by an instruction that does not affect the branch.</p>
@@ -682,8 +673,8 @@ L2:</code></pre></blockquote>
 <p><strong>tournament branch predictor</strong></p>
 <p>A branch predictor with multiple predictions for each branch and a selection mechanism that chooses which predictor to enable for a given branch.</p>
 <h2>Exceptions</h2>
-<p><strong>exception</strong> refer to unexpected change internal, while <strong>interrupt</strong> refer to that external.</p>
-<p>MIPS save the address of the offending instruction in the <strong>exception program counter (EPC)</strong> , and the <strong>Cause register</strong> holds a field that indicates the reason for the exception.</p>
+<p><em>exception</em> refer to unexpected change internal, while <em>interrupt</em> refer to that external.</p>
+<p>MIPS save the address of the offending instruction in the <em>exception program counter (EPC)</em> , and the <em>Cause register</em> holds a field that indicates the reason for the exception.</p>
 <p><strong>Vectored interrupt</strong></p>
 <p>An interrupt for which the address to which control is transferrd is determined by the cause of the exception.</p>
 <p>Exception Procedure</p>
@@ -693,9 +684,9 @@ L2:</code></pre></blockquote>
 <li>Save the address of the offending instruction in the EPC.</li>
 </ol>
 <p><strong>Imprecise interrupt</strong></p>
-<p>Also called <strong>imprecise exception</strong> , Interrupts or exceptions in pipelined computers that are not associated with the exact instruction that was the cause of the interrupt or exception.</p>
+<p>Also called <em>imprecise exception</em> , Interrupts or exceptions in pipelined computers that are not associated with the exact instruction that was the cause of the interrupt or exception.</p>
 <p><strong>Precise interrupt</strong></p>
-<p>Also called <strong>precise exception</strong> , An interrupt or exception that is always associated with the correct instruction in pipelined computers.</p>
+<p>Also called <em>precise exception</em> , An interrupt or exception that is always associated with the correct instruction in pipelined computers.</p>
 <h2>Parallelism</h2>
 <p><strong>Instruction-level parallelism (ILP)</strong></p>
 <p>The parallelism among instructions.</p>
@@ -1064,8 +1055,7 @@ L2:</code></pre></blockquote>
 <h2>The Difficulty of Creating Paralel Processing Programs</h2>
 <p>According to <strong>Amdahl&#39;s law</strong> </p>
 <p>Execution time after improvement = Execution time affected by improvement / Amount of improvement + Execution time unaffected.</p>
-<p>Thus,</p>
-<p><span class="mathjax">\(Speed-up = \frac{1}{(1 - Fraction~time~affected) + \frac{Fraction~time~affected}{100}}\)</span></p>
+<p>Thus,<br><span class="mathjax">\(Speed-up = \frac{1}{(1 - Fraction~time~affected) + \frac{Fraction~time~affected}{100}}\)</span></p>
 <p><strong>Strong scaling</strong></p>
 <p>Speed-up achieved on a multiprocessor without increasing the size of problem.</p>
 <p><strong>Weak scaling</strong></p>

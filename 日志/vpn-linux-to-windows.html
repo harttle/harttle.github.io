@@ -43,8 +43,7 @@
 
 
 <link rel="stylesheet" href="/assets/css/markdown.css">
-<!--link rel="stylesheet" href="/assets/css/highlight/ir_black.css"-->
-<link rel="stylesheet" href="http://highlightjs.org/static/styles/tomorrow-night-eighties.css">
+<link rel="stylesheet" href="/assets/css/highlight/tomorrow-night-eighties.css">
 <style>
   /* By default it's not affixed in mobile views, so undo that */
   .sidebar.affix {
@@ -65,8 +64,7 @@
   /* All levels of nav */
   .sidebar .nav > li > a {
     display: block;
-    /*color: #6c6c6c;*/
-    padding: 5px 20px;
+    padding: 5px 15px;
     color: #428bca;
     text-decoration: none;
   }
@@ -80,9 +78,8 @@
   .sidebar .nav > .active > a,
   .sidebar .nav > .active:hover > a,
   .sidebar .nav > .active:focus > a {
+    margin-bottom:1px;
     font-weight: bold;
-    /*color: #555;
-    background-color: transparent;*/
     color: white;
     background: #428bca;
     text-shadow: 0 1px 0 rgba(0,0,0,.15);
@@ -100,20 +97,20 @@
   .sidebar .nav .nav > li > a {
     padding-top:    3px;
     padding-bottom: 3px;
-    padding-left: 30px;
+    margin-left: 10px;
     font-size: 90%;
   }
   .sidebar .nav .nav .nav > li > a {
-    padding-left: 40px;
+    margin-left: 20px;
   }
   .sidebar .nav .nav .nav .nav > li > a {
-    padding-left: 50px;
+    margin-left: 30px;
   }
   .sidebar .nav .nav .nav .nav .nav > li > a {
-    padding-left: 60px;
+    margin-left: 40px;
   }
   .sidebar .nav .nav .nav .nav .nav .nav> li > a {
-    padding-left: 70px;
+    margin-left: 50px;
   }  
   
   /* Show and affix the side nav when space allows it */
@@ -247,7 +244,7 @@
       <p>Linux 连接 Windows Server VPN，以 archLinux 为例，适用于 Ubuntu。</p>
 <ol>
 <li><p>安装 pptp</p>
-<pre><code> <span class="comment"># kde in arch</span>
+<pre><code class="hljs"> <span class="hljs-comment"># kde in arch</span>
  pacman -S extra/networkmanager-pptp</code></pre></li>
 <li><p>新建 VPN 连接</p>
 <p> 网关：服务器IP或域名<br> 登录：用户名<br> 密码：密码<br> 域：空<br> 认证方式：MSCHAP MSCHAPv2<br> 使用 MPPE 加密</p>

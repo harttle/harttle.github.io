@@ -43,8 +43,7 @@
 
 
 <link rel="stylesheet" href="/assets/css/markdown.css">
-<!--link rel="stylesheet" href="/assets/css/highlight/ir_black.css"-->
-<link rel="stylesheet" href="http://highlightjs.org/static/styles/tomorrow-night-eighties.css">
+<link rel="stylesheet" href="/assets/css/highlight/tomorrow-night-eighties.css">
 <style>
   /* By default it's not affixed in mobile views, so undo that */
   .sidebar.affix {
@@ -65,8 +64,7 @@
   /* All levels of nav */
   .sidebar .nav > li > a {
     display: block;
-    /*color: #6c6c6c;*/
-    padding: 5px 20px;
+    padding: 5px 15px;
     color: #428bca;
     text-decoration: none;
   }
@@ -80,9 +78,8 @@
   .sidebar .nav > .active > a,
   .sidebar .nav > .active:hover > a,
   .sidebar .nav > .active:focus > a {
+    margin-bottom:1px;
     font-weight: bold;
-    /*color: #555;
-    background-color: transparent;*/
     color: white;
     background: #428bca;
     text-shadow: 0 1px 0 rgba(0,0,0,.15);
@@ -100,20 +97,20 @@
   .sidebar .nav .nav > li > a {
     padding-top:    3px;
     padding-bottom: 3px;
-    padding-left: 30px;
+    margin-left: 10px;
     font-size: 90%;
   }
   .sidebar .nav .nav .nav > li > a {
-    padding-left: 40px;
+    margin-left: 20px;
   }
   .sidebar .nav .nav .nav .nav > li > a {
-    padding-left: 50px;
+    margin-left: 30px;
   }
   .sidebar .nav .nav .nav .nav .nav > li > a {
-    padding-left: 60px;
+    margin-left: 40px;
   }
   .sidebar .nav .nav .nav .nav .nav .nav> li > a {
-    padding-left: 70px;
+    margin-left: 50px;
   }  
   
   /* Show and affix the side nav when space allows it */
@@ -248,25 +245,25 @@
 <p>可参照官方 Guide：<a href="https://webarchive.jira.com/wiki/display/Heritrix/Heritrix+3.0+and+3.1+User+Guide">https://webarchive.jira.com/wiki/display/Heritrix/Heritrix+3.0+and+3.1+User+Guide</a></p>
 <h2>依赖项</h2>
 <p>可选择 open-jdk 或者 oracle jre。</p>
-<pre><code><span class="comment"># open jdk</span>
-<span class="built_in">sudo</span> apt-get install open-jdk-<span class="number">7</span> <span class="comment"># ubuntu</span>
-<span class="built_in">sudo</span> pacman -S open-jdk-<span class="number">7</span>       <span class="comment"># arch linux</span>
-<span class="built_in">sudo</span> rpm -ivh open-jdk-<span class="number">7</span>        <span class="comment"># centos</span></code></pre><p>oracle jre 安装可参考 <a href="http://www.liberiangeek.net/2012/04/install-oracle-java-runtime-jre-7-in-ubuntu-12-04-precise-pangolin/">http://www.liberiangeek.net/2012/04/install-oracle-java-runtime-jre-7-in-ubuntu-12-04-precise-pangolin/</a></p>
+<pre><code class="hljs"><span class="hljs-comment"># open jdk</span>
+<span class="hljs-built_in">sudo</span> apt-get install open-jdk-<span class="hljs-number">7</span> <span class="hljs-comment"># ubuntu</span>
+<span class="hljs-built_in">sudo</span> pacman -S open-jdk-<span class="hljs-number">7</span>       <span class="hljs-comment"># arch linux</span>
+<span class="hljs-built_in">sudo</span> rpm -ivh open-jdk-<span class="hljs-number">7</span>        <span class="hljs-comment"># centos</span></code></pre><p>oracle jre 安装可参考 <a href="http://www.liberiangeek.net/2012/04/install-oracle-java-runtime-jre-7-in-ubuntu-12-04-precise-pangolin/">http://www.liberiangeek.net/2012/04/install-oracle-java-runtime-jre-7-in-ubuntu-12-04-precise-pangolin/</a></p>
 <h2>安装</h2>
 <ol>
 <li><p>下载并解压</p>
 <p> 在 <a href="https://webarchive.jira.com/wiki/display/Heritrix/Heritrix">https://webarchive.jira.com/wiki/display/Heritrix/Heritrix</a> 可以得到最新的版本。下载后解压。</p>
-<pre><code> tar -xzvf heritrix-xxx.tar.gz</code></pre></li>
+<pre><code class="hljs"> tar -xzvf heritrix-xxx.tar.gz</code></pre></li>
 <li><p>设置环境变量</p>
-<pre><code> <span class="comment"># 在 ~/.bashrc 中加入以下环境变量</span>
- <span class="keyword">export</span> JAVA_HOME=/path/to/your/jre
- <span class="keyword">export</span> HERITRIX_HOME=/path/to/your/heritrix
- <span class="keyword">export</span> JAVA_OPTS=-Xmx1024M  <span class="comment"># 可选，指定使用的内存上限</span></code></pre></li>
+<pre><code class="hljs"> <span class="hljs-comment"># 在 ~/.bashrc 中加入以下环境变量</span>
+ <span class="hljs-keyword">export</span> JAVA_HOME=/path/to/your/jre
+ <span class="hljs-keyword">export</span> HERITRIX_HOME=/path/to/your/heritrix
+ <span class="hljs-keyword">export</span> JAVA_OPTS=-Xmx1024M  <span class="hljs-comment"># 可选，指定使用的内存上限</span></code></pre></li>
 <li><p>启动 UI</p>
 <p> 参照：<a href="https://webarchive.jira.com/wiki/display/Heritrix/A+Quick+Guide+to+Running+Your+First+Crawl+Job">https://webarchive.jira.com/wiki/display/Heritrix/A+Quick+Guide+to+Running+Your+First+Crawl+Job</a></p>
-<pre><code> <span class="built_in">cd</span> <span class="variable">$HERITRIX_HOME</span>
- <span class="comment"># -a 设置用户名和密码，-j 设置抓取到的网页的路径，例如：</span>
- bin/heritrix <span class="operator">-a</span> harttle:<span class="number">123456</span> -j /home/harttle/search-engine/pages/</code></pre><p> 然后在浏览器打开 <a href="https://localhost:8843，登录后根据提示新建一个job。">https://localhost:8843，登录后根据提示新建一个job。</a></p>
+<pre><code class="hljs"> <span class="hljs-built_in">cd</span> <span class="hljs-variable">$HERITRIX_HOME</span>
+ <span class="hljs-comment"># -a 设置用户名和密码，-j 设置抓取到的网页的路径，例如：</span>
+ bin/heritrix <span class="hljs-operator">-a</span> harttle:<span class="hljs-number">123456</span> -j /home/harttle/search-engine/pages/</code></pre><p> 然后在浏览器打开 <a href="https://localhost:8843，登录后根据提示新建一个job。">https://localhost:8843，登录后根据提示新建一个job。</a></p>
 </li>
 </ol>
 <h2>配置</h2>
@@ -286,10 +283,10 @@
 </li>
 <li><p>避免heritrix下载媒体文件</p>
 <p>  <code>scope</code> 字段指定了heritrix的访问范围，为了避免访问媒体文件的 URI，可以编辑 <code>MatchesListRegexDecideRule</code> 字段，采用如下设置：</p>
-<pre><code>  &lt;bean class=<span class="string">"org.archive.modules.deciderules.MatchesListRegexDecideRule"</span>&gt;
-    &lt;property name=<span class="string">"decision"</span> value=<span class="string">"REJECT"</span>/&gt;
-    &lt;property name=<span class="string">"listLogicalOr"</span> value=<span class="string">"true"</span> /&gt;
-    &lt;property name=<span class="string">"regexList"</span>&gt;
+<pre><code class="hljs">  &lt;bean class=<span class="hljs-string">"org.archive.modules.deciderules.MatchesListRegexDecideRule"</span>&gt;
+    &lt;property name=<span class="hljs-string">"decision"</span> value=<span class="hljs-string">"REJECT"</span>/&gt;
+    &lt;property name=<span class="hljs-string">"listLogicalOr"</span> value=<span class="hljs-string">"true"</span> /&gt;
+    &lt;property name=<span class="hljs-string">"regexList"</span>&gt;
      &lt;list&gt;
        &lt;value&gt;.*(?i)(\.(avi|wmv|mpe?g|mp3))$&lt;/value&gt;
        &lt;value&gt;.*(?i)(\.(rar|zip|tar|gz))$&lt;/value&gt;
@@ -305,16 +302,16 @@
   &lt;/bean&gt;</code></pre></li>
 <li><p>只归档 <code>Content-Type</code> 为 <code>text/html</code> 的文件</p>
 <p>  <code>warcWriter</code> 字段指定了写入归档的规则，为了只匹配特定 <code>Content-Type</code> 的文件，可以为该字段添加如下规则：</p>
-<pre><code>  &lt;bean id=<span class="string">"warcWriter"</span> class=<span class="string">"org.archive.modules.writer.WARCWriterProcessor"</span>&gt;
-     &lt;property name=<span class="string">"shouldProcessRule"</span>&gt;
-       &lt;bean class=<span class="string">"org.archive.modules.deciderules.DecideRuleSequence"</span>&gt;
-         &lt;property name=<span class="string">"rules"</span>&gt;
+<pre><code class="hljs">  &lt;bean id=<span class="hljs-string">"warcWriter"</span> class=<span class="hljs-string">"org.archive.modules.writer.WARCWriterProcessor"</span>&gt;
+     &lt;property name=<span class="hljs-string">"shouldProcessRule"</span>&gt;
+       &lt;bean class=<span class="hljs-string">"org.archive.modules.deciderules.DecideRuleSequence"</span>&gt;
+         &lt;property name=<span class="hljs-string">"rules"</span>&gt;
            &lt;list&gt;
              &lt;!-- Begin by REJECTing all... --&gt;
-             &lt;bean class=<span class="string">"org.archive.modules.deciderules.RejectDecideRule"</span> /&gt;
-             &lt;bean class=<span class="string">"org.archive.modules.deciderules.ContentTypeMatchesRegexDecideRule"</span>&gt;
-               &lt;property name=<span class="string">"decision"</span> value=<span class="string">"ACCEPT"</span> /&gt;
-               &lt;property name=<span class="string">"regex"</span> value=<span class="string">"^text/html.*"</span> /&gt;
+             &lt;bean class=<span class="hljs-string">"org.archive.modules.deciderules.RejectDecideRule"</span> /&gt;
+             &lt;bean class=<span class="hljs-string">"org.archive.modules.deciderules.ContentTypeMatchesRegexDecideRule"</span>&gt;
+               &lt;property name=<span class="hljs-string">"decision"</span> value=<span class="hljs-string">"ACCEPT"</span> /&gt;
+               &lt;property name=<span class="hljs-string">"regex"</span> value=<span class="hljs-string">"^text/html.*"</span> /&gt;
              &lt;/bean&gt;
            &lt;/list&gt;
          &lt;/property&gt;
@@ -330,47 +327,47 @@
 <h2>提取链接关系</h2>
 <p>我们现在要进行 Page-Rank，需要获得网页之间的链接关系。可以通过heritrix生成的日志文件（<code>crawl.log</code>）来提取。</p>
 <p>参见：<a href="https://webarchive.jira.com/wiki/display/Heritrix/Logs">https://webarchive.jira.com/wiki/display/Heritrix/Logs</a></p>
-<pre><code>cat crawl.log | awk <span class="string">'$7=="text/html"{print $6 " =&gt; " $4}'</span> &gt; links</code></pre><p>现在我们得到了包含链接关系的文件 <code>links</code>。</p>
+<pre><code class="hljs">cat crawl.log | awk <span class="hljs-string">'$7=="text/html"{print $6 " =&gt; " $4}'</span> &gt; links</code></pre><p>现在我们得到了包含链接关系的文件 <code>links</code>。</p>
 <h2>进行 Page Rank</h2>
 <p>Page Rank 是 Google 搜索引擎进行网站排名的重要算法之一。<a href="http://en.wikipedia.org/wiki/Pagerank">wiki</a> 给出了 Matlab 实现：</p>
-<pre><code>% Parameter M adjacency matrix where M_i,j represents the link from &#39;j&#39; to &#39;i&#39;, such that for all &#39;j&#39; sum(i, M_i,j) = 1
-% Parameter d damping factor
-% Parameter v_quadratic_error quadratic error for v
-% Return v, a vector of ranks such that v_i is the i-th rank from [0, 1]
+<pre><code class="hljs"><span class="hljs-comment">% Parameter M adjacency matrix where M_i,j represents the link from 'j' to 'i', such that for all 'j' sum(i, M_i,j) = 1</span>
+<span class="hljs-comment">% Parameter d damping factor</span>
+<span class="hljs-comment">% Parameter v_quadratic_error quadratic error for v</span>
+<span class="hljs-comment">% Return v, a vector of ranks such that v_i is the i-th rank from [0, 1]</span>
 
-function [v] = rank(M, d, v_quadratic_error)
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[v]</span> = <span class="hljs-title">rank</span><span class="hljs-params">(M, d, v_quadratic_error)</span></span>
 
-N = size(M, 2); % N is equal to half the size of M
-v = rand(N, 1);
-v = v ./ norm(v, 2);
-last_v = ones(N, 1) * inf;
-M_hat = (d .* M) + (((1 - d) / N) .* ones(N, N));
+N = <span class="hljs-built_in">size</span>(M, <span class="hljs-number">2</span>); <span class="hljs-comment">% N is equal to half the size of M</span>
+v = <span class="hljs-built_in">rand</span>(N, <span class="hljs-number">1</span>);
+v = v ./ norm(v, <span class="hljs-number">2</span>);
+last_v = <span class="hljs-built_in">ones</span>(N, <span class="hljs-number">1</span>) * <span class="hljs-built_in">inf</span>;
+M_hat = (d .* M) + (((<span class="hljs-number">1</span> - d) / N) .* <span class="hljs-built_in">ones</span>(N, N));
 
-while(norm(v - last_v, 2) &gt; v_quadratic_error)
+<span class="hljs-keyword">while</span>(norm(v - last_v, <span class="hljs-number">2</span>) &gt; v_quadratic_error)
         last_v = v;
         v = M_hat * v;
-        v = v ./ norm(v, 2);
-end
+        v = v ./ norm(v, <span class="hljs-number">2</span>);
+<span class="hljs-keyword">end</span>
 
 endfunction
 
-function [v] = rank2(M, d, v_quadratic_error)
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[v]</span> = <span class="hljs-title">rank2</span><span class="hljs-params">(M, d, v_quadratic_error)</span></span>
 
-N = size(M, 2); % N is equal to half the size of M
-v = rand(N, 1);
-v = v ./ norm(v, 1);   % This is now L1, not L2
-last_v = ones(N, 1) * inf;
-M_hat = (d .* M) + (((1 - d) / N) .* ones(N, N));
+N = <span class="hljs-built_in">size</span>(M, <span class="hljs-number">2</span>); <span class="hljs-comment">% N is equal to half the size of M</span>
+v = <span class="hljs-built_in">rand</span>(N, <span class="hljs-number">1</span>);
+v = v ./ norm(v, <span class="hljs-number">1</span>);   <span class="hljs-comment">% This is now L1, not L2</span>
+last_v = <span class="hljs-built_in">ones</span>(N, <span class="hljs-number">1</span>) * <span class="hljs-built_in">inf</span>;
+M_hat = (d .* M) + (((<span class="hljs-number">1</span> - d) / N) .* <span class="hljs-built_in">ones</span>(N, N));
 
-while(norm(v - last_v, 2) &gt; v_quadratic_error)
+<span class="hljs-keyword">while</span>(norm(v - last_v, <span class="hljs-number">2</span>) &gt; v_quadratic_error)
         last_v = v;
         v = M_hat * v;  
-        % removed the L2 norm of the iterated PR
-end
+        <span class="hljs-comment">% removed the L2 norm of the iterated PR</span>
+<span class="hljs-keyword">end</span>
 
 endfunction</code></pre><p>以下是调用过程代码：</p>
-<pre><code>M = [0 0 0 0 1 ; 0.5 0 0 0 0 ; 0.5 0 0 0 0 ; 0 1 0.5 0 0 ; 0 0 0.5 1 0];
-rank(M, 0.80, 0.001)</code></pre><blockquote>
+<pre><code class="hljs">M = <span class="hljs-matrix">[<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span> ; <span class="hljs-number">0.5</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> ; <span class="hljs-number">0.5</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> ; <span class="hljs-number">0</span> <span class="hljs-number">1</span> <span class="hljs-number">0.5</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> ; <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0.5</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span>]</span>;
+rank(M, <span class="hljs-number">0.80</span>, <span class="hljs-number">0.001</span>)</code></pre><blockquote>
 <p>Page Rank 的其他语言实现可以从 GitHub 获得：<a href="https://github.com/louridas/pagerank">https://github.com/louridas/pagerank</a></p>
 </blockquote>
 <h1>倒排索引（Lucene）</h1>
@@ -381,65 +378,65 @@ rank(M, 0.80, 0.001)</code></pre><blockquote>
 <blockquote>
 <p>页面文件将以编号命名，第一行为 URL，其后为 HTML 内容。</p>
 </blockquote>
-<pre><code><span class="shebang">#!/bin/bash
+<pre><code class="hljs"><span class="hljs-shebang">#!/bin/bash
 </span>
-less *.warc.gz | sed <span class="string">'s/\r//g'</span> &gt; pages.txt
+less *.warc.gz | sed <span class="hljs-string">'s/\r//g'</span> &gt; pages.txt
 
-[ ! <span class="operator">-d</span> files ] &amp;&amp; mkdir files
+[ ! <span class="hljs-operator">-d</span> files ] &amp;&amp; mkdir files
 
-<span class="keyword">while</span> <span class="built_in">read</span> -r line
-<span class="keyword">do</span>
-    <span class="built_in">let</span> i++
-    lines[<span class="variable">$i</span>]=<span class="variable">$line</span>
-<span class="keyword">done</span> &lt; pages.txt
+<span class="hljs-keyword">while</span> <span class="hljs-built_in">read</span> -r line
+<span class="hljs-keyword">do</span>
+    <span class="hljs-built_in">let</span> i++
+    lines[<span class="hljs-variable">$i</span>]=<span class="hljs-variable">$line</span>
+<span class="hljs-keyword">done</span> &lt; pages.txt
 
-nline=<span class="variable">$i</span>
+nline=<span class="hljs-variable">$i</span>
 
-url=<span class="string">''</span>
-state=<span class="string">'none'</span>
-ndoc=<span class="number">0</span>
+url=<span class="hljs-string">''</span>
+state=<span class="hljs-string">'none'</span>
+ndoc=<span class="hljs-number">0</span>
 
-<span class="keyword">for</span> (( i=<span class="number">1</span>;i&lt;=nline;i++ ))
-<span class="keyword">do</span>
-    line=<span class="variable">${lines[$i]}</span>
+<span class="hljs-keyword">for</span> (( i=<span class="hljs-number">1</span>;i&lt;=nline;i++ ))
+<span class="hljs-keyword">do</span>
+    line=<span class="hljs-variable">${lines[$i]}</span>
 
-    <span class="keyword">case</span> <span class="string">"<span class="variable">$line</span>"</span> <span class="keyword">in</span>
-        <span class="string">"WARC/1.0"</span>)
-            state=<span class="string">'warc'</span>
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"<span class="hljs-variable">$line</span>"</span> <span class="hljs-keyword">in</span>
+        <span class="hljs-string">"WARC/1.0"</span>)
+            state=<span class="hljs-string">'warc'</span>
             ;;
-        <span class="string">"WARC-Type: response"</span>)
-            state=<span class="string">'warc-valid'</span>
-            url=<span class="variable">${lines[$i+1]}</span>
-            url=<span class="variable">${url#*: }</span>
-            <span class="built_in">let</span> ndoc++
-            <span class="built_in">echo</span> <span class="variable">$url</span> &gt;&gt; files/<span class="variable">$ndoc</span>
-            <span class="built_in">echo</span> &gt;&gt; files/<span class="variable">$ndoc</span>
+        <span class="hljs-string">"WARC-Type: response"</span>)
+            state=<span class="hljs-string">'warc-valid'</span>
+            url=<span class="hljs-variable">${lines[$i+1]}</span>
+            url=<span class="hljs-variable">${url#*: }</span>
+            <span class="hljs-built_in">let</span> ndoc++
+            <span class="hljs-built_in">echo</span> <span class="hljs-variable">$url</span> &gt;&gt; files/<span class="hljs-variable">$ndoc</span>
+            <span class="hljs-built_in">echo</span> &gt;&gt; files/<span class="hljs-variable">$ndoc</span>
             ;;
-        <span class="string">"HTTP/1.1 200 OK"</span>)
-            [ <span class="variable">$state</span> = <span class="string">'warc-valid'</span> ] &amp;&amp; state=<span class="string">'http'</span>
+        <span class="hljs-string">"HTTP/1.1 200 OK"</span>)
+            [ <span class="hljs-variable">$state</span> = <span class="hljs-string">'warc-valid'</span> ] &amp;&amp; state=<span class="hljs-string">'http'</span>
             ;;
-        <span class="string">""</span>)
-            [ <span class="variable">$state</span> = <span class="string">'http'</span> ] &amp;&amp; state=<span class="string">'doc'</span>
+        <span class="hljs-string">""</span>)
+            [ <span class="hljs-variable">$state</span> = <span class="hljs-string">'http'</span> ] &amp;&amp; state=<span class="hljs-string">'doc'</span>
             ;;
         *)
-            [ <span class="variable">$state</span> = <span class="string">'doc'</span> ] &amp;&amp; <span class="built_in">echo</span> <span class="variable">$line</span> &gt;&gt; files/<span class="variable">$ndoc</span>
+            [ <span class="hljs-variable">$state</span> = <span class="hljs-string">'doc'</span> ] &amp;&amp; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$line</span> &gt;&gt; files/<span class="hljs-variable">$ndoc</span>
             ;;
-    <span class="keyword">esac</span>
-<span class="keyword">done</span></code></pre><h2>建立索引</h2>
+    <span class="hljs-keyword">esac</span>
+<span class="hljs-keyword">done</span></code></pre><h2>建立索引</h2>
 <ol>
 <li><p>安装与配置</p>
-<pre><code> <span class="comment"># 下载后解压</span>
+<pre><code class="hljs"> <span class="hljs-comment"># 下载后解压</span>
  tar -xzvf lucene-xxx.tar.gz
- <span class="built_in">cd</span> lucene
+ <span class="hljs-built_in">cd</span> lucene
 
- <span class="comment"># 设置环境变量，直接加入所有的 jar 包</span>
- dir=`<span class="built_in">pwd</span>`
- <span class="keyword">export</span> CLASSPATH=`find -name <span class="string">'*.jar'</span> | sed <span class="string">"s@^.@<span class="variable">$dir</span>@g"</span> | sed <span class="string">':a;N;s/\n/:/;ta'</span>`</code></pre></li>
+ <span class="hljs-comment"># 设置环境变量，直接加入所有的 jar 包</span>
+ dir=`<span class="hljs-built_in">pwd</span>`
+ <span class="hljs-keyword">export</span> CLASSPATH=`find -name <span class="hljs-string">'*.jar'</span> | sed <span class="hljs-string">"s@^.@<span class="hljs-variable">$dir</span>@g"</span> | sed <span class="hljs-string">':a;N;s/\n/:/;ta'</span>`</code></pre></li>
 <li><p>建立索引与搜索</p>
-<pre><code> <span class="comment"># 建立索引，files 为页面文件所在目录，会在当前目录产生 index 目录来保存索引信息</span>
+<pre><code class="hljs"> <span class="hljs-comment"># 建立索引，files 为页面文件所在目录，会在当前目录产生 index 目录来保存索引信息</span>
  java org.apache.lucene.demo.IndexFiles -docs files
 
- <span class="comment"># 搜索，将进入交互式搜索程序</span>
+ <span class="hljs-comment"># 搜索，将进入交互式搜索程序</span>
  java org.apache.lucene.demo.SearchFiles</code></pre></li>
 </ol>
 

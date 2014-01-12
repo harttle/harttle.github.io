@@ -2,8 +2,8 @@
 Some basic Github styles and syntax highlighting CSS via Pygments.
 */
 .md * {
-	font-size: 14px;
-	line-height: 1.6;
+	font-size: 15px;
+	line-height: 1.7;
 	font-family: helvetica,arial,freesans,clean,sans-serif;
 	overflow-wrap: break-word;      /*防止一行太长影响响应式布局*/
 }
@@ -162,3 +162,8 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
 .md .vg{color:#008080;}
 .md .vi{color:#008080;}
 .md .il{color:#099;}
+
+.md div.mathjax{
+  overflow-x:auto;
+  overflow-y:hidden;
+}

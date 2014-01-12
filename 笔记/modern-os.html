@@ -43,8 +43,7 @@
 
 
 <link rel="stylesheet" href="/assets/css/markdown.css">
-<!--link rel="stylesheet" href="/assets/css/highlight/ir_black.css"-->
-<link rel="stylesheet" href="http://highlightjs.org/static/styles/tomorrow-night-eighties.css">
+<link rel="stylesheet" href="/assets/css/highlight/tomorrow-night-eighties.css">
 <style>
   /* By default it's not affixed in mobile views, so undo that */
   .sidebar.affix {
@@ -65,8 +64,7 @@
   /* All levels of nav */
   .sidebar .nav > li > a {
     display: block;
-    /*color: #6c6c6c;*/
-    padding: 5px 20px;
+    padding: 5px 15px;
     color: #428bca;
     text-decoration: none;
   }
@@ -80,9 +78,8 @@
   .sidebar .nav > .active > a,
   .sidebar .nav > .active:hover > a,
   .sidebar .nav > .active:focus > a {
+    margin-bottom:1px;
     font-weight: bold;
-    /*color: #555;
-    background-color: transparent;*/
     color: white;
     background: #428bca;
     text-shadow: 0 1px 0 rgba(0,0,0,.15);
@@ -100,20 +97,20 @@
   .sidebar .nav .nav > li > a {
     padding-top:    3px;
     padding-bottom: 3px;
-    padding-left: 30px;
+    margin-left: 10px;
     font-size: 90%;
   }
   .sidebar .nav .nav .nav > li > a {
-    padding-left: 40px;
+    margin-left: 20px;
   }
   .sidebar .nav .nav .nav .nav > li > a {
-    padding-left: 50px;
+    margin-left: 30px;
   }
   .sidebar .nav .nav .nav .nav .nav > li > a {
-    padding-left: 60px;
+    margin-left: 40px;
   }
   .sidebar .nav .nav .nav .nav .nav .nav> li > a {
-    padding-left: 70px;
+    margin-left: 50px;
   }  
   
   /* Show and affix the side nav when space allows it */
@@ -547,19 +544,19 @@
 <h4>Lock Variables</h4>
 <p>This would not take place without atom operations.</p>
 <h4>Strict Alternation</h4>
-<pre><code><span class="comment">//Process 1</span>
-<span class="keyword">while</span>(TRUE){
-    <span class="keyword">while</span> (turn != <span class="number">0</span>);
+<pre><code class="hljs"><span class="hljs-comment">//Process 1</span>
+<span class="hljs-keyword">while</span>(TRUE){
+    <span class="hljs-keyword">while</span> (turn != <span class="hljs-number">0</span>);
     critical_region();
-    turn = <span class="number">1</span>;
+    turn = <span class="hljs-number">1</span>;
     noncritical_region();
 }
 
-<span class="comment">//Process 2</span>
-<span class="keyword">while</span>(TRUE){
-    <span class="keyword">while</span>(turn != <span class="number">1</span>);
+<span class="hljs-comment">//Process 2</span>
+<span class="hljs-keyword">while</span>(TRUE){
+    <span class="hljs-keyword">while</span>(turn != <span class="hljs-number">1</span>);
     critical_region();
-    turn = <span class="number">0</span>;
+    turn = <span class="hljs-number">0</span>;
     noncritical_regino();
 }</code></pre><p>Problem: neither of them could run twice in a row, which violates condition 3.</p>
 <blockquote>
@@ -567,36 +564,36 @@
 </blockquote>
 <h4>Peterson&#39;s Solution</h4>
 <p>Busy waiting lock variables.</p>
-<pre><code><span class="preprocessor">#define FALSE 0</span>
-<span class="preprocessor">#define TRUE 1</span>
-<span class="preprocessor">#define N 2</span>
+<pre><code class="hljs"><span class="hljs-preprocessor">#define FALSE 0</span>
+<span class="hljs-preprocessor">#define TRUE 1</span>
+<span class="hljs-preprocessor">#define N 2</span>
 
-<span class="keyword">int</span> turn;
-<span class="keyword">int</span> interested[N];
+<span class="hljs-keyword">int</span> turn;
+<span class="hljs-keyword">int</span> interested[N];
 
-<span class="keyword">void</span> enter_region(<span class="keyword">int</span> process)
+<span class="hljs-keyword">void</span> enter_region(<span class="hljs-keyword">int</span> process)
 {
-    <span class="keyword">int</span> other = <span class="number">1</span> - process;
+    <span class="hljs-keyword">int</span> other = <span class="hljs-number">1</span> - process;
     interested[process] = TRUE;
     turn = process;
-    <span class="keyword">while</span> (turn == process &amp;&amp; interested[other] == TRUE);
+    <span class="hljs-keyword">while</span> (turn == process &amp;&amp; interested[other] == TRUE);
 }
 
-<span class="keyword">void</span> leave_region(<span class="keyword">int</span> process)
+<span class="hljs-keyword">void</span> leave_region(<span class="hljs-keyword">int</span> process)
 {
     interested[process] = FALSE;
 }</code></pre><h4>TSL Instruction</h4>
-<pre><code>TSL RX, LOCK</code></pre><p>Test and lock lock instruction reads the content of the memory word <code>lock</code> into register <code>RX</code> and then stores a nonzero value at the memory address <code>lock</code>.</p>
+<pre><code class="hljs">TSL RX, <span class="hljs-operator"><span class="hljs-keyword">LOCK</span></span></code></pre><p>Test and lock lock instruction reads the content of the memory word <code>lock</code> into register <code>RX</code> and then stores a nonzero value at the memory address <code>lock</code>.</p>
 <blockquote>
 <p>It&#39;s guaranteed by the hardware that the read and set operations are indivisible.</p>
 </blockquote>
-<pre><code>enter_region:
+<pre><code class="hljs"><span class="hljs-title">enter_region:</span>
     TSL REGISTER, LOCK
-    JNE REGISTER, #0, enter_region
-    RET     &#39;return
+    JNE REGISTER, <span class="hljs-comment">#0, enter_region</span>
+    RET     'return
 
-leave_region:
-    MOVE LOCK, #0
+<span class="hljs-title">leave_region:</span>
+    MOVE LOCK, <span class="hljs-comment">#0</span>
     RET</code></pre><p>An alternative instruction to <code>TSL</code> is <code>XCHG</code>. The implementations are similiar.</p>
 <h3>Sleep and Wakeup</h3>
 <p>Problems in busy waiting:</p>
@@ -605,20 +602,20 @@ leave_region:
 <li>process with higer priority will keep busy waiting while lower priority process never run</li>
 </ol>
 <h4>The Product-Consumer Problem</h4>
-<pre><code>Producer loop:
-    <span class="keyword">if</span> count == N:
+<pre><code class="hljs">Producer loop:
+    <span class="hljs-keyword">if</span> count == N:
         sleep
-    <span class="keyword">else</span>:
+    <span class="hljs-keyword">else</span>:
         produce one
-    <span class="keyword">if</span> count == <span class="number">1</span>:
+    <span class="hljs-keyword">if</span> count == <span class="hljs-number">1</span>:
         wakeup consumer
 
 Consumer loop:
-    <span class="keyword">if</span> count == <span class="number">0</span>:
+    <span class="hljs-keyword">if</span> count == <span class="hljs-number">0</span>:
         sleep
-    <span class="keyword">else</span>:
+    <span class="hljs-keyword">else</span>:
         consume one
-    <span class="keyword">if</span> count == N-<span class="number">1</span>
+    <span class="hljs-keyword">if</span> count == N-<span class="hljs-number">1</span>
         wakeup producer</code></pre><p>Since <code>count</code> is unconstrained, race condition could occur. When consumer is about to sleep, wakeup signal from producer is lost, causing both of them sleeping.</p>
 <h4>Semaphores</h4>
 <p>Semaphores are used to buffer signals, keep them from losing. Value 0 indicating that no wakeups were saved; positive value if some wakeups were pending.</p>

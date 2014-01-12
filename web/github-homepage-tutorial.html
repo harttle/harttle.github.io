@@ -43,8 +43,7 @@
 
 
 <link rel="stylesheet" href="/assets/css/markdown.css">
-<!--link rel="stylesheet" href="/assets/css/highlight/ir_black.css"-->
-<link rel="stylesheet" href="http://highlightjs.org/static/styles/tomorrow-night-eighties.css">
+<link rel="stylesheet" href="/assets/css/highlight/tomorrow-night-eighties.css">
 <style>
   /* By default it's not affixed in mobile views, so undo that */
   .sidebar.affix {
@@ -65,8 +64,7 @@
   /* All levels of nav */
   .sidebar .nav > li > a {
     display: block;
-    /*color: #6c6c6c;*/
-    padding: 5px 20px;
+    padding: 5px 15px;
     color: #428bca;
     text-decoration: none;
   }
@@ -80,9 +78,8 @@
   .sidebar .nav > .active > a,
   .sidebar .nav > .active:hover > a,
   .sidebar .nav > .active:focus > a {
+    margin-bottom:1px;
     font-weight: bold;
-    /*color: #555;
-    background-color: transparent;*/
     color: white;
     background: #428bca;
     text-shadow: 0 1px 0 rgba(0,0,0,.15);
@@ -100,20 +97,20 @@
   .sidebar .nav .nav > li > a {
     padding-top:    3px;
     padding-bottom: 3px;
-    padding-left: 30px;
+    margin-left: 10px;
     font-size: 90%;
   }
   .sidebar .nav .nav .nav > li > a {
-    padding-left: 40px;
+    margin-left: 20px;
   }
   .sidebar .nav .nav .nav .nav > li > a {
-    padding-left: 50px;
+    margin-left: 30px;
   }
   .sidebar .nav .nav .nav .nav .nav > li > a {
-    padding-left: 60px;
+    margin-left: 40px;
   }
   .sidebar .nav .nav .nav .nav .nav .nav> li > a {
-    padding-left: 70px;
+    margin-left: 50px;
   }  
   
   /* Show and affix the side nav when space allows it */
@@ -264,16 +261,16 @@
 <ul>
 <li>如果已经安装过ruby，请确认版本为 1.9.3 或 2.0.0（通过运行 <code>ruby --version</code> 得到ruby版本）</li>
 <li><p>否则，安装Ruby</p>
-<pre><code>  <span class="comment">#ubuntu</span>
-  <span class="built_in">sudo</span> apt-get install ruby
-  <span class="comment">#centos</span>
+<pre><code class="hljs">  <span class="hljs-comment">#ubuntu</span>
+  <span class="hljs-built_in">sudo</span> apt-get install ruby
+  <span class="hljs-comment">#centos</span>
   yum install ruby
-  <span class="comment">#arch</span>
+  <span class="hljs-comment">#arch</span>
   yaourt -S ruby</code></pre></li>
 </ul>
 </li>
 <li><p>Jekyll<br> 安装 Jekyll</p>
-<pre><code> gem install jekyll</code></pre></li>
+<pre><code class="hljs"> gem install jekyll</code></pre></li>
 </ol>
 <h2>建立站点</h2>
 <h3>创建 GitHub 仓库</h3>
@@ -287,17 +284,17 @@
 <h3>生成站点文件</h3>
 <ol>
 <li><p>生成站点文件</p>
-<pre><code> <span class="comment"># 建立站点</span>
+<pre><code class="hljs"> <span class="hljs-comment"># 建立站点</span>
  jekyll new my-site
- <span class="comment"># 拷贝至 GitHub 仓库</span>
+ <span class="hljs-comment"># 拷贝至 GitHub 仓库</span>
  cp -r my-site/. username.github.io
  rm -r my-site
- <span class="comment"># 添加编译生成的文件至 gitignore</span>
- <span class="built_in">echo</span> <span class="string">'_site'</span> &gt;&gt; .gitignore</code></pre></li>
+ <span class="hljs-comment"># 添加编译生成的文件至 gitignore</span>
+ <span class="hljs-built_in">echo</span> <span class="hljs-string">'_site'</span> &gt;&gt; .gitignore</code></pre></li>
 <li><p>编译站点，并运行本地服务</p>
-<pre><code> <span class="comment"># 编译生成静态站点，-w 选项可以监测文件变化并自动重新生成</span>
+<pre><code class="hljs"> <span class="hljs-comment"># 编译生成静态站点，-w 选项可以监测文件变化并自动重新生成</span>
  jekyll build -w
- <span class="comment"># 运行服务</span>
+ <span class="hljs-comment"># 运行服务</span>
  jekyll serve</code></pre></li>
 <li>打开浏览器，访问 localhost:4000，将看到 jekyll 生成的默认站点。</li>
 </ol>
@@ -311,22 +308,22 @@
 </ul>
 </li>
 <li><p>jekyll 站点文件结构</p>
-<pre><code>  .
-  ├── _config.yml        //站点的配置文件
-  ├── _drafts        //博客草稿
-  |   ├── begin-with-the-crazy-ideas.textile
-  |   └── on-simplicity-in-technology.markdown
-  ├── _includes        //供引入的html模块
-  |   ├── footer.html
-  |   └── header.html
-  ├── _layouts        //视图模板
-  |   ├── default.html
-  |   └── post.html
-  ├── _posts        //博客文章
-  |   ├── 2007-10-29-why-every-programmer-should-play-nethack.textile
-  |   └── 2009-04-26-barcamp-boston-4-roundup.textile
-  ├── _site        //jekyll 编译生成的站点
-  └── index.html</code></pre></li>
+<pre><code class="hljs">  <span class="hljs-built_in">.</span>
+  ├── _config<span class="hljs-built_in">.</span>yml        <span class="hljs-comment">//站点的配置文件</span>
+  ├── _drafts        <span class="hljs-comment">//博客草稿</span>
+  <span class="hljs-subst">|</span>   ├── begin<span class="hljs-attribute">-with</span><span class="hljs-attribute">-the</span><span class="hljs-attribute">-crazy</span><span class="hljs-attribute">-ideas</span><span class="hljs-built_in">.</span>textile
+  <span class="hljs-subst">|</span>   └── <span class="hljs-keyword">on</span><span class="hljs-attribute">-simplicity</span><span class="hljs-attribute">-in</span><span class="hljs-attribute">-technology</span><span class="hljs-built_in">.</span>markdown
+  ├── _includes        <span class="hljs-comment">//供引入的html模块</span>
+  <span class="hljs-subst">|</span>   ├── footer<span class="hljs-built_in">.</span>html
+  <span class="hljs-subst">|</span>   └── <span class="hljs-keyword">header</span><span class="hljs-built_in">.</span>html
+  ├── _layouts        <span class="hljs-comment">//视图模板</span>
+  <span class="hljs-subst">|</span>   ├── default<span class="hljs-built_in">.</span>html
+  <span class="hljs-subst">|</span>   └── post<span class="hljs-built_in">.</span>html
+  ├── _posts        <span class="hljs-comment">//博客文章</span>
+  <span class="hljs-subst">|</span>   ├── <span class="hljs-number">2007</span><span class="hljs-subst">-</span><span class="hljs-number">10</span><span class="hljs-subst">-</span><span class="hljs-number">29</span><span class="hljs-attribute">-why</span><span class="hljs-attribute">-every</span><span class="hljs-attribute">-programmer</span><span class="hljs-attribute">-should</span><span class="hljs-attribute">-play</span><span class="hljs-attribute">-nethack</span><span class="hljs-built_in">.</span>textile
+  <span class="hljs-subst">|</span>   └── <span class="hljs-number">2009</span><span class="hljs-subst">-</span><span class="hljs-number">04</span><span class="hljs-subst">-</span><span class="hljs-number">26</span><span class="hljs-attribute">-barcamp</span><span class="hljs-attribute">-boston</span><span class="hljs-subst">-</span><span class="hljs-number">4</span><span class="hljs-attribute">-roundup</span><span class="hljs-built_in">.</span>textile
+  ├── _site        <span class="hljs-comment">//jekyll 编译生成的站点</span>
+  └── index<span class="hljs-built_in">.</span>html</code></pre></li>
 <li><p>站点配置文件：_config.yml<br>  该文件采用 <strong><a href="http://www.yaml.org/spec/1.2/spec.html">YAML</a></strong> 标记语言组织内容，在该文件修改站点保留变量，或者添加自定义变量。这里定义的变量在模板中可通过 <code>site.VARIABLE_NAME</code> 访问（记住重启jekyll服务）。</p>
 <pre><code>  # GitHUb Pages 默认的 Markdown 引擎（即 GFM）    
   markdown: redcarpet
@@ -336,9 +333,9 @@
 <h3>同步至 GitHub</h3>
 <ol>
 <li><p>运行 git 提交至GitHub</p>
-<pre><code> <span class="comment"># 提交改动至HEAD版本</span>
- git commit <span class="operator">-a</span>
- <span class="comment"># 同步HEAD至服务器</span>
+<pre><code class="hljs"> <span class="hljs-comment"># 提交改动至HEAD版本</span>
+ git commit <span class="hljs-operator">-a</span>
+ <span class="hljs-comment"># 同步HEAD至服务器</span>
  git push</code></pre></li>
 <li>GitHub将会在10分钟内编译你的文件生成静态站点，访问 username.github.io 即可查看博客。</li>
 </ol>
@@ -362,31 +359,31 @@
 <p>我们选择在 username.github.io repo 中新建一个叫 <code>dev</code> 的 branch 来做开发，把生成的静态站点 <code>_site</code> push 到 master 分支。当然，我们需要把master上的jekyll文件复制过来。</p>
 <ol>
 <li><p>新建 branch</p>
-<pre><code> <span class="comment"># 建立dev目录</span>
+<pre><code class="hljs"> <span class="hljs-comment"># 建立dev目录</span>
  mkdir dev   
- <span class="built_in">cd</span> dev
+ <span class="hljs-built_in">cd</span> dev
 
- <span class="comment"># 建立git仓库，并连接到github</span>
+ <span class="hljs-comment"># 建立git仓库，并连接到github</span>
  git init    
  git remote add origin git@github.com:harttle/harttle.github.io.git 
 
- <span class="comment"># 新建分支</span>
+ <span class="hljs-comment"># 新建分支</span>
  git checkout -b dev 
  git push --set-upstream origin dev
 
- <span class="comment"># 现在可以开始工作了</span>
+ <span class="hljs-comment"># 现在可以开始工作了</span>
  git push
  git pull</code></pre></li>
 <li><p>迁移 Jekyll 站点</p>
-<pre><code> <span class="comment"># 拷贝文件</span>
+<pre><code class="hljs"> <span class="hljs-comment"># 拷贝文件</span>
  cp -r harttle.github.io/. dev/
 
- <span class="comment"># 编译站点</span>
- <span class="built_in">cd</span> dev/
- jekyll build <span class="operator">-d</span> ../harttle.github.io/
+ <span class="hljs-comment"># 编译站点</span>
+ <span class="hljs-built_in">cd</span> dev/
+ jekyll build <span class="hljs-operator">-d</span> ../harttle.github.io/
 
- <span class="comment"># 运行站点</span>
- jekyll serve <span class="operator">-d</span> ../harttle.github.io/</code></pre></li>
+ <span class="hljs-comment"># 运行站点</span>
+ jekyll serve <span class="hljs-operator">-d</span> ../harttle.github.io/</code></pre></li>
 </ol>
 
 
