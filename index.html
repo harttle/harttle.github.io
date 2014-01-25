@@ -30,6 +30,19 @@
         margin: 3px;
         display: inline-block;
     }
+    .panel .panel-title{
+        font-style: italic;
+        color: #000;
+    }
+    .panel a,#post-list a{
+        color: #555;
+    }
+    .panel a:hover,#post-list a:hover{
+        color: #000;
+    }    
+    .page-header{
+        color: #000;
+    }
     
   /* carousel style */
   #carousel{
@@ -110,6 +123,8 @@
                     <h3 class="panel-title">Projects</h3>
                 </div>
                 <div class="panel-body">
+                    <p><a href="http://buddys.github.io/marktex/" target="_blank" title="A Smarter Markdown Parser">MarkTex</a></p>
+                    <p><a href="http://harttle.duapp.com" target="_blank" title="支持 Markdown 和 Latex 的云端笔记应用">God Notes 云笔记</a></p>
                     <p>
                         <a href="http://bbs.aliyun.com/read.php?spm=5176.383663.5.38.NAbIv2&tid=129380" target="_blank" title="阿里云第三方SDK">
                             阿里云
@@ -122,8 +137,6 @@
                             PKU Gateway Chrome Extension
                         </a>
                     </p>
-                    <p><a href="http://buddys.github.io/marktex/" target="_blank" title="A Smarter Markdown Parser">MarkTex</a></p>
-                    <p><a href="http://harttle.duapp.com" target="_blank" title="支持 Markdown 和 Latex 的云端笔记应用">God Notes 云笔记</a></p>
                     <p><a href="//exed.oce.pkusz.edu.cn" target="_blank">PKU Shenzhen 高级研修</a></p>
                     <p style="margin-bottom: 0"><a href="http://oa.china-idc.cn/" target="_blank">中投发展 OA 系统</a></p>
                 </div>
@@ -214,13 +227,13 @@
             
             <div class="page-header">
                 <h3>最近更新</h3>
-                <a style="margin-top: -20px;" class="label label-info pull-right" href="/category/blog.html">
+                <a style="margin-top: -20px;" class="label label-primary pull-right" href="/category/blog.html">
                     更多              
                     <span class="glyphicon glyphicon-hand-right"></span>
                 </a>
             </div>
             
-            <div>
+            <div id="post-list">
                 
                   
 <div style=margin-bottom:20px;>
