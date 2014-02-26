@@ -256,83 +256,83 @@
 </blockquote>
 <h2>示例配置</h2>
 <p>一个示例配置文件如下：</p>
-<pre><code>&quot; .vimrc
-&quot; See: http://vimdoc.sourceforge.net/htmldoc/options.html for details
-
-&quot; For multi-byte character support (CJK support, for example):
-&quot; set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1
-
-set tabstop=4       &quot; Number of spaces that a &lt;Tab&gt; in the file counts for.
-
-set shiftwidth=4    &quot; Number of spaces to use for each step of (auto)indent.
-
-set expandtab       &quot; Use the appropriate number of spaces to insert a &lt;Tab&gt;.
-                    &quot; Spaces are used in indents with the &#39;&gt;&#39; and &#39;&lt;&#39; commands
-                    &quot; and when &#39;autoindent&#39; is on. To insert a real tab when
-                    &quot; &#39;expandtab&#39; is on, use CTRL-V &lt;Tab&gt;.
-
-set smarttab        &quot; When on, a &lt;Tab&gt; in front of a line inserts blanks
-                    &quot; according to &#39;shiftwidth&#39;. &#39;tabstop&#39; is used in other
-                    &quot; places. A &lt;BS&gt; will delete a &#39;shiftwidth&#39; worth of space
-                    &quot; at the start of the line.
-
-set showcmd         &quot; Show (partial) command in status line.
-
-set number          &quot; Show line numbers.
-
-set showmatch       &quot; When a bracket is inserted, briefly jump to the matching
-                    &quot; one. The jump is only done if the match can be seen on the
-                    &quot; screen. The time to show the match can be set with
-                    &quot; &#39;matchtime&#39;.
-
-set hlsearch        &quot; When there is a previous search pattern, highlight all
-                    &quot; its matches.
-
-set incsearch       &quot; While typing a search command, show immediately where the
-                    &quot; so far typed pattern matches.
-
-set ignorecase      &quot; Ignore case in search patterns.
-
-set smartcase       &quot; Override the &#39;ignorecase&#39; option if the search pattern
-                    &quot; contains upper case characters.
-
-set backspace=2     &quot; Influences the working of &lt;BS&gt;, &lt;Del&gt;, CTRL-W
-                    &quot; and CTRL-U in Insert mode. This is a list of items,
-                    &quot; separated by commas. Each item allows a way to backspace
-                    &quot; over something.
-
-set autoindent      &quot; Copy indent from current line when starting a new line
-                    &quot; (typing &lt;CR&gt; in Insert mode or when using the &quot;o&quot; or &quot;O&quot;
-                    &quot; command).
-
-set textwidth=79    &quot; Maximum width of text that is being inserted. A longer
-                    &quot; line will be broken after white space to get this width.
-
-set formatoptions=c,q,r,t &quot; This is a sequence of letters which describes how
-                    &quot; automatic formatting is to be done.
-                    &quot;
-                    &quot; letter    meaning when present in &#39;formatoptions&#39;
-                    &quot; ------    ---------------------------------------
-                    &quot; c         Auto-wrap comments using textwidth, inserting
-                    &quot;           the current comment leader automatically.
-                    &quot; q         Allow formatting of comments with &quot;gq&quot;.
-                    &quot; r         Automatically insert the current comment leader
-                    &quot;           after hitting &lt;Enter&gt; in Insert mode. 
-                    &quot; t         Auto-wrap text using textwidth (does not apply
-                    &quot;           to comments)
-
-set ruler           &quot; Show the line and column number of the cursor position,
-                    &quot; separated by a comma.
-
-set background=dark &quot; When set to &quot;dark&quot;, Vim will try to use colors that look
-                    &quot; good on a dark background. When set to &quot;light&quot;, Vim will
-                    &quot; try to use colors that look good on a light background.
-                    &quot; Any other value is illegal.
-
-set mouse=a         &quot; Enable the use of the mouse.
-
-filetype plugin indent on
-syntax on</code></pre><h1>进阶技巧</h1>
+<pre><code class="hljs"><span class="hljs-string">" .vimrc
+</span><span class="hljs-string">" See: http://vimdoc.sourceforge.net/htmldoc/options.html for details
+</span>
+<span class="hljs-string">" For multi-byte character support (CJK support, for example):
+</span><span class="hljs-string">" set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1
+</span>
+<span class="hljs-keyword">set</span> tabstop=<span class="hljs-number">4</span>       <span class="hljs-string">" Number of spaces that a &lt;Tab&gt; in the file counts for.
+</span>
+<span class="hljs-keyword">set</span> <span class="hljs-built_in">shiftwidth</span>=<span class="hljs-number">4</span>    <span class="hljs-string">" Number of spaces to use for each step of (auto)indent.
+</span>
+<span class="hljs-keyword">set</span> expandtab       <span class="hljs-string">" Use the appropriate number of spaces to insert a &lt;Tab&gt;.
+</span>                    <span class="hljs-string">" Spaces are used in indents with the '&gt;' and '&lt;' commands
+</span>                    <span class="hljs-string">" and when 'autoindent' is on. To insert a real tab when
+</span>                    <span class="hljs-string">" 'expandtab' is on, use CTRL-V &lt;Tab&gt;.
+</span>
+<span class="hljs-keyword">set</span> smarttab        <span class="hljs-string">" When on, a &lt;Tab&gt; in front of a line inserts blanks
+</span>                    <span class="hljs-string">" according to 'shiftwidth'. 'tabstop' is used in other
+</span>                    <span class="hljs-string">" places. A &lt;BS&gt; will delete a 'shiftwidth' worth of space
+</span>                    <span class="hljs-string">" at the start of the line.
+</span>
+<span class="hljs-keyword">set</span> showcmd         <span class="hljs-string">" Show (partial) command in status line.
+</span>
+<span class="hljs-keyword">set</span> <span class="hljs-keyword">number</span>          <span class="hljs-string">" Show line numbers.
+</span>
+<span class="hljs-keyword">set</span> showmatch       <span class="hljs-string">" When a bracket is inserted, briefly jump to the matching
+</span>                    <span class="hljs-string">" one. The jump is only done if the match can be seen on the
+</span>                    <span class="hljs-string">" screen. The time to show the match can be set with
+</span>                    <span class="hljs-string">" 'matchtime'.
+</span>
+<span class="hljs-keyword">set</span> hlsearch        <span class="hljs-string">" When there is a previous search pattern, highlight all
+</span>                    <span class="hljs-string">" its matches.
+</span>
+<span class="hljs-keyword">set</span> incsearch       <span class="hljs-string">" While typing a search command, show immediately where the
+</span>                    <span class="hljs-string">" so far typed pattern matches.
+</span>
+<span class="hljs-keyword">set</span> ignorecase      <span class="hljs-string">" Ignore case in search patterns.
+</span>
+<span class="hljs-keyword">set</span> smartcase       <span class="hljs-string">" Override the 'ignorecase' option if the search pattern
+</span>                    <span class="hljs-string">" contains upper case characters.
+</span>
+<span class="hljs-keyword">set</span> backspace=<span class="hljs-number">2</span>     <span class="hljs-string">" Influences the working of &lt;BS&gt;, &lt;Del&gt;, CTRL-W
+</span>                    <span class="hljs-string">" and CTRL-U in Insert mode. This is a list of items,
+</span>                    <span class="hljs-string">" separated by commas. Each item allows a way to backspace
+</span>                    <span class="hljs-string">" over something.
+</span>
+<span class="hljs-keyword">set</span> autoindent      <span class="hljs-string">" Copy indent from current line when starting a new line
+</span>                    <span class="hljs-string">" (typing &lt;CR&gt; in Insert mode or when using the "</span><span class="hljs-keyword">o</span><span class="hljs-string">" or "</span>O<span class="hljs-string">"
+</span>                    <span class="hljs-string">" command).
+</span>
+<span class="hljs-keyword">set</span> textwidth=<span class="hljs-number">79</span>    <span class="hljs-string">" Maximum width of text that is being inserted. A longer
+</span>                    <span class="hljs-string">" line will be broken after white space to get this width.
+</span>
+<span class="hljs-keyword">set</span> formatoptions=<span class="hljs-keyword">c</span>,<span class="hljs-keyword">q</span>,<span class="hljs-keyword">r</span>,<span class="hljs-keyword">t</span> <span class="hljs-string">" This is a sequence of letters which describes how
+</span>                    <span class="hljs-string">" automatic formatting is to be done.
+</span>                    <span class="hljs-string">"
+</span>                    <span class="hljs-string">" letter    meaning when present in 'formatoptions'
+</span>                    <span class="hljs-string">" ------    ---------------------------------------
+</span>                    <span class="hljs-string">" c         Auto-wrap comments using textwidth, inserting
+</span>                    <span class="hljs-string">"           the current comment leader automatically.
+</span>                    <span class="hljs-string">" q         Allow formatting of comments with "</span>gq<span class="hljs-string">".
+</span>                    <span class="hljs-string">" r         Automatically insert the current comment leader
+</span>                    <span class="hljs-string">"           after hitting &lt;Enter&gt; in Insert mode. 
+</span>                    <span class="hljs-string">" t         Auto-wrap text using textwidth (does not apply
+</span>                    <span class="hljs-string">"           to comments)
+</span>
+<span class="hljs-keyword">set</span> ruler           <span class="hljs-string">" Show the line and column number of the cursor position,
+</span>                    <span class="hljs-string">" separated by a comma.
+</span>
+<span class="hljs-keyword">set</span> background=dark <span class="hljs-string">" When set to "</span>dark<span class="hljs-string">", Vim will try to use colors that look
+</span>                    <span class="hljs-string">" good on a dark background. When set to "</span>light<span class="hljs-string">", Vim will
+</span>                    <span class="hljs-string">" try to use colors that look good on a light background.
+</span>                    <span class="hljs-string">" Any other value is illegal.
+</span>
+<span class="hljs-keyword">set</span> mouse=<span class="hljs-keyword">a</span>         <span class="hljs-string">" Enable the use of the mouse.
+</span>
+<span class="hljs-keyword">filetype</span> plugin <span class="hljs-built_in">indent</span> <span class="hljs-keyword">on</span>
+<span class="hljs-keyword">syntax</span> <span class="hljs-keyword">on</span></code></pre><h1>进阶技巧</h1>
 <h2>块编辑</h2>
 <ul>
 <li><p><strong>可视</strong> 模式：<code>v</code> 可进入visual模式，使用标准快捷键移动光标可选择文本块，之后可输入标准编辑命令。</p>
@@ -373,7 +373,7 @@ syntax on</code></pre><h1>进阶技巧</h1>
 <h2>键盘映射</h2>
 <p>Vim支持定义键盘映射来完成快捷键的功能，也就是将特定的按键映射为一系列按键与函数的序列。</p>
 <p>例如将 <code>F7</code> 映射为编译当前java文件：</p>
-<pre><code>map &lt;F7&gt; &lt;Esc&gt;:!javac %&lt;&lt;CR&gt;</code></pre><blockquote>
+<pre><code class="hljs">map &lt;F7&gt; &lt;Esc&gt;:!javac %&lt;&lt;CR&gt;</code></pre><blockquote>
 <p><code>:</code> 为进入Ex模式，<code>!</code> 指定下面的命令在vim外执行，<code>%</code> 为当前文件名，<code>%&lt;</code> 为不带扩展名的当前文件名，<code>&lt;CR&gt;</code> 为回车。</p>
 </blockquote>
 <h2>函数</h2>
@@ -384,13 +384,13 @@ syntax on</code></pre><h1>进阶技巧</h1>
 <li>函数可以有范围前缀。定义：<code>function s:Save()</code>，调用：<code>call s:Save()</code></li>
 </ul>
 <p>下面是函数调用的例子，按键F8时，进入拷贝模式（取消行号，鼠标进入visual模式）。</p>
-<pre><code>&quot; key mapping
+<pre><code class="hljs">" key mapping
 map &lt;F8&gt; &lt;Esc&gt;:call ToggleCopy()&lt;CR&gt;
 
-&quot; global variable
+" global variable
 let g:copymode=0
 
-&quot; function
+" function
 function ToggleCopy()
     if g:copymode
         set number

@@ -352,7 +352,7 @@
 </li>
 <li><p>Jekyll 插件在 GitHub Pages 中不能使用，因为 GitHub Pages 的编译使用 <code>--safe</code> 参数；但可以在本地编译后同步至 GitHub 来取代 GitHub 的自动编译。</p>
 </li>
-<li><code>Include file &#39;&#39; contains invalid characters or sequences</code> 标签参数只能为常量，被包含文件中的 liquid 语句以文件为单元解析。</li>
+<li><code>{% include %}</code> 标签参数只能为常量，被包含文件中的 liquid 语句以文件为单元解析。</li>
 </ul>
 <h3>Jekyll plugin</h3>
 <p>GitHub 出于安全性的考虑，jekyll 引擎默认采用 <code>--safe</code> 参数，这会禁用 Jekyll 的插件。如果希望开启 Jekyll 插件来获得更多的支持，只能关闭 GitHub 的 Jekyll 引擎。</p>

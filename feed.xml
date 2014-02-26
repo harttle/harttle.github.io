@@ -1529,83 +1529,83 @@ L2:&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;示例配置&lt;/h2&gt;
 &lt;p&gt;一个示例配置文件如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;quot; .vimrc
-&amp;quot; See: http://vimdoc.sourceforge.net/htmldoc/options.html for details
-
-&amp;quot; For multi-byte character support (CJK support, for example):
-&amp;quot; set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1
-
-set tabstop=4       &amp;quot; Number of spaces that a &amp;lt;Tab&amp;gt; in the file counts for.
-
-set shiftwidth=4    &amp;quot; Number of spaces to use for each step of (auto)indent.
-
-set expandtab       &amp;quot; Use the appropriate number of spaces to insert a &amp;lt;Tab&amp;gt;.
-                    &amp;quot; Spaces are used in indents with the &amp;#39;&amp;gt;&amp;#39; and &amp;#39;&amp;lt;&amp;#39; commands
-                    &amp;quot; and when &amp;#39;autoindent&amp;#39; is on. To insert a real tab when
-                    &amp;quot; &amp;#39;expandtab&amp;#39; is on, use CTRL-V &amp;lt;Tab&amp;gt;.
-
-set smarttab        &amp;quot; When on, a &amp;lt;Tab&amp;gt; in front of a line inserts blanks
-                    &amp;quot; according to &amp;#39;shiftwidth&amp;#39;. &amp;#39;tabstop&amp;#39; is used in other
-                    &amp;quot; places. A &amp;lt;BS&amp;gt; will delete a &amp;#39;shiftwidth&amp;#39; worth of space
-                    &amp;quot; at the start of the line.
-
-set showcmd         &amp;quot; Show (partial) command in status line.
-
-set number          &amp;quot; Show line numbers.
-
-set showmatch       &amp;quot; When a bracket is inserted, briefly jump to the matching
-                    &amp;quot; one. The jump is only done if the match can be seen on the
-                    &amp;quot; screen. The time to show the match can be set with
-                    &amp;quot; &amp;#39;matchtime&amp;#39;.
-
-set hlsearch        &amp;quot; When there is a previous search pattern, highlight all
-                    &amp;quot; its matches.
-
-set incsearch       &amp;quot; While typing a search command, show immediately where the
-                    &amp;quot; so far typed pattern matches.
-
-set ignorecase      &amp;quot; Ignore case in search patterns.
-
-set smartcase       &amp;quot; Override the &amp;#39;ignorecase&amp;#39; option if the search pattern
-                    &amp;quot; contains upper case characters.
-
-set backspace=2     &amp;quot; Influences the working of &amp;lt;BS&amp;gt;, &amp;lt;Del&amp;gt;, CTRL-W
-                    &amp;quot; and CTRL-U in Insert mode. This is a list of items,
-                    &amp;quot; separated by commas. Each item allows a way to backspace
-                    &amp;quot; over something.
-
-set autoindent      &amp;quot; Copy indent from current line when starting a new line
-                    &amp;quot; (typing &amp;lt;CR&amp;gt; in Insert mode or when using the &amp;quot;o&amp;quot; or &amp;quot;O&amp;quot;
-                    &amp;quot; command).
-
-set textwidth=79    &amp;quot; Maximum width of text that is being inserted. A longer
-                    &amp;quot; line will be broken after white space to get this width.
-
-set formatoptions=c,q,r,t &amp;quot; This is a sequence of letters which describes how
-                    &amp;quot; automatic formatting is to be done.
-                    &amp;quot;
-                    &amp;quot; letter    meaning when present in &amp;#39;formatoptions&amp;#39;
-                    &amp;quot; ------    ---------------------------------------
-                    &amp;quot; c         Auto-wrap comments using textwidth, inserting
-                    &amp;quot;           the current comment leader automatically.
-                    &amp;quot; q         Allow formatting of comments with &amp;quot;gq&amp;quot;.
-                    &amp;quot; r         Automatically insert the current comment leader
-                    &amp;quot;           after hitting &amp;lt;Enter&amp;gt; in Insert mode. 
-                    &amp;quot; t         Auto-wrap text using textwidth (does not apply
-                    &amp;quot;           to comments)
-
-set ruler           &amp;quot; Show the line and column number of the cursor position,
-                    &amp;quot; separated by a comma.
-
-set background=dark &amp;quot; When set to &amp;quot;dark&amp;quot;, Vim will try to use colors that look
-                    &amp;quot; good on a dark background. When set to &amp;quot;light&amp;quot;, Vim will
-                    &amp;quot; try to use colors that look good on a light background.
-                    &amp;quot; Any other value is illegal.
-
-set mouse=a         &amp;quot; Enable the use of the mouse.
-
-filetype plugin indent on
-syntax on&lt;/code&gt;&lt;/pre&gt;&lt;h1&gt;进阶技巧&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs&quot;&gt;&lt;span class=&quot;hljs-string&quot;&gt;&quot; .vimrc
+&lt;/span&gt;&lt;span class=&quot;hljs-string&quot;&gt;&quot; See: http://vimdoc.sourceforge.net/htmldoc/options.html for details
+&lt;/span&gt;
+&lt;span class=&quot;hljs-string&quot;&gt;&quot; For multi-byte character support (CJK support, for example):
+&lt;/span&gt;&lt;span class=&quot;hljs-string&quot;&gt;&quot; set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1
+&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;set&lt;/span&gt; tabstop=&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;       &lt;span class=&quot;hljs-string&quot;&gt;&quot; Number of spaces that a &amp;lt;Tab&amp;gt; in the file counts for.
+&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;hljs-built_in&quot;&gt;shiftwidth&lt;/span&gt;=&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;    &lt;span class=&quot;hljs-string&quot;&gt;&quot; Number of spaces to use for each step of (auto)indent.
+&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;set&lt;/span&gt; expandtab       &lt;span class=&quot;hljs-string&quot;&gt;&quot; Use the appropriate number of spaces to insert a &amp;lt;Tab&amp;gt;.
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; Spaces are used in indents with the &#39;&amp;gt;&#39; and &#39;&amp;lt;&#39; commands
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; and when &#39;autoindent&#39; is on. To insert a real tab when
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; &#39;expandtab&#39; is on, use CTRL-V &amp;lt;Tab&amp;gt;.
+&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;set&lt;/span&gt; smarttab        &lt;span class=&quot;hljs-string&quot;&gt;&quot; When on, a &amp;lt;Tab&amp;gt; in front of a line inserts blanks
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; according to &#39;shiftwidth&#39;. &#39;tabstop&#39; is used in other
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; places. A &amp;lt;BS&amp;gt; will delete a &#39;shiftwidth&#39; worth of space
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; at the start of the line.
+&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;set&lt;/span&gt; showcmd         &lt;span class=&quot;hljs-string&quot;&gt;&quot; Show (partial) command in status line.
+&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;number&lt;/span&gt;          &lt;span class=&quot;hljs-string&quot;&gt;&quot; Show line numbers.
+&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;set&lt;/span&gt; showmatch       &lt;span class=&quot;hljs-string&quot;&gt;&quot; When a bracket is inserted, briefly jump to the matching
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; one. The jump is only done if the match can be seen on the
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; screen. The time to show the match can be set with
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; &#39;matchtime&#39;.
+&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;set&lt;/span&gt; hlsearch        &lt;span class=&quot;hljs-string&quot;&gt;&quot; When there is a previous search pattern, highlight all
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; its matches.
+&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;set&lt;/span&gt; incsearch       &lt;span class=&quot;hljs-string&quot;&gt;&quot; While typing a search command, show immediately where the
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; so far typed pattern matches.
+&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;set&lt;/span&gt; ignorecase      &lt;span class=&quot;hljs-string&quot;&gt;&quot; Ignore case in search patterns.
+&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;set&lt;/span&gt; smartcase       &lt;span class=&quot;hljs-string&quot;&gt;&quot; Override the &#39;ignorecase&#39; option if the search pattern
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; contains upper case characters.
+&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;set&lt;/span&gt; backspace=&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;     &lt;span class=&quot;hljs-string&quot;&gt;&quot; Influences the working of &amp;lt;BS&amp;gt;, &amp;lt;Del&amp;gt;, CTRL-W
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; and CTRL-U in Insert mode. This is a list of items,
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; separated by commas. Each item allows a way to backspace
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; over something.
+&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;set&lt;/span&gt; autoindent      &lt;span class=&quot;hljs-string&quot;&gt;&quot; Copy indent from current line when starting a new line
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; (typing &amp;lt;CR&amp;gt; in Insert mode or when using the &quot;&lt;/span&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;hljs-string&quot;&gt;&quot; or &quot;&lt;/span&gt;O&lt;span class=&quot;hljs-string&quot;&gt;&quot;
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; command).
+&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;set&lt;/span&gt; textwidth=&lt;span class=&quot;hljs-number&quot;&gt;79&lt;/span&gt;    &lt;span class=&quot;hljs-string&quot;&gt;&quot; Maximum width of text that is being inserted. A longer
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; line will be broken after white space to get this width.
+&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;set&lt;/span&gt; formatoptions=&lt;span class=&quot;hljs-keyword&quot;&gt;c&lt;/span&gt;,&lt;span class=&quot;hljs-keyword&quot;&gt;q&lt;/span&gt;,&lt;span class=&quot;hljs-keyword&quot;&gt;r&lt;/span&gt;,&lt;span class=&quot;hljs-keyword&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;hljs-string&quot;&gt;&quot; This is a sequence of letters which describes how
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; automatic formatting is to be done.
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot;
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; letter    meaning when present in &#39;formatoptions&#39;
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; ------    ---------------------------------------
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; c         Auto-wrap comments using textwidth, inserting
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot;           the current comment leader automatically.
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; q         Allow formatting of comments with &quot;&lt;/span&gt;gq&lt;span class=&quot;hljs-string&quot;&gt;&quot;.
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; r         Automatically insert the current comment leader
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot;           after hitting &amp;lt;Enter&amp;gt; in Insert mode. 
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; t         Auto-wrap text using textwidth (does not apply
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot;           to comments)
+&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;set&lt;/span&gt; ruler           &lt;span class=&quot;hljs-string&quot;&gt;&quot; Show the line and column number of the cursor position,
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; separated by a comma.
+&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;set&lt;/span&gt; background=dark &lt;span class=&quot;hljs-string&quot;&gt;&quot; When set to &quot;&lt;/span&gt;dark&lt;span class=&quot;hljs-string&quot;&gt;&quot;, Vim will try to use colors that look
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; good on a dark background. When set to &quot;&lt;/span&gt;light&lt;span class=&quot;hljs-string&quot;&gt;&quot;, Vim will
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; try to use colors that look good on a light background.
+&lt;/span&gt;                    &lt;span class=&quot;hljs-string&quot;&gt;&quot; Any other value is illegal.
+&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;set&lt;/span&gt; mouse=&lt;span class=&quot;hljs-keyword&quot;&gt;a&lt;/span&gt;         &lt;span class=&quot;hljs-string&quot;&gt;&quot; Enable the use of the mouse.
+&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;filetype&lt;/span&gt; plugin &lt;span class=&quot;hljs-built_in&quot;&gt;indent&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;on&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;syntax&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;on&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h1&gt;进阶技巧&lt;/h1&gt;
 &lt;h2&gt;块编辑&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;可视&lt;/strong&gt; 模式：&lt;code&gt;v&lt;/code&gt; 可进入visual模式，使用标准快捷键移动光标可选择文本块，之后可输入标准编辑命令。&lt;/p&gt;
@@ -1646,7 +1646,7 @@ syntax on&lt;/code&gt;&lt;/pre&gt;&lt;h1&gt;进阶技巧&lt;/h1&gt;
 &lt;h2&gt;键盘映射&lt;/h2&gt;
 &lt;p&gt;Vim支持定义键盘映射来完成快捷键的功能，也就是将特定的按键映射为一系列按键与函数的序列。&lt;/p&gt;
 &lt;p&gt;例如将 &lt;code&gt;F7&lt;/code&gt; 映射为编译当前java文件：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;map &amp;lt;F7&amp;gt; &amp;lt;Esc&amp;gt;:!javac %&amp;lt;&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs&quot;&gt;map &amp;lt;F7&amp;gt; &amp;lt;Esc&amp;gt;:!javac %&amp;lt;&amp;lt;CR&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;code&gt;:&lt;/code&gt; 为进入Ex模式，&lt;code&gt;!&lt;/code&gt; 指定下面的命令在vim外执行，&lt;code&gt;%&lt;/code&gt; 为当前文件名，&lt;code&gt;%&amp;lt;&lt;/code&gt; 为不带扩展名的当前文件名，&lt;code&gt;&amp;lt;CR&amp;gt;&lt;/code&gt; 为回车。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;函数&lt;/h2&gt;
@@ -1657,13 +1657,13 @@ syntax on&lt;/code&gt;&lt;/pre&gt;&lt;h1&gt;进阶技巧&lt;/h1&gt;
 &lt;li&gt;函数可以有范围前缀。定义：&lt;code&gt;function s:Save()&lt;/code&gt;，调用：&lt;code&gt;call s:Save()&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;下面是函数调用的例子，按键F8时，进入拷贝模式（取消行号，鼠标进入visual模式）。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;quot; key mapping
+&lt;pre&gt;&lt;code class=&quot;hljs&quot;&gt;&quot; key mapping
 map &amp;lt;F8&amp;gt; &amp;lt;Esc&amp;gt;:call ToggleCopy()&amp;lt;CR&amp;gt;
 
-&amp;quot; global variable
+&quot; global variable
 let g:copymode=0
 
-&amp;quot; function
+&quot; function
 function ToggleCopy()
     if g:copymode
         set number
