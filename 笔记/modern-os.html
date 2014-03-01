@@ -176,24 +176,24 @@
             <ul class="nav navbar-nav">
               <li id="blog"><a href="/category/blog.html">博客</a></li>
               <li id="album"><a href="/category/album.html">相册</a></li>
-              <li id="about"><a href="/about.html">关于</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">链接 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="//harttle.duapp.com" target="_blank">God Notes</a></li>
-                  <li><a href="//www.pku.edu.cn/" target="_blank">北京大学</a></li>
+		  <li class="divider"></li>
+		  <li id="about"><a href="/about.html">关于我</a></li>
                 </ul>
               </li>
             </ul>
 	    <ul class="nav navbar-nav pull-right">	 
 	      <li>
 		<a href="//github.com/harttle/harttle.github.io" target="_blank">
-		  <i class="fa fa-github fa-lg"></i> GitHub
+		  <i class="fa fa-github fa-lg"></i>
 		</a>
 	      </li>
 	      <li>
 		<a href="/feed.xml" target="_blank">
-		  <i class="fa fa-rss-square fa-lg"></i> RSS
+		  <i class="fa fa-rss-square fa-lg"></i>
 		</a>
 	      </li>
 	    </ul>
@@ -223,7 +223,7 @@
           返回列表 <span class="glyphicon glyphicon-hand-left"></span>
       </a>
       <span class="pull-right label label-default hidden-xs">
-          <span class="glyphicon glyphicon-time"></span> 2014年02月28日
+          <span class="glyphicon glyphicon-time"></span> 2014年03月01日
       </span>
     </div>
   </div>
@@ -740,6 +740,47 @@ Consumer loop:
 <li>User-level threads can employ an application-specific thread scheduler.</li>
 </ul>
 <h1>Memory Management</h1>
+<h2>No Memory Abstraction</h2>
+<p>Running multiple programs by <strong>static relocation</strong>: Modify the second program on the fly as it loaded it into memory.</p>
+<blockquote>
+<p>The lack of memory abstraction is still common in embedded and smart card systems.</p>
+</blockquote>
+<h2>A Memory Abstraction: Address Spaces</h2>
+<p><strong>Address space</strong> is the set of addresses that a process can use to address memory.</p>
+<p><strong>Dynamic relocation</strong> uses base and limit registers to map each process&#39; address space onto a different part of physical memory in a simple way.</p>
+<blockquote>
+<p>The disadvantage of relocation using base and limit registers is the need to perform an addition and comparison on every memory reference.</p>
+</blockquote>
+<p><strong>Swapping</strong> is used to deal with memory overload, bringing in each process in its entirety, running for a while, then putting it back on the disk.</p>
+<blockquote>
+<p>When swapping creates multiple holes in memory, it&#39;s possible to combine them all into one big one, which is called <strong>memory compaction</strong>.<br>Free memory can be recorded as bitmaps or linked lists.</p>
+</blockquote>
+<h2>Virtual Memory</h2>
+<p>Processes use program generated addresses, called <strong>virtual address</strong>. They go to an <strong>MMU(Memory Management Unit)</strong> that maps the virtual addresses onto the physical addresses when a memory access occurs.</p>
+<blockquote>
+<p><strong>virtual memory</strong> allows programs to run even when they are only partially in main memory.</p>
+</blockquote>
+<h3>Page Tables</h3>
+<p>The virtual address space is divided into fixed-size units called <strong>pages</strong>. The corresponding units in the physical memory are called <strong>page frames</strong>.</p>
+<p>The virtual address is split into a virtual page number and an offset. The virtual page number is used as and index into the page table to find the entry for that page. Each <strong>page table entry(PTE)</strong> consists a Caching disabled bit, Referenced bit, Modified bit, Present/absent bit and page frame number.</p>
+<h3>TLB</h3>
+<p><strong>TLB(Translation Lookaside Buffers)</strong> is used to speed up paging. It&#39;s usually inside the MMU and consists of a small number of entries. Each entry contains information about one page, including the virtual page number, a bit that is set when the page is modified, the protection code, and the physical page frame in which the page is locted.</p>
+<h3>Page Tables for Large Memories</h3>
+<p><strong>multilevel page table</strong> avoids keeping all the page tables in memory all the time.</p>
+<p><strong>Inverted page table</strong> is a solution for 64-bit computers. There is one entry per page frame in real memory, rather than one entry per page of virtual address space.</p>
+<h3>Page Replacement Algorithms</h3>
+<h4>The optimal page replacement algorithm</h4>
+<p>Each page can be labeled with the number of instructions that will be executed before that page is first referenced. And the page with the highest label should be removed.</p>
+<blockquote>
+<p>The only problem with this algorithm is that it&#39;s unrealizable.</p>
+</blockquote>
+<h3>The Not Recently Used Page Replacement Algorithm</h3>
+<h3>The First-in, First-out Page Replacement Algorithm</h3>
+<h3>The Second-Chance Page Repcacement Algoritm</h3>
+<h3>The Clock Page Replacement Algorithm</h3>
+<h3>The Least Recently Used Page Replacement Algorithm</h3>
+<h3>The Working Set Page Replacement Algorithm</h3>
+<p>Keep track of each process&#39; working set and make sure that it is in memory before letting the process run, which is called <strong>prepaging</strong>.</p>
 
 
     

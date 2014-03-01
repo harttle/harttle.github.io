@@ -509,9 +509,50 @@ Consumer loop:
 &lt;li&gt;User-level threads can employ an application-specific thread scheduler.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1&gt;Memory Management&lt;/h1&gt;
+&lt;h2&gt;No Memory Abstraction&lt;/h2&gt;
+&lt;p&gt;Running multiple programs by &lt;strong&gt;static relocation&lt;/strong&gt;: Modify the second program on the fly as it loaded it into memory.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The lack of memory abstraction is still common in embedded and smart card systems.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;A Memory Abstraction: Address Spaces&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Address space&lt;/strong&gt; is the set of addresses that a process can use to address memory.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Dynamic relocation&lt;/strong&gt; uses base and limit registers to map each process&amp;#39; address space onto a different part of physical memory in a simple way.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The disadvantage of relocation using base and limit registers is the need to perform an addition and comparison on every memory reference.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Swapping&lt;/strong&gt; is used to deal with memory overload, bringing in each process in its entirety, running for a while, then putting it back on the disk.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;When swapping creates multiple holes in memory, it&amp;#39;s possible to combine them all into one big one, which is called &lt;strong&gt;memory compaction&lt;/strong&gt;.&lt;br&gt;Free memory can be recorded as bitmaps or linked lists.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Virtual Memory&lt;/h2&gt;
+&lt;p&gt;Processes use program generated addresses, called &lt;strong&gt;virtual address&lt;/strong&gt;. They go to an &lt;strong&gt;MMU(Memory Management Unit)&lt;/strong&gt; that maps the virtual addresses onto the physical addresses when a memory access occurs.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;virtual memory&lt;/strong&gt; allows programs to run even when they are only partially in main memory.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;Page Tables&lt;/h3&gt;
+&lt;p&gt;The virtual address space is divided into fixed-size units called &lt;strong&gt;pages&lt;/strong&gt;. The corresponding units in the physical memory are called &lt;strong&gt;page frames&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;The virtual address is split into a virtual page number and an offset. The virtual page number is used as and index into the page table to find the entry for that page. Each &lt;strong&gt;page table entry(PTE)&lt;/strong&gt; consists a Caching disabled bit, Referenced bit, Modified bit, Present/absent bit and page frame number.&lt;/p&gt;
+&lt;h3&gt;TLB&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;TLB(Translation Lookaside Buffers)&lt;/strong&gt; is used to speed up paging. It&amp;#39;s usually inside the MMU and consists of a small number of entries. Each entry contains information about one page, including the virtual page number, a bit that is set when the page is modified, the protection code, and the physical page frame in which the page is locted.&lt;/p&gt;
+&lt;h3&gt;Page Tables for Large Memories&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;multilevel page table&lt;/strong&gt; avoids keeping all the page tables in memory all the time.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Inverted page table&lt;/strong&gt; is a solution for 64-bit computers. There is one entry per page frame in real memory, rather than one entry per page of virtual address space.&lt;/p&gt;
+&lt;h3&gt;Page Replacement Algorithms&lt;/h3&gt;
+&lt;h4&gt;The optimal page replacement algorithm&lt;/h4&gt;
+&lt;p&gt;Each page can be labeled with the number of instructions that will be executed before that page is first referenced. And the page with the highest label should be removed.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The only problem with this algorithm is that it&amp;#39;s unrealizable.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;The Not Recently Used Page Replacement Algorithm&lt;/h3&gt;
+&lt;h3&gt;The First-in, First-out Page Replacement Algorithm&lt;/h3&gt;
+&lt;h3&gt;The Second-Chance Page Repcacement Algoritm&lt;/h3&gt;
+&lt;h3&gt;The Clock Page Replacement Algorithm&lt;/h3&gt;
+&lt;h3&gt;The Least Recently Used Page Replacement Algorithm&lt;/h3&gt;
+&lt;h3&gt;The Working Set Page Replacement Algorithm&lt;/h3&gt;
+&lt;p&gt;Keep track of each process&amp;#39; working set and make sure that it is in memory before letting the process run, which is called &lt;strong&gt;prepaging&lt;/strong&gt;.&lt;/p&gt;
 
 </description>
-				<pubDate>Fri, 28 Feb 2014 01:04:22 +0800</pubDate>
+				<pubDate>Sat, 01 Mar 2014 15:45:52 +0800</pubDate>
 				<link>http://harttle.github.io/%E7%AC%94%E8%AE%B0/modern-os.html</link>
 				<guid isPermaLink="true">http://harttle.github.io/%E7%AC%94%E8%AE%B0/modern-os.html</guid>
 			</item>
