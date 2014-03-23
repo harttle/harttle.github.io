@@ -78,7 +78,7 @@
   .sidebar .nav > .active > a,
   .sidebar .nav > .active:hover > a,
   .sidebar .nav > .active:focus > a {
-    margin-bottom:1px;
+    margin-bottom:1px; padding-bottom: 2px!important;
     font-weight: bold;
     color: white;
     background: #428bca;
@@ -533,13 +533,13 @@ r = RIGHT(i)
     exchange A[i] with A[largest]
     MAX-HEAPIFY(A, largest)</code></pre><p>每个孩子的子树的大小最多为 <span class="mathjax">\(2n/3\)</span>（最坏情况发生在树的最底层半满的时候），故MAX-HEAPIFY运行时间<br><span class="mathjax">\(T(n) \leq T(2n/3) + \Theta(1)\)</span>，解为<span class="mathjax">\(T(n) = O(\lg n)\)</span>。</p>
 <h3>建堆</h3>
-<p>MAX-HEAPIFY 把大小为 n = A.length 的数组 A[1..n] 转换为最大堆。</p>
+<p>BUILD-MAX-HEAP 把大小为 n = A.length 的数组 A[1..n] 转换为最大堆。</p>
 <pre><code class="hljs">BUILD-MAX-HEAP(A)
     A.heap-size = A.length
     <span class="hljs-comment">// 子数组 $A(n/2+1..n)$ 中的元素都是叶节点</span>
     <span class="hljs-keyword">for</span> i = A.length/<span class="hljs-number">2</span> downto <span class="hljs-number">1</span>
         MAX-HEAPIFY(A, i)</code></pre><ul>
-<li>渐近上界<br>  BUILD-MAX-HEAP 需要调用MAX-HEAPIFY O(n) 次，故总的时间复杂度为 <span class="mathjax">\(O(n\lg n)\)</span>，或者<span class="mathjax">\(O(h)\)</span>。</li>
+<li>渐近上界<br>  BUILD-MAX-HEAP 需要调用MAX-HEAPIFY O(n) 次，故总的时间复杂度为 <span class="mathjax">\(O(n\lg n)\)</span>，或者<span class="mathjax">\(O(nh)\)</span>。</li>
 <li>更加紧确<br>  含n个元素的堆高度为 <span class="mathjax">\(\lfloor \lg n\rfloor\)</span>，高度为h的元素数最多为 <span class="mathjax">\(\lceil n/2^{h+1} \rceil\)</span>，于是 BUILD-MAX-HEAP的时间复杂度为<br>  <span class="mathjax">\(O\left( \sum_{h=0}^{\lfloor \lg n\rfloor} \lceil n/2^{h+1} \rceil O(h) \right) = O\left(n\sum_{h=0}^{\lfloor \lg n\rfloor}\frac{h}{2^h}\right) = O\left(n\sum_{h=0}^{\infty}\frac{h}{2^h}\right) = O(n)\)</span></li>
 </ul>
 <h3>堆排序算法</h3>
@@ -614,7 +614,7 @@ PARTITION(A, p, r)
 </blockquote>
 <h4>对平均情况的直观观察</h4>
 <ul>
-<li>对于一次差的划分戒指一个好的划分，将产生三个大小为 0、(n-1)/2-1 和 (n-1)/2 的子数组，划分代价为<span class="mathjax">\(\Theta(n) + \Theta(n-1) = \Theta(n)\)</span>。</li>
+<li>对于一次差的划分接着一个好的划分，将产生三个大小为 0、(n-1)/2-1 和 (n-1)/2 的子数组，划分代价为<span class="mathjax">\(\Theta(n) + \Theta(n-1) = \Theta(n)\)</span>。</li>
 <li>对于一次好的划分，将产生两个大小为 (n-1)/2 的子数组，划分代价为<span class="mathjax">\(\Theta(n)\)</span>。</li>
 </ul>
 <p>从直观上看，差划分引起的二次划分代价<span class="mathjax">\(\Theta(n-1)\)</span>可以被吸收到差划分代价<span class="mathjax">\(\Theta(n)\)</span>中去，而得到与好划分一样好的结果。</p>
@@ -710,7 +710,7 @@ let C[<span class="hljs-number">0.</span>.k] be a <span class="hljs-keyword">new
     <span class="hljs-keyword">for</span> i = <span class="hljs-number">0</span> to n-<span class="hljs-number">1</span>
         sort <span class="hljs-built_in">list</span> B[i] with insertion sort
     concatenate the lists B[<span class="hljs-number">0</span>],B[<span class="hljs-number">1</span>],...,B[n-<span class="hljs-number">1</span>] together in order</code></pre><p>桶排序的时间代价为：<br><span class="mathjax">\(T(n) = \Theta(n) + \sum^{n-1}_{i=0}O(n_i^2)\)</span><br>期望运行时间：<br><span class="mathjax">\(E[T(n)] = E\left[ \Theta(n) + \sum^{n-1}_{i=0}O(n_i^2) \right] = \Theta(n)+ \sum^{n-1}_{i=0}O(E[n_i^2])\)</span></p>
-<p>定义指示器随机变量 <span class="mathjax">\(X_{ij} = I\{A[j] in bucket i\}\)</span>，则<span class="mathjax">\(n_i = \sum^n_{j=1}X_{ij}\)</span>，<br><span class="mathjax">\(E[n^2_i] = E\left[ \left( \sum_{j=1}^n X_{ij} \right)^2 \right] = \sum^n_{j=1}E[X_{ij}^2] + \sum_{1\leq j \leq n} \sum_{1\leq k \leq n, k \neq j} E[X_{ij}X_{ik}]\)</span></p>
+<p>定义指示器随机变量 <span class="mathjax">\(X_{ij} = I\{A[j]~in~bucket~i\}\)</span>，则<span class="mathjax">\(n_i = \sum^n_{j=1}X_{ij}\)</span>，<br><span class="mathjax">\(E[n^2_i] = E\left[ \left( \sum_{j=1}^n X_{ij} \right)^2 \right] = \sum^n_{j=1}E[X_{ij}^2] + \sum_{1\leq j \leq n} \sum_{1\leq k \leq n, k \neq j} E[X_{ij}X_{ik}]\)</span></p>
 <p>而<span class="mathjax">\(E[X_{ij}X_{ik}] = E[X_{ij}^2]=\frac{1}{n^2}\)</span>，<span class="mathjax">\(E[X_{ij}^2] = 1^2\cdot \frac{1}{n} + 0^2\cdot \left( 1-\frac{1}{n}) \right) = \frac{1}{n}\)</span>，<br>故<span class="mathjax">\(E[n^2_i] = 2 - 1/n\)</span>，桶排序的期望运行时间 <span class="mathjax">\(E[T(n)] = \Theta(n) + n\cdot O(2-1/n) = \Theta(n)\)</span>。</p>
 <blockquote>
 <p>即使输入数据不服从均匀分布，只要所有桶的大小的平方和与元素数呈线性关系，期望运行时间就是<span class="mathjax">\(\Theta(n)\)</span></p>
@@ -1977,6 +1977,8 @@ var jiathis_config = {data_track_clickback:'true'};
       
       $('<div>').append($toc).find('ul.level-'+offset+':last').append(li);
     });
+    // remove empty ul
+    $toc.find('ul').not(':parent').remove();
     return $toc;
   }
 </script>

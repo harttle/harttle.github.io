@@ -2473,13 +2473,13 @@ r = RIGHT(i)
     exchange A[i] with A[largest]
     MAX-HEAPIFY(A, largest)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;每个孩子的子树的大小最多为 &lt;span class=&quot;mathjax&quot;&gt;\(2n/3\)&lt;/span&gt;（最坏情况发生在树的最底层半满的时候），故MAX-HEAPIFY运行时间&lt;br&gt;&lt;span class=&quot;mathjax&quot;&gt;\(T(n) \leq T(2n/3) + \Theta(1)\)&lt;/span&gt;，解为&lt;span class=&quot;mathjax&quot;&gt;\(T(n) = O(\lg n)\)&lt;/span&gt;。&lt;/p&gt;
 &lt;h3&gt;建堆&lt;/h3&gt;
-&lt;p&gt;MAX-HEAPIFY 把大小为 n = A.length 的数组 A[1..n] 转换为最大堆。&lt;/p&gt;
+&lt;p&gt;BUILD-MAX-HEAP 把大小为 n = A.length 的数组 A[1..n] 转换为最大堆。&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;hljs&quot;&gt;BUILD-MAX-HEAP(A)
     A.heap-size = A.length
     &lt;span class=&quot;hljs-comment&quot;&gt;// 子数组 $A(n/2+1..n)$ 中的元素都是叶节点&lt;/span&gt;
     &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; i = A.length/&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt; downto &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;
         MAX-HEAPIFY(A, i)&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
-&lt;li&gt;渐近上界&lt;br&gt;  BUILD-MAX-HEAP 需要调用MAX-HEAPIFY O(n) 次，故总的时间复杂度为 &lt;span class=&quot;mathjax&quot;&gt;\(O(n\lg n)\)&lt;/span&gt;，或者&lt;span class=&quot;mathjax&quot;&gt;\(O(h)\)&lt;/span&gt;。&lt;/li&gt;
+&lt;li&gt;渐近上界&lt;br&gt;  BUILD-MAX-HEAP 需要调用MAX-HEAPIFY O(n) 次，故总的时间复杂度为 &lt;span class=&quot;mathjax&quot;&gt;\(O(n\lg n)\)&lt;/span&gt;，或者&lt;span class=&quot;mathjax&quot;&gt;\(O(nh)\)&lt;/span&gt;。&lt;/li&gt;
 &lt;li&gt;更加紧确&lt;br&gt;  含n个元素的堆高度为 &lt;span class=&quot;mathjax&quot;&gt;\(\lfloor \lg n\rfloor\)&lt;/span&gt;，高度为h的元素数最多为 &lt;span class=&quot;mathjax&quot;&gt;\(\lceil n/2^{h+1} \rceil\)&lt;/span&gt;，于是 BUILD-MAX-HEAP的时间复杂度为&lt;br&gt;  &lt;span class=&quot;mathjax&quot;&gt;\(O\left( \sum_{h=0}^{\lfloor \lg n\rfloor} \lceil n/2^{h+1} \rceil O(h) \right) = O\left(n\sum_{h=0}^{\lfloor \lg n\rfloor}\frac{h}{2^h}\right) = O\left(n\sum_{h=0}^{\infty}\frac{h}{2^h}\right) = O(n)\)&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;堆排序算法&lt;/h3&gt;
@@ -2554,7 +2554,7 @@ PARTITION(A, p, r)
 &lt;/blockquote&gt;
 &lt;h4&gt;对平均情况的直观观察&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;对于一次差的划分戒指一个好的划分，将产生三个大小为 0、(n-1)/2-1 和 (n-1)/2 的子数组，划分代价为&lt;span class=&quot;mathjax&quot;&gt;\(\Theta(n) + \Theta(n-1) = \Theta(n)\)&lt;/span&gt;。&lt;/li&gt;
+&lt;li&gt;对于一次差的划分接着一个好的划分，将产生三个大小为 0、(n-1)/2-1 和 (n-1)/2 的子数组，划分代价为&lt;span class=&quot;mathjax&quot;&gt;\(\Theta(n) + \Theta(n-1) = \Theta(n)\)&lt;/span&gt;。&lt;/li&gt;
 &lt;li&gt;对于一次好的划分，将产生两个大小为 (n-1)/2 的子数组，划分代价为&lt;span class=&quot;mathjax&quot;&gt;\(\Theta(n)\)&lt;/span&gt;。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;从直观上看，差划分引起的二次划分代价&lt;span class=&quot;mathjax&quot;&gt;\(\Theta(n-1)\)&lt;/span&gt;可以被吸收到差划分代价&lt;span class=&quot;mathjax&quot;&gt;\(\Theta(n)\)&lt;/span&gt;中去，而得到与好划分一样好的结果。&lt;/p&gt;
@@ -2650,7 +2650,7 @@ let C[&lt;span class=&quot;hljs-number&quot;&gt;0.&lt;/span&gt;.k] be a &lt;span
     &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; i = &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt; to n-&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;
         sort &lt;span class=&quot;hljs-built_in&quot;&gt;list&lt;/span&gt; B[i] with insertion sort
     concatenate the lists B[&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;],B[&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;],...,B[n-&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;] together in order&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;桶排序的时间代价为：&lt;br&gt;&lt;span class=&quot;mathjax&quot;&gt;\(T(n) = \Theta(n) + \sum^{n-1}_{i=0}O(n_i^2)\)&lt;/span&gt;&lt;br&gt;期望运行时间：&lt;br&gt;&lt;span class=&quot;mathjax&quot;&gt;\(E[T(n)] = E\left[ \Theta(n) + \sum^{n-1}_{i=0}O(n_i^2) \right] = \Theta(n)+ \sum^{n-1}_{i=0}O(E[n_i^2])\)&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;定义指示器随机变量 &lt;span class=&quot;mathjax&quot;&gt;\(X_{ij} = I\{A[j] in bucket i\}\)&lt;/span&gt;，则&lt;span class=&quot;mathjax&quot;&gt;\(n_i = \sum^n_{j=1}X_{ij}\)&lt;/span&gt;，&lt;br&gt;&lt;span class=&quot;mathjax&quot;&gt;\(E[n^2_i] = E\left[ \left( \sum_{j=1}^n X_{ij} \right)^2 \right] = \sum^n_{j=1}E[X_{ij}^2] + \sum_{1\leq j \leq n} \sum_{1\leq k \leq n, k \neq j} E[X_{ij}X_{ik}]\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;定义指示器随机变量 &lt;span class=&quot;mathjax&quot;&gt;\(X_{ij} = I\{A[j]~in~bucket~i\}\)&lt;/span&gt;，则&lt;span class=&quot;mathjax&quot;&gt;\(n_i = \sum^n_{j=1}X_{ij}\)&lt;/span&gt;，&lt;br&gt;&lt;span class=&quot;mathjax&quot;&gt;\(E[n^2_i] = E\left[ \left( \sum_{j=1}^n X_{ij} \right)^2 \right] = \sum^n_{j=1}E[X_{ij}^2] + \sum_{1\leq j \leq n} \sum_{1\leq k \leq n, k \neq j} E[X_{ij}X_{ik}]\)&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;而&lt;span class=&quot;mathjax&quot;&gt;\(E[X_{ij}X_{ik}] = E[X_{ij}^2]=\frac{1}{n^2}\)&lt;/span&gt;，&lt;span class=&quot;mathjax&quot;&gt;\(E[X_{ij}^2] = 1^2\cdot \frac{1}{n} + 0^2\cdot \left( 1-\frac{1}{n}) \right) = \frac{1}{n}\)&lt;/span&gt;，&lt;br&gt;故&lt;span class=&quot;mathjax&quot;&gt;\(E[n^2_i] = 2 - 1/n\)&lt;/span&gt;，桶排序的期望运行时间 &lt;span class=&quot;mathjax&quot;&gt;\(E[T(n)] = \Theta(n) + n\cdot O(2-1/n) = \Theta(n)\)&lt;/span&gt;。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;即使输入数据不服从均匀分布，只要所有桶的大小的平方和与元素数呈线性关系，期望运行时间就是&lt;span class=&quot;mathjax&quot;&gt;\(\Theta(n)\)&lt;/span&gt;&lt;/p&gt;
