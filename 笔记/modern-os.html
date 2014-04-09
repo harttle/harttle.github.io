@@ -224,7 +224,7 @@
           返回列表 <span class="glyphicon glyphicon-hand-left"></span>
       </a>
       <span class="pull-right label label-default hidden-xs">
-          <span class="glyphicon glyphicon-time"></span> 2014年04月07日
+          <span class="glyphicon glyphicon-time"></span> 2014年09月10日
       </span>
     </div>
   </div>
@@ -1085,6 +1085,125 @@ Consumer loop:
 <blockquote>
 <p>Starvation can be avoided by using a first-come, first-served, resource allocation policy.</p>
 </blockquote>
+<h1>Case Study: Linux</h1>
+<h2>History of Unix and Linux</h2>
+<h3>MULTICS &amp; UNICS</h3>
+<ul>
+<li>Researchers at M.I.T. joined forces with Bell Labs and Generic Electric and began designing a second-generation system, <strong>MULTICS(Multiplexed Information and Computing Service)</strong></li>
+<li>One of the Bell Labs researchers, Ken Thompson wrote a stripped-down MULTICS on a PDP-7 minicomputer. The system is called <strong>UNICS(UNiplexed Information and Computing Service)</strong> jokingly by Brian Kernighan, Bell Labs.</li>
+<li>Thompson tied to rewite UNIX with B language of his own design and failed. Ritchie then designed a successor to B, called C. Working together, they rewrote UNIX in C.</li>
+<li>Steve Johnson of Bell Labs designed and implemented the <strong>portable C compiler</strong>, which could be retargeted to produce code for any resonable machine with a only a moderate amount of effort.</li>
+</ul>
+<h3>Standard UNIX</h3>
+<ul>
+<li>AT&amp;T released its first commercial UNIX: System III, then System V.</li>
+<li>Aided by U.S. Dept. of Defense, Berkeley released an improved PDP-11 called <strong>1BSD(First Berkeley Software Distribution)</strong>, which supported virtual memory, TCP/IP, vi, csh, etc.</li>
+<li>IEEE came up with <strong>POSIX(Portable Operating System of UNIXish)</strong>, witch reconcile the two flavors of UNIX.</li>
+</ul>
+<h3>MINIX &amp; Linux</h3>
+<ul>
+<li>Tanenbaum wrote a Unix-like MINIX based on a microkernel design.</li>
+<li>In 1991, Linus Torvalds wrote another UNIX, named <strong>Linux</strong>, according to MINIX.</li>
+<li>Linux comes with GPL Lisence devised by Richard Stallman. GNOME, KDE were written for Linux.</li>
+</ul>
+<h3>Linux Goals</h3>
+<ol>
+<li>Be simple, elegant, and consistent. (Wildcards, cmd abbrs, etc.)</li>
+<li>Power and flexibility. (every program just do one thing and do it well)</li>
+<li>No redundancy.</li>
+</ol>
+<h2>Processes in Linux</h2>
+<h3>Concepts</h3>
+<ul>
+<li>One <strong>PID(Process Identifier)</strong> per process, and one <strong>TID(Task Identifier)</strong> per thread.</li>
+<li><strong>Child process</strong> and <strong>parent process</strong> have their own memory images respectively, and share open files.</li>
+<li><strong>pipes</strong>(which can be filled and then process blocked) and <strong>signal</strong>(<code>kill</code> cmd, for example) are used for inter-process communication.</li>
+</ul>
+<h3>System Calls</h3>
+<ul>
+<li><code>fork</code> will create an exact duplicate of the original process(file descriptors, registers, and everything else), and applys the copy on write mechanism.</li>
+<li><code>exec</code> will cause its entire core image to be replaced by the file named in its 1st parameter.</li>
+<li><code>wait</code> is used to collect information and clean the zombie process left by the terminated child process.</li>
+<li><code>pause</code> tells Linux to suspend the process until signal arrives.</li>
+</ul>
+<h3>Thread</h3>
+<p>Kernel thread is supported by Linux using <code>clone</code> system call.</p>
+<blockquote>
+<p>When a thread was created, the original thread and the new one shared everything but their registers.</p>
+</blockquote>
+<p>3 classes of threads for scheduling purposes:</p>
+<ol>
+<li>Real-time FIFO.</li>
+<li>Real-time round robin.</li>
+<li>Timesharing.</li>
+</ol>
+<h3>Booting</h3>
+<ol>
+<li>BIOS performs initial device discovery and initialization.</li>
+<li>MBR is read into a fixed location and executed, which loads a standalone <strong>boot</strong> program like <strong>GRUB(GRand Unified Bootloader)</strong>.</li>
+<li><code>boot</code> reads in the OS kernel and jumps to it.</li>
+<li>Process 0 checks devices, program the clock, mount the root FS, and create <code>init</code>(process 1), and page daemon(process 2).</li>
+<li><code>init</code> execs <code>/etc/rc/*</code>, finally opens tty and print <code>login:</code></li>
+</ol>
+<h2>Memory Management in Linux</h2>
+<h3>Concepts</h3>
+<ul>
+<li><strong>text segement</strong> lays in the lowest in virtual address space. It&#39;s readonly thus can be shared physically.</li>
+<li><strong>data segement</strong> lays upside of text segment and contains 2 parts: initialized data and uninitialized data(called <strong>BSS(block Started by Symbol)</strong>, which can grow and shrink by system call <code>brk</code>).</li>
+<li><strong>stacks</strong> starts at the top limit of virtual address. For a 32bit x86 platform, it would be 0xC0000000.</li>
+<li><strong>memory-mapped files</strong> are often used for shared libraries.</li>
+</ul>
+<blockquote>
+<p>Text segment is read-only. Self-modifying programs went out of style in 1950s because they they were too difficult to understand and debug.</p>
+</blockquote>
+<blockquote>
+<p>The existence of uninitialized data is actually just an optimization to make binary programs smaller.</p>
+</blockquote>
+<h3>Implementation</h3>
+<ul>
+<li>Each linux process on a 32-bit machine typically gets 3GB of virtual address space for itself, with the remaining 1GB reserved for its page tables and other kerel data.</li>
+<li>The 1GB kernel memory typically resides in low physical memory but it&#39;s mapped in the top of each process virtual address space.</li>
+<li>Linux uses 4-level paging scheme</li>
+<li><strong>buddy algorithm</strong> and <strong>slab allocator</strong> is used for memeory allocation for normal objects and kernel caches respectively.</li>
+</ul>
+<h2>Input/Output in Linux</h2>
+<p>File systems under the VFS includes:</p>
+<ol>
+<li>Regular file(with I/O scheduler and Block device driver)</li>
+<li>Block special file(with I/O scheduler and Block device driver)</li>
+<li>Char special file(with Optional line discipline and Char device driver)</li>
+<li><p>Network socket(with Protocol drivers and Network device driver)</p>
+</li>
+<li><p>I/O Scheduler is used to reorder or bundle r/w requests to block devices.</p>
+</li>
+<li>Line disciplines are used to render the local line editing before submit by Carriage Return.</li>
+<li>Linux treat drivers as <strong>loadable modules</strong>.</li>
+</ol>
+<h2>Linux File System</h2>
+<h3>Concepts</h3>
+<p>History of Linux FS:</p>
+<ol>
+<li>The initial FS is MINIX 1 FS.</li>
+<li>ext FS allowed 255 chars of filename and 2GB filesize, but slower.</li>
+<li>ext2 allowed long filename, larger filesize, and provided better performance.</li>
+<li>ext3 is a follow-on of ext2 with journaling.</li>
+</ol>
+<p>Linux allows directory and file locking(byte range) with semaphore, including <strong>shared locks</strong> and <strong>exclusive locks</strong>.</p>
+<h3>Implementation</h3>
+<p>4 main structures of VFS:</p>
+<ol>
+<li><strong>superblock</strong> contains critical information about the layout of the file system.</li>
+<li><strong>i-nodes</strong> each describe exactly one file.</li>
+<li><strong>dentry</strong> represents a directory entry.</li>
+<li><strong>file</strong> is an in-memory representation of an open file.</li>
+</ol>
+<p><img src="/assets/img/blog/10-31.bmp" alt="ext2 layout"></p>
+<ul>
+<li>With 1kb block, this design limits a block group to 8192 blocks(in practice) and 8192 inodes(not real restriction).</li>
+<li>Ext2 attempts to collocate ordinary files in the same block group as the parent directory, and data files in the same block as the original file i-node.</li>
+<li>Ext2 also preallocates a number(8) of additional blocks for that file to minimize the file fragmentation due to future write operations.</li>
+<li>inode contains addresses of first 12 disk blocks, single indirect, double indirect, and triple indirect when needed.</li>
+</ul>
 
 
     
