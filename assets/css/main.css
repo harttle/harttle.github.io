@@ -48,6 +48,13 @@ body{
   }
 }
 
+.header a{
+    color: #444444;
+    text-decoration: none;
+}
+.header a:hover{
+    color: #39f;
+}
 .global-nav{
   margin-bottom: 0;
   border-radius:0;
