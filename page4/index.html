@@ -6,7 +6,7 @@
         <meta name="author" content="harttle">      
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>About - Harttle Land</title>
+        <title>Home - Harttle Land</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- style -->
@@ -25,25 +25,38 @@
 
         
         
+<link rel="stylesheet" href="/assets/css/markdown.css">
+<link rel="stylesheet" href="/assets/css/highlight/tomorrow-night-eighties.css">
 <style>
-    .label-list .label{
-        padding: 2px;
-        margin: 3px;
-    }
-    .panel .panel-title{
-        font-style: italic;
+    .page-header{
         color: #000;
     }
-    .panel a,#post-list a{
-        color: #555;
+
+    .post{
+        margin-bottom: 70px;
+        border-bottom: 1px dotted #d1d1d1;
     }
-    .panel a:hover,#post-list a:hover{
-        color: #000;
-    }   
-    /* carousel style */
-    #carousel{
-        box-shadow: 5px 7px 20px #888;
-        margin-top: 10px;
+    .post h1.header{
+        font-weight: normal;
+        font-size: 28px;
+    }
+    .post .header a{
+        color: #444444;
+        text-decoration: none;
+    }
+    .post .header a:hover{
+        color: #39f;
+    }
+    .post .meta{
+    }
+    .post a{
+        text-decoration: none;
+    }
+    .post .md{
+        margin: 40px 15px 30px 15px;
+    }
+    .post .more{
+        margin-bottom:20px;
     }
 </style>
 
@@ -100,112 +113,124 @@
             <div id="main-content">
                 
                 
+<div class="page-header hl-header">
+    <div class="container">
+      <h1>Harttle Land <small style="margin-left:20px;"> Keep It Simple, Stupid.</small></h1>
+    </div>
+</div>
+  
 <div class="container">
 
-    <div class="row" style="margin-top:20px;">
-        <div class="col-md-3 col-sm-4 col-xs-5">
 
-            <div style="margin-bottom: 20px">
-                <a href="#" class="thumbnail" style="padding: 7px;">
-                    <img class="lazy" data-original="/assets/img/avatar.png" src="/assets/img/loading.gif" style="display: block;">
-                </a>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Projects</h3>
-                </div>
-                <div class="panel-body">
-                    <p><a href="http://buddys.github.io/marktex/" target="_blank" title="A Smarter Markdown Parser">MarkTex</a></p>
-                    <p><a href="http://harttle.duapp.com" target="_blank" title="支持 Markdown 和 Latex 的云端笔记应用">God Notes 云笔记</a></p>
-                    <p> <a href="http://bbs.aliyun.com/read.php?spm=5176.383663.5.38.NAbIv2&tid=129380" target="_blank" title="阿里云第三方SDK"> 阿里云 <abbr title="Open Storage Service：开放云存储">OSS</abbr> Android SDK </a> </p>
-                    <p> <a title="已于2013年10月移交北京大学计算机应用设计协会维护" href="//chrome.google.com/webstore/detail/bnlipdfmheddpljigcaaamjpnbhhklkb" target="_blank"> PKU Gateway Chrome Extension </a> </p>
-                    <p><a href="//exed.oce.pkusz.edu.cn" target="_blank">PKU Shenzhen 高级研修</a></p>
-                    <p style="margin-bottom: 0"><a href="http://oa.china-idc.cn/" target="_blank">中投发展 OA 系统</a></p>
-                </div>
-            </div>
+    <div id="post-list">
+        
 
+        <div class="post">
+            <h1 class="header"><a href="/%E6%97%A5%E5%BF%97/github-homepage-devlog.html">GitHub 个人主页开发记录</a></h1>
+            <p class="meta">
+            <span class="text-muted time" style="padding-right:10px"> 12 Oct 2013</span>
 
-            <div class="panel panel-default">
-                <div class="panel-heading"> <h3 class="panel-title">Interests</h3> </div>
-                <div class="panel-body">
-                    <p class="label-list">
-                    <a class="label label-default">Linux</a>
-                    <a class="label label-info">Arch</a>
-                    <a class="label label-danger">Bash</a>
-                    <a class="label label-primary">Bootstrap</a>
-                    <a class="label label-default">Jquery</a> 
-                    <a class="label label-info">Django</a> 
-                    <a class="label label-success">Xetex</a> 
-                    <a class="label label-default">TexLive</a> 
-                    <a class="label label-danger">Physics</a> 
-                    <a class="label label-info">Electrodynamics</a> 
-                    <a class="label label-warning">Pulsars</a>  
-                    </p>
-                </div>
-            </div>
+            
+            <span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> 日志</span>
+            
+
+            
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 工作记录</span>
+            
+            </p>
+
+            
+            <div class="md"><p>2013年10月采用jekyll静态站点工具开始了github个人主页的开发。这里记录了各时间结点完成的工作，以及未来的工作列表。</p>
+<h3>2013-10-12</h3>
+<p>基本完成了个人主页在 github 的部署。</p>
+<ul>
+<li>主要页面<ul>
+<li>首页</li>
+<li>博文</li>
+<li>关于</li>
+<li>链接</li>
+</ul>
+</li>
+<li>识别文章目录，生成博文分类</li>
+</ul>
+<h3>2013-10-16</h3>
+<ul>
+<li>社会化评论</li>
+</ul>
+<h3>2013-10-17</h3>
+<ul>
+<li>照片展示<ul>
+<li>延迟载入</li>
+<li>gallery浏览</li>
+</ul>
+</li>
+</ul>
+<h3>2013-10-25</h3>
+<ul>
+<li>博客、相册、资源的category模板<ul>
+<li>页面布局：header、side-nav、content</li>
+<li>affix 滚动导航</li>
+</ul>
+</li>
+<li>相册图片缩略图的自动更新（make+imageMagick）</li>
+</ul>
+<h3>2013-10-28</h3>
+<ul>
+<li>404页面</li>
+</ul>
+<h3>2013-10-29</h3>
+<ul>
+<li>latex显示：采用mathJax</li>
+<li>添加 CDN</li>
+<li>添加文章列表动态导航</li>
+</ul>
+<h3>2013-10-30</h3>
+<ul>
+<li><p>解决 affix-bottom 失效</p>
+<blockquote>
+<p>问题出自 sticky footer 中的 <code>body{height:100%}</code>，解决：<br>Replace <code>document.body.offsetHeight</code> with <code>document.body.scrollHeight</code> in bootstrap.min.js</p>
+</blockquote>
+</li>
+</ul>
+<h3>2013-10-31</h3>
+<ul>
+<li>载入优化：script 后置</li>
+<li>通用化 category：采用部分视图</li>
+<li>资源页面图标</li>
+</ul>
+<h3>2013-11-1</h3>
+<ul>
+<li>社会化：添加 linkedIn facebook google+ follow</li>
+<li>SEO：添加 meta、添加sitemap.xml和robots.txt、导入搜索引擎、创建RSS </li>
+</ul>
+<h3>2013-11-06</h3>
+<ul>
+<li>添加google analysis</li>
+</ul>
+<h3>未来的工作</h3>
+<ul>
+<li>首页完善：简历时间线</li>
+</ul>
+
+</div>
+            
         </div>
-        <div class="col-md-9 col-sm-8 col-xs-7">
-            <div id="carousel" class="carousel slide hidden-xs" data-ride="carousel">
-                <ol class="carousel-indicators hidden-sm">
-                    <li data-target="#carousel" data-slide-to="0" class=""></li>
-                    <li data-target="#carousel" data-slide-to="1" class="active"></li>
-                    <li data-target="#carousel" data-slide-to="2" class=""></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="item">
-                        <img src="/assets/img/slider/1.jpg">
-                        <div class="carousel-caption hidden-sm">
-                            <h3>Hacker Way</h3>
-                            <p>Pursuit for perfect, sharing, continuous improvement, creative solutions and rapid decision making.</p>
-                        </div>
-                    </div>
-                    <div class="item active">
-                        <img src="/assets/img/slider/2.jpg">
-                        <div class="carousel-caption hidden-sm">
-                            <h3>Keep It Simple, Stupid</h3>
-                            <p>Simplicity, code-correctness over convenience, user-centric, openness and freedom.</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img src="/assets/img/slider/3.jpg">
-                        <div class="carousel-caption hidden-sm">
-                            <h3>Unix Philosophy</h3>
-                            <p>Do only a single thing, but to do it well, and to work together well with others.</p>
-                        </div>
-                    </div>
-                </div>
-                <a class="left carousel-control" href="#carousel" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                </a>
-                <a class="right carousel-control" href="#carousel" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                </a>
-            </div>
 
-
-            <div style="margin-top: 50px;" class="jumbotron">
-                <p>Welcome for bug report and coding program(<a href="mailto:yangjvn@126.com" role="button">yangjvn@126.com</a>). Thanks: </p>
-
-                <div>
-                    <p classd="label-list">
-                    <a href="http://jquery.com/" target="_blank" class="label label-primary">jQuery</a>
-                    <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank" class="label label-default">Font-Awesome</a>
-                    <a href="http://v3.bootcss.com/" target="_blank" class="label label-warning">Bootstrap 3.0</a>
-                    <a href="https://github.com/markgoodyear/scrollup" target="_blank" class="label label-info">markgoodyear/scrollup</a>
-                    <a href="https://github.com/blueimp/Gallery" target="_blank" class="label label-success">blueimp/Gallery</a>
-                    <a href="https://github.com/tuupola/jquery_lazyload/" target="_blank" class="label label-danger">tuupola/jquery_lazyload</a>
-                    <a href="http://www.jiathis.com/" target="_blank" class="label label-primary">JiaThis</a>
-                    <a href="http://pygments.org/" target="_blank" class="label label-warning">pypgments</a>
-                    <a href="http://www.liantu.com/" target="_blank" class="label label-default">联图网</a>
-                    <a href="http://www.uyan.cc/" target="_blank" class="label label-danger">友言 V3.0</a>
-                    <a href="http://www.webiconset.com/file-type-icons/" target="_blank" class="label label-success">webiconset</a>
-                    <a href="//dushixian.duapp.com/" target="_blank" class="label label-warning">小伙伴</a>
-                    </p>
-                </div>
-            </div>
-
-        </div>
+        
     </div>
+
+    <!-- Pagination links -->
+    
+    <ul class="pager">
+        
+          <li class="previous disabled"><a>&larr; Older</a></li>
+        
+
+        
+            <li class="next"><a href="/page3">Newer &rarr;</a></li>
+        
+    </div>
+    
 
 </div>
 
@@ -254,6 +279,15 @@
 
         
         
+<!-- latex render begin -->
+<script type="text/x-mathjax-config">  
+  MathJax.Hub.Queue(function () {
+    $('body').scrollspy('refresh'); 
+  });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
+<!-- latex render end -->
+
 
         <script>
             //var navHeight = 50;
@@ -261,7 +295,7 @@
             $(function(){
                 
                 //更新菜单
-                $('.nav #about').attr('class','active');
+                $('.nav #home').attr('class','active');
                 
                 //激活工具提示
                 $('[data-toggle="tooltip"]').tooltip();

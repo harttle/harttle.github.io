@@ -126,68 +126,63 @@
         
 
         <div class="post">
-            <h1 class="header"><a href="/%E7%AC%94%E8%AE%B0/modern-os.html">Modern Operating Systems</a></h1>
+            <h1 class="header"><a href="/%E6%97%A5%E5%BF%97/vpn-linux-to-windows.html">Linux 连接 Windows Server VPN</a></h1>
             <p class="meta">
-            <span class="text-muted time" style="padding-right:10px"> 10 Sep 2014</span>
+            <span class="text-muted time" style="padding-right:10px"> 06 Nov 2013</span>
 
             
-            <span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> 笔记</span>
+            <span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> 日志</span>
             
 
             
-                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 读书笔记</span>
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> VPN</span>
             
-                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 操作系统</span>
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> windows</span>
+            
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> linux</span>
             
             </p>
 
             
-            <div class="md"><h1>Introduction</h1>
-<h2>What is OS</h2>
+            <div class="md"><p>Linux 连接 Windows Server VPN，以 archLinux 为例，适用于 Ubuntu。</p>
 <ol>
-<li><strong>extendes machines</strong> : providing programmers(and programs) a clean abstract set of resources instead of the messy hardware</li>
-<li><strong>resource manager</strong> : managing hardware resources</li>
+<li><p>安装 pptp</p>
+<pre><code class="hljs"> <span class="hljs-comment"># kde in arch</span>
+ pacman -S extra/networkmanager-pptp</code></pre></li>
+<li><p>新建 VPN 连接</p>
+<p> 网关：服务器IP或域名<br> 登录：用户名<br> 密码：密码<br> 域：空<br> 认证方式：MSCHAP MSCHAPv2<br> 使用 MPPE 加密</p>
+</li>
 </ol>
-<h2>History of OS</h2>
-<p>The first digital computer was designed by Charles Babbage. Ada Lovelace was the first programmer(hired by Babbage).</p>
-<h3>1st Generation Vacuum Tubes</h3>
-<ul>
-<li>The first functioning digital computer, by John Atanasoff and Clifford Berry, Iowa State University.</li>
-<li>Z3, Konrad Zuse, Berlin.</li>
-<li>Colossus, a group at Bletchey Park, England</li>
-<li>Mark I, Howard Aiken, Harvard</li>
-<li>ENIAC, William Mauchley and J. Presper Eckert, University of Pennsylvania</li>
-</ul>
-</div>
-            <a class="more btn btn-primary" href="/%E7%AC%94%E8%AE%B0/modern-os.html">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
 
+</div>
             
         </div>
 
         
 
         <div class="post">
-            <h1 class="header"><a href="/linux/makefile.html">Makefile 手册</a></h1>
+            <h1 class="header"><a href="/web/se-project.html">搜索引擎搭建</a></h1>
             <p class="meta">
-            <span class="text-muted time" style="padding-right:10px"> 01 Jan 2014</span>
+            <span class="text-muted time" style="padding-right:10px"> 05 Nov 2013</span>
 
             
-            <span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> linux</span>
+            <span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> web</span>
             
 
             
-                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> gcc</span>
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 爬虫</span>
             
-                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 编译</span>
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 搜索引擎</span>
             
             </p>
 
             
-            <div class="md"><p>在软件开发中，make是一个工具程序（Utility software），经由读取叫做“makefile”的文件，自动化建构软件。</p>
-<p>它是一种转化文件形式的工具，转换的目标称为“target”；与此同时，它也检查文件的依赖关系，如果需要的话，它会调用一些外部软件来完成任务。它的依赖关系检查系统非常简单，主要根据依赖文件的修改时间进行判断。大多数情况下，它被用来编译源代码，生成结果代码，然后把结果代码连接起来生成可执行文件或者库文件。它使用叫做“makefile”的文件来确定一个target文件的依赖关系，然后把生成这个target的相关命令传给shell去执行。</p>
-<p><a href="http://scc.qibebt.cas.cn/docs/linux/base/%B8%FA%CE%D2%D2%BB%C6%F0%D0%B4Makefile-%B3%C2%F0%A9.pdf">中文Tutorial</a></p>
+            <div class="md"><p>采用 heritix+pagerank+lucene 方式搭建搜索引擎原型，并评估其性能。</p>
+<h1>爬虫（Heritrix）</h1>
+<p>heritrix 是用作web归档的爬虫框架，java语言实现，具有 Apache License 自由软件许可。我们采用heritrix抓取网页数据。</p>
+<p>可参照官方 Guide：<a href="https://webarchive.jira.com/wiki/display/Heritrix/Heritrix+3.0+and+3.1+User+Guide">https://webarchive.jira.com/wiki/display/Heritrix/Heritrix+3.0+and+3.1+User+Guide</a></p>
 </div>
-            <a class="more btn btn-primary" href="/linux/makefile.html">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <a class="more btn btn-primary" href="/web/se-project.html">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
 
             
         </div>
@@ -195,9 +190,9 @@
         
 
         <div class="post">
-            <h1 class="header"><a href="/%E7%AC%94%E8%AE%B0/computer-organization-and-design.html">Computer Organization and Design</a></h1>
+            <h1 class="header"><a href="/%E7%AC%94%E8%AE%B0/introduction-to-algorithms.html">算法导论</a></h1>
             <p class="meta">
-            <span class="text-muted time" style="padding-right:10px"> 30 Nov 2013</span>
+            <span class="text-muted time" style="padding-right:10px"> 28 Oct 2013</span>
 
             
             <span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> 笔记</span>
@@ -206,51 +201,34 @@
             
                 <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 读书笔记</span>
             
-                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 体系结构</span>
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 算法</span>
+            
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 数据结构</span>
             
             </p>
 
             
-            <div class="md"><h1>Abstractions</h1>
-<h2>Concepts</h2>
-<p><strong>Moore&#39;s law</strong></p>
-<blockquote>
-<p>Over the history of computing hardware, the number of transistors on integrated circuits doubles approximately every two years.</p>
-</blockquote>
-<p><strong>Compiler</strong></p>
-<blockquote>
-<p>A program that translates high-level language statements into assembly language statements.</p>
-</blockquote>
-<p><strong>Assembler</strong></p>
-<blockquote>
-<p>A program that translates a symbolic version of instructions into the binary version.</p>
-</blockquote>
-<p><strong>High-level programming langrage</strong></p>
-<blockquote>
-<p>A portable language that is composed of words and algebraic notation that can be translated by a compiler into assembly language.</p>
-</blockquote>
-<p><strong>Assembly language</strong></p>
-<blockquote>
-<p>Asymbolic representation of machine instructions.</p>
-</blockquote>
-<p><strong>Machine language</strong></p>
-<blockquote>
-<p>A binary representation of machine instructions.</p>
-</blockquote>
-<p><strong>5 components of a computer</strong></p>
-<ul>
-<li>Input</li>
-<li>Output</li>
-<li>Memory</li>
-<li>Datapath</li>
-<li>Control</li>
+            <div class="md"><h1>基础知识</h1>
+<h2>算法基础</h2>
+<h3>插入排序</h3>
+<pre><code class="hljs"><span class="hljs-comment">//INSERTION-SORT(A)</span>
+<span class="hljs-keyword">for</span> j = <span class="hljs-number">2</span> to A.length
+    key = A[j]
+    <span class="hljs-comment">//Insert A[j] into the sorted sequence A[1..j-1]</span>
+    i = j - <span class="hljs-number">1</span> 
+    <span class="hljs-keyword">while</span> i &gt; <span class="hljs-number">0</span> and A[i] &gt; key
+        A[i + <span class="hljs-number">1</span>] = A[i]
+        i = i - <span class="hljs-number">1</span>
+    A[i+<span class="hljs-number">1</span>] = key</code></pre><ul>
+<li>循环不变式：初始化、保持、终止</li>
 </ul>
-<blockquote>
-<p>The last two sometimes combined and called the processor.</p>
-</blockquote>
-<p><strong>Instruction set architecture</strong><br>One key interface between the levels of abstraction is the instruction set architecture-the interface between the hardware and low-level software.</p>
+<h3>分析算法</h3>
+<ul>
+<li>单处理器计算模型：随机访问机（random-access machine，RAM）：算数指令、数据移动指令、控制指令。</li>
+<li>最坏情况、平均情况、增长量级</li>
+</ul>
 </div>
-            <a class="more btn btn-primary" href="/%E7%AC%94%E8%AE%B0/computer-organization-and-design.html">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <a class="more btn btn-primary" href="/%E7%AC%94%E8%AE%B0/introduction-to-algorithms.html">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
 
             
         </div>
@@ -258,26 +236,75 @@
         
 
         <div class="post">
-            <h1 class="header"><a href="/linux/vim-advanced.html">Vim 使用</a></h1>
+            <h1 class="header"><a href="/%E7%AC%94%E8%AE%B0/computer-network.html">计算机网络</a></h1>
             <p class="meta">
-            <span class="text-muted time" style="padding-right:10px"> 08 Nov 2013</span>
+            <span class="text-muted time" style="padding-right:10px"> 28 Oct 2013</span>
 
             
-            <span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> linux</span>
+            <span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> 笔记</span>
             
 
+            
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 读书笔记</span>
+            
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 网络</span>
             
             </p>
 
             
-            <div class="md"><p>Vim是从vi发展出来的一个文本编辑器。代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。和Emacs并列成为类Unix系统用户最喜欢的编辑器。</p>
-<p>文档参见：<a href="http://vimdoc.sourceforge.net/htmldoc/">http://vimdoc.sourceforge.net/htmldoc/</a></p>
-<p>中文文档：<a href="http://vimcdoc.sourceforge.net/doc/">http://vimcdoc.sourceforge.net/doc/</a></p>
-<h1>基础使用</h1>
-<p><img src="/assets/img/blog/vim-key.png" alt="vim-key"></p>
-<p>查看帮助：<code>:help</code>，<code>&lt;Ctrl&gt;]</code> 进入标签，<code>&lt;Ctrl&gt;O</code> 返回。</p>
+            <div class="md"><h1>概述</h1>
+<ul>
+<li>分布式系统<br>对于用户是一个统一的整体，只有一个模型或泛型，由操作系统之上的中间件负责实现。<br>eg. 万维网(world wide web)</li>
+<li>计算机网络<br>大量独立的计算机互相连接起来共同完成计算任务。</li>
+</ul>
+<h2>计算机网络的应用</h2>
+<h3>商业应用</h3>
+<ul>
+<li>资源共享<br>地理位置束缚、客户-服务器模型</li>
+<li>通信媒介<br>电子邮件、电子商务</li>
+</ul>
+<h3>家庭应用</h3>
+<ul>
+<li>即时消息、聊天室 </li>
+<li>对等通信(p2p)</li>
+</ul>
+<h3>移动用户</h3>
+<ul>
+<li>PDA（personal digital assistants）</li>
+<li>固定无线、移动无线</li>
+<li>WAP 1.0（wireless application protocol）：针对小屏幕简化的Web页面。</li>
+</ul>
+<h2>网络硬件</h2>
+<ul>
+<li>广播网络：广播、多播</li>
+<li>点到点：单播</li>
+<li>个人区域网络-&gt;局域网-&gt;城域网-&gt;广域网-&gt;Internet</li>
+</ul>
+<h3>局域网 LAN（local area network）</h3>
+<ul>
+<li>总线型网络：以太网 IEEE 802.3</li>
+<li>环形网络：IBM令牌环 IEEE 802.5</li>
+</ul>
+<h3>城域网 MAN（metropolitan area network）</h3>
+<ul>
+<li>有线电视 </li>
+<li>集中控制：头端</li>
+</ul>
+<h3>广域网 WAN（wide area network）</h3>
+<ul>
+<li>主机、交换单元、通信子网、传输线、路由器 </li>
+<li>存储转发（分组交换）、路由算法</li>
+</ul>
+<h3>无线网络</h3>
+<ul>
+<li>系统互联：计算机外部设备 eg. 蓝牙</li>
+<li>无线 LAN：IEEE 802.11</li>
+<li>无线 WAN：蜂窝电话、IEEE 802.16</li>
+</ul>
+<h3>互联网</h3>
+<p>通过网关互相连接起来的网络</p>
 </div>
-            <a class="more btn btn-primary" href="/linux/vim-advanced.html">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <a class="more btn btn-primary" href="/%E7%AC%94%E8%AE%B0/computer-network.html">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
 
             
         </div>
@@ -285,57 +312,39 @@
         
 
         <div class="post">
-            <h1 class="header"><a href="/linux/arch-install.html">安装 Arch Linux</a></h1>
+            <h1 class="header"><a href="/linux/synaptics-settings-linux.html">Linux下的触摸板设置</a></h1>
             <p class="meta">
-            <span class="text-muted time" style="padding-right:10px"> 07 Nov 2013</span>
+            <span class="text-muted time" style="padding-right:10px"> 27 Oct 2013</span>
 
             
             <span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> linux</span>
             
 
+            
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 触摸板</span>
+            
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> udev</span>
             
                 <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> arch</span>
             
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> synaptics</span>
+            
             </p>
 
             
-            <div class="md"><p>本文介绍如何安装 Arch Linux，一个轻量级、简单的 Linux 发行版。</p>
-<p>相关链接<br><a href="https://wiki.archlinux.org/index.php/Beginners&#39;_Guide">Beginner&#39;s Guide</a><br><a href="https://wiki.archlinux.org/index.php/Arch_Linux_Localization_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87">汉化</a></p>
-<h2>制作镜像并启动</h2>
-<p>在arch官方或者bjtu下载到镜像（X86和64）是同一镜像。然后刻录安装盘：</p>
-<ul>
-<li><p>linux:   </p>
-<pre><code class="hljs">  dd <span class="hljs-keyword">if</span>=/path/to/iso of=/dev/sdc  <span class="hljs-comment"># 确认 sdc 为你的U盘</span></code></pre></li>
-<li>windows:<ol>
-<li>下载 dd4dos</li>
-<li><code>dd if=/path/to/iso of=&quot;\\.\G:&quot;   # 确认G盘为你的U盘</code></li>
-</ol>
-</li>
-</ul>
-<blockquote>
-<p>另外，启动不了很正常，和U盘有关。 </p>
-</blockquote>
-<h2>连接网络</h2>
-<ul>
-<li>无线网络<pre><code class="hljs">  netcfg(wifi-menu连接无线网）
-  <span class="hljs-built_in">cd</span> /etc/network.d
-  cp ./examples/wireless_XXX ./    
-  vi wireless_XXX  <span class="hljs-comment">#修改参数</span>
-  netcfg wireless_XXX</code></pre></li>
-<li>对于内核没有支持的无线网卡，安装ndiswrapper使用windows驱动  <ol>
-<li>安装    <code>pacman -S ndiswrapper</code></li>
-<li>加载    <code>ndiswrapper -i winXP_driver.inf(可以从windows目录下或驱动安装包找到)</code></li>
-<li>确认    <code>ndiswrapper -l</code> </li>
-<li>载入模块    <code>modprobe ndiswrapper</code>  </li>
-<li>若无线网卡的状态指示灯不亮，重新载入网卡    <code>cardctl eject &amp;&amp; cardctl insert</code></li>
-</ol>
-</li>
-</ul>
-<blockquote>
-<p>使用 <code>iwconfig</code> 可查看网络设备(wlan0,eth0等)，若没有识别请参照wiki</p>
-</blockquote>
-</div>
-            <a class="more btn btn-primary" href="/linux/arch-install.html">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <div class="md"><h1>软件安装</h1>
+<h2>安装 Synaptics 驱动</h2>
+<pre><code class="hljs"><span class="hljs-comment"># arch linux:</span>
+pacman -S xf86-input-synaptics</code></pre><h2>管理工具</h2>
+<pre><code class="hljs"><span class="hljs-comment"># 命令行管理工具：Synclient </span>
+pacman -S xf86-input-synaptics    
+
+<span class="hljs-comment"># 图形管理工具：GPointing Device Settings</span>
+yaourt -S gpointing-device-settings
+
+<span class="hljs-comment"># KDE 触摸板控制模块</span>
+yaourt -S kcm_touchpad</code></pre></div>
+            <a class="more btn btn-primary" href="/linux/synaptics-settings-linux.html">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
 
             
         </div>
@@ -347,11 +356,11 @@
     
     <ul class="pager">
         
-          <li class="previous"><a href="/page2">&larr; Older</a></li>
+          <li class="previous"><a href="/page3">&larr; Older</a></li>
         
 
         
-          <li class="next disabled"><a>Newer &rarr;</a></li>
+            <li class="next"><a href="/index.html">Newer &rarr;</a></li>
         
     </div>
     

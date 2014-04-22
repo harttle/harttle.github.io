@@ -126,40 +126,25 @@
         
 
         <div class="post">
-            <h1 class="header"><a href="/%E7%AC%94%E8%AE%B0/modern-os.html">Modern Operating Systems</a></h1>
+            <h1 class="header"><a href="/%E4%B8%AA%E4%BA%BA/flute.html">笛箫</a></h1>
             <p class="meta">
-            <span class="text-muted time" style="padding-right:10px"> 10 Sep 2014</span>
+            <span class="text-muted time" style="padding-right:10px"> 26 Oct 2013</span>
 
             
-            <span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> 笔记</span>
+            <span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> 个人</span>
             
 
             
-                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 读书笔记</span>
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 艺园</span>
             
-                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 操作系统</span>
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 民乐</span>
             
             </p>
 
             
-            <div class="md"><h1>Introduction</h1>
-<h2>What is OS</h2>
-<ol>
-<li><strong>extendes machines</strong> : providing programmers(and programs) a clean abstract set of resources instead of the messy hardware</li>
-<li><strong>resource manager</strong> : managing hardware resources</li>
-</ol>
-<h2>History of OS</h2>
-<p>The first digital computer was designed by Charles Babbage. Ada Lovelace was the first programmer(hired by Babbage).</p>
-<h3>1st Generation Vacuum Tubes</h3>
-<ul>
-<li>The first functioning digital computer, by John Atanasoff and Clifford Berry, Iowa State University.</li>
-<li>Z3, Konrad Zuse, Berlin.</li>
-<li>Colossus, a group at Bletchey Park, England</li>
-<li>Mark I, Howard Aiken, Harvard</li>
-<li>ENIAC, William Mauchley and J. Presper Eckert, University of Pennsylvania</li>
-</ul>
-</div>
-            <a class="more btn btn-primary" href="/%E7%AC%94%E8%AE%B0/modern-os.html">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <div class="md">细雨饧箫，斜阳牧笛，一径穿桃李。风吹花落，落花风又吹起。
+——郑燮</div>
+            <a class="more btn btn-primary" href="/%E4%B8%AA%E4%BA%BA/flute.html">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
 
             
         </div>
@@ -167,27 +152,32 @@
         
 
         <div class="post">
-            <h1 class="header"><a href="/linux/makefile.html">Makefile 手册</a></h1>
+            <h1 class="header"><a href="/linux/auto-thumb.html">批量更新站点缩略图</a></h1>
             <p class="meta">
-            <span class="text-muted time" style="padding-right:10px"> 01 Jan 2014</span>
+            <span class="text-muted time" style="padding-right:10px"> 26 Oct 2013</span>
 
             
             <span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> linux</span>
             
 
             
-                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> gcc</span>
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> web</span>
             
-                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 编译</span>
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> ImageMagick</span>
+            
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> Makefile</span>
             
             </p>
 
             
-            <div class="md"><p>在软件开发中，make是一个工具程序（Utility software），经由读取叫做“makefile”的文件，自动化建构软件。</p>
-<p>它是一种转化文件形式的工具，转换的目标称为“target”；与此同时，它也检查文件的依赖关系，如果需要的话，它会调用一些外部软件来完成任务。它的依赖关系检查系统非常简单，主要根据依赖文件的修改时间进行判断。大多数情况下，它被用来编译源代码，生成结果代码，然后把结果代码连接起来生成可执行文件或者库文件。它使用叫做“makefile”的文件来确定一个target文件的依赖关系，然后把生成这个target的相关命令传给shell去执行。</p>
-<p><a href="http://scc.qibebt.cas.cn/docs/linux/base/%B8%FA%CE%D2%D2%BB%C6%F0%D0%B4Makefile-%B3%C2%F0%A9.pdf">中文Tutorial</a></p>
+            <div class="md"><h1>背景</h1>
+<p>网站中通常会产生大量的多媒体文件，尤其是图片。维护和更新这些文件却是很繁琐的事情。本文介绍如何批量地更新用于web的缩略图：采用 ImageMagick + Makefile 的方式，既能及时地更新缩略图，又避免了不必要的文件操作。</p>
+<ul>
+<li>ImageMagick：是一款命令行图片处理工具，其功能复杂强大，毫不逊色于Ps。在Linux服务器中，通常采用 ImageMagick 来进行web后台的图片操作。</li>
+<li>Makefile：在 Unix 系统中，通常用 make 来自动化建构软件。make 根据依赖文件的修改时间进行判断是否执行更新，避免了不必要的更新操作。</li>
+</ul>
 </div>
-            <a class="more btn btn-primary" href="/linux/makefile.html">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <a class="more btn btn-primary" href="/linux/auto-thumb.html">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
 
             
         </div>
@@ -195,62 +185,24 @@
         
 
         <div class="post">
-            <h1 class="header"><a href="/%E7%AC%94%E8%AE%B0/computer-organization-and-design.html">Computer Organization and Design</a></h1>
+            <h1 class="header"><a href="/%E4%B8%AA%E4%BA%BA/me.html">我</a></h1>
             <p class="meta">
-            <span class="text-muted time" style="padding-right:10px"> 30 Nov 2013</span>
+            <span class="text-muted time" style="padding-right:10px"> 25 Oct 2013</span>
 
             
-            <span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> 笔记</span>
+            <span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> 个人</span>
             
 
             
-                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 读书笔记</span>
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 北京大学</span>
             
-                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 体系结构</span>
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 杨珺</span>
             
             </p>
 
             
-            <div class="md"><h1>Abstractions</h1>
-<h2>Concepts</h2>
-<p><strong>Moore&#39;s law</strong></p>
-<blockquote>
-<p>Over the history of computing hardware, the number of transistors on integrated circuits doubles approximately every two years.</p>
-</blockquote>
-<p><strong>Compiler</strong></p>
-<blockquote>
-<p>A program that translates high-level language statements into assembly language statements.</p>
-</blockquote>
-<p><strong>Assembler</strong></p>
-<blockquote>
-<p>A program that translates a symbolic version of instructions into the binary version.</p>
-</blockquote>
-<p><strong>High-level programming langrage</strong></p>
-<blockquote>
-<p>A portable language that is composed of words and algebraic notation that can be translated by a compiler into assembly language.</p>
-</blockquote>
-<p><strong>Assembly language</strong></p>
-<blockquote>
-<p>Asymbolic representation of machine instructions.</p>
-</blockquote>
-<p><strong>Machine language</strong></p>
-<blockquote>
-<p>A binary representation of machine instructions.</p>
-</blockquote>
-<p><strong>5 components of a computer</strong></p>
-<ul>
-<li>Input</li>
-<li>Output</li>
-<li>Memory</li>
-<li>Datapath</li>
-<li>Control</li>
-</ul>
-<blockquote>
-<p>The last two sometimes combined and called the processor.</p>
-</blockquote>
-<p><strong>Instruction set architecture</strong><br>One key interface between the levels of abstraction is the instruction set architecture-the interface between the hardware and low-level software.</p>
-</div>
-            <a class="more btn btn-primary" href="/%E7%AC%94%E8%AE%B0/computer-organization-and-design.html">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <div class="md">这里是我的一些照片。感谢 Rea。</div>
+            <a class="more btn btn-primary" href="/%E4%B8%AA%E4%BA%BA/me.html">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
 
             
         </div>
@@ -258,26 +210,27 @@
         
 
         <div class="post">
-            <h1 class="header"><a href="/linux/vim-advanced.html">Vim 使用</a></h1>
+            <h1 class="header"><a href="/%E6%91%84%E5%BD%B1/pku.html">北大</a></h1>
             <p class="meta">
-            <span class="text-muted time" style="padding-right:10px"> 08 Nov 2013</span>
+            <span class="text-muted time" style="padding-right:10px"> 18 Oct 2013</span>
 
             
-            <span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> linux</span>
+            <span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> 摄影</span>
             
 
+            
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 未名湖</span>
+            
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 博雅塔</span>
+            
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 北大西门</span>
             
             </p>
 
             
-            <div class="md"><p>Vim是从vi发展出来的一个文本编辑器。代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。和Emacs并列成为类Unix系统用户最喜欢的编辑器。</p>
-<p>文档参见：<a href="http://vimdoc.sourceforge.net/htmldoc/">http://vimdoc.sourceforge.net/htmldoc/</a></p>
-<p>中文文档：<a href="http://vimcdoc.sourceforge.net/doc/">http://vimcdoc.sourceforge.net/doc/</a></p>
-<h1>基础使用</h1>
-<p><img src="/assets/img/blog/vim-key.png" alt="vim-key"></p>
-<p>查看帮助：<code>:help</code>，<code>&lt;Ctrl&gt;]</code> 进入标签，<code>&lt;Ctrl&gt;O</code> 返回。</p>
+            <div class="md">红楼飞雪，一时英杰，先哲曾书写，爱国进步民主科学；忆昔长别，阳关千叠，狂歌曾竟夜，收拾山河待百年约。
 </div>
-            <a class="more btn btn-primary" href="/linux/vim-advanced.html">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <a class="more btn btn-primary" href="/%E6%91%84%E5%BD%B1/pku.html">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
 
             
         </div>
@@ -285,57 +238,34 @@
         
 
         <div class="post">
-            <h1 class="header"><a href="/linux/arch-install.html">安装 Arch Linux</a></h1>
+            <h1 class="header"><a href="/web/github-homepage-tutorial.html">像 Geek 一样写博客</a></h1>
             <p class="meta">
-            <span class="text-muted time" style="padding-right:10px"> 07 Nov 2013</span>
+            <span class="text-muted time" style="padding-right:10px"> 18 Oct 2013</span>
 
             
-            <span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> linux</span>
+            <span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> web</span>
             
 
             
-                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> arch</span>
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> GitHub</span>
+            
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 博客</span>
+            
+                <span class="label label-default " style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 教程</span>
             
             </p>
 
             
-            <div class="md"><p>本文介绍如何安装 Arch Linux，一个轻量级、简单的 Linux 发行版。</p>
-<p>相关链接<br><a href="https://wiki.archlinux.org/index.php/Beginners&#39;_Guide">Beginner&#39;s Guide</a><br><a href="https://wiki.archlinux.org/index.php/Arch_Linux_Localization_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87">汉化</a></p>
-<h2>制作镜像并启动</h2>
-<p>在arch官方或者bjtu下载到镜像（X86和64）是同一镜像。然后刻录安装盘：</p>
+            <div class="md"><p>本文介绍如何利用 GitHub 提供的文件服务，部署博客系统。采用 git+github+markdown+jekyll 方式构建静态博客站点。完成部署后，可以在在线撰写博客，也可以本地离线撰写，然后同步到GitHub。</p>
+<h2>一些背景</h2>
 <ul>
-<li><p>linux:   </p>
-<pre><code class="hljs">  dd <span class="hljs-keyword">if</span>=/path/to/iso of=/dev/sdc  <span class="hljs-comment"># 确认 sdc 为你的U盘</span></code></pre></li>
-<li>windows:<ol>
-<li>下载 dd4dos</li>
-<li><code>dd if=/path/to/iso of=&quot;\\.\G:&quot;   # 确认G盘为你的U盘</code></li>
-</ol>
-</li>
+<li><strong>Git</strong> 是一个分布式版本控制/软件配置管理软件，最初用户linux内核开发，至今已广泛用于项目源码管理。</li>
+<li><strong><a href="http://github.com/">GitHub</a></strong> 是一个用于使用Git版本控制系统项目的共享虚拟主机服务，提供了无限的存储空间以及网络流量。</li>
+<li><strong>markdown</strong> 是一种轻量级标记语言，可用少量的编辑工作生成美观的 HTML 文件。已经成为 GitHub 托管的项目中默认的文档格式，当然 GitHub 也扩展了该语言（GFM）并提供渲染支持。</li>
+<li><strong><a href="http://jekyllrb.com/">Jekyll</a></strong> 是基于 Ruby 的 package，用于编译生成静态站点。GitHub 提供了静态站点支持，并采用 Jekyll 作为其编译引擎。于是，在 GitHub 提交文件后，在10分钟内 GitHub 将编译生成静态站点并开始提供服务。</li>
 </ul>
-<blockquote>
-<p>另外，启动不了很正常，和U盘有关。 </p>
-</blockquote>
-<h2>连接网络</h2>
-<ul>
-<li>无线网络<pre><code class="hljs">  netcfg(wifi-menu连接无线网）
-  <span class="hljs-built_in">cd</span> /etc/network.d
-  cp ./examples/wireless_XXX ./    
-  vi wireless_XXX  <span class="hljs-comment">#修改参数</span>
-  netcfg wireless_XXX</code></pre></li>
-<li>对于内核没有支持的无线网卡，安装ndiswrapper使用windows驱动  <ol>
-<li>安装    <code>pacman -S ndiswrapper</code></li>
-<li>加载    <code>ndiswrapper -i winXP_driver.inf(可以从windows目录下或驱动安装包找到)</code></li>
-<li>确认    <code>ndiswrapper -l</code> </li>
-<li>载入模块    <code>modprobe ndiswrapper</code>  </li>
-<li>若无线网卡的状态指示灯不亮，重新载入网卡    <code>cardctl eject &amp;&amp; cardctl insert</code></li>
-</ol>
-</li>
-</ul>
-<blockquote>
-<p>使用 <code>iwconfig</code> 可查看网络设备(wlan0,eth0等)，若没有识别请参照wiki</p>
-</blockquote>
 </div>
-            <a class="more btn btn-primary" href="/linux/arch-install.html">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <a class="more btn btn-primary" href="/web/github-homepage-tutorial.html">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
 
             
         </div>
@@ -347,11 +277,11 @@
     
     <ul class="pager">
         
-          <li class="previous"><a href="/page2">&larr; Older</a></li>
+          <li class="previous"><a href="/page4">&larr; Older</a></li>
         
 
         
-          <li class="next disabled"><a>Newer &rarr;</a></li>
+            <li class="next"><a href="/page2">Newer &rarr;</a></li>
         
     </div>
     

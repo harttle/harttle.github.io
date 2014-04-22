@@ -2,8 +2,9 @@
 
 body{
   position: relative; /* for scroll spy with absolute position */
-  padding-top: 50px;  /* padding off fixed-nav */
+  /* padding-top: 50px;  padding off fixed-nav */
 }
+
 
 /* Page header */
 .hl-header {
@@ -48,7 +49,8 @@ body{
 }
 
 .global-nav{
-  margin-bottom: 50px;
+  margin-bottom: 0;
+  border-radius:0;
 }
 
 /* custom css */

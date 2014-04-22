@@ -24,6 +24,8 @@
 &lt;li&gt;Mark I, Howard Aiken, Harvard&lt;/li&gt;
 &lt;li&gt;ENIAC, William Mauchley and J. Presper Eckert, University of Pennsylvania&lt;/li&gt;
 &lt;/ul&gt;
+&lt;!--more--&gt;
+
 &lt;h3&gt;2nd Generation Transistors and Batch System&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;batch system&lt;/strong&gt; &lt;/p&gt;
 &lt;ol&gt;
@@ -605,7 +607,7 @@ Consumer loop:
 &lt;blockquote&gt;
 &lt;p&gt;MBR is loaded and executed by BIOS. The MBR program locate the active prtition, read in its first block(&lt;strong&gt;boot block&lt;/strong&gt;), and execute it. The the program in the boot block load the OS contained in that partition.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;/asstes/img/blog/4-9.png&quot; alt=&quot;file system layout&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/4-9.png&quot; alt=&quot;file system layout&quot;&gt;&lt;/p&gt;
 &lt;h3&gt;Implementing Files&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Contiguous Allocation&lt;/li&gt;
@@ -984,6 +986,9 @@ Consumer loop:
 				<description>&lt;p&gt;在软件开发中，make是一个工具程序（Utility software），经由读取叫做“makefile”的文件，自动化建构软件。&lt;/p&gt;
 &lt;p&gt;它是一种转化文件形式的工具，转换的目标称为“target”；与此同时，它也检查文件的依赖关系，如果需要的话，它会调用一些外部软件来完成任务。它的依赖关系检查系统非常简单，主要根据依赖文件的修改时间进行判断。大多数情况下，它被用来编译源代码，生成结果代码，然后把结果代码连接起来生成可执行文件或者库文件。它使用叫做“makefile”的文件来确定一个target文件的依赖关系，然后把生成这个target的相关命令传给shell去执行。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://scc.qibebt.cas.cn/docs/linux/base/%B8%FA%CE%D2%D2%BB%C6%F0%D0%B4Makefile-%B3%C2%F0%A9.pdf&quot;&gt;中文Tutorial&lt;/a&gt;&lt;/p&gt;
+&lt;!--more--&gt;
+
+
 &lt;h1&gt;基本知识&lt;/h1&gt;
 &lt;h2&gt;编译&lt;/h2&gt;
 &lt;p&gt;对于C语言，产生可执行程序包括这样的步骤：&lt;/p&gt;
@@ -1077,10 +1082,10 @@ export variable&lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;自动生成依赖&lt;/h2&gt;
 &lt;pre&gt;&lt;code class=&quot;hljs&quot;&gt;main.o : main.c defs.h&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然而，有时候存在大量的 &lt;code&gt;.c&lt;/code&gt; 文件，我们需要得到每个 &lt;code&gt;.c&lt;/code&gt; 对应的 &lt;code&gt;.h&lt;/code&gt;。借助于 &lt;code&gt;gcc&lt;/code&gt;，可以自动探测这些依赖：&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;hljs&quot;&gt;&lt;span class=&quot;hljs-constant&quot;&gt;sources&lt;/span&gt; = main.c stack.c maze.c
 
-include $(sources:.c=.d)
+-include $(sources:.c=.d)
 
 %.d: %.c
-    set -e; rm -f $@; \
+    @set -e; rm -f $@; \
     $(CC) -MM $(CPPFLAGS) $&amp;lt; &amp;gt; $@.$$$$; \
     sed &#39;s,\($*\)\.o[ :]*,\1.o $@ : ,g&#39; &amp;lt; $@.$$$$ &amp;gt; $@; \
     rm -f $@.$$$$&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如上的makefile定义了 &lt;code&gt;.c&lt;/code&gt; 的列表变量，然后载入对应的 &lt;code&gt;.d&lt;/code&gt; 文件，这时会有文件不存在的警告产生，此时 make 会采用下面的模式生成 &lt;code&gt;.d&lt;/code&gt;：&lt;/p&gt;
@@ -1137,6 +1142,8 @@ include $(sources:.c=.d)
 &lt;p&gt;The last two sometimes combined and called the processor.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Instruction set architecture&lt;/strong&gt;&lt;br&gt;One key interface between the levels of abstraction is the instruction set architecture-the interface between the hardware and low-level software.&lt;/p&gt;
+&lt;!--more--&gt;
+
 &lt;h2&gt;Performance&lt;/h2&gt;
 &lt;h3&gt;Measurement and Limitation&lt;/h3&gt;
 &lt;div class=&quot;mathjax&quot;&gt;\[\begin{eqnarray}
@@ -1977,6 +1984,8 @@ L2:&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;h1&gt;基础使用&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&quot;/assets/img/blog/vim-key.png&quot; alt=&quot;vim-key&quot;&gt;&lt;/p&gt;
 &lt;p&gt;查看帮助：&lt;code&gt;:help&lt;/code&gt;，&lt;code&gt;&amp;lt;Ctrl&amp;gt;]&lt;/code&gt; 进入标签，&lt;code&gt;&amp;lt;Ctrl&amp;gt;O&lt;/code&gt; 返回。&lt;/p&gt;
+&lt;!--more--&gt;
+
 &lt;h1&gt;配置文件&lt;/h1&gt;
 &lt;h2&gt;初始化过程&lt;/h2&gt;
 &lt;p&gt;正如多数 linux 软件，vim 的配置文件分为系统配置文件 &lt;code&gt;/etc/vimrc&lt;/code&gt;，&lt;code&gt;/usr/share/vim/&lt;/code&gt; 和用户配置文件 &lt;code&gt;~/.vimrc&lt;/code&gt;，&lt;code&gt;~/.vim/&lt;/code&gt;。&lt;/p&gt;
@@ -2180,6 +2189,8 @@ endfunction&lt;/code&gt;&lt;/pre&gt;
 &lt;blockquote&gt;
 &lt;p&gt;使用 &lt;code&gt;iwconfig&lt;/code&gt; 可查看网络设备(wlan0,eth0等)，若没有识别请参照wiki&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;!--more--&gt;
+
 &lt;h2&gt;准备硬盘&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;磁盘分区：&lt;/p&gt;
@@ -2398,6 +2409,8 @@ endfunction&lt;/code&gt;&lt;/pre&gt;
 &lt;h1&gt;爬虫（Heritrix）&lt;/h1&gt;
 &lt;p&gt;heritrix 是用作web归档的爬虫框架，java语言实现，具有 Apache License 自由软件许可。我们采用heritrix抓取网页数据。&lt;/p&gt;
 &lt;p&gt;可参照官方 Guide：&lt;a href=&quot;https://webarchive.jira.com/wiki/display/Heritrix/Heritrix+3.0+and+3.1+User+Guide&quot;&gt;https://webarchive.jira.com/wiki/display/Heritrix/Heritrix+3.0+and+3.1+User+Guide&lt;/a&gt;&lt;/p&gt;
+&lt;!--more--&gt;
+
 &lt;h2&gt;依赖项&lt;/h2&gt;
 &lt;p&gt;可选择 open-jdk 或者 oracle jre。&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;hljs&quot;&gt;&lt;span class=&quot;hljs-comment&quot;&gt;# open jdk&lt;/span&gt;
@@ -2622,6 +2635,8 @@ ndoc=&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;
 &lt;li&gt;单处理器计算模型：随机访问机（random-access machine，RAM）：算数指令、数据移动指令、控制指令。&lt;/li&gt;
 &lt;li&gt;最坏情况、平均情况、增长量级&lt;/li&gt;
 &lt;/ul&gt;
+&lt;!--more--&gt;
+
 &lt;h3&gt;设计算法&lt;/h3&gt;
 &lt;h4&gt;分治法&lt;/h4&gt;
 &lt;ul&gt;
@@ -4229,6 +4244,8 @@ i \quad if~i \neq j ~ and ~ \omega_{ij}&amp;lt;\infty
 &lt;/ul&gt;
 &lt;h3&gt;互联网&lt;/h3&gt;
 &lt;p&gt;通过网关互相连接起来的网络&lt;/p&gt;
+&lt;!--more--&gt;
+
 &lt;h2&gt;网络软件&lt;/h2&gt;
 &lt;h3&gt;协议层次&lt;/h3&gt;
 &lt;ul&gt;
@@ -5506,7 +5523,9 @@ pacman -S xf86-input-synaptics
 yaourt -S gpointing-device-settings
 
 &lt;span class=&quot;hljs-comment&quot;&gt;# KDE 触摸板控制模块&lt;/span&gt;
-yaourt -S kcm_touchpad&lt;/code&gt;&lt;/pre&gt;&lt;h1&gt;环境配置&lt;/h1&gt;
+yaourt -S kcm_touchpad&lt;/code&gt;&lt;/pre&gt;&lt;!--more--&gt;
+
+&lt;h1&gt;环境配置&lt;/h1&gt;
 &lt;p&gt;一般的设置工作可通过图形管理工具完成，如单击、双击、右键的识别，横向和纵向滚动、双指滚动。下面介绍一些高级配置。&lt;/p&gt;
 &lt;h2&gt;基本触摸板配置&lt;/h2&gt;
 &lt;p&gt;可通过修改 synaptics 的配置文件，修改触摸板配置。包括多指敲击、滚动、避免手掌触摸、精确度与快速滚动。&lt;/p&gt;
