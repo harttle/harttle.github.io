@@ -108,3 +108,13 @@ body{
   color: black;
   text-decoration: none;
 }
+
+.hidden-xs {
+    display: inline-block !important;
+}
+
+@media (max-width: 767px) {
+.hidden-xs {
+  display: none!important;
+ }
+}
