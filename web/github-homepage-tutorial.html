@@ -177,14 +177,7 @@
                         <ul class="nav navbar-nav">
                             <li id="articles"><a href="/articles.html">Articles</a></li>
                             <li id="albums"><a href="/albums.html">Albums</a></li>
-                            <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Links <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="//harttle.duapp.com" target="_blank">God Notes</a></li>
-                                <li class="divider"></li>
-                                <li id="about"><a href="/about.html">About</a></li>
-                            </ul>
-                            </li>
+                            <li id="about"><a href="/about.html">About Me</a></li>
                         </ul>
                         <ul class="nav navbar-nav pull-right">	 
 
@@ -240,13 +233,15 @@
       <div class="sidebar"></div>
     </div>
     <div class="col-md-9 right md">
-      <p>本文介绍如何利用 GitHub 提供的文件服务，部署博客系统。采用 git+github+markdown+jekyll 方式构建静态博客站点。完成部署后，可以在在线撰写博客，也可以本地离线撰写，然后同步到GitHub。</p>
+      <p>最近终于完成了个人博客的开发和部署，就把整个过程记录在这里。利用 GitHub 提供的文件服务部署，采用 github+GFM+jekyll 方式构建静态博客站点。之后还可以采用highlight.js进行代码高亮，MathJax提供LaTex公式支持。完成部署后，可以在在线撰写博客，也可以本地离线撰写，然后同步到GitHub。</p>
 <h2>一些背景</h2>
 <ul>
 <li><strong>Git</strong> 是一个分布式版本控制/软件配置管理软件，最初用户linux内核开发，至今已广泛用于项目源码管理。</li>
 <li><strong><a href="http://github.com/">GitHub</a></strong> 是一个用于使用Git版本控制系统项目的共享虚拟主机服务，提供了无限的存储空间以及网络流量。</li>
 <li><strong>markdown</strong> 是一种轻量级标记语言，可用少量的编辑工作生成美观的 HTML 文件。已经成为 GitHub 托管的项目中默认的文档格式，当然 GitHub 也扩展了该语言（GFM）并提供渲染支持。</li>
 <li><strong><a href="http://jekyllrb.com/">Jekyll</a></strong> 是基于 Ruby 的 package，用于编译生成静态站点。GitHub 提供了静态站点支持，并采用 Jekyll 作为其编译引擎。于是，在 GitHub 提交文件后，在10分钟内 GitHub 将编译生成静态站点并开始提供服务。</li>
+<li><strong><a href="http://highlightjs.org">highlight.js</a></strong> 是用于web页面的代码高亮，在程序员的博客中想必是不可或缺的。这个开源项目在托管在github的，开发很活跃，因此我放弃了使用Google的prettify，并且加入到highlight.js的开发项目中，为我的vimrc加入了高亮规则。</li>
+<li><strong><a href="http://www.mathjax.org/">MathJax</a></strong> 用于将latex公式转换为html、矢量图的js框架。不必说，理工背景的一定会用得到。能转换为html实在是太NB了！与图片不同，可以实现与上下文的完美拼接。</li>
 </ul>
 <!--more-->
 
@@ -386,6 +381,88 @@
  <span class="hljs-comment"># 运行站点</span>
  jekyll serve <span class="hljs-operator">-d</span> ../harttle.github.io/</code></pre></li>
 </ol>
+<h3>代码高亮</h3>
+<p>这里有完美的文档：<a href="http://highlightjs.org/">http://highlightjs.org/</a><br>如果希望在后台实现转换，可以这样使用：</p>
+<pre><code class="hljs"><span class="hljs-comment">&lt;!-- 首先，引入它的样式 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">"stylesheet"</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"/assets/css/highlight/tomorrow-night-eighties.css"</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- 然后，对于每一个要高亮的代码块，调用如下函数 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">
+<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(code, lang)</span>{</span>
+      <span class="hljs-keyword">if</span>(lang)
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'&lt;code class="hljs"&gt;'</span>+hljs.highlight(lang,code).value+<span class="hljs-string">'&lt;/code&gt;'</span>;
+      <span class="hljs-keyword">else</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'&lt;code class="hljs"&gt;'</span>+hljs.highlightAuto(code).value+<span class="hljs-string">'&lt;/code&gt;'</span>;
+</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></code></pre><h3>Tex支持</h3>
+<p>文档同样完美：<a href="http://docs.mathjax.org/en/latest/">http://docs.mathjax.org/en/latest/</a><br>如下的使用将会直接将当前页面的<code>\(</code>与<code>\)</code>中内容转换为行内公式（inline），将<code>\[</code>与<code>\]</code>中内容转换为独立的公式行（block）。当然，这都是可以配置的。</p>
+<pre><code class="hljs"><span class="hljs-comment">&lt;!-- 直接引入MathJax，使用Tex-MML-AM_HTLMorMML配置文件 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"text/javascript"</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></code></pre><h2>开发时间线</h2>
+<h3>2013-10-12</h3>
+<p>基本完成了个人主页在 github 的部署。</p>
+<ul>
+<li>主要页面<ul>
+<li>首页</li>
+<li>博文</li>
+<li>关于</li>
+<li>链接</li>
+</ul>
+</li>
+<li>识别文章目录，生成博文分类</li>
+</ul>
+<h3>2013-10-16</h3>
+<ul>
+<li>社会化评论</li>
+</ul>
+<h3>2013-10-17</h3>
+<ul>
+<li>照片展示<ul>
+<li>延迟载入</li>
+<li>gallery浏览</li>
+</ul>
+</li>
+</ul>
+<h3>2013-10-25</h3>
+<ul>
+<li>博客、相册、资源的category模板<ul>
+<li>页面布局：header、side-nav、content</li>
+<li>affix 滚动导航</li>
+</ul>
+</li>
+<li>相册图片缩略图的自动更新（make+imageMagick）</li>
+</ul>
+<h3>2013-10-28</h3>
+<ul>
+<li>404页面</li>
+</ul>
+<h3>2013-10-29</h3>
+<ul>
+<li>latex显示：采用mathJax</li>
+<li>添加 CDN</li>
+<li>添加文章列表动态导航</li>
+</ul>
+<h3>2013-10-30</h3>
+<ul>
+<li><p>解决 affix-bottom 失效</p>
+<blockquote>
+<p>问题出自 sticky footer 中的 <code>body{height:100%}</code>，解决：<br>Replace <code>document.body.offsetHeight</code> with <code>document.body.scrollHeight</code> in bootstrap.min.js</p>
+</blockquote>
+</li>
+</ul>
+<h3>2013-10-31</h3>
+<ul>
+<li>载入优化：script 后置</li>
+<li>通用化 category：采用部分视图</li>
+<li>资源页面图标</li>
+</ul>
+<h3>2013-11-1</h3>
+<ul>
+<li>社会化：添加 linkedIn facebook google+ follow</li>
+<li>SEO：添加 meta、添加sitemap.xml和robots.txt、导入搜索引擎、创建RSS </li>
+</ul>
+<h3>2013-11-06</h3>
+<ul>
+<li>添加google analysis</li>
+</ul>
 
 
     

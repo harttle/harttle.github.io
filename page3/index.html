@@ -77,14 +77,7 @@
                         <ul class="nav navbar-nav">
                             <li id="articles"><a href="/articles.html">Articles</a></li>
                             <li id="albums"><a href="/albums.html">Albums</a></li>
-                            <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Links <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="//harttle.duapp.com" target="_blank">God Notes</a></li>
-                                <li class="divider"></li>
-                                <li id="about"><a href="/about.html">About</a></li>
-                            </ul>
-                            </li>
+                            <li id="about"><a href="/about.html">About Me</a></li>
                         </ul>
                         <ul class="nav navbar-nav pull-right">	 
 
@@ -249,13 +242,15 @@
             </p>
 
             
-            <div class="md"><p>本文介绍如何利用 GitHub 提供的文件服务，部署博客系统。采用 git+github+markdown+jekyll 方式构建静态博客站点。完成部署后，可以在在线撰写博客，也可以本地离线撰写，然后同步到GitHub。</p>
+            <div class="md"><p>最近终于完成了个人博客的开发和部署，就把整个过程记录在这里。利用 GitHub 提供的文件服务部署，采用 github+GFM+jekyll 方式构建静态博客站点。之后还可以采用highlight.js进行代码高亮，MathJax提供LaTex公式支持。完成部署后，可以在在线撰写博客，也可以本地离线撰写，然后同步到GitHub。</p>
 <h2>一些背景</h2>
 <ul>
 <li><strong>Git</strong> 是一个分布式版本控制/软件配置管理软件，最初用户linux内核开发，至今已广泛用于项目源码管理。</li>
 <li><strong><a href="http://github.com/">GitHub</a></strong> 是一个用于使用Git版本控制系统项目的共享虚拟主机服务，提供了无限的存储空间以及网络流量。</li>
 <li><strong>markdown</strong> 是一种轻量级标记语言，可用少量的编辑工作生成美观的 HTML 文件。已经成为 GitHub 托管的项目中默认的文档格式，当然 GitHub 也扩展了该语言（GFM）并提供渲染支持。</li>
 <li><strong><a href="http://jekyllrb.com/">Jekyll</a></strong> 是基于 Ruby 的 package，用于编译生成静态站点。GitHub 提供了静态站点支持，并采用 Jekyll 作为其编译引擎。于是，在 GitHub 提交文件后，在10分钟内 GitHub 将编译生成静态站点并开始提供服务。</li>
+<li><strong><a href="http://highlightjs.org">highlight.js</a></strong> 是用于web页面的代码高亮，在程序员的博客中想必是不可或缺的。这个开源项目在托管在github的，开发很活跃，因此我放弃了使用Google的prettify，并且加入到highlight.js的开发项目中，为我的vimrc加入了高亮规则。</li>
+<li><strong><a href="http://www.mathjax.org/">MathJax</a></strong> 用于将latex公式转换为html、矢量图的js框架。不必说，理工背景的一定会用得到。能转换为html实在是太NB了！与图片不同，可以实现与上下文的完美拼接。</li>
 </ul>
 </div>
             <a class="more btn btn-primary" href="/web/github-homepage-tutorial.html">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
@@ -270,7 +265,7 @@
     
     <ul class="pager">
         
-          <li class="previous"><a href="/page4">&larr; Older</a></li>
+          <li class="previous disabled"><a>&larr; Older</a></li>
         
 
         

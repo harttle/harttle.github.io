@@ -6,7 +6,7 @@
         <meta name="author" content="harttle">      
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>GitHub 个人主页开发记录 - Harttle Land</title>
+        <title>Linux 连接 Windows Server VPN - Harttle Land</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- style -->
@@ -177,14 +177,7 @@
                         <ul class="nav navbar-nav">
                             <li id="articles"><a href="/articles.html">Articles</a></li>
                             <li id="albums"><a href="/albums.html">Albums</a></li>
-                            <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Links <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="//harttle.duapp.com" target="_blank">God Notes</a></li>
-                                <li class="divider"></li>
-                                <li id="about"><a href="/about.html">About</a></li>
-                            </ul>
-                            </li>
+                            <li id="about"><a href="/about.html">About Me</a></li>
                         </ul>
                         <ul class="nav navbar-nav pull-right">	 
 
@@ -209,18 +202,22 @@
 <div class="headerbar">
   <div class="page-header container">
     <h1>
-      GitHub 个人主页开发记录 <small></small>
+      Linux 连接 Windows Server VPN <small></small>
     </h1>
     <div>
       
-      <span class="label label-info pull-left" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> 日志</span>
+      <span class="label label-info pull-left" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> 其他</span>
       
       
-      <span class="label label-success pull-left hidden-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> 工作记录</span>
+      <span class="label label-success pull-left hidden-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> VPN</span>
+      
+      <span class="label label-success pull-left hidden-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> windows</span>
+      
+      <span class="label label-success pull-left hidden-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> linux</span>
       
       <a class="pull-right label label-danger" href="/articles.html" style="margin-left: 10px;"><span class="glyphicon glyphicon-hand-left"></span> Back</a>
       <span class="pull-right label label-default hidden-xs">
-          <span class="glyphicon glyphicon-time"></span> 12 Oct 2013
+          <span class="glyphicon glyphicon-time"></span> 06 Nov 2013
       </span>
     </div>
   </div>
@@ -236,77 +233,15 @@
       <div class="sidebar"></div>
     </div>
     <div class="col-md-9 right md">
-      <p>2013年10月采用jekyll静态站点工具开始了github个人主页的开发。这里记录了各时间结点完成的工作，以及未来的工作列表。</p>
-<h3>2013-10-12</h3>
-<p>基本完成了个人主页在 github 的部署。</p>
-<ul>
-<li>主要页面<ul>
-<li>首页</li>
-<li>博文</li>
-<li>关于</li>
-<li>链接</li>
-</ul>
+      <p>Linux 连接 Windows Server VPN，以 archLinux 为例，适用于 Ubuntu。</p>
+<ol>
+<li><p>安装 pptp</p>
+<pre><code class="hljs"> <span class="hljs-comment"># kde in arch</span>
+ pacman -S extra/networkmanager-pptp</code></pre></li>
+<li><p>新建 VPN 连接</p>
+<p> 网关：服务器IP或域名<br> 登录：用户名<br> 密码：密码<br> 域：空<br> 认证方式：MSCHAP MSCHAPv2<br> 使用 MPPE 加密</p>
 </li>
-<li>识别文章目录，生成博文分类</li>
-</ul>
-<h3>2013-10-16</h3>
-<ul>
-<li>社会化评论</li>
-</ul>
-<h3>2013-10-17</h3>
-<ul>
-<li>照片展示<ul>
-<li>延迟载入</li>
-<li>gallery浏览</li>
-</ul>
-</li>
-</ul>
-<h3>2013-10-25</h3>
-<ul>
-<li>博客、相册、资源的category模板<ul>
-<li>页面布局：header、side-nav、content</li>
-<li>affix 滚动导航</li>
-</ul>
-</li>
-<li>相册图片缩略图的自动更新（make+imageMagick）</li>
-</ul>
-<h3>2013-10-28</h3>
-<ul>
-<li>404页面</li>
-</ul>
-<h3>2013-10-29</h3>
-<ul>
-<li>latex显示：采用mathJax</li>
-<li>添加 CDN</li>
-<li>添加文章列表动态导航</li>
-</ul>
-<h3>2013-10-30</h3>
-<ul>
-<li><p>解决 affix-bottom 失效</p>
-<blockquote>
-<p>问题出自 sticky footer 中的 <code>body{height:100%}</code>，解决：<br>Replace <code>document.body.offsetHeight</code> with <code>document.body.scrollHeight</code> in bootstrap.min.js</p>
-</blockquote>
-</li>
-</ul>
-<h3>2013-10-31</h3>
-<ul>
-<li>载入优化：script 后置</li>
-<li>通用化 category：采用部分视图</li>
-<li>资源页面图标</li>
-</ul>
-<h3>2013-11-1</h3>
-<ul>
-<li>社会化：添加 linkedIn facebook google+ follow</li>
-<li>SEO：添加 meta、添加sitemap.xml和robots.txt、导入搜索引擎、创建RSS </li>
-</ul>
-<h3>2013-11-06</h3>
-<ul>
-<li>添加google analysis</li>
-</ul>
-<h3>未来的工作</h3>
-<ul>
-<li>首页完善：简历时间线</li>
-</ul>
+</ol>
 
 
     

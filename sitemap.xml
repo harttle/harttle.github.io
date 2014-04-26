@@ -2,7 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
     <url>
-      <loc>http://harttle.github.io/%E7%AC%94%E8%AE%B0/modern-os.html</loc>
+      <loc>http://harttle.github.io/%E8%AF%BB%E4%B9%A6/modern-os.html</loc>
       
       <lastmod>2014-09-10T00:00:00+08:00</lastmod>
       
@@ -20,7 +20,7 @@
     </url>
   
     <url>
-      <loc>http://harttle.github.io/%E7%AC%94%E8%AE%B0/computer-organization-and-design.html</loc>
+      <loc>http://harttle.github.io/%E8%AF%BB%E4%B9%A6/computer-organization-and-design.html</loc>
       
       <lastmod>2013-11-30T00:00:00+08:00</lastmod>
       
@@ -47,7 +47,7 @@
     </url>
   
     <url>
-      <loc>http://harttle.github.io/%E6%97%A5%E5%BF%97/vpn-linux-to-windows.html</loc>
+      <loc>http://harttle.github.io/%E5%85%B6%E4%BB%96/vpn-linux-to-windows.html</loc>
       
       <lastmod>2013-11-06T00:00:00+08:00</lastmod>
       
@@ -65,7 +65,7 @@
     </url>
   
     <url>
-      <loc>http://harttle.github.io/%E7%AC%94%E8%AE%B0/introduction-to-algorithms.html</loc>
+      <loc>http://harttle.github.io/%E8%AF%BB%E4%B9%A6/introduction-to-algorithms.html</loc>
       
       <lastmod>2013-10-28T00:00:00+08:00</lastmod>
       
@@ -74,7 +74,7 @@
     </url>
   
     <url>
-      <loc>http://harttle.github.io/%E7%AC%94%E8%AE%B0/computer-network.html</loc>
+      <loc>http://harttle.github.io/%E8%AF%BB%E4%B9%A6/computer-network.html</loc>
       
       <lastmod>2013-10-28T00:00:00+08:00</lastmod>
       
@@ -136,83 +136,67 @@
       <priority>1.0</priority>
     </url>
   
-    <url>
-      <loc>http://harttle.github.io/%E6%97%A5%E5%BF%97/github-homepage-devlog.html</loc>
-      
-      <lastmod>2013-10-12T00:00:00+08:00</lastmod>
-      
-      <changefreq>daily</changefreq>
-      <priority>1.0</priority>
-    </url>
-  
 
   
     <url>
       <loc>http://harttle.github.io/404.html</loc>
-      <lastmod>2014-04-22T21:57:05+08:00</lastmod>
+      <lastmod>2014-04-26T21:17:11+08:00</lastmod>
       <changefreq>always</changefreq>
       <priority>0.7</priority>
     </url>
   
     <url>
       <loc>http://harttle.github.io/about.html</loc>
-      <lastmod>2014-04-22T21:57:05+08:00</lastmod>
+      <lastmod>2014-04-26T21:17:11+08:00</lastmod>
       <changefreq>always</changefreq>
       <priority>0.7</priority>
     </url>
   
     <url>
       <loc>http://harttle.github.io/albums.html</loc>
-      <lastmod>2014-04-22T21:57:05+08:00</lastmod>
+      <lastmod>2014-04-26T21:17:11+08:00</lastmod>
       <changefreq>always</changefreq>
       <priority>0.7</priority>
     </url>
   
     <url>
       <loc>http://harttle.github.io/articles.html</loc>
-      <lastmod>2014-04-22T21:57:05+08:00</lastmod>
+      <lastmod>2014-04-26T21:17:11+08:00</lastmod>
       <changefreq>always</changefreq>
       <priority>0.7</priority>
     </url>
   
     <url>
       <loc>http://harttle.github.io/feed.xml</loc>
-      <lastmod>2014-04-22T21:57:05+08:00</lastmod>
+      <lastmod>2014-04-26T21:17:11+08:00</lastmod>
       <changefreq>always</changefreq>
       <priority>0.7</priority>
     </url>
   
     <url>
       <loc>http://harttle.github.io/index.html</loc>
-      <lastmod>2014-04-22T21:57:05+08:00</lastmod>
+      <lastmod>2014-04-26T21:17:11+08:00</lastmod>
       <changefreq>always</changefreq>
       <priority>0.7</priority>
     </url>
   
     <url>
       <loc>http://harttle.github.io/sitemap.xml</loc>
-      <lastmod>2014-04-22T21:57:05+08:00</lastmod>
+      <lastmod>2014-04-26T21:17:11+08:00</lastmod>
       <changefreq>always</changefreq>
       <priority>0.7</priority>
     </url>
   
     <url>
       <loc>http://harttle.github.io/page2/index.html</loc>
-      <lastmod>2014-04-22T21:57:05+08:00</lastmod>
+      <lastmod>2014-04-26T21:17:11+08:00</lastmod>
       <changefreq>always</changefreq>
       <priority>0.7</priority>
     </url>
   
     <url>
       <loc>http://harttle.github.io/page3/index.html</loc>
-      <lastmod>2014-04-22T21:57:05+08:00</lastmod>
-      <changefreq>always</changefreq>
-      <priority>0.7</priority>
-    </url>
-  
-    <url>
-      <loc>http://harttle.github.io/page4/index.html</loc>
-      <lastmod>2014-04-22T21:57:05+08:00</lastmod>
+      <lastmod>2014-04-26T21:17:11+08:00</lastmod>
       <changefreq>always</changefreq>
       <priority>0.7</priority>
     </url>
