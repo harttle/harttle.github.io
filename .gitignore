@@ -1,4 +1,3 @@
 _site
-*.sh
 makefile
 assets/img/album/*/*.*
