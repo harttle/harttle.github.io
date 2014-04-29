@@ -1,7 +1,7 @@
 ---
 layout: blog
 category: linux
-title: Vim 使用
+title: Vim 手册
 tags: 
 ---
 
@@ -130,7 +130,17 @@ syntax on
 	> 删除块注释：`<Ctrl>v` 进入列编辑模式，`ikjl` 选中注释列，`<N>x` 删除N个字符；
 	
 	> 添加块注释：`<Ctrl>v` 进入列编辑模式，`ikjl` 选中要注释的行，`I` 进入插入模式，输入几个注释字符，`<Esc>` 推出列编辑。
-	
+
+vim所有的模式（即工作状态）如下：
+
+1. (o) 普通模式: 输入命令时。
+2. (x) 可视模式: 可视区域高亮并输入命令时。
+3. (s) 选择模式: 类似于可视模式，但键入的字符对选择区进行替换。
+4. (o) 操作符等待模式: 操作符等待中 ("d"，"y"，"c" 等等之后)。
+5. (i) 插入模式: 也用于替换模式。
+6. (c) 命令行模式: 输入 ":" 或 "/" 命令时。
+
+
 
 ## 文件识别
 
@@ -177,6 +187,42 @@ map <F7> <Esc>:!javac %<<CR>
 
 > `:` 为进入Ex模式，`!` 指定下面的命令在vim外执行，`%` 为当前文件名，`%<` 为不带扩展名的当前文件名，`<CR>` 为回车。
 
+
+
+`map` 命令有多种形式，其首字母表明它作用于何种模式下。各种`map`命令对应的模式如下：
+
+命令    |       左边  |       右边   |          模式      |       跳跃点
+----    | -------     |     ----     |           ----     |        ---
+　　:map     |    {lhs}  |   {rhs}  |       mapmode-nvo   |   *:map*
+　　:nm[ap]  |  {lhs}    |  {rhs}    |    mapmode-n       |    *:nm* *:nmap*
+　　:vm[ap]  |  {lhs}    |  {rhs}    |    mapmode-v       |    *:vm* *:vmap*
+　　:xm[ap]  |  {lhs}    |  {rhs}    |    mapmode-x       |    *:xm* *:xmap*
+　　:smap    |   {lhs}   |   {rhs}   |    mapmode-s      |     *:smap*
+　　:om[ap]  |  {lhs}    |  {rhs}    |    mapmode-o       |    *:om* *:omap*
+　　:map!    |   {lhs}   |   {rhs}   |    mapmode-ic     |    *:map!*
+　　:im[ap]  |   {lhs}   |   {rhs}   |    mapmode-i     |      *:im* *:imap*
+　　:lm[ap]  |   {lhs}   |   {rhs}   |    mapmode-l      |      *:lm* *:lmap*
+　　:cm[ap]  |  {lhs}    |  {rhs}    |    mapmode-c       |    *:cm* *:cmap*
+
+
+上述第四列模式对应于`map`所处的模式，其对应的vim模式如下：
+
+map模式 | 描述
+-----  | ----
+　　n　　|　　　　普通
+　　v　　|　　　　可视和选择
+　　s　　|　　　　选择
+　　x　　|　　　　可视
+　　o　　|　　　　操作符等待
+　　!　　|　　　　插入和命令行
+　　i　　|　　　　插入
+　　l　　|　　　　插入、命令行和 Lang-Arg 模式的 ":lmap" 映射
+　　c　　|　　　　命令行
+
+
+　　
+
+
 ## 函数
 
 现在我们可以自定义快捷键了，如果希望在键盘映射中执行更复杂的功能，我们需要定义Vim函数。
@@ -206,4 +252,3 @@ function ToggleCopy()
     let g:copymode=!g:copymode
 endfunction
 ```
-

@@ -58,7 +58,7 @@ tags: C++
 	}
 	```
 	
-# Constructors, Destructors and Assignment Operators
+# Construction
 
 > Know what functions C++ silently writes and calls.
 
@@ -293,7 +293,7 @@ Rational result2 = 2 * r; //ok, 隐式类型转换
     }
     ```  
 
-编译器会首先去模板参数类型所在命名空间寻找；因为前面的声明，`std::swap`中的匹配特化版将有最高的优先级；如果前两者都不存在，则采用`std`中的默认版本。
+	编译器会首先去模板参数类型所在命名空间寻找；因为前面的声明，`std::swap`中的匹配特化版将有最高的优先级；如果前两者都不存在，则采用`std`中的默认版本。
 4. std内只允许进行特化，添加新的模板、类、函数等等都会引起未定义行为。
 
 # Implementations

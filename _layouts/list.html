@@ -94,8 +94,8 @@ layout: default
             </div>  
             {% for post in site.categories[category_name] %}                        
             {% case page.nav %}
-            {% when 'articles' %}
-            {% include excerpt/article.html  %}
+            {% when 'blogs' %}
+            {% include excerpt/blog.html  %}
             {% when 'albums' %}
             {% include excerpt/album.html  %}          
             {% else %}
