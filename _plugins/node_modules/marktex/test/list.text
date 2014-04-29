@@ -1,0 +1,17 @@
+1. ordered list
+2. second
+  1. sub list
+1. third
+
+normal text
+
+* unordered list
+* second
+
+* new list in smartlist
+
+normal text
+
+* first
+* second
++ new list in smartlist

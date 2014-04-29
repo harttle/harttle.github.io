@@ -1,0 +1,9 @@
+auto link (gfm): http://www.baidu.com
+
+[link](http://www.baidu.com)
+
+[link](http://foo.bar.com "title")
+
+[reflink][def]
+
+[def]: http://foo.bar.com "optional title"

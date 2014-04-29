@@ -1,0 +1,4 @@
+<p>auto link (gfm): http://www.baidu.com</p>
+<p><a href="http://www.baidu.com">link</a></p>
+<p><a href="http://foo.bar.com" title="title">link</a></p>
+<p><a href="http://foo.bar.com" title="optional title">reflink</a></p>

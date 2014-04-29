@@ -1,0 +1,24 @@
+name: Harttle Land
+description: 欢迎访问 Harttle 的博客。
+url: http://harttle.github.io
+
+paginate: 5
+paginate_path: "/page:num"
+
+markdown: redcarpet
+markdown_ext:  md
+redcarpet:
+    extensions: [no_intra_emphasis,tables,autolink,disable_indented_code_blocks,fenced_code_blocks]
+
+highlighter: null
+permalink: none
+
+article_categories:
+    - linux
+    - web
+    - 读书
+    - 其他
+album_categories:
+    - 个人
+    - 摄影
+exclude: ['README.md', '.*']

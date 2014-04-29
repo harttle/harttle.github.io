@@ -1,0 +1,2 @@
+<p>|h1|h2|h3|<br>|:-|:---:|--:|<br>|this is the GFM table|following line is multi-aligned|isn&#39;t it cute?|<br>|left|center|right|</p>
+<p>pipes|in|both ends<br>-|-|-:<br>can|be|omitted<br>isn&#39;t|it|convenient?</p>
