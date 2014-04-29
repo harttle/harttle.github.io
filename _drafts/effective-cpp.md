@@ -53,11 +53,36 @@ tags: C++
 	```cpp
 	class FileSystem{...};
 	FileSystem& tfs(){
-		static FileSystem fs;
+		//将在首次进入函数时构造
+		static FileSystem fs;	
 		return fs;
 	}
 	```
 	
+以下提供较完整的Signleton C++实现：
+
+```cpp
+class Singleton{
+private:
+    Singleton(){}
+    Singleton(const Singleton&);
+public:
+    static Singleton& getInstance()
+    {
+        Lock(); // not needed after C++0x
+        static SingletonInside instance;
+        UnLock(); // not needed after C++0x
+        return instance; 
+    }
+};
+```
+	
+注意：C++0X以后，要求编译器保证内部静态变量的线程安全性，可以不加锁。这里采用内部静态变量方式，还有另外两种实现：
+
+1. 静态指针成员。采取懒汉模式，指针为空则构造（`new`）。
+2. 静态成员。采取饿汉模式，外部初始化（`new`），指针需要为`const`。
+
+
 # Construction
 
 > Know what functions C++ silently writes and calls.
