@@ -1,6 +1,3 @@
 _site
-*test*
-build.sh
-serve.sh
+*.sh
 makefile
-assets/img/album/*/*.*

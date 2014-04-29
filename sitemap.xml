@@ -1,204 +1,27 @@
+---
+layout: nil
+---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
+  {% for post in site.posts %}
     <url>
-      <loc>http://harttle.github.io/%E8%AF%BB%E4%B9%A6/modern-os.html</loc>
-      
-      <lastmod>2014-09-10T00:00:00+08:00</lastmod>
-      
+      <loc>{{ site.url }}{{ post.url }}</loc>
+      {% if post.lastmod == null %}
+      <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+      {% else %}
+      <lastmod>{{ post.lastmod | date_to_xmlschema }}</lastmod>
+      {% endif %}
       <changefreq>daily</changefreq>
       <priority>1.0</priority>
     </url>
-  
-    <url>
-      <loc>http://harttle.github.io/linux/makefile.html</loc>
-      
-      <lastmod>2014-01-01T00:00:00+08:00</lastmod>
-      
-      <changefreq>daily</changefreq>
-      <priority>1.0</priority>
-    </url>
-  
-    <url>
-      <loc>http://harttle.github.io/%E8%AF%BB%E4%B9%A6/computer-organization-and-design.html</loc>
-      
-      <lastmod>2013-11-30T00:00:00+08:00</lastmod>
-      
-      <changefreq>daily</changefreq>
-      <priority>1.0</priority>
-    </url>
-  
-    <url>
-      <loc>http://harttle.github.io/linux/vim-advanced.html</loc>
-      
-      <lastmod>2013-11-08T00:00:00+08:00</lastmod>
-      
-      <changefreq>daily</changefreq>
-      <priority>1.0</priority>
-    </url>
-  
-    <url>
-      <loc>http://harttle.github.io/linux/arch-install.html</loc>
-      
-      <lastmod>2013-11-07T00:00:00+08:00</lastmod>
-      
-      <changefreq>daily</changefreq>
-      <priority>1.0</priority>
-    </url>
-  
-    <url>
-      <loc>http://harttle.github.io/%E5%85%B6%E4%BB%96/vpn-linux-to-windows.html</loc>
-      
-      <lastmod>2013-11-06T00:00:00+08:00</lastmod>
-      
-      <changefreq>daily</changefreq>
-      <priority>1.0</priority>
-    </url>
-  
-    <url>
-      <loc>http://harttle.github.io/web/se-project.html</loc>
-      
-      <lastmod>2013-11-05T00:00:00+08:00</lastmod>
-      
-      <changefreq>daily</changefreq>
-      <priority>1.0</priority>
-    </url>
-  
-    <url>
-      <loc>http://harttle.github.io/%E8%AF%BB%E4%B9%A6/introduction-to-algorithms.html</loc>
-      
-      <lastmod>2013-10-28T00:00:00+08:00</lastmod>
-      
-      <changefreq>daily</changefreq>
-      <priority>1.0</priority>
-    </url>
-  
-    <url>
-      <loc>http://harttle.github.io/%E8%AF%BB%E4%B9%A6/computer-network.html</loc>
-      
-      <lastmod>2013-10-28T00:00:00+08:00</lastmod>
-      
-      <changefreq>daily</changefreq>
-      <priority>1.0</priority>
-    </url>
-  
-    <url>
-      <loc>http://harttle.github.io/linux/synaptics-settings-linux.html</loc>
-      
-      <lastmod>2013-10-27T00:00:00+08:00</lastmod>
-      
-      <changefreq>daily</changefreq>
-      <priority>1.0</priority>
-    </url>
-  
-    <url>
-      <loc>http://harttle.github.io/%E4%B8%AA%E4%BA%BA/flute.html</loc>
-      
-      <lastmod>2013-10-26T00:00:00+08:00</lastmod>
-      
-      <changefreq>daily</changefreq>
-      <priority>1.0</priority>
-    </url>
-  
-    <url>
-      <loc>http://harttle.github.io/linux/auto-thumb.html</loc>
-      
-      <lastmod>2013-10-26T00:00:00+08:00</lastmod>
-      
-      <changefreq>daily</changefreq>
-      <priority>1.0</priority>
-    </url>
-  
-    <url>
-      <loc>http://harttle.github.io/%E4%B8%AA%E4%BA%BA/me.html</loc>
-      
-      <lastmod>2013-10-25T00:00:00+08:00</lastmod>
-      
-      <changefreq>daily</changefreq>
-      <priority>1.0</priority>
-    </url>
-  
-    <url>
-      <loc>http://harttle.github.io/%E6%91%84%E5%BD%B1/pku.html</loc>
-      
-      <lastmod>2013-10-18T00:00:00+08:00</lastmod>
-      
-      <changefreq>daily</changefreq>
-      <priority>1.0</priority>
-    </url>
-  
-    <url>
-      <loc>http://harttle.github.io/web/github-homepage-tutorial.html</loc>
-      
-      <lastmod>2013-10-18T00:00:00+08:00</lastmod>
-      
-      <changefreq>daily</changefreq>
-      <priority>1.0</priority>
-    </url>
-  
+  {% endfor %}
 
-  
+  {% for page in site.pages %}
     <url>
-      <loc>http://harttle.github.io/404.html</loc>
-      <lastmod>2014-04-28T12:38:27+08:00</lastmod>
+      <loc>{{ site.url }}{{ page.url }}</loc>
+      <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
       <changefreq>always</changefreq>
       <priority>0.7</priority>
     </url>
-  
-    <url>
-      <loc>http://harttle.github.io/about.html</loc>
-      <lastmod>2014-04-28T12:38:27+08:00</lastmod>
-      <changefreq>always</changefreq>
-      <priority>0.7</priority>
-    </url>
-  
-    <url>
-      <loc>http://harttle.github.io/albums.html</loc>
-      <lastmod>2014-04-28T12:38:27+08:00</lastmod>
-      <changefreq>always</changefreq>
-      <priority>0.7</priority>
-    </url>
-  
-    <url>
-      <loc>http://harttle.github.io/articles.html</loc>
-      <lastmod>2014-04-28T12:38:27+08:00</lastmod>
-      <changefreq>always</changefreq>
-      <priority>0.7</priority>
-    </url>
-  
-    <url>
-      <loc>http://harttle.github.io/feed.xml</loc>
-      <lastmod>2014-04-28T12:38:27+08:00</lastmod>
-      <changefreq>always</changefreq>
-      <priority>0.7</priority>
-    </url>
-  
-    <url>
-      <loc>http://harttle.github.io/index.html</loc>
-      <lastmod>2014-04-28T12:38:27+08:00</lastmod>
-      <changefreq>always</changefreq>
-      <priority>0.7</priority>
-    </url>
-  
-    <url>
-      <loc>http://harttle.github.io/sitemap.xml</loc>
-      <lastmod>2014-04-28T12:38:27+08:00</lastmod>
-      <changefreq>always</changefreq>
-      <priority>0.7</priority>
-    </url>
-  
-    <url>
-      <loc>http://harttle.github.io/page2/index.html</loc>
-      <lastmod>2014-04-28T12:38:27+08:00</lastmod>
-      <changefreq>always</changefreq>
-      <priority>0.7</priority>
-    </url>
-  
-    <url>
-      <loc>http://harttle.github.io/page3/index.html</loc>
-      <lastmod>2014-04-28T12:38:27+08:00</lastmod>
-      <changefreq>always</changefreq>
-      <priority>0.7</priority>
-    </url>
-  
+  {% endfor %}
 </urlset>
