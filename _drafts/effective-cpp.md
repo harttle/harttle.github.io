@@ -18,6 +18,8 @@ tags: C++
 2. 使用`enum`定义类常量较为合适。因为`static const int`允许取地址，此时不仅需要声明，还需要定义。
 3. `#define`函数将会产生出乎意料的结果，如`#define MAX(a,b) a>b?a:b`，在调用`MAX(i++,j)`的情况下，`i`自加次数将取决于`j`的大小。
 
+<!--more-->
+
 > Use const whenever possible.
 
 尽量使用常量。这在C++风格中是值得提倡的，尤其在合作项目中。不想改变的变量应该明确地提醒其他程序员，不要侥幸！

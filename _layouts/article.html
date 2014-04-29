@@ -5,7 +5,7 @@ nav: articles
 
 <!-- style -->
 <link rel="stylesheet" href="/assets/css/markdown.css">
-<link rel="stylesheet" href="/assets/css/highlight/tomorrow-night-eighties.css">
+<link rel="stylesheet" href="/assets/css/syntax.css">
 <style>
   /* By default it's not affixed in mobile views, so undo that */
   .sidebar.affix {
@@ -198,9 +198,14 @@ nav: articles
 
 <!-- latex render begin -->
 <script type="text/x-mathjax-config">  
-  MathJax.Hub.Queue(function () {
-    $('body').scrollspy('refresh'); 
-  });
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+            displayMath: [ ['$$$','$$$'], ['\[','\]'] ]
+        }
+    });
+    MathJax.Hub.Queue(function () {
+        $('body').scrollspy('refresh'); 
+    });
 </script>
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 <!-- latex render end -->

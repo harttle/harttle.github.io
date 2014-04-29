@@ -79,7 +79,7 @@ if p<r
 $
 T(n)=
  \begin{cases}
-O(1)=c, n=1\\
+O(1)=c, n=1\\\\
 2T(n/2)+O(n)=2T(n/2)+cn, n>1
 \end{cases}
 $
@@ -155,7 +155,7 @@ Strassen算法包括四个步骤：
 $
 T(n)=
  \begin{cases}
-O(1)=c, n=1\\
+O(1)=c, n=1\\\\
 7T(n/2)+O(n)=2T(n/2)+cn, n>1
 \end{cases}
 $
@@ -195,18 +195,18 @@ for i = 1 to n
 
 ### 指示器随机变量
 
-给定样本空间S和一个事件A，那么事件A对应的 **指示器随机变量**$I\{A\}$定义为：
-$I\{A\}=
+给定样本空间S和一个事件A，那么事件A对应的 **指示器随机变量**$I\\{A\\}$定义为：
+$I\\{A\\}=
 \begin{cases}
-1,~if~A~happened\\
+1,~if~A~happened\\\\
 0,~if~A~didn't~happen
 \end{cases}
 $
 
 举一个简单的例子，我们来确定抛掷硬币时正面朝上的期望次数。样本空间为$S=\{H, T\}$，其中$Pr\{H\}=Pr\{T\}=1/2$，指示器随机变量
-$X_H=I\{H\}=
+$X_H=I\\{H\\}=
 \begin{cases}
-1,~if~H~happened\\
+1,~if~H~happened\\\\
 0,~if~T~happened
 \end{cases}
 $
@@ -648,7 +648,7 @@ RANDOMIZED-SELECT的最坏情况运行时间为$\Theta(n^2)$，即使找最小�
 运行时间递归式为
 $T(n) = 
 \begin{cases}
-O(1),~if~n<140\\
+O(1),~if~n<140\\\\
 T(\lceil n/5 \rceil) + T(7n/10+6) + O(n),~if~n \geq 140
 \end{cases}
 $，解为$O(n)$
@@ -1300,8 +1300,8 @@ PRINT-OPTIMAL-PARENS(s, i, j)
 c[i,j]表示X[i]和Y[j]的 **最长公共子序列**（longest commen subsequence，LCS），根据 LCS 的最优子结构性质，可得到如下公式
 $
 c[i,j] = \begin{cases}
-0,~if~i=0~or~j=0\\
-c[i-1,j-1]+1,~if~i,j>0~and~x_i=y_j\\
+0,~if~i=0~or~j=0\\\\
+c[i-1,j-1]+1,~if~i,j>0~and~x_i=y_j\\\\
 max(c[i,j-1],c[i-1,j]),~if~i,j>0~and~x_i\neq y_j
 \end{cases}
 $
@@ -1335,7 +1335,7 @@ $
 $S_{ij}$ 表示结束时间在活动 i 结束后 j 开始前的活动集合，c[i,j] 表示 $S_{ij}$ 的最优解的大小，则
 $
 c[i,j]=\begin{cases}
-0,~if S_{ij} = \emptyset\\
+0,~if S_{ij} = \emptyset\\\\
 max\{ c[i,k]+c[k,j]+1 \},~if S_{ij} \neq \emptyset
 \end{cases}
 $
@@ -1527,7 +1527,7 @@ B-TREE-INSERT(T,k)
 2. **邻接矩阵**：由$|V|\times |V|$的矩阵 $A=(a_{ij})$ 表示：
 	$a_{ij}=
 	\begin{cases}
-	1,~if~(i,j)\in E\\
+	1,~if~(i,j)\in E\\\\
 	0,~other
 	\end{cases}
 	$
@@ -1768,7 +1768,7 @@ MST-PRIM(G,w,r)	//对于任意指定的根结点r，都可生成拥有同样边�
 
 在 **最短路径问题**中，给定一个带权重的有向图G=(V,E)和权重函数 $\omega: E \to \vec{\bm{R}}$，该函数将每条边映射到实数值的权重。
 图中一条路径p的 **权重** w(p) 是构成该路径的所有边的权重之和：$\omega(p)=\sum_{i=1}^k \omega(v_{i-1},v_i)$。
-从结点u到结点 v的 **最短路径权重** $\delta(u,v) = \begin{cases}\min\{\omega(p):u\to v\},\quad if~there~is~a~path~from~u~to~v}\\ \infty,\quad other\end{cases}$
+从结点u到结点 v的 **最短路径权重** $\delta(u,v) = \begin{cases}\min\{\omega(p):u\to v\},\quad if~there~is~a~path~from~u~to~v}\\\\ \infty,\quad other\end{cases}$
 **最短路径的最优子结构性质**：两个结点之间的一条最短路径包含着其他的最短路径。
 
 **最短路径问题的几个变体**
@@ -1950,7 +1950,7 @@ PRINT-ALL-PAIRS-SHORTEST-PATH(PI, i, j)
 
 定义 $l_{ij}^{(m)}$ 为 i 到 j 的至多包含 m 条边的所有路径中最小的权重，则：
 $l_{ij}^{(0)} = \begin{cases}
-0 \quad if~i=j\\
+0 \quad if~i=j\\\\
 \infty \quad if~i\neq j
 \end{cases}$
 
@@ -2018,7 +2018,7 @@ FASTER-ALL-PAIRS-SHORTEST-PATHS(W)
 
 设 $d_{ij}^{(k)}$ 为 i 到 j 的中间结点都在 {1,2,...,k} 的最短路径的权重。显然 $d_{ij}^{(0)}=\omega_{ij}$，
 $d_{ij}^{(k)} = \begin{cases}
-\omega_{ij} \quad k=0\\
+\omega_{ij} \quad k=0\\\\
 \min\left(d_{ij}^{(k-1)},d_{ik}^{(k-1)} + d_{kj}^{(k-1)}\right) \quad k \geq 1
 \end{cases}$
 
@@ -2046,12 +2046,12 @@ FLOYD-WARSHALL(W)
 我们可以在计算矩阵 $D^{(k)}$ 的同时计算前驱矩阵 $\Pi$，下面给出 $\pi_{ij}^{(k)}$ 的递归式：
 
 $\pi_{ij}^{(0)} = \begin{cases}
-NIL \quad if~i=j ~ or ~ \omega_{ij}=\infty \\
+NIL \quad if~i=j ~ or ~ \omega_{ij}=\infty \\\\
 i \quad if~i \neq j ~ and ~ \omega_{ij}<\infty
 \end{cases}$
 
 $\pi_{ij}^{(k)} = \begin{cases}
-\pi_{ij}^{(k-1)} \quad  if~d_{ij}^{(k-1)} \leq d_{ik}^{(k-1)} + d_{kj}^{(k-1)}\\
+\pi_{ij}^{(k-1)} \quad  if~d_{ij}^{(k-1)} \leq d_{ik}^{(k-1)} + d_{kj}^{(k-1)}\\\\
 \pi_{kj}^{(k-1)} \quad if~d_{ij}^{(k-1)} > d_{ik}^{(k-1)} + d_{kj}^{(k-1)}
 \end{cases}$
 
@@ -2065,7 +2065,7 @@ $\pi_{ij}^{(k)} = \begin{cases}
 2. 我们定义：如果图G中 i 到 j 的路径的中间结点都取自 {1,2,...,k}，则 $t_{ij}^{(k)} = 1$；否则为 0 。
 	构建传递闭包 $G^*$ 的方法为：将(i,j) 置于 $E^*$ 当且仅当 $t_{ij}^{(n)} = 1$。其递归定义如下：
 	$t_{ij}^{(0)} = \begin{cases}
-	0 \quad if~i\neq j~and~(i,j)\in E\\
+	0 \quad if~i\neq j~and~(i,j)\in E\\\\
 	1 \quad if~i=j~or~(i,j) \in E
 	\end{cases}$
 	$t_{ij}^{(k)} = t_{ij}^{(k-1)} \lor ( t_{ik}^{(k-1)} \land t_{kj}^{(k-1)}) \quad if~k \geq 1$
