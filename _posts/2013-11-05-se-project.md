@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: blog
 title: 搜索引擎搭建
 category: web
 tags: 爬虫 搜索引擎

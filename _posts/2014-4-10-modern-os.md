@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: blog
 title:  Modern Operating Systems
 categories: 读书
 tags: 读书笔记 操作系统

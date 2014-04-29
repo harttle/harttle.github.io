@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: blog
 category: linux
 title: Vim 使用
 tags: 

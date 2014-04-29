@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: blog
 title:  "算法导论"
 categories: 读书
 tags: 读书笔记 算法 数据结构

@@ -13,7 +13,7 @@ redcarpet:
 highlighter: pygments
 permalink: none
 
-article_categories:
+blog_categories:
     - linux
     - web
     - 读书

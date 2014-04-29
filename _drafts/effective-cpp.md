@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: blog
 title: Effective C++ 笔记
 categories: 读书
 tags: C++

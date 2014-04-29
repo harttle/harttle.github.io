@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: blog
 title:  Computer Organization and Design
 subtitle: The Hardware/Software Interface
 categories: 读书

@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: blog
 title:  "计算机网络"
 categories: 读书
 tags: 读书笔记 网络

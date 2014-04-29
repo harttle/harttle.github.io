@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: blog
 title: Linux下的触摸板设置 
 subtitle: 以 Arch Linux 为例
 categories: linux

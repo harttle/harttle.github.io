@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: blog
 category: linux
 tags: arch
 title: 安装 Arch Linux

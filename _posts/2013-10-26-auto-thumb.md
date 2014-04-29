@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: blog
 title: 批量更新站点缩略图 
 subtitle: 网站图片管理
 categories: linux
