@@ -1,6 +1,7 @@
 /*main css file for harttle land*/
 
 body{
+  -webkit-font-smoothing: antialiased;
   position: relative; /* for scroll spy with absolute position */
   /* padding-top: 50px;  padding off fixed-nav */
 }
