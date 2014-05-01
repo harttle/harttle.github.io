@@ -1,6 +1,5 @@
 ---
 layout: post
-nav: blogs
 ---
 
 <!-- style -->
@@ -112,6 +111,7 @@ nav: blogs
   .MathJax *{
     color: black!important;  
   }
+
 </style>
 <!-- style -->
 
@@ -120,10 +120,13 @@ nav: blogs
     <div class="col-md-3 left" >
       <div class="sidebar"></div>
     </div>
-    <div class="col-md-9 right md">
-      {{ content }}
-    
-      {% include social-sharing.html %}
+    <div class="col-md-9 right">
+        <div class="md">
+            {{ content }}
+        </div>
+
+        {% include prev-next.html %}
+        {% include social-sharing.html %}
     </div>
 </div>
 

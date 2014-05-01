@@ -1,6 +1,6 @@
 ---
 layout: blog
-category: 其他
+categories: misc
 tags: VPN windows linux
 title: Linux 连接 Windows Server VPN
 ---

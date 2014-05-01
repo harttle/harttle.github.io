@@ -1,0 +1,21 @@
+<style>
+    .prev-next{
+        margin-top:50px;
+    }
+    .prev-next span{
+        min-width: 75px;
+        display:inline-block;
+    }
+</style>
+
+<ul class="list-unstyled prev-next">
+    {% if page.previous %}
+    <li><span class="text-muted">Previous: </span>
+    <a href="{{page.previous.url}}">{{page.previous.title}}</a></li>
+    {% endif %}
+    {% if page.next %}
+    <li><span class="text-muted">Next: </span>
+    <a  href="{{page.next.url}}">{{page.next.title}}</a></li>
+    {% endif %}
+</ul>
+

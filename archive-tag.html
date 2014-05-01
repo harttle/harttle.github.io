@@ -1,0 +1,29 @@
+---
+layout: archive 
+nav-tag: true
+---
+
+
+{% for tag in site.tags %}
+
+<h3>{{tag[0] | capitalize }}</h3>
+
+{% for post in tag[1] %}
+<li>
+
+<span class="text-warning time">{{ post.date | date: "%Y-%m-%d" }}</span> - 
+<a class="feature-link title" href="{{ post.url }}">{{ post.title }}</a>
+
+{% for cat in post.categories %}
+<span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> {{ cat }}</span>
+{% endfor %}
+
+{% for tag in post.tags %}
+<span class="label label-default" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> {{ tag }}</span>
+{% endfor %}
+
+</li>
+
+
+{% endfor %}
+{% endfor %}

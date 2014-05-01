@@ -1,0 +1,71 @@
+---
+layout: default
+---
+
+<!-- style -->
+<style>
+    .page-header{ color: #000; }
+    .left{
+        margin-top: 40px;
+        /*padding-right: 15px;*/
+    }
+    .right{ /*padding-left:10px;*/}
+    .item-list li{
+        line-height:30px;
+    }
+    .item-list .page-header{
+        margin-bottom:10px;
+    }
+    .item-list ol{
+        padding-left:5px;
+    }
+</style>
+{% assign block = content | split: '<!-- style -->' %}
+{{ block[1] }}
+<!-- style -->
+
+<!-- content -->
+<div class="page-header hl-header">
+    <div class="container">
+        <h1>{{ page.title | capitalize }}<small style="margin-left:20px;">{{ page.subtitle }}</small></h1>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-8 left">
+            {% assign block = content | split: '<!-- content -->' %}
+            {{ block[1] }}
+        </div>
+
+        <div class="col-md-3 col-md-offset-1 right">
+            <div class="item-list">
+                <h3 class="page-header"><a class="feature-link" href="/archive-category.html">Categories</a></h3>
+
+                <ol class="list-unstyled">
+                    {% for cate in site.categories %}
+                    <li><a href="/categories/{{cate[0]}}.html">{{cate[0] | capitalize}}</a></li>
+                    {% endfor %}
+                </ol>
+            </div>
+
+            <div class="item-list">
+                <h3 class="page-header"><a class="feature-link" href="/">Recent Posts</a></h3>
+
+                <ol class="list-unstyled">
+
+                    {% for post in site.posts offset: 0 limit: 5 %}
+                    <li><a href="{{post.url}}">{{ post.title }}</a></li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content -->
+
+<!-- script -->
+    {% assign block = content | split: '<!-- script -->' %}
+    {{ block[1] }}
+<!-- script -->

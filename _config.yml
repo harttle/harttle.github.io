@@ -13,12 +13,5 @@ redcarpet:
 highlighter: pygments
 permalink: none
 
-blog_categories:
-    - linux
-    - web
-    - 读书
-    - 其他
-album_categories:
-    - 个人
-    - 摄影
 exclude: ['README.md', '.*']
+

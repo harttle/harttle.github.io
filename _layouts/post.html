@@ -35,7 +35,7 @@ layout: default
       {% for tag in page.tags %}
       <span class="label label-success pull-left hidden-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> {{ tag }}</span>
       {% endfor %}
-      <a class="pull-right label label-danger" href="/{{page.nav}}.html" style="margin-left: 10px;"><span class="glyphicon glyphicon-hand-left"></span> Back</a>
+      <a class="pull-right label label-danger" href="/" style="margin-left: 10px;"><span class="glyphicon glyphicon-hand-left"></span> Back</a>
       <span class="pull-right label label-default hidden-xs">
           <span class="glyphicon glyphicon-time"></span> {{ page.date | date_to_string }}
       </span>
@@ -48,6 +48,7 @@ layout: default
   <div id="page-content">
     {% assign block = content | split: '<!-- content -->' %}
     {{ block[1] }}
+
   </div>
 
 </div>

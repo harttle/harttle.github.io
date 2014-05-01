@@ -23,6 +23,7 @@ body{
 }
 .hl-header small{
   color: lightgrey;
+  font-family: cursive;
 }
 .hl-header p {
   font-weight: 300;
@@ -41,18 +42,13 @@ body{
     line-height: 1;
   }
 }
-@media (min-width: 992px) {
-  .hl-header h1,
-  .hl-header p {
-    margin-right: 380px;
-  }
-}
 
-.header a{
-    color: #444444;
+a.feature-link{
+    color: #000;
     text-decoration: none;
+    transition: color .2s ease-in 0s
 }
-.header a:hover{
+a.feature-link:hover{
     color: #39f;
 }
 .global-nav{
@@ -66,9 +62,6 @@ body{
   font-size: 14px;
 }
 
-.page-header h1{
-  /*font-family: cursive;*/
-}
 .panel-active{
   box-shadow: 5px 5px 10px #888;
 }

@@ -1,7 +1,7 @@
 ---
 layout: blog
 title:  "算法导论"
-categories: 读书
+categories: reading
 tags: 读书笔记 算法 数据结构
 excerpt: 《算法导论》Thomas H.Cormen, Charles E.Leiserson, etc. 机械工业出版社
 ---

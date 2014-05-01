@@ -1,108 +1,83 @@
 ---
-layout: default
-title: Home
-nav: home
+layout: blogs
+title: Harttle Land
+subtitle: Keep It Simple, Stupid.
 ---
 
 <!-- style -->
 <link rel="stylesheet" href="/assets/css/markdown.css">
 <link rel="stylesheet" href="/assets/css/syntax.css">
 <style>
-    .page-header{
-        color: #000;
-    }
-
     .post{
-        margin-bottom: 70px;
+        margin-bottom: 50px;
         border-bottom: 1px dotted #d1d1d1;
     }
     .post h1.header{
         font-weight: normal;
         font-size: 28px;
     }
-    .post .meta{
-    }
-    .post a{
-        text-decoration: none;
-    }
-    .post .md{
-        margin: 40px 15px 30px 15px;
-    }
-    .post .more{
-        margin-bottom:20px;
-    }
+    .post a{ text-decoration: none; }
+    .post .md{ margin: 20px 15px 30px 15px; }
+    .post .more{ margin-bottom:20px; }
 </style>
 <!-- style -->
 
 <!-- content -->
-<div class="page-header hl-header">
-    <div class="container">
-      <h1>{{ site.name }} <small style="margin-left:20px;"> Keep It Simple, Stupid.</small></h1>
-    </div>
+{% for post in paginator.posts %}
+
+<div class="post">
+    <h1 class="header"><a class="feature-link" href="{{post.url}}">{{ post.title }}</a></h1>
+    <p>
+    <span class="text-warning time" style="padding-right:10px"> {{ post.date | date_to_string }}</span>
+
+    {% for cat in post.categories %}
+    <span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> {{ cat }}</span>
+    {% endfor %}
+
+    {% for tag in post.tags %}
+    <span class="label label-default hidden-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> {{ tag }}</span>
+    {% endfor %}
+    </p>
+
+    {% if post.content contains '<!--more-->' %}
+    <div class="md">{{ post.content | split:'<!--more-->' | first }}</div>
+    <a class="more btn btn-default" href="{{ post.url }}">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+    {% elsif post.layout == 'album' %}
+    <div class="md">{{ post.content }}</div>
+    <a class="more btn btn-default" href="{{ post.url }}">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+    {% else %}
+    <div class="md">{{ post.content }}</div>
+    {% endif %}
 </div>
-  
-<div class="container">
 
+{% endfor %}
 
-    <div id="post-list">
-        {% for post in paginator.posts %}
-
-        <div class="post">
-            <h1 class="header"><a href="{{post.url}}">{{ post.title }}</a></h1>
-            <p class="meta">
-            <span class="text-muted time" style="padding-right:10px"> {{ post.date | date_to_string }}</span>
-
-            {% for cat in post.categories %}
-            <span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> {{ cat }}</span>
-            {% endfor %}
-
-            {% for tag in post.tags %}
-                <span class="label label-default hidden-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> {{ tag }}</span>
-            {% endfor %}
-            </p>
-
-            {% if post.content contains '<!--more-->' %}
-            <div class="md">{{ post.content | split:'<!--more-->' | first }}</div>
-            <a class="more btn btn-primary" href="{{ post.url }}">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
-
-            {% elsif post.layout == 'album' %}
-            <div class="md">{{ post.content }}</div>
-            <a class="more btn btn-primary" href="{{ post.url }}">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
-
-            {% else %}
-            <div class="md">{{ post.content }}</div>
-            {% endif %}
-        </div>
-
-        {% endfor %}
-    </div>
-
-    <!-- Pagination links -->
-    {% if paginator.total_pages > 1 %}
-    <ul class="pager">
-        {% if paginator.next_page %}
-          <li class="previous"><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Older</a></li>
-        {% else %}
-          <li class="previous disabled"><a>&larr; Older</a></li>
-        {% endif %}
-
-        {% if paginator.previous_page %}
-            <li class="next"><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">Newer &rarr;</a></li>
-        {% else %}
-          <li class="next disabled"><a>Newer &rarr;</a></li>
-        {% endif %}
-    </div>
+<!-- Pagination links -->
+{% if paginator.total_pages > 1 %}
+<ul class="pager">
+    {% if paginator.next_page %}
+    <li class="previous"><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Older</a></li>
+    {% else %}
+    <li class="previous disabled"><a>&larr; Older</a></li>
     {% endif %}
 
-</div>
+    {% if paginator.previous_page %}
+    <li class="next"><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">Newer &rarr;</a></li>
+    {% else %}
+    <li class="next disabled"><a>Newer &rarr;</a></li>
+    {% endif %}
+</ul>
+{% endif %}
 <!-- content -->
 
 <!-- script -->
 <!-- latex render begin -->
 <script type="text/x-mathjax-config">  
-  MathJax.Hub.Queue(function () {
-    $('body').scrollspy('refresh'); 
-  });
+    MathJax.Hub.Queue(function () {
+        $('body').scrollspy('refresh'); 
+    });
 </script>
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 <!-- latex render end -->

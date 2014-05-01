@@ -1,6 +1,6 @@
 ---
 layout: blog
-category: linux
+categories: linux
 title: Vim 手册
 tags: 
 ---
@@ -189,38 +189,37 @@ map <F7> <Esc>:!javac %<<CR>
 
 
 
-`map` 命令有多种形式，其首字母表明它作用于何种模式下。各种`map`命令对应的模式如下：
-
-命令    |       左边  |       右边   |          模式      |       跳跃点
-----    | -------     |     ----     |           ----     |        ---
-　　:map     |    {lhs}  |   {rhs}  |       mapmode-nvo   |   *:map*
-　　:nm[ap]  |  {lhs}    |  {rhs}    |    mapmode-n       |    *:nm* *:nmap*
-　　:vm[ap]  |  {lhs}    |  {rhs}    |    mapmode-v       |    *:vm* *:vmap*
-　　:xm[ap]  |  {lhs}    |  {rhs}    |    mapmode-x       |    *:xm* *:xmap*
-　　:smap    |   {lhs}   |   {rhs}   |    mapmode-s      |     *:smap*
-　　:om[ap]  |  {lhs}    |  {rhs}    |    mapmode-o       |    *:om* *:omap*
-　　:map!    |   {lhs}   |   {rhs}   |    mapmode-ic     |    *:map!*
-　　:im[ap]  |   {lhs}   |   {rhs}   |    mapmode-i     |      *:im* *:imap*
-　　:lm[ap]  |   {lhs}   |   {rhs}   |    mapmode-l      |      *:lm* *:lmap*
-　　:cm[ap]  |  {lhs}    |  {rhs}    |    mapmode-c       |    *:cm* *:cmap*
-
-
-上述第四列模式对应于`map`所处的模式，其对应的vim模式如下：
+`map` 命令有多种工作模式，如下表。
 
 map模式 | 描述
------  | ----
-　　n　　|　　　　普通
-　　v　　|　　　　可视和选择
-　　s　　|　　　　选择
-　　x　　|　　　　可视
-　　o　　|　　　　操作符等待
-　　!　　|　　　　插入和命令行
-　　i　　|　　　　插入
-　　l　　|　　　　插入、命令行和 Lang-Arg 模式的 ":lmap" 映射
-　　c　　|　　　　命令行
+:---:  | ----
+n	|	普通
+v	|	可视和选择
+s	|	选择
+x	|	可视
+o	|	操作符等待
+!	|	插入和命令行
+i	|	插入
+l	|	插入、命令行和 Lang-Arg 模式的 ":lmap" 映射
+c	|	命令行
 
 
-　　
+其中，`map`模式可作为`map`命令的前缀以指定其工作模式：
+
+命令    |       左边  |       右边   |          模式      
+----    | -------     |     ----     |           ----  
+:map     |    {lhs}  |   {rhs}  |       mapmode-nvo   
+:nm[ap]  |  {lhs}    |  {rhs}    |    mapmode-n       
+:vm[ap]  |  {lhs}    |  {rhs}    |    mapmode-v       
+:xm[ap]  |  {lhs}    |  {rhs}    |    mapmode-x       
+:smap    |   {lhs}   |   {rhs}   |    mapmode-s      
+:om[ap]  |  {lhs}    |  {rhs}    |    mapmode-o      
+:map!    |   {lhs}   |   {rhs}   |    mapmode-ic     
+:im[ap]  |   {lhs}   |   {rhs}   |    mapmode-i     
+:lm[ap]  |   {lhs}   |   {rhs}   |    mapmode-l     
+:cm[ap]  |  {lhs}    |  {rhs}    |    mapmode-c     
+
+另外，可添加`nore`指定非递归方式（取消传递性）。如`inoremap`为插入模式下工作的`map`，并且没有递归。
 
 
 ## 函数

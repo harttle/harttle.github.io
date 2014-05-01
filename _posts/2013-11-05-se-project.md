@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: 搜索引擎搭建
-category: web
+categories: development
 tags: 爬虫 搜索引擎
 ---
 
