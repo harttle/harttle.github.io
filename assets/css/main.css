@@ -46,7 +46,7 @@ body{
 a.feature-link{
     color: #000;
     text-decoration: none;
-    transition: color .2s ease-in 0s
+    transition: color .2s ease-out 0s
 }
 a.feature-link:hover{
     color: #39f;

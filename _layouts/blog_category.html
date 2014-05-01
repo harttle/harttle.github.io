@@ -11,16 +11,16 @@ layout: blogs
 
 <!-- content -->
 
-{% for post in site.categories[page.title] %}                        
-<div style=margin-bottom:20px;>
-    <h4 class="header">
-        <a class="feature-link" href="{{post.url}}">{{ post.title }}</a>
-        <p class="text-warning time pull-right">{{ post.date | date: "%Y-%m-%d"  }}</p>
-    </h4>
+    {% for post in site.categories[page.title] %}                        
+    <div style=margin-bottom:20px;>
+        <h4 class="header">
+            <a class="feature-link" href="{{post.url}}">{{ post.title }}</a>
+            <p class="text-warning time pull-right">{{ post.date | date: "%Y-%m-%d"  }}</p>
+        </h4>
 
-    <div class=text-muted>{{post.excerpt}}</div>
-</div>
-{% endfor %}
+        <div class=text-muted>{{post.excerpt}}</div>
+    </div>
+    {% endfor %}
 <!-- content -->
 
 <!-- script -->

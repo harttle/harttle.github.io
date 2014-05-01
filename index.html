@@ -23,36 +23,35 @@ subtitle: Keep It Simple, Stupid.
 <!-- style -->
 
 <!-- content -->
-{% for post in paginator.posts %}
+    {% for post in paginator.posts %}
 
-<div class="post">
-    <h1 class="header"><a class="feature-link" href="{{post.url}}">{{ post.title }}</a></h1>
-    <p>
-    <span class="text-warning time" style="padding-right:10px"> {{ post.date | date_to_string }}</span>
+    <div class="post">
+        <h1 class="header"><a class="feature-link" href="{{post.url}}">{{ post.title }}</a></h1>
+        <p>
+        <span class="text-warning time" style="padding-right:10px"> {{ post.date | date_to_string }}</span>
 
-    {% for cat in post.categories %}
-    <span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> {{ cat }}</span>
+        {% for cat in post.categories %}
+        <span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> {{ cat }}</span>
+        {% endfor %}
+
+        {% for tag in post.tags %}
+        <span class="label label-default hidden-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> {{ tag }}</span>
+        {% endfor %}
+        </p>
+
+        {% if post.content contains '<!--more-->' %}
+        <div class="md">{{ post.content | split:'<!--more-->' | first }}</div>
+        <a class="more btn btn-default" href="{{ post.url }}">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+        {% elsif post.layout == 'album' %}
+        <div class="md">{{ post.content }}</div>
+        <a class="more btn btn-default" href="{{ post.url }}">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+        {% else %}
+        <div class="md">{{ post.content }}</div>
+        {% endif %}
+    </div>
     {% endfor %}
-
-    {% for tag in post.tags %}
-    <span class="label label-default hidden-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> {{ tag }}</span>
-    {% endfor %}
-    </p>
-
-    {% if post.content contains '<!--more-->' %}
-    <div class="md">{{ post.content | split:'<!--more-->' | first }}</div>
-    <a class="more btn btn-default" href="{{ post.url }}">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
-
-    {% elsif post.layout == 'album' %}
-    <div class="md">{{ post.content }}</div>
-    <a class="more btn btn-default" href="{{ post.url }}">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
-
-    {% else %}
-    <div class="md">{{ post.content }}</div>
-    {% endif %}
-</div>
-
-{% endfor %}
 
 <!-- Pagination links -->
 {% if paginator.total_pages > 1 %}

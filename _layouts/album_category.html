@@ -11,48 +11,48 @@ layout: blogs
 
 <!-- content -->
 
-{% for post in site.categories[page.title] %}  
+    {% for post in site.categories[page.title] %}  
 
-<div class="panel panel-primary panel-active panel-toolbar">                                              
-    <div class="panel-heading">                                                              
-        <h3 class="panel-title" title="{{post.subtitle}}">
-            <i class="{{ page.post-icon }}"></i> 
-            {{ post.title }}
-            <p class="muted time pull-right">{{ post.date | date: "%Y-%m-%d"  }}</p>         
-        </h3>                                                                                
-    </div>                                                                                   
-    <div class="panel-body">                                                                     
+    <div class="panel panel-primary panel-active panel-toolbar">                                              
+        <div class="panel-heading">                                                              
+            <h3 class="panel-title" title="{{post.subtitle}}">
+                <i class="{{ page.post-icon }}"></i> 
+                {{ post.title }}
+                <p class="muted time pull-right">{{ post.date | date: "%Y-%m-%d"  }}</p>         
+            </h3>                                                                                
+        </div>                                                                                   
+        <div class="panel-body">                                                                     
 
-        <div class="row"> 
-            <div class="col-xs-12 col-sm-3">
-                <a href="{{post.url}}" class="thumbnail" style="margin-bottom: 5px;">
-                    <img  class="lazy img-responsive" data-original="{{ post.file-pre }}thumb/{{ post.thumb }}"
-                    src="/assets/img/loading.gif" alt="{{ post.thumb }}">
-                </a>
+            <div class="row"> 
+                <div class="col-xs-12 col-sm-3">
+                    <a href="{{post.url}}" class="thumbnail" style="margin-bottom: 5px;">
+                        <img  class="lazy img-responsive" data-original="{{ post.file-pre }}thumb/{{ post.thumb }}"
+                        src="/assets/img/loading.gif" alt="{{ post.thumb }}">
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-8" >
+                    <h4>{% if post.subtitle %}{{post.subtitle}}{% else %}{{post.title}}{% endif %}</h4>
+                    <p>{{post.content}}</p>
+                </div>
             </div>
-            <div class="col-xs-12 col-sm-8" >
-                <h4>{% if post.subtitle %}{{post.subtitle}}{% else %}{{post.title}}{% endif %}</h4>
-                <p>{{post.content}}</p>
-            </div>
+
+            <div class="clearfix"></div>                                                         
+            <hr/>
+
+            {% for tag in post.tags %}                                                           
+            <span style="margin-right: 10px;" class="label label-success pull-left hidden-xs">           
+                <span class="glyphicon glyphicon-tag"></span> {{ tag }}
+            </span>
+            {% endfor %}
+
+            <a class="label label-primary pull-right" href="{{post.url}}" >
+                进入              
+                <span class="glyphicon glyphicon-hand-right"></span>
+            </a>
         </div>
-
-        <div class="clearfix"></div>                                                         
-        <hr/>
-
-        {% for tag in post.tags %}                                                           
-        <span style="margin-right: 10px;" class="label label-success pull-left hidden-xs">           
-            <span class="glyphicon glyphicon-tag"></span> {{ tag }}
-        </span>
-        {% endfor %}
-
-        <a class="label label-primary pull-right" href="{{post.url}}" >
-            进入              
-            <span class="glyphicon glyphicon-hand-right"></span>
-        </a>
     </div>
-</div>
 
-{% endfor %}
+    {% endfor %}
 <!-- content -->
 
 <!-- script -->

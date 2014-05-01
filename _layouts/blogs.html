@@ -5,11 +5,9 @@ layout: default
 <!-- style -->
 <style>
     .page-header{ color: #000; }
-    .left{
-        margin-top: 40px;
-        /*padding-right: 15px;*/
+    .item-list{
+        margin-bottom: 40px;
     }
-    .right{ /*padding-left:10px;*/}
     .item-list li{
         line-height:30px;
     }
@@ -34,12 +32,15 @@ layout: default
 <div class="container">
     <div class="row">
 
-        <div class="col-md-8 left">
+        <div class="col-md-8">
+
+            <div style="margin-top:40px;">
             {% assign block = content | split: '<!-- content -->' %}
             {{ block[1] }}
         </div>
+        </div>
 
-        <div class="col-md-3 col-md-offset-1 right">
+        <div class="col-md-3 col-md-offset-1 ">
             <div class="item-list">
                 <h3 class="page-header"><a class="feature-link" href="/archive-category.html">Categories</a></h3>
 
