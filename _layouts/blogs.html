@@ -5,9 +5,6 @@ layout: default
 <!-- style -->
 <style>
     .page-header{ color: #000; }
-    .item-list{
-        margin-bottom: 40px;
-    }
     .item-list li{
         line-height:30px;
     }
@@ -16,6 +13,10 @@ layout: default
     }
     .item-list ol{
         padding-left:5px;
+    }
+    .left, .right{
+        margin-top:40px;
+        margin-bottom:40px;
     }
 </style>
 {% assign block = content | split: '<!-- style -->' %}
@@ -34,13 +35,15 @@ layout: default
 
         <div class="col-md-8">
 
-            <div style="margin-top:40px;">
-            {% assign block = content | split: '<!-- content -->' %}
-            {{ block[1] }}
-        </div>
+            <div class="left">
+                {% assign block = content | split: '<!-- content -->' %}
+                {{ block[1] }}
+            </div>
+
         </div>
 
         <div class="col-md-3 col-md-offset-1 ">
+            <div class="right">
             <div class="item-list">
                 <h3 class="page-header"><a class="feature-link" href="/archive-category.html">Categories</a></h3>
 
@@ -61,6 +64,7 @@ layout: default
                     {% endfor %}
                 </ol>
             </div>
+        </div>
         </div>
     </div>
 </div>
