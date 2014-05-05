@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="keywords" content="Linux Web Computer Science">
+        <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.name }}</title>
+
+        {%if page.tags %}
+        <meta name="keywords" content="{{ page.tags | join: ',' | xml_escape}}">
+        {% endif %}
+
+        {%if page.excerpt %}
+        <meta name="description" content="{{ page.excerpt | xml_escape }}">
+        {% endif %}
+
         <meta name="author" content="harttle">      
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.name }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- style -->

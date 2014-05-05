@@ -3,7 +3,6 @@ layout: blog
 title: Effective C++ 笔记
 categories: reading
 tags: C++
-
 ---
 
 两年前第一次接触 Scott Mayers 的 Effective C++，最近面试C++工程师，又拿来研读，整理了一些读书笔记。

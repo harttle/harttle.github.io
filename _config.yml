@@ -1,17 +1,17 @@
 name: Harttle Land
-description: 欢迎访问 Harttle 的博客。
 url: http://harttle.github.io
+
+permalink: none
 
 paginate: 5
 paginate_path: "/page:num"
+
+highlighter: pygments
 
 markdown: redcarpet
 markdown_ext:  md
 redcarpet:
     extensions: [no_intra_emphasis,tables,autolink,disable_indented_code_blocks,fenced_code_blocks]
-
-highlighter: pygments
-permalink: none
 
 exclude: ['README.md', '.*']
 
