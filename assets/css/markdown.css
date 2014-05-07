@@ -1,10 +1,7 @@
 /* 
 Some basic Github styles and syntax highlighting CSS via Pygments.
  */
-.md * {
-    font-size: 15px;
-    line-height: 1.7;
-    font-family: helvetica,arial,freesans,clean,sans-serif;
+.md *{
     overflow-wrap: break-word;      /*防止一行太长影响响应式布局*/
 }
 
