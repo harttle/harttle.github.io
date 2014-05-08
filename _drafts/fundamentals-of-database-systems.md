@@ -281,6 +281,7 @@ CREATE TABLE Orders (
     OrderDate date DEFAULT GETDATE(),
     PRIMARY KEY (Id_O),
     FOREIGN KEY (Id_P) REFERENCES Persons(Id_P)
+        ON DELETE SET DEFAULT ON UPDATE CASCADE
 )
 
 -- 命名约束 
