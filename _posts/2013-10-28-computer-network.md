@@ -3,7 +3,7 @@ layout: blog
 title:  "计算机网络"
 categories: reading
 tags: 读书笔记 网络
-excerpt: 《计算机网络》Tanenbaum A.S. 潘爱民 译，清华大学出版社
+excerpt: '"Computer Network", Tanenbaum A.S. 潘爱民 译'
 ---
 
 # 概述
