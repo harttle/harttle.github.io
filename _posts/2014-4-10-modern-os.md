@@ -2,7 +2,7 @@
 layout: blog
 title:  Modern Operating Systems
 categories: reading
-tags: 读书笔记 操作系统
+tags: 笔记 操作系统
 excerpt: '"Modern Operating Systems", Andrew S. Tanenbaum'
 ---
 
