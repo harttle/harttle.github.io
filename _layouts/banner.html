@@ -1,0 +1,26 @@
+---
+layout: default
+---
+
+<!-- style -->
+{% assign block = content | split: '<!-- style -->' %}
+{{ block[1] }}
+<!-- style -->
+
+<!-- content -->
+<div class="page-header hl-header">
+    <div class="container">
+        <h1>{{ page.title | capitalize }}<small style="margin-left:20px;">{{ page.subtitle }}</small></h1>
+    </div>
+</div>
+
+<div class="container">
+    {% assign block = content | split: '<!-- content -->' %}
+    {{ block[1] }}
+</div>
+<!-- content -->
+
+<!-- script -->
+    {% assign block = content | split: '<!-- script -->' %}
+    {{ block[1] }}
+<!-- script -->

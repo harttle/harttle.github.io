@@ -41,4 +41,26 @@ As for the history of programming language:
 
 > In the early programming language Algol 60, "call-by-name" mechanism is used. The formal parameters are substituted by actual parameters as if macros.
 
+Two *forms of intermediate code* : (1) abstract syntax tree, and (2)sequence of three-address instructions.
+
+**Context-free grammar** consists:
+
+1. A set of terminal symbols.
+2. A set of nonterminal symbols.
+3. A set of productions (defined with Backus-Naur Form).
+4. A designation of one of the nonterminals as the start symbol.
+
+A **parse tree** is a tree with the following properties:
+
+1. The root is labeled by the start symbol.
+2. Each leaf is labeled by a terminal or $\epsilon$.
+3. Each interior node is labeled by a nonterminal.
+4. Each interior node A with children $X_1X_2 \cdots X_n$ represents a production $A \rightarrow X_1X_2 \cdots X_n$.
+
+A grammar can have more than one parse tree for a given string of terminals. Such a grammar is said to be **ambiguous** .
+
+Program fragments embedded within production bodies are called **symantic actions** .
+
+$A \rightarrow A\alpha | \beta$ is said to be **left recursive** , because repeated application of this production builds up a sequence of $\alpha$s to the right of A, and lead to trees that grow down towars on the left. Similiarly, **right recursive** should be written as: $ R \rightarrow \alpha R | \epsilon$
+
 

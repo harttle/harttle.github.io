@@ -1,10 +1,9 @@
 ---
-layout: default
+layout: banner
 ---
 
 <!-- style -->
 <style>
-    .page-header{ color: #000; }
     .item-list li{
         line-height:30px;
     }
@@ -24,48 +23,41 @@ layout: default
 <!-- style -->
 
 <!-- content -->
-<div class="page-header hl-header">
-    <div class="container">
-        <h1>{{ page.title | capitalize }}<small style="margin-left:20px;">{{ page.subtitle }}</small></h1>
+
+<div class="row">
+
+    <div class="col-md-8">
+
+        <div class="left">
+            {% assign block = content | split: '<!-- content -->' %}
+            {{ block[1] }}
+        </div>
+
     </div>
-</div>
 
-<div class="container">
-    <div class="row">
+    <div class="col-md-3 col-md-offset-1 ">
+        <div class="right">
+        <div class="item-list">
+            <h3 class="page-header"><a class="feature-link" href="/archive-category.html">Categories</a></h3>
 
-        <div class="col-md-8">
-
-            <div class="left">
-                {% assign block = content | split: '<!-- content -->' %}
-                {{ block[1] }}
-            </div>
-
+            <ol class="list-unstyled">
+                {% for cate in site.categories %}
+                <li><a href="/categories/{{cate[0]}}.html">{{cate[0] | capitalize}}</a></li>
+                {% endfor %}
+            </ol>
         </div>
 
-        <div class="col-md-3 col-md-offset-1 ">
-            <div class="right">
-            <div class="item-list">
-                <h3 class="page-header"><a class="feature-link" href="/archive-category.html">Categories</a></h3>
+        <div class="item-list">
+            <h3 class="page-header"><a class="feature-link" href="/">Recent Posts</a></h3>
 
-                <ol class="list-unstyled">
-                    {% for cate in site.categories %}
-                    <li><a href="/categories/{{cate[0]}}.html">{{cate[0] | capitalize}}</a></li>
-                    {% endfor %}
-                </ol>
-            </div>
+            <ol class="list-unstyled">
 
-            <div class="item-list">
-                <h3 class="page-header"><a class="feature-link" href="/">Recent Posts</a></h3>
-
-                <ol class="list-unstyled">
-
-                    {% for post in site.posts offset: 0 limit: 5 %}
-                    <li><a href="{{post.url}}">{{ post.title }}</a></li>
-                    {% endfor %}
-                </ol>
-            </div>
+                {% for post in site.posts offset: 0 limit: 5 %}
+                <li><a href="{{post.url}}">{{ post.title }}</a></li>
+                {% endfor %}
+            </ol>
         </div>
-        </div>
+    </div>
     </div>
 </div>
 <!-- content -->
