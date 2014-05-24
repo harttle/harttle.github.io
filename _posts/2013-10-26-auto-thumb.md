@@ -1,7 +1,7 @@
 ---
 layout: blog
-title: 批量更新站点缩略图 
-subtitle: 网站图片管理
+title: 自动图片处理
+subtitle: 站点后台工具
 categories: development
 tags: web ImageMagick Makefile
 excerpt: 采用 ImageMagick + Makefile 的方式，批量地更新用于web的缩略图。
