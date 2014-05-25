@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.name }}</title>
+        <title>{{ page.title }}</title>
 
         {%if page.tags %}
         <meta name="keywords" content="{{ page.tags | join: ',' | xml_escape}}">
