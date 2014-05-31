@@ -66,7 +66,8 @@ export OUT_DIR_COMMON_BASE=~/code/androidcore/output
 alias make='make-3.81'
 
 # java6
-PATH=/opt/java6/bin:$PATH
+export JAVA_HOME=/opt/java6
+export PATH=/opt/java6/bin:$PATH
 ```
 
 配置USB访问权限：
@@ -130,7 +131,103 @@ emulator
 
 ![snapscreen](/assets/img/blog/android-boot.png)
 
-### 安装App
+## 启动分析
+
+考虑从Launcher启动应用程序时，`ActivityManagerService`，`Launcher`，`MainActivity`之间的执行与通信序列如下图。在源码中相应的过程调用或进程通信处加入日志信息，用于分析启动时各部分的耗时。
+
+![](/assets/img/blog/android-core-appstartup.png)
+
+### 源码调整
+
+以下列出所有需要更改的源码。注释中给出了文件路径、类名、函数名，与添加的语句。
+
+```java
+/////////////////////////////////////////////////////////////////////////
+// file: packages/apps/Launcher2/src/com/android/launcher2/Launcher.java
+
+// 0 Launcher.onClick
+Log.i("PKU", "shortcut click received");
+
+
+/////////////////////////////////////////////////////////////////////////
+// file: frameworks/base/core/java/android/app/ActivityManagerNative.java
+
+// 1 ActivityManagerProxy.startActivity 
+Log.i("PKU","START_ACTIVITY_TRANSACTION sending");
+Log.i("PKU","START_ACTIVITY_TRANSACTION sent");
+
+// 5 ActivityManagerProxy.activityPaused
+Log.i("PKU","ACTIVITY_PAUSED_TRANSACTION sending");
+Log.i("PKU","ACTIVITY_PAUSED_TRANSACTION sent");
+
+// 9 ActivityManagerProxy.attachApplication
+Log.i("PKU","ATTACH_APPLICATION_TRANSACTION sending");
+Log.i("PKU","ATTACH_APPLICATION_TRANSACTION sent");
+
+
+/////////////////////////////////////////////////////////////////////////
+// file: frameworks/base/services/java/com/android/server/am/ActivityManagerService.java
+
+// 2 ActivityManagerService.startActivity
+Log.i("PKU","START_ACTIVITY_TRANSACTION received");
+
+// 6 ActivityManagerService.activityPaused
+Log.i("PKU","ACTIVITY_PAUSED_TRANSACTION received");
+
+// 7 ActivityManagerService.startProcessLocked
+Log.i("PKU","process starting");
+Log.i("PKU","process started");
+
+// 10 ActivityManagerService.attachApplication
+Log.i("PKU","ATTACH_APPLICATION_TRANSACTION received");
+
+
+/////////////////////////////////////////////////////////////////////////
+// file: frameworks/base/core/java/android/app/ApplicationThreadNative.java
+
+import android.util.Log;
+
+// 3 ApplicationThreadProxy.schedulePauseActivity
+Log.i("PKU","SCHEDULE_PAUSE_ACTIVITY_TRANSACTION sending");
+Log.i("PKU","SCHEDULE_PAUSE_ACTIVITY_TRANSACTION sent");
+
+// 11 ApplicationThreadProxy.scheduleLaunchActivity
+Log.i("PKU","SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION sending");
+Log.i("PKU","SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION sent");
+
+
+/////////////////////////////////////////////////////////////////////////
+// file: frameworks/base/core/java/android/app/ActivityThread.java
+
+// 4 ApplicationThread.schedulePauseActivity 
+Log.i("PKU","SCHEDULE_PAUSE_ACTIVITY_TRANSACTION received");
+
+// 8 ActivityThread.main
+Log.i("PKU","main entered");
+
+// 12 ApplicationThread.scheduleLaunchActivity
+Log.i("PKU","SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION received");
+```
+
+### 重新编译
+
+重新编译Android Source
+
+```bash
+. ../env.sh
+. build/envsetup.sh
+prebuilts/misc/linux-x86/ccache/ccache -M 50G
+lunch
+make -j4
+```
+
+运行
+
+```bash
+emulator
+```
+
+安装测试应用：SearchableDictionary
 
 ```bash
 # 拷贝Sample
@@ -150,72 +247,3 @@ adb install bin/searchabledict-debug.apk
 ![snapscreen](/assets/img/blog/android-core-app.png)
 
 
-## 启动分析
-
-考虑从Launcher启动应用程序时，`ActivityManagerService`，`Launcher`，`MainActivity`之间的执行与通信序列如下图。在源码中相应的过程调用或进程通信处加入日志信息，用于分析启动时各部分的耗时。
-
-![](/assets/img/blog/android-core-appstartup.png)
-
-### 源码调整
-
-以下列出所有需要更改的源码。注释中给出了文件路径、类名、函数名，与添加的语句。
-
-```java
-// 0
-// packages/apps/Launcher2/src/com/android/launcher2/Launcher.java:Launcher.onClick
-Log.i("PKU", "shortcut click received");
-
-// 1
-// frameworks/base/core/java/android/app/ActivityManagerNative.java:ActivityManagerProxy.startActivity 
-Log.i("PKU","START_ACTIVITY_TRANSACTION sending");
-Log.i("PKU","START_ACTIVITY_TRANSACTION sent");
-
-// 2
-// frameworks/base/services/java/com/android/server/am/ActivityManagerService.java:ActivityManagerService.startActivity
-Log.i("PKU","START_ACTIVITY_TRANSACTION received");
-
-// 3
-// frameworks/base/core/java/android/app/ApplicationThreadNative.java:ApplicationThreadProxy.schedulePauseActivity
-Log.i("PKU","SCHEDULE_PAUSE_ACTIVITY_TRANSACTION sending");
-Log.i("PKU","SCHEDULE_PAUSE_ACTIVITY_TRANSACTION sent");
-
-// 4
-// frameworks/base/core/java/android/app/ActivityThread.java:ApplicationThread.schedulePauseActivity 
-Log.i("PKU","SCHEDULE_PAUSE_ACTIVITY_TRANSACTION received");
-
-// 5
-// frameworks/base/core/java/android/app/ActivityManagerNative.java:ActivityManagerProxy.activityPaused
-Log.i("PKU","ACTIVITY_PAUSED_TRANSACTION sending");
-Log.i("PKU","ACTIVITY_PAUSED_TRANSACTION sent");
-
-// 6
-// frameworks/base/services/java/com/android/server/am/ActivityManagerService.java:ActivityManagerService.activityPaused
-Log.i("PKU","ACTIVITY_PAUSED_TRANSACTION received");
-
-// 7
-// frameworks/base/services/java/com/android/server/am/ActivityManagerService.java:ActivityManagerService.startProcessLocked
-Log.i("PKU","process starting");
-Log.i("PKU","process started");
-
-// 8
-// frameworks/base/core/java/android/app/ActivityThread.java:ActivityThread.main
-Log.i("PKU","main entered");
-
-// 9
-// frameworks/base/core/java/android/app/ActivityManagerNative.java:ActivityManagerProxy.attachApplication
-Log.i("PKU","ATTACH_APPLICATION_TRANSACTION sending");
-Log.i("PKU","ATTACH_APPLICATION_TRANSACTION sent");
-
-// 10
-// frameworks/base/services/java/com/android/server/am/ActivityManagerService.java:ActivityManagerService.attachApplication
-Log.i("PKU","ATTACH_APPLICATION_TRANSACTION received");
-
-// 11
-// frameworks/base/core/java/android/app/ApplicationThreadNative.java:ApplicationThreadProxy.scheduleLaunchActivity
-Log.i("PKU","SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION sending");
-Log.i("PKU","SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION sent");
-
-// 12
-// frameworks/base/core/java/android/app/ActivityThread.java:ApplicationThread.scheduleLaunchActivity
-Log.i("PKU","SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION received");
-```
