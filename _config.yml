@@ -15,3 +15,6 @@ redcarpet:
 
 exclude: ['README.md', '.*']
 
+
+gems:
+  - jekyll-sitemap
