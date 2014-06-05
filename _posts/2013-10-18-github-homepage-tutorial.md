@@ -220,15 +220,8 @@ function(code, lang){
 
 ### 2013-10-12
 
-基本完成了个人主页在 github 的部署。
-
-* 主要页面
-    * 首页
-    * 博文
-    * 关于
-    * 链接
-* 识别文章目录，生成博文分类
-
+* 站点框架
+* github 部署
 
 ### 2013-10-16
 
@@ -236,16 +229,16 @@ function(code, lang){
 
 ### 2013-10-17
 
-* 照片展示
+* 相册模块
     * 延迟载入
     * gallery浏览
 
 ### 2013-10-25
 
-* 博客、相册、资源的category模板
-  * 页面布局：header、side-nav、content
-  * affix 滚动导航
-* 相册图片缩略图的自动更新（make+imageMagick）
+* 自动导航(affix)
+* 相册载入速度优化
+
+    加入缩略图机制（make+imageMagick）
 
 ### 2013-10-28
 
@@ -253,9 +246,10 @@ function(code, lang){
 
 ### 2013-10-29
 
-* latex显示：采用mathJax
-* 添加 CDN
-* 添加文章列表动态导航
+* latex显示
+
+    采用mathJax
+* CDN
 
 ### 2013-10-30
 
@@ -266,16 +260,20 @@ function(code, lang){
 
 ### 2013-10-31
 
-* 载入优化：script 后置
-* 通用化 category：采用部分视图
-* 资源页面图标
+* 载入优化
+
+    script 后置
 
 ### 2013-11-1
 
-* 社会化：添加 linkedIn facebook google+ follow
-* SEO：添加 meta、添加sitemap.xml和robots.txt、导入搜索引擎、创建RSS 
+* 社会化链接
+
+    添加 linkedIn facebook google+ follow
+* SEO优化
+
+    添加 meta、添加sitemap.xml和robots.txt、导入搜索引擎、创建RSS 
 
 ### 2013-11-06
 
-* 添加google analysis
+* google analysis
 
