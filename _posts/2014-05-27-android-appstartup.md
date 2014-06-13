@@ -171,17 +171,17 @@ Log.i("PKU","9 ATTACH_APPLICATION_TRANSACTION end");
 // file: frameworks/base/services/java/com/android/server/am/ActivityManagerService.java
 
 // 2 ActivityManagerService.startActivity
-Log.i("PKU","2 do START_ACTIVITY_TRANSACTION");
+Log.i("PKU","2 on START_ACTIVITY_TRANSACTION");
 
 // 6 ActivityManagerService.activityPaused
-Log.i("PKU","6 do ACTIVITY_PAUSED_TRANSACTION");
+Log.i("PKU","6 on ACTIVITY_PAUSED_TRANSACTION");
 
 // 7 ActivityManagerService.startProcessLocked
 Log.i("PKU","7 process starting");
 Log.i("PKU","7 process started");
 
 // 10 ActivityManagerService.attachApplication
-Log.i("PKU","10 do ATTACH_APPLICATION_TRANSACTION");
+Log.i("PKU","10 on ATTACH_APPLICATION_TRANSACTION");
 
 
 /////////////////////////////////////////////////////////////////////////
@@ -208,13 +208,13 @@ try{
 // file: frameworks/base/core/java/android/app/ActivityThread.java
 
 // 4 ApplicationThread.schedulePauseActivity 
-Log.i("PKU","4 do SCHEDULE_PAUSE_ACTIVITY_TRANSACTION");
+Log.i("PKU","4 on SCHEDULE_PAUSE_ACTIVITY_TRANSACTION");
 
 // 8 ActivityThread.main
 Log.i("PKU","8 main entered");
 
 // 12 ApplicationThread.scheduleLaunchActivity
-Log.i("PKU","12 do SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION");
+Log.i("PKU","12 on SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION");
 ```
 
 ### App源码修改
@@ -308,48 +308,49 @@ adb -s emulator-5554 logcat -v time PKU:I *:S | tee pku.log
 ```
      1  06-01 05:08:57.111 I/PKU     (  399): 0 shortcut clicked
      2  06-01 05:08:57.111 I/PKU     (  399): 1 START_ACTIVITY_TRANSACTION begin
-     3  06-01 05:08:57.121 I/PKU     (  276): 2 do START_ACTIVITY_TRANSACTION
+     3  06-01 05:08:57.121 I/PKU     (  276): 2 on START_ACTIVITY_TRANSACTION
      4  06-01 05:08:57.151 I/PKU     (  276): 3 SCHEDULE_PAUSE_ACTIVITY_TRANSACTION begin
-     5  06-01 05:08:57.151 I/PKU     (  399): 4 do SCHEDULE_PAUSE_ACTIVITY_TRANSACTION
+     5  06-01 05:08:57.151 I/PKU     (  399): 4 on SCHEDULE_PAUSE_ACTIVITY_TRANSACTION
      6  06-01 05:08:57.151 I/PKU     (  276): 3 SCHEDULE_PAUSE_ACTIVITY_TRANSACTION end
      7  06-01 05:08:57.171 I/PKU     (  399): 1 START_ACTIVITY_TRANSACTION end
      8  06-01 05:08:57.171 I/PKU     (  399): 5 ACTIVITY_PAUSED_TRANSACTION begin
-     9  06-01 05:08:57.171 I/PKU     (  276): 6 do ACTIVITY_PAUSED_TRANSACTION
+     9  06-01 05:08:57.171 I/PKU     (  276): 6 on ACTIVITY_PAUSED_TRANSACTION
     10  06-01 05:08:57.171 I/PKU     (  276): 7 process starting
     11  06-01 05:08:57.191 I/PKU     (  276): 7 process started
     12  06-01 05:08:57.211 I/PKU     (  399): 5 ACTIVITY_PAUSED_TRANSACTION end
     13  06-01 05:08:57.361 I/PKU     ( 1005): 8 main entered
     14  06-01 05:08:57.371 I/PKU     ( 1005): 9 ATTACH_APPLICATION_TRANSACTION begin
-    15  06-01 05:08:57.371 I/PKU     (  276): 10 do ATTACH_APPLICATION_TRANSACTION
+    15  06-01 05:08:57.371 I/PKU     (  276): 10 on ATTACH_APPLICATION_TRANSACTION
     16  06-01 05:08:57.391 I/PKU     (  276): 11 SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION begin
     17  06-01 05:08:57.391 I/PKU     (  276): 11 SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION end
-    18  06-01 05:08:57.391 I/PKU     ( 1005): 12 do SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION
+    18  06-01 05:08:57.391 I/PKU     ( 1005): 12 on SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION
     19  06-01 05:08:57.461 I/PKU     ( 1005): 9 ATTACH_APPLICATION_TRANSACTION end
     20  06-01 05:08:57.711 I/PKU     ( 1005): searchabledictionary oncreate
     21  06-01 05:09:03.791 I/PKU     ( 1005): 1 START_ACTIVITY_TRANSACTION begin
-    22  06-01 05:09:03.801 I/PKU     (  276): 2 do START_ACTIVITY_TRANSACTION
+    22  06-01 05:09:03.801 I/PKU     (  276): 2 on START_ACTIVITY_TRANSACTION
     23  06-01 05:09:03.812 I/PKU     ( 1005): 1 START_ACTIVITY_TRANSACTION end
     24  06-01 05:09:03.981 I/PKU     ( 1005): item clicked
     25  06-01 05:09:03.981 I/PKU     ( 1005): 1 START_ACTIVITY_TRANSACTION begin
-    26  06-01 05:09:04.001 I/PKU     (  276): 2 do START_ACTIVITY_TRANSACTION
+    26  06-01 05:09:04.001 I/PKU     (  276): 2 on START_ACTIVITY_TRANSACTION
+                                              
     27  06-01 05:09:04.001 I/PKU     (  276): 3 SCHEDULE_PAUSE_ACTIVITY_TRANSACTION begin
-    28  06-01 05:09:04.001 I/PKU     ( 1005): 4 do SCHEDULE_PAUSE_ACTIVITY_TRANSACTION
+    28  06-01 05:09:04.001 I/PKU     ( 1005): 4 on SCHEDULE_PAUSE_ACTIVITY_TRANSACTION
     29  06-01 05:09:04.001 I/PKU     (  276): 3 SCHEDULE_PAUSE_ACTIVITY_TRANSACTION end
     30  06-01 05:09:04.011 I/PKU     ( 1005): 1 START_ACTIVITY_TRANSACTION end
     31  06-01 05:09:04.041 I/PKU     ( 1005): 5 ACTIVITY_PAUSED_TRANSACTION begin
-    32  06-01 05:09:04.041 I/PKU     (  276): 6 do ACTIVITY_PAUSED_TRANSACTION
+    32  06-01 05:09:04.041 I/PKU     (  276): 6 on ACTIVITY_PAUSED_TRANSACTION
     33  06-01 05:09:04.051 I/PKU     (  276): 11 SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION begin
-    34  06-01 05:09:04.051 I/PKU     ( 1005): 12 do SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION
+    34  06-01 05:09:04.051 I/PKU     ( 1005): 12 on SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION
     35  06-01 05:09:04.051 I/PKU     (  276): 11 SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION end
     36  06-01 05:09:04.091 I/PKU     ( 1005): 5 ACTIVITY_PAUSED_TRANSACTION end
     37  06-01 05:09:04.171 I/PKU     ( 1005): wordactivity oncreate
     38  06-01 05:09:09.201 I/PKU     (  276): 3 SCHEDULE_PAUSE_ACTIVITY_TRANSACTION begin
-    39  06-01 05:09:09.201 I/PKU     ( 1005): 4 do SCHEDULE_PAUSE_ACTIVITY_TRANSACTION
+    39  06-01 05:09:09.201 I/PKU     ( 1005): 4 on SCHEDULE_PAUSE_ACTIVITY_TRANSACTION
     40  06-01 05:09:09.211 I/PKU     ( 1005): 5 ACTIVITY_PAUSED_TRANSACTION begin
-    41  06-01 05:09:09.211 I/PKU     (  276): 6 do ACTIVITY_PAUSED_TRANSACTION
+    41  06-01 05:09:09.211 I/PKU     (  276): 6 on ACTIVITY_PAUSED_TRANSACTION
     42  06-01 05:09:09.211 I/PKU     (  276): 3 SCHEDULE_PAUSE_ACTIVITY_TRANSACTION end
     43  06-01 05:09:09.241 I/PKU     (  276): 11 SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION begin
-    44  06-01 05:09:09.251 I/PKU     (  399): 12 do SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION
+    44  06-01 05:09:09.251 I/PKU     (  399): 12 on SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION
     45  06-01 05:09:09.251 I/PKU     (  276): 11 SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION end
     46  06-01 05:09:09.311 I/PKU     ( 1005): 5 ACTIVITY_PAUSED_TRANSACTION end
 ```
@@ -359,6 +360,6 @@ adb -s emulator-5554 logcat -v time PKU:I *:S | tee pku.log
 * 24-37行：调用StartActivity（SearchableDictionary.handleIntent）到WordActivity启动完毕（WordActivity.onCreate）；
 * 38-46行：点击Home键直到应用程序进程结束（这一段不在我们关心的范围内）。
 
-> 可以看到到`begin`与`end`之间总会有`do`，即`transaction`类似远程过程调用，该过程是同步的。
+> 可以看到到`begin`与`end`之间总会有`on`，即`transaction`类似远程过程调用，该过程是同步的。
 
 ## 数据分析
