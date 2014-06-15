@@ -42,7 +42,7 @@ layout: banner
 
             <ol class="list-unstyled">
                 {% for cate in site.categories %}
-                <li><a href="/categories/{{cate[0]}}.html">{{cate[0] | capitalize}}</a></li>
+                <li><a href="/categories/{{cate | first}}.html">{{cate | first | capitalize}}({{ cate | last | size }})</a></li>
                 {% endfor %}
             </ol>
         </div>
@@ -51,7 +51,6 @@ layout: banner
             <h3 class="page-header"><a class="feature-link" href="/">Recent Posts</a></h3>
 
             <ol class="list-unstyled">
-
                 {% for post in site.posts offset: 0 limit: 5 %}
                 <li><a href="{{post.url}}">{{ post.title }}</a></li>
                 {% endfor %}

@@ -5,9 +5,11 @@ title: Android App 启动过程分析
 tags: Android 源码
 ---
 
-通过分析和修改Android源码，分析Android App的启动过程及其性能瓶颈。
+通过分析和修改Android 源码,分析 Android App 启动过程的时间消耗及性能瓶颈。
 
-## 环境搭建
+本文包括源码编译与运行、源码修改与调试、数据收集与分析。分析了 App 启动过程中， `Activity Manager Service` 、`Binder`、`Launcher`和`MainActivity`扮演的角色以及消耗的时间。
+
+## 源码编译与运行 
 
 ### 环境配置
 
@@ -26,10 +28,9 @@ yaourt -S --needed gcc-multilib lib32-zlib lib32-ncurses lib32-readline
 yaourt -S android-sdk android-sdk-platform-tools android-sdk-build-tools android-studio
 ```
 
-增加交换空间
+增加交换空间，加 RAM 应达到 16G (另外，还需要 30G 的大小写敏感文件系统可用空间)
 
 ```bash
-
 su
 swapoff /swapfile && rm /swapfile
 dd if=/dev/zero of=/swapfile bs=512M count=8
@@ -85,17 +86,15 @@ SUBSYSTEM=="usb", ATTR{idVendor}=="0bb4", ATTR{idProduct}=="0fff", MODE="0600", 
 
 ### 最终环境
 
+```
 Linux acer 3.13.7-1-ARCH #1 SMP PREEMPT Mon Mar 24 20:06:08 CET 2014 x86_64 GNU/Linux
-
 Python 2.7.6 (default, Feb 26 2014, 12:07:17)
-
 gcc 版本 4.9.0 20140507 (prerelease) (GCC)
-
 GNU Make 3.81
+java SE 1.6
+```
 
 <!--more-->
-
-## 编译运行
 
 ### 编译Android Source
 
@@ -131,7 +130,7 @@ emulator
 
 ![snapscreen](/assets/img/blog/android-boot.png)
 
-## 源码修改
+## 源码修改与调试
 
 考虑从Launcher启动应用程序时，`ActivityManagerService`，`Launcher`，`MainActivity`之间的执行与通信序列如下图。在源码中相应的过程调用或进程通信处加入日志信息，用于分析启动时各部分的耗时。
 
@@ -141,7 +140,7 @@ emulator
 
 以下列出所有需要更改的源码。注释中给出了文件路径、类名、函数名，与添加的语句。添加日志输出（Level为Info，Tag为"PKU"）。
 
-文件`ApplicationThreadNative`没有引入`Log`类。添加`import andriod.util.Log`会发生运行时错误，可能是因为该文件的在类层次中的特殊性。所以我们将在`try catch`语句中指明命名空间并进行调用。
+说明：文件`ApplicationThreadNative`没有引入`Log`类。添加`import andriod.util.Log`会发生运行时错误，可能是因为该文件的在类层次中的特殊性。所以我们将在`try catch`语句中指明命名空间并进行调用。我们关心的是整个系统启动后的 App启动过程，所以直接吞掉这个在早期才会产生的异常。
 
 ```java
 /////////////////////////////////////////////////////////////////////////
@@ -282,7 +281,9 @@ adb -s emulator-5554 install bin/searchabledict-debug.apk
 ![snapscreen](/assets/img/blog/android-core-app.png)
 
 
-## 数据采集
+## 数据采集与分析
+
+### 数据采集
 
 首先运行模拟器，在设置中更改 "background process limit" 为0，勾选"don't keep activities"。这样每次点击Home即可结束应用进程。
 
@@ -301,9 +302,8 @@ adb -s emulator-5554 logcat -v time PKU:I *:S | tee pku.log
 1. 启动SearchableDictionary；
 2. 点击搜索，随机搜索一个单词并打开；
 3. 点击Home按键（因为我们只关心启动过程）；
-4. 重复1-3；
-
-结束`logcat`，得到`pku.log`，文件46行为一个周期，10次测试共460行，前46行如下：
+4. 重复1-3； 
+5. 结束`logcat`，得到`pku.log`，文件46行为一个周期，10次测试共460行，前46行如下：
 
 ```
      1  06-01 05:08:57.111 I/PKU     (  399): 0 shortcut clicked
@@ -362,4 +362,81 @@ adb -s emulator-5554 logcat -v time PKU:I *:S | tee pku.log
 
 > 可以看到到`begin`与`end`之间总会有`on`，即`transaction`类似远程过程调用，该过程是同步的。
 
-## 数据分析
+### 数据分析
+
+利用脚本`pku_analyzer.sh`，计算日志文件`pku.log`相邻事件之间的时间差，最终结果(即 10 次测试的平均值)记录在`r.txt`文件:
+
+```
+    #   Actor   Time    Event   
+     1	         0  0 shortcut clicked
+     2	L        0  1 START_ACTIVITY_TRANSACTION begin
+     3	B        5  2 on START_ACTIVITY_TRANSACTION
+     4	A       23  3 SCHEDULE_PAUSE_ACTIVITY_TRANSACTION begin
+     5	B        1  4 on SCHEDULE_PAUSE_ACTIVITY_TRANSACTION
+     6	L      2.9  3 SCHEDULE_PAUSE_ACTIVITY_TRANSACTION end
+     7	A     30.1  1 START_ACTIVITY_TRANSACTION end
+     8	L      6.9  5 ACTIVITY_PAUSED_TRANSACTION begin
+     9	B        1  6 on ACTIVITY_PAUSED_TRANSACTION
+    10	A        2  7 process starting
+    11	B     25.9  7 process started
+    12	AM    11.1  5 ACTIVITY_PAUSED_TRANSACTION end
+    13	M    214.9  8 main entered
+    14	M       22  9 ATTACH_APPLICATION_TRANSACTION begin
+    15	B        0  10 on ATTACH_APPLICATION_TRANSACTION
+    16	A       19  11 SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION begin
+    17	B        1  12 on SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION
+    18	M        2  11 SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION end
+    19	A     75.9  9 ATTACH_APPLICATION_TRANSACTION end
+    20	M    232.6  searchabledictionary oncreate
+
+    24	       161  item clicked
+    25	L        5  1 START_ACTIVITY_TRANSACTION begin
+    26	B     15.9  2 on START_ACTIVITY_TRANSACTION
+    27	A        6  3 SCHEDULE_PAUSE_ACTIVITY_TRANSACTION begin
+    28	B        0  4 on SCHEDULE_PAUSE_ACTIVITY_TRANSACTION
+    29	L        2  3 SCHEDULE_PAUSE_ACTIVITY_TRANSACTION end
+    30	A       15  1 START_ACTIVITY_TRANSACTION end
+    31	L       34  5 ACTIVITY_PAUSED_TRANSACTION begin
+    32	B        1  6 on ACTIVITY_PAUSED_TRANSACTION
+    33	A        6  11 SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION begin
+    34	B        2  12 on SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION
+    35	M        3  11 SCHEDULE_LAUNCH_ACTIVITY_TRANSACTION end
+    36	A     36.9  5 ACTIVITY_PAUSED_TRANSACTION end
+    37	M     58.8  wordactivity oncreate
+```
+
+说明:
+
+1. Time 为当前事件与上一事件的间隔,Actor 为消耗这段时间的主体。A:`AMS`;B:`Binder`;L:`Launcher`;M:`MainActivity`。
+2. 方便起见，请求启动子Activity的对象同样被标记为`Launcher`。
+3. `Process.start`的执行时间归于`Binder`，而该函数返回直到`ActivityThread.main`的时间归于`MainActivity`。
+4. 在`Process.start`后`AMS`与`MainActivity`并发执行,时间为 11.1ms，为便于统计这段重合时间归于`AMS`。
+5. 脚本完成了绝大部分计算，仍有部分是手工计算的(这些结果包括行 1-2、行 19-20、行 36-37 之间的间隔)。
+6. 相同时间的 Log 可能会出现乱序(Log 并非原子操作,但时间的正确的)，最终结果对这种情况进行了手工纠正。
+
+
+对这四个主体消耗的时间进行加和,可得到如下时间分布图:
+
+图1：主Activity 启动时间分布(合计:674.3ms)
+
+![](/assets/img/blog/main_activity.png)
+
+图2：子Activity 启动时间分布(合计:185.6ms)
+
+![](/assets/img/blog/sub_activity.png)
+
+由图1可以看出，主Activity 启动过程中，主要的性能瓶颈由 `MainActivity` 的创建和切换产生，`Binder` 消费的时间非常少。
+
+在图2中，各部分消费时间相差较小,以`AMS`和`MainActivity`耗时为主,`Binder`所占时间仍是最少的。
+
+在图2中，子Activity启动时间相对主Activity来讲已经大大减少。此外,这个过程的时间波动可能与子Activity 的具体类型高度相关。
+
+在图2中，`Launcher`的时间有所增加。注意这里的`Launcher`是发出启动子Activity请求的对象,即主Activity。这说明系统的Launcher程序是有所优化的(响应时间减少了76.1%)。
+
+
+综上，
+
+* `Binder`机制是一种高效的进程间通信机制。它在提供高可靠性和扩展性的同时，并未引入过多的时间开销。
+* `AMS`提供将Activity与进程分离的机制,其时间也小于MainActivity本身,这样的开销是值得的。
+* 系统的`Launcher`启动Activity的速度要高于普通的主Activity。
+
