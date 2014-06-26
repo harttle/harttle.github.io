@@ -8,22 +8,39 @@ excerpt: Copyright © 2013 Harttle. Hosted by GitHub, powered by Jekyll.
 
 <!-- style -->
 <style>
-    .avatar{
+    .avatar{ 
         display: inline-block;
         margin-top: -50px;
         margin-left: 40px;
+        position: relative;
+        z-index: 100;
         float: right;
+        transform: rotate(10deg); 
+        -webkit-transform: rotate(10deg); 
+        -moz-transform: rotate(10deg);
+        -ms-transform: rotate(10deg);
+        -o-transform: rotate(10deg);
     }
     .avatar img{
-        max-height: 200px;
+        max-height: 150px;
     }
     .about-body{
-        margin-top: 40px;
-        margin-bottom: 40px;
+        margin: 40px 76px 47px 0;
         font-size: 110%;
+        padding: 30px;
     }
     .about-body .label{
         display: inline-block;
+    }
+
+    .thanks a{
+        margin-right:20px;
+    }
+    .thanks a:hover{
+        text-decoration: none;
+    }
+    .thanks a img{
+        max-height: 50px;
     }
 </style>
 <!-- style -->
@@ -36,7 +53,7 @@ excerpt: Copyright © 2013 Harttle. Hosted by GitHub, powered by Jekyll.
     </a>
 </div>
 
-<div class="about-body">
+<div class="about-body paper">
     <p>
     Harttleland 起始于2013年9月，正当Harttle在PKU的第四个秋天。也正是此时，Harttle正式进入了程序猿的行列。在<a href="{% post_url 2013-10-18-github-homepage-tutorial %}">这里</a>记录着本站的开发过程。这里的文章包括读书笔记、软件开发、还有Linux！
     </p>
@@ -52,23 +69,37 @@ excerpt: Copyright © 2013 Harttle. Hosted by GitHub, powered by Jekyll.
 
     Harttle兴趣广泛： 
     <br/>
+    <br/>
 
     <a class="label label-default">Linux</a> <a class="label label-info">Arch</a> <a class="label label-danger">Bash</a> <a class="label label-primary">Bootstrap</a> <a class="label label-default">Jquery</a> <a class="label label-info">Django</a> <a class="label label-success">Xetex</a> <a class="label label-default">TexLive</a> <a class="label label-danger">Physics</a> <a class="label label-info">Electrodynamics</a> <a class="label label-warning">Pulsars</a>
 
     <br/>
     <br/>
-
-    感谢极富创造力的第三方工具：
     <br/>
 
-        <a href="http://jquery.com/" target="_blank" class="label label-primary">jQuery</a>
-        <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank" class="label label-default">Font-Awesome</a>
-        <a href="http://v3.bootcss.com/" target="_blank" class="label label-warning">Bootstrap 3.0</a>
-        <a href="https://github.com/markgoodyear/scrollup" target="_blank" class="label label-info">markgoodyear/scrollup</a>
-        <a href="https://github.com/blueimp/Gallery" target="_blank" class="label label-success">blueimp/Gallery</a>
-        <a href="https://github.com/tuupola/jquery_lazyload/" target="_blank" class="label label-danger">tuupola/jquery_lazyload</a>
-        <a href="http://www.jiathis.com/" target="_blank" class="label label-primary">JiaThis</a>
-        <a href="http://pygments.org/" target="_blank" class="label label-warning">pypgments</a>
-        <a href="http://www.webiconset.com/file-type-icons/" target="_blank" class="label label-success">webiconset</a>
+    感谢：
+    <br/>
+    <br/>
+
+    <div class="thanks">
+        <a href="http://github.com/" target="_blank">
+            <img src="/assets/img/github.png">
+        </a>
+        <a href="http://jekyllrb.com/" target="_blank">
+            <img src="/assets/img/jekyll.png">
+        </a>
+        <a href="http://jquery.com/" target="_blank">
+            <img src="/assets/img/jquery.png">
+        </a>
+        <a href="http://fontawesome.github.io/Font-Awesome/" target="_blank">
+            <img src="/assets/img/fontawesome.png">
+        </a>
+        <a href="http://bootcss.com/" target="_blank">
+            <img src="/assets/img/bootstrap.png">
+        </a>
+        <a href="http://alexwolfe.github.io/Buttons/" target="_blank">
+            <img src="/assets/img/buttons.png">
+        </a>
+    </div>
 </div>
 <!-- content -->

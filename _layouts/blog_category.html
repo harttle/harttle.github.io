@@ -3,7 +3,14 @@ layout: blogs
 ---
 
 <!-- style -->
-<style> </style>
+<style>
+    .posts{
+        padding: 30px;
+    }
+    .post{
+        margin-bottom:20px;
+    }
+</style>
 
 {% assign block = content | split: '<!-- style -->' %}
 {{ block[1] }}
@@ -11,16 +18,23 @@ layout: blogs
 
 <!-- content -->
 
+<div class="posts paper">
+
     {% for post in site.categories[page.title] %}                        
-    <div style=margin-bottom:20px;>
+    <div class="post">
         <h4 class="header">
             <a class="feature-link" href="{{post.url}}">{{ post.title }}</a>
-            <p class="text-warning time pull-right">{{ post.date | date: "%Y-%m-%d"  }}</p>
+            <div class="pull-right">
+                {% include widget-date.html post=post %}
+            </div>
         </h4>
 
         <div class=text-muted>{{post.excerpt}}</div>
     </div>
     {% endfor %}
+
+</div>
+
 <!-- content -->
 
 <!-- script -->

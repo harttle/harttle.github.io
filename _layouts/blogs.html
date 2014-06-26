@@ -4,6 +4,15 @@ layout: banner
 
 <!-- style -->
 <style>
+    .item-list{
+        margin-bottom:50px;
+        padding: 15px 25px;
+        background-color: #FFFFCC;
+        background-image: url(/assets/img/tack.jpg);
+        background-repeat: no-repeat;
+        background-position: 90% 10px;
+        background-size: 30px;
+    }
     .item-list li{
         line-height:30px;
     }
@@ -13,10 +22,11 @@ layout: banner
     .item-list ol{
         padding-left:5px;
     }
-    .left, .right{
+    #content-row{
         margin-top:40px;
         margin-bottom:40px;
     }
+
 </style>
 {% assign block = content | split: '<!-- style -->' %}
 {{ block[1] }}
@@ -24,20 +34,17 @@ layout: banner
 
 <!-- content -->
 
-<div class="row">
+<div class="row" id="content-row">
 
-    <div class="col-md-8">
+    <div class="col-md-9">
 
-        <div class="left">
-            {% assign block = content | split: '<!-- content -->' %}
-            {{ block[1] }}
-        </div>
+        {% assign block = content | split: '<!-- content -->' %}
+        {{ block[1] }}
 
     </div>
 
-    <div class="col-md-3 col-md-offset-1 ">
-        <div class="right">
-        <div class="item-list">
+    <div class="col-md-3">
+        <div class="item-list paper">
             <h3 class="page-header"><a class="feature-link" href="/archive-category.html">Categories</a></h3>
 
             <ol class="list-unstyled">
@@ -47,7 +54,7 @@ layout: banner
             </ol>
         </div>
 
-        <div class="item-list">
+        <div class="item-list paper">
             <h3 class="page-header"><a class="feature-link" href="/">Recent Posts</a></h3>
 
             <ol class="list-unstyled">
@@ -56,7 +63,6 @@ layout: banner
                 {% endfor %}
             </ol>
         </div>
-    </div>
     </div>
 </div>
 <!-- content -->

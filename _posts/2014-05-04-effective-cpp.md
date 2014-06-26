@@ -179,9 +179,9 @@ Widget& Widget::operator=(Widget rhs){
 std::auto_ptr<Investment> pInv(createInvestment());
 ```
 
-同样，`std::tr1::share_ptr`为RCSP(reference-counting smart pointer)，类似垃圾回收（garbage collection），不同的是RCSP无法解决环状引用（cycles of references）。
+同样，`std::tr1::shared_ptr`为RCSP(reference-counting smart pointer)，类似垃圾回收（garbage collection），不同的是RCSP无法解决环状引用（cycles of references）。
 
-另外，`auto_ptr`与`share_ptr`在析构函数内均调用`delete`而不是`delete[]`，故不能用于数组的管理。数组可选用STL的容器。
+另外，`auto_ptr`与`shared_ptr`在析构函数内均调用`delete`而不是`delete[]`，故不能用于数组的管理。数组可选用STL的容器。
 
 > Think carefully about copying behavior in resource-managing classes.
 

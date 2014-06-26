@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{{ page.title }}</title>
+        <title>{{ page.title | capitalize }}</title>
 
         {%if page.tags %}
         <meta name="keywords" content="{{ page.tags | join: ',' | xml_escape}}">
@@ -23,6 +23,9 @@
         <!-- font-awesome -->
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
 
+        <!-- buttons -->
+        <link href="/assets/buttons/css/buttons.css" rel="stylesheet">
+
         <!-- Custom styles  -->
         <link href="/assets/css/sticky-footer-navbar.css" rel="stylesheet">
         <link href="/assets/css/main.css" rel="stylesheet">
@@ -41,7 +44,7 @@
         <!-- Wrap all page content here -->
         <div id="wrap">
 
-            <!-- Fixed navbar -->
+            <!-- Navbar -->
             <div class="navbar navbar-default navbar-inverse global-nav">
                 <div class="container">
                     <div class="navbar-header">
@@ -65,7 +68,7 @@
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Search" name="q">
                                 </div>
-                                <button type="submit" class="btn btn-default">Go</button>
+                                <button type="submit" class="button button-rounded button-flat-blue">Go</button>
                             </form>                          
 
                         </ul>

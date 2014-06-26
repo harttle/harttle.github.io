@@ -29,16 +29,11 @@ layout: default
       {{ page.title }} <small>{{page.subtitle}}</small>
     </h1>
     <div>
-      {% for cat in page.categories %}
-      <span class="label label-info pull-left" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> {{ cat }}</span>
-      {% endfor %}
-      {% for tag in page.tags %}
-      <span class="label label-success pull-left hidden-xs" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> {{ tag }}</span>
-      {% endfor %}
-      <a class="pull-right label label-danger" href="/" style="margin-left: 10px;"><span class="glyphicon glyphicon-hand-left"></span> Back</a>
-      <span class="pull-right label label-default hidden-xs">
-          <span class="glyphicon glyphicon-time"></span> {{ page.date | date_to_string }}
-      </span>
+        {% include widget-categories.html post=page %}
+        {% include widget-tags.html post=page %}
+        <div class="pull-right">
+            {% include widget-date.html post=page %}
+        </div>
     </div>
   </div>
 </div>
@@ -46,6 +41,7 @@ layout: default
 <div class="container">
  
   <div id="page-content">
+
     {% assign block = content | split: '<!-- content -->' %}
     {{ block[1] }}
 

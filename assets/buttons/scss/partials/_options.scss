@@ -1,0 +1,38 @@
+
+//////////////////////////////////////////////////////////
+// BASE DEFAULTS /////////////////////////////////////////
+//////////////////////////////////////////////////////////
+$unicorn-btn-namespace: ".button"; //prefix for all classes
+$unicorn-btn-glow-namespace: ".glow";
+$unicorn-btn-glow-color: #2c9adb;
+$unicorn-btn-bgcolor: #EEE;
+$unicorn-btn-height: 32px;
+
+
+//////////////////////////////////////////////////////////
+// TYPOGRAPHY ////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+$unicorn-btn-font-color: #666;
+$unicorn-btn-font-size: 14px;
+$unicorn-btn-font-weight: 300;
+$unicorn-btn-font-family: "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", sans-serif;
+
+//////////////////////////////////////////////////////////
+// BUTTON OPTIONS ////////////////////////////////////////
+//////////////////////////////////////////////////////////
+
+// (name background-color font-color) add as many as you like.
+$unicorn-btn-actions: ('primary' #00A1CB #FFFFFF) ('action' #7db500 #FFFFFF) ('highlight' #F18D05 #FFFFFF) ('caution' #E54028 #FFFFFF) ('royal' #87318C #FFFFFF) ;
+// Remove any type to omit from final CSS build
+$unicorn-btn-types: 'flat' 'glow' 'rounded' '3d' 'border' 'pill' 'circle' 'dropdown';
+$unicorn-btn-sizes: 'jumbo' 'large' 'small' 'tiny';
+$unicorn-btn-circle-size: 120px; //radius for circle buttons, circles only have one size
+
+
+//////////////////////////////////////////////////////////
+// DROPDOWN OPTIONS //////////////////////////////////////
+//////////////////////////////////////////////////////////
+$unicorn-btn-dropdown-background: #fcfcfc;
+$unicorn-btn-dropdown-link-color: #333;
+$unicorn-btn-dropdown-link-hover: #FFF;
+$unicorn-btn-dropdown-link-hover-background: #3c6ab9;

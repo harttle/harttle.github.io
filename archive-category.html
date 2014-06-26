@@ -3,27 +3,16 @@ layout: archive
 nav-category: true
 ---
 
-
 {% for cat in site.categories %}
 
-<h3>{{cat[0] | capitalize }}</h3>
+<div id="category-{{ cat[0] }}" class="paper archive-block">
+    <h3 >{{cat[0] | capitalize }}</h3>
+    <table class="table table-striped">
 
 {% for post in cat[1] %}
-<li>
-
-<span class="text-warning time">{{ post.date | date: "%Y-%m-%d" }}</span> - 
-<a class="feature-link title" href="{{ post.url }}">{{ post.title }}</a>
-
-{% for cat in post.categories %}
-<span class="label label-info" style="margin-right: 10px;"><span class="glyphicon glyphicon-folder-open"></span> {{ cat }}</span>
+{% include post_tr.html %}
 {% endfor %}
+    </table>
+</div>
 
-{% for tag in post.tags %}
-<span class="label label-default" style="margin-right: 10px;"><span class="glyphicon glyphicon-tag"></span> {{ tag }}</span>
-{% endfor %}
-
-</li>
-
-
-{% endfor %}
 {% endfor %}

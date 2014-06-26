@@ -6,23 +6,26 @@ nav: archive
 
 <!-- style -->
 <style>
-    .item-list li{
-        line-height:30px;
-    }
-    .item-list .page-header{
-        margin-bottom:10px;
-    }
-    .item-list ol{
-        padding-left:5px;
-    }
-    .item-list .title{
-        min-width: 300px;
-        display: inline-block;
-    }
-    .arch-nav{
-        margin-top:30px;
-        margin-bottom:50px;
-    }
+.archive-block{
+    padding: 30px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.archive-block td.date{
+    width: 10%;
+}
+.archive-block td.title{
+    width: 40%;
+}
+.archive-block td.category{
+    width: 10%;
+}
+.archive-block td.tag{
+    width: 40%;
+}
+.classifiers{
+    margin:50px 0;
+}
 </style>
 <!-- style -->
 
@@ -31,25 +34,20 @@ nav: archive
 
 <div class="container">
 
+    <div class="classifiers">
+        <a class="button button-rounded button-flat-red" href="/archive-date.html">Date</a>
+        <a class="button button-rounded button-flat-blue" href="/archive-category.html">Category</a>
+        <a class="button button-rounded button-flat-yellow" href="/archive-tag.html">Tag</a>
+    </div>
 
-        <ul class="nav nav-pills arch-nav">
-            <li {% if page.nav-date %}class="active"{% endif %}>
-            <a href="/archive-date.html">Archive by Date</a> </li>
-
-            <li {% if page.nav-category %}class="active"{% endif %}>
-            <a href="/archive-category.html">Archive by Category</a></li>
-
-            <li {% if page.nav-tag %}class="active"{% endif %}>
-            <a href="/archive-tag.html">Archive by Tag</a></li>
-        </ul>
-
-        <ol class="item-list list-unstyled">
-            {{ content }}
-        </ol>
+    <div>
+        {{ content }}
+    </div>
 
 </div>
 
 <!-- content -->
+
 
 <!-- script -->
 <script> </script>
