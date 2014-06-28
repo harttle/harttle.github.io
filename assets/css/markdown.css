@@ -3,9 +3,13 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
  */
 .md{
     font-size:14px;
+    line-height: 28px;
 }
 .md blockquote p{
     font-size:14px;
+}
+.md p{
+    margin: 5px 0;
 }
 .md *{
     overflow-wrap: break-word;      /*防止一行太长影响响应式布局*/

@@ -8,14 +8,16 @@
     }
 </style>
 
-<ul class="list-unstyled prev-next">
+<ul class="pager">
     {% if page.previous %}
-    <li><span>Previous: </span>
-    <a class="feature-link" href="{{page.previous.url}}">{{page.previous.title}}</a></li>
+    <li class="previous">
+        <a href="{{page.previous.url}}">&larr; {{page.previous.title}}</a>
+    </li>
     {% endif %}
     {% if page.next %}
-    <li><span>Next: </span>
-    <a class="feature-link" href="{{page.next.url}}">{{page.next.title}}</a></li>
+    <li class="next">
+        <a href="{{page.next.url}}">{{page.next.title}} &rarr;</a>
+    </li>
     {% endif %}
 </ul>
 

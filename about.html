@@ -15,33 +15,20 @@ excerpt: Copyright © 2013 Harttle. Hosted by GitHub, powered by Jekyll.
         position: relative;
         z-index: 100;
         float: right;
-        transform: rotate(10deg); 
-        -webkit-transform: rotate(10deg); 
-        -moz-transform: rotate(10deg);
-        -ms-transform: rotate(10deg);
-        -o-transform: rotate(10deg);
+        transform: rotate(10deg); -webkit-transform: rotate(10deg); -moz-transform: rotate(10deg); -ms-transform: rotate(10deg); -o-transform: rotate(10deg);
     }
-    .avatar img{
-        max-height: 150px;
-    }
+    .avatar img{ max-height: 150px; }
     .about-body{
         margin: 40px 76px 47px 0;
         font-size: 110%;
         padding: 30px;
     }
-    .about-body .label{
-        display: inline-block;
-    }
-
-    .thanks a{
-        margin-right:20px;
-    }
-    .thanks a:hover{
-        text-decoration: none;
-    }
-    .thanks a img{
-        max-height: 50px;
-    }
+    .interests, .thanks{ margin-top: 30px; }
+    .interests label, .thanks label{display: block;}
+    .interests .label{ display: inline-block; }
+    .thanks a{ margin-right:20px; }
+    .thanks a:hover{ text-decoration: none; }
+    .thanks a img{ max-height: 50px; }
 </style>
 <!-- style -->
 
@@ -58,30 +45,15 @@ excerpt: Copyright © 2013 Harttle. Hosted by GitHub, powered by Jekyll.
     Harttleland 起始于2013年9月，正当Harttle在PKU的第四个秋天。也正是此时，Harttle正式进入了程序猿的行列。在<a href="{% post_url 2013-10-18-github-homepage-tutorial %}">这里</a>记录着本站的开发过程。这里的文章包括读书笔记、软件开发、还有Linux！
     </p>
 
-    <!--p>
-    Harttle 从事过的项目有：
-    </p>
-    
-    <p>
-    <a href="http://buddys.github.io/marktex/" target="_blank" title="A Smarter Markdown Parser">MarkTex</a>，<a href="http://harttle.duapp.com" target="_blank" title="支持 Markdown 和 Latex 的云端笔记应用">God Notes 云笔记</a>，<a href="http://bbs.aliyun.com/read.php?spm=5176.383663.5.38.NAbIv2&tid=129380" target="_blank" title="阿里云第三方SDK"> 阿里云 <abbr title="Open Storage Service：开放云存储">OSS</abbr> Android SDK </a>，<a title="已于2013年10月移交北京大学计算机应用设计协会维护" href="//chrome.google.com/webstore/detail/bnlipdfmheddpljigcaaamjpnbhhklkb" target="_blank"> PKU Gateway Chrome Extension </a>，<a href="//exed.oce.pkusz.edu.cn" target="_blank">PKU Shenzhen 高级研修</a>，<a href="http://oa.china-idc.cn/" target="_blank">中投发展 OA 系统</a>。
-    </p-->
-    <br/>
-
-    Harttle兴趣广泛： 
-    <br/>
-    <br/>
+    <div class="interests">
+    <label>Interests:</label>
 
     <a class="label label-default">Linux</a> <a class="label label-info">Arch</a> <a class="label label-danger">Bash</a> <a class="label label-primary">Bootstrap</a> <a class="label label-default">Jquery</a> <a class="label label-info">Django</a> <a class="label label-success">Xetex</a> <a class="label label-default">TexLive</a> <a class="label label-danger">Physics</a> <a class="label label-info">Electrodynamics</a> <a class="label label-warning">Pulsars</a>
 
-    <br/>
-    <br/>
-    <br/>
-
-    感谢：
-    <br/>
-    <br/>
+</div>
 
     <div class="thanks">
+        <label>Thanks:</label>
         <a href="http://github.com/" target="_blank">
             <img src="/assets/img/github.png">
         </a>
