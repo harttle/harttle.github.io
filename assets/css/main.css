@@ -3,7 +3,7 @@
 body{
   /*-webkit-font-smoothing: antialiased;*/
   position: relative; /* for scroll spy with absolute position */
-  background-color: #1A57B9;
+  background-color: #069;
 }
 
 .global-nav{
@@ -131,7 +131,7 @@ a.feature-link:hover{
     color: #903;
     text-decoration: none;
 }
-.label-blue{ background-color: #1A57B9; }
+.label-blue{ background-color: #069; }
 .label-yellow{ background-color: #cc3; }
 .label-red{ background-color: #903; }
 .label-darkred{ background-color: #603; }
@@ -152,12 +152,12 @@ a.feature-link:hover{
   -moz-transition-duration: 0.3s;
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
-  background: #1A57B9;
+  background: #069;
   color: white;
   text-shadow: none;
   border: none; }
 .button-flat-blue:hover {
-    background: #3879DB; }
+    background: #06c; }
 
 .button-flat-red {
   -webkit-box-shadow: none;

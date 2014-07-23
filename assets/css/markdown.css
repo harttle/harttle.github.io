@@ -5,9 +5,6 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
     font-size:14px;
     line-height: 28px;
 }
-.md blockquote p{
-    font-size:14px;
-}
 .md p{
     margin: 5px 0;
 }
@@ -15,6 +12,9 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
     overflow-wrap: break-word;      /*防止一行太长影响响应式布局*/
 }
 
+.md ul, .md ol{
+    margin: 5px 0;
+}
 .md h1 {
     margin: 15px 0;
     padding-bottom: 2px;
@@ -62,7 +62,13 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
     margin: 14px 0;
     border-left: 4px solid #DDD;
     padding: 0 0 0 11px;
-    color: #555;
+    color: #888;
+}
+.md blockquote p{
+    font-size:14px;
+}
+.md .highlight{
+    margin: 5px 0;
 }
 .md pre{
     padding: 0;
@@ -89,14 +95,14 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
 }
 .md table {
     border-collapse: collapse;
-    margin: 20px 0 0;
+    margin: 10px 0;
     padding: 0;
 }
 .md table tr th,.md  table tr td {
     border: 1px solid #CCC;
     text-align: left;
     margin: 0;
-    padding: 6px 13px;
+    padding: 0px 13px;
 }
 .md table tbody tr:nth-child(2n-1) {
     background-color: #F8F8F8;

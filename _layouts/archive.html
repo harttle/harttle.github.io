@@ -35,6 +35,8 @@ nav: archive
     margin-right: 20px;
 }
 </style>
+{% assign block = content | split: '<!--style-->' %}
+{{ block[1] }}
 <!-- style -->
 
 
@@ -51,7 +53,8 @@ nav: archive
     <div class="clearfix"></div>
 
     <div>
-        {{ content }}
+        {% assign block = content | split: '<!--content-->' %}
+        {{ block[1] }}
     </div>
 
 </div>

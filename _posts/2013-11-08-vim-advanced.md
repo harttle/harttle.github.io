@@ -140,6 +140,7 @@ vim所有的模式（即工作状态）如下：
 5. (i) 插入模式: 也用于替换模式。
 6. (c) 命令行模式: 输入 ":" 或 "/" 命令时。
 
+> **行尾块** ：因行尾参差不齐，块编辑一般用于行首、行间；行尾编辑要有一些技巧：到行首`^`，到文件尾`G`，到行尾`$`，增加字符`A`，进行编辑，`<Esc>` 退出。
 
 
 ## 文件识别
@@ -250,4 +251,41 @@ function ToggleCopy()
     endif
     let g:copymode=!g:copymode
 endfunction
+```
+
+## 录制宏
+
+用户录制的宏保存在寄存器中，我们先来看看什么是寄存器。vim的寄存器分为数字寄存器和字母寄存器。
+
+* 数字寄存器为`0-9`，`0`保存着上次复制的内容，`1-9`按照最近的顺序保存着最近删除的内容。
+* 字母寄存器为`a-z`，拷贝3行到寄存器`c`：`c3yy`.
+
+现在开始录制宏。假如有如下的文件，我们希望将第二列的类型用`` ` ``分隔起来。
+
+```
+1 | BOOL  | Boolean
+2 | SINT  | Short integer
+3 | INT   | Integer 
+4 | DINT  | Double integer 
+5 | LINT  | Long integer 
+6 | USINT | Unsigned short integer 
+7 | UINT  | Unsigned integer 
+```
+
+1. 首先按几次`<Esc>`进入normal模式，光标移到第一行，开始录制并存入m寄存器`qm`。
+2. 光标到行首`^`，到第二列词首`ww`，进入插入模式`i`，插入分隔符`` ` ``，退出到normal模式`<Esc>`，到词尾`e`，进入插入模式`i`，插入分隔符`` ` ``，退出到normal模式`<Esc>`，光标到下一行`j`。
+3. 结束录制`q`。
+4. 光标到第二行，在normal模式执行100次寄存器m中的宏`100@m`。
+
+宏会在`j`执行错误后自动结束，得到如下文件：
+
+
+```
+1 | `BOOL`  | Boolean
+2 | `SINT`  | Short integer
+3 | `INT`   | Integer 
+4 | `DINT`  | Double integer 
+5 | `LINT`  | Long integer 
+6 | `USINT` | Unsigned short integer 
+7 | `UINT`  | Unsigned integer 
 ```
