@@ -1,7 +1,7 @@
 /*main css file for harttle land*/
 
 body{
-  -webkit-font-smoothing: antialiased;
+  /*-webkit-font-smoothing: antialiased;*/
   position: relative; /* for scroll spy with absolute position */
   background-color: #1A57B9;
 }
@@ -231,16 +231,7 @@ a.feature-link:hover{
   margin-left: 5px;
 }
 .credit .follow a:hover{
-  color: black;
+  color: #fff;
   text-decoration: none;
 }
 
-/*.hidden-xs {
-    display: inline-block !important;
-}
-
-@media (max-width: 767px) {
-.hidden-xs {
-  display: none!important;
- }
-}*/
