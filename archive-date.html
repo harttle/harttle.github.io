@@ -3,10 +3,16 @@ layout: archive
 nav-date: true
 ---
 
+<style>
+    body{
+        background-color: #903;
+    }
+</style>
+
 {% for post in site.posts %}
 
 {% unless post.next %}
-<div id="date-{{ post.date | date: "%Y-%m"}}" class="paper archive-block">
+<div id="date-{{ post.date | date: "%Y-%m"}}" class="paper-curl archive-block">
     <h3>{{ post.date | date: '%Y %m' }}</h3>
     <table class="table table-striped">
 {% else %}
@@ -18,7 +24,7 @@ nav-date: true
     </table>
 </div>
 
-<div id="date-{{ post.date | date: "%Y-%m"}}" class="paper archive-block">
+<div id="date-{{ post.date | date: "%Y-%m"}}" class="paper-curl archive-block">
     <h3>{{ post.date | date: '%Y %m' }}</h3>
     <table class="table table-striped">
 {% endif %}

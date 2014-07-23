@@ -3,7 +3,7 @@
 body{
   -webkit-font-smoothing: antialiased;
   position: relative; /* for scroll spy with absolute position */
-  background-color: #ddd;
+  background-color: #1A57B9;
 }
 
 .global-nav{
@@ -51,23 +51,30 @@ body{
 }
 
 /* papper effect */
-.paper
+.paper, .paper-curl
 {
     position: relative;
     background-color: #fff;
-    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+}
+.paper{
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+.paper-curl{
+    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.3);
 }
 
-.paper *:first-child{
+.paper *:first-child, .paper-curl *:first-child{
     margin-top: 0;
 }
-.paper *:last-child{
+.paper *:last-child, .paper-curl *:last-child{
     margin-bottom: 0;
 }
 
-.paper:before
+.paper-curl:before
 {
     position: absolute;
     width: 200px;
@@ -83,19 +90,19 @@ body{
     z-index: -1;
 } 
 
-.paper:after
+.paper-curl:after
 {
     position: absolute;
-    width: 200px;
+    width: 250px;
     height: 300px;
     max-width: 80%;
     max-height: 80%;
     right: 8px;
-    bottom: 7px;
+    bottom: 10px;
     content: ' ';
     background: transparent;
     transform: skew(3deg, 3deg); -webkit-transform: skew(3deg, 3deg); -moz-transform: skew(3deg, 3deg); -ms-transform: skew(3deg, 3deg); -o-transform: skew(3deg, 3deg); 
-    box-shadow: -6px 6px 12px rgba(0, 0, 0, 0.7); -webkit-box-shadow: -6px 6px 12px rgba(0, 0, 0, 0.7); -moz-box-shadow: -6px 6px 12px rgba(0, 0, 0, 0.7);
+    box-shadow: -6px 12px 12px rgba(0, 0, 0, 0.7); -webkit-box-shadow: -6px 12px 12px rgba(0, 0, 0, 0.7); -moz-box-shadow: -6px 12px 12px rgba(0, 0, 0, 0.7);
     z-index: -1;
 
 } 
@@ -129,7 +136,6 @@ a.feature-link:hover{
 .label-red{ background-color: #903; }
 .label-darkred{ background-color: #603; }
 .page-header {border-bottom: 1px solid #603;}
-hr{ border-top: 1px solid #603;}
 
 .label, .label a, .button{ color: #fff; }
 .label:hover, .label a:hover, .button:hover{ color: #fff; text-decoration: none; }

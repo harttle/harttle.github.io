@@ -28,13 +28,17 @@ Host bix
 
 此后，通过`ssh bix`即可登录。
 
-## 安装ejabberd
+## ejabberd 配置
+
+### 安装ejabberd
 
 [ejabberd](http://www.process-one.net/en/ejabberd) 是一款使用Erlang编写的开源IM服务器，支持XMPP协议。在CentOS下可从yum源下载安装：
 
 ```bash
 yum install ejabberd
 ```
+
+### 添加管理员
 
 ejabberd 支持网页管理，不过我们首先要添加管理员用户。
 
@@ -60,3 +64,18 @@ ejabberdctl register harttle bix.org [passwd]
 ```
 
 从浏览器打开：`http://[IP]:5280/admin/`，输入刚才的用户名密码即可进入ejabberd管理页面。
+
+
+### 允许所有IP注册
+
+ejabberd的默认配置中，只允许本机进行用户注册：
+
+```
+{mod_register,...
+
+    {ip_access, [{allow, "127.0.0.0/8"},
+                 {deny, "0.0.0.0/0"}]},
+        ...
+```
+
+`allow` 的默认值为 `all`（[参照文档](http://www.process-one.net/docs/ejabberd/guide_en.html#modregister)），故注释掉这两行即可允许所有IP进行用户注册。

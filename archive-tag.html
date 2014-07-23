@@ -3,10 +3,16 @@ layout: archive
 nav-tag: true
 ---
 
+<style>
+    body{
+        background-color: #cc3;
+    }
+</style>
+
 
 {% for tag in site.tags %}
 
-<div id="tag-{{ tag[0] }}" class="paper archive-block">
+<div id="tag-{{ tag[0] }}" class="paper-curl archive-block">
     <h3>{{tag[0] | capitalize }}</h3>
     <table class="table table-striped">
 
