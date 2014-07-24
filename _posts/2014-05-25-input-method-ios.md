@@ -2,7 +2,7 @@
 layout: blog
 categories: development
 title: IOS软键盘视图处理
-tags: IOS Objective-C
+tags: ios objective-c
 ---
 
 IOS 软键盘的行为是直接由开发者控制的，操作系统只提供很少的管理策略。这造成了很麻烦的问题：

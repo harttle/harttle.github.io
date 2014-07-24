@@ -3,7 +3,7 @@ layout: blog
 title:  "像 Geek 一样写博客"
 subtitle: "GitHub 博客部署教程"
 categories: development
-tags: GitHub 博客 教程
+tags: web github blog
 ---
 
 最近终于完成了个人博客的开发和部署，就把整个过程记录在这里。利用 GitHub 提供的文件服务部署，采用 github+GFM+jekyll 方式构建静态博客站点。

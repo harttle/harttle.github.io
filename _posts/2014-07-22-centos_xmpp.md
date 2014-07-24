@@ -2,7 +2,7 @@
 layout: blog
 categories: development
 title: 阿里云CentOS架设XMPP服务器
-tags: IM 服务器 云 linux
+tags: im linux xmpp
 ---
 
 最近在为一个IOS应用，在阿里云的ECS上架设XMPP服务，使用CentOS6.5，ejabberd，ssh。
