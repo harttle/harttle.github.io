@@ -8,6 +8,13 @@ subtitle: Keep It Simple, Stupid.
 <link rel="stylesheet" href="/assets/css/markdown.css">
 <link rel="stylesheet" href="/assets/css/monokai-syntax.css">
 <style>
+    .recent-badge{
+        width: 130px;
+        position: absolute;
+        left: -20px;
+        top: -60px;
+        z-index: 10;
+    }
     .post{
         margin-bottom: 50px;
         padding: 40px;
@@ -24,9 +31,12 @@ subtitle: Keep It Simple, Stupid.
 <!-- style -->
 
 <!-- content -->
+
+    <img class="recent-badge" src="/assets/img/recent-badge.png"/>
+
     {% for post in paginator.posts %}
 
-    <div class="post paper-curl">
+    <div class="post paper-curl pined">
         <h1 class="header">
             <a class="feature-link" href="{{post.url}}">{{ post.title }}</a>
             <div class="pull-right">

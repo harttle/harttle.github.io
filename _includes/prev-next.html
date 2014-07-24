@@ -1,14 +1,4 @@
-<style>
-    .prev-next{
-        margin-top:50px;
-    }
-    .prev-next span{
-        min-width: 75px;
-        display:inline-block;
-    }
-</style>
-
-<ul class="pager">
+<ul class="pager" style="margin: 70px 0 0">
     {% if page.previous %}
     <li class="previous">
         <a href="{{page.previous.url}}">&larr; {{page.previous.title}}</a>

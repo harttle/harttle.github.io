@@ -80,7 +80,7 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
 }
 .md *:not(pre)>code{
     border: 1px solid #ddd;
-    color: #333333;
+    color: #c03;
     background-color: #f8f8f8;
     border-radius: 3px;
     white-space: normal;/*overcome bootstrap nowrap*/

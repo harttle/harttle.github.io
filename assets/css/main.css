@@ -106,6 +106,12 @@ body{
     z-index: -1;
 
 } 
+.pined{
+    background-image: url(/assets/img/tack.jpg);
+    background-repeat: no-repeat;
+    background-position: right 5px top 5px;
+    background-size: 30px;
+}
 
 /* Featured link */
 
@@ -122,14 +128,13 @@ a.feature-link:hover{
 /* color scheme */
 
 .widget-date{ 
-    color: #603;
+    color: #903;
     font-size: 14px;
     font-family: Georgia, "Times New Roman", Times, serif;
-    transition: color .2s ease-out 0s;
 }
 .widget-date:hover{
-    color: #903;
     text-decoration: none;
+    color: #903;
 }
 .label-blue{ background-color: #069; }
 .label-yellow{ background-color: #cc3; }

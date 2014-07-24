@@ -5,6 +5,9 @@ layout: post
 <!-- style -->
 <link rel="stylesheet" href="/assets/gallery-2.11.0/css/blueimp-gallery.min.css">
 <style>
+    .text-content{
+        color: white;
+    }
   /* gallery 样式 */
   #blueimp-gallery .prev,#blueimp-gallery .next{
     color: grey;
@@ -32,7 +35,7 @@ layout: post
 <!-- style -->
 
 <!-- content -->
-<p class="lead">{{ content }}</p>
+<p class="lead text-content">{{ content }}</p>
 
 <div class="row items">
   {% for img in page.imgs %}
