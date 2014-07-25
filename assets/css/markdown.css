@@ -5,16 +5,8 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
     font-size:14px;
     line-height: 28px;
 }
-.md p{
-    margin: 5px 0;
-}
-.md *{
-    overflow-wrap: break-word;      /*防止一行太长影响响应式布局*/
-}
-
-.md ul, .md ol{
-    margin: 5px 0;
-}
+.md *{ overflow-wrap: break-word; }
+.md p{ margin: 10px 0 0; }
 .md h1 {
     margin: 15px 0;
     padding-bottom: 2px;
@@ -53,27 +45,21 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
     font-weight: normal;
     font-variant: italic;
 }
+.md ul, .md ol{ margin: 5px 0 0;}
 .md br+br {
     line-height:0;
     height:0;
     display:none;
 }
 .md blockquote {
-    margin: 14px 0;
+    margin: 10px 0 0;
     border-left: 4px solid #DDD;
     padding: 0 0 0 11px;
     color: #888;
 }
-.md blockquote p{
-    font-size:14px;
-}
-.md .highlight{
-    margin: 5px 0;
-}
-.md pre{
-    padding: 0;
-    border: 0;
-}
+.md blockquote p{ font-size:14px; }
+.md .highlight { margin: 10px 0 0; }
+.md pre{ padding: 0; border: 0; }
 .md tt,.md code,.md pre {
     font-family: Consolas, "Liberation Mono", Courier, monospace;
     font-size: 12px;
@@ -86,16 +72,11 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
     white-space: normal;/*overcome bootstrap nowrap*/
     padding: 3px 4px 0px 4px;/*overcome bootstrap padding*/
 }
-.md a, .md a code {
-    color: #4183C4;
-    text-decoration:none;
-}
-.md a:hover, .md a code:hover {
-    text-decoration:underline;
-}
+.md a, .md a code { color: #4183C4; text-decoration:none; }
+.md a:hover, .md a code:hover { text-decoration:underline; }
 .md table {
     border-collapse: collapse;
-    margin: 10px 0;
+    margin: 20px 0 0;
     padding: 0;
 }
 .md table tr th,.md  table tr td {
@@ -107,68 +88,6 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
 .md table tbody tr:nth-child(2n-1) {
     background-color: #F8F8F8;
 }
-
-/*
-.md .c{color:#998;font-style:italic;}
-.md .err{color:#a61717;background-color:#e3d2d2;}
-.md .k{font-weight:bold;}
-.md .o{font-weight:bold;}
-.md .cm{color:#998;font-style:italic;}
-.md .cp{color:#999;font-weight:bold;}
-.md .c1{color:#998;font-style:italic;}
-.md .cs{color:#999;font-weight:bold;font-style:italic;}
-.md .gd{color:#000;background-color:#fdd;}
-.md .gd .x{color:#000;background-color:#faa;}
-.md .ge{font-style:italic;}
-.md .gr{color:#a00;}
-.md .gh{color:#999;}
-.md .gi{color:#000;background-color:#dfd;}
-.md .gi .x{color:#000;background-color:#afa;}
-.md .go{color:#888;}
-.md .gp{color:#555;}
-.md .gs{font-weight:bold;}
-.md .gu{color:#800080;font-weight:bold;}
-.md .gt{color:#a00;}
-.md .kc{font-weight:bold;}
-.md .kd{font-weight:bold;}
-.md .kn{font-weight:bold;}
-.md .kp{font-weight:bold;}
-.md .kr{font-weight:bold;}
-.md .kt{color:#458;font-weight:bold;}
-.md .m{color:#099;}
-.md .s{color:#d14;}
-.md .na{color:#008080;}
-.md .nb{color:#0086B3;}
-.md .nc{color:#458;font-weight:bold;}
-.md .no{color:#008080;}
-.md .ni{color:#800080;}
-.md .ne{color:#900;font-weight:bold;}
-.md .nf{color:#900;font-weight:bold;}
-.md .nn{color:#555;}
-.md .nt{color:#000080;}
-.md .nv{color:#008080;}
-.md .ow{font-weight:bold;}
-.md .w{color:#bbb;}
-.md .mf{color:#099;}
-.md .mh{color:#099;}
-.md .mi{color:#099;}
-.md .mo{color:#099;}
-.md .sb{color:#d14;}
-.md .sc{color:#d14;}
-.md .sd{color:#d14;}
-.md .s2{color:#d14;}
-.md .se{color:#d14;}
-.md .sh{color:#d14;}
-.md .si{color:#d14;}
-.md .sx{color:#d14;}
-.md .sr{color:#009926;}
-.md .s1{color:#d14;}
-.md .ss{color:#990073;}
-.md .bp{color:#999;}
-.md .vc{color:#008080;}
-.md .vg{color:#008080;}
-.md .vi{color:#008080;}
-.md .il{color:#099;}*/
 
 .md div.mathjax{
     color: #000!important;
@@ -184,7 +103,7 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     border: #fff 0.5em solid;
-    margin: 2em 0;
+    margin: 10px 0 0;
     max-width: 100%;
 }
 
