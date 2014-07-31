@@ -57,77 +57,79 @@ IOS的软键盘在输入结束后不会自动关闭，而需要编程方式来�
 
 考虑一个聊天页面，在软键盘出现时，会遮挡输入框。此时需要减小页面其他部分的高度，使得输入框上移。然而，在输入中文的过程中软键盘的高度还会发生变化。于是我们需要监听软键盘的大小变化。
 
-1. 注册通知：
+重布局有两种做法，一种是改变`View`的大小；一种是改变约束。不过都得用编程方式，因为键盘高度是动态的（可能有多重键盘）。本文采取后一种，参考文章： http://www.think-in-g.net/ghawk/blog/2012/09/practicing-auto-layout-an-example-of-keyboard-sensitive-layout/
+
+1. 设置`Constants`，并包含页面最下方元素与父元素底的间隔，将该间隔约束以`Outlet`方式引入到工程中，命名为`vsHeight`。
+
+2. 注册通知：
 
     ```cpp
     - (void)viewWillAppear:(BOOL)animated{
-        self.navigationItem.title = [NSString stringWithFormat: @"%@", self.session.remoteJid.user];
-        
-        [self updateList:nil];
-        
-        // viewsize update event
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(KeyboardWillChangeFrame:)
-                                                     name:UIKeyboardWillChangeFrameNotification
-                                                   object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(keyboardDidChangeFrame:)
-                                                     name:UIKeyboardDidChangeFrameNotification
-    }                                               object:nil];
-
-    // 不要忘了取消注册
+        ...
+        [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(commitKeyboardAnimations:)
+                                                 name:UIKeyboardDidShowNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(commitKeyboardAnimations:)
+                                                 name:UIKeyboardDidHideNotification object:nil];
+    }                                        
     - (void)viewWillDisappear:(BOOL)animated{
-        // viewsize update
+        ...
         [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                        name:UIKeyboardWillChangeFrameNotification
-                                                      object:nil];
-        
+                                                        name:UIKeyboardWillShowNotification  object:nil];
         [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                        name:UIKeyboardDidChangeFrameNotification
-                                                      object:nil];
+                                                        name:UIKeyboardWillHideNotification   object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                        name:UIKeyboardDidShowNotification  object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                        name:UIKeyboardDidHideNotification   object:nil];
     }
     ```
-2. 在软键盘框更新时，上移界面：
+2. 在软键盘框更新时，更新约束并重新布局：
 
     ```cpp
-    -(void)KeyboardWillChangeFrame: (NSNotification *)notification {
+    - (void)keyboardWillShow:(NSNotification *)notification {
+        NSDictionary *info = [notification userInfo];
+        NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
+        NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+        UIViewAnimationCurve curve = (UIViewAnimationCurve)[info objectForKey:UIKeyboardAnimationCurveUserInfoKey];
         
-        // Get the keyboard rect
-        CGRect kbBeginrect = [[[notification userInfo]
-                               objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
-        CGRect kbEndrect   = [[[notification userInfo]
-                               objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-        NSTimeInterval duration = [[[notification userInfo]
-                                    objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-        UIViewAnimationCurve curve = (UIViewAnimationCurve)[[notification userInfo]
-                                                            objectForKey:UIKeyboardAnimationCurveUserInfoKey];
-
-        
-        // set animation
-        [UIView beginAnimations:nil context:NULL];
+        [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:duration];
         [UIView setAnimationCurve:curve];
-        
-        CGRect rect = self.view.frame;
-        double height_change = kbEndrect.origin.y - kbBeginrect.origin.y;
-        rect.size.height += height_change;
-        self.view.frame = rect;
+        self.vsToolbar.constant = kbFrame.CGRectValue.size.height;
+        [self.view layoutIfNeeded];
+        [self ScrollToBottom];
     }
 
-    -(void)keyboardDidChangeFrame:(NSNotification*)notification{
+    - (void)keyboardWillHide:(NSNotification *)notification {
+        NSDictionary *info = [notification userInfo];
+        NSTimeInterval duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+        UIViewAnimationCurve curve = (UIViewAnimationCurve)[info objectForKey:UIKeyboardAnimationCurveUserInfoKey];
         
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:duration];
+        [UIView setAnimationCurve:curve];
+        self.vsToolbar.constant = 0;
+        [self.view layoutIfNeeded];
+        [self ScrollToBottom];
+    }
+    ```
+3. 在键盘布局完成时再提交动画（否则会偏快）。
+
+    ```
+    - (void)commitKeyboardAnimations:(NSNotification *)notification {
         [UIView commitAnimations];
     }
     ```
 
-同时，如果有子界面也需要更新，同样在`KeyboardWillChangeFrame`中进行设置。要注意的是，更新子界面时软键盘还没有出现，使用`UIView.layoutIfNeeded`进行强制更新。例如，在软键盘出现时，要将聊天内容滚动到底部：
+同时，如果有子界面也需要更新，同样在`KeyboardWillShow`中进行设置。要注意的是，更新子界面时软键盘还没有出现，使用`UIView.layoutIfNeeded`进行强制更新。例如，在软键盘出现时，要将聊天内容滚动到底部：
 
 ```cpp
 -(void)KeyboardWillChangeFrame: (NSNotification *)notification {
-    
-    // blabla...
-   
+    ...
     [self.tableView layoutIfNeeded];    // important! recompute size of tableview
     [self ScrollToBottom];
 }

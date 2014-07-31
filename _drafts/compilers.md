@@ -2,7 +2,7 @@
 layout: blog
 categories: reading
 title: Compilers
-tags: 笔记 编译
+tags: compile
 excerpt: '"Compilers", Alfred V. Aho, Monica S. Lam, Ravi Sethi, Jeffrey D. Ullman'
 ---
 

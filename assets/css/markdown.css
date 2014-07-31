@@ -45,7 +45,7 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
     font-weight: normal;
     font-variant: italic;
 }
-.md ul, .md ol{ margin: 5px 0 0;}
+.md ul, .md ol{ margin: 0px 0 0;}
 .md br+br {
     line-height:0;
     height:0;
