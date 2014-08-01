@@ -24,9 +24,7 @@ IOS的软键盘在输入结束后不会自动关闭，而需要编程方式来�
     - (void)viewDidLoad{
         [super viewDidLoad];
 
-        // 首先为textField创建Outlet
-
-        // 设置代理
+        // 设置代理（首先为textField创建Outlet）
         self.textField.delegate = self;
     }
     ```

@@ -59,10 +59,14 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
 }
 .md blockquote p{ font-size:14px; }
 .md .highlight { margin: 10px 0 0; }
-.md pre{ padding: 0; border: 0; }
+.md pre{ padding: 0; border: 0; overflow-x:scroll;}
 .md tt,.md code,.md pre {
     font-family: Consolas, "Liberation Mono", Courier, monospace;
     font-size: 12px;
+}
+.md pre code{
+    word-wrap: normal;
+    white-space: pre;
 }
 .md *:not(pre)>code{
     border: 1px solid #ddd;
