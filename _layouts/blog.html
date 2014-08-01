@@ -6,100 +6,44 @@ layout: post
 <link rel="stylesheet" href="/assets/css/markdown.css">
 <link rel="stylesheet" href="/assets/css/monokai-syntax.css">
 <style>
-  /* By default it's not affixed in mobile views, so undo that */
-  .sidebar.affix {
-    position: static;
-  }
-  
-  /* First level of nav */
-  .sidenav {
-    margin-top: 20px;
-    margin-bottom: 20px; 
-    background: #fff; 
-}
-  
-  /* All levels of nav */
-  .sidebar .nav > li > a {
-    display: block;
-    padding: 5px 15px;
-    color: #428bca;
-    text-decoration: none;
-  }
-  .sidebar .nav > li > a:hover, .sidebar .nav > li > a:focus {
-    text-decoration: none;
-    background-color: #ffc; 
-    border-right: 2px solid #c03;
-  }
-  
-  .sidebar .nav > .active > a, .sidebar .nav > .active:hover > a, .sidebar .nav > .active:focus > a {
+.sidebar{ width: 213px; margin-top:20px;}
+.sidebar ul{margin-top: 0;margin-bottom:0;}
+.sidebar.affix { position: fixed; top: 20px; }
+.sidebar.affix-bottom { position: absolute;}
+
+.sidebar .nav .nav { display: none;}
+.sidebar .nav > .active > ul { display: block; }
+.sidebar .nav > li > a { display: block; padding: 5px 15px; color: #428bca; text-decoration: none; }
+.sidebar .nav > li > a:hover, .sidebar .nav > li > a:focus { text-decoration: none; background-color: #ffc; border-right: 2px solid #c03; }
+.sidebar .nav .nav > li > a { padding-top:3px; padding-bottom:3px; margin-left: 10px; font-size: 90%; }
+.sidebar .nav .nav .nav > li > a { margin-left: 20px; }
+.sidebar .nav .nav .nav .nav > li > a { margin-left: 30px; }
+.sidebar .nav .nav .nav .nav .nav > li > a { margin-left: 40px; }
+.sidebar .nav .nav .nav .nav .nav .nav> li > a { margin-left: 50px; }  
+.sidebar .nav > .active > a, .sidebar .nav > .active:hover > a, .sidebar .nav > .active:focus > a {
     margin-bottom:1px; padding-bottom: 2px!important;
     font-weight: bold;
     color: white;
     background: #428bca;
+    border-right: 2px solid #c03; 
     text-shadow: 0 1px 0 rgba(0,0,0,.15);
     -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
        -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
             box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
-    border-right: 2px solid #c03; 
-  }
-  
-  /* Nav: second level (shown on .active) */
-  .sidebar .nav .nav { display: none; /* Hide by default, but at >768px, show it */ }
-  .sidebar .nav .nav > li > a {
-    padding-top:    3px;
-    padding-bottom: 3px;
-    margin-left: 10px;
-    font-size: 90%;
-  }
-  .sidebar .nav .nav .nav > li > a { margin-left: 20px; }
-  .sidebar .nav .nav .nav .nav > li > a { margin-left: 30px; }
-  .sidebar .nav .nav .nav .nav .nav > li > a { margin-left: 40px; }
-  .sidebar .nav .nav .nav .nav .nav .nav> li > a { margin-left: 50px; }  
-  
-  /* Show and affix the side nav when space allows it */
-  @media (min-width: 992px) {
-    .sidebar .nav > .active > ul {
-      display: block;
-    }
-    /* Widen the fixed sidebar */
-    .sidebar.affix, .sidebar.affix-top, .sidebar.affix-bottom {
-      width: 213px;
-    }
-    .sidebar.affix {
-      position: fixed; /* Undo the static from mobile first approach */
-      top: 40px;
-    }
-    .sidebar.affix-bottom { position: absolute; /* Undo the static from mobile first approach */ }
-    .sidebar.affix-bottom .sidenav, .sidebar.affix .sidenav {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-  }
-  @media (min-width: 1200px) {
-    /* Widen the fixed sidebar again */
-    .sidebar.affix-bottom,
-    .sidebar.affix-top,
-    .sidebar.affix {
-      width: 263px;
-    }
-  } 
-    
-  .MathJax *{
-    color: black!important;  
-  }
-
-  .md{ margin-top:20px; padding:30px; }
-
-
+}
+.sidenav { margin-top: 20px; margin-bottom: 20px; background: #fff; }
+   
+.MathJax *{ color: black!important;  }
+.md{ margin-top:20px; padding:30px; }
 </style>
 <!-- style -->
 
 <!-- content -->
 <div class="row post-display">
-    <div class="col-sm-3 left" >
+    <div class="col-md-3 col-sm-4 hidden-xs left" >
       <div class="sidebar"></div>
     </div>
-    <div class="col-sm-9 right">
+    <div class="col-md-9 col-sm-8 right">
         <div class="md paper-curl pined">
             {{ content }}
         </div>
@@ -126,13 +70,10 @@ layout: post
               offset: {                
                   top: function () {                    
                       var offsetTop      = $sideBar.offset().top;
-                      var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10);
-                      sideBarMargin     += parseInt($('#page-content').css('margin-top'), 10);
-                      return (this.top = offsetTop - sideBarMargin);
+                      return (this.top = offsetTop - 40);
                   },
                   bottom: function(){
-                    var sideBarMargin  = parseInt($sideBar.children(0).css('margin-bottom'), 10);
-                    return (this.bottom = footHeight + sideBarMargin);
+                    return (this.bottom = $(document).height() - $('.md').offset().top - $('.md').height());
                   }
               }
           });
