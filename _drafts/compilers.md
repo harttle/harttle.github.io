@@ -1,66 +1,232 @@
 ---
 layout: blog
 categories: reading
-title: Compilers
+title: 编译器
 tags: compile
 excerpt: '"Compilers", Alfred V. Aho, Monica S. Lam, Ravi Sethi, Jeffrey D. Ullman'
 ---
 
-# Introduction
+# 概论
 
-Difference between **compilers** and **interpreters** :
+## 编译器
 
-* Compilers accepts source program and generates target program.
-* Interpreters accepts source program and input, generates output.
+**编译器** 与 **解释器** 的区别：
 
-
-The phases of a compiler:
-
-![diff-compiler-interpreter](/assets/img/blog/phases.gif)
-
-1. Lexical analysis. Also called scanning, convert character stream into meaningful sequences called *lexemes* (represented like \<token-name, attributes\>).
-2. Syntax analysis. Also called parsing, creates a *syntax tree* inwhich each interior node represents an opration and the children represent the arguments of the operation.
-3. Semantic analysis. Checks semantic consistency with the language definition, such as *type checking* .
-4. Intermediate code generation. Generates *three-address code* , which consists no more than 3 operands and at most one operator on the right side.
-5. Code optimization, attempts to improve the intermediate code so that better(faster) code will result.
-6. Code generation, a crucial aspect of which is the judicious assignment of registers.
-
-As for the history of programming language:
-
-* 1st generation languages are machine languages.
-* 2nd generation the assembly languages.
-* 3rd generation like Fortran, Cobol, Lisp, C, C#
-* 4th generation languages are designed for specific apps, like SQL, Postscript
-* 5th generation language has been applied to logic- and constraint-based languages like Prolog and OPS5.
-
-**environment** is mapping from names to locations in the store. **state** is a mapping from locations in store to their values. Both of them could be static or dynamic.
-
-**Scopes** can be resolved staticly (within block structure) or dynamicly (virtual methods, etc.).
-
-**Parameter passing** includes "call-by-value" and "call-by-reference". The latter caused aliasing problem.
-
-> In the early programming language Algol 60, "call-by-name" mechanism is used. The formal parameters are substituted by actual parameters as if macros.
-
-Two *forms of intermediate code* : (1) abstract syntax tree, and (2)sequence of three-address instructions.
-
-**Context-free grammar** consists:
-
-1. A set of terminal symbols.
-2. A set of nonterminal symbols.
-3. A set of productions (defined with Backus-Naur Form).
-4. A designation of one of the nonterminals as the start symbol.
-
-A **parse tree** is a tree with the following properties:
-
-1. The root is labeled by the start symbol.
-2. Each leaf is labeled by a terminal or $\epsilon$.
-3. Each interior node is labeled by a nonterminal.
-4. Each interior node A with children $X_1X_2 \cdots X_n$ represents a production $A \rightarrow X_1X_2 \cdots X_n$.
-
-A grammar can have more than one parse tree for a given string of terminals. Such a grammar is said to be **ambiguous** .
-
-Program fragments embedded within production bodies are called **symantic actions** .
-
-$A \rightarrow A\alpha | \beta$ is said to be **left recursive** , because repeated application of this production builds up a sequence of $\alpha$s to the right of A, and lead to trees that grow down towars on the left. Similiarly, **right recursive** should be written as: $ R \rightarrow \alpha R | \epsilon$
+* 编译器接受源代码，产生目标程序；
+* 解释权接受源代码和输入，产生输出。
 
 
+编译的6个阶段：
+
+<img src="/assets/img/blog/phases.gif" style="float:right"/>
+
+1. **词法分析** （lexical analysis），又称 *扫描* （scanning）：将字符流转换为有意义的 *词位* （lexeme）序列（其表示类似：\<token-name, attributes\>）。
+2. **语法分析** （syntax analysis），又称 *分析* （parsing）：创建 *语法树* （syntax tree），每个内部节点表示一个操作，子节点表示对应的参数。
+3. **语义分析** （semantic analysis）：根据语言定义进行语义一致性检查，比如 *类型检查* 。
+4. **中间代码生成** （intermediate code generation）：产生 **3地址码** （3-address code），包含不多于3个操作数，右边有一个操作符。
+5. **代码优化** ：尝试提高中间代码的速度。
+6. **代码生成** ：生成目标代码，对寄存器谨慎的赋值很关键。
+
+## 编程语言
+
+编程语言的发展：
+
+* 第一代：机器语言；
+* 第二代：汇编语言；
+* 第三代：高级语言如：Fortran, Cobol, Lisp, C, C#；
+* 第四代：用于特定应用的语言：SQL, Postscript；
+* 第五代：基于逻辑/约束的语言：Prolog, OPS5。
+
+**环境** （environment）就是名称与存储地址的对应关系； **状态** （state）是存储地址与值的对应关系。这两者都可以是静态的，也可以是动态的。
+
+**作用域** （scopes）可以静态地解析（例如块结构），或者动态地解析（例如虚函数）。
+
+**参数传递** （parameter passing）包括传值和传引用，后者将引发别名问题。
+
+> 早期编程语言Algol 60中，采用 *传名称* （call-by-name）的机制，实参以类似宏的方式代替形参。
+
+
+# 词法分析
+
+<!--more-->
+
+
+词法分析器一般包括两级的处理：
+
+1. *扫描* ：删除注释、空格压缩等；
+2. *词法分析* ：从扫描器的输出生成一系列 *记号（token）* 。
+
+**记号** （token）：一个键值对，键为记号名，值为可选的属性值；
+**模式** （pattern）：记号可以采取的词位形式的描述；
+**词位** （lexeme）：源程序中匹配模式的字符序列，是记号的实例。
+
+在词法分析中，首先要将模式转换为 *转换图* （transition diagram），然后构建有限自动机。
+
+**确定的有限自动机** （deterministic finite automata, DFA）：对于每个状态，每个输入字母表的每个符号，有且仅有一条边离开该状态。
+**非确定的有限自动机** （nonderterministic finite automata, NFA）：没有限制边的标签，每个符号可以标记多个离开该状态的边，同时空字符串也可作为标签。
+
+对于任何一个NFA M，都存在DFA M’使得：$L(M’)=L(M)$。子集构造法：用M’的一个状态对应M的一个状态集合。
+
+# 语法分析
+
+**语法分析器** （parser）从 *词法分析器* 获得记号流，检查这些记号名组成的串是否可以用语法来产生，然后从可能的错误中恢复来继续处理剩余部分，最后生成分析树。有3类分析方法：
+
+1. *通用分析方法* ，如CYK算法。这些算法在实际中很低效。
+2. *自顶向下方法* ，从根节点到叶节点构造分析树。
+3. *自底向上方法* ，从叶节点到根节点构造分析树。
+
+> 后两者只能用于处理LL和LR语法，这对于多数现代编程语言已经足够。
+
+
+通用编程语言的错误可以分为：
+
+1. 词法错误：标识符、关键字、操作符的拼写错误。
+2. 语法错误：分号误用、括号不匹配。
+3. 语义错误：操作符与操作数类型不匹配。
+4. 逻辑错误：C语言中，`=`与`==`用错。
+
+语法分析要发现语法错误，并尽量从错误中恢复，来继续处理后面的源文件以获得更多诊断信息。错误恢复的方法有：
+
+1. **紧急恢复** （panic-mode recovery）。设计一个 *同步标记* （synchronizing tokens）集合，当遇到错误时，忽略下一个同步标记前的所有输入符号。该方法忽略了不少的输入，却保证了不会陷入死循环。
+2. **短语级恢复** （phrase-level recovery）。当发生错误时，对剩余输入做一个局部纠正，即加一个字符串前缀。该方法能纠正任何错误，但要小心避免死循环；而且如果实际错误发生在检测点之前将会使恢复变得更困难。
+3. **错误产生式** （error production）。用常见错误产生式来增强语法，当检测到预期错误时能给出更好的诊断信息。
+4. **全局校正** （global correction）。当输入字符串x遇到错误时，语法分析器找到一个与x最近的（最少的插入和删除）字符串y的分析树。然而实现的时间空间成本太高，且y不一定是程序员希望的逻辑。
+
+## 一些概念
+
+*一步推导* 。如果存在产生式$A\rightarrow \gamma$，则：$\alpha A \beta \Rightarrow \alpha \gamma \beta$；
+
+*零或多步推导* 。如果$\alpha_1 \Rightarrow \alpha_2 \Rightarrow … \Rightarrow \alpha_n$，那么：$\alpha_1 \Rightarrow_{*} \alpha_n$；
+
+*最左推导* 。每个句子最左的非终结符总是先被替换，记为$\alpha \Rightarrow_{lm} \beta$；
+
+*最右推导* 。每个句子最右的非终结符总是先被替换，记为$\alpha \Rightarrow_{rm} \beta$；
+
+如果 $S \Rightarrow_{*,lm} \alpha$，则称 $\alpha$ 是 *左句型* （left-sentential form）；同样地有 *右句型* （right-sentential form），又称 *规范句型* （canonical form）。
+
+*句柄* （handle）为匹配产生式体的子串。
+
+
+**上下文无关文法** 包括：
+
+1. 终结符（terminal symbol）集合；
+2. 非终结符（nonterminals）集合；
+3. 生成式（production）集合（用Backus-Naur范式定义）；
+4. 一个非终结符作为起始符号（start symbol）。
+
+**分析树** （parse tree）：
+
+1. 根为起始符号；
+2. 叶节点为终结符或$\epsilon$；
+3. 内节点为非终结符；
+4. 子节点为：$X_1X_2 \cdots X_n$ 的内节点 A 表示生成式：$A \rightarrow X_1X_2 \cdots X_n$；
+
+> 给定终结符字符串，如果一个文法可以产生多个 *分析树* ，则称该文法是 *歧义的* （ambiguous）。
+
+## 自顶向下分析
+
+**递归下降分析器** （recursive-descent parser）从文法的开始符处罚，试图构造一个最左推导，从左至右匹配输入的记号串。每步推导中，非终结符被递归地展开。
+
+> 缺点：不能处理左递归、复杂的回溯、难以报告确切的出错位置。
+
+对于以开始字符标记的语法，可以采用预测分析，来避免 *尝试-错误* 带来的时间代价。 *左递归* 的文法将会阻止自动机的前进，可以将其转换为等效的 *右递归* 文法。
+
+在该算法中，要选择一个文法来展开标记串，便不可避免地需要尝试和回溯。而 **预测式分析器（predictive parser）** 可以通过向前看（look ahead）常数个符号，来确定文法，而不需要回溯。该算法对LL文法有效，该文法可以描述多数编程构造。相关定义：
+
+* $first(\alpha)$ 为$\alpha$可导出的所有文法的前缀终结符集合；
+* $follow(A)$ 为所有文法中，$A$后允许直接出现的终结符集合；
+
+LL(1)文法定义为：对于 $A\rightarrow \alpha | \beta$，
+
+1. $first(\alpha)$ 与 $first(\beta)$ 无交集。
+2. 如果 $\epsilon \in first(\beta)$，$first(\alpha)$ 和 $follow(A)$ 无交集，反之亦然。
+
+> LL(1)表示从左到右扫描，产生最左推导，决定分析动作只需1个向前看符号。
+
+##自底向上分析
+
+**自底向上分析** 可以看做输入字符串化简到开始符号的过程。在每个 *化简（reduction）* 步，用一个非终结符代替满足某个生成式的字串。
+
+**移进-规约分析** （shift-reduce parsing）是一种自底向上的分析方法，它维护一个栈保存语法符号，一个输入缓冲保存剩余的输入字符串。每次从输入中取一个符号 *移进* （shift）栈中；然后进行 *化简* （reduce）：检查栈中能与栈顶符号构成生成式的符号，选择一个生成式，用非终结符代替这个符号串；当栈中只剩开始符号时，宣布 *接受* （accept），如果此前发生了 *错误* （error），调用一个错误恢复程序。
+
+当前最流行的自底向上分析方法当属 **LR(k)分析** ，此外LR分析有如下好处：
+
+1. 对几乎所有采用上下文无关文法的编程语言都可以构造LR分析器。非LR的上下文无关文法也存在，但可以通过编程语言构造来避免。
+2. LR分析是一种不需回溯的移进-规约分析。
+3. 在从左到右扫描输入符号串时，LR分析能在可能的最早的时间发现错误。
+4. 可用LR分析的文法是可用预测式分析或LL分析的文法的超集合。
+
+> L指从左到右扫描，R指反向地构造最右推导，k则为向前看符号的个数。可以构造LR分析器的语法称为 *LR 语法* 。
+
+### SLR分析
+
+相关概念：
+
+LR(0) **项目** （Item）：文法G的生成式某个位置添加`·`。如：对于生成式$A\rightarrow XY$，存在以下的项目：
+
+* $[A\rightarrow \cdot XY]$
+* $[A\rightarrow X\cdot Y]$
+* $[A\rightarrow XY\cdot ]$
+
+> $[A\rightarrow \cdot XY]$表示我们希望在下一个输入看到XY可导出的符号串；$[A\rightarrow X \cdot Y]$表示我们已经看到了X可导出的符号串，希望在下一个输入看到Y可导出的符号串。
+
+**闭包** （closure）：集合I为语法G的项目集合，闭包CLOSURE(I)用以下方法构造：
+
+1. 将I中的项目都加入CLOSURE(I)；
+2. 如果CLOSURE(I)中包含$[A\rightarrow \alpha \cdot B \beta]$，并且产生式中包含$B\rightarrow \gamma$，那么将$[B\rightarrow \cdot \gamma]$加入CLOSURE(I)（递归地）。
+
+**转换** （goto）：GOTO(I,X)表示项目的集合，如果I中存在项目$[A \rightarrow \cdot X\beta]$，那么$[A \rightarrow X \cdot \beta]$应属于集合GOTO(I,X)。
+
+> CLOSURE将被作为后面提到的自动机的状态，而GOTO将被作为转换。
+
+对于语法G定义增强的语法G’，S’为开始符号，并添加这样的产生式：$S’\rightarrow S$。其目的为当应用上述产生式时，声明算法的结束（accept）。
+
+我们构造LR(0)自动机（即 **Simple LR，SLR** ）。初始状态为：CLOSURE({[S’ $\rightarrow \cdot ]$S})，将其入栈。从符号串中顺次读入符号$\gamma$：
+
+1. 如果$\gamma$可以将当期状态i转换 GOTO(I,$\gamma$) 为另一状态j，则将j入栈，并从输入中拿掉$\gamma$（ **移进** ）。
+2. 否则，对状态i（栈顶状态）进行 **化简** ，使用该状态中的项目（即生成式）。
+
+于是，我们需要两张表：一张为 ACTION(state,symbol) 用来表示动作，是移进，化简，接受，还是错误；另一张为 GOTO(I,symbol)。故LR分析器分为5部分：驱动程序、输入、输出、状态栈、决策表（ACTION、GOTO）。
+
+SLR自动机为什么能用来做移进-化简决策呢？先引入 *活前缀* （viable prefixes）的概念：右句型的前缀，且不超过最右句柄的结尾。SLR分析是基于 LR(0) 自动机识别活前缀的能力。SLR能分析大多数上下文无关文法。
+
+### 其他LR分析
+
+除了上述的SLR外，LR分析还包括：
+
+1. *规范LR* （canonical-LR，或称LR）充分利用向前看符号，使用大量的项目，称其为 LR(1) 项目。可以分析几乎所有上下文无关文法）。
+2. *向前看LR* （lookahad-LR，或LALR）基于LR(0)的项目（相比于基于LR(1)项目的分析，状态数很少），并引入了向前看符号，可以处理比SLR更多的语法，同时不增加分析表大小。
+
+LR(k)分析的项目有如下的形式：
+
+* $[ A \rightarrow \alpha \cdot \beta, a_1a_2…a_k]$；
+* 对于 $\beta \neq \epsilon$，$a_1a_2…a_k$不起作用，都是合法的项目；
+* 对于 $A\rightarrow \alpha \cdot, a_1a_2…a_k$，当前前k个符号为$a_1a_2...a_k$时，才是合法的项目。
+
+# 语法制导翻译
+
+语法制导的翻译有3种方式：
+
+1. 通过在语法的 *生成式* （production）中加入程序片段来进行翻译。
+2. 每个语法生成式关联一个语义规则。
+3. *语法制导定义* （syntax-directed definition，SDD）通过遍历分析树，计算结点属性来分析语义。
+
+**综合属性** （synthesized attribute）由子节点的属性值计算得到。 **继承属性** （inherited attribute）由父节点或兄弟节点计算得到。
+
+> 例如，计算器的求值过程相当于：通过自下而上地计算分析树各节点的属性值。
+
+**依赖图** （dependency graph）描绘了特定分析树中属性之间的信息流。从一个属性到另一属性的边表示后者的计算需要前者的值。边表示了语法规则中隐含的约束。
+
+依赖图给出了可能的求值顺序，如果依赖图存在一个拓扑排序，那么该图不存在环。然而一般地来讲，很难确定依赖图是否存在环。在实践中，有两类SDD可以保证不存在环（即保证存在一个求值顺序）：
+
+* S-属性：分析树中的所有结点的属性都是综合属性。S-属性适用于任何自底向上分析，将S-属性定义换为可执行代码段，就构成了翻译程序。
+* L-属性：依赖图的边不存在从右到左的。可以通过深度优先搜索来计算L-属性分析树结点的属性值，它适应多种自底向上和自顶向下的翻译方法。
+
+> 拓扑排序：对图的节点线性排序，如果有一条边i,j，那么排序中i<j，由此得到的排序为拓扑排序。可见如果一个图存在拓扑排序，则该图不存在环。
+
+# 中间代码生成
+
+中间代码有两种形式：
+
+* 抽象语法树（abstract syntax tree）
+* 3地址指令列表

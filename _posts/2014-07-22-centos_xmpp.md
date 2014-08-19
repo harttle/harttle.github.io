@@ -79,3 +79,11 @@ ejabberd的默认配置中，只允许本机进行用户注册：
 ```
 
 `allow` 的默认值为 `all`（[参照文档](http://www.process-one.net/docs/ejabberd/guide_en.html#modregister)），故注释掉这两行即可允许所有IP进行用户注册。
+
+ejabberd的默认配置中，同一IP的注册间隔为10分钟：
+
+```
+{registration_timeout, 600}.
+```
+
+将`600`改为`infinity`来禁用该机制。
