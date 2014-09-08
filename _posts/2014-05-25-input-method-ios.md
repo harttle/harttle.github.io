@@ -20,7 +20,7 @@ IOS的软键盘在输入结束后不会自动关闭，而需要编程方式来�
 
 1. 设置TextField的代理为当前对象。可以在Storyboard中将TextField拖动至ViewController，选择delegate。也可以使用编程方式：
 
-    ```cpp
+    ```objc
     - (void)viewDidLoad{
         [super viewDidLoad];
 
@@ -30,7 +30,7 @@ IOS的软键盘在输入结束后不会自动关闭，而需要编程方式来�
     ```
 2. 在ViewController中添加事件处理函数：
 
-    ```cpp
+    ```objc
     - (BOOL)textFieldShouldReturn:(UITextField *)textField {
         // 激活文本框即可
         [textField resignFirstResponder];
@@ -45,7 +45,7 @@ IOS的软键盘在输入结束后不会自动关闭，而需要编程方式来�
 3. 添加action。按Ctrl将gestureRecognizer拖动至ViewController.h，并选择Action。
 4. 添加Action处理函数：
 
-    ```cpp
+    ```objc
     - (IBAction)Tap:(id)sender {
         [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
     }
@@ -61,7 +61,7 @@ IOS的软键盘在输入结束后不会自动关闭，而需要编程方式来�
 
 2. 注册通知：
 
-    ```cpp
+    ```objc
     - (void)viewWillAppear:(BOOL)animated{
         ...
         [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(keyboardWillShow:)
@@ -87,7 +87,7 @@ IOS的软键盘在输入结束后不会自动关闭，而需要编程方式来�
     ```
 2. 在软键盘框更新时，更新约束并重新布局：
 
-    ```cpp
+    ```objc
     - (void)keyboardWillShow:(NSNotification *)notification {
         NSDictionary *info = [notification userInfo];
         NSValue *kbFrame = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
@@ -125,7 +125,7 @@ IOS的软键盘在输入结束后不会自动关闭，而需要编程方式来�
 
 同时，如果有子界面也需要更新，同样在`KeyboardWillShow`中进行设置。要注意的是，更新子界面时软键盘还没有出现，使用`UIView.layoutIfNeeded`进行强制更新。例如，在软键盘出现时，要将聊天内容滚动到底部：
 
-```cpp
+```objc
 -(void)KeyboardWillChangeFrame: (NSNotification *)notification {
     ...
     [self.tableView layoutIfNeeded];    // important! recompute size of tableview
