@@ -274,3 +274,153 @@ title: 安装 Arch Linux
 ## 字体
 
 可在AUR中直接安装 Ubuntu字体、开源字体、Adobe字体，甚至 Windows 字体。
+
+以效果奇佳的Ubuntu字体设置为例：
+
+1. 安装 `cairo-ubuntu` `ttf-dejavu` `ttf-liberation` `wqy-zenhei` `ttf-arphic-ukai` `ttf-arphic-uming` 
+2. 在`～/.config/fontconfig/fonts.conf`配置字体:
+
+    ```xml
+    <?xml version='1.0'?>
+    <!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
+    <fontconfig>
+        <match target="font">
+            <edit name="antialias" mode="assign"><bool>true</bool></edit>
+            <edit name="rgba" mode="append"><const>rgb</const></edit>
+            <edit name="lcdfilter" mode="append"><const>lcddefault</const></edit>
+            <edit name="autohint" mode="append"><bool>false</bool></edit>
+            <edit name="hinting" mode="assign"><bool>true</bool></edit>
+            <edit name="hintstyle" mode="assign"><const>hintslight</const></edit>
+        </match>
+
+        <alias binding="strong">
+            <family>serif</family>
+            <prefer>
+                <family>DejaVu Serif</family>
+                <family>WenQuanYi Zen Hei</family>
+            </prefer>
+        </alias>
+
+        <alias binding="strong">
+            <family>sans-serif</family>
+            <prefer>
+                <family>DejaVu Sans</family>
+                <family>WenQuanYi Zen Hei</family>
+            </prefer>
+        </alias>
+
+        <alias binding="strong">
+            <family>monospace</family>
+            <prefer>
+                <family>DejaVu Sans Mono</family>
+                <family>WenQuanYi Zen Hei Mono</family>
+            </prefer>
+        </alias>
+
+        <!-- To substitute some famous Chinese fonts -->
+        <match target="pattern">
+            <test name="family">
+                <string>宋体</string>
+            </test>
+            <edit name="family" mode="assign">
+                <string>SimSun</string>
+            </edit>
+        </match>
+
+        <match target="pattern">
+            <test name="family">
+                <string>新宋体</string>
+            </test>
+            <edit name="family" mode="assign">
+                <string>SimSun</string>
+            </edit>
+        </match>
+
+        <match target="pattern">
+            <test name="family">
+                <string>楷体</string>
+            </test>
+            <edit name="family" mode="assign">
+                <string>KaiTi</string>
+            </edit>
+        </match>
+
+        <match target="pattern">
+            <test name="family">
+                <string>楷体_GB2312</string>
+            </test>
+            <edit name="family" mode="assign">
+                <string>KaiTi</string>
+            </edit>
+        </match>
+
+        <match target="pattern">
+            <test name="family">
+                <string>黑体</string>
+            </test>
+            <edit name="family" mode="assign">
+                <string>SimHei</string>
+            </edit>
+        </match>
+
+        <match target="pattern">
+            <test name="family">
+                <string>微软雅黑</string>
+            </test>
+            <edit name="family" mode="assign">
+                <string>SimHei</string>
+            </edit>
+        </match>
+
+        <alias binding="strong">
+            <family>SimSun</family>
+            <accept>
+                <family>AR PL UMing CN</family>
+            </accept>
+        </alias>
+
+        <alias binding="strong">
+            <family>KaiTi</family>
+            <accept>
+                <family>AR PL UKai CN</family>
+            </accept>
+        </alias>
+
+        <alias binding="strong">
+            <family>SimHei</family>
+            <accept>
+                <family>WenQuanYi Zen Hei</family>
+            </accept>
+        </alias>
+
+        <!-- To substitute some English fonts -->
+        <alias binding="strong">
+            <family>BookAntiqua</family>
+            <accept>
+                <family>URW Palladio L</family>
+            </accept>
+        </alias>
+
+        <alias binding="strong">
+            <family>Georgia</family>
+            <accept>
+                <family>Liberation Serif</family>
+            </accept>
+        </alias>
+
+        <alias binding="strong">
+            <family>Verdana</family>
+            <accept>
+                <family>Liberation Sans</family>
+            </accept>
+        </alias>
+
+        <alias binding="strong">
+            <family>Calibri</family>
+            <accept>
+                <family>Liberation Sans</family>
+            </accept>
+        </alias>
+
+    </fontconfig>
+    ```

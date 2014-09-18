@@ -19,8 +19,7 @@ pacman -S xf86-input-synaptics
 ## 管理工具
 
 ```bash
-# 命令行管理工具：Synclient 
-pacman -S xf86-input-synaptics    
+# xf86-input-synaptics 自带了命令行管理工具：Synclient 
     
 # 图形管理工具：GPointing Device Settings
 yaourt -S gpointing-device-settings
