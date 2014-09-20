@@ -419,3 +419,20 @@ title: 安装 Arch Linux
 
     </fontconfig>
     ```
+
+对于konsole终端字体，可以在`~/.kde4/share/apps/konsole/Shell.profile`配置（设置页面的配置文件)，在页面中只允许更改monospace字体，可以在这里任意修改字体，如：
+
+```bash
+#    1                        2    3  4 5  6 7 8 9 10
+Font=WenQuanYi Micro Hei Mono,10.5,-1,5,62,0,0,0,0,0
+```
+
+该配置的含义没有文档！执行`konsole --list-profile-properties`可以看到字体的类型为`QFont`文档见：http://qt-project.org/doc/qt-4.8/qfont.html 。经测试，第1字段为Family，第2字段为Size，第5字段为Weight，第6字段为Italic(0或1)。
+
+Constant        | Value | Description
+---             | ---   | ---
+QFont::Light    | 25    |  25
+QFont::Normal   | 50    |  50
+QFont::DemiBold | 63    |  63
+QFont::Bold     | 75    |  75
+QFont::Black    | 87    |  87
