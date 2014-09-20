@@ -31,6 +31,7 @@ title: 安装 Arch Linux
 ## 连接网络
 
 * 无线网络
+
     ```bash
     netcfg(wifi-menu连接无线网）
     cd /etc/network.d
@@ -139,7 +140,7 @@ title: 安装 Arch Linux
     * 设置root密码：`passwd`
     * 添加用户：`useradd -m -g users -s /bin/bash harttle`，设置用户密码：`passwd harttle`
     * 删除用户：`userdel -r harttle`
-        
+
 ## 重建引导
 
 以grub为例，可选syslinux
@@ -156,7 +157,9 @@ title: 安装 Arch Linux
     * 搜索windows：`pacman -S os-prober`
     * 更新列表：`grub-mkconfig -o /boot/grub/grub.cfg`
 * 重启：`exit;umount /mnt{boot,home,};reboot`
-        
+
+> `/etc/default/grub`中添加`GRUB_SAVEDEFAULT="TRUE"`后再次`grub-mkconfig`将会默认选中上次启动的系统。
+
 ## 安装工具
 
 * AUR
@@ -172,7 +175,7 @@ title: 安装 Arch Linux
 * `sudo`
 
     安装：`pacman -S sudo`
-    配置：`etc/sudoers` 添加 `harttle ALL=(ALL) ALL`，使harttle可以使用sudo
+    配置：`/etc/sudoers` 添加 `harttle ALL=(ALL) ALL`，使harttle可以使用sudo
 
 * `bash` 自动补全：`bash-completion`
 
@@ -187,7 +190,7 @@ title: 安装 Arch Linux
 1. 安装图形界面的底层协议实现：`pacman -S xorg`
 
 1. 安装kde及其语言包：`pacman -S kde kde-l10n-zh_cn`
-    * 最小安装：`kdebase`，`phonon-gstreamer`，`kde-l10n-zh_cn`
+    * 最小安装：`kdebase`，`kde-l10n-zh_cn`
 
 1. 设置启动
     * 采用 `startx`：`~/.xinitrc` 加入 `exec ck-launch-session startx`
@@ -241,6 +244,8 @@ title: 安装 Arch Linux
         export QT_IM_MODULE=fcitx
         ```
     4. 设置启动：`cp /etc/xdg/autostart/fcitx-autostart.desktop ~/.config/autostart/`
+
+    > 输入法对不同语言的键盘映射在`/usr/share/fcitx/data/punc.mb.LANG`，可以手动更改（例如中文中括号）。
 
 * 终端输入法：fbterm
 
