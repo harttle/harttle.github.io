@@ -130,11 +130,11 @@ db.<collection_name>.help()
 
 MongoDB中的document为BSON格式，即二进制的JSON表示加上类型信息，所有的document存储在collection中。每个查询将得到一个目标collection，查询需指定criteria来得到符号条件的collection，再通过modifier对集合元素进行处理（比如排序）。
 
-[!](/assets/img/blog/crud-query-stages.png)
+![](/assets/img/blog/crud-query-stages.png)
 
 除了查询，还有`insert`,`update`,`remove`操作，它们均作用于单个collection：
 
-[!](/assets/img/blog/crud-insert-stages.png)
+![](/assets/img/blog/crud-insert-stages.png)
 
 > CRUD指create,read,update,delete
 
@@ -143,11 +143,13 @@ MongoDB中的document为BSON格式，即二进制的JSON表示加上类型信息
 可以直接将数据文件`/data/db`备份。而`mongodump`和`mongorestore`可以在`mongod`运行时完成备份和恢复。
 
 ```bash
-# mongodump
-# --db <database>, -d
+mongodump
+--db <database>, -d
 # 指定数据库，默认全部备份
-# --collection <collection>, -c
+
+--collection <collection>, -c
 # 指定集合，默认全部备份
-# --out <path>, -o
+
+--out <path>, -o
 # 输出目录，默认当前目录
 ```
