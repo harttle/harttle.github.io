@@ -1,0 +1,18 @@
+.recent{
+    width: 180px;
+    position: absolute;
+    right: -1px;
+    top: -14px;
+    z-index: 10;
+}
+.post{
+    margin-bottom: 50px;
+    padding: 40px;
+}
+.post h1.header{
+    font-weight: normal;
+    font-size: 36px;
+}
+.post a{ text-decoration: none; }
+.post .md{ margin: 20px 15px 30px 15px; }
+.post .more{ margin-top:-10px; }

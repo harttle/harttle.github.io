@@ -45,11 +45,9 @@ excerpt: '"Compilers", Alfred V. Aho, Monica S. Lam, Ravi Sethi, Jeffrey D. Ullm
 
 > 早期编程语言Algol 60中，采用 *传名称* （call-by-name）的机制，实参以类似宏的方式代替形参。
 
-
-# 词法分析
-
 <!--more-->
 
+# 词法分析
 
 词法分析器一般包括两级的处理：
 

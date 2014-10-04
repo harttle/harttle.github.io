@@ -7,35 +7,13 @@ subtitle: Keep It Simple, Stupid.
 <!-- style -->
 <link rel="stylesheet" href="/assets/css/markdown.css">
 <link rel="stylesheet" href="/assets/css/monokai-syntax.css">
-<style>
-    .recent{
-        width: 180px;
-        position: absolute;
-        right: -1px;
-        top: -14px;
-        z-index: 10;
-    }
-    .post{
-        margin-bottom: 50px;
-        padding: 40px;
-    }
-    .post h1.header{
-        font-weight: normal;
-        font-size: 36px;
-    }
-    .post a{ text-decoration: none; }
-    .post .md{ margin: 20px 15px 30px 15px; }
-    .post .more{ margin-top:-10px; }
-
-</style>
+<link rel="stylesheet" href="/assets/css/index.css">
 <!-- style -->
 
 <!-- content -->
+<img class="recent" src="/assets/img/recent.png"/>
 
-    <img class="recent" src="/assets/img/recent.png"/>
-
-    {% for post in paginator.posts %}
-
+{% for post in paginator.posts | where: "layout", "blog" %}
     <div class="post paper-curl pined">
         <h1 class="header">
             <a class="feature-link" href="{{post.url}}">{{ post.title }}</a>
@@ -47,20 +25,20 @@ subtitle: Keep It Simple, Stupid.
             {% include widget-categories.html post=post %}
             {% include widget-tags.html post=post %}
         </p>
-
         {% if post.content contains '<!--more-->' %}
-        <div class="md">{{ post.content | split:'<!--more-->' | first }}</div>
-        <a class="more pull-right button button-rounded button-flat-blue" href="{{ post.url }}">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
-
         {% elsif post.layout == 'album' %}
-        <div class="md">{{ post.content }}</div>
-        <a class="more pull-right button button-rounded button-flat-blue" href="{{ post.url }}">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
-
         {% else %}
-        <div class="md">{{ post.content }}</div>
         {% endif %}
+            <div class="md">{{ post.content | split:'<!--more-->' | first }}</div>
+            <a class="more pull-right button button-rounded button-flat-blue" href="{{ post.url }}">
+                Continue reading 
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+            <!--div class="md">{{ post.content }}</div>
+            <a class="more pull-right button button-rounded button-flat-blue" href="{{ post.url }}">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
+            <div class="md">{{ post.content }}</div-->
     </div>
-    {% endfor %}
+{% endfor %}
 
 <!-- Pagination links -->
 {% if paginator.total_pages > 1 %}

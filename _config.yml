@@ -13,8 +13,11 @@ markdown_ext:  md
 redcarpet:
     extensions: [no_intra_emphasis,tables,autolink,disable_indented_code_blocks,fenced_code_blocks]
 
-exclude: ['README.md', '.*']
+exclude: ['README.md', '*.sh', '.*']
 
+collections:
+    albums:
+        output: true
 
 gems:
   - jekyll-sitemap
