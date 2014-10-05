@@ -1,3 +1,0 @@
-<p>math <code>mr\omega^2 = F</code>, and math fences:</p>
-<pre><code>f(a) = \frac{1}{2\pi i}\oint_\gamma \frac{f(z)  }{z-a}dz
-</code></pre><p>can be rendered by custom option: math(code, isInline, lang)</p>

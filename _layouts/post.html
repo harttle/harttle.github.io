@@ -2,9 +2,7 @@
 layout: default
 ---
 
-<!-- style -->
 <style>
-
 .headerbar{
   background: rgba(255, 255, 255, 0.5);
   box-shadow: inset 0 -1px 0 white, 0 1px 5px rgba(0,0,0,.3);
@@ -22,11 +20,7 @@ layout: default
   margin-bottom: 15px;
 }
 </style>
-{% assign block = content | split: '<!-- style -->' %}
-{{ block[1] }}
-<!-- style -->
 
-<!-- content -->
 <div class="headerbar">
   <div class="page-header container">
     <h1>
@@ -34,29 +28,19 @@ layout: default
     </h1>
     <div>
         <div class="pull-left">
-            {% include widget-categories.html post=page %}
-            {% include widget-tags.html post=page %}
+            {% include categories.html post=page %}
+            {% include tags.html post=page %}
         </div>
         <div class="pull-right">
-            {% include widget-date.html post=page %}
+            {% include date.html post=page %}
         </div>
     </div>
   </div>
 </div>
 
 <div class="container">
- 
   <div id="page-content">
-
-    {% assign block = content | split: '<!-- content -->' %}
-    {{ block[1] }}
-
+    {{ content }}
   </div>
-
 </div>
-<!-- content -->
 
-<!-- script -->
-{% assign block = content | split: '<!-- script -->' %}
-{{ block[1] }}
-<!-- script -->

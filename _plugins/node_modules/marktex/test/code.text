@@ -1,9 +1,0 @@
-codespan `int` is enabled in markdown.
-
-while code fences are enabled in GFM:
-
-```javascript
-var a="helo world";
-```
-
-both can be highlighted by custom option: highlight(code, lang)

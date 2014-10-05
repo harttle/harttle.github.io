@@ -4,6 +4,7 @@ categories: reading
 title: 编译器
 tags: compile
 excerpt: '"Compilers", Alfred V. Aho, Monica S. Lam, Ravi Sethi, Jeffrey D. Ullman'
+icon: fa-building
 ---
 
 # 概论

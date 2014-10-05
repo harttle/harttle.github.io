@@ -1,0 +1,6 @@
+<tr>
+    <td class="date"> {% include date.html post=post %} </td>
+    <td class="title"> <a class="feature-link title" href="{{ post.url }}">{{ post.title }}</a> </td>
+    <td class="category"> {% include categories.html post=post %} </td>
+    <td class="tag"> {% include tags.html post=post %} </td>
+</tr>

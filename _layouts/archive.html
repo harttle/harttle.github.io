@@ -1,20 +1,20 @@
 ---
-layout: default 
+layout: banner 
 title: Archive
+subtitle: by Date, Category and Tag.
 nav: archive
 ---
 
-<!-- style -->
 <style>
 .archive-block{
     padding: 30px;
     margin-bottom: 50px;
 }
 .archive-block td.date{
-    width: 10%;
+    width: 15%;
 }
 .archive-block td.title{
-    width: 40%;
+    width: 35%;
 }
 .archive-block td.category{
     width: 10%;
@@ -23,7 +23,11 @@ nav: archive
     width: 40%;
 }
 .classifiers{
-    margin:30px 0;
+    background:rgba(255, 255, 255, 0.5);
+    -webkit-box-shadow:5px 5px 5px #333;
+    -moz-box-shadow:5px 5px 5px #333;
+    box-shadow:5px 5px 5px #333;
+    margin:0 0 30px;
 }
 .classifiers .button{
     margin: 20px 10px;
@@ -34,34 +38,18 @@ nav: archive
 .classifiers .button:last-child{
     margin-right: 20px;
 }
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+    vertical-align: middle;
+}
 </style>
-{% assign block = content | split: '<!--style-->' %}
-{{ block[1] }}
-<!-- style -->
-
-
-<!-- content -->
 
 <div class="container">
-
     <div class="classifiers paper pull-right">
-        <a class="button button-rounded button-flat-red" href="/archive-date.html">Date</a>
-        <a class="button button-rounded button-flat-blue" href="/archive-category.html">Category</a>
-        <a class="button button-rounded button-flat-yellow" href="/archive-tag.html">Tag</a>
+        <a class="button button-rounded button-flat-red" href="/date.html">Date</a>
+        <a class="button button-rounded button-flat-blue" href="/category.html">Category</a>
+        <a class="button button-rounded button-flat-yellow" href="/tag.html">Tag</a>
     </div>
-
     <div class="clearfix"></div>
-
-    <div>
-        {% assign block = content | split: '<!--content-->' %}
-        {{ block[1] }}
-    </div>
-
+    <div> {{ content }} </div>
 </div>
 
-<!-- content -->
-
-
-<!-- script -->
-<script> </script>
-<!-- script -->

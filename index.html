@@ -1,63 +1,125 @@
 ---
-layout: blogs
+layout: banner
 title: Harttleland
-subtitle: Keep It Simple, Stupid.
+subtitle: Keep It Simple, Stupid!
 ---
 
-<!-- style -->
 <link rel="stylesheet" href="/assets/css/markdown.css">
 <link rel="stylesheet" href="/assets/css/monokai-syntax.css">
 <link rel="stylesheet" href="/assets/css/index.css">
-<!-- style -->
+<style>
+    .item-list{
+        margin-bottom:50px;
+        padding: 15px 25px;
+        background-color: #FFFFCC;
+    }
+    .item-list li{
+        line-height:30px;
+    }
+    .item-list .page-header{
+        margin-bottom:10px;
+    }
+    .item-list ol{
+        padding-left:5px;
+    }
+    .pager{
+        margin-bottom: 0;
+    }
+</style>
+<script src="/assets/jquery/jquery-ias.min.js"></script>
 
-<!-- content -->
-<img class="recent" src="/assets/img/recent.png"/>
+<div class="row">
+    <div class="col-md-9"> {{ content }} 
+        <img class="recent" src="/assets/img/recent.png"/>
 
-{% for post in paginator.posts | where: "layout", "blog" %}
-    <div class="post paper-curl pined">
-        <h1 class="header">
-            <a class="feature-link" href="{{post.url}}">{{ post.title }}</a>
-            <div class="pull-right">
-                {% include widget-date.html post=post %}
+        <div id="posts">
+        {% for post in paginator.posts %}
+            <div class="post paper">
+                <h1 class="header">
+                    <a class="feature-link" href="{{post.url}}">{{ post.title }}</a>
+                    <div class="pull-right">
+                        {% include date.html post=post %}
+                    </div>
+                </h1>
+                <p>
+                    {% include categories.html post=post %}
+                    {% include tags.html post=post %}
+                </p>
+                <div class="md">{{ post.content | split:'<!--more-->' | first }}</div>
+                <a class="more pull-right button button-rounded button-flat-blue" href="{{ post.url }}">
+                    Full Post
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
             </div>
-        </h1>
-        <p>
-            {% include widget-categories.html post=post %}
-            {% include widget-tags.html post=post %}
-        </p>
-        {% if post.content contains '<!--more-->' %}
-        {% elsif post.layout == 'album' %}
-        {% else %}
+        {% endfor %}
+        </div>
+
+        <!-- Pagination -->
+        {% if paginator.total_pages > 1 %}
+        <ul class="pager">
+            {% if paginator.next_page %}
+            <li class="previous"><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Older</a></li>
+            {% else %}
+            <li class="previous disabled"><a>&larr; Older</a></li>
+            {% endif %}
+
+            {% if paginator.previous_page %}
+            <li class="next"><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">Newer &rarr;</a></li>
+            {% else %}
+            <li class="next disabled"><a>Newer &rarr;</a></li>
+            {% endif %}
+        </ul>
         {% endif %}
-            <div class="md">{{ post.content | split:'<!--more-->' | first }}</div>
-            <a class="more pull-right button button-rounded button-flat-blue" href="{{ post.url }}">
-                Continue reading 
-                <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
-            <!--div class="md">{{ post.content }}</div>
-            <a class="more pull-right button button-rounded button-flat-blue" href="{{ post.url }}">Continue reading <span class="glyphicon glyphicon-chevron-right"></span></a>
-            <div class="md">{{ post.content }}</div-->
+        {% include latex.html %}
     </div>
-{% endfor %}
+    <div class="col-md-3">
+        <div class="item-list paper-curl pined">
+            <h3 class="page-header"><a class="feature-link" href="/category.html">Categories</a></h3>
+            <ol class="list-unstyled">
+            {% for cate in site.categories %}
+                <li>
+                    <a href="/category.html#category-{{cate | first}}">
+                        {{cate | first | capitalize}}({{ cate | last | size }})
+                    </a>
+                </li>
+            {% endfor %}
+            </ol>
+        </div>
+        <div class="item-list paper-curl pined tags">
+            <h3 class="page-header"><a class="feature-link" href="/">Tags</a></h3>
+        {% for tag in site.tags %}
+            {% assign name  = tag|first %}
+            {% assign count = tag|last|size %}
+            <a class="label label-{% include randcolor.html num=count %}"
+                href="/tag.html#tag-{{ name }}">
+                {{ name }}({{ count }})
+            </a>
+        {% endfor %}
+        </div>
+    </div>
+</div>
 
-<!-- Pagination links -->
-{% if paginator.total_pages > 1 %}
-<ul class="pager">
-    {% if paginator.next_page %}
-    <li class="previous"><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Older</a></li>
-    {% else %}
-    <li class="previous disabled"><a>&larr; Older</a></li>
-    {% endif %}
+{% include moment.html %}
 
-    {% if paginator.previous_page %}
-    <li class="next"><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">Newer &rarr;</a></li>
-    {% else %}
-    <li class="next disabled"><a>Newer &rarr;</a></li>
-    {% endif %}
-</ul>
-{% endif %}
-<!-- content -->
-
-<!-- script -->
-{% include latex.html %}
-<!-- script -->
+<script>
+$(function(){
+    var ias = $.ias({
+      container:  '#posts',
+      item:       '.post',
+      pagination: '.pager',
+      next:       '.pager .previous a'
+    });
+    ias.on('loaded', function(data, items) {
+        for(var i in items){
+            update_moment(items[i]);
+        }
+    })
+    ias.extension(new IASSpinnerExtension({
+        src: '/assets/img/loading-069.gif'
+    }));
+    ias.extension(new IASNoneLeftExtension({
+        text: 'No more posts.',
+        html: '<div class="ias-noneleft" style="text-align: center;color:#fff">{text}</div>'
+    }));
+});
+</script>

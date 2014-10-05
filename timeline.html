@@ -1,0 +1,78 @@
+---
+layout: banner
+title: Timeline
+subtitle: Just code it!
+nav: timeline
+---
+
+<link rel="stylesheet" href="/assets/css/timeline.css"/>
+<style>
+.timeline .timeline-body hr{
+  margin-top:15px;
+  margin-bottom:10px;
+}
+.timeline .timeline-body .row{
+    margin-left:0;
+    margin-right:0;
+}
+.timeline .timeline-body .row .thumbnail{
+    margin-bottom: 0;
+}
+.timeline>li>.timeline-panel{
+  padding-bottom:15px;
+}
+</style>
+
+<ul class="timeline">
+{% for post in site.posts %}
+    <li class="{% cycle '', 'timeline-inverted' %}">
+        {% assign count = post.content|size %}
+        <div class="timeline-badge {% include randcolor.html num=count %}"
+            data-toggle="tooltip" data-placement="{% cycle 'right','left' %}" title="{{post.categories|first}}">
+            <!--specified by post-->
+            {% assign icon = post.icon %}
+            <!--derive by category-->
+            {% if icon == null %}
+                {% assign icons = site.cate_icons %}
+                {% assign cate = post.categories[0] %}
+                {% assign icon = icons[cate] %}
+            {% endif %}
+            <!--no category, it's album!-->
+            {% if icon == null %}
+                {% assign icon = "fa-photo" %}
+            {% endif %}
+            <i class="fa {{ icon }}"></i>
+        </div>
+        <div class="timeline-panel">
+            <div class="timeline-heading">
+                <h4 class="timeline-title">{{ post.title }}</h4>
+                <p>{% include date.html post=post %}</p>
+            </div>
+            <div class="timeline-body">
+                <div class="row">
+                {% if post.layout == "album" %}
+                    <a href="{{post.url}}" class="thumbnail col-xs-3">
+                        <img  class="lazy img-responsive" data-original="{{ post.file-pre }}thumb/{{ post.thumb }}"
+                              src="/assets/img/loading.gif" alt="{{ post.thumb }}">
+                    </a>
+                    <div class="col-xs-9"> {{ post.excerpt }} </div>
+                {% else %}
+                    <p> {{ post.excerpt }} </p>
+                {% endif %}
+
+                </div>
+                <hr/>
+                {% include tags.html post=post%}
+                <a class="pull-right button button-rounded button-flat-blue" 
+                    href="{{post.url}}">
+                    Full Post
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+                <div class="clearfix"></div>                                                         
+            </div>
+        </div>
+    </li>
+{% endfor %}
+</ul>
+
+{% include moment.html %}

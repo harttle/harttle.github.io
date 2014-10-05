@@ -3,8 +3,8 @@ url: http://harttle.github.io
 
 permalink: none
 
-paginate: 5
-paginate_path: "/page:num"
+paginate: 4
+paginate_path: "page:num"
 
 highlighter: pygments
 
@@ -15,9 +15,11 @@ redcarpet:
 
 exclude: ['README.md', '*.sh', '.*']
 
-collections:
-    albums:
-        output: true
-
 gems:
   - jekyll-sitemap
+
+cate_icons:
+  reading: "fa-book"
+  development: "fa-code"
+  linux: "fa-linux"
+  misc: "fa-file-text"

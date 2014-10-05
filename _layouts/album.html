@@ -2,12 +2,11 @@
 layout: post
 ---
 
-<!-- style -->
 <link rel="stylesheet" href="/assets/gallery-2.11.0/css/blueimp-gallery.min.css">
 <style>
-    .text-content{
-        color: white;
-    }
+   .text-content{
+       color: white;
+   }
   /* gallery 样式 */
   #blueimp-gallery .prev,#blueimp-gallery .next{
     color: grey;
@@ -22,7 +21,6 @@ layout: post
       display: none;
     }
   }
-  
   /* thumb items */
   .items .item{
     margin: 5px auto;
@@ -32,9 +30,7 @@ layout: post
     display: inline-block;
   }
 </style>
-<!-- style -->
 
-<!-- content -->
 <p class="lead text-content">{{ content }}</p>
 
 <div class="row items">
@@ -61,8 +57,8 @@ layout: post
 
 <div class="clearfix" style="margin-bottom: 15px;"></div>
 
-{% include prev-next.html %}
-{% include social-sharing.html %}
+{% include post-paginator.html %}
+{% include share.html %}
 
 <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
 <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
@@ -74,9 +70,7 @@ layout: post
     <a class="play-pause"></a>
     <ol class="indicator"></ol>
 </div>
-<!-- content -->
 
-<!-- script -->
 <script src="/assets/gallery-2.11.0/js/blueimp-gallery.min.js"></script>  
 <script>
   //galary display
@@ -89,4 +83,4 @@ layout: post
     blueimp.Gallery(links, options);
   });    
 </script>
-<!-- script -->
+

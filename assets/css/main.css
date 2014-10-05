@@ -11,6 +11,10 @@ body{
   border-radius:0;
 }
 
+.label{
+  margin: 0px 2px 5px;
+  display: inline-block;
+}
 
 /* Page header */
 .hl-header {
@@ -57,14 +61,14 @@ body{
     background-color: #fff;
 }
 .paper{
-    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(0, 0, 0, 0.8);
-    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(0, 0, 0, 0.8);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(0, 0, 0, 0.8);
+    -webkit-box-shadow: 7px 10px 10px #333;
+    -moz-box-shadow: 7px 10px 10px #333;
+    box-shadow: 7px 10px 10px #333;
 }
 .paper-curl{
-    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.3);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 5px rgba(0, 0, 0, 0.3);
+       -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .paper *:first-child, .paper-curl *:first-child{
@@ -127,12 +131,14 @@ a.feature-link:hover{
 
 /* color scheme */
 
-.widget-date{ 
-    color: #903;
-    font-size: 14px;
+.widget-date{
+  font-size: 14px;
+}
+.widget-date a{
+    color: inherit;
     font-family: Georgia, "Times New Roman", Times, serif;
 }
-.widget-date:hover{
+.widget-date a:hover{
     text-decoration: none;
     color: #903;
 }

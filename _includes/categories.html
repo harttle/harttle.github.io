@@ -1,0 +1,7 @@
+
+{% for cat in include.post.categories %}
+<span class="label label-blue" style="margin-right: 10px;">
+    <span class="glyphicon glyphicon-folder-open"></span>
+    <a href="/category.html#category-{{cat | uri_escape}}"> {{ cat | capitalize }}</a>
+</span>
+{% endfor %}

@@ -2,7 +2,6 @@
 layout: post
 ---
 
-<!-- style -->
 <link rel="stylesheet" href="/assets/css/markdown.css">
 <link rel="stylesheet" href="/assets/css/monokai-syntax.css">
 <style>
@@ -36,9 +35,7 @@ layout: post
 .MathJax *{ color: black!important;  }
 .md{ margin-top:20px; padding:30px; }
 </style>
-<!-- style -->
 
-<!-- content -->
 <div class="row post-display">
     <div class="col-md-3 col-sm-4 hidden-xs left" >
       <div class="sidebar"></div>
@@ -48,15 +45,11 @@ layout: post
             {{ content }}
         </div>
 
-        {% include prev-next.html %}
-        {% include social-sharing.html %}
+        {% include post-paginator.html %}
+        {% include share.html %}
     </div>
 </div>
 
-<!-- content -->
-
-
-<!-- script -->
 <script>
   $(function(){    
     var toc = getTOC($('.post-display .right'));
@@ -126,4 +119,3 @@ layout: post
 
 {% include latex.html %}
 
-<!-- script -->

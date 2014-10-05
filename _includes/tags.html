@@ -1,0 +1,7 @@
+
+{% for tag in include.post.tags %}
+<span class="label label-yellow" style="margin-right: 10px;">
+    <span class="glyphicon glyphicon-tag"></span>
+    <a href="/tag.html#tag-{{ tag | uri_escape }}">{{ tag | capitalize }}</a>
+</span>
+{% endfor %}
