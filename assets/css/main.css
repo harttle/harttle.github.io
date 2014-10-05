@@ -4,6 +4,7 @@ body{
   /*-webkit-font-smoothing: antialiased;*/
   position: relative; /* for scroll spy with absolute position */
   background-color: #069;
+  font-family: "Helvetica Neue",微软雅黑,Helvetica,Arial,sans-serif;
 }
 
 .global-nav{
