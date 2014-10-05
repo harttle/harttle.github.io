@@ -17,9 +17,8 @@ subtitle: Those were the days.
 {% for post in site.posts %}  
 {% if post.layout == 'album' %}
 
-    {% assign classes = "danger,default,info,primary,warning" | split : "," %}
-    {% assign index = post.content | size | modulo:5 %}
-    <div class="panel panel-{{ classes[index] }}">
+    {% assign count = post.content | size %}
+    <div class="panel panel-{% include randcolor.html num=count %}">
         <div class="panel-heading">
             <h3 class="panel-title" title="{{post.subtitle}}">
                 <i class="{{ page.post-icon }}"></i> 

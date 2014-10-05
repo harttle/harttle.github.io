@@ -28,7 +28,7 @@ nav: timeline
     <li class="{% cycle '', 'timeline-inverted' %}">
         {% assign count = post.content|size %}
         <div class="timeline-badge {% include randcolor.html num=count %}"
-            data-toggle="tooltip" data-placement="{% cycle 'right','left' %}" title="{{post.categories|first}}">
+            data-toggle="tooltip" data-placement="{% cycle 'right','left' %}" title="{{post.date|date_to_string}}">
             <!--specified by post-->
             {% assign icon = post.icon %}
             <!--derive by category-->
@@ -62,6 +62,7 @@ nav: timeline
 
                 </div>
                 <hr/>
+                {% include categories.html post=post%}
                 {% include tags.html post=post%}
                 <a class="pull-right button button-rounded button-flat-blue" 
                     href="{{post.url}}">
