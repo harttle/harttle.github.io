@@ -130,8 +130,8 @@ title: 安装 Arch Linux
     * 启用自动连接
         * 单一网络：`systemctl enable dhcpcd@eth0.service`
         * 变化网络：自动连接在 `/etc/network.d` 下的网络
+
             ```bash
-            systemctl enable net-auto-wired.service
             systemctl enable net-auto-wired.service
             systemctl enable net-auto-wireless.service
             ```
@@ -245,7 +245,7 @@ title: 安装 Arch Linux
         ```
     4. 设置启动：`cp /etc/xdg/autostart/fcitx-autostart.desktop ~/.config/autostart/`
 
-    > 输入法对不同语言的键盘映射在`/usr/share/fcitx/data/punc.mb.LANG`，可以手动更改（例如中文中括号）。
+    > 输入法对不同语言的键盘映射在`~/.config/fcitx/data/punc.mb.<LANG>`，可以手动更改（例如中文中括号）。
 
 * 终端输入法：fbterm
 
@@ -284,146 +284,101 @@ title: 安装 Arch Linux
     <?xml version='1.0'?>
     <!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
     <fontconfig>
-        <match target="font">
-            <edit name="antialias" mode="assign"><bool>true</bool></edit>
-            <edit name="rgba" mode="append"><const>rgb</const></edit>
-            <edit name="lcdfilter" mode="append"><const>lcddefault</const></edit>
-            <edit name="autohint" mode="append"><bool>false</bool></edit>
-            <edit name="hinting" mode="assign"><bool>true</bool></edit>
-            <edit name="hintstyle" mode="assign"><const>hintslight</const></edit>
-        </match>
+     <match target="font">
+      <edit name="spacing"> <int>0</int> </edit>
+      <edit mode="assign" name="antialias"> <bool>true</bool> </edit>
+      <edit mode="assign" name="hinting"> <bool>true</bool> </edit>
+      <edit mode="assign" name="hintstyle"> <const>hintslight</const> </edit>
+      <edit mode="assign" name="autohint"> <bool>false</bool> </edit>
+      <edit mode="assign" name="rh_prefer_bitmaps"> <bool>false</bool> </edit>
+      <edit mode="assign" name="rgba"> <const>rgb</const> </edit>
+      <edit name="embeddedbitmap"> <bool>false</bool> </edit>
+      <edit mode="append" name="lcdfilter"> <const>lcddefault</const> </edit>
+     </match>
+     <alias>
+      <family>serif</family>
+      <prefer>
+       <family>WenQuanYi Zen Hei</family>
+       <family>Bitstream Vera Serif</family>
+       <family>DejaVu Serif</family>
+      </prefer>
+     </alias>
+     <alias>
+      <family>sans-serif</family>
+      <prefer>
+       <family>WenQuanYi Zen Hei</family>
+       <family>DejaVu Sans</family>
+       <family>Bitstream Vera Sans</family>
+      </prefer>
+     </alias>
+     <alias>
+      <family>monospace</family>
+      <prefer>
+       <family>WenQuanYi Zen Hei Mono</family>
+       <family>DejaVu Sans Mono</family>
+       <family>Bitstream Vera Sans Mono</family>
+      </prefer>
+     </alias>
 
-        <alias binding="strong">
-            <family>serif</family>
-            <prefer>
-                <family>DejaVu Serif</family>
-                <family>WenQuanYi Zen Hei</family>
-            </prefer>
-        </alias>
+     <!-- To substitute some famous Chinese fonts -->
+     <match target="pattern">
+      <test name="family"> <string>宋体</string> </test>
+      <edit mode="assign" name="family"> <string>SimSun</string> </edit>
+     </match>
+     <match target="pattern">
+      <test name="family"> <string>新宋体</string> </test>
+      <edit mode="assign" name="family"> <string>SimSun</string> </edit>
+     </match>
+     <match target="pattern">
+      <test name="family"> <string>楷体</string> </test>
+      <edit mode="assign" name="family"> <string>KaiTi</string> </edit>
+     </match>
+     <match target="pattern">
+      <test name="family"> <string>楷体_GB2312</string> </test>
+      <edit mode="assign" name="family"> <string>KaiTi</string> </edit>
+     </match>
+     <match target="pattern">
+      <test name="family"> <string>黑体</string> </test>
+      <edit mode="assign" name="family"> <string>SimHei</string> </edit>
+     </match>
+     <match target="pattern">
+      <test name="family"> <string>微软雅黑</string> </test>
+      <edit mode="assign" name="family"> <string>SimHei</string> </edit>
+     </match>
+     <alias binding="strong">
+      <family>SimSun</family>
+      <accept> <family>AR PL UMing CN</family> </accept>
+     </alias>
+     <alias binding="strong">
+      <family>KaiTi</family>
+      <accept> <family>AR PL UKai CN</family> </accept>
+     </alias>
+     <alias binding="strong">
+      <family>SimHei</family>
+      <accept> <family>WenQuanYi Zen Hei</family> </accept>
+     </alias>
 
-        <alias binding="strong">
-            <family>sans-serif</family>
-            <prefer>
-                <family>DejaVu Sans</family>
-                <family>WenQuanYi Zen Hei</family>
-            </prefer>
-        </alias>
-
-        <alias binding="strong">
-            <family>monospace</family>
-            <prefer>
-                <family>DejaVu Sans Mono</family>
-                <family>WenQuanYi Zen Hei Mono</family>
-            </prefer>
-        </alias>
-
-        <!-- To substitute some famous Chinese fonts -->
-        <match target="pattern">
-            <test name="family">
-                <string>宋体</string>
-            </test>
-            <edit name="family" mode="assign">
-                <string>SimSun</string>
-            </edit>
-        </match>
-
-        <match target="pattern">
-            <test name="family">
-                <string>新宋体</string>
-            </test>
-            <edit name="family" mode="assign">
-                <string>SimSun</string>
-            </edit>
-        </match>
-
-        <match target="pattern">
-            <test name="family">
-                <string>楷体</string>
-            </test>
-            <edit name="family" mode="assign">
-                <string>KaiTi</string>
-            </edit>
-        </match>
-
-        <match target="pattern">
-            <test name="family">
-                <string>楷体_GB2312</string>
-            </test>
-            <edit name="family" mode="assign">
-                <string>KaiTi</string>
-            </edit>
-        </match>
-
-        <match target="pattern">
-            <test name="family">
-                <string>黑体</string>
-            </test>
-            <edit name="family" mode="assign">
-                <string>SimHei</string>
-            </edit>
-        </match>
-
-        <match target="pattern">
-            <test name="family">
-                <string>微软雅黑</string>
-            </test>
-            <edit name="family" mode="assign">
-                <string>SimHei</string>
-            </edit>
-        </match>
-
-        <alias binding="strong">
-            <family>SimSun</family>
-            <accept>
-                <family>AR PL UMing CN</family>
-            </accept>
-        </alias>
-
-        <alias binding="strong">
-            <family>KaiTi</family>
-            <accept>
-                <family>AR PL UKai CN</family>
-            </accept>
-        </alias>
-
-        <alias binding="strong">
-            <family>SimHei</family>
-            <accept>
-                <family>WenQuanYi Zen Hei</family>
-            </accept>
-        </alias>
-
-        <!-- To substitute some English fonts -->
-        <alias binding="strong">
-            <family>BookAntiqua</family>
-            <accept>
-                <family>URW Palladio L</family>
-            </accept>
-        </alias>
-
-        <alias binding="strong">
-            <family>Georgia</family>
-            <accept>
-                <family>Liberation Serif</family>
-            </accept>
-        </alias>
-
-        <alias binding="strong">
-            <family>Verdana</family>
-            <accept>
-                <family>Liberation Sans</family>
-            </accept>
-        </alias>
-
-        <alias binding="strong">
-            <family>Calibri</family>
-            <accept>
-                <family>Liberation Sans</family>
-            </accept>
-        </alias>
-
+     <!-- To substitute some English fonts -->
+     <alias binding="strong">
+      <family>BookAntiqua</family>
+      <accept> <family>URW Palladio L</family> </accept>
+     </alias>
+     <alias binding="strong">
+      <family>Georgia</family>
+      <accept> <family>Liberation Serif</family> </accept>
+     </alias>
+     <alias binding="strong">
+      <family>Verdana</family>
+      <accept> <family>Liberation Sans</family> </accept>
+     </alias>
+     <alias binding="strong">
+      <family>Calibri</family>
+      <accept> <family>Liberation Sans</family> </accept>
+     </alias>
     </fontconfig>
     ```
+
+> Ubuntu 的`hintstyle`选择`slighthint`较好。有些桌面环境的字体配置模块会在桌面启动时对`~/.config/fontconfig/fonts.conf`进行修改，此时应保持字体模块的设置与此相同。
 
 对于konsole终端字体，可以在`~/.kde4/share/apps/konsole/Shell.profile`配置（设置页面的配置文件)，在页面中只允许更改monospace字体，可以在这里任意修改字体，如：
 
