@@ -1,12 +1,12 @@
 <ul class="pager" style="margin: 30px 0 0">
     {% if page.previous %}
     <li class="previous">
-        <a data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}" href="{{page.previous.url}}">&larr; Older</a>
+        <a data-toggle="tooltip" data-placement="right" title="{{page.previous.title}}" href="{{page.previous.url}}">&larr; Older</a>
     </li>
     {% endif %}
     {% if page.next %}
     <li class="next">
-        <a data-toggle="tooltip" data-placement="top" title="{{page.next.title}}" href="{{page.next.url}}">Newer &rarr;</a>
+        <a data-toggle="tooltip" data-placement="left" title="{{page.next.title}}" href="{{page.next.url}}">Newer &rarr;</a>
     </li>
     {% endif %}
 </ul>
