@@ -73,7 +73,7 @@
     .timeline > li > .timeline-panel:after {
         position: absolute;
         top: 27px;
-        right: -13px;
+        right: -14px;
         display: inline-block;
         border-top: 14px solid transparent;
         border-left: 14px solid #fff;
@@ -116,7 +116,7 @@
     .timeline > li.timeline-inverted > .timeline-panel:after {
         border-left-width: 0;
         border-right-width: 14px;
-        left: -13px;
+        left: -14px;
         right: auto;
     }
 
