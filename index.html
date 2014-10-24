@@ -13,18 +13,10 @@ subtitle: Keep It Simple, Stupid!
         padding: 15px 25px;
         background-color: #FFFFCC;
     }
-    .item-list li{
-        line-height:30px;
-    }
-    .item-list .page-header{
-        margin-bottom:10px;
-    }
-    .item-list ol{
-        padding-left:5px;
-    }
-    .pager{
-        margin-bottom: 0;
-    }
+    .item-list li{ line-height:30px; }
+    .item-list .page-header{ margin-bottom:10px; }
+    .item-list ol{ padding-left:5px; }
+    .pager{ margin-bottom: 0; }
 </style>
 <script src="/assets/jquery/jquery-ias.min.js"></script>
 
@@ -96,6 +88,14 @@ subtitle: Keep It Simple, Stupid!
             </a>
         {% endfor %}
         </div>
+        <div class="item-list paper-curl pined tags">
+            <h3 class="page-header"><a class="feature-link" href="/">Recent</a></h3>
+            <ol class="list-unstyled">
+            {% for post in site.posts limit : 7 %}
+                <li> <a data-toggle="tooltip" data-placement="left" title="{{ post.date | date: "%Y-%m-%d"}}" href="{{post.url}}">{{post.title}}</a> </li>
+            {% endfor %}
+            </ol>
+        </div>
     </div>
 </div>
 
@@ -110,13 +110,9 @@ $(function(){
       next:       '.pager .previous a'
     });
     ias.on('loaded', function(data, items) {
-        for(var i in items){
-            update_moment(items[i]);
-        }
+        for(var i in items){ update_moment(items[i]); }
     })
-    ias.extension(new IASSpinnerExtension({
-        src: '/assets/img/loading-069.gif'
-    }));
+    ias.extension(new IASSpinnerExtension({ src: '/assets/img/loading-069.gif' }));
     ias.extension(new IASNoneLeftExtension({
         text: 'No more posts.',
         html: '<div class="ias-noneleft" style="text-align: center;color:#fff">{text}</div>'

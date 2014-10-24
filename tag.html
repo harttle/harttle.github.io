@@ -4,9 +4,7 @@ nav-tag: true
 ---
 
 <style>
-    body{
-        background-color: #cc3;
-    }
+    body{ background-color: #cc3; }
 </style>
 
 {% for tag in site.tags %}
@@ -14,9 +12,7 @@ nav-tag: true
         <h3>{{tag[0] | capitalize }}</h3>
         <table class="table table-striped">
         {% for post in tag[1] %}
-            {% for post in tag[1] %}
                 {% include tr-post.html %}
-            {% endfor %}
         {% endfor %}
         </table>
     </div>

@@ -2,10 +2,10 @@
 layout: blog
 categories: development
 title: NodeJs 架设 Web API 服务器
-tags: node javascript web
+tags: javascript web database bix
 ---
 
-首先安装这些软件：
+本文尝试使用js风格来构建整个web服务，包括nodejs运行时、MongoDB json风格数据库、redis内存数据库。首先安装这些软件：
 
 ```bash
 # centos

@@ -3,7 +3,7 @@ layout: blog
 title: 自动图片处理
 subtitle: 站点后台工具
 categories: development
-tags: web linux make
+tags: web linux
 excerpt: 采用 ImageMagick + Makefile 的方式，批量地更新用于web的缩略图。
 ---
 
