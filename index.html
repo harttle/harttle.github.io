@@ -65,8 +65,16 @@ subtitle: Keep It Simple, Stupid!
         {% include latex.html %}
     </div>
     <div class="col-md-3">
-        <div class="item-list paper-curl pined">
-            <h3 class="page-header"><a class="feature-link" href="/category.html">Categories</a></h3>
+      <div class="item-list paper-curl tags">
+        <h4 class="page-header"><a class="feature-link" href="/">Recent</a></h4>
+        <ol class="list-unstyled">
+          {% for post in site.posts limit : 7 %}
+          <li> <a data-toggle="tooltip" data-placement="left" title="{{ post.date | date: "%Y-%m-%d"}}" href="{{post.url}}">{{post.title}}</a> </li>
+          {% endfor %}
+        </ol>
+      </div>
+        <div class="item-list paper-curl">
+            <h4 class="page-header"><a class="feature-link" href="/category.html">Categories</a></h4>
             <ol class="list-unstyled">
             {% for cate in site.categories %}
                 <li>
@@ -77,8 +85,8 @@ subtitle: Keep It Simple, Stupid!
             {% endfor %}
             </ol>
         </div>
-        <div class="item-list paper-curl pined tags">
-            <h3 class="page-header"><a class="feature-link" href="/">Tags</a></h3>
+        <div class="item-list paper-curl tags">
+            <h4 class="page-header"><a class="feature-link" href="/">Tags</a></h4>
         {% for tag in site.tags %}
             {% assign name  = tag|first %}
             {% assign count = tag|last|size %}
@@ -87,14 +95,6 @@ subtitle: Keep It Simple, Stupid!
                 {{ name }}({{ count }})
             </a>
         {% endfor %}
-        </div>
-        <div class="item-list paper-curl pined tags">
-            <h3 class="page-header"><a class="feature-link" href="/">Recent</a></h3>
-            <ol class="list-unstyled">
-            {% for post in site.posts limit : 7 %}
-                <li> <a data-toggle="tooltip" data-placement="left" title="{{ post.date | date: "%Y-%m-%d"}}" href="{{post.url}}">{{post.title}}</a> </li>
-            {% endfor %}
-            </ol>
         </div>
     </div>
 </div>

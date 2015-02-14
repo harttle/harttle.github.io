@@ -1,18 +1,18 @@
 /*main css file for harttle land*/
 
-body{
+body {
   /*-webkit-font-smoothing: antialiased;*/
   position: relative; /* for scroll spy with absolute position */
-  background-color: #069;
-  font-family: "Helvetica Neue",微软雅黑,Helvetica,Arial,sans-serif;
+  background-color: #efefef;
+  font-family: "Helvetica Neue", 微软雅黑, Helvetica, Arial, sans-serif;
 }
 
-.global-nav{
+.global-nav {
   margin-bottom: 0;
-  border-radius:0;
+  border-radius: 0;
 }
 
-.label{
+.label {
   margin: 0px 2px 5px;
   display: inline-block;
 }
@@ -20,35 +20,41 @@ body{
 /* Page header */
 .hl-header {
   margin-top: 0;
-  margin-bottom:0;
+  margin-bottom: 0;
   color: #cdbfe3;
   background-image: url(/assets/img/bg.jpg);
   padding: 30px 15px 40px; /* side padding builds on .container 15px, so 30px */
   font-size: 16px;
   text-align: center;
-  text-shadow: 0 1px 0 rgba(0,0,0,.15);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .15);
   border-bottom: 3px solid #fff;
-  box-shadow: inset 0 -1px 0 white, 0 1px 5px rgba(0,0,0,.3);
+  box-shadow: inset 0 -1px 0 white, 0 1px 5px rgba(0, 0, 0, .3);
 }
+
 .hl-header h1 {
   color: #fff;
 }
-.hl-header small{
+
+.hl-header small {
   color: lightgrey;
   font-family: cursive;
 }
+
 .hl-header p {
   font-weight: 300;
   line-height: 1.5;
 }
+
 .hl-header .container {
   position: relative;
 }
+
 @media (min-width: 768px) {
   .hl-header {
     font-size: 21px;
     text-align: left;
   }
+
   .hl-header h1 {
     font-size: 45px;
     line-height: 1;
@@ -56,175 +62,178 @@ body{
 }
 
 /* papper effect */
-.paper, .paper-curl
-{
-    position: relative;
-    background-color: #fff;
-}
-.paper{
-    -webkit-box-shadow: 7px 10px 10px #333;
-    -moz-box-shadow: 7px 10px 10px #333;
-    box-shadow: 7px 10px 10px #333;
-}
-.paper-curl{
-    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 5px rgba(0, 0, 0, 0.3);
-       -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 5px rgba(0, 0, 0, 0.3);
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 5px rgba(0, 0, 0, 0.3);
+.paper, .paper-curl {
+  position: relative;
+  background-color: #fff;
 }
 
-.paper *:first-child, .paper-curl *:first-child{
-    margin-top: 0;
-}
-.paper *:last-child, .paper-curl *:last-child{
-    margin-bottom: 0;
+.paper {
+  box-shadow: 4px 7px 10px #333;
 }
 
-.paper-curl:before
-{
-    position: absolute;
-    width: 200px;
-    height: 300px;
-    max-width: 80%;
-    max-height: 80%;
-    left: 8px;
-    top: 7px;
-    content: ' ';
-    background: transparent;
-    transform: skew(3deg, 3deg); -webkit-transform: skew(3deg, 3deg); -moz-transform: skew(3deg, 3deg); -ms-transform: skew(3deg, 3deg); -o-transform: skew(3deg, 3deg); 
-    box-shadow: -6px 6px 12px rgba(0, 0, 0, 0.3); -webkit-box-shadow: -6px 6px 12px rgba(0, 0, 0, 0.3); -moz-box-shadow: -6px 6px 12px rgba(0, 0, 0, 0.3);
-    z-index: -1;
-} 
+.paper-curl {
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2), inset 0 0 1px rgba(0, 0, 0, 0.3);
+}
 
-.paper-curl:after
-{
-    position: absolute;
-    width: 250px;
-    height: 300px;
-    max-width: 80%;
-    max-height: 80%;
-    right: 8px;
-    bottom: 10px;
-    content: ' ';
-    background: transparent;
-    transform: skew(3deg, 3deg); -webkit-transform: skew(3deg, 3deg); -moz-transform: skew(3deg, 3deg); -ms-transform: skew(3deg, 3deg); -o-transform: skew(3deg, 3deg); 
-    box-shadow: -6px 12px 12px rgba(0, 0, 0, 0.7); -webkit-box-shadow: -6px 12px 12px rgba(0, 0, 0, 0.7); -moz-box-shadow: -6px 12px 12px rgba(0, 0, 0, 0.7);
-    z-index: -1;
+.paper *:first-child, .paper-curl *:first-child {
+  margin-top: 0;
+}
 
-} 
-.pined{
-    background-image: url(/assets/img/tack.jpg);
-    background-repeat: no-repeat;
-    background-position: right 5px top 5px;
-    background-size: 30px;
+.paper *:last-child, .paper-curl *:last-child {
+  margin-bottom: 0;
+}
+
+.paper-curl:before {
+  position: absolute;
+  width: 200px;
+  height: 300px;
+  max-width: 80%;
+  max-height: 80%;
+  left: 8px;
+  top: 7px;
+  content: ' ';
+  background: transparent;
+  transform: skew(3deg, 3deg);
+  box-shadow: -6px 6px 12px rgba(0, 0, 0, 0.3);
+  z-index: -1;
+}
+
+.paper-curl:after {
+  position: absolute;
+  width: 250px;
+  height: 300px;
+  max-width: 80%;
+  max-height: 80%;
+  right: 8px;
+  bottom: 10px;
+  content: ' ';
+  background: transparent;
+  transform: skew(3deg, 3deg);
+  box-shadow: -6px 12px 12px rgba(0, 0, 0, 0.7);
+  z-index: -1;
+
+}
+
+.pined {
+  background-image: url(/assets/img/tack.jpg);
+  background-repeat: no-repeat;
+  background-position: right 5px top 5px;
+  background-size: 30px;
 }
 
 /* Featured link */
 
-a.feature-link{
-    color: #000;
-    text-decoration: none;
-    transition: color .2s ease-out 0s;
-}
-a.feature-link:hover{
-    color: #903;
+a.feature-link {
+  color: #000;
+  text-decoration: none;
+  transition: color .2s ease-out 0s;
 }
 
+a.feature-link:hover {
+  color: #903;
+}
 
 /* color scheme */
 
-.widget-date{
+.widget-date {
   font-size: 14px;
 }
-.widget-date a{
-    color: inherit;
-    font-family: Georgia, "Times New Roman", Times, serif;
-}
-.widget-date a:hover{
-    text-decoration: none;
-    color: #903;
-}
-.label-blue{ background-color: #069; }
-.label-yellow{ background-color: #cc3; }
-.label-red{ background-color: #903; }
-.label-darkred{ background-color: #603; }
-.page-header {border-bottom: 1px solid #603;}
 
-.label, .label a, .button{ color: #fff; }
-.label:hover, .label a:hover, .button:hover{ color: #fff; text-decoration: none; }
+.widget-date a {
+  color: inherit;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.widget-date a:hover {
+  text-decoration: none;
+  color: #903;
+}
+
+.label-blue {
+  background-color: #069;
+}
+
+.label-yellow {
+  background-color: #883;
+}
+
+.label-red {
+  background-color: #903;
+}
+
+.label-darkred {
+  background-color: #603;
+}
+
+.page-header {
+  border-bottom: 1px solid #333;
+}
+
+.label, .label a, .button {
+  color: #fff;
+}
+
+.label:hover, .label a:hover, .button:hover {
+  color: #fff;
+  text-decoration: none;
+}
 
 .button-flat-blue {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
   box-shadow: none;
-  -webkit-transition-property: background;
-  -moz-transition-property: background;
-  -o-transition-property: background;
   transition-property: background;
-  -webkit-transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
   background: #069;
   color: white;
   text-shadow: none;
-  border: none; }
+  border: none;
+}
+
 .button-flat-blue:hover {
-    background: #06c; }
+  background: #06c;
+}
 
 .button-flat-red {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
   box-shadow: none;
-  -webkit-transition-property: background;
-  -moz-transition-property: background;
-  -o-transition-property: background;
   transition-property: background;
-  -webkit-transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
   background: #903;
   color: white;
   text-shadow: none;
-  border: none; }
+  border: none;
+}
+
 .button-flat-red:hover {
-    background: #c03; }
+  background: #c03;
+}
 
 .button-flat-yellow {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
   box-shadow: none;
-  -webkit-transition-property: background;
-  -moz-transition-property: background;
-  -o-transition-property: background;
   transition-property: background;
-  -webkit-transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
   background: #cc3;
   color: white;
   text-shadow: none;
-  border: none; }
-.button-flat-yellow:hover {
-    background: #dd5; }
+  border: none;
+}
 
+.button-flat-yellow:hover {
+  background: #dd5;
+}
 
 /* scrollUp button */
 
-#scrollUp{
-  bottom: 40px;  
-  right: 40px; 
-  height: 38px; 
+#scrollUp {
+  bottom: 40px;
+  right: 40px;
+  height: 38px;
   width: 38px;
   opacity: 0.5;
   background: url(/assets/img/top.png) no-repeat;
 }
-#scrollUp:hover{
+
+#scrollUp:hover {
   opacity: 1;
 }
-
-
 
 /* credit */
 
@@ -233,16 +242,19 @@ a.feature-link:hover{
   height: 20px;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;  
+  text-overflow: ellipsis;
 }
-.credit p{
+
+.credit p {
   display: inline;
 }
-.credit .follow a{
+
+.credit .follow a {
   color: #999;
   margin-left: 5px;
 }
-.credit .follow a:hover{
+
+.credit .follow a:hover {
   color: #fff;
   text-decoration: none;
 }

@@ -5,7 +5,7 @@ layout: post
 <link rel="stylesheet" href="/assets/css/markdown.css">
 <link rel="stylesheet" href="/assets/css/monokai-syntax.css">
 <style>
-.sidebar{ width: 213px; margin-top:20px;}
+.sidebar{ width: 200px; margin-top:20px;}
 .sidebar ul{margin-top: 0;margin-bottom:0;}
 .sidebar.affix { position: fixed; top: 20px; }
 .sidebar.affix-bottom { position: absolute;}
@@ -13,7 +13,7 @@ layout: post
 .sidebar .nav .nav { display: none;}
 .sidebar .nav > .active > ul { display: block; }
 .sidebar .nav > li > a { display: block; padding: 5px 15px; color: #428bca; text-decoration: none; }
-.sidebar .nav > li > a:hover, .sidebar .nav > li > a:focus { text-decoration: none; background-color: #ffc; border-right: 2px solid #c03; }
+.sidebar .nav > li > a:hover{ text-decoration: none; background-color: #ffc; border-right: 2px solid #c03; }
 .sidebar .nav .nav > li > a { padding-top:3px; padding-bottom:3px; margin-left: 10px; font-size: 90%; }
 .sidebar .nav .nav .nav > li > a { margin-left: 20px; }
 .sidebar .nav .nav .nav .nav > li > a { margin-left: 30px; }
@@ -33,14 +33,14 @@ layout: post
 .sidenav { margin-top: 20px; margin-bottom: 20px; background: #fff; }
    
 .MathJax *{ color: black!important;  }
-.md{ margin-top:20px; padding:30px; }
+.md{ margin-top:20px; padding:80px; }
 </style>
 
 <div class="row post-display">
-    <div class="col-md-3 col-sm-4 hidden-xs left" >
+    <div class="col-lg-2 col-md-3 col-sm-4 hidden-xs left" >
       <div class="sidebar"></div>
     </div>
-    <div class="col-md-9 col-sm-8 right">
+    <div class="col-lg-10 col-md-9 col-sm-8 right">
         <div class="md paper">
             {{ content }}
         </div>
