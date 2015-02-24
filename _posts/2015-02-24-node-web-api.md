@@ -1,11 +1,11 @@
 ---
 layout: blog
 categories: development
-title: NodeJs 架设 Web API 服务器
+title: 在CentOS上运行 Node.js API 服务器
 tags: javascript web database bix
 ---
 
-本文尝试使用js风格来构建整个web服务，包括nodejs运行时、MongoDB json风格数据库、redis内存数据库。首先安装这些软件：
+本文尝试在CentOS服务器上，使用js来构建整个web服务，包括nodejs运行时、MongoDB json风格数据库、redis内存数据库。首先安装这些软件：
 
 ```bash
 # centos
@@ -18,6 +18,8 @@ brew install mongodb nodejs redis
 # Node
 
 ## 运行服务器
+
+本文只是使用`screen`完成服务器软件的运行，并未完整地部署。实际的生产环境部署中，需要完整的日志记录、服务器性能监控等。
 
 启动redis：
 
@@ -39,7 +41,7 @@ sudo npm start      # 启动node
 <C-a-d>             # detach当前任务
 ```
 
-## Token
+## API Token
 
 Web API中的权限一般通过Token来识别。不同于 web page，API不方便使用 cookie 而通常通过 Token 来验证用户：
 
@@ -65,28 +67,6 @@ User.methods.getToken = function(){
 User.statics.findByToken = function(token, callback){
       this.findOne({ username: jwt.decode(token, secret)}, callback);
 }
-```
-
-## 回调的同步
-
-在nodejs中，异步IO的机制导致回调函数到处都是，而`async`包提供了同步这些回调函数的功能。
-
-```js
-var async = require('async')
-
-async.parallel(
-  {
-    apples:   function(callback){
-                callback(null,1)
-              },  
-    oranges:  function(callback){
-                callback(null,2)
-              }
-  },  
-  function(err, result){
-    // result.apples == 1
-    // result.oranges == 2
-  }) 
 ```
 
 # MongoDB
