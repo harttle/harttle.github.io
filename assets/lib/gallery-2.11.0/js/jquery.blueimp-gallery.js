@@ -15,7 +15,7 @@
     'use strict';
     if (typeof define === 'function' && define.amd) {
         define([
-            'jquery',
+            'jquery.blueimp-gallery',
             './blueimp-gallery.js'
         ], factory);
     } else {
