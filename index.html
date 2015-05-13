@@ -111,8 +111,8 @@ $(function(){
     });
     ias.on('loaded', function(data, items) {
         for(var i in items){ update_moment(items[i]); }
-    })
-    ias.extension(new IASSpinnerExtension({ src: '/assets/img/loading-069.gif' }));
+    });
+    ias.extension(new IASSpinnerExtension({ src: '/assets/img/loading.gif' }));
     ias.extension(new IASNoneLeftExtension({
         text: 'No more posts.',
         html: '<div class="ias-noneleft" style="text-align: center;color:#fff">{text}</div>'

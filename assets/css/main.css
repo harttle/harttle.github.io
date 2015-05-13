@@ -3,7 +3,7 @@
 body {
   /*-webkit-font-smoothing: antialiased;*/
   position: relative; /* for scroll spy with absolute position */
-  background-color: #efefef;
+  background-color: white;
   font-family: "Helvetica Neue", 微软雅黑, Helvetica, Arial, sans-serif;
 }
 
@@ -13,7 +13,7 @@ body {
 }
 
 .label {
-  margin: 0px 2px 5px;
+  margin: 0 2px 5px;
   display: inline-block;
 }
 
