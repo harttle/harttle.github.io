@@ -111,3 +111,6 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
     max-width: 100%;
 }
 
+.md img[src*='@2x']{
+    zoom: 50%;
+}

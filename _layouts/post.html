@@ -4,8 +4,8 @@ layout: default
 
 <style>
 .headerbar{
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: inset 0 -1px 0 white, 0 1px 5px rgba(0,0,0,.3);
+  background: white;
+  border-bottom: 2px solid #eaeaeb;
 }
 .headerbar .page-header{
   border-bottom: 0;
@@ -13,16 +13,15 @@ layout: default
   margin-top: 0px;
 }
 #page-content{
-  margin-top: 20px;
   margin-bottom: 15px;
 }
 </style>
 
 <div class="headerbar">
   <div class="page-header container-fluid">
-    <h1>
+    <h3>
       {{ page.title }} <small>{{page.subtitle}}</small>
-    </h1>
+    </h3>
     <div>
         <div class="pull-left">
             {% include categories.html post=page %}

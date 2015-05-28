@@ -3,7 +3,7 @@
 body {
   /*-webkit-font-smoothing: antialiased;*/
   position: relative; /* for scroll spy with absolute position */
-  background-color: white;
+  background-color: #f7f7f7;
   font-family: "Helvetica Neue", 微软雅黑, Helvetica, Arial, sans-serif;
 }
 
@@ -68,7 +68,8 @@ body {
 }
 
 .paper {
-  box-shadow: 4px 7px 10px #333;
+  border: 1px solid #eaeaeb;
+  box-shadow: 4px 7px 10px #ccc;
 }
 
 .paper-curl {
@@ -150,11 +151,11 @@ a.feature-link:hover {
 }
 
 .label-blue {
-  background-color: #069;
+  background-color: #39c;
 }
 
 .label-yellow {
-  background-color: #883;
+  background-color: #dd3;
 }
 
 .label-red {

@@ -57,7 +57,8 @@ oracle jre 安装可参考 http://www.liberiangeek.net/2012/04/install-oracle-ja
     # -a 设置用户名和密码，-j 设置抓取到的网页的路径，例如：
     bin/heritrix -a harttle:123456 -j /home/harttle/search-engine/pages/
     ```
-    然后在浏览器打开 https://localhost:8843，登录后根据提示新建一个job。
+    
+    然后在浏览器打开 https://localhost:8843 ，登录后根据提示新建一个job。
 
 ## 配置
 

@@ -5,9 +5,9 @@ layout: post
 <link rel="stylesheet" href="/assets/css/markdown.css">
 <link rel="stylesheet" href="/assets/css/monokai-syntax.css">
 <style>
-.sidebar{ width: 200px; margin-top:20px;}
+.sidebar{ width: 200px; margin-top:20px; border:1px solid #eaeaeb;}
 .sidebar ul{margin-top: 0;margin-bottom:0;}
-.sidebar.affix { position: fixed; top: 20px; }
+.sidebar.affix { position: fixed; top: 0px; }
 .sidebar.affix-bottom { position: absolute;}
 
 .sidebar .nav .nav { display: none;}
@@ -63,7 +63,7 @@ layout: post
               offset: {                
                   top: function () {                    
                       var offsetTop      = $sideBar.offset().top;
-                      return (this.top = offsetTop - 40);
+                      return (this.top = offsetTop - 20);
                   },
                   bottom: function(){
                     return (this.bottom = $(document).height() - $('.md').offset().top - $('.md').height());
