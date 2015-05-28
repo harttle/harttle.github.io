@@ -1,8 +1,8 @@
 ---
 layout: blog
-categories: Development
+categories: misc
 title: Android App 启动过程分析
-tags: android linux java os
+tags: android linux java os mobile
 ---
 
 通过分析和修改Android 源码,分析 Android App 启动过程的时间消耗及性能瓶颈。

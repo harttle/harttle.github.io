@@ -1,6 +1,6 @@
 ---
 layout: blog
-categories: development
+categories: linux
 title: Windows/Linux远程桌面
 tags: windows linux
 ---

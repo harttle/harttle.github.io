@@ -2,7 +2,7 @@
 layout: blog
 categories: reading
 title: 优秀的代码 vs. 糟糕的代码
-tags: javascript 
+tags: javascript code-style
 ---
 
 > 可持续开发不仅在于项目架构设计，还与代码质量密切相关，代码的整洁度和质量成正比。—— Robert C. Martin, "Clean Code"

@@ -2,7 +2,7 @@
 layout: blog
 categories: linux
 title: Gnuplot 学习笔记
-tags: linux gnu plot
+tags: linux
 ---
 
 ## 安装
@@ -45,6 +45,8 @@ a=3*2**3
 plot "a.dat" using 1:2 title 'relation' with points pointtype 6 linetype rgb "red" pointsize 1,\ #数据文件作图
 x**2 with line linetype 5    #函数做图
 ```
+
+<!--more-->
 
 ## 文件转换
 

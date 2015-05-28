@@ -1,6 +1,6 @@
 ---
 layout: blog
-categories: development
+categories: misc
 title: 中文乱码辨识
 tags: windows linux
 ---

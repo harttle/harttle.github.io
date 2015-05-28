@@ -2,7 +2,7 @@
 layout: blog
 categories: linux
 title: Ubuntu 学习笔记
-tags: ubuntu grub
+tags: linux os
 ---
 
 

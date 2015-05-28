@@ -1,6 +1,6 @@
 ---
 layout: blog
-categories: development
+categories: web
 title: PHPCMS 目录结构
 tags: php
 ---

@@ -1,8 +1,8 @@
 ---
 layout: blog
-categories: development
+categories: web
 title: LAMP 搭建
-tags: linux apache mysql php
+tags: linux apache database php
 ---
 
 ### 下载安装

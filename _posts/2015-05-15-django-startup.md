@@ -1,8 +1,8 @@
 ---
 layout: blog
-categories: development
+categories: web
 title: Django 使用
-tags: linux  django python web
+tags: linux python
 ---
 
 # 安装

@@ -1,6 +1,6 @@
 ---
 layout: blog
-categories: development
+categories: linux
 title: Linux/Windows 时间不一致
 tags: windows linux
 ---

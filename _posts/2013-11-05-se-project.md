@@ -1,8 +1,8 @@
 ---
 layout: blog
 title: 搜索引擎搭建
-categories: development
-tags: web network
+categories: misc
+tags: web network search-engine
 ---
 
 采用 heritix+pagerank+lucene 方式搭建搜索引擎原型，并评估其性能。

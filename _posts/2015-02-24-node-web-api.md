@@ -1,8 +1,8 @@
 ---
 layout: blog
-categories: development
+categories: web
 title: 在CentOS上运行 Node.js API 服务器
-tags: javascript web database bix
+tags: javascript web database
 ---
 
 本文尝试在CentOS服务器上，使用js来构建整个web服务，包括nodejs运行时、MongoDB json风格数据库、redis内存数据库。首先安装这些软件：

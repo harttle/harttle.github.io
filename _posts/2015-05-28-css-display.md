@@ -1,8 +1,8 @@
 ---
 layout: blog 
-categories: development
+categories: web
 title: CSS display 属性与页面布局
-tags: display css layout
+tags: css
 ---
 
 因为HTML流式文档的特性，页面布局往往是新手最为头疼的问题之一。而Display属性指定了元素的呈现方式（rendering box），是流式文档（HTML、XML、XHTML）布局中的重要概念。这里详细地分析一下`display`属性的行为。

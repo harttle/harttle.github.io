@@ -1,8 +1,8 @@
 ---
 layout: blog
-categories: development
+categories: misc
 title: MySQL 学习笔记
-tags: sql linux
+tags: database linux
 ---
 
 【文档】http://dev.mysql.com/doc/refman/5.1/zh/sql-syntax.html
