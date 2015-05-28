@@ -39,6 +39,8 @@ tags: display css layout
 
 另外一个取值为`border-box`，即由`width`直接设置Box的宽度，其`padding`和`border`都只占用Box内部的空间。不同`box-sizing`风格的CSS插件产生的冲突往往较难调试。
 
+<!--more-->
+
 # Display：渲染类型
 
 了解了`box-sizing`之后，我们回到**display**属性。`display`指定了元素渲染Box的类型（type of rendering box）。我们来看它常用的取值：
