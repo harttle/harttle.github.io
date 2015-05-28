@@ -72,60 +72,8 @@ tags: windows linux
 
 3. 错误地选择GBK显示时，会出现很多不常见的繁体字
 
-##	代码页简录
 
-摘自[Wikipedia-Code_page][wiki]
+> 如果你在做相似的工作，可能需要查询代码页：[Wikipedia-Code_page][wiki]
 
 [wiki]:http://en.wikipedia.org/wiki/Code_page/
 
-    Examples:
-    437 — The original IBM PC code page
-    720 — Arabic
-    737 — Greek
-    775 — Estonian, Lithuanian and Latvian
-    850 — "Multilingual (Latin-1)" (Western European languages)
-    852 — "Slavic (Latin-2)" (Central and Eastern European languages)
-    855 — Cyrillic
-    857 — Turkish
-    858 — "Multilingual" with euro symbol
-    860 — Portuguese
-    861 — Icelandic
-    862 — Hebrew
-    863 — French (Quebec French)
-    865 — Danish/Norwegian Differs from 437 only in the letter Ø (ø) in place of ¥ and ¢
-    866 — Cyrillic
-    869 — Greek
-    874 — Thai[7]
-
-    Code pages for DBCS character sets:
-    932 — Supports Japanese
-    936 — GBK Supports Simplified Chinese
-    949 — Supports Korean
-    950 — Supports Traditional Chinese
-
-    Microsoft code page numbers for various other character encodings:
-    1200 — UTF-16LE Unicode little-endian
-    1201 — UTF-16BE Unicode big-endian
-    65000 — UTF-7 Unicode
-    65001 — UTF-8 Unicode
-    10000 — Macintosh Roman encoding (followed by several other Mac character sets)
-    10007 — Macintosh Cyrillic encoding
-    10029 — Macintosh Central European encoding
-    20127 — US-ASCII The classic US 7 bit character set with no char larger than 127
-    28591 — ISO-8859-1 (followed by ISO-8859-2 to ISO-8859-15)
-
-    Miscellaneous:
-    (number missing) — ASMO449+ Supports Arabic
-    (number missing) — MIK Supports Bulgarian and Russian as well
-
-    Windows (ANSI) code pages：
-    1250 — Central and East European Latin
-    1251 — Cyrillic
-    1252 — West European Latin
-    1253 — Greek
-    1254 — Turkish
-    1255 — Hebrew
-    1256 — Arabic
-    1257 — Baltic
-    1258 — Vietnamese
-    874 — Thai
