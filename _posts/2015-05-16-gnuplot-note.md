@@ -75,6 +75,6 @@ pdflatex    *.pdf
 ![pointtype & linetype][2]
 
 
-[1]: http://static.oschina.net/uploads/space/2013/0518/225902_zlbZ_698768.jpg
-[2]: http://static.oschina.net/uploads/space/2013/0518/230106_7Td7_698768.png
+[1]: /assets/img/blog/gnuplot/simbol.jpg
+[2]: /assets/img/blog/gnuplot/line-point.png
 	
