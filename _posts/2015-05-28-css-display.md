@@ -35,9 +35,11 @@ tags: css
 * 绿色部分为**边框**，宽度为`50px`；
 * 与浏览器边框的距离为**外边距**，宽度为`50px`。
 
-例子中`width`与`padding`共同构成了Box。然而Box的构成方式并非一成不变，它决定于另一个CSS属性：`box-sizing`。它的默认值（UA值）是`content-box`，即由`width`和`padding`构成。
+例子中`width`与`padding`共同构成了Box。然而Box的构成方式并非一成不变，它决定于另一个CSS属性：`box-sizing`。
 
-另外一个取值为`border-box`，即由`width`直接设置Box的宽度，其`padding`和`border`都只占用Box内部的空间。不同`box-sizing`风格的CSS插件产生的冲突往往较难调试。
+* 它的默认值（UA值）是`content-box`，即由`width`和`padding`构成。
+
+* 另外一个取值为`border-box`，即由`width`直接设置Box的宽度，其`padding`和`border`都只占用Box内部的空间。不同`box-sizing`风格的CSS插件产生的冲突往往较难调试。
 
 <!--more-->
 
