@@ -2,7 +2,7 @@
 layout: blog 
 categories: web
 title: AngularJS APP 与 Controller 的执行时机
-tags: AngularJS javascript
+tags: AngularJS javascript directive controller compile
 ---
 
 [AngularJS][angularjs]属于典型的单页APP框架，现由Google维护，用在了Google的多款产品中。本文探讨AngularJS APP的启动时机，以及Controller的执行时机问题。
