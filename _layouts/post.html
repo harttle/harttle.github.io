@@ -15,15 +15,24 @@ layout: default
 #page-content{
   margin-bottom: 15px;
 }
+@media (max-width: 768px){
+  .header{
+    font-size: 18px;
+    line-height: 20px;
+  }
+  .meta{
+    display: none;
+  }
+}
 </style>
 
 <div class="headerbar">
   <div class="page-header container-fluid">
-    <h3>
+    <h3 class="header">
       {{ page.title }} <small>{{page.subtitle}}</small>
     </h3>
     <div>
-        <div class="pull-left">
+        <div class="pull-left meta">
             {% include categories.html post=page %}
             {% include tags.html post=page %}
         </div>

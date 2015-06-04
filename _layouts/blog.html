@@ -18,22 +18,27 @@ layout: post
 .sidebar .nav .nav .nav > li > a { margin-left: 20px; }
 .sidebar .nav .nav .nav .nav > li > a { margin-left: 30px; }
 .sidebar .nav .nav .nav .nav .nav > li > a { margin-left: 40px; }
-.sidebar .nav .nav .nav .nav .nav .nav> li > a { margin-left: 50px; }  
+.sidebar .nav .nav .nav .nav .nav .nav> li > a { margin-left: 50px; }
 .sidebar .nav > .active > a, .sidebar .nav > .active:hover > a, .sidebar .nav > .active:focus > a {
     margin-bottom:1px; padding-bottom: 2px!important;
     font-weight: bold;
     color: white;
     background: #428bca;
-    border-right: 2px solid #c03; 
+    border-right: 2px solid #c03;
     text-shadow: 0 1px 0 rgba(0,0,0,.15);
     -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
        -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
             box-shadow: inset 1px 0 0 rgba(0,0,0,.1), inset -1px 0 0 rgba(0,0,0,.1);
 }
 .sidenav { margin-top: 20px; margin-bottom: 20px; background: #fff; }
-   
+
 .MathJax *{ color: black!important;  }
 .md{ margin-top:20px; padding:80px; }
+  @media (max-width: 768px){
+    .md{
+      padding: 20px 20px 40px;
+    }
+  }
 </style>
 
 <div class="row post-display">
@@ -51,17 +56,17 @@ layout: post
 </div>
 
 <script>
-  $(function(){    
+  $(function(){
     var toc = getTOC($('.post-display .right'));
     if (toc != null) {
       $('.sidebar').append(toc);
-      
+
       //sidebar affix, this offset is for sidebar position recognition
       setTimeout(function () {
           var $sideBar = $('.sidebar');
           $sideBar.affix({
-              offset: {                
-                  top: function () {                    
+              offset: {
+                  top: function () {
                       var offsetTop      = $sideBar.offset().top;
                       return (this.top = offsetTop - 20);
                   },
@@ -71,12 +76,12 @@ layout: post
               }
           });
       },100);
-      
+
       //sidebar scroll spy
       $('body').scrollspy({
         target: '.sidebar',
         offset: 10  //make sure to spy the element when scrolled to
-      }); 
+      });
     }
     else{
       $('.post-display .right').removeClass('col-md-9 col-sm-8');
@@ -85,30 +90,30 @@ layout: post
     }
 
     $(window).resize(function(){
-        $('body').scrollspy('refresh'); 
+        $('body').scrollspy('refresh');
     });
-  
+
   });
 
   //生成目录
-  function getTOC($content) {    
+  function getTOC($content) {
     var $toc = $('<ul class="nav level-0" >').addClass("nav sidenav");
 
     var base_level = 1;
     while ($content.find('h' + base_level).length < 1 && base_level < 7) base_level += 1;
     if (base_level == 7) return null;
-    
+
     $content.find(':header').each(function (i) {
       var $this = $(this);
       $this.attr('id', i);
-      
+
       var level = parseInt(this.nodeName.substr(1));
       var offset = level - base_level;
-      
+
       var li = new $('<li/>')
           .append('<a href="#' + i + '" class="animate">' + $this.text() + '</a>')
           .append($('<ul class="nav level-'+(offset+1)+'"/>'));
-      
+
       $('<div>').append($toc).find('ul.level-'+offset+':last').append(li);
     });
     // remove empty ul

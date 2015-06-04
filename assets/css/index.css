@@ -16,3 +16,19 @@
 .post a{ text-decoration: none; }
 .post .md{ margin: 20px 15px 30px 15px; }
 .post .more{ margin-top:-10px; }
+
+@media (max-width: 768px) {
+    .post{
+        padding: 20px 20px 40px;
+    }
+    .post h1.header{
+        font-size: 18px;
+        line-height: 23px;
+    }
+    .post .meta{
+        display: none;
+    }
+    .recent{
+        display: none;
+    }
+}

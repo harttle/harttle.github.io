@@ -183,14 +183,14 @@ a.feature-link:hover {
   box-shadow: none;
   transition-property: background;
   transition-duration: 0.3s;
-  background: #069;
+  background: #27b;
   color: white;
   text-shadow: none;
   border: none;
 }
 
 .button-flat-blue:hover {
-  background: #06c;
+  background: #39c;
 }
 
 .button-flat-red {

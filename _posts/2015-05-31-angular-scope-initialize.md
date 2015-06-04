@@ -58,6 +58,8 @@ app.constant('sessionInfo', {
 });
 ```
 
+<!--more-->
+
 # APP启动时，控制器立即执行
 
 对于上文中的例子，**`helloApp`启动时，传入`worldCtrl`的构造函数会立即执行**。如若未显示地启动Angular APP，在页面载入时Angular会自动启动，构造函数在此时得以执行。
