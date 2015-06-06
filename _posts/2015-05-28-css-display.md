@@ -9,7 +9,7 @@ tags: css
 
 在介绍`display`之前，我们明确一下HTML元素的呈现方式。
 
-# Box Sizing：元素大小
+# Box Sizing：元素大小的计算方式
 
 在HTML中，任何HTML元素都会被呈现为一个矩形。该矩形由内容、内边距、边框、外边距构成。举个例子：
 
