@@ -1,7 +1,7 @@
 ---
 layout: blog 
 categories: web
-title: AngularJS Module：模块化与依赖注入
+title: AngularJS 模块化与依赖注入
 tags: AngularJS javascript Module Dependency-Injection service
 ---
 
