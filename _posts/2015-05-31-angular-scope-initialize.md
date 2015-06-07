@@ -1,7 +1,7 @@
 ---
 layout: blog 
 categories: web
-title: AngularJS APP 与 Controller 的执行时机
+title: AngularJS APP 与 Controller 的初始化
 tags: AngularJS javascript directive controller compile
 ---
 

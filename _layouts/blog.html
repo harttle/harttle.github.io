@@ -12,7 +12,12 @@ layout: post
 
 .sidebar .nav .nav { display: none;}
 .sidebar .nav > .active > ul { display: block; }
-.sidebar .nav > li > a { display: block; padding: 5px 15px; color: #428bca; text-decoration: none; }
+.sidebar .nav > li > a {
+  display: block; padding: 5px 15px; color: #428bca; text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .sidebar .nav > li > a:hover{ text-decoration: none; background-color: #ffc; border-right: 2px solid #c03; }
 .sidebar .nav .nav > li > a { padding-top:3px; padding-bottom:3px; margin-left: 10px; font-size: 90%; }
 .sidebar .nav .nav .nav > li > a { margin-left: 20px; }
