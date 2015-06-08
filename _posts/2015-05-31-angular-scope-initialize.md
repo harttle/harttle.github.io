@@ -1,11 +1,13 @@
 ---
 layout: blog 
 categories: web
-title: AngularJS APP 与 Controller 的初始化
+title: AngularJS 初始化过程
 tags: AngularJS javascript directive controller compile
 ---
 
-[AngularJS][angularjs]属于典型的单页APP框架，现由Google维护，用在了Google的多款产品中。本文探讨AngularJS APP的启动时机，以及Controller的执行时机问题。
+[AngularJS][angularjs]属于典型的单页APP框架，现由Google维护，用在了Google的多款产品中。
+如果你的项目引入了AngularJS，同时还有不少的jQuery代码，你可能会碰到两者初始化顺序的问题。
+本文就来探讨AngularJS APP以及Controller的初始化过程和时机。
 
 # Angular APP
 
