@@ -1,8 +1,8 @@
 ---
 layout: blog
 categories: web
-title: 在CentOS上运行 Node.js API 服务器
-tags: javascript web database
+title:  API 服务器搭建笔记：CentOS + Node.js + MongoDB
+tags: javascript web database centos nodejs mongodb
 ---
 
 本文尝试在CentOS服务器上，使用js来构建整个web服务，包括nodejs运行时、MongoDB json风格数据库、redis内存数据库。首先安装这些软件：
@@ -110,13 +110,13 @@ db.<collection_name>.help()
 
 MongoDB中的document为BSON格式，即二进制的JSON表示加上类型信息，所有的document存储在collection中。每个查询将得到一个目标collection，查询需指定criteria来得到符号条件的collection，再通过modifier对集合元素进行处理（比如排序）。
 
-![](/assets/img/blog/crud-query-stages.png)
+![@2x](/assets/img/blog/crud-query-stages.png)
 
 除了查询，还有`insert`,`update`,`remove`操作，它们均作用于单个collection：
 
-![](/assets/img/blog/crud-insert-stages.png)
+![@2x](/assets/img/blog/crud-insert-stages.png)
 
-> CRUD指create,read,update,delete
+> CRUD即增伤改查：create，read，update，delete
 
 ## 备份与恢复
 

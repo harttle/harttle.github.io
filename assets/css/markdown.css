@@ -51,9 +51,9 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
     line-height: 26px;
     padding: 18px 0 0;
     font-weight: normal;
-    font-variant: italic;
+    font-style: italic;
 }
-.md ul, .md ol{ margin: 0px 0 0;}
+.md ul, .md ol{ margin: 0;}
 .md br+br {
     line-height:0;
     height:0;
@@ -108,17 +108,10 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
 }
 
 .md img{
-    /*-webkit-box-shadow: rgba(0,0,0,0.15) 0 1px 4px;
-    -moz-box-shadow: rgba(0,0,0,0.15) 0 1px 4px;
-    box-shadow: rgba(0,0,0,0.15) 0 1px 4px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    border: #fff 0.5em solid;*/
     padding: 10px;
     max-width: 100%;
 }
 
-.md img[src*='@2x']{
+.md img[src*='@2x'], .md img[alt*='@2x']{
     zoom: 50%;
 }

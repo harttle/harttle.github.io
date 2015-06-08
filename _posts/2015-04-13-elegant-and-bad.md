@@ -15,11 +15,11 @@ tags: javascript code-style
 
 优秀的设计中，代码量和功能数的关系是这样的：
 
-![](/assets/img/blog/great-code.png)
+![@2x](/assets/img/blog/great-code.png)
 
 糟糕的设计中，代码量和功能数的关系是这样的：
 
-![](/assets/img/blog/bad-code.png)
+![@2x](/assets/img/blog/bad-code.png)
 
 优秀的系统往往会有优秀的结构设计：层次清晰、职责单一、模块化，方便扩展或者复用。功能的添加往往只是在现有框架中添加少量代码。
 
@@ -29,11 +29,11 @@ tags: javascript code-style
 
 优秀的代码中，注释是这样的：
 
-![](/assets/img/blog/great-comment.png)
+![@2x](/assets/img/blog/great-comment.png)
 
 糟糕的代码中，注释是这样的：
 
-![](/assets/img/blog/bad-comment.png)
+![@2x](/assets/img/blog/bad-comment.png)
 
 > 最愚蠢的程序员都能写出机器能读懂的代码，而优秀的程序员能写出人可以读懂的代码。
  
@@ -44,11 +44,11 @@ tags: javascript code-style
 
 优秀的代码中，命名是这样的：
 
-![](/assets/img/blog/great-name.png)
+![@2x](/assets/img/blog/great-name.png)
 
 糟糕的代码中，命名是这样的：
 
-![](/assets/img/blog/bad-name.png)
+![@2x](/assets/img/blog/bad-name.png)
 
 命名是为了让代码更加容易阅读，使用规范的术语不仅更加易懂，同时也是开发者知识水平和开发经验的表现。如果说以中文拼音命名显得奇怪，那么直接以`a`, `b`, `c`, `d`命名的便会显得可恨，谁记得你的`a`是神马东西！
 
@@ -56,11 +56,11 @@ tags: javascript code-style
 
 看一个经典的例子，字符串替换：
 
-![](/assets/img/blog/bad-duplicate.png)
+![@2x](/assets/img/blog/bad-duplicate.png)
 
 稍微有点Javascript常识的便会想到正则表达式：
 
-![](/assets/img/blog/great-clean.png)
+![@2x](/assets/img/blog/great-clean.png)
 
 何必拷贝这一堆的代码给老板看呢？开发中确实有很多时候，直接拷贝代码既能立竿见影地完成功能，又不会影响原有功能。但这样的代码多起来之后，万一功能调整你便需要重新debug所有的副本。花一些时间学习更优雅的用法是值得的。
 
@@ -68,11 +68,11 @@ tags: javascript code-style
 
 保持函数的短小，使你的代码更加易读，例如：
 
-![](/assets/img/blog/great-func.png)
+![@2x](/assets/img/blog/great-func.png)
 
 将复杂的逻辑分步骤完成。如果写在一起将会是这样的：
 
-![](/assets/img/blog/bad-func.png)
+![@2x](/assets/img/blog/bad-func.png)
 
 相信我，一旦你写了这样的函数，它会随着时间的推移变得越来越长，直到有一天，你也忘了其中的一段代码到底是做什么的。
 
