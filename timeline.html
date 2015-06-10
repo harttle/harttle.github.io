@@ -6,6 +6,7 @@ nav: timeline
 ---
 
 <link rel="stylesheet" href="/assets/css/timeline.css"/>
+<link rel="stylesheet" href="/assets/css/markdown.css"/>
 <style>
   .content {
     padding-left: 0;
@@ -13,7 +14,7 @@ nav: timeline
   }
 
   .timeline {
-    margin: 0 50px
+    margin: 0 50px;
   }
 
   .timeline .timeline-body hr {
@@ -32,6 +33,17 @@ nav: timeline
 
   .timeline > li > .timeline-panel {
     padding-bottom: 15px;
+  }
+  @media (min-width: 768px) {
+    .timeline{
+      margin-top: 80px;
+    }
+    .timeline>li{
+      margin-top: -80px;
+    }
+    .timeline > li > .timeline-panel {
+      z-index: 100;
+    }
   }
 </style>
 
@@ -71,7 +83,7 @@ nav: timeline
 
           <div class="col-xs-9"> {{ post.excerpt }}</div>
           {% else %}
-          <p> {{ post.excerpt }} </p>
+          <div class="md"> {{ post.excerpt }} </div>
           {% endif %}
 
         </div>

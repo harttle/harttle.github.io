@@ -20,6 +20,6 @@ gems:
 
 cate_icons:
   reading: "fa-book"
-  development: "fa-code"
   linux: "fa-linux"
+  web: "fa-html5"
   misc: "fa-file-text"
