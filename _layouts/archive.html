@@ -10,17 +10,23 @@ nav: archive
     padding: 30px;
     margin-bottom: 50px;
 }
+.archive-block table{
+    table-layout: fixed;
+}
 .archive-block td.date{
-    width: 15%;
+    min-width: 120px;
+    width: 120px;
 }
 .archive-block td.title{
-    width: 35%;
+    width: 100%;
 }
 .archive-block td.category{
-    width: 10%;
+    min-width: 110px;
+    width: 110px;
 }
 .archive-block td.tag{
-    width: 40%;
+    min-width: 200px;
+    width: 200px;
 }
 .classifiers{
     background:rgba(255, 255, 255, 0.5);
@@ -29,13 +35,15 @@ nav: archive
     box-shadow:5px 5px 5px #333;
     margin:0 0 30px;
 }
-.classifiers .button{
-    margin: 20px 10px;
+.classifiers .btn{
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 10px 0;
 }
-.classifiers .button:first-child{
+.classifiers .btn:first-child{
     margin-left: 20px;
 }
-.classifiers .button:last-child{
+.classifiers .btn:last-child{
     margin-right: 20px;
 }
 .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
@@ -45,9 +53,9 @@ nav: archive
 
 <div class="container">
     <div class="classifiers paper pull-right">
-        <a class="button button-rounded button-flat-red" href="/date.html">Date</a>
-        <a class="button button-rounded button-flat-blue" href="/category.html">Category</a>
-        <a class="button button-rounded button-flat-yellow" href="/tag.html">Tag</a>
+        <a class="btn button-flat-red" href="/date.html">Date</a>
+        <a class="btn button-flat-blue" href="/category.html">Cate</a>
+        <a class="btn button-flat-yellow" href="/tag.html">Tag</a>
     </div>
     <div class="clearfix"></div>
     <div> {{ content }} </div>
