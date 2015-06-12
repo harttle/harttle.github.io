@@ -34,6 +34,8 @@ CSS 将 DOM 树转换为由矩形 Box 构成的树，并通过设置这些 Box �
 
 `line`Box可以看做是`inline`Box的容器。
 
+<!--more-->
+
 # white-space
 
 [white-space][white-space]属性描述了如何处理空白（空格、制表、换行）字符。它有5种取值：
