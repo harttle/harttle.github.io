@@ -130,7 +130,7 @@ link(scope);
 可以在Angular中从模板缓存获取模板字符串：
 
 ```javascript
-$http.get('world.html, {cache: $templateCache})
+$http.get('world.html', {cache: $templateCache})
     .success(function (tplStr) {
         console.log(tplStr);
     });

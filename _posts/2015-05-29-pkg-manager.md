@@ -13,7 +13,6 @@ tags: autobuild linux python javascript
 * 通过`package.json`来定义软件包的元信息、开发依赖（开发或测试需要）、部署依赖（运行时需要）。
 * 依赖递归地存储在`node_modules`中。
 * 依赖在项目之间是隔离的，全局安装（`-g`）会使它成为命令行工具而不是全局依赖。
-
 > 递归的依赖下载风格使得NPM的缓存及其重要。缓存位于`~/.npm`下，这里保存这`.tgz`格式的包文件。
 
 Javascript 通常使用 [Grunt](http://gruntjs.com/) 进行构建。
@@ -49,6 +48,8 @@ Javascript 通常使用 [Grunt](http://gruntjs.com/) 进行构建。
 * 通过`build.xml`来描述构建过程。
 * `build.xml`的逻辑类似Makefile，每个target由命令和参数构成。
 * 通过命令行参数来读取系统特性。
+
+[Gradle](https://zh.wikipedia.org/wiki/Gradle)是一个基于Apache Ant和Apache Maven概念的项目自动化建构工具。它使用一种基于Groovy的特定领域语言来声明项目设置，而不是传统的XML。
 
 # Python
 
