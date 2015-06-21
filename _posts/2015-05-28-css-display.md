@@ -1,13 +1,14 @@
 ---
 layout: blog 
 categories: web
-title: CSS display 属性与页面布局
+title: CSS 盒模型及其呈现方式
 tags: css
 ---
 
-因为HTML流式文档的特性，页面布局往往是新手最为头疼的问题之一。而Display属性指定了元素的呈现方式（rendering box），是流式文档（HTML、XML、XHTML）布局中的重要概念。这里详细地分析一下`display`属性的行为。
-
-在介绍`display`之前，我们明确一下HTML元素的呈现方式。
+因为HTML流式文档的特性，页面布局往往是新手最为头疼的问题之一。
+每个HTML元素都会渲染为一个Box，可分为inline Box和block Box。
+根据`display`属性的不同，Box的呈现方式又有所不同。
+本文首先引入CSS盒模型，然后通过不同的`display`属性分别介绍Box常见的呈现方式。
 
 # Box Sizing：元素大小的计算方式
 
