@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: Effective C++ 
+title: Effective C++ 笔记
 categories: reading
 tags: c++
 ---
@@ -29,7 +29,7 @@ tags: c++
 4. const 与 non-const 成员函数的避免重复。
 
 	```cpp
-	const char& operator[](size_t pos){
+	const char& operator[](size_t pos) const{
 		...
 	}
 	

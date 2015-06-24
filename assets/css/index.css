@@ -14,7 +14,10 @@
     font-size: 36px;
 }
 .post a{ text-decoration: none; }
-.post .md{ margin: 20px 15px 30px 15px; }
+.post .md{
+  margin: 20px 15px 30px 15px;
+  color: #555;
+}
 .post .more{ margin-top:-10px; }
 
 @media (max-width: 768px) {

@@ -4,7 +4,12 @@ body {
   /*-webkit-font-smoothing: antialiased;*/
   position: relative; /* for scroll spy with absolute position */
   background-color: #f7f7f7;
+  color: #3a3a3a;
   font-family: "Helvetica Neue", 微软雅黑, Helvetica, Arial, sans-serif;
+}
+
+h1, h2{
+  font-weight: normal;
 }
 
 .global-nav {
@@ -125,7 +130,7 @@ body {
 /* Featured link */
 
 a.feature-link {
-  color: #000;
+  color: #3a3a3a;
   text-decoration: none;
   transition: color .2s ease-out 0s;
 }

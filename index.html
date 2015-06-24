@@ -31,12 +31,12 @@ subtitle: Keep It Simple, Stupid!
         <div id="posts">
         {% for post in paginator.posts %}
             <div class="post paper">
-                <h1 class="header">
+                <h2 class="header">
                     <a class="feature-link" href="{{post.url}}">{{ post.title }}</a>
                     <div class="pull-right text-muted">
                         {% include date.html post=post %}
                     </div>
-                </h1>
+                </h2>
                 <p class="meta">
                     {% include categories.html post=post %}
                     {% include tags.html post=post %}
