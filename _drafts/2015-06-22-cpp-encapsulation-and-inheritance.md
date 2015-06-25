@@ -9,20 +9,53 @@ tags: c++ class object encapsulation inheritance
 
 C++类提供了数据结构和算法的封装，以及相应的3种可见级别。它们定义了不同的可见性：
 
-* Public：当前类以及子类的方法中可见，可通过实例进行调用。
-* Protected：当前类以及子类的方法中可见，不可通过实例调用。
-* Private：当前类的方法中可见，不可通过实例调用
+* Public：当前类以及子类的方法中可见，外部可见。
+* Protected：当前类以及子类的方法中可见，外部不可见。
+* Private：当前类的方法中可见，外部不可见。
 
 > 在一个对象的成员函数中，可以调用其他同类对象的私有方法。
 
 多数现代的面向对象语言中，仅提供Private和Public两种可见性，C++的可见级别略显复杂。
 然而三种继承方式以及多继承机制，让问题更加复杂。简单起见，此处只讨论Private和Public方式的单继承。
 
-* Private继承：
-* Public继承：
+* Public继承：子类中可访问基类`public`、`protected`成员，子类外部可见。
+* Private继承：子类中可访问基类`public`、`protected`成员，子类外部不可见。
 
-# 继承
+# 类的继承
 
+Public继承表示“是一个”的关系，子类的对象同时也是一个基类的对象。子类的行为应符合基类的行为，因此Public继承中通常不会覆盖基类成员。
+
+> 对于Public继承，子类的指针、引用、变量可以直接赋值给基类的指针、引用、变量。
+
+Private继承表示“以...实现“的关系，子类是以基类来实现的。对于一个子类的对象，其外部不可见基类的行为。Private继承更像是对象组合。
+
+```cpp
+class CBase{};
+class CDerived: public CBase{
+public:
+    CDerived(): CBase(){}
+};
+```
+
+# 成员覆盖
+
+子类中声明的成员会覆盖掉基类中的同名成员，但可以通过基类名来调用：
+
+```cpp
+class CBase{
+public:
+    int i;
+};
+class CDerived: public CBase{
+public:
+    int i;
+    void func(){
+        CBase::i = 1;
+    }
+};
+```
+
+类似成员变量，基类的成员函数的也需要通过基类名来调用。
 
 # 封闭类
 
