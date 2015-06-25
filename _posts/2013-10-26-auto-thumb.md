@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: 自动图片处理
+title: 使用 Makefile 批量更新缩略图
 subtitle: 站点后台工具
 categories: web
 tags: linux
