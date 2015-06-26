@@ -54,7 +54,7 @@ app.controller('worldCtrl', ['$scope', '$http', function($scope, $http) {
 `ng-model`设置了`input`内容和当前上下文中`username`之间的双向绑定；`ng-bind`设置了从上下文到`span`内容的绑定。
 当我们在`input`中输入时，`span`的内容便会实时地改变。
 
-更多`$scope`的信息请参考： [AngularJS 初始化过程](/2015/05/31/angular-scope-initialize)
+更多`$scope`的信息请参考： [AngularJS 初始化过程][ai]
 
 官方文档： https://docs.angularjs.org/api/ng/type/$rootScope.Scope
 
@@ -171,3 +171,4 @@ module.controller('worldCtrl', ['$scope', '$timeout', function($scope, $timeout)
 当`$scope.users = ['alice', 'bob'];`执行后，DOM中的`<span>`还不存在，此时`$('.user')`的值为空集。尽管`$timeout`没有设置延迟时间（第二个参数），但这样的调用会使得回调函数在`$digest`循环之后再执行。
 
 [angular]: https://docs.angularjs.org
+[ai]: /2015/05/31/angular-scope-initialize
