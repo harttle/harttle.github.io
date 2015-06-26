@@ -54,7 +54,9 @@ app.controller('worldCtrl', ['$scope', '$http', function($scope, $http) {
 `ng-model`设置了`input`内容和当前上下文中`username`之间的双向绑定；`ng-bind`设置了从上下文到`span`内容的绑定。
 当我们在`input`中输入时，`span`的内容便会实时地改变。
 
-更多信息请参考文档： https://docs.angularjs.org/api/ng/type/$rootScope.Scope
+更多`$scope`的信息请参考： [AngularJS 初始化过程](/2015/05/31/angular-scope-initialize)
+
+官方文档： https://docs.angularjs.org/api/ng/type/$rootScope.Scope
 
 # Scope通信
 
