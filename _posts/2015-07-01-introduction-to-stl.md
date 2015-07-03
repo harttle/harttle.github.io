@@ -2,7 +2,7 @@
 layout: blog 
 categories: reading
 title: C++手稿：STL入门
-tags: c++ string
+tags: c++ stl container iterator algorithm
 ---
 
 STL (Standard Template Library) 提供了一些常用的数据结构和算法的模板，1998年加入C++标准。
@@ -20,21 +20,32 @@ STL中的容器定义在`std`命名空间下，需要引入头文件
 等。容器可以分为三大类：
 
 1. 顺序容器
-    * `vector`：尾端插入元素有较高性能，动态数组实现；
-    * `deque`：收尾插入元素都有较高性能，动态数组实现；
-    * `list`：可以常数时间在任何地方插入元素，链表实现；
+    * [vector][vector]：尾端插入元素有较高性能，动态数组实现；
+    * [deque][deque]：收尾插入元素都有较高性能，动态数组实现；
+    * [list][list]：可以常数时间在任何地方插入元素，链表实现；
 2. 关联容器
-    * `set`：不同元素的集合，平衡二叉树实现，检索时间是 $O(log(N))$；
-    * `multiset`：同上，但可以包含相同元数据；
-    * `map`：同`set`，但存放的是键值对；
-    * `multimap`：同上，键可以重复；
-3. 容器适配器：`stack`，`queue`，`priority_queue`。
+    * [set][set]：不同元素的集合，平衡二叉树实现，检索时间是 $O(log(N))$；
+    * [multiset][multiset]：同上，但可以包含相同元数据；
+    * [map][map]：同`set`，但存放的是键值对；
+    * [multimap][multimap]：同上，键可以重复；
+3. 容器适配器：[stack][stack]，[queue][queue]，[priority_queue][priority_queue]。
 
 这些容器有一些通用的方法：`empty`，`size`，`swap`，`max_size`。前两类容器支持迭代器，称为第一类容器。
 
 对于顺序容器，有更多的通用方法：`front`, `back`, `pop_back`, `push_back`。
-
+  
 > 容器之间的比较取决于第一个不等的元素；如果长度相同且所有元素相等，两个容器相等；如果一个是另一个的子序列，则较短的容器小于较长的容器。
+
+对于存储着键值对关联容器`map`和`multimap`，它们的迭代器是一个`pair<T1, T2>`的指针。
+插入时，可以直接使用`[]`运算符，也可以插入`insert`一个`pair<T1, T2>`对象：
+
+```cpp
+std::map<char,int> mymap;
+mymap.insert (mymap.begin(), std::pair<char,int>('c',400));
+mymap.insert (mymap.begin(), std::make_pair('c',400));
+```
+
+> `pair`模板类在`<utility>`中定义，在`<map>`中已经引入了。
 
 # STL 迭代器
 
@@ -133,3 +144,14 @@ public:
     ostream_iterator& operator++(){ return *this; };
 }
 ```
+
+[deque]: http://www.cplusplus.com/reference/deque/deque/
+[list]: http://www.cplusplus.com/reference/list/list/
+[queue]: http://www.cplusplus.com/reference/queue/queue
+[priority_queue]: http://www.cplusplus.com/reference/queue/priority_queue/
+[vector]: http://www.cplusplus.com/reference/vector/vector
+[set]: http://www.cplusplus.com/reference/set/set
+[multiset]: http://www.cplusplus.com/reference/set/multiset
+[map]: http://www.cplusplus.com/reference/map/map
+[multimap]: http://www.cplusplus.com/reference/map/multimap/
+[stack]: http://www.cplusplus.com/reference/stack/stack
