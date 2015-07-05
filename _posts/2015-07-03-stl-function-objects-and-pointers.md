@@ -114,26 +114,19 @@ int main () {
 
 摘自cplusplus.com： http://www.cplusplus.com/reference/numeric/accumulate
 
-
-# 比较器：list::sort
+# 比较器：std::sort
 
 需要比较元素大小的STL算法、容器的模板、容器的成员函数，都可以给定一个比较策略。它们的默认值通常是`Less<T>()`。
 
 例如，指定`greater`函数对象作为比较器，就可以实现反向排序：
 
 ```cpp
-lst.sort(greater<int>());
+sort(v.begin(), v.end(), greater<int>());
 ```
 
-# 比较器：std::sort
+> `std::sort`要求随机存取迭代器，`list`不可用`std::sort`，可以使用`list::sort(Pred pr)`。
 
-类似地，`std::sort`函数也可以指定比较器：
-
-```cpp
-sort(v.begin(), v.end(), less<int>());
-```
-
-> `std::sort`是不稳定的排序，复杂度为$O(n lgn)$。
+`std::sort`实际上是快排，复杂度为$O(n lgn)$，它是不稳定的。`stale_sort`则是稳定的归并排序。
 
 # 比较器：模板参数
 

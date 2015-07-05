@@ -47,9 +47,16 @@ mymap.insert (mymap.begin(), std::make_pair('c',400));
 
 > `pair`模板类在`<utility>`中定义，在`<map>`中已经引入了。
 
+容器适配器是逻辑数据结构，需要用一种顺序容器来实现。例如，`stack`默认使用`deque`来实现，我们也可以指定它的实现方式。
+
+```cpp
+stack<string> strstk;         // string 型栈，deque实现
+stack<int, vector<int>> stk;  // int 型栈，vector实现
+```
+
 # STL 迭代器
 
-第一类容器支持迭代器（容器适配器不支持迭代器），分为`const`迭代器和非`const`迭代器。一个简单的迭代器使用是这样的：
+只有第一类容器支持迭代器（容器适配器不支持迭代器）。来个例子：
 
 ```cpp
 vector<int> v;
@@ -66,9 +73,7 @@ for(vector<int>::reverse_iterator r = v.rbegin(); r < v.rend(); r++){
 4. Bidirectional Iterator：能够双向地逐个迭代访问
 5. Random Access Iterator：可随机访问每个元素
 
-`vector`和`deque`支持Random Access Iterator，`list`、`set/multiset`、`map/multimap`支持Bidirectional Iterator。
-
-双向迭代器不支持`<`，`>`，`[]`运算符，只能判等：
+例如，双向迭代器不支持`<`，`>`，`[]`运算符，只能判等：
 
 ```cpp
 list<int> l;
@@ -77,13 +82,15 @@ for(list<int>::const_iterator i = l.begin(); i != l.end(); ++i){
 } 
 ```
 
+`vector`和`deque`支持Random Access Iterator，`list`、`set/multiset`、`map/multimap`支持Bidirectional Iterator。
+
 <!--more-->
 
 # STL 算法
 
 STL通过函数模板提供了很多作用于容器的通用算法，例如查找、插入、删除、排序等，需要引入头文件`<algorithm>`。
 
-变化序列的：`copy`, `remove`, `fill`, `replace`, `swap`, ...；不变化序列的：`find`, `count`, `for_each`, `equal`, ...
+变化序列的：`copy`, `remove`, `reverse`, `fill`, `replace`, `swap`, ...；不变化序列的：`find`, `count`, `for_each`, `equal`, ...
 
 > 这些算法的实现较为通用，也可以作用于C语言的数组。
 
@@ -114,6 +121,25 @@ v.erase( v.begin(), v.end());
 // 等效于
 v.clear();
 ```
+
+例如，`lower_bound(FwdIt f, FwdIt l, const T& val)`用来给出小于`val`的坐标上限（前闭后开）。
+`upper_bound(FwdIt f, FwdIt l, const T& val)`用来给出大于`val`的坐标下限（前闭后开）：
+
+```cpp
+std::map<char,int> mymap;
+std::map<char,int>::iterator itlow,itup;
+
+mymap['a']=20;
+mymap['b']=40;
+mymap['c']=60;
+mymap['d']=80;
+mymap['e']=100;
+
+itlow=mymap.lower_bound ('b');  // itlow points to b
+itup=mymap.upper_bound ('d');   // itup points to e (not d!)
+```
+
+参见： http://www.cplusplus.com/reference/map/map/upper_bound/
 
 # 实现一个Iterator
 

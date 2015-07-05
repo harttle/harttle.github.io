@@ -173,7 +173,7 @@ Widget& Widget::operator=(Widget rhs){
 
 使用`new`构造的对象，如果将删除它的责任给调用者，将很容易发生疏漏，尤其是控制流发生改变时（无意的提前`return`, `break`, etc.）。
 
-利用对象在作用域结束时自动的析构函数，可以实现资源的自动释放，即RAII(Resource Acquisition Is Initialization)。在`std`下已经存在这样一个预定义的类模板：`auto_ptr`，它被销毁时会自动删除所指之物，被赋值或赋值时原指针将会变为null来保证资源的唯一。
+利用对象在作用域结束时自动的析构函数，可以实现资源的自动释放，即RAII(Resource Acquisition Is Initialization)。在`std`下已经存在这样一个预定义的类模板：`auto_ptr`，它被销毁时会自动删除所指之物，被赋值时原指针将会变为null来保证资源的唯一。
 
 ```cpp
 std::auto_ptr<Investment> pInv(createInvestment());
