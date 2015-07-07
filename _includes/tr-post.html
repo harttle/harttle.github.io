@@ -1,6 +1,8 @@
 <tr>
     <td class="date text-muted"> {% include date.html post=post %} </td>
-    <td class="title"> <a class="feature-link title" href="{{ post.url }}">{{ post.title }}</a> </td>
-    <td class="category hidden-xs"> {% include categories.html post=post %} </td>
-    <td class="tag hidden-xs"> {% include tags.html post=post %} </td>
+    <td class="content">
+      <a class="feature-link title" href="{{ post.url }}">{{ post.title }}</a>
+      <span class="category">{% include categories.html post=post %}</span>
+      <span class="tag">{% include tags.html post=post %}</span>
+    </td>
 </tr>
