@@ -1,18 +1,118 @@
 ---
 layout: blog
 categories: linux
-title: 如何在VIM下写C++程序的？
+title: 在VIM下写C++能有多爽？
 tags: 
 ---
 
-# 模板
+我是坚定的Vim党，因为和命令行的集成如此之好，Vim可以解决任何问题。
+然而在这个世界上，即便是最好用的工具也是需要配置的。本文就来打造一个适合写C++的Vim编辑器！
 
-# Format：https://github.com/Chiel92/vim-autoformat
+# 基础设置
 
-格式化程序
+稍微熟悉Vim的小伙伴都会知道这个文件`~/.vimrc`，如同绝大多数的Unix软件，Vim也是用基于文本的配置文件。
+当前用户的Vim配置便存储在这个文件当中，该文件的每一行便是一个配置项（`function`除外）。
 
-* astyle：http://astyle.sourceforge.net/astyle.html
+配置文件中的所有语句都会在打开Vim时，在Ex模式下执行。例如，我们在Vim中打开行号：
 
-# 自动补全：https://github.com/Valloric/YouCompleteMe
+```vim
+:set number
+```
+
+我们便可以在配置文件中加入：
+
+```vim
+" ~/.vim
+set number
+```
+
+同样重要的配置还有：
+
+* 打开语法高亮：`syntax on`
+* Tab大小：`set tabstop=4`
+* 缩进大小：`set shiftwidth=4`
+
+> Vim是一个典型的Unix程序，上述命令都有缩写啦：number(nu), tabstop(ts), shiftwidth(sw), etc.
+
+更多关于基础配置项的信息，请参考我的另一篇博客： [vim 的配置与使用](/2013/11/08/vim-config/)
+
+# 自动补全
+
+自动补全恐怕是代码编辑器最重要的特性了，我们暂且不提它毁了多少人的面试之路。
+
+由于Vim插件的风格、使用方式太过多样化，多语言的自动补全一直存在各种冲突，需要大量精力才能调通。
+然而Github的出现给Vim插件带来了新的活力，现在我们通过基于Github的Vundle来安装插件，而不需要手动去vim.ort上找插件了。
+
+废话少说，我推荐的插件叫做[YouCompleteMe][ycm]，看图！
+
+![](/assets/img/blog/youcompleteme.gif)
+
+YouCompleteMe功能很全：
+
+* 自动补全，自动查找函数签名
+* 语法错误、警告的提示
+* 括号匹配，回车时括号的扩展与缩进
+
+配置很容易，但需要先安装Vundle[vundle]（如果你没有的话）。另外，如果你是MacOS用户，确保你的Vim升级到了7.4. 如何使用HomeBrew本文就不唠叨了。
+
+# Formatter
+
+格式化程序对于我们懒人和强迫症用户来讲是非常需要的。Vim的默认配置中提供了格式化功能，
+但显然我们要的更多！比如我希望：
+
+* 前大括号不换行，而后大括号换行
+* 所有运算符两边都有空格
+* 一键格式化当前文件
+* 保存时自动格式化
+* ...
+
+这里推荐的插件叫做[vim-autoformat][vaf]，上述的需求都能完美地解决。参照文档安装就好了。
+
+需要注意的是，vim-autoformat只是格式化程序框架，它依赖于代码风格检查工具来进行格式化。
+我们需要单独安装这些工具：astyle、js-beautify等。这里有完整的列表：https://github.com/Chiel92/vim-autoformat#default-formatprograms。
+
+如果你希望自定义代码风格，可以在`.vimrc`中添加个性化的formatter：
+
+```vim
+let g:formatdef_harttle = '"astyle --style=attach --pad-oper"'
+let g:formatters_cpp = ['harttle']
+let g:formatters_java = ['harttle']
+```
+
+比如我安装了astyle，这里定义一个formatter叫做harttle。然后，把它设置成cpp和java的formatter。
+至于`astyle --style=attach --pad-oper`为什么这样写，这是一个Bash命令，这些参数你可以去查看[Astyle 的文档][astyle]。
+来一个快捷键F3格式化当前文件：
+
+```vim
+" file: ~/.vimrc
+noremap <F3> :Autoformat<CR>
+```
+
+看图！
+
+![](/assets/img/blog/vim-format@2x.png)
 
 # 编译/运行
+
+如果你已经能熟练地定义Vim快捷键，就不必往下看了。
+
+下面三行分别设置了运行、编译、调试的快捷键，`n`表示该快捷键在normal模式下起作用；
+`nore`表示该定义不会递归地传递；`<CR>`是回车（carriage return），`!`表示执行Shell命令。
+
+```vim
+nnoremap <F5>   <Esc>:w<CR>:!g++ -std=c++11 % -o /tmp/a.out && /tmp/a.out<CR>
+nnoremap <F7>   <Esc>:w<CR>:!g++ -std=c++11 %<CR>
+nnoremap <C-F5> <Esc>:w<CR>:!g++ -std=c++11 -g % -o /tmp/a.out && gdb /tmp/a.out<CR>
+```
+
+当然，如果你把上述代码直接添加到`~/.vimrc`中，所有类型的文件都会拥有上述三个快捷键。
+这可能是我们不希望的结果，我们希望每种文件类型的`<F5>`执行自己的运行命令。
+
+这需要进行文件类型识别和定义文件类型插件，请参考我的另一篇文章：[感受Vim的强大：进阶技巧][vima]
+
+
+[vima]: /2015/07/17/vim-advanced/
+[astyle]: http://astyle.sourceforge.net/astyle.html
+[vaf]: https://github.com/Chiel92/vim-autoformat
+[ycm]: https://github.com/Valloric/YouCompleteMe
+[vundle]: https://github.com/gmarik/vundle#about
