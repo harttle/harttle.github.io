@@ -1,8 +1,8 @@
 ---
 layout: blog
 categories: reading
-title: Effective C++笔记：避免使用define
-tags: c++ macro
+title: Effective C++笔记：确保变量的初始化
+tags: c++ initialization
 ---
 
 > Item 4: Make sure that objects are initialized before they're used.
