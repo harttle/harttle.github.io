@@ -83,6 +83,9 @@ const int * p = &n;
 // 指针常量
 int * const p = &n;
 p = &m;   // 编译错
+
+// 指针和指向的对象都是常量
+const int * const p = &n;
 ```
 
 > 通常来讲，编译器允许变量到常量的隐式转换，不允许常量到变量的转换。可以参考`const_cast`。

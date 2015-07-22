@@ -5,7 +5,7 @@ title: Effective C++笔记：避免使用define
 tags: c++ macro
 ---
 
-> Prefer consts, enums, and inlines to #defines
+> Item 2: Prefer consts, enums, and inlines to #defines
 
 > 尽量使用常量、枚举和内联函数，代替`#define`。
 
