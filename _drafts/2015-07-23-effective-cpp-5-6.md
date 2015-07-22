@@ -81,9 +81,20 @@ s1 = s2;
 需要声明其复制构造函数与`=`运算符为`private`：
 
 ```cpp
-class HomeForSale{
+class Uncopyable{
 private:
-	HomeForSale(const HomeForSale&);
-	HomeForSale& operator=(const HomeForSale&);
+	Uncopyable(const Uncopyable&);
+	Uncopyable& operator=(const Uncopyable&);
 };
 ```
+
+值得一提的是，`Uncopyable`的不可拷贝特性是可以继承的。例如：
+
+```cpp
+class Homeforsale: private Uncopyable{
+    ...
+};
+```
+
+在编译器默认生成的拷贝构造函数和赋值运算符中，会调用父类的相应函数。
+然而这些调用将会被拒绝，因为是`private`继承的~
