@@ -11,15 +11,16 @@ do
     layout="$(echo -e "${layout}" | sed -e 's/\s//g')"
 
     if [ "$layout" != "blog" ]; then
+        echo 'not blog:' $file
         continue
     fi
     line=$(sed -n '3p' $file)
-    category=$(echo $line | sed 's/.*:\s*//g')
+    category=$(echo $line | sed 's/.*:\s*//g' | sed 's/\s//g')
 
     targetfile=./${category}/${urlname}.html
+
     targeturl=/$(echo ${basename} | sed 's/-/\//g' | sed 's/\//-/g4')
+    targeturl=$(echo ${targeturl} | sed 's/\//\\\//g');
 
-    escapeurl=$(echo ${targeturl} | sed 's/\//\\\//g');
-
-    sed "s/xxx/$escapeurl/g" migrate_permalink_tpl.html > $targetfile
+    sed "s/xxx/$targeturl/g" migrate_permalink_tpl.html > $targetfile
 done
