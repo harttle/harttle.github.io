@@ -1,8 +1,8 @@
 ---
 layout: blog
+categories: linux
 title: Linux下的触摸板设置 
 subtitle: 以 Arch Linux 为例
-categories: linux
 tags: linux archlinux
 excerpt: Arch Linux 下的触摸板配置：基本设置、输入时禁止触摸板敲击、外接鼠标时禁用触摸板。
 ---

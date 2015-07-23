@@ -1,7 +1,7 @@
 ---
 layout: blog
-title:  "计算机网络"
 categories: reading
+title:  "计算机网络"
 tags: network
 excerpt: '"Computer Network", Tanenbaum A.S. 潘爱民 译'
 ---

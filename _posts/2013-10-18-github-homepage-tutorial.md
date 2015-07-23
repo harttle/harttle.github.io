@@ -1,8 +1,8 @@
 ---
 layout: blog
+categories: web
 title:  "像 Geek 一样写博客"
 subtitle: "GitHub 博客部署教程"
-categories: web
 tags: markdown github ruby
 ---
 
