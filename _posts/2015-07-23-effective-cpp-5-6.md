@@ -78,7 +78,7 @@ s1 = s2;
 # 禁用函数
 
 我们通过把自动生成的函数设为`private`来禁用它，
-[Effective C++笔记：确保变量的初始化](/2015/07/22/effective-cpp-4)
+[Effective C++笔记：确保变量的初始化](/2015/07/22/effective-cpp-4.html)
 提到的单例是一个例子。这里我们来实现一个不可拷贝的类`Uncopyable`，
 需要声明其复制构造函数与`=`运算符为`private`：
 

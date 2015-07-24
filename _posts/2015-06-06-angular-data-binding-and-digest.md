@@ -171,4 +171,4 @@ module.controller('worldCtrl', ['$scope', '$timeout', function($scope, $timeout)
 当`$scope.users = ['alice', 'bob'];`执行后，DOM中的`<span>`还不存在，此时`$('.user')`的值为空集。尽管`$timeout`没有设置延迟时间（第二个参数），但这样的调用会使得回调函数在`$digest`循环之后再执行。
 
 [angular]: https://docs.angularjs.org
-[ai]: /2015/05/31/angular-scope-initialize
+[ai]: /2015/05/31/angular-scope-initialize.html

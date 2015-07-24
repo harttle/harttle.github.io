@@ -70,7 +70,7 @@ const CPerson& operator=(const CPerson& p){
 
 * 参数为`const`，因为不需要改变原有对象。
 
-    > 能使用`const`时，尽量使用它。详情见：[Effective C++ 笔记](/2014/05/04/effective-cpp)
+    > 能使用`const`时，尽量使用它。详情见：[Effective C++ 笔记](/2014/05/04/effective-cpp.html)
 
 * 参数、返回值为引用，因为直接传参会生成一个新的对象，低效。
 * 返回值为`CPerson`类型，这样可以支持连等：`a = b = c`。

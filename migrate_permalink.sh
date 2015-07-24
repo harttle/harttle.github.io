@@ -19,7 +19,7 @@ do
 
     targetfile=./${category}/${urlname}.html
 
-    targeturl=/$(echo ${basename} | sed 's/-/\//g' | sed 's/\//-/g4')
+    targeturl=/$(echo ${basename} | sed 's/-/\//g' | sed 's/\//-/g4').html
     targeturl=$(echo ${targeturl} | sed 's/\//\\\//g');
 
     sed "s/xxx/$targeturl/g" migrate_permalink_tpl.html > $targetfile

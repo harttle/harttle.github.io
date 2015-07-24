@@ -101,4 +101,4 @@ char& operator[](size_t pos){
 2. 调用`operator[](size_t) const`，得到的返回值类型为`const char&`。
 3. 把返回值去掉`const`属性，得到类型为`char&`的返回值。
 
-详情见：[Effective C++ 笔记](/2014/05/04/effective-cpp)
+详情见：[Effective C++ 笔记](/2014/05/04/effective-cpp.html)

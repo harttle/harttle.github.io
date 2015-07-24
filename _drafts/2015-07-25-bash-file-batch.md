@@ -29,14 +29,14 @@ categories: linux
 ...
 ```
 
-这篇文章新的URL是`/2015/05/02/tex-note`，旧的URL是`/linux/tex-note.html`，
+这篇文章新的URL是`/2015/05/02/tex-note.html`，旧的URL是`/linux/tex-note.html`，
 我需要为它生成一个文件：`/linux/tex-note.html`来匹配旧的URL，其内容为：
 
 ```html
 <html>
 <head lang="en">
-  <meta http-equiv="refresh" content="0; url=/2015/05/02/tex-note">
-  <link rel="canonical" href="/2015/05/02/tex-note" />
+  <meta http-equiv="refresh" content="0; url=/2015/05/02/tex-note.html">
+  <link rel="canonical" href="/2015/05/02/tex-note.html" />
 </head>
 </html>
 ```
@@ -91,9 +91,9 @@ do
     # 拼接目标文件名
     # targetfile == ./linux/tex-note.html
     
-    targeturl=/$(echo ${basename} | sed 's/-/\//g' | sed 's/\//-/g4')
+    targeturl=/$(echo ${basename} | sed 's/-/\//g' | sed 's/\//-/g4').html
     # 拼接目标URL：先把所有-替换为/，再把从第四个开始的/替换为-
-    # targeturl == /2015/05/02/tex-note
+    # targeturl == /2015/05/02/tex-note.html
 
     targeturl=$(echo ${targeturl} | sed 's/\//\\\//g');
     # targeturl

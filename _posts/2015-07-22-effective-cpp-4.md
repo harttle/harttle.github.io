@@ -56,7 +56,7 @@ C::C()
 # 类静态变量需要声明
 
 类的静态变量除了在类声明中进行声明外，还需要在类声明外进行定义。
-（`static const int`是个例外，参见：[Effective C++笔记：避免使用define](/2015/07/21/effective-cpp-2)）
+（`static const int`是个例外，参见：[Effective C++笔记：避免使用define](/2015/07/21/effective-cpp-2.html)）
 
 静态变量的生命周期不同于栈或者堆中的对象，从它被构造开始一直存在，直到程序结束。
 包括全局变量、命名空间下的变量、类中和函数中定义的`static`对象。

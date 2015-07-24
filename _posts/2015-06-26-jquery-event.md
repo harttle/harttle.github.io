@@ -213,7 +213,7 @@ $( "#root" ).on( "click", "a", function( e ) {} );
 > 自jQuery1.7起已经不推荐使用了。参见： https://api.jquery.com/category/deprecated/deprecated-1.7/
 
 [je]: https://api.jquery.com/category/events/
-[ai]: /2015/05/31/angular-scope-initialize
+[ai]: /2015/05/31/angular-scope-initialize.html
 [lb]: http://lokeshdhakar.com/projects/lightbox2/
 [mo]: https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
 [lbsrc]: https://github.com/lokesh/lightbox2/blob/master/src/js/lightbox.js

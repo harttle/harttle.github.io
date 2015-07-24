@@ -118,7 +118,7 @@ wrapper(2, 3, p[1]);
 ```
 
 除了函数指针，函数对象也常用来传递动态的策略。
-它们有一致的调用方式，在类模板中可以不加区分地使用： http://harttle.github.io/2015/07/03/stl-function-objects-and-pointers/
+它们有一致的调用方式，在类模板中可以不加区分地使用： http://harttle.github.io/2015/07/03/stl-function-objects-and-pointers.html
 
 # 智能指针
 
@@ -141,4 +141,4 @@ auto_ptr<Investment> invest(){
 
 > `shared_ptr`的引用计数很像垃圾回收，然而它并不能解决环状引用的问题。
 
-参见： http://harttle.github.io/2014/05/04/effective-cpp/
+参见： http://harttle.github.io/2014/05/04/effective-cpp.html

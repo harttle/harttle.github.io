@@ -1,7 +1,7 @@
 name: Harttle Land
 url: http://harttle.github.io
 
-permalink: /:year/:month/:day/:title
+permalink: /:year/:month/:day/:title.html
 
 paginate: 4
 paginate_path: "page:num"
