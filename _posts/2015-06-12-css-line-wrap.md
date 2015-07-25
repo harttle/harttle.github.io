@@ -3,6 +3,9 @@ layout: blog
 categories: web
 title: CSS Line Box：溢出与折行 
 tags: css overflow wrap line-box
+redirect_from:
+  - /web/css-line-wrap.html
+  - /2015/06/12/css-line-wrap/
 ---
 
 CSS 将 DOM 树转换为由矩形 Box 构成的树，并通过设置这些 Box 的属性来改变其位置和大小，描述每个元素或文本的布局。这些 Box 分为三个级别：

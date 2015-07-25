@@ -3,6 +3,9 @@ layout: blog
 categories: linux
 tags: archlinux linux os
 title: 安装 Arch Linux
+redirect_from:
+  - /linux/arch-install.html
+  - /2013/11/07/arch-install/
 ---
 
 本文介绍如何安装 Arch Linux，一个轻量级、简单的 Linux 发行版。

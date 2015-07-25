@@ -3,6 +3,9 @@ layout: blog
 categories: linux
 title: Vim 的配置与使用
 tags: linux vim
+redirect_from:
+  - /linux/vim-config.html
+  - /2013/11/08/vim-config/
 ---
 
 Vim是从vi发展出来的一个文本编辑器。代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。和Emacs并列成为类Unix系统用户最喜欢的编辑器。

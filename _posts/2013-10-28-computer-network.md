@@ -4,6 +4,9 @@ categories: reading
 title:  "计算机网络"
 tags: network
 excerpt: '"Computer Network", Tanenbaum A.S. 潘爱民 译'
+redirect_from:
+  - /reading/computer-network.html
+  - /2013/10/28/computer-network/
 ---
 
 # 概述

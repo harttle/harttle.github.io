@@ -3,6 +3,9 @@ layout: blog
 categories: reading
 title: C++手稿：std::string
 tags: c++ string
+redirect_from:
+  - /reading/std-string.html
+  - /2015/06/30/std-string/
 ---
 
 字符串在很多编程语言中已经成为基本数据类型，C语言中我们使用`char*`来手动申请和维护字符串，

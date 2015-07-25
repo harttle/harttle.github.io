@@ -3,6 +3,9 @@ layout: blog
 categories: reading
 title: C# 学习笔记
 tags: c# windows
+redirect_from:
+  - /reading/csharp-note.html
+  - /2015/05/14/csharp-note/
 ---
 
 ## 参数传递

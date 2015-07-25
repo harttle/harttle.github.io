@@ -3,6 +3,9 @@ layout: blog
 categories: web
 title: AngularJS 数据绑定与 $digest 循环
 tags: AngularJS javascript data-binding digest apply scope watch
+redirect_from:
+  - /web/angular-data-binding-and-digest.html
+  - /2015/06/06/angular-data-binding-and-digest/
 ---
 
 数据绑定可以说是[AngularJS][angular]最大的特色。在Angular中，视图和模型的数据不仅是双向绑定的，并而且是实时的。

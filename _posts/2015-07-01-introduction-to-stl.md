@@ -3,6 +3,9 @@ layout: blog
 categories: reading
 title: C++手稿：STL入门
 tags: c++ stl container iterator algorithm
+redirect_from:
+  - /reading/introduction-to-stl.html
+  - /2015/07/01/introduction-to-stl/
 ---
 
 STL (Standard Template Library) 提供了一些常用的数据结构和算法的模板，1998年加入C++标准。

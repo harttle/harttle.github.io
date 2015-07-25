@@ -3,6 +3,9 @@ layout: blog
 categories: web
 title: CSS Alignment：元素对齐问题
 tags: css alignment inline
+redirect_from:
+  - /web/css-alignment.html
+  - /2015/06/17/css-alignment/
 ---
 
 # text-align

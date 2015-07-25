@@ -4,6 +4,9 @@ categories: web
 title:  "像 Geek 一样写博客"
 subtitle: "GitHub 博客部署教程"
 tags: markdown github ruby
+redirect_from:
+  - /web/github-homepage-tutorial.html
+  - /2013/10/18/github-homepage-tutorial/
 ---
 
 最近终于完成了个人博客的开发和部署，就把整个过程记录在这里。利用 GitHub 提供的文件服务部署，采用 github+GFM+jekyll 方式构建静态博客站点。

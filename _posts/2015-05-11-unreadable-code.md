@@ -3,6 +3,9 @@ layout: blog
 categories: misc
 title: 中文乱码辨识
 tags: windows linux
+redirect_from:
+  - /misc/unreadable-code.html
+  - /2015/05/11/unreadable-code/
 ---
 
 在软件开发中常常会碰到中文乱码。有时我们不知道该文件的正确编码是什么，会使用文本编辑器（如UltraEdit）来尝试所有可能的编码。然而，乱码本身也有一定的规律，从乱码的样子大致可以得知正确的编码类型。在此给出各种编码的字符串被错误解析时的样子。

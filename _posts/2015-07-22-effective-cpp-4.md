@@ -3,6 +3,9 @@ layout: blog
 categories: reading
 title: Effective C++笔记：确保变量的初始化
 tags: c++ initialization
+redirect_from:
+  - /reading/effective-cpp-4.html
+  - /2015/07/22/effective-cpp-4/
 ---
 
 > Item 4: Make sure that objects are initialized before they're used.

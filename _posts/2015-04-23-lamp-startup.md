@@ -3,6 +3,9 @@ layout: blog
 categories: web
 title: LAMP 搭建
 tags: linux apache database php
+redirect_from:
+  - /web/lamp-startup.html
+  - /2015/04/23/lamp-startup/
 ---
 
 ### 下载安装

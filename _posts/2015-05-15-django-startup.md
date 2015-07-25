@@ -3,6 +3,9 @@ layout: blog
 categories: web
 title: Django 使用
 tags: linux python
+redirect_from:
+  - /web/django-startup.html
+  - /2015/05/15/django-startup/
 ---
 
 # 安装

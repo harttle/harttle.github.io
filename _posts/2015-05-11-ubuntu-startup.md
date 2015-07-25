@@ -3,6 +3,9 @@ layout: blog
 categories: linux
 title: Ubuntu 学习笔记
 tags: linux os
+redirect_from:
+  - /linux/ubuntu-startup.html
+  - /2015/05/11/ubuntu-startup/
 ---
 
 

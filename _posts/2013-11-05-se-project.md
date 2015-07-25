@@ -3,6 +3,9 @@ layout: blog
 categories: misc
 title: 搜索引擎搭建
 tags: web network search-engine
+redirect_from:
+  - /misc/se-project.html
+  - /2013/11/05/se-project/
 ---
 
 采用 heritix+pagerank+lucene 方式搭建搜索引擎原型，并评估其性能。

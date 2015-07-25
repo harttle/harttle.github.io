@@ -3,6 +3,9 @@ layout: blog
 categories: misc
 title: MySQL 学习笔记
 tags: database linux
+redirect_from:
+  - /misc/mysql-note.html
+  - /2015/05/03/mysql-note/
 ---
 
 【文档】http://dev.mysql.com/doc/refman/5.1/zh/sql-syntax.html

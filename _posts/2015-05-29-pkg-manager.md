@@ -3,6 +3,9 @@ layout: blog
 categories: reading
 title: 包管理与构建工具
 tags: autobuild linux python javascript
+redirect_from:
+  - /reading/pkg-manager.html
+  - /2015/05/29/pkg-manager/
 ---
 
 # JavaScript

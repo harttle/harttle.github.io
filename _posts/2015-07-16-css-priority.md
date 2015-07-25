@@ -3,6 +3,9 @@ layout: blog
 categories: web
 title: CSS规则的优先级匹配
 tags: css
+redirect_from:
+  - /web/css-priority.html
+  - /2015/07/16/css-priority/
 ---
 
 CSS规则之间可以互相覆盖，这一点我们应该已经习以为常了。然而正是由于规则之间可以互相覆盖、子元素继承父元素的默认行为，导致了CSS冲突的问题。

@@ -3,6 +3,9 @@ layout: blog
 categories: misc
 title: IOS软键盘视图处理
 tags: ios objective-c mobile
+redirect_from:
+  - /misc/input-method-ios.html
+  - /2014/05/25/input-method-ios/
 ---
 
 IOS 软键盘的行为是直接由开发者控制的，操作系统只提供很少的管理策略。这造成了很麻烦的问题：

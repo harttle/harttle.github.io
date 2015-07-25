@@ -3,6 +3,9 @@ layout: blog
 categories: web
 title: AngularJS 路由：ng-route 与 ui-router
 tags: AngularJS javascript route view
+redirect_from:
+  - /web/angular-route.html
+  - /2015/06/10/angular-route/
 ---
 
 [AngularJS][angular]的[ng-route][ng-route]模块为控制器和视图提供了[Deep-Linking]URL。

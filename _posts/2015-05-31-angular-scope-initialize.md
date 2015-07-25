@@ -3,6 +3,9 @@ layout: blog
 categories: web
 title: AngularJS 初始化过程
 tags: AngularJS javascript directive controller compile
+redirect_from:
+  - /web/angular-scope-initialize.html
+  - /2015/05/31/angular-scope-initialize/
 ---
 
 [AngularJS][angularjs]属于典型的单页APP框架，现由Google维护，用在了Google的多款产品中。

@@ -3,6 +3,9 @@ layout: blog
 categories: reading
 title: Effective C++笔记：避免使用define
 tags: c++ macro
+redirect_from:
+  - /reading/effective-cpp-2.html
+  - /2015/07/21/effective-cpp-2/
 ---
 
 > Item 2: Prefer consts, enums, and inlines to #defines

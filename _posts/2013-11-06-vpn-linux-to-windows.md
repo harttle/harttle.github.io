@@ -3,6 +3,9 @@ layout: blog
 categories: misc
 tags: windows linux network
 title: Linux 连接 Windows Server VPN
+redirect_from:
+  - /misc/vpn-linux-to-windows.html
+  - /2013/11/06/vpn-linux-to-windows/
 ---
 
 Linux 连接 Windows Server VPN，以 archLinux 为例，适用于 Ubuntu。

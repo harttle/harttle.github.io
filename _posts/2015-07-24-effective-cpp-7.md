@@ -3,6 +3,9 @@ layout: blog
 categories: reading
 title: Effective C++笔记：对象大小与字节对齐
 tags: c++ sizeof
+redirect_from:
+  - /reading/effective-cpp-7.html
+  - /2015/07/24/effective-cpp-7/
 ---
 
 # 虚析构函数

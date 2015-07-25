@@ -3,6 +3,9 @@ layout: blog
 categories: reading
 title: C++手稿：封装与继承
 tags: c++ class object encapsulation inheritance
+redirect_from:
+  - /reading/cpp-encapsulation-and-inheritance.html
+  - /2015/06/29/cpp-encapsulation-and-inheritance/
 ---
 
 # 可见性级别

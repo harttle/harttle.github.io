@@ -3,6 +3,9 @@ layout: blog
 categories: reading
 title: C++手稿：指针与引用
 tags: c++ pointer reference
+redirect_from:
+  - /reading/cpp-pointers-and-references.html
+  - /2015/07/05/cpp-pointers-and-references/
 ---
 
 # 引用

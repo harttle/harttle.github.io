@@ -17,6 +17,7 @@ exclude: ['README.md', '*.sh', '.*']
 
 gems:
   - jekyll-sitemap
+  - jekyll-redirect-from
 
 cate_icons:
   reading: "fa-book"

@@ -3,6 +3,9 @@ layout: blog
 categories: linux
 title: Windows/Linux远程桌面
 tags: windows linux
+redirect_from:
+  - /linux/remote-desktop.html
+  - /2015/05/12/remote-desktop/
 ---
 
 # Linux -> windows

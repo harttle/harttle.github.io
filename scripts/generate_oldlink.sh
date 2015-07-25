@@ -1,5 +1,26 @@
 #!/usr/local/bin/bash
 
+# generate 301 HTML for every post, example: 
+
+# file 2014-09-21-ip.md: 
+# ---
+# layout: blog
+# category: reading
+# title: xxx
+# tags: xxx
+# ---
+
+# ->
+
+# file ./reading/ip.html:
+# <html>
+# <head lang="en">
+#   <meta charset="UTF-8">
+#   <meta http-equiv="refresh" content="0; url=/2014/09/21/ip.html">
+#   <link rel="canonical" href="/2014/09/21/ip.html" />
+# </head>
+# </html>
+
 for file in ./_posts/*    
 do
     echo 'migrating:' $file

@@ -3,6 +3,9 @@ layout: blog
 categories: linux
 title: Linux做局域网路由
 subtitle: linux网络调试与IP层服务器假设
+redirect_from:
+  - /linux/linux-route.html
+  - /2014/10/08/linux-route/
 tags: network linux ip/tcp
 ---
 

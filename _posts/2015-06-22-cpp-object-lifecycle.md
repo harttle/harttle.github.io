@@ -3,6 +3,9 @@ layout: blog
 categories: reading
 title: C++手稿：对象的生命周期，构造与析构
 tags: c++ class object construct destruct
+redirect_from:
+  - /reading/cpp-object-lifecycle.html
+  - /2015/06/22/cpp-object-lifecycle/
 ---
 
 # 类的声明

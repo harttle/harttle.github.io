@@ -3,6 +3,9 @@ layout: blog
 categories: reading
 title: Effective C++笔记：那些被C++默默地声明和调用的函数
 tags: c++ 
+redirect_from:
+  - /reading/effective-cpp-5-6.html
+  - /2015/07/23/effective-cpp-5-6/
 ---
 
 > Item 5:  Know what functions C++ silently writes and calls

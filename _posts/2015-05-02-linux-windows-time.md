@@ -3,6 +3,9 @@ layout: blog
 categories: linux
 title: Linux/Windows 时间不一致
 tags: windows linux
+redirect_from:
+  - /linux/linux-windows-time.html
+  - /2015/05/02/linux-windows-time/
 ---
 
 在使用Linux/Windows的双系统时，经常发现时间不正确：liunx下的时间或windows下的时间不对，往往相差8小时。在此给出解释和推荐解决方案。

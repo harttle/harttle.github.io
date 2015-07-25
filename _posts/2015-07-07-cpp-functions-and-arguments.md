@@ -3,6 +3,9 @@ layout: blog
 categories: reading
 title: C++手稿：函数与参数
 tags: c++ function argument
+redirect_from:
+  - /reading/cpp-functions-and-arguments.html
+  - /2015/07/07/cpp-functions-and-arguments/
 ---
 
 # 默认参数
