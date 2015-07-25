@@ -18,12 +18,8 @@ do
     category=$(echo $line | sed 's/.*:\s*//g' | sed 's/\s//g')
 
     targetfile=./${category}/${urlname}.html
-    targetdir=./${category}/${urlname}
-
     targeturl=http://harttle.github.io/$(echo ${basename} | sed 's/-/\//g' | sed 's/\//-/g4').html
     targeturl=$(echo ${targeturl} | sed 's/\//\\\//g');
 
     sed "s/xxx/$targeturl/g" migrate_permalink_tpl.html > $targetfile
-    mkdir $targetdir
-    cp $targetfile $targetdir/index.html
 done
