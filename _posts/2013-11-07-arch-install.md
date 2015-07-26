@@ -1,7 +1,7 @@
 ---
 layout: blog
 categories: linux
-tags: archlinux linux os
+tags: Archlinux Linux 操作系统
 title: 安装 Arch Linux
 redirect_from:
   - /linux/arch-install.html

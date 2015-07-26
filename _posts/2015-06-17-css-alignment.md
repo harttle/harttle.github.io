@@ -2,7 +2,7 @@
 layout: blog 
 categories: web
 title: CSS Alignment：元素对齐问题
-tags: css alignment inline
+tags: CSS Web 盒模型
 redirect_from:
   - /web/css-alignment.html
   - /2015/06/17/css-alignment/

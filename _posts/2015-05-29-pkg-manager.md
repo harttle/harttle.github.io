@@ -2,7 +2,7 @@
 layout: blog 
 categories: reading
 title: 包管理与构建工具
-tags: autobuild linux python javascript
+tags: Linux Python JavaScript Ruby
 redirect_from:
   - /reading/pkg-manager.html
   - /2015/05/29/pkg-manager/
@@ -18,12 +18,12 @@ redirect_from:
 * 依赖在项目之间是隔离的，全局安装（`-g`）会使它成为命令行工具而不是全局依赖。
 > 递归的依赖下载风格使得NPM的缓存及其重要。缓存位于`~/.npm`下，这里保存这`.tgz`格式的包文件。
 
-Javascript 通常使用 [Grunt](http://gruntjs.com/) 进行构建。
+JavaScript 通常使用 [Grunt](http://gruntjs.com/) 进行构建。
 
 * Grunt通过插件来完成任务，每个插件相当于Makefile的一个命令。
 * Grunt任务定义在`Gruntfile.js`中。
 * NPM提供了众多的Grunt插件，当然你也可以手写。
-* Grunt任务继承了Javascript的异步特性。
+* Grunt任务继承了JavaScript的异步特性。
 
 # 前端 lib
 

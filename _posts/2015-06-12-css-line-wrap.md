@@ -2,7 +2,7 @@
 layout: blog 
 categories: web
 title: CSS Line Box：溢出与折行 
-tags: css overflow wrap line-box
+tags: CSS Web 盒模型
 redirect_from:
   - /web/css-line-wrap.html
   - /2015/06/12/css-line-wrap/

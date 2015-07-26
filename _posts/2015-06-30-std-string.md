@@ -2,7 +2,7 @@
 layout: blog 
 categories: reading
 title: C++手稿：std::string
-tags: c++ string
+tags: C++ 字符串
 redirect_from:
   - /reading/std-string.html
   - /2015/06/30/std-string/

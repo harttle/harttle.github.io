@@ -2,7 +2,7 @@
 layout: blog
 categories: reading
 title: Effective C++ 笔记
-tags: c++
+tags: C++
 redirect_from:
   - /reading/effective-cpp.html
   - /2014/05/04/effective-cpp/

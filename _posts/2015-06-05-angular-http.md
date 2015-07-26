@@ -2,7 +2,7 @@
 layout: blog 
 categories: web
 title: AngularJS $http Service
-tags: AngularJS javascript http ajax httpprovider promise/deferred
+tags: AngularJS JavaScript HTTP AJAX Promise Web
 redirect_from:
   - /web/angular-http.html
   - /2015/06/05/angular-http/

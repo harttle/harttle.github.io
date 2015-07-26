@@ -1,7 +1,7 @@
 ---
 layout: blog
 categories: misc
-tags: windows linux network
+tags: Windows Linux 网络
 title: Linux 连接 Windows Server VPN
 redirect_from:
   - /misc/vpn-linux-to-windows.html

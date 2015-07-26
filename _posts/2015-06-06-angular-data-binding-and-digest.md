@@ -2,7 +2,7 @@
 layout: blog 
 categories: web
 title: AngularJS 数据绑定与 $digest 循环
-tags: AngularJS javascript data-binding digest apply scope watch
+tags: AngularJS JavaScript 数据绑定 MVC Web
 redirect_from:
   - /web/angular-data-binding-and-digest.html
   - /2015/06/06/angular-data-binding-and-digest/

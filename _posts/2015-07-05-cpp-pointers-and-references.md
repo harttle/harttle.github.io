@@ -2,7 +2,7 @@
 layout: blog 
 categories: reading
 title: C++手稿：指针与引用
-tags: c++ pointer reference
+tags: C++ 函数指针 指针 引用
 redirect_from:
   - /reading/cpp-pointers-and-references.html
   - /2015/07/05/cpp-pointers-and-references/

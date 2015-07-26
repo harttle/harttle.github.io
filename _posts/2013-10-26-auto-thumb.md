@@ -3,7 +3,7 @@ layout: blog
 categories: web
 title: Makefile 批量更新缩略图
 subtitle: 站点后台工具
-tags: linux make
+tags: Linux Makefile Bash
 excerpt: 采用 ImageMagick + Makefile 的方式，批量地更新用于web的缩略图。
 redirect_from:
   - /web/auto-thumb.html

@@ -2,7 +2,7 @@
 layout: blog 
 categories: reading
 title: C++手稿：类的静态和常量成员
-tags: c++ class static constant
+tags: C++
 redirect_from:
   - /reading/cpp-static-and-const-member.html
   - /2015/06/24/cpp-static-and-const-member/

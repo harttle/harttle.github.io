@@ -2,7 +2,7 @@
 layout: blog
 categories: linux
 title: Gnuplot 学习笔记
-tags: linux
+tags: Linux Bash
 redirect_from:
   - /linux/gnuplot-note.html
   - /2015/05/16/gnuplot-note/

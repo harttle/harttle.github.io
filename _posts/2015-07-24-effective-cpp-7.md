@@ -1,20 +1,20 @@
 ---
 layout: blog
 categories: reading
-title: Effective C++笔记：对象大小与字节对齐
-tags: c++ sizeof
+title: 将多态基类的析构函数声明为虚函数
+subtitle: Effective C++笔记
+tags: C++ sizeof 析构函数 字节对齐 虚函数
 redirect_from:
   - /reading/effective-cpp-7.html
   - /2015/07/24/effective-cpp-7/
+excerpt: 析构函数声明为虚函数恐怕是面试中最常见的问题之一。目的在于以基类指针调用析构函数时能够正确地析构子类部分的内存。
 ---
 
 # 虚析构函数
 
 > Item 7: Declare destructors virtual in polymorphic base classes
->
-> 总是将多态基类的析构函数声明为虚函数
 
-析构函数声明为虚函数恐怕是面试中最常见的问题之一。。目的在于以基类指针调用析构函数时能够正确地析构子类部分的内存。
+析构函数声明为虚函数恐怕是面试中最常见的问题之一。目的在于以基类指针调用析构函数时能够正确地析构子类部分的内存。
 否则子类部分的内存将会泄漏，正确的用法如下：
 
 ```cpp

@@ -2,7 +2,7 @@
 layout: blog 
 categories: web
 title: AngularJS 表单（ng-form）验证
-tags: AngularJS javascript Form validation
+tags: AngularJS JavaScript 表单 Web MVC
 redirect_from:
   - /web/angular-form.html
   - /2015/06/04/angular-form/

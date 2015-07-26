@@ -8,118 +8,142 @@ subtitle: Keep It Simple, Stupid!
 <link rel="stylesheet" href="/assets/css/monokai-syntax.css">
 <link rel="stylesheet" href="/assets/css/index.css">
 <style>
-    .item-list{
-        margin-bottom:50px;
-        padding: 15px 25px;
-        background-color: #FFFFCC;
-    }
-    .item-list li{ line-height:30px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-    .item-list .page-header{ margin-bottom:10px; }
-    .item-list ol{ padding-left:5px; }
-    .pager{ margin-bottom: 0; }
+  .item-list {
+    margin-bottom: 50px;
+    padding: 15px 25px;
+    background-color: #FFFFCC;
+  }
+
+  .item-list li {
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .item-list .page-header {
+    margin-bottom: 10px;
+  }
+
+  .item-list ol {
+    padding-left: 5px;
+  }
+
+  .pager {
+    margin-bottom: 0;
+  }
+
+  .tag-cloud-src {
+    display: none;
+  }
+
+  .tag-cloud {
+    position: relative;
+    width: 100%;
+    height: 300px;
+  }
 </style>
 <script src="/assets/lib/jquery/jquery-ias.min.js"></script>
 
 <div class="row">
-    <div class="col-md-9"> {{ content }}
-        <img class="recent" src="/assets/img/recent.png"/>
+  <div class="col-md-9"> {{ content }}
+    <img class="recent" src="/assets/img/recent.png"/>
 
-        <div id="posts">
-        {% for post in paginator.posts %}
-            <div class="post paper">
-                <h2 class="header">
-                    <a class="feature-link" href="{{post.url}}">{{ post.title }}</a>
-                    <div class="pull-right text-muted">
-                        {% include date.html post=post %}
-                    </div>
-                </h2>
-                <p class="meta">
-                    {% include categories.html post=post %}
-                    {% include tags.html post=post %}
-                </p>
-                <div class="md">{{ post.content | split:'<!--more-->' | first }}</div>
-                <a class="more pull-right button button-rounded button-flat-blue" href="{{ post.url }}">
-                    Full Post
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                </a>
-            </div>
-        {% endfor %}
-        </div>
+    <div id="posts">
+      {% for post in paginator.posts %}
+      <div class="post paper">
+        <h2 class="header">
+          <a class="feature-link" href="{{post.url}}">{{ post.title }}</a>
+          <div class="pull-right text-muted">
+            {% include date.html post=post %}
+          </div>
+        </h2>
+        <p class="meta">
+          {% include categories.html post=post %}
+          {% include tags.html post=post %}
+        </p>
 
-        <!-- Pagination -->
-        {% if paginator.total_pages > 1 %}
-        <ul class="pager">
-            {% if paginator.next_page %}
-            <li class="previous"><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Older</a></li>
-            {% else %}
-            <li class="previous disabled"><a>&larr; Older</a></li>
-            {% endif %}
-
-            {% if paginator.previous_page %}
-            <li class="next"><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">Newer &rarr;</a></li>
-            {% else %}
-            <li class="next disabled"><a>Newer &rarr;</a></li>
-            {% endif %}
-        </ul>
-        {% endif %}
-        {% include latex.html %}
-    </div>
-    <div class="col-md-3 hidden-xs">
-      <div class="item-list paper-curl tags">
-        <h4 class="page-header"><a class="feature-link" href="/">Recent</a></h4>
-        <ol class="list-unstyled">
-          {% for post in site.posts limit : 15 %}
-          <li> <a data-toggle="tooltip" data-placement="left" title="{{ post.date | date: "%Y-%m-%d"}}" href="{{post.url}}">{{post.title}}</a> </li>
-          {% endfor %}
-        </ol>
+        <div class="md">{{ post.content | split:'<!--more-->' | first }}</div>
+        <a class="more pull-right button button-rounded button-flat-blue" href="{{ post.url }}">
+          Full Post
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
       </div>
-        <div class="item-list paper-curl">
-            <h4 class="page-header"><a class="feature-link" href="/category.html">Categories</a></h4>
-            <ol class="list-unstyled">
-            {% for cate in site.categories %}
-                <li>
-                    <a href="/category.html#category-{{cate | first}}">
-                        {{cate | first | capitalize}}({{ cate | last | size }})
-                    </a>
-                </li>
-            {% endfor %}
-            </ol>
-        </div>
-        <div class="item-list paper-curl tags">
-            <h4 class="page-header"><a class="feature-link" href="/">Tags</a></h4>
-        {% for tag in site.tags %}
-            {% assign name  = tag|first %}
-            {% assign count = tag|last|size %}
-            <a class="label label-{% include randcolor.html num=count %}"
-                href="/tag.html#tag-{{ name }}">
-                {{ name }}({{ count }})
-            </a>
-        {% endfor %}
-        </div>
+      {% endfor %}
     </div>
+
+    <!-- Pagination -->
+    {% if paginator.total_pages > 1 %}
+    <ul class="pager">
+      {% if paginator.next_page %}
+      <li class="previous"><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr;
+        Older</a></li>
+      {% else %}
+      <li class="previous disabled"><a>&larr; Older</a></li>
+      {% endif %}
+
+      {% if paginator.previous_page %}
+      <li class="next"><a
+          href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">Newer &rarr;</a></li>
+      {% else %}
+      <li class="next disabled"><a>Newer &rarr;</a></li>
+      {% endif %}
+    </ul>
+    {% endif %}
+    {% include latex.html %}
+  </div>
+  <div class="col-md-3 hidden-xs">
+    <div class="item-list paper-curl tags">
+      <h4 class="page-header"><a class="feature-link" href="/">Tags</a></h4>
+
+      <div class="tag-cloud-src">
+        {% for tag in site.tags %}
+        {% assign name = tag|first %}
+        {% assign count = tag|last|size %}
+          <span data-text="{{name}}" data-weight="{{count}}"
+                data-link="/tag.html#tag-{{ name }}"></span>
+        {% endfor %}
+      </div>
+      <div class="tag-cloud"></div>
+    </div>
+    <div class="item-list paper-curl">
+      <h4 class="page-header"><a class="feature-link" href="/">Recent</a></h4>
+      <ol class="list-unstyled">
+        {% for post in site.posts limit : 30 %}
+        <li><a data-toggle="tooltip" data-placement="left" title="{{ post.date | date: " %Y-%m-%d"}}"
+          href="{{post.url}}">{{post.title}}</a> </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
 </div>
 
 {% include moment.html %}
 
 <script>
-$(function(){
-    var ias = $.ias({
-      container:  '#posts',
-      item:       '.post',
-      pagination: '.pager',
-      next:       '.pager .previous a'
-    });
-    ias.on('loaded', function(data, items) {
-        for(var i in items){ update_moment(items[i]); }
-    });
-    ias.extension(new IASSpinnerExtension({ src: '/assets/img/loading.gif' }));
-    ias.extension(new IASNoneLeftExtension({
-        text: 'No more posts.',
-        html: '<div class="ias-noneleft" style="text-align: center;color:#fff">{text}</div>'
-    }));
-});
+  $(function(){
+      var ias = $.ias({
+        container:  '#posts',
+        item:       '.post',
+        pagination: '.pager',
+        next:       '.pager .previous a'
+      });
+      ias.on('loaded', function(data, items) {
+          for(var i in items){ update_moment(items[i]); }
+      });
+      ias.extension(new IASSpinnerExtension({ src: '/assets/img/loading.gif' }));
+      ias.extension(new IASNoneLeftExtension({
+          text: 'No more posts.',
+          html: '<div class="ias-noneleft" style="text-align: center;color:#fff">{text}</div>'
+      }));
+
+      var words = $('.tag-cloud-src span').map(function(idx, span){
+        return $(span).data();
+      });
+
+      $('.tag-cloud').jQCloud(words, {
+        steps: 20,
+        shape: 'rectangular'
+      });
+  });
 </script>

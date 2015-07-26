@@ -1,11 +1,13 @@
 ---
 layout: blog
 categories: reading
-title: Effective C++笔记：避免使用define
-tags: c++ macro
+title: 避免使用define
+subtitle: Effective C++笔记
+tags: C++ 宏
 redirect_from:
   - /reading/effective-cpp-2.html
   - /2015/07/21/effective-cpp-2/
+excerpt: 尽量使用常量、枚举和内联函数，代替`#define`。
 ---
 
 > Item 2: Prefer consts, enums, and inlines to #defines

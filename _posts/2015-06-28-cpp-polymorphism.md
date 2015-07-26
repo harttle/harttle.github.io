@@ -2,7 +2,7 @@
 layout: blog 
 categories: reading
 title: C++手稿：虚函数与多态
-tags: cpp polymorphism inheritance
+tags: C++ 虚函数
 redirect_from:
   - /reading/cpp-polymorphism.html
   - /2015/06/28/cpp-polymorphism/

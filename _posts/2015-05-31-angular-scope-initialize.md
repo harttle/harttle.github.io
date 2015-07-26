@@ -2,7 +2,7 @@
 layout: blog 
 categories: web
 title: AngularJS 初始化过程
-tags: AngularJS javascript directive controller compile
+tags: AngularJS JavaScript 移动开发 MVC Web
 redirect_from:
   - /web/angular-scope-initialize.html
   - /2015/05/31/angular-scope-initialize/

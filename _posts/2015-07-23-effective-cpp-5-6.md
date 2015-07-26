@@ -1,11 +1,13 @@
 ---
 layout: blog
 categories: reading
-title: Effective C++笔记：那些被C++默默地声明和调用的函数
-tags: c++ 
+title: Item5：那些被C++默默地声明和调用的函数
+subtitle: Effective C++笔记
+tags: C++ 析构函数 构造函数
 redirect_from:
   - /reading/effective-cpp-5-6.html
   - /2015/07/23/effective-cpp-5-6/
+excerpt: 在C++中，编译器会自动生成一些你没有显式定义的函数，它们包括：构造函数、析构函数、复制构造函数、`=`运算符。
 ---
 
 > Item 5:  Know what functions C++ silently writes and calls

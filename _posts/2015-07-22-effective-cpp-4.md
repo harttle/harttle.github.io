@@ -1,11 +1,13 @@
 ---
 layout: blog
 categories: reading
-title: Effective C++笔记：确保变量的初始化
-tags: c++ initialization
+title: Item 4：确保变量的初始化
+subtitle: Effective C++笔记
+tags: C++
 redirect_from:
   - /reading/effective-cpp-4.html
   - /2015/07/22/effective-cpp-4/
+excerpt: 出于效率原因，C++不保证**非成员对象的内置型**的初始化。对于成员变量的内置类型，会在构造函数进入之前进行初始化。
 ---
 
 > Item 4: Make sure that objects are initialized before they're used.

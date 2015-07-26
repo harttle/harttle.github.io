@@ -2,7 +2,7 @@
 layout: blog 
 categories: reading
 title: C++手稿：对象的生命周期，构造与析构
-tags: c++ class object construct destruct
+tags: C++ 构造函数 析构函数
 redirect_from:
   - /reading/cpp-object-lifecycle.html
   - /2015/06/22/cpp-object-lifecycle/

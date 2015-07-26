@@ -2,7 +2,7 @@
 layout: blog
 categories: reading
 title: 进程的地址空间：TEXT，DATA，BSS，HEAP，STACK
-tags: c++ process memory 
+tags: C++ 进程 内存 操作系统 
 redirect_from:
   - /reading/memory-segment.html
   - /2015/07/22/memory-segment/

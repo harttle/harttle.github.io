@@ -2,7 +2,7 @@
 layout: blog 
 categories: reading
 title: C++手稿：运算符重载
-tags: c++ class operator overload
+tags: C++ 运算符
 redirect_from:
   - /reading/operator-overload.html
   - /2015/06/25/operator-overload/

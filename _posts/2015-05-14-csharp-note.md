@@ -2,7 +2,7 @@
 layout: blog
 categories: reading
 title: C# 学习笔记
-tags: c# windows
+tags: C# Windows .NET WPF
 redirect_from:
   - /reading/csharp-note.html
   - /2015/05/14/csharp-note/

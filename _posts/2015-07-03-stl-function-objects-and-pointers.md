@@ -2,7 +2,7 @@
 layout: blog 
 categories: reading
 title: C++手稿：STL中的函数对象与函数指针
-tags: c++ stl function-object function-pointer
+tags: C++ STL 函数指针 函数对象
 redirect_from:
   - /reading/stl-function-objects-and-pointers.html
   - /2015/07/03/stl-function-objects-and-pointers/

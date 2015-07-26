@@ -2,7 +2,7 @@
 layout: blog
 categories: reading
 title:  "计算机网络"
-tags: network
+tags: 网络 IP TCP HTTP SMTP DHCP POP3
 excerpt: '"Computer Network", Tanenbaum A.S. 潘爱民 译'
 redirect_from:
   - /reading/computer-network.html
@@ -969,7 +969,7 @@ OSPF采纳了IS-IS，但IS-IS编码方法支持携带多个网络层协议的信
 
 * 服务器端动态web页面生成（动态html）：CGI（common gateway interface，公共网关接口）、PHP（hypertext preprocessor，超文本预处理器）、JSP（javaserver pages，java服务器页面）、ASP（active server page，活动的服务器页面，ms版的php和jsp）
 
-* 客户端动态网页生成：javascript、applet（jvm上运行的java小程序）、activeX控件（ms）
+* 客户端动态网页生成：JavaScript、applet（jvm上运行的java小程序）、activeX控件（ms）
 
 ### HTTP-超文本传输协议
 
@@ -1344,7 +1344,7 @@ DoS（denial of service）攻击：向目标机器发送大量合法的分组，
 
 * java applet安全：解释器将其封装到沙箱一边限制它的行为
 * Active控件：代码签名，认证码
-* javascript：没有正式的安全模型
+* JavaScript：没有正式的安全模型
 * 病毒：具有繁殖能力，不断复制自己
 
 ## 社会问题

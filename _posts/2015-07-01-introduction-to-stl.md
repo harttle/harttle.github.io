@@ -2,7 +2,7 @@
 layout: blog 
 categories: reading
 title: C++手稿：STL入门
-tags: c++ stl container iterator algorithm
+tags: C++ STL
 redirect_from:
   - /reading/introduction-to-stl.html
   - /2015/07/01/introduction-to-stl/

@@ -1,8 +1,8 @@
 .recent{
-    width: 180px;
+    width: 120px;
     position: absolute;
-    right: -1px;
-    top: -14px;
+    right: 5px;
+    top: -8px;
     z-index: 10;
 }
 .post{

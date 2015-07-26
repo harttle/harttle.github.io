@@ -2,7 +2,7 @@
 layout: blog
 categories: misc
 title: 搜索引擎搭建
-tags: web network search-engine
+tags: Web 网络 搜索引擎
 redirect_from:
   - /misc/se-project.html
   - /2013/11/05/se-project/
@@ -241,7 +241,7 @@ do
             state='warc-valid'
             url=${lines[$i+1]}
             url=${url#*: }
-            let ndoc++
+            let ndoC++
             echo $url >> files/$ndoc
             echo >> files/$ndoc
             ;;

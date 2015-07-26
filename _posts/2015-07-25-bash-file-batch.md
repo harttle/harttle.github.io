@@ -2,7 +2,7 @@
 layout: blog
 categories: linux
 title: 博客迁移：Shell脚本批量文件处理
-tags: linux bash
+tags: Linux Bash
 ---
 
 近期我对所有文章链接（permalink）进行了重新设计，

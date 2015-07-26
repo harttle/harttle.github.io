@@ -2,7 +2,7 @@
 layout: blog
 categories: misc
 title: MySQL 学习笔记
-tags: database linux
+tags: MySQL Linux 数据库
 redirect_from:
   - /misc/mysql-note.html
   - /2015/05/03/mysql-note/

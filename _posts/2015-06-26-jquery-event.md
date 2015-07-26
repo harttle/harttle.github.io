@@ -2,7 +2,7 @@
 layout: blog 
 categories: web
 title: jQuery事件：bind、delegate、on
-tags: javascript jquery event bind on delegate live trigger
+tags: JavaScript jQuery 事件
 redirect_from:
   - /web/jquery-event.html
   - /2015/06/26/jquery-event/

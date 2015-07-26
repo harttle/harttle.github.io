@@ -2,7 +2,7 @@
 layout: blog 
 categories: reading
 title: C++手稿：函数与参数
-tags: c++ function argument
+tags: C++ 可变参数
 redirect_from:
   - /reading/cpp-functions-and-arguments.html
   - /2015/07/07/cpp-functions-and-arguments/

@@ -2,7 +2,7 @@
 layout: blog
 categories: reading
 title:  "算法导论"
-tags: algorithm
+tags: 算法
 excerpt: '"Introduction to Algorithms", Thomas H.Cormen, Charles E.Leiserson, etc. 殷建平等 译'
 redirect_from:
   - /reading/introduction-to-algorithms.html

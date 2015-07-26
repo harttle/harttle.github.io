@@ -1,8 +1,10 @@
 ---
 layout: blog
 categories: reading
-title: Effective C++笔记：析构函数不要抛出异常
-tags: c++ 
+title: Item 8：析构函数不要抛出异常
+subtitle: Effective C++笔记
+tags: C++ 异常 析构函数
+excerpt: 由于析构函数常常被自动调用，在析构函数中抛出的异常往往会难以捕获，引发程序非正常退出或未定义行为。
 ---
 
 > Item 8: Prevent exceptions from leaving destructors.
@@ -48,7 +50,7 @@ void main(){
 经Homebrew gcc 5.1.0编译后，运行时会产生这样的错误输出：
 
 ```
-libc++abi.dylib: terminating with uncaught exception of type int
+libC++abi.dylib: terminating with uncaught exception of type int
 ```
 
 也许你觉得在`try`中用`delete`手动释放堆对象就可以捕获异常。我们来试试：
@@ -64,7 +66,7 @@ catch(int e){}
 上述代码会给出同样的错误输出：
 
 ```
-libc++abi.dylib: terminating with uncaught exception of type int
+libC++abi.dylib: terminating with uncaught exception of type int
 ```
 
 这只能说明`delete`并不是对析构函数的直接调用，它只是一个关键字。。析构函数还是由C++调用的。

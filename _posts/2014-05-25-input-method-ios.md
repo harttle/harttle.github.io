@@ -2,7 +2,7 @@
 layout: blog
 categories: misc
 title: IOS软键盘视图处理
-tags: ios objective-c mobile
+tags: Objective-C 移动开发 iOS
 redirect_from:
   - /misc/input-method-ios.html
   - /2014/05/25/input-method-ios/

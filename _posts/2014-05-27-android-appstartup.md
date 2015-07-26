@@ -2,7 +2,7 @@
 layout: blog
 categories: misc
 title: Android App 启动过程分析
-tags: android linux java os mobile
+tags: 移动开发 Linux Android Java 操作系统
 redirect_from:
   - /misc/android-appstartup.html
   - /2014/05/27/android-appstartup/
