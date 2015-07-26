@@ -1,7 +1,7 @@
 ---
 layout: blog
 categories: reading
-title: Item 8：在析构/构造时不要调用虚函数
+title: Item 9：在析构/构造时不要调用虚函数
 subtitle: Effective C++笔记
 tags: C++ 虚函数 析构函数 构造函数
 excerpt: 父类构造期间，对虚函数的调用不会下降至子类。如果这并非你的意图，请不要这样做！

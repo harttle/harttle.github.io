@@ -95,13 +95,12 @@ subtitle: Keep It Simple, Stupid!
   <div class="col-md-3 hidden-xs">
     <div class="item-list paper-curl tags">
       <h4 class="page-header"><a class="feature-link" href="/">Tags</a></h4>
-
       <div class="tag-cloud-src">
         {% for tag in site.tags %}
         {% assign name = tag|first %}
         {% assign count = tag|last|size %}
-          <span data-text="{{name}}" data-weight="{{count}}"
-                data-link="/tag.html#tag-{{ name }}"></span>
+          <span data-name="{{name}}" data-count="{{count}}"
+                data-href="/tag.html#tag-{{ name }}"></span>
         {% endfor %}
       </div>
       <div class="tag-cloud"></div>
@@ -138,11 +137,16 @@ subtitle: Keep It Simple, Stupid!
       }));
 
       var words = $('.tag-cloud-src span').map(function(idx, span){
-        return $(span).data();
+        var $span = $(span);
+        return {
+            text: $span.data('name'),
+            weight: parseInt($span.data('count')),
+            link: $span.data('href')
+        };
       });
 
       $('.tag-cloud').jQCloud(words, {
-        steps: 20,
+        steps: 10,
         shape: 'rectangular'
       });
   });

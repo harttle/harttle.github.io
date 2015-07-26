@@ -1,7 +1,7 @@
 ---
 layout: blog
 categories: reading
-title: Item5：那些被C++默默地声明和调用的函数
+title: Item 5：那些被C++默默地声明和调用的函数
 subtitle: Effective C++笔记
 tags: C++ 析构函数 构造函数
 redirect_from:
