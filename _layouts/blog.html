@@ -52,7 +52,13 @@ layout: post
     </div>
     <div class="col-lg-10 col-md-9 col-sm-8 right">
         <div class="md paper">
-            {{ content }}
+          {{ content }}
+
+          <p><strong>转载请注明出处</strong>：
+            <a href="{{page.url}}">
+              {{ page.title | capitalize }}{% if page.subtitle %} - {{ page.subtitle }}{% endif %}
+            </a>
+          </p>
         </div>
 
         {% include post-paginator.html %}
