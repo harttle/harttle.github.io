@@ -5,14 +5,13 @@ title: Item 5：那些被C++默默地声明和调用的函数
 subtitle: Effective C++笔记
 tags: C++ 析构函数 构造函数
 redirect_from:
+  - /2015/07/23/effective-cpp-5-6.html
   - /reading/effective-cpp-5-6.html
   - /2015/07/23/effective-cpp-5-6/
 excerpt: 在C++中，编译器会自动生成一些你没有显式定义的函数，它们包括：构造函数、析构函数、复制构造函数、`=`运算符。
 ---
 
 > Item 5:  Know what functions C++ silently writes and calls
-> 
-> Item 6: Explicitly disallow the use of compiler-generated functions you do not want.
 
 在C++中，编译器会自动生成一些你没有显式定义的函数，它们包括：构造函数、析构函数、复制构造函数、`=`运算符。
 有时为了符合既有设计，我们不希望自动生成这些函数，我们可以把它们显式声明为`private`。
@@ -31,6 +30,9 @@ public:
     Empty& operator=(const Empty& rhs){}
 };
 ```
+
+这些编译器自动生成的缺省方法是可以禁用的，把它们声明为`private`便能解决绝大多数问题。
+更多的讨论可以参考：[Item 6: 禁用那些不需要的缺省方法-Effective C++笔记](/2015/07/23/effective-cpp-6.html)
 
 # 调用时机
 
@@ -80,28 +82,3 @@ s1 = s2;
 
 > 说来神奇，拷贝构造函数也存在同样的问题，编译器却从不抱怨。可以正常编译，并且两个引用指向同一对象。
 
-# 禁用函数
-
-我们通过把自动生成的函数设为`private`来禁用它，
-[Effective C++笔记：确保变量的初始化](/2015/07/22/effective-cpp-4.html)
-提到的单例是一个例子。这里我们来实现一个不可拷贝的类`Uncopyable`，
-需要声明其复制构造函数与`=`运算符为`private`：
-
-```cpp
-class Uncopyable{
-private:
-	Uncopyable(const Uncopyable&);
-	Uncopyable& operator=(const Uncopyable&);
-};
-```
-
-值得一提的是，`Uncopyable`的不可拷贝特性是可以继承的。例如：
-
-```cpp
-class Homeforsale: private Uncopyable{
-    ...
-};
-```
-
-在编译器默认生成的拷贝构造函数和赋值运算符中，会调用父类的相应函数。
-然而这些调用将会被拒绝，因为是`private`继承的~
