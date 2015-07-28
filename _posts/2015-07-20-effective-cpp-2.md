@@ -1,7 +1,7 @@
 ---
 layout: blog
 categories: reading
-title: 避免使用define
+title: Item 2：避免使用define
 subtitle: Effective C++笔记
 tags: C++ 宏
 redirect_from:
@@ -12,9 +12,7 @@ excerpt: 尽量使用常量、枚举和内联函数，代替`#define`。
 
 > Item 2: Prefer consts, enums, and inlines to #defines
 
-> 尽量使用常量、枚举和内联函数，代替`#define`。
-
-我们知道`#define`定义的宏会在编译时进行替换，属于模块化程序设计的概念。
+尽量使用常量、枚举和内联函数，代替`#define`。我们知道`#define`定义的宏会在编译时进行替换，属于模块化程序设计的概念。
 宏是全局的，面向对象程序设计中破坏了封装。因此在C++中尽量避免它！
 
 接着我们具体来看`#define`造成的问题。

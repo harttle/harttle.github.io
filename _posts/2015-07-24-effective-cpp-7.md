@@ -1,7 +1,7 @@
 ---
 layout: blog
 categories: reading
-title: 将多态基类的析构函数声明为虚函数
+title: Item 7：将多态基类的析构函数声明为虚函数
 subtitle: Effective C++笔记
 tags: C++ sizeof 析构函数 字节对齐 虚函数
 redirect_from:
