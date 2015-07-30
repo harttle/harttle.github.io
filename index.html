@@ -33,10 +33,6 @@ subtitle: Keep It Simple, Stupid!
     margin-bottom: 0;
   }
 
-  .tag-cloud-src {
-    display: none;
-  }
-
   .tag-cloud {
     position: relative;
     width: 100%;
@@ -54,6 +50,7 @@ subtitle: Keep It Simple, Stupid!
       <div class="post paper">
         <h2 class="header">
           <a class="feature-link" href="{{post.url}}">{{ post.title }}</a>
+
           <div class="pull-right text-muted">
             {% include date.html post=post %}
           </div>
@@ -95,16 +92,14 @@ subtitle: Keep It Simple, Stupid!
   <div class="col-md-3 hidden-xs">
     <div class="item-list paper-curl tags">
       <h4 class="page-header"><a class="feature-link" href="/">Tags</a></h4>
-      <div class="tag-cloud-src">
-        {% for tag in site.tags %}
-        {% assign name = tag|first %}
-        {% assign count = tag|last|size %}
-          <span data-name="{{name}}" data-count="{{count}}"
-                data-href="/tag.html#tag-{{ name }}"></span>
+      <script type="text/plain" id="tag-data">
+        {% for tag in site.tags %}{% assign name = tag|first %}{% assign count = tag|last|size %}
+          {{name}},{{count}}/
         {% endfor %}
-      </div>
+      </script>
       <div class="tag-cloud"></div>
     </div>
+
     <div class="item-list paper-curl">
       <h4 class="page-header"><a class="feature-link" href="/">Recent</a></h4>
       <ol class="list-unstyled">
@@ -120,34 +115,43 @@ subtitle: Keep It Simple, Stupid!
 {% include moment.html %}
 
 <script>
-  $(function(){
-      var ias = $.ias({
-        container:  '#posts',
-        item:       '.post',
-        pagination: '.pager',
-        next:       '.pager .previous a'
-      });
-      ias.on('loaded', function(data, items) {
-          for(var i in items){ update_moment(items[i]); }
-      });
-      ias.extension(new IASSpinnerExtension({ src: '/assets/img/loading.gif' }));
-      ias.extension(new IASNoneLeftExtension({
-          text: 'No more posts.',
-          html: '<div class="ias-noneleft" style="text-align: center;color:#fff">{text}</div>'
-      }));
+  $(function () {
+    var ias = $.ias({
+      container: '#posts',
+      item: '.post',
+      pagination: '.pager',
+      next: '.pager .previous a'
+    });
+    ias.on('loaded', function (data, items) {
+      for (var i in items) {
+        update_moment(items[i]);
+      }
+    });
+    ias.extension(new IASSpinnerExtension({src: '/assets/img/loading.gif'}));
+    ias.extension(new IASNoneLeftExtension({
+      text: 'No more posts.',
+      html: '<div class="ias-noneleft" style="text-align: center;color:#fff">{text}</div>'
+    }));
 
-      var words = $('.tag-cloud-src span').map(function(idx, span){
-        var $span = $(span);
-        return {
-            text: $span.data('name'),
-            weight: parseInt($span.data('count')),
-            link: $span.data('href')
-        };
-      });
+    var tagData = $('script#tag-data').html();
+    var words = tagData
+        .split('/')
+        .filter(function (tag) {
+          return tag.trim() != '';
+        })
+        .map(function (tag) {
+          var tokens = tag.split(','),
+              text = tokens[0].trim();
+          return {
+            text: text,
+            weight: parseInt(tokens[1].trim()),
+            link: '/tag.html#tag-' + text
+          };
+        });
 
-      $('.tag-cloud').jQCloud(words, {
-        steps: 10,
-        shape: 'rectangular'
-      });
+    $('.tag-cloud').jQCloud(words, {
+      steps: 10,
+      shape: 'rectangular'
+    });
   });
 </script>
