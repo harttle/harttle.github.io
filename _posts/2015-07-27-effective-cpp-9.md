@@ -7,7 +7,7 @@ tags: C++ 虚函数 析构函数 构造函数
 excerpt: 父类构造期间，对虚函数的调用不会下降至子类。如果这并非你的意图，请不要这样做！
 ---
 
-> Item 8: Never call virtual functions during construction or destruction.
+> Item 9: Never call virtual functions during construction or destruction.
 
 父类构造期间，对虚函数的调用不会下降至子类。如果这并非你的意图，请不要这样做！
 这个问题阿里实习面试曾经问到过，看这篇文章： [2014阿里巴巴面试经历](/2014/05/05/ali-intern2014.html)
@@ -30,6 +30,8 @@ public:
 ...
 BuyTransaction b;
 ```
+
+<!--more-->
 
 `b`在构造时，调用到父类`Transaction`的构造函数，其中对`logTransaction`的调用会被解析到`Transaction`类。
 那是一个纯虚函数，因此程序会非正常退出。

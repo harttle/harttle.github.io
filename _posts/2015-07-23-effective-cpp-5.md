@@ -3,7 +3,7 @@ layout: blog
 categories: reading
 title: Item 5：那些被C++默默地声明和调用的函数
 subtitle: Effective C++笔记
-tags: C++ 析构函数 构造函数
+tags: C++ 析构函数 构造函数 赋值运算符
 redirect_from:
   - /2015/07/23/effective-cpp-5-6.html
   - /reading/effective-cpp-5-6.html
@@ -59,6 +59,8 @@ void func(Empty e){     // 拷贝构造函数，拷贝一份参数对象
 e2 = func(e1);          // = 运算符
                         // 析构函数，返回值被析构
 ```
+
+<!--more-->
 
 # 引用成员
 

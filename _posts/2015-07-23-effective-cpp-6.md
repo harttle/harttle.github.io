@@ -3,7 +3,7 @@ layout: blog
 categories: reading
 title: Item 6：禁用那些不需要的缺省方法
 subtitle: Effective C++笔记
-tags: C++ 析构函数 构造函数
+tags: C++ 析构函数 构造函数 赋值运算符
 excerpt: 有时候我们希望禁用掉这些函数。比如对于一个单例而言，我们不希望它能够被直接构造，或者拷贝。我们通过把自动生成的函数设为`private`来禁用它。
 ---
 

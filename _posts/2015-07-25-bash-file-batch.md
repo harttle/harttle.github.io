@@ -41,6 +41,8 @@ categories: linux
 </html>
 ```
 
+<!--more-->
+
 这样当用户访问`/linux/tex-note.html`时，便可以重定向到`/2015/05/02/tex-note`了！
 
 Bash提供了丰富的文件和字符串Builtin，同时借助Linux下的`sed`，`awk`等字符串处理工具，
