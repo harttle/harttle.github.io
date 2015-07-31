@@ -36,13 +36,13 @@ subtitle: Keep It Simple, Stupid!
   .tag-cloud {
     position: relative;
     width: 100%;
-    height: 300px;
+    height: 350px;
   }
 </style>
 <script src="/assets/lib/jquery/jquery-ias.min.js"></script>
 
 <div class="row">
-  <div class="col-md-9"> {{ content }}
+  <div class="col-md-8 col-lg-9"> {{ content }}
     <img class="recent" src="/assets/img/recent.png"/>
 
     <div id="posts">
@@ -89,13 +89,11 @@ subtitle: Keep It Simple, Stupid!
     {% endif %}
     {% include latex.html %}
   </div>
-  <div class="col-md-3 hidden-xs">
+  <div class="col-md-4 col-lg-3 hidden-xs">
     <div class="item-list paper-curl tags">
       <h4 class="page-header"><a class="feature-link" href="/">Tags</a></h4>
       <script type="text/plain" id="tag-data">
-        {% for tag in site.tags %}{% assign name = tag|first %}{% assign count = tag|last|size %}
-          {{name}},{{count}}/
-        {% endfor %}
+        {% for tag in site.tags %}{% assign name = tag|first %}{% assign count = tag|last|size %}{{name}},{{count}}/{% endfor %}
       </script>
       <div class="tag-cloud"></div>
     </div>
@@ -147,11 +145,17 @@ subtitle: Keep It Simple, Stupid!
             weight: parseInt(tokens[1].trim()),
             link: '/tag.html#tag-' + text
           };
+        })
+//        .filter(function(tag){
+//          return tag.weight > 1;
+//        })
+        .sort(function(lhs, rhs){
+          return rhs.weight - lhs.weight;
         });
 
     $('.tag-cloud').jQCloud(words, {
-      steps: 10,
-      shape: 'rectangular'
+      shape: 'rectangular',
+      removeOverflowing: true
     });
   });
 </script>

@@ -1,8 +1,8 @@
 ---
 layout: blog 
 categories: web
-title: jQuery事件：bind、delegate、on
-tags: JavaScript jQuery 事件
+title: jQuery事件：bind、delegate、on的行为与性能
+tags: JavaScript jQuery
 redirect_from:
   - /web/jquery-event.html
   - /2015/06/26/jquery-event/
