@@ -1,7 +1,7 @@
 ---
 layout: blog
 categories: linux
-title: Vim 的配置与使用
+title: Vim初级：配置和使用
 tags: Linux Vim Bash
 redirect_from:
   - /linux/vim-config.html

@@ -1,7 +1,7 @@
 ---
 layout: blog
 categories: misc
-title: 搜索引擎搭建
+title: 搜索引擎搭建：heritrix+lucene
 tags: Web 网络 搜索引擎
 redirect_from:
   - /misc/se-project.html

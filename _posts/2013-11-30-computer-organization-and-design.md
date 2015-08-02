@@ -1,7 +1,7 @@
 ---
 layout: blog
 categories: reading
-title:  Computer Organization and Design
+title:  Computer Organization and Design笔记
 subtitle: The Hardware/Software Interface
 tags: 操作系统
 excerpt: '"Computer Organization and Design", David A. Patterson, John L. Hennessy'
