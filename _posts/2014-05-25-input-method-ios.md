@@ -1,7 +1,7 @@
 ---
 layout: blog
 categories: misc
-title: IOS软键盘视图处理
+title: IOS软键盘弹出和隐藏
 tags: Objective-C 移动开发 iOS
 redirect_from:
   - /misc/input-method-ios.html

@@ -1,7 +1,7 @@
 ---
 layout: blog
 categories: reading
-title:  Foundamentals of Database Systems
+title:  Foundamentals of Database Systems 笔记
 tags: 数据库
 excerpt: 《数据库系统基础》，Ramez Elmasri, Shamkant B.Navathe.
 redirect_from:
