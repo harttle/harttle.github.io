@@ -35,15 +35,12 @@ redirect_from:
 
 ![](/assets/img/blog/css/content-box@2x.png)
 
-* 黄色部分为该`<div>`的Box，包括**内容**和**内边距**，其宽高为`160px`：宽度`100px`+两侧的内边距`30px`X2；
+* 黄色的背景作用于**内容**和**内边距**构成的矩形，其宽高为`160px`：宽度`100px`+两侧的内边距`30px`X2；
 * 绿色部分为**边框**，宽度为`50px`；
 * 与浏览器边框的距离为**外边距**，宽度为`50px`。
 
-例子中`width`与`padding`共同构成了Box。然而Box的构成方式并非一成不变，它决定于另一个CSS属性：`box-sizing`。
-
-* 它的默认值（UA值）是`content-box`，即由`width`和`padding`构成。
-
-* 另外一个取值为`border-box`，即由`width`直接设置Box的宽度，其`padding`和`border`都只占用Box内部的空间。不同`box-sizing`风格的CSS插件产生的冲突往往较难调试。
+例子中`width`属性定义的是内容的宽度，不包含边距、边框。然而在IE中`width`定义的是内容+内边距+边框的宽度。
+这是由`box-sizing`属性来定义的，前者的默认值为`content-box'，后者的默认值为`border-box`。
 
 <!--more-->
 
