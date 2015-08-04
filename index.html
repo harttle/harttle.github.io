@@ -101,7 +101,7 @@ subtitle: Keep It Simple, Stupid!
     <div class="item-list paper-curl">
       <h4 class="page-header"><a class="feature-link" href="/">Recent</a></h4>
       <ol class="list-unstyled">
-        {% for post in site.posts limit : 30 %}
+        {% for post in site.posts limit : 15 %}
         <li><a data-toggle="tooltip" data-placement="left" title="{{ post.date | date: " %Y-%m-%d"}}"
           href="{{post.url}}">{{post.title}}</a> </li>
         {% endfor %}
