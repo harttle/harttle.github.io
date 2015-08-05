@@ -1,7 +1,7 @@
 ---
 layout: blog
 categories: linux
-title: Linux做局域网路由
+title: Linux路由配置
 subtitle: linux网络调试与IP层服务器假设
 redirect_from:
   - /linux/linux-route.html
