@@ -1,7 +1,7 @@
 ---
 layout: blog
 categories: linux
-title: Linux/Windows 时间不一致
+title: Linux/Windows 时间不一致问题
 tags: Windows Linux
 redirect_from:
   - /linux/linux-windows-time.html
