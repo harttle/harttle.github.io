@@ -1,7 +1,7 @@
 ---
 layout: blog 
 categories: web
-title: CSS 盒模型及其呈现方式
+title: CSS Display属性与盒模型
 tags: CSS Web
 redirect_from:
   - /web/css-display.html
