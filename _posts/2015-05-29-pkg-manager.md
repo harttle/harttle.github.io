@@ -1,7 +1,7 @@
 ---
 layout: blog 
 categories: reading
-title: 包管理与构建工具
+title: 常见包管理与构建工具列表
 tags: Linux Python JavaScript Ruby
 redirect_from:
   - /reading/pkg-manager.html
