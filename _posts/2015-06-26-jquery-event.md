@@ -2,7 +2,7 @@
 layout: blog 
 categories: web
 title: jQuery事件：bind、delegate、on的行为与性能
-tags: JavaScript jQuery
+tags: JavaScript jQuery attachEvent addEventListener onclick
 redirect_from:
   - /web/jquery-event.html
   - /2015/06/26/jquery-event/

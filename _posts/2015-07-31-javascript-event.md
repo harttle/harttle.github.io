@@ -1,8 +1,8 @@
 ---
 layout: blog
 categories: web
-title: DOM Level 2 Event与jQuery源码
-tags: JavaScript Web jQuery
+title: DOM Level 2 Event与jQuery源码：捕获与冒泡
+tags: JavaScript Web jQuery attachEvent addEventListener onclick
 excerpt: 本文来讨论DOM标准中是如何规定这些JavaScript事件的，以及jQuery源码中DOM事件的实现方式。
 ---
 
@@ -155,6 +155,7 @@ l1 bubbling
 ```
 
 其中，`l2 target, invalid capture`设置了捕获，但因为当前对象就是目标对象，捕获无效。该函数仍然作用于目标阶段。
+既然捕获失效，那么它的执行顺序就按照注册事件的顺序了，不会因为它设置了无效的捕获而提前得到执行。
 
 # DispatchEvent
 
@@ -254,6 +255,7 @@ jQuery.removeEvent = function(elem, type, handle){
 ```
 
 注意这里设置了第三个参数为`false`，因为`on`绑定的都是非捕获事件处理函数，自然`off`也只需要移除非捕获的事件处理函数。
+
 
 [on]: http://api.jquery.com/on/
 [off]: http://api.jquery.com/off/
