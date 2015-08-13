@@ -55,37 +55,6 @@ Cookie的实现标准定义在[RFC2109: HTTP State Management Mechanism][2109]�
 浏览器通过`Cookie`请求头字段来告诉服务器之前的状态。
 Cookie中包含若干个键值对，每个键值对可以设置过期时间。
 
-除了服务器可以设置Cookie外，JavaScript也可以操作Cookie。因为Cookie是用一个字符串而不是对象存储的。
-Cookie操作比较麻烦，在开发中倾向于封装Cookie的操作：
-
-```javascript
-function setCookie(key,value){
-    var dateStr = (new Date()).toGMTString();
-    document.cookie = key + "=" + escape(value) + ";expires=" + dateStr;
-}
-function getCookie(key){
-    var idx = document.cookie.indexOf(key + "=")
-    if(idx == -1) return;
-    
-    var start = idx + key.length + 1,
-        end = document.cookie.indexOf(";", idx);
-    if(end==-1) end = document.cookie.length;
-    
-    return unescape(document.cookie.substr(start,end));
-}
-```
-
-通过jQuery-Cookie插件可以更方便地操作Cookie：
-
-```javascript
-$.cookie('name', 'value');  
-$.cookie('name', 'value', { expires: 7 });  
-$.cookie('name', 'value', { expires: 7, path: '/' });   // 全站有效
-
-$.cookie('name');   // "value"
-$.cookie();         // { "name": "value" }
-```
-
 # Cookie 的安全隐患
 
 Cookie提供了一种手段使得HTTP请求可以附加当前状态，

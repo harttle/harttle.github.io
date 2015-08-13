@@ -2,7 +2,7 @@
 layout: blog
 categories: misc
 title: 中文乱码辨识
-tags: Linux Windows 字符编码 UTF-8
+tags: Linux Windows 编码 UTF-8
 redirect_from:
   - /misc/unreadable-code.html
   - /2015/05/11/unreadable-code/
