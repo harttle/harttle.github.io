@@ -71,7 +71,7 @@ excerpt: 建议使用`button[type=submit]`来提交表单，而不是`input`；�
 不幸的是，`button`居然也可以设置`name`和`value`。提交表单时，`value`会被作为表单数据提交给服务器。
 在IE中，甚至会把`button`开始与结束标签之间的内容作为`name`对应的值提交给服务器。种种乱象。。
 `button`和`input`的相似还不止于此，`button`也可以设置`type=reset`，此时点击按钮会导致表单被重置（这还挺有用的）。
-[w3school button标签]给出了如下的示例：
+w3school给出了如下的示例：
 
 ```html
 <form action="form_action.asp" method="get">
@@ -83,6 +83,8 @@ excerpt: 建议使用`button[type=submit]`来提交表单，而不是`input`；�
 ```
 
 对于`button`就不多说了，**建议用`button`作为交互用的按钮，来提交表单**。同时请注意设置`type=submit`来兼容IE。
+
+> IE 中`button`标签的`type`属性默认为`button`。
 
 # Enter 键提交表单
 

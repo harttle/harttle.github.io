@@ -10,6 +10,7 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
 .md a, .md code{
     margin-left: 3px;
     margin-right: 3px;
+    word-wrap: break-word;
 }
 .md pre code{
     margin-left: 0;

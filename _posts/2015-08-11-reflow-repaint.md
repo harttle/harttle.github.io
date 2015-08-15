@@ -108,9 +108,11 @@ document.body.appendChild(document.createTextNode('abc!'));
 
 1. 避免逐项更改样式。最好一次性更改`style`属性，或者将样式列表定义为`class`并一次性更改`class`属性。
 2. 避免循环操作DOM。创建一个`documentFragment`或`div`，在它上面应用所有DOM操作，最后再把它添加到`window.document`。
+    
     > 也可以在一个`display:none`的元素上进行操作，最终把它显示出来。因为`display:none`上的DOM操作不会引发回流和重绘。
 3. 避免循环读取`offsetLeft`等属性。在循环之前把它们存起来。
 4. 绝对定位具有复杂动画的元素。绝对定位使它脱离文档刘，否则会引起父元素及后续元素大量的回流。
+    
     > 使用CSS3的transition也可以获得不错的性能。
 
 [height]: /assets/img/blog/css/height.png
