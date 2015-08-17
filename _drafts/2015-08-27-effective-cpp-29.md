@@ -136,4 +136,4 @@ void Menu::changeBg(istream& src){
 [7]: {% post_url 2015-07-24-effective-cpp-7 %}
 [4]: {% post_url 2015-07-22-effective-cpp-4 %}
 [item11]: {% post_url 2015-07-30-effective-cpp-11 %}
-[item25]: /2015/08/23/effective-cpp-25.html %}
+[item25]: /2015/08/23/effective-cpp-25.html
