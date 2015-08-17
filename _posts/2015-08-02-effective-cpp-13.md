@@ -78,6 +78,8 @@ v.push_back(p1);            // 编译错！
 std::tr1::shared_ptr<int> spi(new int[1024]);
 ```
 
+> 在最新的C++标准中，智能指针已经归入`std`命名空间了。我们可以这样使用：`std::shared_ptr<int>`。
+
 虽然智能指针有这样的问题，但C++并未提供管理数组的智能指针，因为`vector`等容器就可以很好地完成这个工作。
 如果你真的需要，可以求助与Boost社区的`boost::scoped_array`和`boost::shared_array`。
 
