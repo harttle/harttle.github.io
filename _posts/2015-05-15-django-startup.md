@@ -1,7 +1,7 @@
 ---
 layout: blog
 categories: web
-title: Django Startup
+title: Django 搭建过程记录
 tags: Linux Python Django Web
 redirect_from:
   - /web/django-startup.html
