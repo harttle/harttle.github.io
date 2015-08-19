@@ -3,7 +3,7 @@ layout: blog
 categories: reading
 title: Item 13：使用对象来管理资源
 subtitle: Effective C++笔记
-tags: 智能指针 指针 C++ RAII
+tags: 智能指针 指针 C++ RAII 工厂方法
 excerpt: 创建资源后立即放入资源管理对象中，并利用资源管理对象的析构函数来确保资源被释放。复制一个 auto_ptr 会使它变成空
 ---
 
@@ -18,6 +18,8 @@ Investment *pInv = createInvestment();
 ...
 delete pInv;
 ```
+
+> `createInvestment`这样的方法属于工厂方法（factory function），用来创建一个对象的实例。
 
 上述代码确实能够在不泄漏内存的情况下很好地执行，但问题出在`createInvestment()`函数把释放资源的责任交给了客户，
 但并未显式地声明这一点，因而客户有时并不知情。即使客户知道该资源需要销毁，
