@@ -38,6 +38,17 @@ subtitle: Keep It Simple, Stupid!
     width: 100%;
     height: 350px;
   }
+  .meta{
+    font-size: 13px;
+  }
+  .meta .label{
+    margin-right: 5px;
+  }
+  @media(min-width: 768px){
+    .post{
+      padding: 50px;
+    }
+  }
 </style>
 <script src="/assets/lib/jquery/jquery-ias.min.js"></script>
 
@@ -48,13 +59,13 @@ subtitle: Keep It Simple, Stupid!
     <div id="posts">
       {% for post in paginator.posts %}
       <div class="post paper">
-        <h2 class="header">
+        <h3 class="header">
           <a class="feature-link" href="{{post.url}}">{{ post.title }}</a>
 
           <div class="pull-right text-muted">
             {% include date.html post=post %}
           </div>
-        </h2>
+        </h3>
         <p class="meta">
           {% include categories.html post=post %}
           {% include tags.html post=post %}
