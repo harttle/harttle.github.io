@@ -3,7 +3,7 @@ layout: blog
 categories: reading
 title: Item 35：考虑虚函数的其他替代设计
 subtitle: Effective C++笔记
-tags: C++ 策略模式 模板方法 虚函数
+tags: C++ 策略模式 模板方法 虚函数 函数指针 JavaScript
 excerpt: 非虚接口范式（NVI idiom）可以实现模板方法设计模式。用函数指针代替虚函数，可以实现策略模式。用function代替函数指针，可以支持所有兼容目标函数签名的可调用对象。用另一个类层级中的虚函数来提供策略，是策略模式的惯例实现。
 ---
 

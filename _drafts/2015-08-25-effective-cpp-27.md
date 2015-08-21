@@ -21,19 +21,21 @@ excerpt:
     ```cpp
     (T) expression
     ```
-    
+
 2. 函数风格的类型转换：
 
     ```cpp
     T(expression)
     ```
-    
+
 3. C++风格的类型转换。包括`const_cast`, `dynamic_cast`, `reinterpret_cast`, `static_cast`。
 
-    * `const_cast`用于去除常量性质。
-    * `dynamic_cast`用于安全向下转型，有运行时代价。
-    * `reinterpret_cast`低级类型转换，它实现相关的因而不可移植。
-    * `static_cast`强制进行隐式类型转换，例如`int`到`double`，非常量到常量（反过来不可！只有`const_cast`可以做这个）等。
+<!--more-->
+
+* `const_cast`用于去除常量性质。
+* `dynamic_cast`用于安全向下转型，有运行时代价。
+* `reinterpret_cast`低级类型转换，它实现相关的因而不可移植。
+* `static_cast`强制进行隐式类型转换，例如`int`到`double`，非常量到常量（反过来不可！只有`const_cast`可以做这个）等。
 
 # 为什么用C++风格？
 
