@@ -124,8 +124,6 @@ public:
 子类模板无法访问父类模板中的名称是因为编译器不会搜索父类作用域，上述三个办法都是显式地让编译器去搜索父类作用域。
 但如果父类中真的没有`sendClear`函数（比如模板参数是`CompanyZ`），在后续的编译中还是会抛出编译错误。
 
-[dmd]: /assets/img/blog/effective-cpp/dmd.png
-[strategy-pattern]: /assets/img/blog/effective-cpp/strategy-pattern@2x.png
 [pointers]: {% post_url 2015-07-05-cpp-pointers-and-references %}
 [args]: {% post_url 2015-07-07-cpp-functions-and-arguments %}
 [item2]: {% post_url 2015-07-20-effective-cpp-2 %}
