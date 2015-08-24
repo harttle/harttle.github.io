@@ -3,12 +3,11 @@ layout: blog
 categories: reading
 title: Item 24：用非成员函数来支持所有元的类型转换
 subtitle: Effective C++笔记
-tags: C++ 运算符
-excerpt: 如果运算符的所有“元”都需要隐式转换时，请重载该运算符为友元函数
+tags: C++ 运算符 类型转换 运算符重载
+excerpt: 如果运算符的所有“元”都需要隐式转换时，请重载该运算符为友函数。
 ---
 
 > Item 24: Declare non-member functions when type conversions should apply to all parameters.
-
 
 虽然[Item 15：资源管理类需要提供对原始资源的访问][item15]中提到，最好不要提供隐式的类型转化。
 但这条规则也存在特例，比如当我们需要创建数字类型的类时。正如`double`和`int`能够自由地隐式转换一样，

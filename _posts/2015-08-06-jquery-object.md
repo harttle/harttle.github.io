@@ -2,7 +2,7 @@
 layout: blog
 categories: web
 title: jQuery中$()函数的用法
-tags: jQuery JavaScript DOM
+tags: jQuery JavaScript DOM 事件
 excerpt: DOM选择，可以指定上下文；DOM创建，可以指定所属的document、属性、事件、甚至所有jQuery方法；DOM加载完成事件监听，是`$(document).ready()`的简化写法。
 ---
 

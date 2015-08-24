@@ -2,19 +2,22 @@
 layout: blog
 categories: web
 title: LAMP 搭建
-tags: Linux Apache PHP 数据库 Web
+tags: Linux Apache PHP 数据库
 redirect_from:
   - /web/lamp-startup.html
   - /2015/04/23/lamp-startup/
 ---
 
-### 下载安装
+听说PHP是世界上最好的编程语言，小编也试了一把。暂作记录在此。
+万一小编以后转向PHP了呢？
+
+# 下载安装
 
 [php](http://www.php.net)  
 [mysql](http://httpd.apache.org)  
 [apache](http://www.mysql.com/)  
 
-### 配置apache
+# 配置apache
 
 设置apache的配置文件`httpd.conf`，更改后要`restart httpd`
 
@@ -45,7 +48,7 @@ redirect_from:
     
 * 路径访问权限，更改要与 DocumentRoot 一致
 
-### Apache使用
+# Apache使用
 
 以下关注Debian兼容的操作系统。文档：http://man.ddvip.com/linux/debian/apache2/
 	

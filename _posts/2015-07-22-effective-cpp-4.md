@@ -3,7 +3,7 @@ layout: blog
 categories: reading
 title: Item 4：确保变量的初始化
 subtitle: Effective C++笔记
-tags: C++
+tags: C++ 构造函数
 redirect_from:
   - /reading/effective-cpp-4.html
   - /2015/07/22/effective-cpp-4/

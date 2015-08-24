@@ -2,7 +2,7 @@
 layout: blog
 categories: web
 title: Cookie/Session的机制与安全
-tags: Cookie Session HTTP
+tags: Cookie Session HTTP 
 ---
 
 Cookie和Session是为了在无状态的HTTP协议之上维护会话状态，使得服务器可以知道当前是和哪个客户在打交道。本文来详细讨论Cookie和Session的实现机制，以及其中涉及的安全问题。

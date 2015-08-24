@@ -1,12 +1,15 @@
 ---
 layout: blog 
 categories: web
-title: CSS Alignment：元素对齐问题
-tags: CSS Web 盒模型
+title: inline元素的对齐问题
+tags: CSS HTML 盒模型
 redirect_from:
   - /web/css-alignment.html
   - /2015/06/17/css-alignment/
 ---
+
+元素对齐是CSS中最常见的问题之一，控制元素对齐的属性包括`text-align`, `verticle-align`, `margin`, `line-height`等。
+本文便来探讨inline元素的对齐行为，以及`text-align`和`verticle-align`的使用方法，并给出实例。
 
 # text-align
 

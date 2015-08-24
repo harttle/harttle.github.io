@@ -10,7 +10,6 @@ subtitle: Keep It Simple, Stupid!
 <style>
   .item-list {
     margin-bottom: 50px;
-    padding: 0 25px;
   }
   .post .md{
     margin-bottom: 10px;
@@ -105,9 +104,10 @@ subtitle: Keep It Simple, Stupid!
     {% endif %}
     {% include latex.html %}
   </div>
+
+  <!--sidebar-->
   <div class="col-md-4 col-lg-3 hidden-xs">
     <div class="item-list tags">
-      <h4 class="page-header"><a class="feature-link" href="/">Tags</a></h4>
       <script type="text/plain" id="tag-data">
         {% for tag in site.tags %}{% assign name = tag|first %}{% assign count = tag|last|size %}{{name}},{{count}}/{% endfor %}
       </script>
@@ -180,10 +180,11 @@ subtitle: Keep It Simple, Stupid!
 //        })
         .sort(function(lhs, rhs){
           return rhs.weight - lhs.weight;
-        });
+        })
+        .slice(0, 100);
 
     $('.tag-cloud').jQCloud(words, {
-      shape: 'rectangular',
+      //shape: 'rectangular',
       removeOverflowing: true
     });
   });

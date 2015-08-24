@@ -2,7 +2,7 @@
 layout: blog
 categories: linux
 title: 感受Vim的强大：进阶技巧
-tags: Linux Vim Bash
+tags: Vim Bash
 redirect_from:
   - /linux/vim-advanced.html
   - /2015/07/17/vim-advanced/

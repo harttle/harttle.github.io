@@ -2,11 +2,14 @@
 layout: blog
 categories: linux
 title: Ubuntu 学习笔记
-tags: Ubuntu Linux 操作系统 Bash
+tags: Ubuntu 操作系统 Bash
 redirect_from:
   - /linux/ubuntu-startup.html
   - /2015/05/11/ubuntu-startup/
 ---
+
+小编从2010年开始使用Ubuntu，直至2012年。也有3个年头了，历经了很多次从04升级到10，从10升级到04……
+现已全面转入ArchLinux和MacOS了，还是在此记录下Ubuntu使用过程中遇到的那些坑。
 
 
 ## Grub

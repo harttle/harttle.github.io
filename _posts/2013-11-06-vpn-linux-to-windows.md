@@ -1,8 +1,8 @@
 ---
 layout: blog
 categories: misc
-tags: Windows Linux 网络
-title: Linux 连接 Windows Server VPN
+title: 连接 Windows Server VPN
+tags: 网络 Bash ArchLinux 远程桌面 
 redirect_from:
   - /misc/vpn-linux-to-windows.html
   - /2013/11/06/vpn-linux-to-windows/

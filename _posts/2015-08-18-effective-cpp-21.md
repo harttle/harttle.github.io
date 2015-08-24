@@ -3,7 +3,7 @@ layout: blog
 categories: reading
 title: Item 21：需要返回对象时，不要返回引用
 subtitle: Effective C++笔记
-tags: C++ 引用 指针
+tags: C++ 引用 指针 动态内存
 excerpt: 永远不要返回局部对象的引用或指针或堆空间的指针，如果客户需要多个返回对象时也不能是局部静态对象的指针或引用。
 ---
 

@@ -2,7 +2,7 @@
 layout: blog 
 categories: web
 title: jQuery事件：bind、delegate、on的区别
-tags: JavaScript jQuery attachEvent addEventListener onclick
+tags: JavaScript jQuery 事件
 redirect_from:
   - /web/jquery-event.html
   - /2015/06/26/jquery-event/

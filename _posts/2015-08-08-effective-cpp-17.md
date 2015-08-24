@@ -3,7 +3,7 @@ layout: blog
 categories: reading
 title: Item 17：在单独的语句中将new的对象放入智能指针
 subtitle: Effective C++笔记
-tags: C++ 动态内存 智能指针
+tags: C++ 动态内存 智能指针 指针
 excerpt: 在单独的语句中将new的对象放入智能指针，这是为了由于其他表达式抛出异常而导致的资源泄漏。因为C++不同于其他语言，函数参数的计算顺序很大程度上决定于编译器。
 ---
 

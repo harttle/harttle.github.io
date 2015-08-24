@@ -2,7 +2,7 @@
 layout: blog
 categories: web
 title: CSS选择符总结
-tags: CSS 选择符
+tags: CSS 选择符 DOM
 ---
 
 我们知道CSS是由选择符和属性/值列表构成的，选择符的重要性自然不言而喻。

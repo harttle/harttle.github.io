@@ -2,7 +2,7 @@
 layout: blog
 categories: reading
 title: 优秀的代码 vs. 糟糕的代码
-tags: JavaScript Web
+tags: JavaScript
 redirect_from:
   - /reading/elegant-and-bad.html
   - /2015/04/13/elegant-and-bad/

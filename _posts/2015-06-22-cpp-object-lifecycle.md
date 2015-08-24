@@ -2,11 +2,14 @@
 layout: blog 
 categories: reading
 title: C++手稿：对象的生命周期，构造与析构
-tags: C++ 构造函数 析构函数
+tags: C++ 构造函数 析构函数 拷贝构造函数 赋值运算符
 redirect_from:
   - /reading/cpp-object-lifecycle.html
   - /2015/06/22/cpp-object-lifecycle/
 ---
+
+本文总结了类的创建、复制和销毁过程中涉及到的成员函数：构造函数、析构函数、拷贝构造函数、赋值运算符等。
+探讨了全局对象、静态对象、栈中的对象、堆中的对象的整个生命周期中，这些成员函数的调用时机。
 
 # 类的声明
 

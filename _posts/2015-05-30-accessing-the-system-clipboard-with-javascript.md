@@ -2,7 +2,7 @@
 layout: blog 
 categories: web
 title: Accessing the System Clipboard with JavaScript
-tags: Flash JavaScript 剪切板 Web
+tags: Flash JavaScript 剪切板
 redirect_from:
   - /web/accessing-the-system-clipboard-with-javascript.html
   - /2015/05/30/accessing-the-system-clipboard-with-javascript/

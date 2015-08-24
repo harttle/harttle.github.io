@@ -3,7 +3,7 @@ layout: blog
 categories: linux
 title: Linux下的触摸板设置 
 subtitle: 以 Arch Linux 为例
-tags: Linux Archlinux 触摸板 Bash X11
+tags: ArchLinux 触摸板 Bash X11
 excerpt: Arch Linux 下的触摸板配置：基本设置、输入时禁止触摸板敲击、外接鼠标时禁用触摸板。
 redirect_from:
   - /linux/synaptics-settings-linux.html

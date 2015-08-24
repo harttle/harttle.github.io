@@ -2,7 +2,7 @@
 layout: blog 
 categories: web
 title: AngularJS 路由：ng-route 与 ui-router
-tags: AngularJS JavaScript 路由 MVC Web
+tags: AngularJS JavaScript 路由 MVC
 redirect_from:
   - /web/angular-route.html
   - /2015/06/10/angular-route/

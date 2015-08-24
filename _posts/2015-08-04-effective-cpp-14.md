@@ -3,7 +3,7 @@ layout: blog
 categories: reading
 title: Item 14：资源管理类要特别注意拷贝行为
 subtitle: Effective C++笔记
-tags: C++ 智能指针 RAII
+tags: C++ 智能指针 RAII 指针 运算符重载
 excerpt: 资源管理对象的拷贝行为取决于资源本身的拷贝行为，同时资源管理对象也可以根据业务需要来决定自己的拷贝行为
 ---
 

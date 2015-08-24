@@ -2,7 +2,7 @@
 layout: blog
 categories: web
 title: 页面回流与重绘（Reflow & Repaint）
-tags: 回流 重绘
+tags: 回流 重绘 HTML CSS JavaScript
 ---
 
 如果你的HTML变得很大很复杂，那么影响你JavaScript性能的可能并不是JavaScript代码的复杂度，而是页面的回流和重绘。

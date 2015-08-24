@@ -3,7 +3,7 @@ layout: blog
 categories: reading
 title: Item 43：访问模板基类中的名称
 subtitle: Effective C++笔记
-tags: C++ 模板 继承 全特化
+tags: C++ 模板 继承 特化
 excerpt: 从面相对象C++转移到模板C++时，你会发现类继承在某些场合不在好使了。比如父类模板中的名称对子类模板不是直接可见的，需要通过this->前缀、using或显式地特化模板父类来访问父类中的名称。
 ---
 

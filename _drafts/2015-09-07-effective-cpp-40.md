@@ -3,7 +3,7 @@ layout: blog
 categories: reading
 title: Item 40：明智地使用多继承
 subtitle: Effective C++笔记
-tags: C++ 继承 多继承 接口类
+tags: C++ 继承 多继承 接口类 名称隐藏
 excerpt: 多继承比单继承复杂，引入了歧义的问题，以及虚继承的必要性；虚继承在大小、速度、初始化/赋值的复杂性上有不小的代价，当虚基类中没有数据时还是比较合适的；多继承有时也是有用的。典型的场景便是：public继承自一些接口类，private继承自那些实现相关的类。
 ---
 

@@ -2,13 +2,22 @@
 layout: blog
 categories: reading
 title: C# 学习笔记
-tags: C# Windows .NET WPF
+tags: C# .NET WPF
 redirect_from:
   - /reading/csharp-note.html
   - /2015/05/14/csharp-note/
 ---
 
-## 参数传递
+小编曾在软件工程国家工程研究中心做了两年的C#、WPF开发。现已全面转向Web开发了，
+为此将以往的C#笔记稍作记录。
+
+> 其实做过Windows开发的都知道，做笔记几乎是多余的，有MSDN嘛！
+
+
+
+<!--more-->
+
+# 参数传递
 
 基本类型默认传值，类默认穿引用。
 使用`ref`与`out`指定传引用；其中`out`参数需事先进行初始化。
@@ -33,7 +42,7 @@ func2(ref n);
 func1(out m);
 ```
 
-## 类型转换
+# 类型转换
 
 ```csharp
 //转换不成功会产生异常
@@ -43,9 +52,8 @@ int int.Parse(string s)
 bool int.TtyParse(string s, out int i);
 ```
 
-<!--more-->
 
-## 应用程序路径
+# 应用程序路径
 
 1.获取模块的完整路径。
 ```csharp	
@@ -77,7 +85,8 @@ System.Windows.Forms.Application.StartupPath
 ```csharp	
 System.Windows.Forms.Application.ExecutablePath
 ```    
-## 随机数
+
+# 随机数
 
 产生随机数
 
@@ -86,7 +95,7 @@ Random rand=new Random();//每次产生的序列是一样的。
 ```
 
 
-## 应用程序设置
+# 应用程序设置
 
 1. 添加属性
 
@@ -101,7 +110,7 @@ Random rand=new Random();//每次产生的序列是一样的。
     Settings.Default.save();
     ```
     
-## 文件读写
+# 文件读写
 
 ```csharp	
 //读文件
@@ -115,7 +124,7 @@ sw.WriteLine("");
 sw.Close();
 ```
 
-## 文件系统
+# 文件系统
 
 访问文件系统
 
@@ -145,7 +154,7 @@ if (DialogResult.OK == openFolder.ShowDialog())
 }
 ```
 
-## WPF ListView 数据绑定
+# WPF ListView 数据绑定
 
 在设置UI控件的DataContex之后，它和它的子元素都可以访问该DataContex的属性（public，并且置有读的访问器）。
 
@@ -153,7 +162,7 @@ if (DialogResult.OK == openFolder.ShowDialog())
 
 自动更新：实现INotifyPropertyChanged接口，更简便的方法是用ObservableCollection（它默认实现了该接口）
 
-## WPF 技巧
+# WPF 技巧
 
 获取ContexMenuItem的触发控件
 
@@ -172,3 +181,4 @@ Window.Owner = AnotherWindow
 ```csharp	
 Window.OwnedWindows
 ```	
+

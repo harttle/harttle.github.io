@@ -2,13 +2,19 @@
 layout: blog
 categories: misc
 title: MySQL 学习笔记
-tags: MySQL Linux 数据库
+tags: SQL 数据库 MySQL Bash
 redirect_from:
   - /misc/mysql-note.html
   - /2015/05/03/mysql-note/
 ---
 
-【文档】http://dev.mysql.com/doc/refman/5.1/zh/sql-syntax.html
+在使用Django时学习过一些MySQL，暂作小记在此。小编的Django笔记在这里：
+[Django 搭建过程记录](/2015/05/15/django-startup.html)
+
+
+MySQL官方文档在这里：
+
+http://dev.mysql.com/doc/refman/5.1/zh/sql-syntax.html
 
 # database
 

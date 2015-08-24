@@ -3,8 +3,8 @@ layout: blog
 categories: reading
 title: Item 39：明智地使用private继承
 subtitle: Effective C++笔记
-tags: C++ 
-excerpt: 
+tags: C++ 继承 封装 接口
+excerpt: 子类继承了父类的实现，而没有继承任何接口。 private继承和对象组合类似，都可以表示"is-implemented-in-terms-with"的关系。但对象组合往往比继承提供更大的灵活性。
 ---
 
 > Item 39: Use private inheritance judiciously.

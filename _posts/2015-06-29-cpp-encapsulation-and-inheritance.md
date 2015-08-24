@@ -2,11 +2,13 @@
 layout: blog 
 categories: reading
 title: C++手稿：封装与继承
-tags: C++ 继承 封装
+tags: C++ 继承 封装 名称隐藏
 redirect_from:
   - /reading/cpp-encapsulation-and-inheritance.html
   - /2015/06/29/cpp-encapsulation-and-inheritance/
 ---
+
+本文总结了C++中类的继承相关的概念，包括可见性级别、继承的不同方式、构造与析构过程、封闭类、友元等。
 
 # 可见性级别
 
@@ -42,7 +44,7 @@ public:
 
 <!--more-->
 
-# 成员覆盖
+# 名称隐藏
 
 子类中声明的成员会覆盖掉基类中的同名成员，但可以通过基类名来调用：
 

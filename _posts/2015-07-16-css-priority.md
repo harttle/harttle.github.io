@@ -2,7 +2,7 @@
 layout: blog
 categories: web
 title: CSS规则的优先级匹配
-tags: CSS Web 盒模型
+tags: CSS HTML 盒模型
 redirect_from:
   - /web/css-priority.html
   - /2015/07/16/css-priority/

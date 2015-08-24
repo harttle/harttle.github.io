@@ -3,7 +3,7 @@ layout: blog
 categories: reading
 title: Item 18：让接口容易被正确使用，不易被误用
 subtitle: Effective C++笔记
-tags: C++ interface
+tags: C++ 接口 STL 运算符重载
 excerpt: 总之，好的接口容易被正确使用，不易被误用。可以为内置类型提供一致的接口来方便正确的使用。识别误用的手段包括：创建新的类型、限制类型的操作、限制对象的值、移除客户的资源管理责任。
 ---
 

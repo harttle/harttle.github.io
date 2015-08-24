@@ -2,7 +2,7 @@
 layout: blog
 categories: web
 title:  API 服务器搭建笔记：CentOS + Node.js + MongoDB
-tags: JavaScript Web 数据库 CentOS NodeJS MongoDB
+tags: JavaScript 数据库 CentOS NodeJS MongoDB
 redirect_from:
   - /web/node-web-api.html
   - /2015/02/24/node-web-api/

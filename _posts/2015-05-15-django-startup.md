@@ -2,11 +2,17 @@
 layout: blog
 categories: web
 title: Django 搭建过程记录
-tags: Linux Python Django Web
 redirect_from:
   - /web/django-startup.html
   - /2015/05/15/django-startup/
+tags: Python Django Bash SQL
 ---
+
+2011年小编第一次想做Web开发于是找到了Django，因为完全不懂数据库而以失败告终。
+2013年小班再次拿出Django，终于开发了小编的第一个Web站点（多用户博客：God Notes）。
+最初部署在BAE上，现在已经打包封存在Github了：https://github.com/harttle/godnotes
+本文记录了小编的第一个Django应用是如何开始的。
+
 
 # 安装
 
@@ -16,7 +22,7 @@ django
 cd my_django_file
 sudo python setup.py install
 ```
-        
+
 mysql
 
 ```bash
@@ -79,4 +85,4 @@ python manage.py syncdb
 ```
 
 > 只会同步原来没有的table，已有table的改动不会同步。
-	
+

@@ -2,11 +2,18 @@
 layout: blog 
 categories: reading
 title: C++手稿：STL中的函数对象与函数指针
-tags: C++ STL 函数指针 函数对象
+tags: C++ STL 函数指针 函数对象 指针
 redirect_from:
   - /reading/stl-function-objects-and-pointers.html
   - /2015/07/03/stl-function-objects-and-pointers/
 ---
+
+STL是C++的标准模板库（standard template library），自然其中定义的都是模板。
+相比于类和函数声明的**显式接口（explicit interface）**，类模板和函数模板声明的接口属于**隐式接口（implicit interface）**。
+因为模板参数应当满足的接口是由模板中表达式的合法性决定的，这一点给了模板很大的自由。
+而*函数对象*和*函数指针*具有同样的调用语法，因此STL中这两者常常可以互换。
+
+> 更多关于隐式接口和显式接口的概念和区别，参见[Effective C++: Item 41][item41]。
 
 先来感受一下C++中的函数对象和函数指针：
 
@@ -165,3 +172,4 @@ s.insert(A());
 [map]: http://www.cplusplus.com/reference/map/map
 [multimap]: http://www.cplusplus.com/reference/map/multimap/
 [stack]: http://www.cplusplus.com/reference/stack/stack
+[item41]: /2015/09/08/effective-cpp-41.html

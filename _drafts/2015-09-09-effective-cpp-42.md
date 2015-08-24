@@ -3,7 +3,7 @@ layout: blog
 categories: reading
 title: Item 42：typename的两种用法
 subtitle: Effective C++笔记
-tags: C++ 模板 嵌套从属名称
+tags: C++ 模板 名称隐藏
 excerpt: 模板参数前的typename和class没有任何区别；但 typename还可以用来帮编译器识别嵌套从属类型名称，基类列表和成员初始化列表除外。
 ---
 

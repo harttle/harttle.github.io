@@ -2,7 +2,7 @@
 layout: blog 
 categories: web
 title: AngularJS 模块化与依赖注入
-tags: AngularJS JavaScript 模块化 MVC 依赖注入 Web
+tags: AngularJS JavaScript 模块化 MVC 依赖注入
 redirect_from:
   - /web/angular-module.html
   - /2015/06/07/angular-module/

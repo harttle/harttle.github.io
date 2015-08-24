@@ -2,7 +2,7 @@
 layout: blog
 categories: web
 title: PHPCMS 目录结构
-tags: PHP Web
+tags: PHP 
 redirect_from:
   - /web/phpcms-dir.html
   - /2015/05/07/phpcms-dir/
@@ -10,6 +10,7 @@ redirect_from:
 
 [phpcms](http://www.phpcms.cn/
 ) 是国产cms建站工具，直接拷贝在php目录下打开，即可在网页向导进行安装。过程中需要更改本地目录权限、安装数据库和php插件（如php-mysql，php-gd，php-apache）。
+
 
 > 本文讨论版本为 PHPCMS V9、PHP5.、Apache2.2。
 

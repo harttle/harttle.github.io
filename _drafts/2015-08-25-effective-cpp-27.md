@@ -3,8 +3,8 @@ layout: blog
 categories: reading
 title: Item 27：最小化类型转换
 subtitle: Effective C++笔记
-tags: C++  类型转换
-excerpt: 
+tags: C++ 类型转换 运算符重载
+excerpt: C++的类型检查只在编译时执行，运行时没有类型错误的概念。理论上讲只要你的代码可以编译那么就运行时就不会有不安全的操作发生。但C++允许类型转换，也正是类型转换破坏了理论上的类型系统。
 ---
 
 > Item 27: Minimize casting.

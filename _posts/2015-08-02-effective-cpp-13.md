@@ -3,7 +3,7 @@ layout: blog
 categories: reading
 title: Item 13：使用对象来管理资源
 subtitle: Effective C++笔记
-tags: 智能指针 指针 C++ RAII 工厂方法
+tags: 智能指针 指针 C++ RAII 工厂方法 运算符重载
 excerpt: 创建资源后立即放入资源管理对象中，并利用资源管理对象的析构函数来确保资源被释放。复制一个 auto_ptr 会使它变成空
 ---
 

@@ -3,7 +3,7 @@ layout: blog
 categories: reading
 title: Item 15：资源管理类需要提供对原始资源的访问
 subtitle: Effective C++笔记
-tags: C++ 智能指针
+tags: C++ 智能指针 指针 类型转换 运算符重载
 excerpt: 资源管理对象需要提供对原始资源访问。获取资源的方式有两类：隐式地获取和显式地获取。通常来讲，显式的资源获取会更好，它最小化了无意中进行类型转换的机会**
 ---
 
@@ -69,12 +69,11 @@ int newFontSize;
 changeFontSize(f.get(), newFontSize);
 ```
 
-如果提供一个隐式转换操作符将`Font`转换为`FontHandle`，那么接受`FontHandle`类型作为参数的函数将会同样地接受`Font`类型。
+如果提供一个隐式类型转换运算符将`Font`转换为`FontHandle`，那么接受`FontHandle`类型作为参数的函数将会同样地接受`Font`类型。
 一切将会变得简单：
 
 ```cpp
 class Font{
-    ...
     operator FontHandle() const{ return f;}
 };
 

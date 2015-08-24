@@ -3,7 +3,7 @@ layout: blog
 categories: web
 title:  "像 Geek 一样写博客"
 subtitle: "GitHub 博客部署教程"
-tags: Markdown Github Ruby Jekyll
+tags: Markdown Github Ruby Jekyll HTML
 redirect_from:
   - /web/github-homepage-tutorial.html
   - /2013/10/18/github-homepage-tutorial/
@@ -280,3 +280,18 @@ function(code, lang){
 
 * google analysis
 
+### 2015-07-12
+
+* 响应式优化
+* 背景色更改为浅色
+
+### 2015-07-25
+
+* URL迁移：去掉了URL中的category
+
+### 2015-08-01
+
+* 域名：harttle.com
+* CNZZ 统计
+* 百度统计
+* Tag云

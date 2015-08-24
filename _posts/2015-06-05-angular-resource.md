@@ -2,7 +2,7 @@
 layout: blog 
 categories: web
 title: AngularJS Resource：与 RESTful API 交互
-tags: AngularJS JavaScript Resource RESTful Web HTTP
+tags: AngularJS JavaScript HTTP
 redirect_from:
   - /web/angular-resource.html
   - /2015/06/05/angular-resource/

@@ -6,7 +6,7 @@ subtitle: linux网络调试与IP层服务器假设
 redirect_from:
   - /linux/linux-route.html
   - /2014/10/08/linux-route/
-tags: 网络 IP TCP Bash Linux
+tags: 网络 IP TCP Bash JavaScript
 ---
 
 局域网基本都是通过路由器来接入Internet，其中的路由器提供了众多的功能与服务。不妨用linux做局域网的路由，开启DHCP服务、IP转发、HTTP代理。这样不仅可以高度定制局域网的网络结构，而且可以实时监测局域网流量。

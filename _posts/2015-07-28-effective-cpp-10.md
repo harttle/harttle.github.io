@@ -3,7 +3,7 @@ layout: blog
 categories: reading
 title: Item 10：赋值运算符要返回自己的引用
 subtitle: Effective C++笔记
-tags: C++ 赋值运算符
+tags: C++ 赋值运算符 运算符重载
 excerpt: 这是关于赋值运算符的编程惯例，用来支持链式的赋值语句。
 ---
 

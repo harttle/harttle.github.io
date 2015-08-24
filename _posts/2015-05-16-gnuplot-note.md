@@ -2,11 +2,14 @@
 layout: blog
 categories: linux
 title: Gnuplot 学习笔记
-tags: Linux Bash
+tags: Bash 
 redirect_from:
   - /linux/gnuplot-note.html
   - /2015/05/16/gnuplot-note/
 ---
+
+GNU Plot是一个免费的命令行的绘图软件，显然它是给Unix系统用的。
+小编曾用它绘制了毕业论文中数百张复杂的脉冲星检测分析图。现在总结一下它的使用方法备忘。
 
 ## 安装
 
