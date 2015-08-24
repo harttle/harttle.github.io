@@ -5,3 +5,4 @@ Gemfile.lock
 *.log
 .idea
 .tmp
+dump.rdb

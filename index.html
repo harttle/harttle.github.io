@@ -114,6 +114,19 @@ subtitle: Keep It Simple, Stupid!
       <div class="tag-cloud"></div>
     </div>
 
+    <div class="item-list categories">
+      <h4 class="page-header"><a class="feature-link" href="/category.html">Categories</a></h4>
+      <ol class="list-unstyled">
+        {% for cate in site.categories %}
+        <li>
+        <a href="/category.html#category-{{cate | first}}">
+          {{cate | first | capitalize}} ({{ cate | last | size }})
+        </a>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+
     <div class="item-list recent-titles">
       <h4 class="page-header"><a class="feature-link" href="/">Recent</a></h4>
       <ol class="list-unstyled">
