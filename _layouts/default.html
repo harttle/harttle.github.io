@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>{{ page.title | capitalize }}
+  <title>{{ page.title }}
     {% if page.subtitle %}
       - {{ page.subtitle }}
     {% endif %}
@@ -12,14 +12,7 @@
   {% if page.excerpt %}
     <meta name="description" content="{{ page.excerpt | xml_escape }}">
   {% else %}
-    {% capture tags %}
-    {% for tag in site.tags %}
-    {{ tag[1].size | plus: 1000 }}#{{ tag[0] }}#{{ tag[1].size }}
-    {% endfor %}
-    {% endcapture %}
-    {% assign sortedtags = tags | split:' ' | sort | reverse %}
-    {% capture description %}{% for tag in sortedtags limit: 20 %}{% assign tagitems = tag | split: '#' %}{{ tagitems[1] }}, {% endfor %}{% endcapture %}
-    <meta name="description" content="{{ description | xml_escape }}">
+    <meta name="description" content="{{ site.description | xml_escape }}">
   {% endif %}
   <meta name="author" content="harttle">
   <meta charset="utf-8">

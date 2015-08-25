@@ -1,5 +1,6 @@
 name: Harttle Land
 url: http://harttle.com
+description: Web开发、C++、Linux、Bash、JavaScript
 
 permalink: /:year/:month/:day/:title.html
 
