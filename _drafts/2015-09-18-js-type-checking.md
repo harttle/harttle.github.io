@@ -1,7 +1,7 @@
 ---
 layout: blog
 categories: web
-title: typeof, instanceof, constructor, toString 的区别
+title: 如何检查JavaScript变量类型？
 tags: JavaScript 构造函数 继承 原型 类型检查
 excerpt: 如果你要判断的是基本数据类型或JavaScript内置对象，使用toString；如果要判断的时自定义类型，请使用instanceof。
 ---
