@@ -1,7 +1,7 @@
 ---
 layout: blog
 categories: web
-title: JavaScript类型转换
+title: JavaScript类型转换总结
 tags: JavaScript 类型转换 字符串
 ---
 
