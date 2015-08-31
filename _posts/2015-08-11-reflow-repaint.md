@@ -1,7 +1,7 @@
 ---
 layout: blog
 categories: web
-title: 页面回流与重绘（Reflow & Repaint）
+title: 减少页面回流与重绘（Reflow & Repaint）
 tags: 回流 重绘 HTML CSS JavaScript
 ---
 
