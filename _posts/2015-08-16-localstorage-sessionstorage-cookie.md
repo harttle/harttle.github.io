@@ -1,7 +1,7 @@
 ---
 layout: blog
 categories: web
-title: SessionStorage, LocalStorage, Cookie的异同及使用方法
+title: HTML5本地存储：SessionStorage, LocalStorage, Cookie
 tags: LocalStorage Cookie Session JavaScript jQuery
 ---
 
