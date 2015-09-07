@@ -1,8 +1,7 @@
 ---
 layout: blog
 categories: web
-title:  "像 Geek 一样写博客"
-subtitle: "GitHub 博客部署教程"
+title:  部署自己的博客：Github+Jekyll
 tags: Markdown Github Ruby Jekyll HTML
 redirect_from:
   - /web/github-homepage-tutorial.html
