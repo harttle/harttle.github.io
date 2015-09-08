@@ -1,7 +1,7 @@
 ---
 layout: blog
 categories: web
-title: JavaScript类型转换总结
+title: JavaScript显式类型转换与隐式类型转换
 tags: JavaScript 类型转换 字符串
 ---
 
