@@ -56,6 +56,11 @@ public:
         int idx = key%SIZE;
         return table[idx] ? table[idx]->getVal() : -1;      // 注意这里需要判断key不存在的情况
     }
+    ~HashTable(){
+        for(int i=0; i<SIZE; i++)
+            if(table[i]) delete table[i];
+        delete[] table;                     // 别忘了table本身也是要销毁的
+    }
 };
 ```
 
