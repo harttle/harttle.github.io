@@ -86,8 +86,9 @@ d.func(1);      // OK
 
 # 继承一个重载方法
 
-在public继承中，子类和父类是"is-a"的关系（见Item-32），所以通常我们希望从父类继承所有的方法。
-但如果是private继承（Item-39），可能你只想要其中的一个，这时可以定义一个转发函数（forwarding function）：
+在public继承中，子类和父类是"is-a"的关系（见[Item 32][item32]），所以通常我们希望从父类继承所有的方法。
+但如果是private继承（见[Item 39][item39]），
+可能你只想要其中的一个，这时可以定义一个转发函数（forwarding function）：
 
 ```cpp
 class Base{
@@ -122,3 +123,6 @@ public:
 [item18]: {% post_url 2015-08-09-effective-cpp-18 %}
 [item20]: {% post_url 2015-08-13-effective-cpp-20 %}
 [item25]: /2015/08/23/effective-cpp-25.html
+[item32]: {% post_url 2015-08-30-effective-cpp-32 %}
+[item39]: {% post_url 2015-09-06-effective-cpp-39 %}
+
