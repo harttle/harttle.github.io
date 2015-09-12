@@ -99,19 +99,19 @@ imgs
     .PHONY: all clean
     
     all: $(dirs)
-            for dir in $(dirs);do\
-                    if [ -f $$dir/Makefile ];then $(MAKE) -C $$dir;fi;\
-            done
+        for dir in $(dirs);do\
+            if [ -f $$dir/Makefile ];then $(MAKE) -C $$dir;fi;\
+        done
     
     clean: 
-            for dir in $(dirs);do\
-                    if [ -f $$dir/Makefile ];then $(MAKE) clean -C $$dir;fi;\
-            done
+        for dir in $(dirs);do\
+            if [ -f $$dir/Makefile ];then $(MAKE) clean -C $$dir;fi;\
+        done
             
     clean-all: 
-	for dir in $(dirs);do\
-		$(MAKE) clean-all -C $$dir;\
-	done
+	    for dir in $(dirs);do\
+	        $(MAKE) clean-all -C $$dir;\
+	    done
     ```
 
 2. 在 `imgs` 执行 `make`，即可以更新所有子目录的缩略图；执行 `make clean`，即可清空所有缩略图，以及图片列表。

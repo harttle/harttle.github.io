@@ -9,7 +9,7 @@ tags: JavaScript 事件 DOM
 但对于不同的事件绑定方式，`this`可能不一定是当前被操作的对象。
 本文便来分析不同的方式绑定事件处理函数时，函数中`this`的区别。常见的事件绑定方式不外乎4种：
 
-1. `attachEvent`：IE9以下的MSIE中。
+1. `attachEvent`：IE9以下（不包括IE9）的MSIE中。
 2. `addEventListener`：支持DOM Level 2 Event的浏览器中。
 3. `el.onclick=function(){}`：这是古老的事件绑定方式。
 4. `<a onclick='handle()'>`：这是最古老的事件绑定方式。

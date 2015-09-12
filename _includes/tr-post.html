@@ -1,7 +1,7 @@
 <tr>
     <td class="date text-muted"> {% include date.html post=post %} </td>
     <td class="content">
-      <a class="feature-link title" href="{{ post.url }}">{{ post.title }}</a>
+      <a class="feature-link title" href="{{ post.url }}" target="_blank">{{ post.title }}</a>
       <span class="category">{% include categories.html post=post %}</span>
       <span class="tag">{% include tags.html post=post %}</span>
     </td>

@@ -63,7 +63,7 @@ public:
 };
 ```
 
-接着我们继续特化`std::swap`，因为这才是可会会调用的Swap函数：
+接着我们继续特化`std::swap`，在这个通用的Swap中调用那个成员函数：
 
 ```cpp
 namespace std {

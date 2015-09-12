@@ -105,7 +105,7 @@ ACTION=="remove", SUBSYSTEM=="input", KERNEL=="mouse[0-9]", ENV{DISPLAY}=":0.0",
 
 ### 开机时鼠标检测
 
-PS/2 鼠标在开机时不会出发 udev 规则。我们做一个桌面环境的启动脚本，在 .xinitrc，profile 中调用，或者放在  KDE 的 Autostart 中：
+PS/2 鼠标在开机时不会触发 udev 规则。我们做一个桌面环境的启动脚本，在 .xinitrc，profile 中调用，或者放在  KDE 的 Autostart 中：
 
 ```bash
 #!/bin/bash
