@@ -36,11 +36,11 @@ yaourt -S android-sdk android-sdk-platform-tools android-sdk-build-tools android
 ```bash
 su
 swapoff /swapfile && rm /swapfile
-dd if=/dev/zero of=/swapfile bs=512M count=8
+dd if=/dev/zero of=/swapfile bs=512M count=32
 mkswap /swapfile && swapon /swapfile
 ```
 
-环境降级
+安装对应版本的工具软件：
 
 ```bash
 # make 3.81-3.82
@@ -53,7 +53,7 @@ cd /usr/bin && sudo ln -sf python python2
 yaourt -S jdk6-compat
 ```
 
-环境配置
+环境变量配置：
 
 ```bash
 #!/bin/bash
