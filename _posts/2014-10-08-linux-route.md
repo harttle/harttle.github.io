@@ -1,8 +1,7 @@
 ---
 layout: blog
 categories: linux
-title: Linux路由配置
-subtitle: linux网络调试与IP层服务器假设
+title: Linux路由表配置
 redirect_from:
   - /linux/linux-route.html
   - /2014/10/08/linux-route/
@@ -101,14 +100,14 @@ $ tcpdump -i wlp13s0 -n port 67
 ```bash
 sysctl net.ipv4.ip_forward=1
 
- 来看一下，确实变了
+# 来看一下，确实变了
 sysctl -a | grep forward
 ```
 
 如果想让它重启后也生效，可以写入`sysctl`的配置文件：
 
 ```bash
- file: /etc/sysctl.d/30-ipforward.conf
+# file: /etc/sysctl.d/30-ipforward.conf
 net.ipv4.ip_forward=1
 net.ipv6.conf.default.forwarding=1
 net.ipv6.conf.all.forwarding=1
@@ -116,16 +115,16 @@ net.ipv6.conf.all.forwarding=1
 
 ## 启动NAT
 
-这里我们通过`iptables`启动NAT地址转换，将局域网IP映射到出口IP。
+这里我们通过`iptables`启动NAT地址转换，将局域网Socket映射到出口Socket。
 
 > NAT可以让多个主机使用同一出口IP。使用常用的NAT地址转换策略是将内网的IP+端口映射到TCP或UDP包的源端口，Internet返回的包则进行反向转换发给内网IP。
 
 ```bash
- 网卡间转发
+# 网卡间转发
 iptables -A FORWARD -i wlp13s0 -o enp14s0 -j ACCEPT
- 采用conntrack模块来允许ICMP
+# 采用conntrack模块来允许ICMP
 iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
- NAT
+# NAT
 iptables -t nat -A POSTROUTING -o enp14s0 -j MASQUERADE
 ```
 
@@ -136,11 +135,11 @@ iptables -t nat -A POSTROUTING -o enp14s0 -j MASQUERADE
 该步骤继续配置`iptables`，把子网`192.168.3.0/24`来的IP报文转发到我们的代理或者web服务器。
 
 ```bash
- 转发至web服务器
+# 转发至web服务器
 iptables -t nat -A PREROUTING -s 192.168.3.0/255.255.255.0 -p tcp -j DNAT --to-destination 192.168.3.1
 
- 也可以转发到代理
- iptables -t nat -A PREROUTING -s 192.168.3.0/255.255.255.0 -p tcp --dport 80 -j DNAT --to-destination 192.168.3.1:3128
+# 也可以转发到代理
+iptables -t nat -A PREROUTING -s 192.168.3.0/255.255.255.0 -p tcp --dport 80 -j DNAT --to-destination 192.168.3.1:3128
 ```
 
 ## 启动iptables
@@ -153,7 +152,7 @@ iptables-save > /etc/iptables/iptables.rules
 
 启动`iptables`：
 
-```
+```bash
 systemctl start iptables.service
 ```
 
