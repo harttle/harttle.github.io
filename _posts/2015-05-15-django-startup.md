@@ -2,9 +2,6 @@
 layout: blog
 categories: web
 title: Django 搭建过程记录
-redirect_from:
-  - /web/django-startup.html
-  - /2015/05/15/django-startup/
 tags: Python Django Bash SQL
 ---
 
@@ -39,7 +36,7 @@ apt-get install python-mysqldb mysql-server mysql-client libmysqld-dev
     
 2. 在settings.py中设置数据库
 
-    ```json
+    ```
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql', 

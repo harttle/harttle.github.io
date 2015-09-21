@@ -3,9 +3,6 @@ layout: blog
 categories: misc
 title: MySQL 学习笔记
 tags: SQL 数据库 MySQL Bash
-redirect_from:
-  - /misc/mysql-note.html
-  - /2015/05/03/mysql-note/
 ---
 
 在使用Django时学习过一些MySQL，暂作小记在此。小编的Django笔记在这里：
@@ -55,27 +52,27 @@ desc tb_name
 ```sql
 alter table tb_name rename to bbb;
 ```
-		
+
 添加字段
 
 ```sql
 alter table tb_name add column col_name varchar(30);
-//添加主键
+# 添加主键
 alter table tb_name add col_name int(5) unsigned default 0 not null auto_increment ,add primary key (tb_name);
 ```
-		
+
 删除字段
 
 ```sql
 alter table tb_name drop column col_name;
 ```
-		
+
 修改字段名
 
 ```sql
 alter table tb_name change col_name new_col_name int;
 ```
-		
+
 修改字段属性
 
 ```sql
@@ -95,7 +92,7 @@ SELECT [col1,col2]|* FROM table_name
 修改
 
 ```sql
-UPDATE table_name SET col1 = val1, col2 = val2 WHERE col3 = val3
+UPDATE tb_name SET col1 = val1, col2 = val2 WHERE col3 = val3
 ```
 
 删除
@@ -108,13 +105,13 @@ DELETE FROM tb_name WHERE col1 = val1
 
 修改root密码
 
-```sql
+```bash
 mysqladmin -u root password 'somepassword'
 ```
 
 登录
 
-```sql
+```bash
 mysql [-h hostname] -u username|root -p
 ```
 
@@ -122,19 +119,20 @@ mysql [-h hostname] -u username|root -p
 
 导入
 
-```sql
-mysql -u root -p dbname < /path/to/file.sql 
+```bash
+mysql -u root -p dbname < /path/to/file.sql
 ```
 
 导出
-		
-```bash
-//export database
-mysqldump [-h localhost] -u root -p dbname > /path/to/dbname.sql 
 
-//export table
+```bash
+# export database
+mysqldump [-h localhost] -u root -p dbname > /path/to/dbname.sql
+
+# export table
 mysqldump [-h localhost] -u root -p dbname tablename > /path/to/tablename.sql
 
-//export database structure
-mysqldump [-h localhost] -u root -p dbname --add-drop-table > /path/to/dbname_struct.sql 
+# export database structure
+mysqldump [-h localhost] -u root -p dbname --add-drop-table > /path/to/dbname_struct.sql
 ```
+

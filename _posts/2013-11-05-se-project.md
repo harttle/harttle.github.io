@@ -2,7 +2,7 @@
 layout: blog
 categories: misc
 title: 搜索引擎搭建：heritrix+lucene
-tags: 网络 搜索引擎 Bash
+tags: 网络 搜索引擎 Bash CentOS Bash Java
 redirect_from:
   - /misc/se-project.html
   - /2013/11/05/se-project/
