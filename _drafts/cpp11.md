@@ -113,6 +113,18 @@ std::vector<int> func(){
 }
 ```
 
+此外，你是否还记得在C98标准中，只有静态常量整型（`long`, `short`, `enum`）才可以就地初始化，C++11允许任何变量进行就地初始化，但只支持`=`和`{}`两种方式。例如：
+
+```cpp
+class A{
+    string str = "sss";     // OK
+    int i {23};             // OK
+    int j (23);             // Error
+};
+```
+
+> 在[Effective C++: Item 2][item2]中提到，对于就地初始化的静态常量整型，如果不给出声明就无法取地址。在C++11中这一点仍然成立。
+
 # 类型推导
 
 C++提供了`auto`和`decltype`来静态推导类型，在我们知道类型没有问题但又不想完整地写出类型的时候，
@@ -335,7 +347,8 @@ t1 = t2 ;       // 隐式类型转换
 [fanda]: /2015/07/07/cpp-functions-and-arguments.html
 [c11]: https://zh.wikipedia.org/wiki/C%2B%2B11
 [c14]: https://zh.wikipedia.org/wiki/C%2B%2B14
-[item33]: {% post_url 2015-08-31-effective-cpp-33 %}
+[item2]: {% post_url 2015-07-20-effective-cpp-2 %}
 [item5]: /2015/07/23/effective-cpp-5.html
 [item13]: {% post_url 2015-08-02-effective-cpp-13 %}
+[item33]: {% post_url 2015-08-31-effective-cpp-33 %}
 

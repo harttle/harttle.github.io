@@ -69,7 +69,17 @@ class C{
 ```
 
 通常C++要求所有的声明都给出定义，然而数值类型（`char`, `int`, `long`）的静态常量可以只给声明。这里的`NUM`就是一个例子。
-然而，如果你想取`NUM`的地址，则会得到编译错误：`undefined symbol NUM`。为此，通常你需要同时给出定义：
+然而，如果你想取`NUM`的地址，则会得到编译错误：
+
+```
+Undefined symbols for architecture x86_64:
+  "C::NUM", referenced from:
+      _main in a-88bbac.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+```
+
+因此如果你要取地址，那么就给出它的定义：
 
 ```cpp
 class C{
@@ -89,3 +99,4 @@ class C{
     int a[NUM];
 };
 ```
+

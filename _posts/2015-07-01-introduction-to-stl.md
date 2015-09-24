@@ -120,7 +120,7 @@ copy(v.begin(), v.end(), output);
 例如，`erase`用来删除一个区间的元素：
 
 ```cpp
-v.erase( v.begin(), v.end());
+v.erase(v.begin(), v.end());
 // 等效于
 v.clear();
 ```

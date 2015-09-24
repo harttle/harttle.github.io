@@ -71,11 +71,8 @@ const CPerson& operator=(const CPerson& p){
 };
 ```
 
-* 参数为`const`，因为不需要改变原有对象。
-
-    > 能使用`const`时，尽量使用它。详情见：[Effective C++ 笔记](/2014/05/04/effective-cpp.html)
-
-* 参数、返回值为引用，因为直接传参会生成一个新的对象，低效。
+* 参数为`const`，因为不需要改变原有对象。 能使用`const`时，尽量使用它。见[Effective C++: Item 3][item3]。
+* 参数、返回值为引用，因为直接传参会生成一个新的对象，低效。见[Effective C++: Item 20][item20]。
 * 返回值为`CPerson`类型，这样可以支持连等：`a = b = c`。
 * 返回值为`const`，赋值的结果不应当被改变。
 
@@ -90,13 +87,13 @@ const CPerson& operator=(CPerson p){
 
 事实上赋值运算符有两点重要的关注：
 
-1. 自我赋值的正确性。一些失败的实现中，会先`delete`掉`this`的资源。
+1. 自赋值的正确性。一些失败的实现中，会先`delete`掉`this`的资源。
 
     上述代码中用`std::swap`保证了自我赋值的正确性。当然你也可以自己写一个健壮的`swap`函数。
-    
+
 2. 异常安全。当拷贝失败时，原有对象不可破坏。
 
-    上述代码中，拷贝发生在进入函数之前，提供了强烈的异常安全。同时编译器来完成拷贝比函数中手动拷贝更加高效。
+    上述代码中，拷贝发生在进入函数之前，提供了强烈的异常安全。同时编译器来完成拷贝比函数中手动拷贝更加高效。见[Effective C++: Item 25][item25]。
 
 # 重载流插入运算符
 
@@ -107,7 +104,7 @@ ostream& operator<<(ostream& o, const CPerson& p){
 }
 ```
 
-> 返回`ostream&`也是为了支持链式调用：``cout<<p1<<p2;`。
+> 返回`ostream&`也是为了支持链式调用：`cout<<p1<<p2`。
 
 事实上，`operator<<(int)`是`ostream`的成员函数：
 
@@ -161,7 +158,7 @@ C++规定：前置运算符有一个参数，后置运算符有两个参数。
 
 ```cpp
 CPerson& operator++(CPerson&);
-CPerson operator++(CPerson&, int);
+const CPerson operator++(CPerson&, int);
 ```
 
 可以看到后置自加运算符的返回值为`CPerson`，会在函数返回时生成一个新的对象，
@@ -175,7 +172,7 @@ for(vector<int> i = v.begin(); i != v.end(); ++i);
 # 强制转换运算符
 
 基本数据类型到对象的转换是靠重载构造函数来实现的；
-对象到基本数据类型的转换是靠重载强制转换运算符来实现的：
+对象到基本数据类型的转换是靠重载强制转换运算符来实现的，**强制转换运算符不允许指定返回值类型**：
 
 ```cpp
 class CPerson{
@@ -199,3 +196,7 @@ cout<<p1 <<endl;      // p1.int()
 cout<<p1 + 3<<endl;   // CPerson(3)，p.int();
 p1 = 3 + p1;          // p1.int()，CPerson(4)
 ```
+
+[item3]: {% post_url 2015-07-21-effective-cpp-3 %}
+[item20]: {% post_url 2015-08-13-effective-cpp-20 %}
+[item25]: {% post_url 2015-08-23-effective-cpp-25 %}

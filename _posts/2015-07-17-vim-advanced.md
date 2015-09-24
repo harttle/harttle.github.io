@@ -3,16 +3,12 @@ layout: blog
 categories: linux
 title: 感受Vim的强大：进阶技巧
 tags: Vim Bash
-redirect_from:
-  - /linux/vim-advanced.html
-  - /2015/07/17/vim-advanced/
 ---
 
 Vim是从vi发展出来的一个文本编辑器。代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。和Emacs并列成为类Unix系统用户最喜欢的编辑器。
+如果你还没有使用过Vim，建议你先去看这个：[Vim初级：配置和使用][vim-basic]。本文介绍一些Vim的高级特性。包括块编辑、宏录制、语法高亮、键盘映射、函数定义、文件类型识别与对应插件加载等。
 
-文档参见：http://vimdoc.sourceforge.net/htmldoc/
-
-中文文档：http://vimcdoc.sourceforge.net/doc/
+> 英文文档：http://vimdoc.sourceforge.net/htmldoc/，中文文档：http://vimcdoc.sourceforge.net/doc/
 
 # 块编辑
 
@@ -32,15 +28,15 @@ vim所有的模式（即工作状态）如下：
 5. (i) 插入模式: 也用于替换模式。
 6. (c) 命令行模式: 输入 ":" 或 "/" 命令时。
 
-> **行尾块** ：因行尾参差不齐，块编辑一般用于行首、行间；行尾编辑要有一些技巧：到行首`^`，到文件尾`G`，到行尾`$`，增加字符`A`，进行编辑，`<Esc>` 退出。
+> **行尾块** ：因行尾参差不齐，块编辑一般用于行首、行间；行尾编辑要有一些技巧：`gg`到文件头，`<Ctrl-v>`进入块编辑模式，`G`选择所有内容；`$A`到行尾并进入插入模式，输入要插入的字符，`<Esc>`完成。
 
 <!--more-->
 
-# 文件识别
+# 文件类型识别与对应插件加载
 
 Vim可针对特定的文件，加载指定插件。以此来实现文件类型的特殊配置以及语法高亮。
 
-参见：http://vimcdoc.sourceforge.net/doc/filetype.html#filetype-plugins
+> 参见：http://vimcdoc.sourceforge.net/doc/filetype.html#filetype-plugins
 
 `filetype on` 将开启文件识别，Vim 会在载入时做如下工作：
 
@@ -52,8 +48,6 @@ Vim可针对特定的文件，加载指定插件。以此来实现文件类型�
 > 如果不使用文件识别，我们可以运行 `au BufNewFile,BufRead *.plt  source ~/.vim/after/ftplugin/plt.vim` 来使用 `plt.vim` 初始化 `*.plt` 文件。
 
 > 更多关于`RUNTIMEPATH` ：http://vimcdoc.sourceforge.net/doc/options.html#'runtimepath'
-
-# 插件加载
 
 `filetype plugin on` 允许Vim加载文件类型的插件，Vim会在载入时寻找并加载 `$RUNTIMEPATH/ftplugin.vim`，该脚本会寻找并加载 `$RUNTIMEPATH/ftplugin/<filetype>.vim`。
 
@@ -182,3 +176,6 @@ endfunction
 6 | `USINT` | Unsigned short integer 
 7 | `UINT`  | Unsigned integer 
 ```
+
+[vim-basic]: {% post_url 2013-11-08-vim-config %}
+

@@ -104,9 +104,9 @@ delete p;
 ```
 
 上述代码只会回收`CMan`中`CPerson`部分所占用的内存，执行了`CPerson`的析构函数，却没有执行`CMan`的虚构函数。
-解决办法很容易理解：将析构函数设为`virtual`。
+解决办法很容易理解：将析构函数设为`virtual`。更多讨论见[Effective C++: Item 7][item7]。
 
-> 构造函数不允许是虚函数。
+> 构造函数不允许是虚函数，编译错。
 
 ```cpp
 class CPerson{
@@ -175,3 +175,5 @@ Bye, person
 `hello`和`bye`都是虚函数，其中`hello`三个层级都有定义，但被执行的是当前类`CMan`中的定义；
 `bye`在上下两个层级有定义，被执行的是上一级类`CPerson`中的定义。
 可见，构造函数执行时当前对象的类型是定义构造函数的类。
+
+[item7]: {% post_url 2015-07-24-effective-cpp-7 %}

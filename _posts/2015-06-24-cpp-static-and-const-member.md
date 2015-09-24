@@ -43,8 +43,8 @@ class CPerson{
 private:
     static CPerson* p;
     CPerson(){};
-    CPerson(CPerson&){};
-    const CPerson& operator= (const CPerson& rhs){return rhs};
+    CPerson(CPerson&);
+    const CPerson& operator= (const CPerson&);
 public:
     static Person* instance(){
         return p ? p : (p = new P());
@@ -96,8 +96,7 @@ const char& operator[](size_t pos) const{
 
 char& operator[](size_t pos){
     return const_cast<char&>(
-        static_cast<const TextBlock&>(*this)
-            [pos]   
+        static_cast<const TextBlock&>(*this)[pos];
     );
 }
 ```
