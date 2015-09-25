@@ -44,7 +44,7 @@ void main(){
     try{
         C c;
     }
-    catch(int e){}
+    catch(...){}
 }
 ```
 
@@ -62,7 +62,7 @@ C *p = new C;
 try{
     delete p;
 }
-catch(int e){}
+catch(...){}
 ```
 
 上述代码会给出同样的错误输出：

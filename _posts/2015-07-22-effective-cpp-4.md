@@ -4,14 +4,10 @@ categories: reading
 title: Item 4：确保变量的初始化
 subtitle: Effective C++笔记
 tags: C++ 构造函数
-redirect_from:
-  - /reading/effective-cpp-4.html
-  - /2015/07/22/effective-cpp-4/
 excerpt: 出于效率原因，C++不保证**非成员对象的内置型**的初始化。对于成员变量的内置类型，会在构造函数进入之前进行初始化。
 ---
 
 > Item 4: Make sure that objects are initialized before they're used.
-> 在使用对象前确保其已经初始化。
 
 出于效率原因，C++不保证**非成员对象的内置型**的初始化。对于成员变量的内置类型，
 会在构造函数进入之前进行初始化。例如：
@@ -50,10 +46,7 @@ public:
     C():b(), i(){}
 };
 // 或者
-C::C()
-    : b(), 
-      i(1)
-    {}
+C::C() : b(), i(1){}
 ```
 
 > 在构造函数前总是列出所有成员变量，以免遗漏。

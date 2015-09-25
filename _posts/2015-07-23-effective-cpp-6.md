@@ -26,6 +26,8 @@ class Uncopyable{
 private:
 	Uncopyable(const Uncopyable&);
 	Uncopyable& operator=(const Uncopyable&);
+public:
+    Uncopyable(){}
 };
 ```
 
@@ -37,5 +39,8 @@ class Homeforsale: private Uncopyable{
 };
 ```
 
+> 这里改为`public`继承仍然可行，但语义上不正确，`Uncopyable`更像是一种实现方式或者接口，而不是一个基类。
+
 在编译器默认生成的拷贝构造函数和赋值运算符中，会调用父类的相应函数。
-然而这些调用将会被拒绝，因为是`private`继承的~
+然而这些调用将会被拒绝，因为对父类这些函数的访问将被拒绝。
+
