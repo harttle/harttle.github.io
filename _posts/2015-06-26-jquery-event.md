@@ -25,11 +25,10 @@ $('body').on('click', 'a[rel^=lightbox], ...', function(event){});
 它们提供了一种机制，使得行为的实现方式和调用时机可以分离。
 
 不谈jQuery，DOM本身就提供了一系列的javascript事件，例如`click`，`keyup`，`submit`。
-通常在JavaScript中，我们会定义一系列的处理函数，也就是行为。
-浏览器这些行为的调用时机，而处理函数知道这些行为的实现方式。**Javascript事件**就是这样一种机制，
-使得行为的实现方式和调用时机可以动态地绑定。
+未实现相关业务逻辑，通常会为这些事件定义一系列的处理函数，**处理函数定义了业务的实现方式，而浏览器知道这些业务的调用时机**。
+Javascript事件就是这样一种机制，使得行为的实现方式和调用时机可以动态地绑定。
 
-jQuery事件封装了javascript事件，例如：`.keyup()`函数便是JavaScript的`onkeyup`的封装：
+jQuery事件是通过封装javascript事件来实现的，例如`.keyup()`便是`onkeyup`的封装：
 
 > `.keyup()`： Bind an event handler to the "keyup" JavaScript event, or trigger that event on an element.
 
@@ -134,8 +133,8 @@ $('#foo').trigger('fucked');
 </script>
 ```
 
-上述代码中，首先定义了一个`fucked`的事件并绑定了处理函数，然后使用`trigger`来手动触发该事件。
-当然，把`fucked`关联到其他的事件可以让这个例子更加真实：
+这里定义了一个叫`fucked`的事件并绑定了处理函数，然后使用`trigger`来触发该事件。
+在真实的场景中，通常用其他的事件来触发自定义事件：
 
 ```javascript
 var he = 'man';
