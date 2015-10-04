@@ -3,12 +3,9 @@ layout: blog
 categories: reading
 title: C++手稿：std::string
 tags: C++ 字符串
-redirect_from:
-  - /reading/std-string.html
-  - /2015/06/30/std-string/
 ---
 
-字符串在很多编程语言中已经成为基本数据类型，C语言中我们使用`char*`来手动申请和维护字符串，
+字符串在很多编程语言中已经成为基本数据类型，C语言中我们使用`char*`来手动维护字符串的内存，
 在C++中，可以使用`std::string`来方便地创建和操作字符串。
 
 `string`是一个模板类，它有`basic_string<T>`定义：

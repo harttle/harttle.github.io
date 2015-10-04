@@ -135,8 +135,7 @@ sort(v.begin(), v.end(), greater<int>());
 ```
 
 > `std::sort`要求随机存取迭代器，`list`不可用`std::sort`，可以使用`list::sort(Pred pr)`。
-
-`std::sort`实际上是快排，复杂度为$O(n lgn)$，它是不稳定的。`stale_sort`则是稳定的归并排序。
+> `std::sort`实际上是快排，复杂度为$O(n lgn)$，它是不稳定的。`stale_sort`则是稳定的归并排序。
 
 # 比较器：模板参数
 

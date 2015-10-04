@@ -18,6 +18,8 @@ tags: Grub Ubuntu Bash
 
 Grub的手册在这里： https://www.gnu.org/software/grub/manual/
 
+<!--more-->
+
 # Grub Rescue 引导内核
 
 Grub无法启动内核时，便会进入Grub Rescue模式，应该是像这样的：

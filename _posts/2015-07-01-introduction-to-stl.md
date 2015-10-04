@@ -1,11 +1,8 @@
 ---
 layout: blog 
 categories: reading
-title: C++手稿：STL入门
+title: C++手稿：STL小记
 tags: C++ STL
-redirect_from:
-  - /reading/introduction-to-stl.html
-  - /2015/07/01/introduction-to-stl/
 excerpt: STL中有三个重要的概念： 1. 容器：容纳各种数据类型的数据结构，是一系列的类模板。 2. 迭代器：迭代器用来迭代地访问容器中的元素。 3. 算法：用来操作容器中的元素，是一系列的函数模板。
 ---
 
@@ -34,13 +31,12 @@ STL中的容器定义在`std`命名空间下，需要引入头文件
 3. 容器适配器：[stack][stack]，[queue][queue]，[priority_queue][priority_queue]。
 
 这些容器有一些通用的方法：`empty`，`size`，`swap`，`max_size`。前两类容器支持迭代器，称为第一类容器。
+顺序容器还有以下通用方法：`front`, `back`, `pop_back`, `push_back`。
 
-对于顺序容器，有更多的通用方法：`front`, `back`, `pop_back`, `push_back`。
-  
 > 容器之间的比较取决于第一个不等的元素；如果长度相同且所有元素相等，两个容器相等；如果一个是另一个的子序列，则较短的容器小于较长的容器。
 
-对于存储着键值对关联容器`map`和`multimap`，它们的迭代器是一个`pair<T1, T2>`的指针。
-插入时，可以直接使用`[]`运算符，也可以插入`insert`一个`pair<T1, T2>`对象：
+存储键值对关联容器`map`和`multimap`的迭代器是一个`pair<T1, T2>`的指针。
+插入时，可以使用`[]`运算符，也可以使用`insert`方法，它接受一个`pair<T1, T2>`对象：
 
 ```cpp
 std::map<char,int> mymap;

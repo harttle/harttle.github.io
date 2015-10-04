@@ -3,9 +3,6 @@ layout: blog
 categories: reading
 title: C++手稿：函数与参数
 tags: C++ 可变参数
-redirect_from:
-  - /reading/cpp-functions-and-arguments.html
-  - /2015/07/07/cpp-functions-and-arguments/
 ---
 
 本文就小编曾经遇到的函数及其参数问题，整理一篇博客在此。涉及到默认参数、函数重载、可变参数等方面。
@@ -31,8 +28,7 @@ print(,3); // compile error
 
 # 函数重载
 
-我们知道可以通过参数个数的不同来进行函数重载。唯一需要注意的是**重载函数调用的二义性**。
-通过参数个数进行重载的函数被调用时，便有可能存在歧义。例如：
+C++中可以通过不同的参数个数来进行函数重载。唯一需要注意的是提供默认参数时，**重载函数的调用会有二义性**。例如：
 
 ```cpp
 void print(int a = 1){}
