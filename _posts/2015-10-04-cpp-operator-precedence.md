@@ -347,6 +347,4 @@ a, b<br>
 </p>
 </td></tr></tbody></table>
 
-</div>
-
 [cppref]: http://en.cppreference.com/w/cpp/language/operator_precedence
