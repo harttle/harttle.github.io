@@ -1,13 +1,17 @@
 <!-- latex render begin -->
 <script type="text/x-mathjax-config">  
     MathJax.Hub.Config({
-        tex2jax: {inlineMath: [ ['$','$'] ],
-            displayMath: [ ['$$$','$$$'] ]
+        tex2jax: {
+            inlineMath: [ ['$', '$'] ],
+            displayMath: [ ['$$', '$$'], ['$$$', '$$$']],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
         }
     });
     MathJax.Hub.Queue(function () {
         $('body').scrollspy('refresh'); 
     });
 </script>
+
 <script async src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 <!-- latex render end -->

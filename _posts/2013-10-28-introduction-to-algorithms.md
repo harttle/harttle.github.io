@@ -4,9 +4,6 @@ categories: reading
 title:  "算法导论"
 tags: 算法 排序
 excerpt: '"Introduction to Algorithms", Thomas H.Cormen, Charles E.Leiserson, etc. 殷建平等 译'
-redirect_from:
-  - /reading/introduction-to-algorithms.html
-  - /2013/10/28/introduction-to-algorithms/
 ---
 
 # 基础知识
@@ -1769,9 +1766,16 @@ MST-PRIM(G,w,r)	//对于任意指定的根结点r，都可生成拥有同样边�
 
 ##单源最短路径
 
-在 **最短路径问题**中，给定一个带权重的有向图G=(V,E)和权重函数 $\omega: E \to \vec{\bm{R}}$，该函数将每条边映射到实数值的权重。
-图中一条路径p的 **权重** w(p) 是构成该路径的所有边的权重之和：$\omega(p)=\sum_{i=1}^k \omega(v_{i-1},v_i)$。
-从结点u到结点 v的 **最短路径权重** $\delta(u,v) = \begin{cases}\min\{\omega(p):u\to v\},\quad if~there~is~a~path~from~u~to~v}\\\\ \infty,\quad other\end{cases}$
+在 **最短路径问题**中，给定一个带权重的有向图G=(V,E)和权重函数 
+$\omega: E \to \vec{R}$ ，该函数将每条边映射到实数值的权重。
+图中一条路径p的 **权重** w(p) 是构成该路径的所有边的权重之和：
+$ \omega(p)=\sum\_{i=1}^k \omega(v_{i-1},v_i) $
+从结点u到结点 v的 **最短路径权重**：
+
+$$
+\delta(u,v) = \begin{cases}\min\{\omega(p):u\to v\},\quad if~there~is~a~path~from~u~to~v\\\\ \infty,\quad other\end{cases}
+$$
+
 **最短路径的最优子结构性质**：两个结点之间的一条最短路径包含着其他的最短路径。
 
 **最短路径问题的几个变体**
@@ -1781,7 +1785,11 @@ MST-PRIM(G,w,r)	//对于任意指定的根结点r，都可生成拥有同样边�
 * **单结点对最短路径问题**：找到给定结点 u 到给定结点 v 的最短路径。
 * **所有结点对最短路径问题**：对于每对结点 u 和 v，找到从结点 u 到结点 v 的最短路径。
 
-**引理**（最短路径的子路径也是最短路径）给定带权重的有向图G=(V,E)和权重函数 $\omega: E \to \vec{\bm{R}}$。设 $p=<v_0,v_1,..,v_k>$ 为从结点 v0 到结点 vk 的一条最短路径，并且对于任意 i 和 j，$0\leq i \leq j\leq k$，设 $p_{ij} = <v_i,v_{i+1},...,v_j>$ 为路径p中从结点 vi 到结点 vj 的子路径。那么 $p_{ij}$ 是从结点 vi 到结点 vj 的一条最短路径。
+**引理**（最短路径的子路径也是最短路径）给定带权重的有向图G=(V,E)和权重函数 
+$\omega: E \to \vec{R}$ 。设 $p=\<v_0,v_1,..,v\_k\>$ 
+为从结点 v0 到结点 vk 的一条最短路径，并且对于任意 i 和 j，
+$0\leq i \leq j\leq k$，设 $p\_{ij} = \<v_i,v_{i+1},...,v\_j>$ 
+为路径p中从结点 vi 到结点 vj 的子路径。那么 $p_{ij}$ 是从结点 vi 到结点 vj 的一条最短路径。
 
 **负权重的边**
 如果图G不包含从源点s可到达的权重为负的环路，则对所有结点，最短路径权重都有精确定义；如果从结点s到结点v的某条路经上存在权重为负的环路，我们定义$\delta(s,v)=-\infty$。
@@ -1832,9 +1840,10 @@ BELLMAN-FORD(G,w,s)
 ```
 总运行时间为 O(VE)。
 
-**推论** 设G=(V,E)为一个带权重的源结点为s的有向图，其权重函数为 $\omega: E \to \vec{\bm{R}}$。图G不包含从 s 可以到达的权重为负值的环路，则对于所有结点 v，存在一条从 s 到 v 的路径当且仅当 BELLMAN-FRD 算法终止时有 $v.d<\infty$。
+**推论** 设G=(V,E)为一个带权重的源结点为s的有向图，其权重函数为 
+$\omega: E \to \vec{R}$。图G不包含从 s 可以到达的权重为负值的环路，则对于所有结点 v，存在一条从 s 到 v 的路径当且仅当 BELLMAN-FRD 算法终止时有 $v.d<\infty$。
 
-**定理**（Bellman-Ford算法的正确性）设BELLMAN-FORD算法运行在一带权重的源结点为 s 的有向图 G=(V,E) 上，该图的权重函数为 $\omega: E \to \vec{\bm{R}}$。如果图G不包含从 s 可以到达的权重为负值的环路，则算法返回 TRUE，且对于所有结点 v，前驱子图 $G_\pi$ 是一棵根为 s 的最短路径树。如果G包含一条从 s 可以到达的权重为负值的环路，则算法返回FALSE。
+**定理**（Bellman-Ford算法的正确性）设BELLMAN-FORD算法运行在一带权重的源结点为 s 的有向图 G=(V,E) 上，该图的权重函数为 $\omega: E \to \vec{R}$。如果图G不包含从 s 可以到达的权重为负值的环路，则算法返回 TRUE，且对于所有结点 v，前驱子图 $G_\pi$ 是一棵根为 s 的最短路径树。如果G包含一条从 s 可以到达的权重为负值的环路，则算法返回FALSE。
 
 ### 有向无环图中的单源最短路径问题
 
@@ -1906,36 +1915,45 @@ $x = (\delta(v_0,v_1),\delta(v_0,v_2),...,\delta(v_0,v_n))$
 
 #### 三角不等式性质
 
-**引理**（三角不等式）设G=(V,E)为一个带权重的有向图，其权重函数为 $\omega: E \to \vec{\bm{R}}$，源点为s。则对于所有边 $(u,v)\in E$，我们有：
+**引理**（三角不等式）设G=(V,E)为一个带权重的有向图，其权重函数为 $\omega: E \to \vec{R}$，源点为s。则对于所有边 $(u,v)\in E$，我们有：
 $\delta(s,v) \leq \delta(s,u) + \omega(u,v)$
 
 #### 最短路径估计值的松弛效果
 
-**引理**（上界性质）设G=(V,E)为一个带权重的有向图，其权重函数为 $\omega: E \to \vec{\bm{R}}$，源点为s。该图由算法 INITIALIZE-SINGLE-SOURCE(G,s)执行初始化。那么对于所有结点 $v \in V, v.d \geq \delta(s,v)$，并且该不变式在对图G的边进行任何次序的松弛过程中保持成立。而且一旦v.d取得其下界将不再变化。
+**引理**（上界性质）设G=(V,E)为一个带权重的有向图，其权重函数为 $\omega: E \to \vec{R}$，源点为s。该图由算法 INITIALIZE-SINGLE-SOURCE(G,s)执行初始化。那么对于所有结点 $v \in V, v.d \geq \delta(s,v)$，并且该不变式在对图G的边进行任何次序的松弛过程中保持成立。而且一旦v.d取得其下界将不再变化。
 
-**推论**（非路径性质）设G=(V,E)为一个带权重的有向图，其权重函数为 $\omega: E \to \vec{\bm{R}}$，假定从源结点 s 到给定结点 v 之间不存在路径，则在该图由算法 INITIALIZE-SINGLE-SOURCE(G,s)进行初始化后，我们有 $v.d = \delta(s,v) = \infty$，并且该等式一直维持到G的所有松弛操作结束。
+**推论**（非路径性质）设G=(V,E)为一个带权重的有向图，其权重函数为 $\omega: E \to \vec{R}$，假定从源结点 s 到给定结点 v 之间不存在路径，则在该图由算法 INITIALIZE-SINGLE-SOURCE(G,s)进行初始化后，我们有 $v.d = \delta(s,v) = \infty$，并且该等式一直维持到G的所有松弛操作结束。
 
-**引理** 设G=(V,E)为一个带权重的有向图，其权重函数为 $\omega: E \to \vec{\bm{R}}$。那么对边 $(u,v) \in E$ 进行 RELAX(u,v,w)后，有 $v.d \deq u.d + \omega(u,v)$。
+**引理** 设G=(V,E)为一个带权重的有向图，其权重函数为 $\omega: E \to \vec{R}$。那么对边 $(u,v) \in E$ 进行 RELAX(u,v,w)后，有 $v.d \deq u.d + \omega(u,v)$。
 > 这即是松弛操作所做的工作。
 
-**引理**（收敛性质）设G=(V,E)为一个带权重的有向图，其权重函数为 $\omega: E \to \vec{\bm{R}}$，s为某个源点，$s \to u \to v$ 为G中的一条最短路径。假定G由INITIALIZE-SINGLE-SOURCE(G,s)初始化，并在这之后做了一系列松弛操作，其中包括对边(u,v)的松弛操作 RELAX(u,v,w)。如果在对边(u,v)进行松弛操作前的任意时刻有 $u.d = \delta(s,u)$，则在该松弛操作之后的所有时刻有 $v.d = \delta(s,v)$。
+**引理**（收敛性质）设G=(V,E)为一个带权重的有向图，其权重函数为 $\omega: E \to \vec{R}$，s为某个源点，$s \to u \to v$ 为G中的一条最短路径。假定G由INITIALIZE-SINGLE-SOURCE(G,s)初始化，并在这之后做了一系列松弛操作，其中包括对边(u,v)的松弛操作 RELAX(u,v,w)。如果在对边(u,v)进行松弛操作前的任意时刻有 $u.d = \delta(s,u)$，则在该松弛操作之后的所有时刻有 $v.d = \delta(s,v)$。
 
-**引理**（路径松弛性质）设G=(V,E)为一个带权重的有向图，其权重函数为 $\omega: E \to \vec{\bm{R}}$，s为某个源点，考虑从s到vk的任意一条最短路径$p=<v_0,v_1,...,v_k>$。如果G由INITIALIZE-SINGLE-SOURCE(G,s)进行初始化，并在这之后进行了一系列的松弛操作，包括对 $(v_0,v_1),(v_1,v_2),...,(v_{k-1},v_k)$ 按照所列次序而进行的松弛操作，则在这些操作后我们有 $v_k.d =  \delta(s,v_k)$，并且该等式一直保持成立。该性质的成立与其他边的松弛操作及次序无关。
+**引理**（路径松弛性质）设G=(V,E)为一个带权重的有向图，其权重函数为 
+$\omega: E \to \vec{R}$，s为某个源点，考虑从s到vk的任意一条最短路径
+$p=<v_0,v_1,...,v\_k>$。如果G由 $INITIALIZE-SINGLE-SOURCE(G,s)$ 
+进行初始化，并在这之后进行了一系列的松弛操作，包括对 
+$(v_0,v_1),(v_1,v_2),...,(v_{k-1},v_k)$ 按照所列次序而进行的松弛操作，
+则在这些操作后我们有 $v\_k.d =  \delta(s,v_k)$ ，
+并且该等式一直保持成立。该性质的成立与其他边的松弛操作及次序无关。
+
 >使用归纳法证明。
 
 #### 松弛操作与最短路径树
 
-**引理** 设G=(V,E)为一个带权重的有向图，其权重函数为 $\omega: E \to \vec{\bm{R}}$，s为某个源点，假定图中不包含从s可以到达的权重为负值的环路，则在图G由INITIALIZE-SINGLE-SOURCE(G,s)进行初始化之后，前驱子图 $G_\pi$ 形成根为s的有根树，并且对任何对G的边进行的任意松弛操作都将维持该性质不变。
+**引理** 设G=(V,E)为一个带权重的有向图，其权重函数为 $\omega: E \to \vec{R}$，s为某个源点，假定图中不包含从s可以到达的权重为负值的环路，则在图G由INITIALIZE-SINGLE-SOURCE(G,s)进行初始化之后，前驱子图 $G_\pi$ 形成根为s的有根树，并且对任何对G的边进行的任意松弛操作都将维持该性质不变。
 
-**引理**（前驱子图性质）设G=(V,E)为一个带权重的有向图，其权重函数为 $\omega: E \to \vec{\bm{R}}$，s为某个源点，假定图中不包含从s可以到达的权重为负值的环路，由INITIALIZE-SINGLE-SOURCE(G,s)对G进行初始化，然后对G的边进行任意次序的松弛操作。该松弛操作序列将针对所有结点生成 $v.d = \delta(s,v)$，则前驱子图 $G_\pi$ 形成根为s的最短路径树。
+**引理**（前驱子图性质）设G=(V,E)为一个带权重的有向图，其权重函数为 $\omega: E \to \vec{R}$，s为某个源点，假定图中不包含从s可以到达的权重为负值的环路，由INITIALIZE-SINGLE-SOURCE(G,s)对G进行初始化，然后对G的边进行任意次序的松弛操作。该松弛操作序列将针对所有结点生成 $v.d = \delta(s,v)$，则前驱子图 $G_\pi$ 形成根为s的最短路径树。
 > 可用 cut & paste 证明。
 
 
 ## 所有结点对的最短路径问题
 
-**前驱结点矩阵** $\Pi = (\pi_{ij})$，其中 $\pi_{ij}$ 在 i=j 或 i到j不存在路径时为 NIL，其他情况为 i 到 j 最短路径上j的前驱结点。对每个结点 i，定义图G对于结点 i 的 **前驱子图**为 $G_{\pi,i} = (V_{\pi,i}, E_{\pi,i})$，其中
-$V_{\pi,i} = \{ j \in V: \pi_{i,j} \neq NIL\} \cup \{ i \},\quad E_{\pi,i} = \{ (\pi_{ij},j): j \in V_{\pi,i} - \{i\}\}$
-如果 $G_{\pi,i}$是一棵最短路径树，如下算法将打印 i 到 j 的一条最短路径。
+**前驱结点矩阵** $\Pi = (\pi_{ij})$，其中 $\pi\_{ij}$
+在 i=j 或 i到j不存在路径时为 NIL，其他情况为 i 到 j 最短路径上j的前驱结点。对每个结点 i，定义图G对于结点 i 的 **前驱子图**为 
+$G\_{\pi,i} = (V_{\pi,i}, E_{\pi,i})$ ，其中
+$V\_{\pi,i} = \{ j \in V: \pi\_{i,j} \neq NIL\} \cup \{ i \},\quad E\_{\pi,i} = \{ (\pi_{ij},j): j \in V_{\pi,i} - \{i\}\}$
+如果 $G_{\pi,i}$ 是一棵最短路径树，如下算法将打印 i 到 j 的一条最短路径。
 
 ```cpp
 PRINT-ALL-PAIRS-SHORTEST-PATH(PI, i, j)
@@ -2066,12 +2084,12 @@ $\pi_{ij}^{(k)} = \begin{cases}
 > 如果存在 i 到 j 的路径，则 $d_{ij} < n$，否则，$d_{ij} = \infty$。时间复杂度为 $\Theta(n^3)$。
 
 2. 我们定义：如果图G中 i 到 j 的路径的中间结点都取自 {1,2,...,k}，则 $t_{ij}^{(k)} = 1$；否则为 0 。
-	构建传递闭包 $G^*$ 的方法为：将(i,j) 置于 $E^*$ 当且仅当 $t_{ij}^{(n)} = 1$。其递归定义如下：
+	构建传递闭包 $G^\*$ 的方法为：将(i,j) 置于 $E^*$ 当且仅当 $t_{ij}^{(n)} = 1$。其递归定义如下：
 	$t_{ij}^{(0)} = \begin{cases}
 	0 \quad if~i\neq j~and~(i,j)\in E\\\\
 	1 \quad if~i=j~or~(i,j) \in E
 	\end{cases}$
-	$t_{ij}^{(k)} = t_{ij}^{(k-1)} \lor ( t_{ik}^{(k-1)} \land t_{kj}^{(k-1)}) \quad if~k \geq 1$
+	$t\_{ij}^{(k)} = t\_{ij}^{(k-1)} \lor ( t_{ik}^{(k-1)} \land t_{kj}^{(k-1)}) \quad if~k \geq 1$
 > 即使用逻辑或操作（$\lor$）和逻辑与操作（$\land$）替换 Floyd-Warshall 算法中的 min 和 +。
 
 如 Floyd-Warshall 算法一样，我们以 k 递增的次序来计算矩阵 $T^{(k)} = (t_{ij}^{(k)})$。
@@ -2111,7 +2129,7 @@ Johnson算法使用的技术成为 **重新赋予权重**：
 
 #### 算法实现
 
-```cpp
+```
 JOHNSON(G,w)
 	compute G'
 	for v in G.V

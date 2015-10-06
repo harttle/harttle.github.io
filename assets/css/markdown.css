@@ -16,7 +16,12 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
     margin-left: 0;
     margin-right: 0;
 }
-.md p{ margin: 5px 0; }
+.md > *{
+    overflow: auto;
+}
+.md p{ 
+    margin: 5px 0; 
+}
 .md h1 {
     margin: 15px 0;
     padding-bottom: 2px;
