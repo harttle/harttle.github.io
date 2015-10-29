@@ -17,7 +17,8 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
     margin-right: 0;
 }
 .md > *{
-    overflow: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 .md p{ 
     margin: 5px 0; 
@@ -71,11 +72,11 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
     border-left: 4px solid #DDD;
     padding: 0 0 0 11px;
     color: #777;
+    font-size: 13px;
 }
-.md blockquote p{ font-size:13px; }
 .md .highlight { margin: 10px 0; }
 .md pre{ padding: 15px 20px; border: 0; overflow-x:auto;}
-.md tt,.md code,.md pre {
+.md code,.md pre {
     font-family: Consolas, "Liberation Mono", Courier, monospace;
     font-size: 12px;
 }

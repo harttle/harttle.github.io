@@ -576,15 +576,48 @@ BUCKET-SORT(A)
 ```
 
 桶排序的时间代价为：
-$T(n) = \Theta(n) + \sum^{n-1}_{i=0}O(n_i^2)$
+
+<script type="math/tex">
+T(n) = \Theta(n) + \sum^{n-1}_{i=0} O(n_i^2)
+</script>
+
 期望运行时间：
-$E[T(n)] = E\left[ \Theta(n) + \sum^{n-1}_{i=0}O(n_i^2) \right] = \Theta(n)+ \sum^{n-1}_{i=0}O(E[n_i^2])$
 
-定义指示器随机变量 $X_{ij} = I\{A[j]~in~bucket~i\}$，则$n_i = \sum^n_{j=1}X_{ij}$，
-$E[n^2_i] = E\left[ \left( \sum_{j=1}^n X_{ij} \right)^2 \right] = \sum^n_{j=1}E[X_{ij}^2] + \sum_{1\leq j \leq n} \sum_{1\leq k \leq n, k \neq j} E[X_{ij}X_{ik}]$
+<script type="math/tex; mode=display">
+E[T(n)] = E\left[ \Theta(n) + \sum^{n-1}_{i=0}O(n_i^2) \right] = \Theta(n)+ \sum^{n-1}_{i=0}O(E[n_i^2])
+</script>
 
-而$E[X_{ij}X_{ik}] = E[X_{ij}^2]=\frac{1}{n^2}$，$E[X_{ij}^2] = 1^2\cdot \frac{1}{n} + 0^2\cdot \left( 1-\frac{1}{n}) \right) = \frac{1}{n}$，
-故$E[n^2_i] = 2 - 1/n$，桶排序的期望运行时间 $E[T(n)] = \Theta(n) + n\cdot O(2-1/n) = \Theta(n)$。
+定义指示器随机变量 
+
+<script type="math/tex">
+X_{ij} = I\{A[j]~in~bucket~i\}$，则$n_i = \sum^n_{j=1}X_{ij}
+</script>
+
+则：
+
+<script type="math/tex; mode=display">
+E[n^2_i]
+    = E\left[ \left( \sum_{j=1}^n X_{ij} \right)^2 \right] 
+    = \sum^n_{j=1}E[X_{ij}^2] + 
+        \sum_{1\leq j \leq n} \sum_{1\leq k \leq n, k \neq j} E[X_{ij}X_{ik}]
+</script>
+
+同时，我们有：
+
+<script type="math/tex; mode=display">
+E[X_{ij}X_{ik}] = E[X_{ij}^2]=\frac{1}{n^2}
+</script>
+
+<script type="math/tex; mode=display">
+E[X_{ij}^2] = 1^2\cdot \frac{1}{n} + 0^2\cdot \left( 1-\frac{1}{n}) \right) 
+    = \frac{1}{n}
+</script>
+
+故 $E[n^2_i] = 2 - 1/n$，桶排序的期望运行时间为：
+
+<script type="math/tex; mode=display">
+E[T(n)] = \Theta(n) + n\cdot O(2-1/n) = \Theta(n)
+</script>
 
 > 即使输入数据不服从均匀分布，只要所有桶的大小的平方和与元素数呈线性关系，期望运行时间就是$\Theta(n)$
 
@@ -1924,7 +1957,7 @@ $\delta(s,v) \leq \delta(s,u) + \omega(u,v)$
 
 **推论**（非路径性质）设G=(V,E)为一个带权重的有向图，其权重函数为 $\omega: E \to \vec{R}$，假定从源结点 s 到给定结点 v 之间不存在路径，则在该图由算法 INITIALIZE-SINGLE-SOURCE(G,s)进行初始化后，我们有 $v.d = \delta(s,v) = \infty$，并且该等式一直维持到G的所有松弛操作结束。
 
-**引理** 设G=(V,E)为一个带权重的有向图，其权重函数为 $\omega: E \to \vec{R}$。那么对边 $(u,v) \in E$ 进行 RELAX(u,v,w)后，有 $v.d \deq u.d + \omega(u,v)$。
+**引理** 设G=(V,E)为一个带权重的有向图，其权重函数为 $\omega: E \to \vec{R}$。那么对边 $(u,v) \in E$ 进行 RELAX(u,v,w)后，有 $v.d \leq u.d + \omega(u,v)$。
 > 这即是松弛操作所做的工作。
 
 **引理**（收敛性质）设G=(V,E)为一个带权重的有向图，其权重函数为 $\omega: E \to \vec{R}$，s为某个源点，$s \to u \to v$ 为G中的一条最短路径。假定G由INITIALIZE-SINGLE-SOURCE(G,s)初始化，并在这之后做了一系列松弛操作，其中包括对边(u,v)的松弛操作 RELAX(u,v,w)。如果在对边(u,v)进行松弛操作前的任意时刻有 $u.d = \delta(s,u)$，则在该松弛操作之后的所有时刻有 $v.d = \delta(s,v)$。
@@ -1933,8 +1966,8 @@ $\delta(s,v) \leq \delta(s,u) + \omega(u,v)$
 $\omega: E \to \vec{R}$，s为某个源点，考虑从s到vk的任意一条最短路径
 $p=<v_0,v_1,...,v\_k>$。如果G由 $INITIALIZE-SINGLE-SOURCE(G,s)$ 
 进行初始化，并在这之后进行了一系列的松弛操作，包括对 
-$(v_0,v_1),(v_1,v_2),...,(v_{k-1},v_k)$ 按照所列次序而进行的松弛操作，
-则在这些操作后我们有 $v\_k.d =  \delta(s,v_k)$ ，
+$(v\_0, v\_1), (v\_1,v\_2), ..., (v\_{k-1},v\_k)$ 按照所列次序而进行的松弛操作，
+则在这些操作后我们有 $v\_k.d = \delta(s,v_k)$ ，
 并且该等式一直保持成立。该性质的成立与其他边的松弛操作及次序无关。
 
 >使用归纳法证明。
@@ -1975,16 +2008,16 @@ $l_{ij}^{(0)} = \begin{cases}
 \infty \quad if~i\neq j
 \end{cases}$
 
-$l_{ij}^{(m)} = \min_{1\leq k \leq n}\{ l_{ik}^{(m-1)} + \omega_{kj} \}$，其中 $\omega_{jj} = 0$
+$l\_{ij}^{(m)} = \min\_{1\leq k \leq n}\{ l\_{ik}^{(m-1)} + \omega\_{kj} \}$，其中 $\omega_{jj} = 0$
 
 而最短路径由下式给出：
 $\delta(i,j) = l_{ij}^{(n-1)}$
 
 #### 算法实现
 
-设 $L^{(m)} = (l^{(m)}_{ij})$，则 $L^{(1)} = (\omega_{ij})$。下面伪代码程序可以在给定 $W=(\Omega_{ij})$和 $L^{(m-1)}$ 的情况下，计算 $L^{(m)}$（将最短路径扩展一条边）。
+设 $L^{(m)} = (l^{(m)}\_{ij})$，则 $L^{(1)} = (\omega_{ij})$。下面伪代码程序可以在给定 $W=(\Omega_{ij})$和 $L^{(m-1)}$ 的情况下，计算 $L^{(m)}$（将最短路径扩展一条边）。
 
-```cpp
+```
 EXTEND-SHORTEST-PATHS(L,W)
 	n = L.rows
 	let L' be a new nXn matrix
