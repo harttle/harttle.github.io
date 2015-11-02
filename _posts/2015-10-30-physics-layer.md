@@ -1,8 +1,8 @@
 ---
 layout: blog
 categories: reading
-title: 《计算机网络-物理层》笔记：传输介质与电话网络
-tags: TCP IP
+title: 《计算机网络》笔记：物理层
+tags: 电路交换 电话网络 香农定理
 ---
 
 ## 数据通信的理论基础

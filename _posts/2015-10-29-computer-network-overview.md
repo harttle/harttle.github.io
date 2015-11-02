@@ -1,7 +1,7 @@
 ---
 layout: blog
 categories: reading
-title:  《计算机网络-概述》笔记：软硬件与参考模型
+title:  《计算机网络》笔记：概述
 tags: TCP IP
 ---
 
