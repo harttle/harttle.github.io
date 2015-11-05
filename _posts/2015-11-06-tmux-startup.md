@@ -1,18 +1,19 @@
 ---
 layout: blog
-categories: reading
-title: Tmux入门：安装与配置
+categories: linux
+title: 优雅地使用命令行：Tmux 终端复用
 tags: Vim Tmux Bash
 ---
 
-Tmux是一个终端复用软件，BSD协议发布。一般用于在一个命令行窗口中访问多个命令行会话，或者在一个命令行终端中同时使用多个程序。
-最经典的使用方式当然是 iTerm+Vim 来做一个IDE，其中Vim的配置过程记录在[这里][vim-ide]。Tmux用起来是怎样的呢？看图：
+你是否曾经开过一大堆的Terminal？有没有把它们都保存下来的冲动？Tmux 的Session就是做这件事情的！你可以随时退出或者进入任何一个Session。每个Session有若干个Window，每个Window又可以分成多个窗格（Pane）。
+
+> 即使iTerm/Terminal/Konsole意外关闭也没关系。Session可以完全恢复！但是关机就不可以了，不过你可以写脚本来恢复！
+
+Tmux是一个终端复用软件，BSD协议发布。一般用于在一个命令行窗口中访问多个命令行会话，或者在一个命令行终端中同时使用多个程序。Tmux用起来是怎样的呢？看图：
 
 ![tmux screen shot][tmux-shot]
 
-有没有过把当前的所有命令行窗口都保存下来的冲动？Tmux 的Session就是做这件事情的！你可以随时退出或者进入任何一个Session。每个Session有若干个Window，每个Window又可以分成多个窗格（Pane）。
-
-> 即使iTerm/Terminal/Konsole意外关闭也没关系。Session可以完全恢复！但是关机就不可以了，不过你可以写脚本来恢复！
+> Tmux 最经典的使用场景便是用 Tmux+Vim 来做一个IDE，其中Vim部分的配置过程记录在了[这里][vim-ide]，本文介绍Tmux的配置和使用。
 
 ## iTerm的窗格和Tmux有什么区别？
 
