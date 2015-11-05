@@ -12,7 +12,7 @@ markdown_ext:  md
 highlighter: pygments
 excerpt_separator: "<!--more-->"
 redcarpet:
-    extensions: [no_intra_emphasis,tables,autolink,disable_indented_code_blocks,fenced_code_blocks]
+    extensions: [no_intra_emphasis,tables,autolink,fenced_code_blocks]
 
 exclude: ['README.md', '*.sh', '.*', 'scripts/']
 
