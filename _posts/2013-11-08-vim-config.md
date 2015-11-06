@@ -16,7 +16,7 @@ Vim是从vi发展出来的一个文本编辑器。代码补全、编译及错误
 
 # 基础使用
 
-![vim-key](/assets/img/blog/vim-key.png)
+![vim-key][vim-key]
 
 查看帮助：`:help`，`<Ctrl>]` 进入标签，`<Ctrl>O` 返回。
 
@@ -118,3 +118,5 @@ set mouse=a         " Enable the use of the mouse.
 filetype plugin indent on
 syntax on
 ```
+
+[vim-key]: /assets/img/blog/vim-key.png

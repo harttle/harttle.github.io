@@ -83,10 +83,10 @@ yum install tmux        # Centos
 
 再给调整窗格大小设置快捷键：
 
-    bind , resize-pane -L 10  # 向左扩展
-    bind . resize-pane -R 10  # 向右扩展
-    bind = resize-pane -U 5   # 向上扩展
-    bind - resize-pane -D 5   # 向下扩展
+    bind L resize-pane -L 10  # 向左扩展
+    bind R resize-pane -R 10  # 向右扩展
+    bind K resize-pane -U 5   # 向上扩展
+    bind J resize-pane -D 5   # 向下扩展
 
 我们发现当打开新窗格时Shell仍然在Home目录，可以设置为当前目录：
 
