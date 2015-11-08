@@ -2,7 +2,7 @@
 layout: blog
 categories: linux
 title: 熟悉 Bash 快捷键来提高效率
-tags: Bash
+tags: Bash 快捷键
 ---
 
 [Bash][bash]是GNU计划的一部分，是多数Linux发行版提供的默认Shell。
@@ -13,7 +13,7 @@ Linux的精髓就在于命令行的高效，而学习命令行的第一步便是
 
 # 命令编辑
 
-按键 | 描述
+快捷键 | 描述
 --- | ---
 `Ctrl + a` | go to the start of the command line
 `Ctrl + e` | go to the end of the command line
@@ -37,7 +37,7 @@ Linux的精髓就在于命令行的高效，而学习命令行的第一步便是
 
 # 历史命令
 
-按键 | 描述
+快捷键 | 描述
 --- | ---
 `Ctrl + r` | search the history backwards
 `Ctrl + g` | escape from history searching mode
@@ -47,7 +47,7 @@ Linux的精髓就在于命令行的高效，而学习命令行的第一步便是
 
 # 命令控制
 
-按键 | 描述
+快捷键 | 描述
 --- | ---
 `Ctrl + l` | clear the screen
 `Ctrl + s` | stops the output to the screen (for long running verbose command)

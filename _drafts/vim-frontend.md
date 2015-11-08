@@ -1,6 +1,6 @@
 ---
 layout: blog
-categories: reading
+categories: linux
 title: title
 tags: 
 ---

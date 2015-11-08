@@ -194,5 +194,5 @@ set -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh"
 * https://en.wikipedia.org/wiki/Tmux
 
 [node-web]: {% post_url 2015-02-24-node-web-api %}
-[tmux-shot]: /assets/img/linux/tmux-concept.png
+[tmux-shot]: /assets/img/blog/tmux-concept.png
 [vim-ide]: {% post_url 2015-11-04-vim-ide %}
