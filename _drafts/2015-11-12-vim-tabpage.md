@@ -12,8 +12,9 @@ tags: Vim Bash tab
 * [Vim 多文件编辑：缓冲区][vim-buffer]
 * [Vim 多文件编辑：窗口][vim-window]
 
-
 > 要做一个强大的IDE，除了多文件编辑技巧，你可能还需要[终端复用][tmux]和[目录树][tree]。
+
+<!--more-->
 
 # 打开与关闭
 

@@ -34,6 +34,7 @@ vim -O main.cpp my-oj-toolkit.h
 
 ```vim
 :sp[lit] {file}     水平分屏
+:new {file}         水平分屏
 :sv[iew] {file}     水平分屏，以只读方式打开
 :vs[plit] {file}    垂直分屏
 :clo[se]            关闭当前窗口
