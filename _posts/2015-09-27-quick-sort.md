@@ -125,4 +125,4 @@ void rand-quicksort(vector<int>& v, int begin, int end){
 随机算法保证了对任何的输入而言，都可以保证$\Theta(n\lg n)$的时间复杂度。
 
 [qsort]: https://zh.wikipedia.org/wiki/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F
-[intro2algo]: {% post_url 2013-10-28-introduction-to-algorithms %}
+[intro2algo]: /2015/11/16/algo-sorting.html

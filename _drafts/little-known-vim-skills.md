@@ -46,10 +46,22 @@ tmystr_meta_description
 Emmet插件可以进行HTML的标签匹配，你按下`<c-y>d`当前标签首尾之间被选中。你想调到选中区域的尾部怎么办？
 按下`o`即可切换收尾，再次按下`v`就能回到Normal模式。
 
-# 自动补全
+# 原生自动补全
 
-omnifunc
+如果你没有使用任何Vim插件，Vim的自动补全是默认关闭的。在不引入插件的情况下Vim也可以启用强大的自动补全，只需要设置：
 
-`<c-x><c-o>`
+```vim
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+```
+
+在任何时候，按下`<c-x><c-o>`将会触发自动补全。
+
+参考： http://vim.wikia.com/wiki/Omni_completion
+
+# 搜索来选中
+
+当你需要选择一大段文字时，不放先进入visual模式，再进行正则搜索。例如在markdown中，选择某个`##`的内容可以这样操作：
+移动光标到要选中的`##`上，按下`v`进入visual模式，输入`/^## `匹配下一个二级标题，按下`j`回到上一行。
 
 [vim-cursor]: {% post_url 2015-11-07-vim-cursor %}

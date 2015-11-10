@@ -11,6 +11,8 @@ Linux的精髓就在于命令行的高效，而学习命令行的第一步便是
 > 其实包括Bash在内的多数Linux Shell都是使用一个叫[GNU Readline Library][readline]的库来接受用户输入。
 > 所以这些快捷键在多数Shell下都适用~
 
+<!--more-->
+
 # 命令编辑
 
 快捷键 | 描述

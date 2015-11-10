@@ -98,4 +98,4 @@ void bubble_sort(vector<int> v){
 [insertion]: https://zh.wikipedia.org/wiki/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F
 [qsort]: https://zh.wikipedia.org/wiki/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F
 [my-qsort]: /2015/09/27/quick-sort.html
-[intro2algo]: {% post_url 2013-10-28-introduction-to-algorithms %}
+[intro2algo]: /2015/11/16/algo-sorting.html
