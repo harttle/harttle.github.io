@@ -1,12 +1,15 @@
 ---
 layout: blog
 categories: linux
-title: Gnuplot 学习笔记
-tags: Bash 
+title: Gnuplot 笔记
+tags: Bash X11 
 ---
 
-GNU Plot是一个免费的命令行的绘图软件，显然它是给Unix系统用的。
+gnuplot是一个免费的命令行的绘图软件，在Linux，Windows，OSX等平台都有支持，
+虽然叫做gnuplot但它并未使用GPL协议，而是使用自己的开源协议发布（感谢goodgoodlivetodown网友勘误）。
 小编曾用它绘制了毕业论文中数百张复杂的脉冲星检测分析图。现在总结一下它的使用方法备忘。
+
+> Gnuplot is a portable command-line driven graphing utility for Linux, OS/2, MS Windows, OSX, VMS, and many other platforms. The source code is copyrighted but freely distributed (i.e., you don't have to pay for it). It was originally created to allow scientists and students to visualize mathematical functions and data interactively, but has grown to support many non-interactive uses such as web scripting. It is also used as a plotting engine by third-party applications like Octave. Gnuplot has been supported and under active development since 1986. --[Gnuplot][gnuplot]
 
 ## 安装
 
@@ -84,4 +87,5 @@ pdflatex    *.pdf
 
 [1]: /assets/img/blog/gnuplot/simbol.jpg
 [2]: /assets/img/blog/gnuplot/line-point.png
-	
+[gnuplot]: http://www.gnuplot.info/
+
