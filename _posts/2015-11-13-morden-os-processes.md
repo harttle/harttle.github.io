@@ -24,6 +24,8 @@ Processes are created when
 3. A user request to create a new process.
 4. Init of a batch job.
 
+<!--more-->
+
 In Unix, `fork` system call creates an exact clone of the calling process. `execve` is another syscall used to change its memory image and run a new program.
 
 > This separation allows the child to manipulate its file descriptors after `fork` but before the `execve` in order to accomplish redirections.
