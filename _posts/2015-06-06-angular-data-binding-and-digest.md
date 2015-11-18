@@ -26,7 +26,7 @@ redirect_from:
 而Angular提供了双向的数据绑定，我们可以在Angular Controller的`$scope`中声明数据模型，在模板中进行绑定。
 Angular会自动添加DOM事件，并在`$scope`发生改变时自动进行DOM操作。下面是Angular双向绑定的MVT关系示意图：
 
-![](/assets/img/blog/angular/One_Way_Data_Binding.png)
+![](/assets/img/blog/angular/Two_Way_Data_Binding.png)
 
 图片来源： https://docs.angularjs.org/guide/databinding
 

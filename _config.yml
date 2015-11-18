@@ -1,9 +1,9 @@
 name: Harttle Land
 url: http://harttle.com
-description: Web开发、C++、Linux、Bash、JavaScript
+description: Keep it simple, stupid.
+keywords: Web, HTML, CSS, JavaScript, C++, Linux, Bash, Vim
 
 permalink: /:year/:month/:day/:title.html
-
 paginate: 4
 paginate_path: "page:num"
 
@@ -19,6 +19,7 @@ exclude: ['README.md', '*.sh', '.*', 'scripts/']
 gems:
   - jekyll-sitemap
   - jekyll-redirect-from
+  - jekyll-feed
 
 cate_icons:
   reading: "fa-book"
