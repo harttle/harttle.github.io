@@ -1,0 +1,15 @@
+@mixin size($value){ 
+  width: $value;
+  height: $value;
+}
+@mixin opacity($value){
+  opacity: $value;
+  -moz-opacity: $value;
+  -webkit-opacity: $value;
+}
+
+@mixin transition($value){
+  transition: $value;
+  -moz-transition: $value;
+  -webkit-transition: $value;
+}

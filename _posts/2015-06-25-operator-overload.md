@@ -3,9 +3,6 @@ layout: blog
 categories: reading
 title: C++手稿：运算符重载
 tags: C++ 运算符 运算符重载
-redirect_from:
-  - /reading/operator-overload.html
-  - /2015/06/25/operator-overload/
 ---
 
 **运算符重载**就是对已有的C++运算符赋予更多的语义，让一个运算符可以作用于其他的数据类型。

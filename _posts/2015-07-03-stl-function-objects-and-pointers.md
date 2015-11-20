@@ -3,9 +3,6 @@ layout: blog
 categories: reading
 title: C++手稿：STL中的函数对象与函数指针
 tags: C++ STL 函数指针 函数对象 指针
-redirect_from:
-  - /reading/stl-function-objects-and-pointers.html
-  - /2015/07/03/stl-function-objects-and-pointers/
 ---
 
 STL是C++的标准模板库（standard template library），自然其中定义的都是模板。

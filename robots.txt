@@ -1,4 +1,3 @@
 Sitemap: http://harttle.github.io/sitemap.xml
 User-agent: *
-Allow: /
-
+Disallow: /page*

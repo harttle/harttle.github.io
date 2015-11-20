@@ -1,0 +1,31 @@
+@import 'mixins';
+
+#site-scroll-top {
+  position: fixed;
+  right: 40px;
+  bottom: 100px;
+  color: #898989;
+  @include size(41px);
+  line-height: 35px;
+  font-size: 1.231em;
+  border-radius: 4px;
+  background: #f7f7f7;
+  border: 3px solid #fff;
+  text-align: center;
+  z-index: 999;
+  visibility: hidden;
+  @include opacity(0);
+  @include transition(all .25s ease-in-out);
+}
+#site-scroll-top.show{
+  visibility: visible;
+  @include opacity(1);
+}
+
+#site-scroll-top:hover {
+  text-decoration: none;
+  color: #fff;
+  background-color: #3b86b0;
+  border-color: #3b86b0;
+}
+

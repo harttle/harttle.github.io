@@ -1,0 +1,17 @@
+.post-meta{
+  color: #aaa; 
+  .span{
+    margin-right: 10px;
+  }
+}
+
+.md {
+  margin-top: 20px;
+  padding: 80px;
+}
+
+@media (max-width: 768px) {
+  .md {
+    padding: 20px 20px 40px;
+  }
+}

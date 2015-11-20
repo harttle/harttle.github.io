@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: default
 ---
 
-<link rel="stylesheet" href="/assets/gallery-2.11.0/css/blueimp-gallery.min.css">
+<link rel="stylesheet" href="/assets/lib/gallery/css/blueimp-gallery.min.css">
 <style>
    .text-content{
        color: white;
@@ -58,7 +58,7 @@ layout: post
 <div class="clearfix" style="margin-bottom: 15px;"></div>
 
 {% include post-paginator.html %}
-{% include share.html %}
+{% include comments.html %}
 
 <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
 <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
@@ -71,7 +71,7 @@ layout: post
     <ol class="indicator"></ol>
 </div>
 
-<script src="/assets/gallery-2.11.0/js/blueimp-gallery.min.js"></script>  
+<script src="/assets/lib/gallery/js/blueimp-gallery.min.js"></script>  
 <script>
   //galary display
   $('.item>a').click(function (event) {

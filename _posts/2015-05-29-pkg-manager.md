@@ -3,9 +3,6 @@ layout: blog
 categories: reading
 title: 常见包管理与构建工具列表
 tags: Python JavaScript Ruby Bash
-redirect_from:
-  - /reading/pkg-manager.html
-  - /2015/05/29/pkg-manager/
 ---
 
 包管理和构建系统是现代的软件开发团队中必不可少的工具，也是Linux软件系统的常见组织方式。

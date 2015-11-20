@@ -3,9 +3,6 @@ layout: blog
 categories: web
 title: AngularJS 模块化与依赖注入
 tags: AngularJS JavaScript 模块化 MVC 依赖注入
-redirect_from:
-  - /web/angular-module.html
-  - /2015/06/07/angular-module/
 ---
 
 [AngularJS][angular]使用模块化的组织方式，和依赖注入的设计。这使得模块之间耦合度较低，模块更容易复用。同时支持声明式的编程风格。

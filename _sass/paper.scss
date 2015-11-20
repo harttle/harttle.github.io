@@ -1,0 +1,60 @@
+.paper, .paper-curl {
+  position: relative;
+  background-color: #fff;
+}
+
+.paper {
+  border: 1px solid #eaeaeb;
+  box-shadow: 4px 7px 10px #ccc;
+}
+
+.paper-curl {
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2), inset 0 0 1px rgba(0, 0, 0, 0.3);
+}
+
+.paper *:first-child, .paper-curl *:first-child {
+  margin-top: 0;
+}
+
+.paper *:last-child, .paper-curl *:last-child {
+  margin-bottom: 0;
+}
+
+.paper-curl:before {
+  position: absolute;
+  width: 200px;
+  height: 300px;
+  max-width: 80%;
+  max-height: 80%;
+  left: 8px;
+  top: 7px;
+  content: ' ';
+  background: transparent;
+  transform: skew(3deg, 3deg);
+  box-shadow: -6px 6px 12px rgba(0, 0, 0, 0.3);
+  z-index: -1;
+}
+
+.paper-curl:after {
+  position: absolute;
+  width: 250px;
+  height: 300px;
+  max-width: 80%;
+  max-height: 80%;
+  right: 8px;
+  bottom: 10px;
+  content: ' ';
+  background: transparent;
+  transform: skew(3deg, 3deg);
+  box-shadow: -6px 12px 12px rgba(0, 0, 0, 0.7);
+  z-index: -1;
+
+}
+
+.pined {
+  background-image: url(/assets/img/tack.jpg);
+  background-repeat: no-repeat;
+  background-position: right 5px top 5px;
+  background-size: 30px;
+}
+

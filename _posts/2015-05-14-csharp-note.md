@@ -3,9 +3,6 @@ layout: blog
 categories: reading
 title: C# 学习笔记
 tags: C# .NET WPF
-redirect_from:
-  - /reading/csharp-note.html
-  - /2015/05/14/csharp-note/
 ---
 
 小编曾在软件工程国家工程研究中心做了两年的C#、WPF开发。现已全面转向Web开发了，

@@ -1,0 +1,8 @@
+<p>
+  <span class="date">
+    {{ include.post.date | date: "%B %-d, %Y"}}
+  </span>
+  <span class="tags">
+    {{ include.post.tags | join: ','}}
+  </span>
+</p>

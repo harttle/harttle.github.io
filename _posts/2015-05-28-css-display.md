@@ -3,9 +3,6 @@ layout: blog
 categories: web
 title: CSS Display属性与盒模型
 tags: CSS HTML
-redirect_from:
-  - /web/css-display.html
-  - /2015/05/28/css-display/
 ---
 
 因为HTML流式文档的特性，页面布局往往是新手最为头疼的问题之一。

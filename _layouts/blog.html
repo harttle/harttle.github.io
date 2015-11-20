@@ -1,206 +1,50 @@
 ---
-layout: post
+layout: default
 ---
 
-<link rel="stylesheet" href="/assets/css/markdown.css">
-<link rel="stylesheet" href="/assets/css/vs-syntax.css">
-<style>
-  .sidebar {
-    width: 200px;
-    margin-top: 20px;
-    border: 1px solid #eaeaeb;
-  }
-
-  .sidebar ul {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  .sidebar.affix {
-    position: fixed;
-    top: 0;
-  }
-
-  .sidebar.affix-bottom {
-    position: absolute;
-  }
-
-  .sidebar .nav{
-    font-size: 13px;
-  }
-  .sidebar .nav .nav {
-    display: none;
-  }
-
-  .sidebar .nav > .active > ul {
-    display: block;
-  }
-
-  .sidebar .nav > li > a {
-    display: block;
-    padding: 5px 15px;
-    color: #999;
-    text-decoration: none;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .sidebar .nav .nav > li > a {
-    padding-top: 3px;
-    padding-bottom: 3px;
-    margin-left: 10px;
-    font-size: 90%;
-  }
-
-  .sidebar .nav .nav .nav > li > a {
-    margin-left: 20px;
-  }
-
-  .sidebar .nav .nav .nav .nav > li > a {
-    margin-left: 30px;
-  }
-
-  .sidebar .nav .nav .nav .nav .nav > li > a {
-    margin-left: 40px;
-  }
-
-  .sidebar .nav .nav .nav .nav .nav .nav > li > a {
-    margin-left: 50px;
-  }
-
-  .sidebar .nav > .active > a,
-  .sidebar .nav > :hover > a{
-    color: #333;
-    text-decoration: none;
-    border-right: 2px solid #f7565b;
-  }
-  .nav>li>a:hover, .nav>li>a:focus:hover {
-    text-decoration: none;
-    background-color: #f0f0f0;
-  }
-  .nav>li>a:focus{
-    background-color: transparent;
-  }
-  .sidenav {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background: #fff;
-  }
-
-  .MathJax * {
-    color: black !important;
-  }
-
-  .md {
-    margin-top: 20px;
-    padding: 80px;
-  }
-
-  @media (max-width: 768px) {
-    .md {
-      padding: 20px 20px 40px;
-    }
-  }
-
-  .copyright {
-    font-size: 12px;
-  }
-
-  .copyright hr {
-    margin: 45px 0 10px!important;
-  }
-</style>
-
-<div class="row post-display">
-  <div class="col-lg-2 col-md-3 col-sm-4 hidden-xs left">
-    <div class="sidebar"></div>
-  </div>
-  <div class="col-lg-10 col-md-9 col-sm-8 right">
-    <div class="md paper">
-      {{ content }}
-      <div class="copyright">
-        <hr/>
-        <p>
-          除非注明，本博客文章均为原创，转载请以链接形式标明本文地址：
-          <a href="{{page.url}}">{{site.url}}{{ page.url }}</a>
-        </p>
-      </div>
+<div class="module-blog page-header container-fluid">
+  <h3 class="header">
+    {{ page.title }} <small>{{page.subtitle}}</small>
+  </h3>
+  <div class="meta">
+    <div class="pull-left">
+      {% include tags.html post=page %}
     </div>
-
-    {% include post-paginator.html %}
-    {% include share.html %}
+    <div class="pull-right text-muted">
+      {{ page.date | date: '%F' }}
+    </div>
   </div>
 </div>
 
+<div class="container-fluid">
+  <div id="page-content">
+    <div class="row post-display">
+      <div class="col-lg-2 col-md-3 col-sm-4 hidden-xs left">
+        <div class="sidebar"></div>
+      </div>
+      <div class="col-lg-10 col-md-9 col-sm-8 right">
+        <div class="md paper">
+          {{ content }}
+          <div class="copyright">
+            <hr/>
+            <p>
+              除非注明，本博客文章均为原创，转载请以链接形式标明本文地址：
+              <a href="{{page.url}}">{{site.url}}{{ page.url }}</a>
+            </p>
+          </div>
+        </div>
+
+        {% include post-paginator.html %}
+        {% include comments.html %}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 <script>
-  $(function () {
-    var toc = getTOC($('.post-display .right'));
-    if (toc != null) {
-      $('.sidebar').append(toc);
-
-      //sidebar affix, this offset is for sidebar position recognition
-      setTimeout(function () {
-        var $sideBar = $('.sidebar');
-        $sideBar.affix({
-          offset: {
-            top: function () {
-              var offsetTop = $sideBar.offset().top;
-              return (this.top = offsetTop - 20);
-            },
-            bottom: function () {
-              return (this.bottom = $(document).height() - $('.md').offset().top - $('.md').height());
-            }
-          }
-        });
-      }, 100);
-
-      //sidebar scroll spy
-      $('body').scrollspy({
-        target: '.sidebar',
-        offset: 10  //make sure to spy the element when scrolled to
-      });
-    }
-    else {
-      $('.post-display .right')
-          .removeClass('col-lg-10 col-md-9 col-sm-8')
-          .addClass('col-md-12');
-      $('.post-display').removeClass('row-fluid');
-      $('.post-display .left').remove();
-    }
-
-    $(window).resize(function () {
-      $('body').scrollspy('refresh');
-    });
-
-  });
-
-  //生成目录
-  function getTOC($content) {
-    var $toc = $('<ul class="nav level-0" >').addClass("nav sidenav");
-
-    var base_level = 1;
-    while ($content.find('h' + base_level).length < 1 && base_level < 7) base_level += 1;
-    if (base_level == 7) return null;
-
-    $content.find(':header').each(function (i) {
-      var $this = $(this);
-      $this.attr('id', i);
-
-      var level = parseInt(this.nodeName.substr(1));
-      var offset = level - base_level;
-
-      var li = new $('<li/>')
-          .append('<a href="#' + i + '" class="animate">' + $this.text() + '</a>')
-          .append($('<ul class="nav level-' + (offset + 1) + '"/>'));
-
-      $('<div>').append($toc).find('ul.level-' + offset + ':last').append(li);
-    });
-    // remove empty ul
-    $toc.find('ul').not(':parent').remove();
-    return $toc;
-  }
-</script>
+  </script>
 
 {% include latex.html %}
 

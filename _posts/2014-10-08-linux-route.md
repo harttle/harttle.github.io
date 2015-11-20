@@ -2,9 +2,6 @@
 layout: blog
 categories: linux
 title: Linux路由表配置
-redirect_from:
-  - /linux/linux-route.html
-  - /2014/10/08/linux-route/
 tags: 网络 IP TCP Bash JavaScript
 ---
 

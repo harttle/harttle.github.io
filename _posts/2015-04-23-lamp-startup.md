@@ -3,9 +3,6 @@ layout: blog
 categories: web
 title: LAMP 搭建
 tags: Linux Apache PHP 数据库
-redirect_from:
-  - /web/lamp-startup.html
-  - /2015/04/23/lamp-startup/
 ---
 
 听说PHP是世界上最好的编程语言，小编也试了一把。暂作记录在此。

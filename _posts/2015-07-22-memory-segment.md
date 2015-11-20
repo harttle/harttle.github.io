@@ -3,9 +3,6 @@ layout: blog
 categories: reading
 title: 进程的地址空间：TEXT，DATA，BSS，HEAP，STACK
 tags: C++ 进程 内存 操作系统 字节序
-redirect_from:
-  - /reading/memory-segment.html
-  - /2015/07/22/memory-segment/
 ---
 
 现代操作系统对每个进程都分配了完整的虚拟内存地址空间。进程会把整个地址空间分成多个区间来使用。
