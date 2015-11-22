@@ -1,8 +1,10 @@
 <p>
   <span class="date">
-    {{ include.post.date | date: "%B %-d, %Y"}}
+    <i class="fa fa-clock-o"></i>
+    {{ include.post.date | date: "%Y年%m月%d日"}}
   </span>
   <span class="tags">
-    {{ include.post.tags | join: ','}}
+    <i class="fa fa-tag"></i>
+    {{ include.post.tags | join: ', '}}
   </span>
 </p>

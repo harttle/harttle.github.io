@@ -1,7 +1,15 @@
 name: Harttle Land
 url: http://harttle.com
 description: Keep it simple, stupid.
-keywords: Web, HTML, CSS, JavaScript, C++, Linux, Bash, Vim
+keywords: 
+  - Web
+  - HTML
+  - CSS
+  - JavaScript
+  - C++
+  - Linux
+  - Bash
+  - Vim
 
 permalink: /:year/:month/:day/:title.html
 paginate: 4

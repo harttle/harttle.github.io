@@ -18,6 +18,10 @@
   @import 'module-index';
 }
 
+.post{
+  @import "post";
+}
+
 .module-blog{
   @import 'module-blog';
   @import 'toc';

@@ -1,16 +1,19 @@
 ---
 layout: default
+tags: 
+  - b
+  - c
 ---
 
 <div class="container module-index">
   <div class="row">
-    <div class="col-md-8 col-lg-9"> 
+    <div class="col-md-8"> 
       <div class="posts">
         {% for post in paginator.posts %}
 
           <div class="post">
             <header>
-              <a class="title" href="{{post.url}}">{{ post.title }}</a>
+              <h1><a class="title glow" href="{{post.url}}">{{ post.title }}</a></h1>
               <div class="post-meta">
                 {% include post-meta.html post=post %}
               </div>
@@ -29,18 +32,26 @@ layout: default
       {% include latex.html %}
     </div>
 
-    <aside class="col-md-4 col-lg-3 hidden-sm">
-      <div class="item-list recent-titles">
-        <h4 class="page-header"><a class="feature-link" href="/">Recent</a></h4>
+    <aside class="col-md-4 hidden-sm">
+      <section class="follow">
+        <header><a class="glow" href="/about.html">分享</a></header>
+        <ul class="list-unstyled">
+          <li>
+            <a >{{post.title}}</a> 
+          </li>
+        </ul>
+      </section>
+      <section class="recent-posts">
+        <header><a class="glow" href="/">最新文章</a></header>
         <ol class="list-unstyled">
           {% for post in site.posts limit : 17 %}
-          <li><a data-toggle="tooltip" data-placement="left" title="{{ post.date | date: " %Y-%m-%d"}}"
-            href="{{post.url}}">{{post.title}}</a> </li>
+            <li>
+              <a title="{{ post.title }}" href="{{post.url}}">{{post.title}}</a> 
+            </li>
           {% endfor %}
         </ol>
-      </div>
+      </section>
     </aside>
   </div>
 </div>
 
-<script src="/assets/js/index.js"></script>
