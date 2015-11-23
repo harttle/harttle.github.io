@@ -1,57 +1,38 @@
 ---
 layout: default
-tags: 
-  - b
-  - c
 ---
 
 <div class="container module-index">
-  <div class="row">
-    <div class="col-md-8"> 
-      <div class="posts">
-        {% for post in paginator.posts %}
+  <aside class="hidden-sm">
+    {% include follow.html %}
+    {% include taglist.html %}
+  </aside>
+  <div class="content"> 
+    <div class="posts">
+      {% for post in paginator.posts %}
 
-          <div class="post">
-            <header>
-              <h1><a class="title glow" href="{{post.url}}">{{ post.title }}</a></h1>
-              <div class="post-meta">
-                {% include post-meta.html post=post %}
-              </div>
-            </header>
+        <div class="post">
+          <header>
+            <h1 class="title">
+              <a class="glow" href="{{post.url}}">{{ post.title }}</a>
+            </h1>
+            {% include post-meta.html post=post %}
+          </header>
 
-            <article class="md">{{ post.excerpt }}</article>
-            <a class="more pull-right" href="{{ post.url }}" target='_blank'>
+          <article class="md">{{ post.excerpt }}</article>
+
+          <footer>
+            <a class="pull-right" href="{{ post.url }}" target='_blank'>
               全文
               <span class="fa fa-angle-right"></span>
             </a>
-          </div>
+          </footer>
+        </div>
 
-        {% endfor %}
-      </div>
-      {% include home-paginator.html %}
-      {% include latex.html %}
+      {% endfor %}
     </div>
-
-    <aside class="col-md-4 hidden-sm">
-      <section class="follow">
-        <header><a class="glow" href="/about.html">分享</a></header>
-        <ul class="list-unstyled">
-          <li>
-            <a >{{post.title}}</a> 
-          </li>
-        </ul>
-      </section>
-      <section class="recent-posts">
-        <header><a class="glow" href="/">最新文章</a></header>
-        <ol class="list-unstyled">
-          {% for post in site.posts limit : 17 %}
-            <li>
-              <a title="{{ post.title }}" href="{{post.url}}">{{post.title}}</a> 
-            </li>
-          {% endfor %}
-        </ol>
-      </section>
-    </aside>
+    {% include home-paginator.html %}
+    {% include latex.html %}
   </div>
 </div>
 

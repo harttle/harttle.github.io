@@ -2,6 +2,11 @@
   width: $value;
   height: $value;
 }
+@mixin inline-size($value){ 
+  @include size($value);
+  line-height: $value;
+  text-align: center;
+}
 @mixin opacity($value){
   opacity: $value;
   -moz-opacity: $value;

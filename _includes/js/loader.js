@@ -1,22 +1,11 @@
 window.modules = {};
 
 $(function() {
-    var enabled = {};
-    $('[class|=module]').each(function(i, ele) {
-        var mod, $ele = $(ele);
-        $ele.attr('class').split(' ').map(function(cls){
-            var mt = cls.match(/^module-(\w+)/);
-            mod = mt && mt[1] || mod;
-        });
-
-        if(enabled[mod]) return;
-        else enabled[mod] = true;
-
+    resolve(function(mod){
         var ctrl = window.modules[mod];
-        if (typeof ctrl !== 'function') return;
-
-        console.log('[module]', 'loading', mod);
-        ctrl(conslFactory(mod), $ele);
+        if(typeof ctrl !== 'function') return;
+        ctrl(conslFactory(mod), $('[class|=module-'+mod+']'), mod);
+        console.log('[loader]', mod, 'loaded');
     });
 
     function conslFactory(mod) {
@@ -26,5 +15,20 @@ $(function() {
             warn: console.warn.bind(console, '[' + mod + ']'),
             error: console.error.bind(console, '[' + mod + ']'),
         };
+    }
+    function resolve(cb){
+        var enabled = {};
+        $('[class|=module]').each(function(i, ele) {
+            $(ele).attr('class').split(' ').map(function(cls){
+                var mt = cls.match(/^module-(\w+)/),
+                    mod = mt && mt[1];
+
+                if(!mod) return;
+                if(enabled[mod]) return;
+                else enabled[mod] = true;
+
+                cb(mod);
+            });
+        });
     }
 });

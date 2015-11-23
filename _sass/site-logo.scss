@@ -12,14 +12,14 @@
 }
 .site-logo:hover{
   .fa{
-    animation: prepare 0.9s ease 1s, 
-      kick 0.1s ease-in 1.9s ;
+    animation: prepare 0.9s ease 0.5s, 
+      kick 0.1s ease-in 1.4s ;
   }
   .title{
     opacity: 1;
-    animation: launch 0.5s linear 2s,
-      back 3s cubic-bezier(0.7, 0.05, 0.9, 0.2) 2.5s,
-      bounce 1s ease-in 5.5s;
+    animation: launch 0.5s linear 1.5s,
+      back 3s cubic-bezier(0.7, 0.05, 0.9, 0.2) 2s,
+      bounce 1s ease-in 5s;
   }
 }
 @keyframes prepare {

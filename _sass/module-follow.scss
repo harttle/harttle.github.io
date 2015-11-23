@@ -1,0 +1,51 @@
+@import 'mixins';
+@import 'variables';
+@mixin share-block($color) {
+  background: lighten($color, 10%);
+
+  &:hover {
+    background: $color;
+  }
+}
+
+li {
+  display: inline-block;
+  margin-right: 5px;
+  transition: transform 0.5s;
+
+  a {
+    color: #fff;
+    display: inline-block;
+
+    @include inline-size(36px);
+
+    border-radius: 20px;
+    font-size: 18px;
+  }
+}
+
+li:hover {
+  transform: rotate(360deg);
+}
+
+.wechat a {
+  @include share-block($green);
+}
+
+.github a {
+  @include share-block(#b5b5b5);
+}
+
+.facebook a {
+  @include share-block(#3B5998);
+}
+
+.linkedin a {
+  // #4875B4
+  @include share-block($blue);
+}
+
+.feed a{
+  // rgb(255, 153, 0))
+  @include share-block($red);
+}

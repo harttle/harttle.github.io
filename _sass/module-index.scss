@@ -1,5 +1,24 @@
+@import 'variables';
+
 header{
   margin-bottom: 30px;
+  .fa-bookmark{
+    color: $green;
+  }
+}
+
+footer{
+  position: relative;
+  padding-top: 10px;
+}
+footer::after{
+  content: ' ';
+  position: absolute;
+  top:0;
+  right:0;
+  height: 1px;
+  width: 200px;
+  background: $blue;
 }
 
 .post{
@@ -15,4 +34,18 @@ header{
     color: #666;
     font-size: 13px;
   }
+}
+
+.module-taglist{
+  margin-top: 30px;
+}
+
+// layout
+aside{
+  float: right;
+  margin-left: 60px;
+  width: 235px;
+}
+.content{
+  margin-right: 235px + 60px;
 }

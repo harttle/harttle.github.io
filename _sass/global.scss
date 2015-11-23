@@ -1,13 +1,20 @@
+@import 'mixins';
+@import 'variables';
+
+*{
+  -webkit-font-smoothing: antialiased;
+}
 h1{
   font-size: 20px;
 }
 
 header{
   .title{
+    margin-bottom: 15px;
+  }
+  .title a{
     color: #333;
     text-decoration: none;
-    margin-bottom: 15px;
-    display: block;
   }
 }
 

@@ -10,12 +10,20 @@
 @import 'global';
 @import 'jqloud';
 
+.module-follow{
+  @import 'module-follow';
+}
+
 .module-default{
   @import 'module-default';
 }
 
 .module-index{
   @import 'module-index';
+}
+
+.module-taglist{
+  @import 'module-taglist';
 }
 
 .post{

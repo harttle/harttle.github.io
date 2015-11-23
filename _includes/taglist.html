@@ -1,0 +1,12 @@
+<section class="module-taglist" style="display:none;">
+  <!-- <header><a class="glow" href="/">最新文章</a></header> -->
+  <ol class="list-unstyled">
+    {% for tag in site.tags limit : 1024 %}
+      <li>
+        <a title="{{ }}" href="">
+          {{tag[0]}} ({{tag[1] | size}})
+        </a> 
+      </li>
+    {% endfor %}
+  </ol>
+</section>
