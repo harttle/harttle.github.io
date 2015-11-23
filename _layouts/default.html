@@ -5,9 +5,9 @@
 {% include head.html %}
 </head>
 
-<body>
+<body id="body">
 
-<div class="container banner">
+<div class="container" id="navbar">
 
   <div class="site-logo pull-left">
     <a href="/"> <i class="fa fa-h-square"></i> </a>
@@ -27,7 +27,9 @@
 
 <div class="site-content"> {{ content }} </div>
 
-<a href="#" id="site-scroll-top"><span class="fa fa-chevron-up"></span></a>
+<a href="#body" id="site-scroll-top" class="animate">
+  <span class="fa fa-chevron-up"></span>
+</a>
 
 {% include footer.html %}
 
