@@ -4,7 +4,7 @@ $(function() {
     resolve(function(mod){
         var ctrl = window.modules[mod];
         if(typeof ctrl !== 'function') return;
-        ctrl(conslFactory(mod), $('[class|=module-'+mod+']'), mod);
+        ctrl(conslFactory(mod), $('[class*=module-'+mod+']'), mod);
         console.log('[loader]', mod, 'loaded');
     });
 
@@ -18,7 +18,7 @@ $(function() {
     }
     function resolve(cb){
         var enabled = {};
-        $('[class|=module]').each(function(i, ele) {
+        $('[class*=module-]').each(function(i, ele) {
             $(ele).attr('class').split(' ').map(function(cls){
                 var mt = cls.match(/^module-(\w+)/),
                     mod = mt && mt[1];

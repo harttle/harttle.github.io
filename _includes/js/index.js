@@ -1,6 +1,6 @@
 window.modules.index = function() {
     var ias = $.ias({
-        container: '#posts',
+        container: '.posts',
         item: '.post',
         pagination: '.pager',
         next: '.pager .previous a'
@@ -13,6 +13,6 @@ window.modules.index = function() {
     }));
     ias.extension(new IASNoneLeftExtension({
         text: '只有这些了~',
-        html: '<div class="ias-noneleft" style="text-align: center;color:#fff">{text}</div>'
+        html: '<div class="ias-noneleft" style="text-align: center;">{text}</div>'
     }));
 };

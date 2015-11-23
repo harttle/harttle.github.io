@@ -7,24 +7,26 @@ header{
   }
 }
 
-footer{
-  position: relative;
-  padding-top: 10px;
-}
-footer::after{
-  content: ' ';
-  position: absolute;
-  top:0;
-  right:0;
-  height: 1px;
-  width: 200px;
-  background: $blue;
+.posts{
+  margin-bottom: 20px;
 }
 
+.post header{
+  position: relative;
+  .title a{
+    color: darken($blue, 10%);
+    &:hover{
+      color: $blue;
+    }
+  }
+}
+.post footer a{
+  margin: 20px 10px 0;
+}
 .post{
   margin-bottom: 80px;
 }
-.post:first-child > header > h1{
+.post > header > h1{
   margin-top: 0;
 }
 
@@ -48,4 +50,10 @@ aside{
 }
 .content{
   margin-right: 235px + 60px;
+}
+
+@media(max-width: 768px){
+  .content{
+    margin-right:0;
+  }
 }
