@@ -1,28 +1,31 @@
 &{
   margin-top: 30px;
 }
+&.collapsed{
+  .content{
+    margin-left: 0px;  
+  }
+  aside{
+    display: none;
+  }
+}
 
 aside{
   float: left;
 }
 
-.pager{
-  margin-bottom: 50px;
-}
-
-header{
-  margin-bottom: 50px;
-  h1{
-    margin-top: 0;
-  }
-}
 .content{
   margin-left: 250px;  
 }
 
+
 .post-meta{
   float: right;
   margin-top: -20px;
+}
+
+.pager{
+  margin-bottom: 50px;
 }
 
 @media (max-width: 768px) {

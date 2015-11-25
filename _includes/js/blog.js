@@ -25,17 +25,12 @@ window.modules.blog = function(console, $ele, mod) {
             offset: 10 //make sure to spy the element when scrolled to
         });
     } else {
-        $('.post-display .right')
-            .removeClass('col-lg-10 col-md-9 col-sm-8')
-            .addClass('col-md-12');
-        $('.post-display').removeClass('row-fluid');
-        $('.post-display .left').remove();
+        $ele.addClass('collapsed');
     }
 
     $(window).resize(function() {
         $('body').scrollspy('refresh');
     });
-
 
     //生成目录
     function getTOC($content) {
