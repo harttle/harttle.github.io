@@ -1,19 +1,19 @@
 ---
 layout: default
-title: 404 Page Not Found
-excerpt: Page not found, may be moved to another place.
+title: 404
+excerpt: 链接过时了？搜索一下！
 ---
 
-<div class="container">
-  <div style="margin-top: 30px;" class="jumbotron">
-    <h1>404</h1>
-    <p>Page not found, may be moved to another place.<p>
-      <a class="btn btn-default btn-lg" href="/" role="button">
-        <span class="glyphicon glyphicon-home"></span> Home
-      </a>
-      <a class="btn btn-primary btn-lg" onclick="history.back();" role="button">
-        <span class="glyphicon glyphicon-hand-left"></span> Back
-      </a>
+<div class="module-404">
+  <div class="center">
+    <header>404</header>
+
+    <p class="lead">{{page.excerpt}}<p>
+
+    <form action="http://google.com/search" method="get">
+      <input type="hidden" name="q" value="site:harttle.com">
+      <input class="form-control" placeholder="关键字..." name="q" autofocus>
+    </form>
   
   </div>
 </div>
