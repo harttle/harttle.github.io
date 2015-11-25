@@ -56,6 +56,7 @@ section{
     font-size: 14px;
     a{
       color: $fore-color;
+      @include linkable;
     }
     li{
       height: 24px;
@@ -69,4 +70,10 @@ footer{
   text-align: center;
   line-height: 50px;
   background-color: #111;
+}
+
+@media(max-width: 768px){
+  section{
+    margin-bottom: 30px;
+  }  
 }

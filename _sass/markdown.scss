@@ -6,6 +6,9 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
     font-size:14px;
     line-height: 24px;
 }
+.md>*:first-child {
+    margin-top: 0;
+}
 .md{ overflow-wrap: break-word; }
 .md a, .md code{
     margin-left: 3px;

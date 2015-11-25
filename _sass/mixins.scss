@@ -19,10 +19,22 @@
   -webkit-transition: $value;
 }
 
-/* @mixin filter() */
-
 @mixin filter-blur($v){
   filter: blur($v);
   -webkit-filter: blur($v);
   -moz-filter: blur($v);
 }
+
+@mixin ellipsis{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin linkable{
+  text-decoration: underline;
+  &:hover{
+    color: $red;
+  }
+}
+

@@ -20,11 +20,7 @@
   color: white;
   border: 3px solid white;    
 }
-@media(max-width: 768px) {
-  #blueimp-gallery .prev,#blueimp-gallery .next{
-    display: none;
-  }
-}
+
 /* thumb items */
 .items .item{
   margin: 5px auto;
@@ -33,3 +29,17 @@
 .items .item>a{
   display: inline-block;
 }
+
+@media(max-width: 768px) {
+  #blueimp-gallery .prev,#blueimp-gallery .next{
+    display: none;
+  }
+  .post-meta{
+    display: none;
+  }
+  .lead{
+    margin-top: 50px;
+  }
+}
+
+

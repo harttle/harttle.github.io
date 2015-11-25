@@ -10,7 +10,7 @@ window.modules.blog = function(console, $ele, mod) {
                 offset: {
                     top: function() {
                         var offsetTop = $sideBar.offset().top;
-                        return (this.top = offsetTop - 20);
+                        return (this.top = offsetTop - 40);
                     },
                     bottom: function() {
                         return (this.bottom = $(document).height() - $('.md').offset().top - $('.md').height());

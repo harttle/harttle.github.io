@@ -20,7 +20,7 @@ title: 归档
         {% endunless %}
         {% capture day %}{% assign dy = post.date | date: "%a" %}{% case dy %}{% when "Mon" %}一{% when "Tue" %}二{% when "Wed" %}三{% when "Thu" %}四{% when "Fri" %}五{% when "Sat" %}六{% when "Sun" %}日{% endcase %}{% endcapture %}
                       <li>
-                        <time>{{ post.date | date:"%-m月%-d日" }} 星期{{day}} </time>
+                        <time>{{ post.date | date:"%m月%d日" }} 星期{{day}} </time>
                         <a href="{{ post.url }}">{{ post.title }}</a>
                       </li>
                     {% endfor %}

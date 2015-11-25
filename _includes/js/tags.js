@@ -17,6 +17,9 @@ window.modules.tags = function (console, $ele) {
                 tag = $span.html();
                 updateList(searchByTag(tag));
             location.query('tag', tag);
+            $body.animate({
+                scrollTop: $('.right-panel').offset().top
+            }, 500);
         });
 
         function updateList(ps){

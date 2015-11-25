@@ -4,10 +4,15 @@
 .navbar-wrapper{
   padding-top: 20px;
   padding-bottom: 20px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+  .line{
+    white-space: nowrap;
+    @include ellipsis;
+  }
 
+  // make box-shadow front
   position: relative;
   z-index: 20;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.07);
 
   background: rgba(255,255,255,0.7);
   transition: background 1s;
@@ -19,7 +24,7 @@
     .logo{
       color: $red;
       animation: prepare 0.9s ease 1.5s, 
-        kick 0.1s ease-in 2.4s ;
+      kick 0.1s ease-in 2.4s ;
     }
     .page-title{
       opacity: 0;
@@ -30,8 +35,8 @@
       -webkit-text-fill-color: transparent;
       opacity: 1;
       animation: launch 0.5s linear 2.5s,
-        back 3s cubic-bezier(0.7, 0.05, 0.9, 0.2) 3s,
-        bounce 1s ease-in 6s;
+      back 3s cubic-bezier(0.7, 0.05, 0.9, 0.2) 3s,
+      bounce 1s ease-in 6s;
     }
   }
 }
@@ -39,12 +44,11 @@
 .page-title{
   color: #555;
   font-size: 20px;
-  float: left;
-  margin-left: 10px;
+  margin-right: 50px;
+  margin-left: 5px;
   line-height: 32px;
+  vertical-align: top;
   transition: opacity 1s;
-  position: absolute;
-  left: 100px;
 }
 
 .site-content{
@@ -52,11 +56,12 @@
 }
 
 .site-nav{
-  float: right;
   position: relative;
+  z-index: 10;
   .toggle{
     color: #555;
     font-size: 24px;
+    line-height: 32px;
     transform: rotateX(0);
     transition: all 0.5s ease-out;
   }
@@ -96,12 +101,15 @@
     border-radius: 2px;
     li{
       text-align: center;
-      padding: 10px;
       border-bottom: 1px solid #ddd;
+      a{
+        display: block;
+        padding: 10px;
+      }
     }
   }
 }
-.site-nav:hover{
+.site-nav:hover, .site-nav.hover{
   .nav-list{
     visibility: visible;
     opacity: 1;
@@ -115,26 +123,30 @@
 .site-brand{
   color: #000;
   font-size: 26px;
-  float: left;
-  position: relative;
+  width: 0px;
+  vertical-align: top;
+  display: inline-block;
   a{
     text-decoration: none;
   }
-  .logo{
-    font-size: 32px;
-    color: $red;
-    transition: all 1s;
-  }
-  .logo-title{
-    color: $grey;
-    background: -webkit-linear-gradient(45deg, $red, $green, $blue);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: all 1s;
-    -webkit-transition: all 1s;
-    opacity: 0;
-    display: inline-block;
-  }
+}
+
+.logo{
+  font-size: 32px;
+  float: left;
+  margin-right: 5px;
+  color: $red;
+  transition: all 1s;
+}
+.logo-title{
+  color: $grey;
+  background: -webkit-linear-gradient(45deg, $red, $green, $blue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 1s;
+  -webkit-transition: all 1s;
+  opacity: 0;
+  display: inline-block;
 }
 @keyframes prepare {
   from {transform: translateX(0); }
