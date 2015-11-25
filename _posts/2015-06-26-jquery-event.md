@@ -3,9 +3,6 @@ layout: blog
 categories: web
 title: jQuery事件：bind、delegate、on的区别
 tags: JavaScript jQuery 事件
-redirect_from:
-  - /web/jquery-event.html
-  - /2015/06/26/jquery-event/
 ---
 
 最近在[AngularJS][ai]的开发中，遇到一个神奇的事情：我们用到[livebox][lb]来预览评论列表中的图片，

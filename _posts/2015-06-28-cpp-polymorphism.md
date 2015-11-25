@@ -3,9 +3,6 @@ layout: blog
 categories: reading
 title: C++手稿：虚函数与多态
 tags: C++ 虚函数 多态
-redirect_from:
-  - /reading/cpp-polymorphism.html
-  - /2015/06/28/cpp-polymorphism/
 ---
 
 C++类继承带来了诸多好处：基类代码复用、通用的方法和属性、更好的可维护性，

@@ -1,0 +1,40 @@
+@mixin size($value){ 
+  width: $value;
+  height: $value;
+}
+@mixin inline-size($value){ 
+  @include size($value);
+  line-height: $value;
+  text-align: center;
+}
+@mixin opacity($value){
+  opacity: $value;
+  -moz-opacity: $value;
+  -webkit-opacity: $value;
+}
+
+@mixin transition($value){
+  transition: $value;
+  -moz-transition: $value;
+  -webkit-transition: $value;
+}
+
+@mixin filter-blur($v){
+  filter: blur($v);
+  -webkit-filter: blur($v);
+  -moz-filter: blur($v);
+}
+
+@mixin ellipsis{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin linkable{
+  text-decoration: underline;
+  &:hover{
+    color: $red;
+  }
+}
+

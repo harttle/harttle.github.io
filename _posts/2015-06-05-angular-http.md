@@ -3,9 +3,6 @@ layout: blog
 categories: web
 title: AngularJS $http Service
 tags: AngularJS JavaScript HTTP AJAX Promise
-redirect_from:
-  - /web/angular-http.html
-  - /2015/06/05/angular-http/
 ---
 
 `$http`是[AngularJS][angular]提供的一个核心Service，通过浏览器的`XMLHttpRequest`或JSONP与服务器进行交互。

@@ -4,9 +4,6 @@ categories: reading
 title: Item 1：将C++视作一系列的语言
 subtitle: Effective C++笔记
 tags: C++ STL 模板 Objective-C
-redirect_from:
-  - /reading/effective-cpp-2.html
-  - /2015/07/21/effective-cpp-2/
 excerpt: C++程序设计的惯例并非一尘不变，而是取决于你使用C++语言的哪一部分。
 ---
 

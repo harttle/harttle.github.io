@@ -1,0 +1,55 @@
+@import 'mixins';
+@import 'variables';
+
+/* fonts */
+div.jqcloud {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 10px;
+  line-height: normal;
+}
+
+div.jqcloud a {
+  font-size: inherit;
+  text-decoration: none;
+}
+
+div.jqcloud span{
+  cursor: pointer;
+}
+
+div.jqcloud span.w10 { font-size: 30px; }
+div.jqcloud span.w9 { font-size: 28px; }
+div.jqcloud span.w8 { font-size: 26px; }
+div.jqcloud span.w7 { font-size: 24px; }
+div.jqcloud span.w6 { font-size: 22px; }
+div.jqcloud span.w5 { font-size: 20px; }
+div.jqcloud span.w4 { font-size: 18px; }
+div.jqcloud span.w3 { font-size: 16px; }
+div.jqcloud span.w2 { font-size: 14px; }
+div.jqcloud span.w1 { font-size: 12px; }
+
+/* colors */
+
+div.jqcloud { color: #09f; }
+div.jqcloud a { color: inherit; }
+div.jqcloud a:hover { color: #0df; }
+div.jqcloud a:hover { color: #0cf; }
+div.jqcloud span.w10 { color: $red; }
+div.jqcloud span.w9 { color: adjust_hue($red, 20); }
+div.jqcloud span.w8 { color: adjust_hue($red, 40); }
+div.jqcloud span.w7 { color: adjust_hue($red, 60); }
+div.jqcloud span.w6 { color: adjust_hue($red, 80); }
+div.jqcloud span.w5 { color: adjust_hue($red, 100); }
+div.jqcloud span.w4 { color: adjust_hue($red, 120); }
+div.jqcloud span.w3 { color: adjust_hue($red, 140); }
+div.jqcloud span.w2 { color: adjust_hue($red, 160); }
+div.jqcloud span.w1 { color: adjust_hue($red, 180); }
+
+/* layout */
+
+div.jqcloud {
+  overflow: hidden;
+  position: relative;
+}
+
+div.jqcloud span { padding: 0; }

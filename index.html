@@ -1,43 +1,37 @@
 ---
-layout: banner
-title: Harttleland
-subtitle: Keep It Simple, Stupid!
+layout: default
 ---
 
-<link rel="stylesheet" href="/assets/css/markdown.css">
-<link rel="stylesheet" href="/assets/css/vs-syntax.css">
-<link rel="stylesheet" href="/assets/css/index.css">
-<script src="/assets/lib/jquery/jquery-ias.min.js"></script>
-
-<div class="row">
-  <div class="col-md-8 col-lg-9"> {{ content }}
-    <img class="recent" src="/assets/img/recent.png"/>
-
-    <div id="posts">
+<div class="container module-index">
+  <aside class="hidden-xs">
+    {% include follow.html %}
+    {% include taglist.html %}
+  </aside>
+  <div class="content"> 
+    <div class="posts">
       {% for post in paginator.posts %}
-      <div class="post paper">
-        <h3 class="header">
-          <a class="feature-link" href="{{post.url}}">{{ post.title }}</a>
 
-          <div class="pull-right text-muted">
-            {% include date.html post=post %}
-          </div>
-        </h3>
-        <p class="meta">
-          {% include categories.html post=post %}
-          {% include tags.html post=post %}
-        </p>
+        <div class="post">
+          <header>
+            <h1 class="title">
+              <a class="glow" href="{{post.url}}">{{ post.title }}</a>
+            </h1>
+            {% include post-meta.html post=post %}
+          </header>
 
-        <div class="md">{{ post.content | split:'<!--more-->' | first }}</div>
-        <a class="more pull-right" href="{{ post.url }}" target='_blank'>
-          全文
-          <span class="fa fa-angle-right"></span>
-        </a>
-      </div>
+          <article class="md">{{ post.excerpt }}</article>
+
+          <footer>
+            <a class="pull-right" href="{{ post.url }}" target='_blank'>
+              全文
+              <span class="fa fa-angle-right"></span>
+            </a>
+          </footer>
+        </div>
+
       {% endfor %}
     </div>
 
-    <!-- Pagination -->
     {% if paginator.total_pages > 1 %}
     <ul class="pager">
       {% if paginator.next_page %}
@@ -55,90 +49,8 @@ subtitle: Keep It Simple, Stupid!
       {% endif %}
     </ul>
     {% endif %}
+
     {% include latex.html %}
-  </div>
-
-  <!--sidebar-->
-  <div class="col-md-4 col-lg-3 hidden-sm">
-    <div class="item-list tags">
-      <script type="text/plain" id="tag-data">
-        {% for tag in site.tags %}{% assign name = tag|first %}{% assign count = tag|last|size %}{{name}},{{count}}/{% endfor %}
-      </script>
-      <div class="tag-cloud"></div>
-    </div>
-
-    <div class="item-list categories">
-      <h4 class="page-header"><a class="feature-link" href="/category.html">Categories</a></h4>
-      <ol class="list-unstyled">
-        {% for cate in site.categories %}
-        <li>
-        <a href="/category.html#category-{{cate | first}}">
-          {{cate | first | capitalize}} ({{ cate | last | size }})
-        </a>
-        </li>
-        {% endfor %}
-      </ol>
-    </div>
-
-    <div class="item-list recent-titles">
-      <h4 class="page-header"><a class="feature-link" href="/">Recent</a></h4>
-      <ol class="list-unstyled">
-        {% for post in site.posts limit : 100000 %}
-        <li><a data-toggle="tooltip" data-placement="left" title="{{ post.date | date: " %Y-%m-%d"}}"
-          href="{{post.url}}">{{post.title}}</a> </li>
-        {% endfor %}
-      </ol>
-    </div>
   </div>
 </div>
 
-{% include moment.html %}
-
-<script>
-  $(function () {
-    var ias = $.ias({
-      container: '#posts',
-      item: '.post',
-      pagination: '.pager',
-      next: '.pager .previous a'
-    });
-    ias.on('loaded', function (data, items) {
-      for (var i in items) {
-        update_moment(items[i]);
-      }
-    });
-    ias.extension(new IASSpinnerExtension({src: '/assets/img/loading.gif'}));
-    ias.extension(new IASNoneLeftExtension({
-      text: 'No more posts.',
-      html: '<div class="ias-noneleft" style="text-align: center;color:#fff">{text}</div>'
-    }));
-
-    var tagData = $('script#tag-data').html();
-    var words = tagData
-        .split('/')
-        .filter(function (tag) {
-          return tag.trim() != '';
-        })
-        .map(function (tag) {
-          var tokens = tag.split(','),
-              text = tokens[0].trim();
-          return {
-            text: text,
-            weight: parseInt(tokens[1].trim()),
-            link: '/tag.html#tag-' + text
-          };
-        })
-//        .filter(function(tag){
-//          return tag.weight > 1;
-//        })
-        .sort(function(lhs, rhs){
-          return rhs.weight - lhs.weight;
-        })
-        .slice(0, 100);
-
-    $('.tag-cloud').jQCloud(words, {
-      //shape: 'rectangular',
-      removeOverflowing: true
-    });
-  });
-</script>

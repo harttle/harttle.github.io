@@ -3,9 +3,6 @@ layout: blog
 categories: linux
 title: Windows/Linux远程桌面
 tags: 网络 Bash 远程桌面
-redirect_from:
-  - /linux/remote-desktop.html
-  - /2015/05/12/remote-desktop/
 ---
 
 Windows和Linux如何互连远程桌面？这是曾经困扰过小编的一个大问题。

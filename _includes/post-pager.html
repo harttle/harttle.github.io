@@ -1,0 +1,13 @@
+<ul class="pager">
+  {% if page.previous %}
+    <li class="previous">
+      <a data-toggle="tooltip" data-placement="right" title="{{page.previous.title}}" href="{{page.previous.url}}">&larr; 上一篇</a>
+    </li>
+  {% endif %}
+  {% if page.next %}
+    <li class="next">
+      <a data-toggle="tooltip" data-placement="left" title="{{page.next.title}}" href="{{page.next.url}}">下一篇 &rarr;</a>
+    </li>
+  {% endif %}
+</ul>
+

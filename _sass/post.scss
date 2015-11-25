@@ -1,0 +1,13 @@
+@import 'mixins';
+
+.post-meta{
+  color: #aaa; 
+  a{
+    color: #aaa;
+    margin-right: 2px;
+    @include linkable;
+  }
+  .date{
+    margin-right: 10px;
+  }
+}

@@ -3,9 +3,6 @@ layout: blog
 categories: reading
 title: 优秀的代码 vs. 糟糕的代码
 tags: JavaScript
-redirect_from:
-  - /reading/elegant-and-bad.html
-  - /2015/04/13/elegant-and-bad/
 ---
 
 > 可持续开发不仅在于项目架构设计，还与代码质量密切相关，代码的整洁度和质量成正比。—— Robert C. Martin, "Clean Code"

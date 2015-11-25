@@ -3,9 +3,6 @@ layout: blog
 categories: reading
 title: C++手稿：类的静态和常量成员
 tags: C++ 静态变量 常量
-redirect_from:
-  - /reading/cpp-static-and-const-member.html
-  - /2015/06/24/cpp-static-and-const-member/
 ---
 
 本文总结了静态成员的使用、单例的实现、常量对象与常量方法，以及如何将常量方法重载为普通方法。

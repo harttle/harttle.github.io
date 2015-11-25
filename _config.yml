@@ -1,7 +1,15 @@
 name: Harttle Land
 url: http://harttle.com
 description: Keep it simple, stupid.
-keywords: Web, HTML, CSS, JavaScript, C++, Linux, Bash, Vim
+keywords: 
+  - Web
+  - HTML
+  - CSS
+  - JavaScript
+  - C++
+  - Linux
+  - Bash
+  - Vim
 
 permalink: /:year/:month/:day/:title.html
 paginate: 4
@@ -14,7 +22,7 @@ excerpt_separator: "<!--more-->"
 redcarpet:
     extensions: [no_intra_emphasis,tables,autolink,fenced_code_blocks]
 
-exclude: ['README.md', '*.sh', '.*', 'scripts/']
+exclude: ['README.md', '*.sh', '.*', 'scripts/', 'bak', 'robots.txt', 'CNAME', 'Gemfile']
 
 gems:
   - jekyll-sitemap
@@ -26,3 +34,4 @@ cate_icons:
   linux: "fa-linux"
   web: "fa-html5"
   misc: "fa-file-text"
+

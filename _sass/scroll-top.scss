@@ -1,0 +1,33 @@
+@import 'mixins';
+@import 'variables';
+
+#site-scroll-top {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  color: #898989;
+  @include size(41px);
+  line-height: 35px;
+  font-size: 1.231em;
+  background: #fbfbfb;
+  text-align: center;
+  z-index: 999;
+  visibility: hidden;
+  @include opacity(0);
+  @include transition(all .25s ease-in-out);
+
+  border: 3px solid transparent;
+  border-radius: 4px;
+}
+#site-scroll-top.show{
+  visibility: visible;
+  @include opacity(1);
+}
+
+#site-scroll-top:hover {
+  text-decoration: none;
+  color: #fff;
+  background: $red;
+  border-color: lighten($red, 32%);
+}
+

@@ -1,0 +1,83 @@
+@import 'mixins';
+@import 'variables';
+
+.sidebar {
+  width: 200px;
+  //margin-top: 20px;
+  border: 1px solid #eaeaeb;
+  ul {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .nav{
+    font-size: 13px;
+    > .active > a, > :hover > a{
+      color: #333;
+      text-decoration: none;
+      border-right: 2px solid $red;
+    }
+    > .active > ul {
+      display: block;
+    }
+    > li > a {
+      display: block;
+      padding: 5px 15px;
+      color: #999;
+      text-decoration: none;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .nav {
+      display: none;
+      > li > a {
+        padding-top: 3px;
+        padding-bottom: 3px;
+        margin-left: 10px;
+        font-size: 90%;
+      }
+      .nav{
+        > li > a {
+          margin-left: 20px;
+        }
+        .nav{
+          > li > a {
+            margin-left: 30px;
+          }
+          .nav{
+            > li > a {
+              margin-left: 40px;
+            }
+            .nav > li > a {
+              margin-left: 50px;
+            }
+          } 
+        } 
+      }
+    }
+  }
+}
+
+
+.nav>li>a:hover, .nav>li>a:focus:hover {
+  text-decoration: none;
+  background-color: #f0f0f0;
+}
+.nav>li>a:focus{
+  background-color: transparent;
+}
+.sidenav {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background: #fff;
+}
+
+
+.sidebar.affix {
+  position: fixed;
+  top: 40px;
+}
+
+.sidebar.affix-bottom {
+  position: absolute;
+}

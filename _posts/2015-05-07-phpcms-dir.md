@@ -3,9 +3,6 @@ layout: blog
 categories: web
 title: PHPCMS 目录结构
 tags: PHP 
-redirect_from:
-  - /web/phpcms-dir.html
-  - /2015/05/07/phpcms-dir/
 ---
 
 [phpcms](http://www.phpcms.cn/

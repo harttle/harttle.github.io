@@ -3,9 +3,6 @@ layout: blog
 categories: web
 title: 各种CSS选择器的优先级
 tags: CSS HTML 盒模型
-redirect_from:
-  - /web/css-priority.html
-  - /2015/07/16/css-priority/
 ---
 
 CSS规则之间可以互相覆盖，这一点我们应该已经习以为常了。然而正是由于规则之间可以互相覆盖、子元素继承父元素的默认行为，导致了CSS冲突的问题。

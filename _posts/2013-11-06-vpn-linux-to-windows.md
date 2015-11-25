@@ -3,9 +3,6 @@ layout: blog
 categories: misc
 title: 连接 Windows Server VPN
 tags: 网络 Bash ArchLinux 远程桌面 
-redirect_from:
-  - /misc/vpn-linux-to-windows.html
-  - /2013/11/06/vpn-linux-to-windows/
 ---
 
 Linux 连接 Windows Server VPN，以 archLinux 为例，适用于 Ubuntu。

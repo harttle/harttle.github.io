@@ -1,0 +1,43 @@
+
+@mixin collapsed(){
+  .content{
+    margin-left: 0px;  
+  }
+  aside{
+    display: none;
+  }
+}
+
+&{
+  margin-top: 50px;
+}
+&.collapsed{
+  @include collapsed();
+}
+
+aside{
+  float: left;
+}
+
+.content{
+  margin-left: 250px;  
+}
+
+.post-meta{
+  float: right;
+  margin-top: -40px;
+}
+
+.pager{
+  margin-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+  &{
+    margin-top: 30px;
+  }
+  .post-meta{
+    display: none;
+  }
+  @include collapsed();
+}
