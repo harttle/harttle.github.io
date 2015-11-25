@@ -1,0 +1,20 @@
+@import 'mixins';
+@import 'variables';
+
+&{
+  margin-bottom: 50px;
+}
+
+h4{
+  margin-top: 40px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid lighten($grey, 20%);
+}
+
+li{
+  font-size: 14px;
+  time{
+    color: #777;
+    margin-right: 30px;
+  }
+}

@@ -1,6 +1,6 @@
-window.modules.blog = function() {
-    var toc = getTOC($('.post-display .right'));
-    if (toc != null) {
+window.modules.blog = function(console, $ele, mod) {
+    var toc = getTOC($('article'));
+    if (toc) {
         $('.sidebar').append(toc);
 
         //sidebar affix, this offset is for sidebar position recognition

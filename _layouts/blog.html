@@ -2,49 +2,30 @@
 layout: default
 ---
 
-<div class="module-blog page-header container-fluid">
-  <h3 class="header">
-    {{ page.title }} <small>{{page.subtitle}}</small>
-  </h3>
-  <div class="meta">
-    <div class="pull-left">
-      {% include tags.html post=page %}
-    </div>
-    <div class="pull-right text-muted">
-      {{ page.date | date: '%F' }}
-    </div>
-  </div>
-</div>
+<div class="module-blog container post">
 
-<div class="container-fluid">
-  <div id="page-content">
-    <div class="row post-display">
-      <div class="col-lg-2 col-md-3 col-sm-4 hidden-xs left">
-        <div class="sidebar"></div>
-      </div>
-      <div class="col-lg-10 col-md-9 col-sm-8 right">
-        <div class="md paper">
-          {{ content }}
-          <div class="copyright">
-            <hr/>
-            <p>
-              除非注明，本博客文章均为原创，转载请以链接形式标明本文地址：
-              <a href="{{page.url}}">{{site.url}}{{ page.url }}</a>
-            </p>
-          </div>
-        </div>
+  {% include post-meta.html post=page %}
 
-        {% include post-paginator.html %}
-        {% include comments.html %}
+  <aside> <div class="sidebar"></div> </aside>
+
+  <div class="content">
+    <article class="md">
+      {{ content }}
+      <div class="copyright">
+        <hr/>
+        <p>
+        除非注明，本博客文章均为原创，转载请以链接形式标明本文地址：
+        <a href="{{page.url}}">{{site.url}}{{ page.url }}</a>
+        </p>
       </div>
-    </div>
+    </article>
+
+    {% include post-pager.html %}
+    {% include comments.html %}
 
   </div>
+
+  {% include latex.html %}
+
 </div>
-
-
-<script>
-  </script>
-
-{% include latex.html %}
 

@@ -4,19 +4,6 @@
 *{
   -webkit-font-smoothing: antialiased;
 }
-h1{
-  font-size: 20px;
-}
-
-header{
-  .title{
-    margin-bottom: 15px;
-  }
-  .title a{
-    color: #333;
-    text-decoration: none;
-  }
-}
 
 body {
   position: relative; /* for scroll spy with absolute position */
@@ -41,4 +28,9 @@ a.glow{
 .MathJax * {
   color: black !important;
 }
+
+h1{
+  font-size: 20px;
+}
+
 

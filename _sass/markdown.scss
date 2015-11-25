@@ -26,12 +26,12 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
 .md h1 {
     margin: 15px 0;
     padding-bottom: 2px;
-    font-size: 24px;
+    font-size: 18px;
     border-bottom: 1px solid #EEE;
 }
 .md h2 {
     margin: 20px 0 10px 0;
-    font-size: 18px;
+    font-size: 16px;
 }
 .md h3 {
     margin: 20px 0 10px 0;
@@ -84,6 +84,7 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
     word-wrap: normal;
     white-space: pre;
     overflow-wrap: normal;
+    line-height: 20px;
 }
 .md *:not(pre)>code{
     border: 1px solid #ddd;

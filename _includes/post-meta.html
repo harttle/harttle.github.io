@@ -5,6 +5,8 @@
   </span>
   <span class="tags">
     <i class="fa fa-tag"></i>
-    {{ include.post.tags | join: ', '}}
+    {% for tag in include.post.tags %}
+      <a data-tag="{{tag}}">{{tag}}</a>
+    {% endfor %}
   </span>
 </p>

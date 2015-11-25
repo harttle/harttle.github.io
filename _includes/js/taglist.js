@@ -4,7 +4,14 @@ window.modules.taglist = function(console, $ele, name){
 
     quicksort(0, $li.length);
     $ele.fadeIn();
+    updateHref();
 
+    function updateHref(){
+        $li.each(function(idx, ele){
+            var $ele = $(ele).find('a'), name = $ele.html().split('(')[0].trim();
+            $ele.attr('href', '/tags.html?tag=' + encodeURIComponent(name));
+        });
+    }
     function swap(i, j){
         var l1 = $li.eq(i), l2 = $li.eq(j), tmp = l1.html();
         l1.html(l2.html());

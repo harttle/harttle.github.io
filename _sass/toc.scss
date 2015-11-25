@@ -1,6 +1,9 @@
+@import 'mixins';
+@import 'variables';
+
 .sidebar {
   width: 200px;
-  margin-top: 20px;
+  //margin-top: 20px;
   border: 1px solid #eaeaeb;
   ul {
     margin-top: 0;
@@ -11,7 +14,7 @@
     > .active > a, > :hover > a{
       color: #333;
       text-decoration: none;
-      border-right: 2px solid #f7565b;
+      border-right: 2px solid $red;
     }
     > .active > ul {
       display: block;
@@ -72,7 +75,7 @@
 
 .sidebar.affix {
   position: fixed;
-  top: 0;
+  top: 20px;
 }
 
 .sidebar.affix-bottom {

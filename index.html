@@ -31,7 +31,25 @@ layout: default
 
       {% endfor %}
     </div>
-    {% include home-paginator.html %}
+
+    {% if paginator.total_pages > 1 %}
+    <ul class="pager">
+      {% if paginator.next_page %}
+      <li class="previous"><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr;
+        Older</a></li>
+      {% else %}
+      <li class="previous disabled"><a>&larr; Older</a></li>
+      {% endif %}
+
+      {% if paginator.previous_page %}
+      <li class="next"><a
+          href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">Newer &rarr;</a></li>
+      {% else %}
+      <li class="next disabled"><a>Newer &rarr;</a></li>
+      {% endif %}
+    </ul>
+    {% endif %}
+
     {% include latex.html %}
   </div>
 </div>

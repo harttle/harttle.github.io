@@ -1,13 +1,35 @@
 var footHeight = $('#footer').outerHeight(true);
 
+location.query = function(name, val) {
+    if(arguments.length == 1){
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(this.search);
+        return results === null ? 
+            "" : 
+            decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+    else{
+        history.replaceState(null, document.title, '?'+name+'='+encodeURIComponent(val));
+    }
+};
+
 $(function() {
     $('[data-toggle="tooltip"]').tooltip();
     $("img.lazy").lazyload({
         effect: "fadeIn",
         skip_invisible: false
     });
+    updateTagHref();
 
-    //页面内链接滑动效果
+    function updateTagHref(){
+        $('a[data-tag]').each(function(idx, ele){
+            var $ele = $(ele), name = $ele.html().split('(')[0].trim();
+            $ele.attr('href', '/tags.html?tag=' + encodeURIComponent(name));
+        });
+    }
+
+    // 页面内链接滑动效果
     $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
     $('a.animate').click(function() {
         var $this = $(this);

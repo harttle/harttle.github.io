@@ -1,0 +1,51 @@
+$left-width: 550px;
+
+&{
+  position: fixed;
+  top: 77px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.left-panel, .right-panel{
+  position: absolute;
+  overflow: auto;
+  top:0;
+  bottom:0;
+}
+
+.left-panel{
+  left: 0;
+  width: $left-width;
+}
+
+.right-panel{
+  left:$left-width;
+  right:0;
+}
+
+.tag-cloud{
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  right: 20px;
+  bottom: 36px;
+}
+
+ul{
+  margin: 30px 0 30px 50px;
+}
+
+li{
+  line-height: 28px;
+  font-size: 14px;
+  time{
+    color: #999;
+    display: inline-block;
+    width: 130px;
+  }
+}
+
+
+

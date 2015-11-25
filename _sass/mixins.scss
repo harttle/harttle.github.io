@@ -18,3 +18,11 @@
   -moz-transition: $value;
   -webkit-transition: $value;
 }
+
+/* @mixin filter() */
+
+@mixin filter-blur($v){
+  filter: blur($v);
+  -webkit-filter: blur($v);
+  -moz-filter: blur($v);
+}

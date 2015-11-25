@@ -2,13 +2,17 @@
 ---
 
 @import 'mixins';
+@import 'variables';
 @import 'paper';
 @import 'scroll-top';
-@import 'variables';
 @import 'markdown';
-@import 'github-syntax';
+@import 'vs-syntax';
 @import 'global';
 @import 'jqloud';
+
+.module-about{
+  @import 'module-about';
+}
 
 .module-follow{
   @import 'module-follow';
@@ -24,6 +28,18 @@
 
 .module-taglist{
   @import 'module-taglist';
+}
+
+.module-album{
+  @import 'module-album';
+}
+
+.module-tags{
+  @import 'module-tags';
+}
+
+.module-archive{
+  @import 'module-archive';
 }
 
 .post{

@@ -1,22 +1,18 @@
 @import 'variables';
 
-header{
-  margin-bottom: 30px;
-  .fa-bookmark{
-    color: $green;
-  }
+&{
+  margin-top: 30px;
 }
 
-.posts{
-  margin-bottom: 20px;
+header{
+  margin-bottom: 30px;
 }
 
 .post header{
-  position: relative;
   .title a{
-    color: darken($blue, 10%);
+    //color: darken($blue, 10%);
     &:hover{
-      color: $blue;
+      //color: $blue;
     }
   }
 }

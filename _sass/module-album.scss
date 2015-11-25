@@ -1,0 +1,35 @@
+
+.post-meta{
+  float: right;
+  margin-top:10px;
+}
+.lead{
+  clear:both;
+  margin-top: 70px;
+  margin-bottom: 40px;
+}
+.pager{
+  margin-bottom: 50px;
+}
+
+#blueimp-gallery .prev,#blueimp-gallery .next{
+  color: grey;
+  border: 3px solid grey;
+}
+#blueimp-gallery .prev:hover,#blueimp-gallery .next:hover{
+  color: white;
+  border: 3px solid white;    
+}
+@media(max-width: 768px) {
+  #blueimp-gallery .prev,#blueimp-gallery .next{
+    display: none;
+  }
+}
+/* thumb items */
+.items .item{
+  margin: 5px auto;
+  text-align: center;
+}
+.items .item>a{
+  display: inline-block;
+}

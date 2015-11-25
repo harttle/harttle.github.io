@@ -1,0 +1,30 @@
+---
+layout: default
+title: 标签
+---
+
+<div class="module-tags">
+
+  <div class="left-panel">
+    <div class="tag-cloud">
+    </div>
+  </div>
+
+  <div class="right-panel">
+    <ul class="list-unstyled post-list"> </ul>
+  </div>
+
+</div>
+
+<script type="text/plain" id="tags-data">
+{% for tag in site.tags %}
+ {{ tag|first }}&{{ tag|last|size }};
+{% endfor %}
+</script>
+
+<script type="text/plain" id="posts-data">
+{% for post in site.posts %}
+ {{ post.title }}&{{ post.date| date: '%Y-%m-%d'}}&{{post.url}}&{{ post.tags | join: ','}};
+{% endfor %}
+</script>
+
