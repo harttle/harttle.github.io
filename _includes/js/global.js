@@ -1,4 +1,5 @@
 var footHeight = $('#footer').outerHeight(true);
+window.$body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
 
 location.query = function(name, val) {
     if(arguments.length == 1){
@@ -30,7 +31,7 @@ $(function() {
     }
 
     // 页面内链接滑动效果
-    $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
+    
     $('a.animate').click(function() {
         var $this = $(this);
         if ($this.attr('offset')) {

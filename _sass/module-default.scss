@@ -23,8 +23,7 @@
     }
     .logo{
       color: $red;
-      animation: prepare 0.9s ease 1.5s, 
-      kick 0.1s ease-in 2.4s ;
+      @include animation(prepare 0.9s ease 1.5s, kick 0.1s ease-in 2.4s);
     }
     .page-title{
       opacity: 0;
@@ -34,9 +33,9 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       opacity: 1;
-      animation: launch 0.5s linear 2.5s,
-      back 3s cubic-bezier(0.7, 0.05, 0.9, 0.2) 3s,
-      bounce 1s ease-in 6s;
+      @include animation(launch 0.5s linear 2.5s,
+        back 3s cubic-bezier(0.7, 0.05, 0.9, 0.2) 3s,
+        bounce 1s ease-in 6s);
     }
   }
 }
@@ -126,6 +125,8 @@
   width: 0px;
   vertical-align: top;
   display: inline-block;
+  position: relative;
+  top: -3px;
   a{
     text-decoration: none;
   }
@@ -134,7 +135,6 @@
 .logo{
   font-size: 32px;
   float: left;
-  margin-right: 5px;
   color: $red;
   transition: all 1s;
 }

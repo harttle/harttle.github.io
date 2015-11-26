@@ -9,20 +9,26 @@
 }
 @mixin opacity($value){
   opacity: $value;
-  -moz-opacity: $value;
   -webkit-opacity: $value;
+  -moz-opacity: $value;
+  -o-opacity: $value;
+  -ms-opacity: $value;
 }
 
 @mixin transition($value){
   transition: $value;
-  -moz-transition: $value;
   -webkit-transition: $value;
+  -moz-transition: $value;
+  -o-transition: $value;
+  -ms-transition: $value;
 }
 
 @mixin filter-blur($v){
   filter: blur($v);
   -webkit-filter: blur($v);
   -moz-filter: blur($v);
+  -o-filter: blur($v);
+  -ms-filter: blur($v);
 }
 
 @mixin ellipsis{
@@ -36,5 +42,19 @@
   &:hover{
     color: $red;
   }
+}
+
+@mixin animation($v...){
+    animation: $v; 
+    -webkit-animation: $v; 
+    -moz-animation: $v; 
+    -o-animation: $v; 
+    -ms-animation: $v; 
+}
+
+@mixin box-shadow($shadows...) {
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+  box-shadow: $shadows;
 }
 

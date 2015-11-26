@@ -45,6 +45,14 @@ div.jqcloud span.w3 { color: adjust_hue($red, 140); }
 div.jqcloud span.w2 { color: adjust_hue($red, 160); }
 div.jqcloud span.w1 { color: adjust_hue($red, 180); }
 
+div.jqcloud span.glowing{
+  @include animation(glowing 1s infinite alternate);
+}
+
+@keyframes glowing {
+  from { color: $red; text-shadow: 0 0 15px $red}
+}
+
 /* layout */
 
 div.jqcloud {
