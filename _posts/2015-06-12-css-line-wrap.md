@@ -1,8 +1,8 @@
 ---
 layout: blog 
 categories: web
-title: CSS Line Box：溢出与折行 
-tags: CSS 盒模型 HTML
+title: CSS Line Box：块级元素与行内元素
+tags: CSS 盒模型 HTML overflow white-space text-overflow inline-block
 ---
 
 CSS 将 DOM 树转换为由矩形 Box 构成的树，并通过设置这些 Box 的属性来改变其位置和大小，描述每个元素或文本的布局。这些 Box 分为三个级别：
@@ -77,7 +77,7 @@ word-break: normal | break-all | break-word | keep-all
     ![@2x](/assets/img/blog/css/word-break-normal.png)
 
 * `break-word`：与设置`word-wrap:break-word`的效果相同。
-    
+
 
 * `break-all`：可在任意字符间断行。此时不会优先考虑在空白字符处折行，而是平铺所有字符，需要折行时断词，如图。
 

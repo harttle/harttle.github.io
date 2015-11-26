@@ -59,9 +59,22 @@ set omnifunc=syntaxcomplete#Complete
 
 参考： http://vim.wikia.com/wiki/Omni_completion
 
-# 搜索来选中
+# 搜索选区
 
-当你需要选择一大段文字时，不放先进入visual模式，再进行正则搜索。例如在markdown中，选择某个`##`的内容可以这样操作：
+当你需要选择一大段文字时，不妨先进入visual模式，再进行正则搜索。例如在markdown中，选择某个`##`的内容可以这样操作：
 移动光标到要选中的`##`上，按下`v`进入visual模式，输入`/^## `匹配下一个二级标题，按下`j`回到上一行。
+
+# 拷贝当前文件名
+
+使用`:let @"=expand("%")`可以拷贝当前文件名，我们可以给这个命令设一个快捷键：
+
+```vim
+nnoremap yf :let @"=expand("%:t")<CR>
+nnoremap yp :let @"=expand("%:p")<CR>
+```
+
+其中`yf`拷贝当前文件名，`yp`拷贝完整文件路径。然后按下`p`即可粘贴。
+当然你可以拷贝到任何一个寄存器，比如拷贝到寄存器`k`：`:let @k=expand("%")`。
+然后粘贴`k`中的内容：`"kp`。
 
 [vim-cursor]: {% post_url 2015-11-07-vim-cursor %}
