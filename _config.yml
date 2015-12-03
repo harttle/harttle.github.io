@@ -22,7 +22,7 @@ excerpt_separator: "<!--more-->"
 redcarpet:
     extensions: [no_intra_emphasis,tables,autolink,fenced_code_blocks]
 
-exclude: ['README.md', '*.sh', '.*', 'scripts/', 'bak', 'robots.txt', 'CNAME', 'Gemfile']
+exclude: ['README.md', '*.sh', '.*', 'scripts/', 'bak', 'Gemfile']
 
 gems:
   - jekyll-sitemap
