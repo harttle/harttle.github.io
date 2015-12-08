@@ -3,16 +3,8 @@
 &{
   margin-top: 30px;
 }
-
 header{
   margin-bottom: 20px;
-}
-
-.post header{
-  .title a{
-    &:hover{
-    }
-  }
 }
 .post footer a{
   margin: 20px 10px 0;
@@ -33,7 +25,6 @@ header{
 .md{
   *, h1, h2, h3, h4, h5, h6{
     font-weight: normal;
-    color: #666;
     font-size: 13px;
   }
 }

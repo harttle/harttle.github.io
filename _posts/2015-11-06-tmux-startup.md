@@ -153,6 +153,8 @@ set -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh"
     s  list sessions
     $  name session
 
+> `:new -s <session-name>`可以指定新Session的名字。
+
 ## Windows (tabs)
 
     c  create window
