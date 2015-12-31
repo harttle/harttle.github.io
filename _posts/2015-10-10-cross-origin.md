@@ -66,7 +66,7 @@ Uncaught DOMException: Failed to set the 'domain' property on 'Document': 'baidu
 
 不同的HTML标签发送HTTP请求的时机不同，例如`<img>`在更改`src`属性时就会发送请求，而`script`, `iframe`, `link[rel=stylesheet]`只有在添加到DOM树之后才会发送HTTP请求：
 
-```cpp
+```javascript
 var img = new Image();
 img.src = 'http://some/picture';        // 发送HTTP请求
 
