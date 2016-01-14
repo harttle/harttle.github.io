@@ -26,6 +26,8 @@ Availability = MTTF / MTBF
 2. Fault tolerance: using redundancy to allow the service to comply with the service specification despite faults occurring, which applies primarily to hardware faults.
 3. Fault forecasting: predicting the presence and creation of faults, which applies to hardware and software faults, allowing the component to be replaced before it fails.
 
+<!--more-->
+
 ## Disk Storage
 
 **nonvolatile**

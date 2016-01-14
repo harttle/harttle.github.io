@@ -26,11 +26,7 @@ tags: 操作系统 编译 汇编
 
 **5 components of a computer**
 
-* Input
-* Output
-* Memory
-* Datapath
-* Control
+Input, Output, Memory, Control, Datapath
 
 > The last two sometimes combined and called the processor.
 

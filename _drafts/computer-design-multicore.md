@@ -28,6 +28,8 @@ A microprocessor containing multiple processors ("cores") in a single integrated
 
 ![para-cate](/assets/img/blog/para-cate.png)
 
+<!--more-->
+
 ## The Difficulty of Creating Paralel Processing Programs
 
 According to **Amdahl's law** 

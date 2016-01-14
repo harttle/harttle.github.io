@@ -15,6 +15,13 @@ location.query = function(name, val) {
     }
 };
 
+function updateTagHref(){
+    $('a[data-tag]').each(function(idx, ele){
+        var $ele = $(ele), name = $ele.html().split('(')[0].trim();
+        $ele.attr('href', '/tags.html?tag=' + encodeURIComponent(name));
+    });
+}
+
 $(function() {
     $('[data-toggle="tooltip"]').tooltip();
     $("img.lazy").lazyload({
@@ -23,15 +30,7 @@ $(function() {
     });
     updateTagHref();
 
-    function updateTagHref(){
-        $('a[data-tag]').each(function(idx, ele){
-            var $ele = $(ele), name = $ele.html().split('(')[0].trim();
-            $ele.attr('href', '/tags.html?tag=' + encodeURIComponent(name));
-        });
-    }
-
     // 页面内链接滑动效果
-    
     $('a.animate').click(function() {
         var $this = $(this);
         if ($this.attr('offset')) {

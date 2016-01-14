@@ -16,6 +16,8 @@ tags: 操作系统 算术运算 浮点数 溢出
 
 > SIMD (single instruction, multiple data): By partitioning the carry chains within a 64-bit adder, a processor could perform simultaneous operations on a short vecters of eight 8-bit operands, four 16-bit operands, etc. Vectors and 8-bit data often appears in multimedia routine.
 
+<!--more-->
+
 ## Multiplication
 
 multiplicand * multiplier = product

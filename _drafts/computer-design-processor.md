@@ -36,6 +36,8 @@ A signal used for multiplexor selection or for directing the operation of a func
 
 > The state element is changed only when the write control signal is asserted and a clock edge occurs.
 
+<!--more-->
+
 ## A Simple Implementation Scheme
 
 *ALUOp* indicates whether the operation to be performed should be add for loas and stores, substract for beq, or determined by the operation encoded in the funct field.

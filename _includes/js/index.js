@@ -7,6 +7,8 @@ window.modules.index = function() {
     });
     ias.on('loaded', function(data, items) {
         console.log('loaded:', items);
+        updateTagHref();
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
     });
     ias.extension(new IASSpinnerExtension({
         src: '/assets/img/loading.gif'

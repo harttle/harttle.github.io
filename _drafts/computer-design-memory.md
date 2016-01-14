@@ -17,6 +17,8 @@ A structrue that uses multiple levels of memories; as the distance from the proc
 
 > The main memory is implemented from DRAM, levels closer to the processor use SRAM, the largest and slowest level is usually magnetic disk.
 
+<!--more-->
+
 ## The Basics of Caches
 
 **direct mapped cache**
