@@ -17,17 +17,20 @@
           </ul>
         </div>
 
-        <a href="/">
-          <i class="logo fa fa-h-square"></i> 
-        </a>
 
-        <div class="line">
-          <div class="site-brand">
+        {% capture title %}{{page.title}}{% endcapture %}
+        {% if title == "" %}
+          <a class="logo" href="/">
+            <i class="fa fa-h-square"></i> 
             <span class="logo-title">arttle&nbsp;Land</span>
-          </div>
+          </a>
+        {% else %}
+          <a class="logo" href="/">
+            <i class="fa fa-h-square"></i> 
+          </a>
+          <span class="page-title">{{title}}</span>
+        {% endif %}
 
-          <span class="page-title">{{page.title}}</span>
-        </div>
       </div>
     </div>
 

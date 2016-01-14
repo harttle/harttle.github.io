@@ -1,3 +1,5 @@
+@import 'variables';
+
 @mixin size($value){ 
   width: $value;
   height: $value;
@@ -53,8 +55,17 @@
 }
 
 @mixin box-shadow($shadows...) {
+  box-shadow: $shadows;
   -moz-box-shadow: $shadows;
   -webkit-box-shadow: $shadows;
-  box-shadow: $shadows;
+  -ms-box-shadow: $shadows;
+  -o-box-shadow: $shadows;
 }
 
+@mixin linear-gradient($v...){
+  background: linear-gradient($v);
+  background: -moz-linear-gradient($v);
+  background: -webkit-linear-gradient($v);
+  background: -ms-linear-gradient($v);
+  background: -o-linear-gradient($v);
+}

@@ -7,7 +7,7 @@ tags: C++ 动态内存 指针
 excerpt: 如果你用`new`申请了内存，请用`delete`来销毁；如果你用`new xx[]`申请了内存，请用`delete[]`来销毁。
 ---
 
-> Item 16: Use the same form in correspoinding uses of new and delete.
+> Item 16: Use the same form in corresponding uses of new and delete.
 
 这是C++界中家喻户晓的规则：**如果你用`new`申请了内存，请用`delete`来销毁；如果你用`new xx[]`申请了内存，请用`delete[]`来销毁**。
 不必多说了，来个例子吧：

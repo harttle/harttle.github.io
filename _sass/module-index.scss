@@ -1,13 +1,14 @@
 @import 'variables';
 
 &{
-  margin-top: 30px;
+  margin-top: 70px;
 }
 header{
   margin-bottom: 20px;
 }
 .post footer a{
   margin: 20px 10px 0;
+  font-size: 14px;    
 }
 .post{
   margin-bottom: 80px;
@@ -24,8 +25,10 @@ header{
 
 .md{
   *, h1, h2, h3, h4, h5, h6{
+    color: #777;
     font-weight: normal;
-    font-size: 13px;
+    font-size: 14px;
+    line-height: 28px;
   }
 }
 
