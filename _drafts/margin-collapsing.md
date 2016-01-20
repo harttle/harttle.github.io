@@ -13,6 +13,11 @@ tags: CSS HTML inline-block
 
 ![contain@2x][ct]
 
+如果元素左右相邻呢？一个典型的场景是几个`inline-block`元素并排显示。
+但`inline-block`元素的外边距是不合并的，它们会保持自己的间隔。
+
+> `inline-block`的上下外边距仍然是不起作用的，因为它们是行内元素呀！
+
 <!--more-->
 
 ## 父子元素
@@ -36,6 +41,7 @@ tags: CSS HTML inline-block
 
 这就是为什么连续的`<p></p>`其实占位很小。它们的上下边距会合并，
 空元素的上下边距也会合并。这一布局行为在这个场景下是非常有用的。
+
 
 [tp]: /assets/img/blog/css/margin-collapsing-top-bottom.png
 [ct]: /assets/img/blog/css/margin-collapsing-contain.png
