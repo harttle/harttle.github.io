@@ -57,7 +57,7 @@ JavaScript的设计中包含了优秀的部分和糟糕的部分。
 列举属性的方式确实更加直观，更加具有表达力。
 JavaScript的原型继承方式却是一个备受争议的特性。
 
-*全局变量应当是最糟糕的设计*。JavaScript需要全局变量来完成链接。JavaScript链接时会将所有编译单元的全局变量合并到`global`对象下。
+*全局变量应当是最糟糕的设计*。JavaScript需要全局变量来完成链接。JavaScript链接时会将所有编译单元的全局变量合并到`global`对象（在浏览器中，通常是`window`对象）下。
 
 # JavaScript代码片段
 
