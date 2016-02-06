@@ -113,13 +113,27 @@ JavaScript是class free的~ 但JavaScript为了迎合主流的基于类声明的
 根据`prototype`属性创建原型链，并以该对象为`this`执行指定的（构造）函数。
 
 ```javascript
-function Man(){
+function Man(name, age){
     this.sex = 'man';
+    this.name = name;
+    this.age = age;
 }
 Man.prototype.fuck = function(girl1, girl2, ...){}
 var man = new Man();
 man.fuck();
 ```
+
+当构造函数有很多参数时，它们的顺序很难记住，所以通常使用对象进行传参：
+
+```javascript
+var man = new Man({
+    name: 'bob',
+    age: 18
+});
+```
+
+给参数起名字以达到顺序无关的做法在Python中也存在，但JavaScript的对象传参还将带来另一个好处：
+JSON兼容。因为JavaScript常常需要数据库（例如MongoDB）或网络（`application/json`）传来的JSON数据，这一点使得对象构造非常方便。
 
 # Apply 调用模式
 

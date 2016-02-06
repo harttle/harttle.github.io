@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: JavaScript模仿类的继承
+title: JavaScript实现类的继承
 tags: JavaScript 继承 构造函数
 ---
 
