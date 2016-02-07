@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: JavaScript 对象有哪些用法？
+title: 细说 JavaScript 的对象
 tags: JavaScript 原型 继承 反射
 ---
 
