@@ -18,6 +18,11 @@ paginate_path: "page:num"
 markdown: kramdown
 markdown_ext:  md
 excerpt_separator: "<!--more-->"
+highlighter: rouge
+kramdown:
+  input: GFM
+  hard_wrap: false
+lsi: false
 
 exclude: ['README.md', '.*', 'scripts/', 'bak', 'Gemfile']
 
@@ -25,4 +30,5 @@ gems:
   - jekyll-sitemap
   - jekyll-redirect-from
   - jekyll-feed
+  - jekyll-paginate
 

@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: 
+title: Title
 tags: 
 ---
 
