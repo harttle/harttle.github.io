@@ -2,6 +2,7 @@
   position: relative;
   margin-top: -140px;
   padding-top: 140px;
+  z-index: -1;      // do not hide navbar
   &:before{
     content: '';
     width: 100%;
