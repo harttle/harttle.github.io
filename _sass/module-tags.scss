@@ -40,10 +40,17 @@ $left-width: 50%;
 li{
   line-height: 28px;
   font-size: 14px;
+  div{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   time{
+    float: right;
     color: #999;
     display: inline-block;
-    width: 130px;
+    width: 100px;
+    margin-left: 20px;
   }
 }
 

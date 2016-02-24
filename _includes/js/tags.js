@@ -46,11 +46,11 @@ window.modules.tags = function (console, $ele) {
     function updateList(ps){
         var $ul = $('<ul>');
         ps.map(function(p){
-            var $li = $('<li>');
-            var $time = $('<time>').html(p.date);
-            var $anchor = $('<a>', { href: p.url}).html(p.title);
-            $li.append($time).append($anchor);
-            $ul.append($li);
+            var $li = $('<li>', {class: 'clearfix'}),
+                $anchor = $('<a>', { href: p.url}).html(p.title),
+                $time = $('<time>').html(p.date),
+                $title = $('<div>').append($anchor);
+            $ul.append($li.append($time).append($title));
         });
         $('.post-list').html($ul.html());
     }
@@ -74,7 +74,7 @@ window.modules.tags = function (console, $ele) {
         return rawPosts.map(function(raw){
             return {
                 title: raw[0],
-                date: parseDate(raw[1]),
+                date: raw[1],
                 url: raw[2],
                 tags: raw[3].split(',').filter(notEmpty).map(trim),
                 tagstr: raw[3] + ','
@@ -130,11 +130,6 @@ window.modules.tags = function (console, $ele) {
             removeOverflowing: true,
             afterCloudRender: afterCloudRender
         });
-    }
-
-    function parseDate(date){
-        var tokens = date.split('-');
-        return tokens[0] + '年' + tokens[1] + '月' + tokens[2] + '日';
     }
 
     function trim(item){
