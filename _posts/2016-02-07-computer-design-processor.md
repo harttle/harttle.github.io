@@ -8,11 +8,11 @@ tags: 操作系统 流水线 数据冲突 异常 精确中断 并行 超标量
 
 A abstract view of the implementation of the MIPS subset showing the major functional units and the major connections between them:
 
-![abstract-view](/assets/img/blog/mips-abs.png)
+![abstract-view@2x](/assets/img/blog/mips-abs.png)
 
 The basic implementation of the MIPS subset, including the necessary multiplexors and control lines:
 
-![mips-basic](/assets/img/blog/mips-basic.png)
+![mips-basic@2x](/assets/img/blog/mips-basic.png)
 
 **asserted**
 

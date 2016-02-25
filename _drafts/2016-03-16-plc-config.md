@@ -6,11 +6,11 @@ tags: PLC
 
 **配置** 包含 *资源* ， *任务* （在 *资源* 中定义）， *全局变量* ， *访问路径* 和实例初始化。下图为一个简单配置的图形示例：
 
-![](/assets/img/blog/configuration-example.png)
+![@2x](/assets/img/blog/configuration-example.png)
 
 *功能块* 和 *程序* 的纲要声明如下：
 
-![](/assets/img/blog/configuration-example-st.png) 
+![@2x](/assets/img/blog/configuration-example-st.png) 
 
 <!--more-->
 
