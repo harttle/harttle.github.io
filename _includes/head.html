@@ -1,36 +1,21 @@
-{% if page.title %}
-  {% assign title=page.title %}
-{% else %}
-  {% assign title=site.name %}
-{% endif %}
-
 {% if page.tags %}
   {% assign tags=page.tags%}
 {% else %}
   {% assign tags=site.keywords%}
 {% endif %}
 
-{% if page.excerpt  %}
-  {% assign desc=page.excerpt %}
-{% else %}
-  {% assign desc=site.description %}
-{% endif %}
-
 <meta charset="utf-8">
-<meta name="keywords" content="{{ tags | join: ',' }}">
-<meta name="description" content="{{ desc | limits: 128 | strip_html | strip_newlines | truncate: 140 }}">
-<meta name="author" content="harttle">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="{{ tags | join: ',' }}">
 
+{% seo %}
 {% feed_meta %}
-<link rel="shortcut icon" href="/assets/img/favicon.png">
 
+<link rel="shortcut icon" href="/assets/img/favicon.png">
 <link rel="stylesheet" href="/assets/lib/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="/assets/lib/font-awesome/4.2.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/assets/css/site.css">
-
-<title>{{ title }}</title>
 
 <script src="/assets/lib/jquery/jquery-2.0.3.min.js"></script>
 

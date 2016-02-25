@@ -3,8 +3,9 @@
     {% for tag in site.tags limit : 1024 %}
       <li>
         <a data-tag="{{tag[0]}}">
-          {{tag[0]}} ({{tag[1] | size}})
+          {{tag[0]}} 
         </a> 
+        <span>{{tag[1] | size}}</span>
       </li>
     {% endfor %}
   </ol>

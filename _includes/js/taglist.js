@@ -11,7 +11,7 @@ window.modules.taglist = function(console, $ele, name){
         l2.html(tmp);
     }
     function val(i){
-        return parseInt($li.eq(i).find('a').html().match(/\((\d+)\)\s*$/)[1]);
+        return parseInt($li.eq(i).find('span').html().trim());
     }
     function text(i){
         return $li.eq(i).find('a').html().trim();

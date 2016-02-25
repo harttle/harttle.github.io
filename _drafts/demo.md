@@ -1,6 +1,8 @@
 ---
 layout: blog
 title: Title
-tags: 
+tags: JavaScript
 ---
+
+This is content.
 

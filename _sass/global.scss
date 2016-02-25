@@ -9,16 +9,19 @@ body {
 }
 
 a{
-  color: $color-link;
+  color: lighten($red, 10%);
+}
+a:hover, a:active{
+  color: $red;
 }
 
 a.glow{
   color: #555;
-  transition: color 0.15s ease-in-out;
+  transition: color 0.15s ease-in;
   text-decoration: none;
-  &:hover{
-    color: $red;
-  }
+}
+a.glow:hover{
+  color: $red;
 }
 
 .MathJax * {

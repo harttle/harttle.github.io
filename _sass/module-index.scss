@@ -6,17 +6,31 @@
 header{
   margin-bottom: 20px;
 }
-.post footer a{
-  margin: 20px 10px 0;
-  font-size: 14px;    
-}
-.post{
-  margin-bottom: 80px;
-}
-.post > header > h1{
-  margin-top: 0;
+.post {
+  header > h1{
+    font-size: 22px;
+    margin-top: 0;
+    a{
+      color: inherit;
+    }
+    a:hover, a:active{
+      color: $red;
+      text-decoration: none;
+    }
+  }
+  .more{
+    margin: 20px 10px 0;
+    font-size: 14px;    
+    color: lighten($red, 10%);
+  }
+  .more:hover{
+    color: $red;
+  }
 }
 
+.post{
+  margin-bottom: 130px;
+}
 @media(max-width: 768px){
   .post .post-meta .tags{
     display: none;
@@ -39,7 +53,7 @@ header{
 // layout
 aside{
   float: right;
-  margin-left: 60px;
+  margin-left: 80px;
   width: 235px;
 }
 .content{

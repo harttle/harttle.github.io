@@ -1,18 +1,41 @@
+@import 'variables';
+$border-color: #f5f5f5;
+
 li{
-  &:before{
-    content: "\f114";
-    margin-right: 5px;
-    font-family: FontAwesome;
-    color: #999;
-    display: inline-block;
-  }
-  padding: 9px 0;
-  border-bottom: 1px solid #eee;
+  padding: 9px 0 0;
+  border-bottom: 1px solid $border-color;
   a{
-    color: #3b86b0;
     font-family: 'Open Sans';
+    color: #aaa;
+  }
+  span{
+    color: #bbb;
+    float: right;
+    transition: color 0;
+    transition-delay: .3s;
   }
 }
-li:first-child{
-  border-top: 1px solid #eee;
+
+li::after{
+  content: ' ';
+  display: block;
+  clear: both;
+  transition: width .3s ease-in;
+  border-bottom: 1px solid lighten($red, 10%);
+  width: 0%;
+  height: 9px;
+}
+
+li:hover{
+  a, span{
+    color: #555;
+  }
+  a:hover{
+    color: $red;
+    text-decoration: none;
+  }
+}
+
+li:hover::after{
+  width: 100%;
 }

@@ -13,12 +13,21 @@ h4{
   border-bottom: 1px solid lighten($grey, 20%);
 }
 
+h4 .year{
+  float: right;
+  color: #aaa;
+  font-family: cursive;
+  font-size: 24px;
+  font-style: italic;
+}
+
 li{
   font-size: 14px;
   line-height: 28px;
   time{
-    color: #777;
+    color: #999;
     margin-right: 30px;
+    font-family: monospace;
   }
 }
 

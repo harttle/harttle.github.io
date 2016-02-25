@@ -14,7 +14,7 @@ layout: default
         <div class="post">
           <header>
             <h1 class="title">
-              <a class="glow" href="{{post.url}}">{{ post.title }}</a>
+              <a href="{{post.url}}">{{ post.title }}</a>
             </h1>
             {% include post-meta.html post=post %}
           </header>
@@ -22,7 +22,7 @@ layout: default
           <article class="md">{{ post.excerpt }}</article>
 
           <footer>
-            <a class="pull-right" href="{{ post.url }}" target='_blank'>
+            <a class="pull-right more" href="{{ post.url }}" target='_blank'>
               全文
               <span class="fa fa-angle-right"></span>
             </a>

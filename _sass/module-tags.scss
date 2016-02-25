@@ -23,6 +23,7 @@ $left-width: 50%;
 .right-panel{
   left:$left-width;
   right:0;
+  margin: 30px 0 30px 50px;
 }
 
 .tag-cloud{
@@ -31,10 +32,6 @@ $left-width: 50%;
   left: 20px;
   right: 20px;
   bottom: 36px;
-}
-
-.post-list{
-  margin: 30px 0 30px 50px;
 }
 
 li{

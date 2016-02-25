@@ -1,6 +1,10 @@
-name: Harttle Land
+title: Harttle Land
+description: 致力于简单的、一致的、高效的前端开发
 url: http://harttle.com
-description: Keep it simple, stupid.
+author: Harttle
+twitter:
+  username: harttleharttle
+logo: assets/img/favicon.png
 keywords: 
   - Web
   - HTML
@@ -31,4 +35,5 @@ gems:
   - jekyll-redirect-from
   - jekyll-feed
   - jekyll-paginate
+  - jekyll-seo-tag
 

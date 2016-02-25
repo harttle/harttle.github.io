@@ -19,9 +19,9 @@
   color: $red;
   vertical-align: middle;
   display: inline-block;
-  &:hover{
-    text-decoration: none;
-  }
+}
+.logo:hover, .logo:active{
+  text-decoration: none;
 }
 
 .logo-title{

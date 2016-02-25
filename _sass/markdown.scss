@@ -96,7 +96,7 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
     white-space: normal;/*overcome bootstrap nowrap*/
     padding: 3px 4px 0 4px;/*overcome bootstrap padding*/
 }
-.md a, .md a code { color: #4183C4; text-decoration:none; }
+.md a, .md a code { text-decoration:none; }
 .md a:hover, .md a code:hover { text-decoration:underline; }
 .md table {
     border-collapse: collapse;
