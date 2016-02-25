@@ -13,7 +13,7 @@ header{
     a{
       color: inherit;
     }
-    a:hover, a:active{
+    a:hover, a:active, a:focus{
       color: $red;
       text-decoration: none;
     }
@@ -30,7 +30,20 @@ header{
 
 .post{
   margin-bottom: 130px;
+  .post-meta{
+    overflow: hidden;
+    .date{
+      float: right;
+      i{
+        display: none;
+      }
+    }
+    .tags{
+      float: left;
+    }
+  }
 }
+
 @media(max-width: 768px){
   .post .post-meta .tags{
     display: none;

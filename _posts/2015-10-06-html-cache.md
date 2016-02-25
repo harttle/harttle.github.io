@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: web
 title: Web性能优化：prefetch, prerender
-tags: HTML HTTP
+tags: HTML HTTP DNS JavaScript
 excerpt: 本文从预加载的角度介绍如何优化页面载入和渲染的性能，介绍`dns-prefetch`, `subresource`, `prefetch`, `prerender`等浏览器性能优化。
 ---
 

@@ -1,6 +1,5 @@
 ---
 layout: blog
-categories: web
 title: Web开发中跨域的几种解决方案
 tags: JavaScript HTML HTTP DOM
 excerpt: 这些办法大致可以分为两类： 一类是Hack，比如通过`title`, `navigation`等对象传递信息，JSONP可以说是一个最优秀的Hack。 另一类是HTML5支持，一个是`Access-Control-Allow-Origin`响应头，一个是`window.postMessage`。 跨域的正道还是HTML5提供的CORS头字段以及`window.postMessage`， 可以支持POST, PUT等HTTP方法，从机制上解决跨域问题。

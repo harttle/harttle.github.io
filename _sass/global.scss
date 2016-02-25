@@ -5,13 +5,13 @@ body {
   position: relative; /* for scroll spy with absolute position */
   color: rgb(96, 96, 96);
   font-size: 13px;
-  font-family: 'Open Sans', "Helvetica Neue", 微软雅黑, Helvetica, Arial, sans-serif;
+  font-family: Georgia, serif, 微软雅黑;
 }
 
 a{
   color: lighten($red, 10%);
 }
-a:hover, a:active{
+a:hover, a:active, a:focus{
   color: $red;
 }
 

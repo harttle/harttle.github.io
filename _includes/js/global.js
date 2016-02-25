@@ -1,4 +1,5 @@
 var footHeight = $('#footer').outerHeight(true);
+
 window.$body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
 
 location.query = function(name, val) {
