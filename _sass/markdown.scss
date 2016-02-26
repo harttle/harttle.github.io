@@ -1,6 +1,5 @@
-/* 
-Some basic Github styles and syntax highlighting CSS via Pygments.
- */
+@import 'variables';
+
 .md{
     color: #555;
     font-size:14px;
@@ -29,6 +28,12 @@ Some basic Github styles and syntax highlighting CSS via Pygments.
 .md{
   h1, h2, h3, h4, h5, h6{
     font-family: sans-serif, 微软雅黑;
+  }
+  a{
+    color: #428bca;
+  }
+  a:hover, a:focus, a:active{
+    color: #2a6496;
   }
 }
 .md h1 {
