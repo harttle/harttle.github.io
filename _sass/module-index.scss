@@ -30,18 +30,6 @@ header{
 
 .post{
   margin-bottom: 110px;
-  .post-meta{
-    overflow: hidden;
-    .date{
-      float: right;
-      i{
-        display: none;
-      }
-    }
-    .tags{
-      float: left;
-    }
-  }
 }
 
 @media(max-width: 768px){
