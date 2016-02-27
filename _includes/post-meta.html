@@ -1,10 +1,5 @@
 <p class="post-meta">
-  <span class="tags">
-    <i class="fa fa-tag"></i>
-    {% for tag in include.post.tags %}
-      <a class="glow" data-tag="{{tag}}">{{tag}}</a>
-    {% endfor %}
-  </span>
+  {% include post-tags.html %}
   <span class="date">
     <i class="fa fa-clock-o"></i>
     {{ include.post.date | date: "%Y-%-m-%-d"}}

@@ -1,6 +1,6 @@
 <section class="module-taglist" style="display:none;">
   <ol class="list-unstyled">
-    {% for tag in site.tags limit : 1024 %}
+    {% for tag in site.tags limit : 32 %}
       <li>
         <a data-tag="{{tag[0]}}">
           {{tag[0]}} 

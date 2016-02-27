@@ -11,15 +11,19 @@ layout: default
     <div class="posts">
       {% for post in paginator.posts %}
 
-        <div class="post">
+        <article class="post">
           <header>
+            <time>
+              <p class="day">{{post.date | date: '%d'}}</p>
+              <p class="month">{{post.date | date: '%Y, %b'}}</p>
+            </time>
             <h1 class="title">
               <a href="{{post.url}}">{{ post.title }}</a>
             </h1>
-            {% include post-meta.html post=post %}
+            {% include post-tags.html post=post %}
           </header>
 
-          <article class="md">{{ post.excerpt }}</article>
+          <div class="md">{{ post.excerpt }}</div>
 
           <footer>
             <a class="pull-right more" href="{{ post.url }}" target='_blank'>
@@ -27,27 +31,13 @@ layout: default
               <span class="fa fa-angle-right"></span>
             </a>
           </footer>
-        </div>
+        </article>
 
       {% endfor %}
     </div>
 
-    {% if paginator.total_pages > 1 %}
-    <ul class="pager">
-      {% if paginator.next_page %}
-      <li class="previous"><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr;
-        Older</a></li>
-      {% else %}
-      <li class="previous disabled"><a>&larr; Older</a></li>
-      {% endif %}
-
-      {% if paginator.previous_page %}
-      <li class="next"><a
-          href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">Newer &rarr;</a></li>
-      {% else %}
-      <li class="next disabled"><a>Newer &rarr;</a></li>
-      {% endif %}
-    </ul>
+    {% if paginator.next_page %}
+      <a class="pager-next-url" href="{{ paginator.next_page_path }}"></a>
     {% endif %}
 
     {% include latex.html %}

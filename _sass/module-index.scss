@@ -7,19 +7,43 @@ header{
   margin-bottom: 20px;
 }
 .post {
-  header > h1{
-    font-size: 22px;
-    margin-top: 0;
-    a{
-      color: inherit;
-    }
-    a:hover, a:active, a:focus{
-      color: $red;
-      text-decoration: none;
+  margin-bottom: 70px;
+  header{
+    overflow: hidden;
+    time{
+      float: left;
+      color: #777;
+      font-family: sans-serif;
+      border-right: 1px solid #999;
+      margin-right: 20px;
+      padding-right: 20px;
+      .day{
+        font-size: 20px;
+        line-height: 22px;
+      }
+      .month{
+        font-size: 14px;
+        margin-bottom: 0;
+        font-style: italic;
+        font-family: cursive;
+        color: #999;
+      }
+    }    
+    h1{
+      font-size: 20px;
+      margin-top: 0;
+      font-family: sans-serif;
+      a{
+        color: inherit;
+      }
+      a:hover, a:active, a:focus{
+        color: $red;
+        text-decoration: none;
+      }
     }
   }
   .more{
-    margin: 20px 10px 0;
+    margin: 10px 10px 0;
     font-size: 14px;    
     color: lighten($red, 10%);
   }
@@ -28,12 +52,8 @@ header{
   }
 }
 
-.post{
-  margin-bottom: 110px;
-}
-
 @media(max-width: 768px){
-  .post .post-meta .tags{
+  .post header time{
     display: none;
   }
 }

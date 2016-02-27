@@ -35,3 +35,12 @@ h1{
 .ias-noneleft{
   margin-bottom: 50px;
 }
+
+@media(min-width:768px){
+  .container-fluid {
+    padding-right: 30px;
+    padding-left: 30px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}

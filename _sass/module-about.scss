@@ -14,50 +14,57 @@
   }
 }
 
-.lead{
-  margin-top: 120px;
-  height: 180px;
+.banner{
   text-align: center;
-  color: white;
-  font-size: 28px;
+  .avatar{
+    margin-top: 120px;
+    width: 160px;
+    border-radius: 80px;
+    margin-bottom: 20px;
+  }
+  .lead{
+    color: #525252;
+    font-size: 24px;
+    margin-bottom: 50px;
+  }
 }
 
-.body{
+.links{
   background-color: rgba(0,0,0,0.5);
   .container-fluid{
     padding-top: 70px;
     padding-bottom: 50px;
   }
-}
-section{
-  $border-color: #555;
-  margin-left: 50px;
-  margin-right: 50px;
-  border: 1px solid $border-color;
-  border-radius: 3px;
-  text-align: center;
-  header, ul{
-    padding: 10px;
-    margin: 0;
-  }
-  header{
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    border-bottom: 1px solid $border-color;
-  }
-  ul{
-    $fore-color: #888;
-    min-height: 140px;
-    color: $fore-color;
-    font-size: 14px;
-    a{
-      color: $fore-color;
-      @include linkable;
+  section{
+    $border-color: #555;
+    margin-left: 50px;
+    margin-right: 50px;
+    border: 1px solid $border-color;
+    border-radius: 3px;
+    text-align: center;
+    header, ul{
+      padding: 10px;
+      margin: 0;
     }
-    li{
-      height: 24px;
-      line-height: 24px;
+    header{
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      border-bottom: 1px solid $border-color;
+    }
+    ul{
+      $fore-color: #888;
+      min-height: 140px;
+      color: $fore-color;
+      font-size: 14px;
+      a{
+        color: $fore-color;
+        @include linkable;
+      }
+      li{
+        height: 24px;
+        line-height: 24px;
+      }
     }
   }
 }

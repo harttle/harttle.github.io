@@ -35,7 +35,7 @@
 
 .logo-title{
   font-size: 24px;
-  opacity: 0;
+  opacity: 0.5;
   @include linear-gradient(45deg, $red, $green, $blue);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

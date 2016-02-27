@@ -2,17 +2,21 @@
 
 .post-meta{
   color: #aaa; 
-  a{
-    color: #aaa;
-    margin-right: 2px;
-    @include linkable;
-  }
   .tags{
     margin-right: 10px;
   }
 }
 
+.tags{
+  a, i{
+    color: #aaa;
+    margin-right: 5px;
+  }
+  a{
+    @include linkable;
+  }
+}
+
 .title{
   font-weight: normal;
-  font-style: italic;
 }

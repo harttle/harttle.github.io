@@ -2,8 +2,8 @@ window.modules.index = function() {
     var ias = $.ias({
         container: '.posts',
         item: '.post',
-        pagination: '.pager',
-        next: '.pager .previous a'
+        pagination: '.pager-next-url',
+        next: '.pager-next-url'
     });
     ias.on('loaded', function(data, items) {
         console.log('loaded:', items);
