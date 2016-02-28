@@ -5,7 +5,7 @@ li{
   padding: 9px 0 0;
   border-bottom: 1px solid $border-color;
   a{
-    font-family: 'Open Sans';
+    @include sans;
     color: #aaa;
   }
   span{

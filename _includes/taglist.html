@@ -1,12 +1,14 @@
 <section class="module-taglist" style="display:none;">
   <ol class="list-unstyled">
-    {% for tag in site.tags limit : 32 %}
-      <li>
-        <a data-tag="{{tag[0]}}">
-          {{tag[0]}} 
-        </a> 
-        <span>{{tag[1] | size}}</span>
-      </li>
+    {% for tag in site.tags limit : 65535 %}
+      {% if tag[1].size > 2 %}
+        <li>
+          <a data-tag="{{tag[0]}}">
+            {{tag[0]}} 
+          </a> 
+          <span>{{tag[1] | size}}</span>
+        </li>
+      {% endif %}
     {% endfor %}
   </ol>
 </section>

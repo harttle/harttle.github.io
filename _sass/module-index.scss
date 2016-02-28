@@ -13,8 +13,8 @@ header{
     time{
       float: left;
       color: #777;
-      font-family: sans-serif;
-      border-right: 1px solid #999;
+      @include sans;
+      border-right: 1px solid #ccc;
       margin-right: 20px;
       padding-right: 20px;
       .day{
@@ -32,7 +32,6 @@ header{
     h1{
       font-size: 20px;
       margin-top: 0;
-      font-family: sans-serif;
       a{
         color: inherit;
       }

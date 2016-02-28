@@ -5,7 +5,11 @@ body {
   position: relative; /* for scroll spy with absolute position */
   color: rgb(96, 96, 96);
   font-size: 13px;
-  font-family: Georgia, serif, 微软雅黑;
+  font-family: Georgia, serif;
+}
+
+h1, h2, h3, h4, h5, h6, nav li, .nav li{
+  @include sans;
 }
 
 a{
@@ -26,10 +30,6 @@ a.glow:hover{
 
 .MathJax * {
   color: black !important;
-}
-
-h1{
-  font-size: 20px;
 }
 
 .ias-noneleft{

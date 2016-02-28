@@ -16,7 +16,7 @@ keywords:
   - Vim
 
 permalink: /:year/:month/:day/:title.html
-paginate: 4
+paginate: 7
 paginate_path: "page:num"
 
 markdown: kramdown
