@@ -23,7 +23,6 @@
 .logo{
   font-size: 32px;
   color: $red;
-  vertical-align: middle;
   display: inline-block;
   i:hover{
     text-shadow: $red 0 0 1px;
@@ -49,8 +48,6 @@
   font-size: 20px;
   margin-right: 50px;
   margin-left: 5px;
-  line-height: 32px;
-  vertical-align: middle;
   transition: opacity 1s;
 }
 

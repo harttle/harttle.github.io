@@ -1,26 +1,28 @@
 window.modules.tags = function (console, $ele) {
     var posts = parsePosts(getRawArray('script#posts-data'));
     var tags = parseTags(getRawArray('script#tags-data'));
-    var selectedSpan = null, selectedTag = null, dirty = false;
+
+    // Tag Cloud
+
+    var selectedSpan = null, selectedTag = null, dirty = false,
+        $tagCloud = $('.tag-cloud');
 
     initTagCloud(tags);
 
     var tag = location.query('tag');
-    if(tag){
-        setSelected(tag);
-    }
-    else{
-        updateList(posts.slice(0, 30));
-    }
+    if(tag) setSelected(tag);
+    else updateList(posts.slice(0, 30));
 
-    $('.tag-cloud').on('click', 'span', function(e){
+    $tagCloud.on('click', 'span', function(e){
         var $span = $(e.target);
         setSelected($span.html());
     });
 
     function setSelected(tag){
         selectedTag = tag;
-        updateList(searchByTag(tag));
+        var posts = searchByTag(tag);
+        updateList(posts);
+        updateTitle(tag, posts.length);
         location.query('tag', tag);
         $body.animate({
             scrollTop: $('.right-panel').offset().top
@@ -28,6 +30,12 @@ window.modules.tags = function (console, $ele) {
         if(!updateSpan().length){
             dirty = true;
         }
+    }
+
+    function updateTitle(tag, count){
+        var text = '技术标签：' + tag + '（'+ count + '）';
+        $('head title').html(text);
+        $('.page-title').html(text);
     }
 
     function updateSpan(){
@@ -48,16 +56,16 @@ window.modules.tags = function (console, $ele) {
         ps.map(function(p){
             var $li = $('<li>', {class: 'clearfix'}),
                 $anchor = $('<a>', { href: p.url}).html(p.title),
-                $time = $('<time>').html(p.date),
-                $title = $('<div>').append($anchor);
-            $ul.append($li.append($time).append($title));
+                    $time = $('<time>').html(p.date),
+                        $title = $('<div>').append($anchor);
+                        $ul.append($li.append($time).append($title));
         });
         $('.post-list').html($ul.html());
     }
 
     function searchByTag(tag){
         return posts.filter(function(post){
-            return post.tagstr.indexOf(tag + ',') > -1;
+            return post.tagstr.indexOf(',' + tag + ',') > -1;
         });
     }
 
@@ -77,7 +85,7 @@ window.modules.tags = function (console, $ele) {
                 date: raw[1],
                 url: raw[2],
                 tags: raw[3].split(',').filter(notEmpty).map(trim),
-                tagstr: raw[3] + ','
+                tagstr: ',' + raw[3] + ','
             };
         });
     }
@@ -94,7 +102,7 @@ window.modules.tags = function (console, $ele) {
             norm = Math.max(norm, wt);
             return {
                 text: raw[0],
-                rawWeight: raw[1],
+                count: parseInt(raw[1]),
                 weight: wt,
                 afterWordRender: function(){
                     this.attr('data-tag', raw[0]);
@@ -127,8 +135,10 @@ window.modules.tags = function (console, $ele) {
 
     function initTagCloud(tags){
         $('.tag-cloud').jQCloud(tags, {
-            removeOverflowing: true,
-            afterCloudRender: afterCloudRender
+            // removeOverflowing: true,
+            // shape: 'rectangular',
+            afterCloudRender: afterCloudRender,
+            autoResize: true
         });
     }
 
@@ -138,5 +148,87 @@ window.modules.tags = function (console, $ele) {
     function notEmpty(item){
         return item.trim() !== '';
     }
+
+    // Tag Charts
+
+    // Radialize the colors
+    Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function (color) {
+        return {
+            radialGradient: {
+                cx: 0.5,
+                cy: 0.3,
+                r: 0.7
+            },
+            stops: [
+                [0, color],
+                [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+            ]
+        };
+    });
+
+    // Build the chart
+    var zones = tags.slice(0, 20), $tagChart = $('.tag-chart');
+    zones = zones.map(function(tag){
+        return {
+            name: tag.text,
+            y: tag.count
+        };
+    });
+    var chartOptions = {
+        title: {
+            text: '' 
+        },
+        credits: {
+            enabled: false
+        },
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        tooltip: {
+            enabled: false,
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                point: {
+                    events: {
+                        click: function (e) {
+                            setSelected(this.name);
+                        }
+                    }
+                },
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.y}',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    },
+                    connectorColor: 'silver'
+                }
+            }
+        },
+        series: [{
+            name: 'Tags',
+            data: zones
+        }]
+    };
+
+    // Toggle Logic
+    var $toggle = $('.toggle'), tagCloudShown = true;
+    $toggle.click(function(){
+        $tagCloud.fadeToggle();
+        if(tagCloudShown){
+            $tagChart.show();
+            $tagChart.highcharts(chartOptions);
+        }
+        else{
+            $tagChart.html('');
+        }
+        tagCloudShown = !tagCloudShown;
+    });
 };
 

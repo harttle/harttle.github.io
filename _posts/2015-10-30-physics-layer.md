@@ -1,6 +1,5 @@
 ---
 layout: blog
-categories: reading
 title: 《计算机网络》笔记：物理层
 tags: 电路交换 电话网络 香农定理
 ---

@@ -18,20 +18,38 @@ $left-width: 50%;
 .left-panel{
   left: 0;
   width: $left-width;
+  .tag-cloud{
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    right: 20px;
+    bottom: 46px;
+  }
+  .tag-chart{
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    display: none;
+  }
+}
+
+.toggle{
+  position: absolute;
+  bottom: 34px;
+  left: 35px;
+  color: #ccc;
+  margin: 0;
+}
+.toggle:hover{
+  color: lighten($red, 10%);
 }
 
 .right-panel{
   left:$left-width;
   right:0;
-  margin: 30px 0 30px 50px;
-}
-
-.tag-cloud{
-  position: absolute;
-  top: 30px;
-  left: 20px;
-  right: 20px;
-  bottom: 36px;
+  margin: 30px 0 40px 50px;
 }
 
 li{

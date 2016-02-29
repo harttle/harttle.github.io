@@ -6,7 +6,7 @@ tags: 操作系统 磁盘 RAID 磁道 柱面
 
 ## Introduction
 
-![io-dev](/assets/img/blog/io-dev.png)
+![io-dev@1.5x](/assets/img/blog/io-dev.png)
 
 ## Dependability, Reliability, and Availability
 
@@ -114,7 +114,7 @@ The chip for memory controller hub next to the processor.
 
 The one connected to north bridge, witch is the I/O controller hub.
 
-![intel-io](/assets/img/blog/intel-io.png)
+![intel-io@1.5x](/assets/img/blog/intel-io.png)
 
 ## Interfacing I/O Devices to the Processor, Memory, and Operating System
 

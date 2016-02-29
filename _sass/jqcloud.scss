@@ -50,7 +50,9 @@ div.jqcloud span.glowing{
 }
 
 @keyframes glowing {
-  from { color: $red; text-shadow: 0 0 15px $red}
+  from { 
+    color: transparent; 
+  }
 }
 
 /* layout */

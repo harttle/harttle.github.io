@@ -1,13 +1,14 @@
 ---
 layout: default
-title: 标签
+title: 技术标签
 ---
 
 <div class="module-tags container-fluid">
 
   <div class="left-panel">
-    <div class="tag-cloud">
-    </div>
+    <div class="tag-cloud"></div>
+    <div class="tag-chart"></div>
+    <a href="#" class="toggle"><i class="fa fa-glass"></i></a>
   </div>
 
   <div class="right-panel">
@@ -18,7 +19,9 @@ title: 标签
 
 <script type="text/plain" id="tags-data">
 {% for tag in site.tags %}
- {{ tag|first }}&{{ tag|last|size }};
+  {% if tag[1].size > 1 %}
+    {{ tag|first }}&{{ tag|last|size }};
+  {% endif %}
 {% endfor %}
 </script>
 
@@ -27,4 +30,6 @@ title: 标签
  {{ post.title }}&{{ post.date| date: '%Y-%m-%d'}}&{{post.url}}&{{ post.tags | join: ','}};
 {% endfor %}
 </script>
+
+<script src="http://code.highcharts.com/highcharts.js"></script>
 

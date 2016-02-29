@@ -11,12 +11,11 @@ header{
   header{
     overflow: hidden;
     time{
-      float: left;
+      float: right;
+      text-align: right;
       color: #777;
       @include sans;
-      border-right: 1px solid #ccc;
-      margin-right: 20px;
-      padding-right: 20px;
+      margin-right: 10px;
       .day{
         font-size: 20px;
         line-height: 22px;
@@ -42,9 +41,9 @@ header{
     }
   }
   .more{
-    margin: 10px 10px 0;
-    font-size: 14px;    
     color: lighten($red, 10%);
+    display: inline-block;
+    margin-top: 10px;
   }
   .more:hover{
     color: $red;

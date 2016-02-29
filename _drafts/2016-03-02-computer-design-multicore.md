@@ -26,7 +26,7 @@ A set of compters connected over a local area network (LAN) that functions as a 
 
 A microprocessor containing multiple processors ("cores") in a single integrated circuit.
 
-![para-cate](/assets/img/blog/para-cate.png)
+![para-cate@1.5x](/assets/img/blog/para-cate.png)
 
 <!--more-->
 
@@ -70,11 +70,11 @@ The process of coordinating the behavior of two or more processes, which may be 
 
 A synchronization device that allows access to data to only one processor at a time.
 
-![shared-mem](/assets/img/blog/shared-mem.png)
+![shared-mem@1.5x](/assets/img/blog/shared-mem.png)
 
 ## Distributed Memory Multiprocessors
 
-![distri-mem](/assets/img/blog/distri-mem.png)
+![distri-mem@1.5x](/assets/img/blog/distri-mem.png)
 
 There were several attempts to build high-performance computers based on high-performance message-passing networks, while they were all too expensive than using LAN.
 
@@ -103,5 +103,5 @@ There are two main approaches to hardware multithreading.
 
 3. **Simultaneous multithreading (SMT)** A version of multithreading that lowers the cost of multithreading by utilizing the resources neede for multiple issue, dynamically schedule microarchitecture.
 
-![thread-multi](/assets/img/blog/thread-multi.png)
+![thread-multi@1.5x](/assets/img/blog/thread-multi.png)
 

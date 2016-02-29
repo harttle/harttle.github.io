@@ -1,6 +1,6 @@
 <section class="module-taglist" style="display:none;">
   <ol class="list-unstyled">
-    {% for tag in site.tags limit : 65535 %}
+    {% for tag in site.tags %}
       {% if tag[1].size > 2 %}
         <li>
           <a data-tag="{{tag[0]}}">

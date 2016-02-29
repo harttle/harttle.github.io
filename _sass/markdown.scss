@@ -137,3 +137,6 @@
 .md img[src*='@2x'], .md img[alt*='@2x']{
     zoom: 50%;
 }
+.md img[src*='@1.5x'], .md img[alt*='@1.5x']{
+    zoom: 66.67%;
+}

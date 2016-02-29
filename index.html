@@ -25,12 +25,9 @@ layout: default
 
           <div class="md">{{ post.excerpt }}</div>
 
-          <footer>
-            <a class="pull-right more" href="{{ post.url }}" target='_blank'>
-              全文
-              <span class="fa fa-angle-right"></span>
-            </a>
-          </footer>
+          <a class="more" href="{{ post.url }}" target='_blank'>
+            继续阅读 <i class="fa fa-angle-right"></i>
+          </a>
         </article>
 
       {% endfor %}

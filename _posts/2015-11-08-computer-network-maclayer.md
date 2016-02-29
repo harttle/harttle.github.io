@@ -1,6 +1,5 @@
 ---
 layout: blog
-categories: reading
 title:  《计算机网络》笔记 - 介质访问控制子层
 tags: MAC 多路复用 LAN WAN 蓝牙
 ---
