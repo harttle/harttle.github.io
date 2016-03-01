@@ -10,26 +10,26 @@ window.modules.tags = function (console, $ele) {
     initTagCloud(tags);
 
     var tag = location.query('tag');
-    if(tag) setSelected(tag);
-    else updateList(posts.slice(0, 30));
+    if(tag) updateSelected(tag, true);
+    else updateList(posts.slice(0, 30), true);
 
     $tagCloud.on('click', 'span', function(e){
         var $span = $(e.target);
-        setSelected($span.html());
+        updateSelected($span.html());
     });
 
-    function setSelected(tag){
+    function updateSelected(tag, firstTime){
         selectedTag = tag;
-        var posts = searchByTag(tag);
-        updateList(posts);
-        updateTitle(tag, posts.length);
+        var selectedPosts = searchByTag(tag); 
+        updateList(selectedPosts, firstTime);
+        updateTitle(tag, selectedPosts.length);
         location.query('tag', tag);
-        $body.animate({
-            scrollTop: $('.right-panel').offset().top
-        }, 500);
-        if(!updateSpan().length){
-            dirty = true;
+        if(!firstTime){
+            $body.animate({
+                scrollTop: $('.right-panel').offset().top
+            }, 500);
         }
+        if(!updateSpan().length) dirty = true;
     }
 
     function updateTitle(tag, count){
@@ -49,18 +49,22 @@ window.modules.tags = function (console, $ele) {
         if(!dirty) return;
         updateSpan();
         dirty = false;
+        $('.toggle').show();
     }
 
-    function updateList(ps){
-        var $ul = $('<ul>');
-        ps.map(function(p){
+    function updateList(posts, disableAnimation){
+        var $ul = $('<ul>'), $list = $('.post-list');
+        $list.hide();
+        posts.map(function(p){
             var $li = $('<li>', {class: 'clearfix'}),
                 $anchor = $('<a>', { href: p.url}).html(p.title),
-                    $time = $('<time>').html(p.date),
-                        $title = $('<div>').append($anchor);
-                        $ul.append($li.append($time).append($title));
+                $time = $('<time>').html(p.date),
+                $title = $('<div>').append($anchor);
+            $ul.append($li.append($time).append($title));
         });
-        $('.post-list').html($ul.html());
+        $list.html($ul.html());
+        if(disableAnimation) $list.show();
+        else $list.fadeIn();
     }
 
     function searchByTag(tag){
@@ -197,7 +201,7 @@ window.modules.tags = function (console, $ele) {
                 point: {
                     events: {
                         click: function (e) {
-                            setSelected(this.name);
+                            updateSelected(this.name);
                         }
                     }
                 },
@@ -221,13 +225,9 @@ window.modules.tags = function (console, $ele) {
     var $toggle = $('.toggle'), tagCloudShown = true;
     $toggle.click(function(){
         $tagCloud.fadeToggle();
-        if(tagCloudShown){
-            $tagChart.show();
-            $tagChart.highcharts(chartOptions);
-        }
-        else{
-            $tagChart.html('');
-        }
+        $tagChart.toggle();
+        if(tagCloudShown) $tagChart.highcharts(chartOptions);
+        else $tagChart.html('');
         tagCloudShown = !tagCloudShown;
     });
 };

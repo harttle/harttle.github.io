@@ -4,7 +4,7 @@
 .navbar-wrapper{
   padding-top: 20px;
   padding-bottom: 20px;
-
+  border-bottom: 1px solid #eee;
   background: rgba(255,255,255,0.7);
   transition: background 1s;
   &:hover{
@@ -20,8 +20,14 @@
   }
 }
 
+.title-wrapper{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0;
+}
 .logo{
-  font-size: 32px;
+  font-size: 36px;
   color: $red;
   display: inline-block;
   i:hover{
@@ -33,7 +39,7 @@
 }
 
 .logo-title{
-  font-size: 24px;
+  font-size: 29px;
   opacity: 0.5;
   @include linear-gradient(45deg, $red, $green, $blue);
   -webkit-background-clip: text;
@@ -61,7 +67,7 @@
   .toggle{
     color: #555;
     font-size: 24px;
-    line-height: 32px;
+    line-height: 51px;
     transform: rotateX(0);
     transition: all 0.5s ease-out;
   }

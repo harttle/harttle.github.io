@@ -1,55 +1,49 @@
 $left-width: 50%;
+@mixin trbl($t, $r, $b, $l){
+  top: $t;
+  bottom: $b;
+  left: $l;
+  right:$r;
+}
 
 &{
   position: fixed;
-  top: 77px;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  @include trbl( 77px + 40px, 30px, 30px, 30px);
 }
 
 .left-panel, .right-panel{
   position: absolute;
-  overflow: auto;
-  top:0;
-  bottom:0;
+  @include trbl(0, 0, 0, 0);
 }
 
 .left-panel{
-  left: 0;
   width: $left-width;
-  .tag-cloud{
+  .tag-cloud, .tag-chart{
     position: absolute;
-    top: 30px;
-    left: 20px;
-    right: 20px;
-    bottom: 46px;
+    @include trbl(0, 0, 0, 0);
+  }
+  .tag-cloud{
   }
   .tag-chart{
-    position: absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
     display: none;
   }
-}
-
-.toggle{
-  position: absolute;
-  bottom: 34px;
-  left: 35px;
-  color: #ccc;
-  margin: 0;
-}
-.toggle:hover{
-  color: lighten($red, 10%);
+  .toggle{
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #ccc;
+    margin: 0;
+  }
+  .toggle:hover{
+    color: lighten($red, 10%);
+  }
 }
 
 .right-panel{
+  overflow: auto;
   left:$left-width;
-  right:0;
-  margin: 30px 0 40px 50px;
+  padding-left: 20px;
 }
 
 li{
@@ -77,6 +71,7 @@ li{
 @media(max-width: 768px){
   &{
     position: static;
+    margin: 40px 30px 30px;
   }
   .left-panel{
     position: relative;
@@ -85,10 +80,8 @@ li{
   }
   .right-panel{
     position: static;
-    .post-list{
-      margin-left: 15px;
-      margin-right: 15px;
-    }
+    margin-top: 30px;
+    padding-left: 0;
   }
 }
 

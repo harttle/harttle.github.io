@@ -1,19 +1,20 @@
 @import 'variables';
+$top-blank: 45px;
 
-&{
-  margin-top: 70px;
-}
 header{
   margin-bottom: 20px;
 }
+aside{
+  margin-top: $top-blank;
+}
 .post {
-  margin-bottom: 70px;
+  margin-top: $top-blank;
   header{
     overflow: hidden;
     time{
       float: right;
       text-align: right;
-      color: #777;
+      color: #999;
       @include sans;
       margin-right: 10px;
       .day{
@@ -25,11 +26,10 @@ header{
         margin-bottom: 0;
         font-style: italic;
         font-family: cursive;
-        color: #999;
       }
     }    
     h1{
-      font-size: 20px;
+      font-size: 22px;
       margin-top: 0;
       a{
         color: inherit;

@@ -17,19 +17,20 @@
           </ul>
         </nav>
 
-
-        {% capture title %}{{page.title}}{% endcapture %}
-        {% if title == "" %}
-          <a class="logo" href="/">
-            <i class="fa fa-h-square"></i> 
-            <span class="logo-title">arttle&nbsp;Land</span>
-          </a>
-        {% else %}
-          <a class="logo" href="/">
-            <i class="fa fa-h-square"></i> 
-          </a>
-          <span class="page-title">{{title}}</span>
-        {% endif %}
+        <p class="title-wrapper">
+          {% capture title %}{{page.title}}{% endcapture %}
+          {% if title == "" %}
+            <a class="logo" href="/">
+              <i class="fa fa-h-square"></i> 
+              <span class="logo-title">arttle&nbsp;Land</span>
+            </a>
+          {% else %}
+            <a class="logo" href="/">
+              <i class="fa fa-h-square"></i> 
+            </a>
+            <span class="page-title">{{title}}</span>
+          {% endif %}
+        </p>
 
       </div>
     </div>
