@@ -10,13 +10,13 @@ layout: default
   <div class="content"> 
     <div class="posts">
       {% for post in paginator.posts %}
-
-        <article class="post">
+      <div class="post">
+        <time>
+          <p class="day">{{post.date | date: '%d'}}</p>
+          <p class="month">{{post.date | date: '%Y, %b'}}</p>
+        </time>
+        <article>
           <header>
-            <time>
-              <p class="day">{{post.date | date: '%d'}}</p>
-              <p class="month">{{post.date | date: '%Y, %b'}}</p>
-            </time>
             <h1 class="title">
               <a href="{{post.url}}">{{ post.title }}</a>
             </h1>
@@ -25,11 +25,11 @@ layout: default
 
           <div class="md">{{ post.excerpt }}</div>
 
-          <a class="more" href="{{ post.url }}" target='_blank'>
+          <a class="more btn btn-link pull-right" href="{{ post.url }}" target='_blank'>
             继续阅读 <i class="fa fa-angle-right"></i>
           </a>
         </article>
-
+      </div>
       {% endfor %}
     </div>
 

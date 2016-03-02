@@ -1,59 +1,79 @@
 @import 'variables';
-$top-blank: 45px;
+@import 'mixins';
+$top-blank: 55px;
+$timeline-left-width: 110px;
 
-header{
-  margin-bottom: 20px;
-}
-aside{
+aside, .posts{
   margin-top: $top-blank;
 }
 .post {
-  margin-top: $top-blank;
-  header{
-    overflow: hidden;
-    time{
-      float: right;
-      text-align: right;
-      color: #999;
-      @include sans;
-      margin-right: 10px;
-      .day{
-        font-size: 20px;
-        line-height: 22px;
-      }
-      .month{
-        font-size: 14px;
-        margin-bottom: 0;
-        font-style: italic;
-        font-family: cursive;
-      }
-    }    
-    h1{
+  time{
+    float: left;
+    text-align: right;
+    width: $timeline-left-width;
+    padding: 2px 18px 10px 0;
+    color: #999;
+    border-bottom: 1px solid #ddd;
+    @include sans;
+    .day{
       font-size: 22px;
-      margin-top: 0;
-      a{
-        color: inherit;
-      }
-      a:hover, a:active, a:focus{
-        color: $red;
-        text-decoration: none;
-      }
+      line-height: 22px;
+    }
+    .month{
+      font-size: 14px;
+      margin-bottom: 0;
+      font-style: italic;
+      font-family: cursive;
     }
   }
-  .more{
-    color: lighten($red, 10%);
-    display: inline-block;
-    margin-top: 10px;
+  article{
+    border-left: 6px solid #eee;
+    overflow: hidden;
+    padding: 0 0 40px 20px;
+    margin-left: $timeline-left-width;
+    header{
+      margin-bottom: 20px;
+      overflow: hidden;
+      h1{
+        font-size: 22px;
+        margin-top: 0;
+        a{
+          color: inherit;
+        }
+        a:hover, a:active, a:focus{
+          color: $red;
+          text-decoration: none;
+        }
+      }
+    }
+    .more{
+      color: #aaa;
+      text-decoration: underline;
+      margin-top: 10px;
+    }
+    .more:hover{
+      color: $red;
+    }
   }
-  .more:hover{
-    color: $red;
-  }
+}
+.post:first-child time{
+  border-top: none;
 }
 
 @media(max-width: 768px){
-  .post header time{
-    display: none;
+  .posts {
+    margin-top: 30px;
   }
+  .post{
+    time{
+      display: none;
+    }
+    article{
+      padding-left: 0;
+      margin-left: 0;
+      border-left: none;
+    }
+  } 
 }
 
 .md{
@@ -62,6 +82,17 @@ aside{
     font-weight: normal;
     font-size: 14px;
     line-height: 28px;
+    border-bottom: none;
+  }
+  img, table{
+    display: none;
+  }
+  blockquote{
+    border-left: none;
+    padding: 0;
+    p, h1, h2, h3, h4, h5, h6, b, strong{
+      color: #999;
+    }
   }
 }
 

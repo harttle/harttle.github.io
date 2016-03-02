@@ -1,6 +1,7 @@
 window.modules.tags = function (console, $ele) {
     var posts = parsePosts(getRawArray('script#posts-data'));
     var tags = parseTags(getRawArray('script#tags-data'));
+    var $toggle = $('#tags-display-toggle');
 
     // Tag Cloud
 
@@ -49,7 +50,7 @@ window.modules.tags = function (console, $ele) {
         if(!dirty) return;
         updateSpan();
         dirty = false;
-        $('.toggle').show();
+        $toggle.show();
     }
 
     function updateList(posts, disableAnimation){
@@ -222,7 +223,7 @@ window.modules.tags = function (console, $ele) {
     };
 
     // Toggle Logic
-    var $toggle = $('.toggle'), tagCloudShown = true;
+    var tagCloudShown = true;
     $toggle.click(function(){
         $tagCloud.fadeToggle();
         $tagChart.toggle();

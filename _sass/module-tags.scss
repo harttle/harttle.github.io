@@ -27,7 +27,7 @@ $left-width: 50%;
   .tag-chart{
     display: none;
   }
-  .toggle{
+  #tags-display-toggle{
     display: none;
     position: absolute;
     bottom: 0;
@@ -35,7 +35,7 @@ $left-width: 50%;
     color: #ccc;
     margin: 0;
   }
-  .toggle:hover{
+  #tags-display-toggle:hover{
     color: lighten($red, 10%);
   }
 }
@@ -82,6 +82,9 @@ li{
     position: static;
     margin-top: 30px;
     padding-left: 0;
+  }
+  #tags-display-toggle{
+    display: none !important;
   }
 }
 
