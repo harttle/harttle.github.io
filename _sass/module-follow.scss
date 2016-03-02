@@ -3,25 +3,25 @@
 @mixin share-block($color) {
   background: lighten($color, 10%);
   &:hover {
-    background: $color;
+    //background: $color;
+    box-shadow: lighten($color, 10%) 0 0 10px 0;
   }
 }
 
 li {
   display: inline-block;
   margin-right: 5px;
-  transition: transform 0.5s;
   a {
     color: #fff;
     display: inline-block;
     border-radius: 20px;
     font-size: 18px;
     @include inline-size(36px);
+    transition: transform 0.7s, box-shadow 0.1s;
   }
-}
-
-li:hover {
-  transform: rotate(360deg);
+  a:hover {
+    transform: rotate(360deg);
+  }
 }
 
 .wechat a {
