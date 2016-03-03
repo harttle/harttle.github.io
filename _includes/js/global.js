@@ -2,6 +2,10 @@ var footHeight = $('#footer').outerHeight(true);
 
 window.$body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
 
+window.uuid = function(){
+    Math.random().toString(36).substr(2);
+}
+
 location.query = function(name, val) {
     if(arguments.length == 1){
         name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -62,3 +66,4 @@ function initScrollTopButton(){
         }
     });
 }
+
