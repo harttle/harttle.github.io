@@ -31,7 +31,7 @@ Cache index = (Block address) modulo (Number of blocks in the cache)
 
 ### Accessing a Cache
 
-![direct-mapped-cache](/assets/img/blog/direct-mapped-cache.png)
+![direct-mapped-cache@1.5x](/assets/img/blog/direct-mapped-cache.png)
 
 Larger blocks exploit spatial locality to lower miss rate, while miss rate may go up eventually if the block size becomes a significant fraction to the cache size, because:
 
@@ -93,7 +93,7 @@ Increasing degree of associativity:
 
 A replacement scheme in which the block replaced is the one that has been unused for the longest time.
 
-![set-associative](/assets/img/blog/set-associative.png)
+![set-associative@1.5x](/assets/img/blog/set-associative.png)
 
 ### Reducing Miss Penalty Using Multilevel Caches
 
@@ -146,7 +146,7 @@ Several decisions in designing virtual memory systems
 
 The table contains the virtual to physical address translations in a virtual memory system. The table, which is stored in memory, is typically indexed by the virtual page number; each entry in the table contains the physical page number for that virtual page if the page is currently in memory.
 
-![page-table](/assets/img/blog/page-table.png)
+![page-table@1.5x](/assets/img/blog/page-table.png)
 
 **reference bit**
 
@@ -174,11 +174,11 @@ A cache that keeps track of recently used address mappings to try to avoid an ac
 
 > The hardware maintains an index that indicates the recommended entry to replace, thich is chosen randomly considering the complexity for hardware.
 
-![tlb](/assets/img/blog/tlb.png)
+![tlb@1.5x](/assets/img/blog/tlb.png)
 
-![tlb](/assets/img/blog/tlb-cache.png)
+![tlb@1.5x](/assets/img/blog/tlb-cache.png)
 
-![tlb](/assets/img/blog/tlb-write-through.png)
+![tlb@1.5x](/assets/img/blog/tlb-write-through.png)
 
 ### Virtual Addressed Cache
 
