@@ -23,7 +23,7 @@ location.query = function(name, val) {
 function updateTagHref(){
     $('a[data-tag]').each(function(idx, ele){
         var $ele = $(ele), name = $ele.html().split('(')[0].trim();
-        $ele.attr('href', '/tags.html#' + encodeURIComponent(name));
+        $ele.attr('href', '/tags.html#' + name);
     });
 }
 

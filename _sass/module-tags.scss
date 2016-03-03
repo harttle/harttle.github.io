@@ -22,8 +22,6 @@ $left-width: 50%;
     position: absolute;
     @include trbl(0, 0, 0, 0);
   }
-  .tag-cloud{
-  }
   .tag-chart{
     display: none;
   }
@@ -53,6 +51,7 @@ li{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: $red;
   }
   time{
     float: right;
