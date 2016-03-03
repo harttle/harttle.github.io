@@ -4,7 +4,7 @@ window.$body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html')
 
 window.uuid = function(){
     Math.random().toString(36).substr(2);
-}
+};
 
 location.query = function(name, val) {
     if(arguments.length == 1){
@@ -23,7 +23,7 @@ location.query = function(name, val) {
 function updateTagHref(){
     $('a[data-tag]').each(function(idx, ele){
         var $ele = $(ele), name = $ele.html().split('(')[0].trim();
-        $ele.attr('href', '/tags.html?tag=' + encodeURIComponent(name));
+        $ele.attr('href', '/tags.html#' + encodeURIComponent(name));
     });
 }
 
