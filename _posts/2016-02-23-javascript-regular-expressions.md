@@ -25,7 +25,7 @@ JavaScript的正则表达式基本符合最初贝尔实验室的规则，
 
 ```javascript
 var parse_url = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/;
-var url = "http://harttle.com:80/tags.html?tag=html#main-section",
+var url = "http://harttle.com:80/tags.html?simple=true#HTML",
     result = parse_url.exec(url);
     blanks = '       ';
     fields = ['url', 'scheme', 'slash', 'host', 'port', 'path', 'query', 'hash'];
@@ -39,14 +39,14 @@ fields.forEach(function(filed, i){
 上述代码的输出：
 
 ```
-url:    http://harttle.com:80/tags.html?tag=html#main-section
+url:    http://harttle.com:80/tags.html?simple=true#HTML
 scheme: http
 slash:  //
 host:   harttle.com
 port:   80
 path:   tags.html
-query:  tag=html
-hash:   main-section
+query:  single=true
+hash:   HTML
 ```
 
 # 基本语法
@@ -111,21 +111,21 @@ hash:   main-section
 
 # Query（参数）
 
-`(?:\?([^#]*))?`匹配GET方法的参数，结果是`?tag=html`。
+`(?:\?([^#]*))?`匹配GET方法的参数，结果是`?simple=true`。
 还是一个可选的非获取组，其内容为`\?([^#]*)`。
 `?`是正则表达式中的特殊字符，所以需要转义。
-后面匹配的结果`tag=html`被存入`fields[6]`中。
+后面匹配的结果`simple=true`被存入`fields[6]`中。
 `[^#]`表示`#`之外的任何字符。
 
 # Hash（锚点）
 
-`(?:#(.*))?$`匹配锚点，结果为`#main-section`。
+`(?:#(.*))?$`匹配锚点，结果为`#HTML`。
 `$`表示行尾，即当前行所有内容都必须被前面的表达式所匹配。
 
 前面是一个可选的非获取匹配，内容为`#(.*)`。
 `.`表示任何单个字符，即`#`开头的任何长度的字符串。
-被获取的内容`main-section`存入了`fields[7]`中。
+被获取的内容`HTML`存入了`fields[7]`中。
 
-[vim]: /tags.html?tag=Vim
-[ng]: /tags.html?tag=AngularJS
+[vim]: /tags.html#Vim
+[ng]: /tags.html#AngularJS
 [regex]: https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F

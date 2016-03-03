@@ -10,7 +10,7 @@ window.modules.tags = function (console, $ele) {
 
     initTagCloud(tags);
 
-    var tag = location.query('tag');
+    var tag = location.hash.replace('#', '');
     if(tag) updateSelected(tag, true);
     else updateList(posts.slice(0, 30), true);
 
@@ -24,7 +24,7 @@ window.modules.tags = function (console, $ele) {
         var selectedPosts = searchByTag(tag); 
         updateList(selectedPosts, firstTime);
         updateTitle(tag, selectedPosts.length);
-        location.query('tag', tag);
+        location.hash = tag;
         if(!firstTime){
             $body.animate({
                 scrollTop: $('.right-panel').offset().top
@@ -47,10 +47,10 @@ window.modules.tags = function (console, $ele) {
     }
 
     function afterCloudRender(){
+        $toggle.show();
         if(!dirty) return;
         updateSpan();
         dirty = false;
-        $toggle.show();
     }
 
     function updateList(posts, disableAnimation){

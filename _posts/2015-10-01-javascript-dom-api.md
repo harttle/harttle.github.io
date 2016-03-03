@@ -134,7 +134,7 @@ DOM元素的`innerHTML`, `outerHTML`, `innerText`, `outerText`属性的区别也
 上述四个属性不仅可以读取，还可以赋值。`outerText`和`innerText`的区别在于`outerText`赋值时会把标签一起赋值掉，另外`xxText`赋值时HTML特殊字符会被转义。
 下图来源于：http://walsh.iteye.com/blog/261966
 
-![](/assets/img/blog/javascript/dom-content.gif)
+![DOM content](/assets/img/blog/javascript/dom-content.gif)
 
 ## jQuery的html()与innerHTML的区别？
 

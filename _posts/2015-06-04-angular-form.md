@@ -84,7 +84,7 @@ $socpe.selectedValue = 1;
 
 在页面载入时，由于Angular的控制器仍为完成构造过程，表单会短暂地显示为原始的HTML，比如：
 
-![](/assets/img/blog/angular/form-raw@2x.png)
+![raw form](/assets/img/blog/angular/form-raw@2x.png)
 
 当然你能想到最直接的解决方案是给表单加一个隐藏的样式，在载入后去掉它。然而Angular已经提供`ngCloak`Directive来完成这件事情，我们只需要在表单上加一个`ng-cloak`：
 
