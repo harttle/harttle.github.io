@@ -144,7 +144,7 @@ HTTP Basic Auth就是这样实现的。当服务器返回401时浏览器会弹�
 
 ![][basic-auth]
 
-输入验证信息并点击确定，浏览器会根据你的输入填写`Authentication`头并重新发送请求。对于Basic Auth看起来是这样的：
+输入验证信息并点击确定，浏览器会根据你的输入填写`Authorization`头并重新发送请求。对于Basic Auth看起来是这样的：
 
 ```
 Authorization:Basic eWFuZ2p2bjp5YW5nanZuaGFydA==
@@ -243,3 +243,4 @@ Authorization:Basic eWFuZ2p2bjp5YW5nanZuaGFydA==
 
 
 [http]: {% post_url 2014-10-01-http %}
+[basic-auth]: /assets/img/blog/basic-auth@2x.png
