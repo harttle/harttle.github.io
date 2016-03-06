@@ -69,7 +69,7 @@ public:
 
 ```cpp
 class HashTable{
-    vector<shared_ptr<HashItem>> table;
+    vector<shared_ptr<HashItem>> table(SIZE);
     ...
 public:
     void set(key, val){

@@ -17,7 +17,7 @@
           </ul>
         </nav>
 
-        <p class="title-wrapper">
+        <div class="title-wrapper">
           {% capture title %}{{page.title}}{% endcapture %}
           {% if title == "" %}
             <a class="logo" href="/">
@@ -30,7 +30,10 @@
             </a>
             <span class="page-title">{{title}}</span>
           {% endif %}
-        </p>
+          {% unless page.simpleTitle %}
+            <p class="desc">{{site.description}}</p>
+          {% endunless %}
+        </div>
 
       </div>
     </div>
