@@ -6,17 +6,36 @@
   padding-bottom: 20px;
   position: relative;
   z-index: 1000;
-  //border-bottom: 1px solid #eee;
-  background: rgba(255,255,255,0.7);
-  transition: box-shadow 0.3s;
+  //transition: box-shadow 0.3s;
   &:hover{
-    box-shadow: 0px 1px 5px #ddd;
+    //box-shadow: 0px 1px 5px #ddd;
     .logo-title{
       opacity: 1;
     }
     .toggle{
       color: $red;
     }
+  }
+  &.blur{
+    background: rgba(255,255,255,0.7);
+  }
+}
+
+.bg-layer{
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 768px;
+  height: 164px;
+  &.horizontal{
+    @include linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.3) 50%, rgba(255,255,255,0.9) 80%, white);
+  }
+  &.vertical{
+    @include linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.7) 65%, rgba(255,255,255,0.9) 85%, white);
+  }
+  &.bg {
+    background: url('/assets/img/cover/4-768.jpg') no-repeat;
   }
 }
 
@@ -58,13 +77,23 @@
   @include transition(all 1s);
 }
 
-
 .page-title{
   font-weight: normal;
   color: #555;
   font-size: 22px;
   margin-left: 5px;
   transition: opacity 1s;
+}
+
+.title-wrapper.dark{
+  .logo-title, .page-title, .logo{
+    color: #333;
+    -webkit-text-fill-color: initial;
+    @include transition(all 0.6s);
+  }
+  &:hover .logo{
+    color: #000;
+  }
 }
 
 .site-content{

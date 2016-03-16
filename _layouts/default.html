@@ -3,9 +3,9 @@
 
   <head> {% include head.html %} </head>
 
-  <body id="body">
+  <body id="body" >
 
-    <div class="navbar-wrapper">
+    <div class="navbar-wrapper {% if page.navBlur %}blur{% endif %}">
       <div class="container-fluid">
 
         <nav class="site-nav pull-right">
@@ -17,7 +17,7 @@
           </ul>
         </nav>
 
-        <div class="title-wrapper">
+        <div class="title-wrapper {% if page.bodyBg %}dark{% endif %}">
           {% capture title %}{{page.title}}{% endcapture %}
           {% if title == "" %}
             <a class="logo" href="/">
@@ -45,6 +45,15 @@
     </a>
 
     {% include footer.html %}
+
+    {% if page.bodyBg %}
+      <div class="bg-layer bg">
+        <div class="bg-layer horizontal">
+          <div class="bg-layer vertical">
+          </div>
+        </div>
+      </div>
+    {% endif %}
 
   </body>
 </html>

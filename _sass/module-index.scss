@@ -1,6 +1,7 @@
 @import 'variables';
 @import 'mixins';
-$top-blank: 45px;
+$top-blank: 105px;
+$spliter-top-offset: 38px;
 $timeline-left-width: 110px;
 
 aside, .posts{
@@ -38,10 +39,10 @@ aside, .posts{
         font-size: 22px;
         margin-top: 0;
         a{
-          //color: inherit;
+          color: inherit;
         }
         a:hover, a:active, a:focus{
-          //color: $red;
+          color: $red;
           text-decoration: none;
         }
       }
@@ -56,8 +57,15 @@ aside, .posts{
     }
   }
 }
-.post:first-child time{
-  border-top: none;
+.post:first-child{
+  article{
+    padding-top: $spliter-top-offset;
+    margin-top: -$spliter-top-offset;
+  }
+  time{
+    margin-top: $spliter-top-offset;
+    border-top: none;
+  }
 }
 
 @media(max-width: 768px){

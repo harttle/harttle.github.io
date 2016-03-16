@@ -1,11 +1,16 @@
 @import 'mixins';
 @import 'variables';
 @mixin share-block($color) {
-  background: lighten($color, 10%);
+  background: $color;
+  //background: lighten($color, 10%);
   &:hover {
     //background: $color;
-    box-shadow: lighten($color, 10%) 0 0 10px 0;
+    box-shadow: lighten($color, 10%) 0 0 10px 2px;
   }
+}
+
+ul{
+  margin-bottom: 0;
 }
 
 li {

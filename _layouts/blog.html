@@ -6,7 +6,9 @@ layout: default
 
   {% include post-meta.html post=page %}
 
-  <aside> <div class="sidebar"></div> </aside>
+  <aside> 
+    <div class="sidebar"></div> 
+  </aside>
 
   <div class="content">
     <article class="md">
@@ -16,9 +18,12 @@ layout: default
       </div>
     </article>
 
+    <div class="clearfix">
+      {% include follow.html %}
+    </div>
+
     {% include post-pager.html %}
     {% include comments.html %}
-
   </div>
 
   {% include latex.html %}
