@@ -14,7 +14,7 @@
   }
 }
 
-.banner{
+.avatar-wrapper{
   text-align: center;
   .avatar{
     margin-top: 120px;
@@ -58,8 +58,7 @@
       color: $fore-color;
       font-size: 14px;
       a{
-        color: $fore-color;
-        @include linkable;
+        @include link-hover($fore-color, white);
       }
       li{
         height: 24px;

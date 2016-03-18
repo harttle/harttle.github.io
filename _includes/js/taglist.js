@@ -1,5 +1,6 @@
 window.modules.taglist = function(console, $ele, name) {
-    var $li = $ele.find('li');
+    var $li = $ele.find('.tag'),
+        pattern = /[^\(]+\((\d+)\)/;
 
     quicksort(0, $li.length);
     $ele.fadeIn();
@@ -13,11 +14,8 @@ window.modules.taglist = function(console, $ele, name) {
     }
 
     function val(i) {
-        return parseInt($li.eq(i).find('span').html().trim());
-    }
-
-    function text(i) {
-        return $li.eq(i).find('a').html().trim();
+        var match = $li.eq(i).html().match(pattern);
+        return parseInt(match[1]);
     }
 
     function quicksort(begin, end) {

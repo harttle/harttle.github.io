@@ -9,6 +9,7 @@
 @import 'monokai-syntax';
 @import 'global';
 @import 'jqcloud';
+@import 'hover-tag';
 
 .module-about{
   @import 'module-about';
@@ -43,12 +44,6 @@
   @import 'module-archive';
 }
 
-.post{
-  @import "post";
-}
-
 .module-blog{
   @import 'module-blog';
-  @import 'toc';
 }
-

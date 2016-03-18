@@ -1,8 +1,8 @@
 @import 'variables';
 @import 'mixins';
-$top-blank: 105px;
-$spliter-top-offset: 38px;
-$timeline-left-width: 110px;
+$top-blank: 70px;
+$spliter-top-offset: 70px;
+$timeline-left-width: 95px;
 
 aside, .posts{
   margin-top: $top-blank;
@@ -13,14 +13,15 @@ aside, .posts{
     text-align: right;
     width: $timeline-left-width;
     padding: 2px 18px 10px 0;
-    color: #999;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid $light-grey;
     @include sans;
     .day{
       font-size: 22px;
       line-height: 22px;
+      color: $grey;
     }
     .month{
+      color: $light-grey;
       font-size: 14px;
       margin-bottom: 0;
       font-style: italic;
@@ -28,7 +29,7 @@ aside, .posts{
     }
   }
   article{
-    border-left: 6px solid #eee;
+    border-left: 6px solid $light-grey;
     overflow: hidden;
     padding: 0 0 40px 20px;
     margin-left: $timeline-left-width;
@@ -36,24 +37,15 @@ aside, .posts{
       margin-bottom: 20px;
       overflow: hidden;
       h1{
-        font-size: 22px;
+        font-size: 1.5em;
         margin-top: 0;
         a{
-          color: inherit;
-        }
-        a:hover, a:active, a:focus{
-          color: $red;
-          text-decoration: none;
+          @include link-hover($grey, $blue);
         }
       }
     }
     .more{
-      color: #aaa;
-      text-decoration: underline;
       margin-top: 10px;
-    }
-    .more:hover{
-      color: $red;
     }
   }
 }
@@ -88,8 +80,7 @@ aside, .posts{
   p, h1, h2, h3, h4, h5, h6, b, strong{
     color: #777;
     font-weight: normal;
-    font-size: 14px;
-    line-height: 28px;
+    line-height: 1.8em;
     border-bottom: none;
   }
   img, table{
@@ -104,16 +95,42 @@ aside, .posts{
   }
 }
 
-.module-taglist{
-  margin-top: 30px;
-}
-
 // layout
 aside{
   float: right;
   margin-left: 80px;
   width: 235px;
+  section.taglist{
+    margin-top: 70px;
+    .tag{
+      margin-bottom: 0.8em;
+    }
+  }
+  h4{
+    color: $grey;
+    margin-bottom: 20px;
+    font-weight: normal;
+    border-bottom: 1px solid #F5F5F5;
+  }
+  h4::after{
+    content: ' ';
+    display: block;
+    border-bottom: 1px solid $light-grey;
+    width: 40px;
+    margin-top: 5px;
+    margin-bottom: -1px;
+    @include animation(width-percentage 30s infinite alternate);
+  }
+  section:hover h4::after{
+    @include animation(width-percentage .5s infinite alternate);
+  }
 }
+
+@include keyframes(width-percentage){
+  from{ width: 40px; }
+  to{ width: 100%; }
+}
+
 .content{
   margin-right: 235px + 60px;
 }

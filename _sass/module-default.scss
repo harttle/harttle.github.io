@@ -1,98 +1,58 @@
 @import 'mixins';
 @import 'variables';
 
-.navbar-wrapper{
-  padding-top: 20px;
-  padding-bottom: 20px;
+.banner{
+  padding: 30px 0 25px;
   position: relative;
   z-index: 1000;
-  //transition: box-shadow 0.3s;
-  &:hover{
-    //box-shadow: 0px 1px 5px #ddd;
-    .logo-title{
-      opacity: 1;
+  background: $grey;
+  .logo{
+    line-height: 32px;
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    @include link-hover($light-grey, white);
+    .logo-h{
+      color: $green;
+      font-size: 32px;
     }
-    .toggle{
-      color: $red;
+    .logo-arttle{
+      font-size: 24px;
+    }
+    .logo-land{
+      color: white;
+      font-size: 24px;
+      margin-left: 5px;
     }
   }
-  &.blur{
-    background: rgba(255,255,255,0.7);
-  }
-}
-
-.bg-layer{
-  z-index: -1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 768px;
-  height: 164px;
-  &.horizontal{
-    @include linear-gradient(left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.3) 50%, rgba(255,255,255,0.9) 80%, white);
-  }
-  &.vertical{
-    @include linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.7) 65%, rgba(255,255,255,0.9) 85%, white);
-  }
-  &.bg {
-    background: url('/assets/img/cover/4-768.jpg') no-repeat;
-  }
-}
-
-@media(max-width: 768px){
-  .navbar-wrapper .logo-title{
-    opacity: 1;
-  }
-}
-
-.title-wrapper{
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-bottom: 0;
   .desc{
-    margin: 5px 0 0;
-    color: #aaa;
+    color: darken($light-grey, 10%);
+    margin: 0;
+    font-size: 13px;
+    font-family: sans-serif;
+  }
+  nav a{
+    line-height: 56px;
+    margin-left: 30px;
+    @include link-hover($light-grey, white);
   }
 }
-.logo{
-  font-size: 36px;
-  line-height: 1;
-  color: $red;
-  display: inline-block;
-  i:hover{
-    text-shadow: $red 0 0 1px;
+
+.banner.transparent{
+  background: rgba(0, 0, 0, 0.3);
+  .logo .logo-arttle{
+    color: #999;
   }
-}
-.logo:hover, .logo:active, .logo:focus{
-  text-decoration: none;
-}
-
-.logo-title{
-  font-size: 29px;
-  opacity: 0;
-  @include linear-gradient(45deg, $red, $green, $blue);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  @include transition(all 1s);
-}
-
-.page-title{
-  font-weight: normal;
-  color: #555;
-  font-size: 22px;
-  margin-left: 5px;
-  transition: opacity 1s;
-}
-
-.title-wrapper.dark{
-  .logo-title, .page-title, .logo{
-    color: #333;
-    -webkit-text-fill-color: initial;
-    @include transition(all 0.6s);
+  .logo:hover .logo-arttle{
+    color: white;
   }
-  &:hover .logo{
-    color: #000;
+  nav a{
+    color: #ddd;
+  }
+  nav a:hover{
+    color: white;
+  }
+  .desc{
+    color: #777;
   }
 }
 
@@ -100,67 +60,4 @@
   z-index: 10;
 }
 
-.site-nav{
-  position: relative;
-  z-index: 10;
-  .toggle{
-    color: #555;
-    font-size: 24px;
-    line-height: 38px;
-    transform: rotateX(0);
-    transition: all 0.5s ease-out;
-  }
-  .nav-list{
-    &:before{
-      content: ' ';
-      position: absolute;
-      top: -11px;
-      right: 7px;
-      @include size(10px);
-      border-top: 0px solid #ddd;
-      border-right: 10px solid transparent;
-      border-left: 10px solid transparent;
-      border-bottom: 10px solid #ddd;
-    }
-    &:after{
-      content: ' ';
-      position: absolute;
-      top: -10px;
-      right: 7px;
-      @include size(10px);
-      border-top: 0px solid #ddd;
-      border-right: 10px solid transparent;
-      border-left: 10px solid transparent;
-      border-bottom: 10px solid white;
-    }
-    z-index: 128;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.5s ease-in-out;
-    position: absolute;
-    left: -155px;
-    top: 30px;
-    background: white;
-    width: 180px;
-    border: 1px solid #ddd;
-    border-radius: 2px;
-    li{
-      text-align: center;
-      border-bottom: 1px solid #ddd;
-      a{
-        display: block;
-        padding: 10px;
-      }
-    }
-  }
-}
-.site-nav:hover, .site-nav.hover{
-  .nav-list{
-    visibility: visible;
-    opacity: 1;
-  }
-  .toggle{
-    transform: rotateX(180deg);
-  }
-}
 

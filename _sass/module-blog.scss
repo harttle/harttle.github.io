@@ -1,3 +1,5 @@
+@import 'variables';
+@import 'mixins';
 
 @mixin collapsed(){
   .content{
@@ -8,19 +10,40 @@
   }
 }
 
-&{
-  margin-top: 50px;
+header{
+  background: linear-gradient(172deg, $grey 0, $grey 15%, $blue 70%);
+  color: white;
+  padding-top: 50px;
+  h3{
+    margin: 0 0 45px;
+  }
+  time{
+    color: white;
+    font-size: 14px;
+    font-style: italic;
+    font-family: sans-serif;
+  }
+  .tag-list{
+    margin-bottom: 20px;
+    .tag{
+      border-color: white;
+    }
+  }
 }
+
 &.collapsed{
   @include collapsed();
 }
 
 aside{
   float: left;
+  margin-top: -55px;
+  @import 'toc';
 }
 
 .content{
-  margin-left: 250px;  
+  margin-left: $toc-width + 50px;  
+  margin-top: 50px;
 }
 
 .md .copyright{
@@ -28,17 +51,21 @@ aside{
 }
 
 .post-meta{
-  float: right;
-  margin-top: -40px;
 }
 
 .module-follow{
   float: right;
 }
 
-.pager{
+.post-pager{
   margin-bottom: 50px;
   margin-top: 30px;
+  .previous{
+    float: left;
+  }
+  .next{
+    float: right;
+  }
 }
 
 @media (max-width: 768px) {
@@ -46,7 +73,8 @@ aside{
     margin-top: 30px;
   }
   .post-meta{
-    display: none;
   }
   @include collapsed();
 }
+
+

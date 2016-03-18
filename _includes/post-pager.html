@@ -1,13 +1,13 @@
-<ul class="pager">
+<div class="post-pager clearfix">
   {% if page.previous %}
-    <li class="previous">
-      <a data-toggle="tooltip" data-placement="right" title="{{page.previous.title}}" href="{{page.previous.url}}">&larr; 上一篇</a>
-    </li>
+    <a href="{{page.previous.url}}" class="previous btn-hover">
+      上一篇：{{page.previous.title}}
+    </a>
   {% endif %}
   {% if page.next %}
-    <li class="next">
-      <a data-toggle="tooltip" data-placement="left" title="{{page.next.title}}" href="{{page.next.url}}">下一篇 &rarr;</a>
-    </li>
+    <a href="{{page.next.url}}" class="next btn-hover">
+      下一篇：{{page.next.title}}
+    </a>
   {% endif %}
-</ul>
+</div>
 

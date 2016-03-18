@@ -4,25 +4,16 @@
 body {
   position: relative; /* for scroll spy with absolute position */
   color: rgb(96, 96, 96);
-  font-size: 14px;
+  font-size: 15px;
   font-family: Georgia, serif;
 }
 
-h1, h2, h3, h4, h5, h6, nav li, .nav li, .page-title{
+h1, h2, h3, h4, h5, h6, nav li, .nav, nav, .page-title{
   @include sans;
 }
 
 a, a:hover, a:active, a:focus{
-  color: $red;
-}
-
-a.glow{
-  color: #555;
-  transition: color 0.15s ease-in;
-  text-decoration: none;
-}
-a.glow:hover{
-  color: $red;
+  color: $blue;
 }
 
 .MathJax * {
@@ -33,11 +24,20 @@ a.glow:hover{
   margin-bottom: 30px;
 }
 
+.btn-hover{
+  @include link-hover($blue, white);
+  @include sans;
+  padding: 0.3em 1em;
+  font-size: 14px;
+}
+.btn-hover:hover{
+  background: $blue;
+}
+
 @media(min-width:768px){
-  .container-fluid {
-    padding-right: 30px;
-    padding-left: 30px;
-    margin-right: auto;
-    margin-left: auto;
+.container-fluid {
+padding: 0 30px;
+    margin: 0 auto;
   }
 }
+

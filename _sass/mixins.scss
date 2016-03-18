@@ -43,13 +43,6 @@
   text-overflow: ellipsis;
 }
 
-@mixin linkable{
-  text-decoration: underline;
-  &:hover{
-    color: $red;
-  }
-}
-
 @mixin animation($v...){
     animation: $v; 
     -webkit-animation: $v; 
@@ -72,4 +65,40 @@
   background: -webkit-linear-gradient($v);
   background: -ms-linear-gradient($v);
   background: -o-linear-gradient($v);
+}
+
+@mixin link-hover($normal, $hover){
+  color: $normal;
+  transition: all 0.3s;
+  &:hover, &:active{
+    color: $hover;
+  }
+  &:hover, &:active, &:focus{
+    text-decoration: none;
+  }
+}
+
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+  @-o-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+@mixin transform($v...){
+  -webkit-transform: $v;
+  transform: $v;
+}
+
+@mixin transform-origin($v...){
+  -webkit-transform-origin: $v;
+  transform-origin: $v;
 }

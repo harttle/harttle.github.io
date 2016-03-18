@@ -2,31 +2,43 @@
 layout: default
 ---
 
-<div class="module-blog container-fluid post">
-
-  {% include post-meta.html post=page %}
-
-  <aside> 
-    <div class="sidebar"></div> 
-  </aside>
-
-  <div class="content">
-    <article class="md">
-      {{ content }}
-      <div class="copyright">
-        <p>本文地址：<a href="{{page.url}}">{{site.url}}{{ page.url }}</a></p>
-      </div>
-    </article>
-
-    <div class="clearfix">
-      {% include follow.html %}
+<div class="module-blog">
+  <header>
+    <div class="container-fluid">
+      <time class="pull-right">
+        {{ page.date | date: "%A, %B %-d"}}
+      </time>
+      <h3>{{page.title}}</h3>
+      <p class="pull-right tag-list">
+        {% for tag in page.tags %}
+          <a class="tag" data-tag="{{tag}}">{{tag}}</a>
+        {% endfor %}
+      </p>
     </div>
+  </header>
 
-    {% include post-pager.html %}
-    {% include comments.html %}
+  <div class="container-fluid">
+    <aside> 
+      <div class="sidebar"></div> 
+    </aside>
+
+    <div class="content">
+      <article class="md">
+        {{ content }}
+        <div class="copyright">
+          <p>本文地址：<a href="{{page.url}}">{{site.url}}{{ page.url }}</a></p>
+        </div>
+      </article>
+
+      <div class="clearfix">
+        {% include follow.html %}
+      </div>
+
+      {% include post-pager.html %}
+      {% include comments.html %}
+    </div>
   </div>
 
   {% include latex.html %}
-
 </div>
 

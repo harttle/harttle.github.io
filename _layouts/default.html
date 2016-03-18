@@ -1,40 +1,23 @@
 <!DOCTYPE html>
 <html class="module-default">
-
   <head> {% include head.html %} </head>
-
   <body id="body" >
 
-    <div class="navbar-wrapper {% if page.navBlur %}blur{% endif %}">
+    <div class="banner {% if page.bannerTransparent %}transparent{% endif %}">
       <div class="container-fluid">
-
-        <nav class="site-nav pull-right">
-          <i class="toggle fa fa-angle-down"></i>
-          <ul class="nav-list list-unstyled"> 
-            <li id="timeline"><a class="glow" href="/tags.html">技术标签</a></li>
-            <li id="archive"><a class="glow" href="/archive.html">所有文章</a></li>
-            <li id="about"><a class="glow" href="/about.html">友情链接</a></li>
-          </ul>
+        <nav class="pull-right">
+          <a class="glow no-decoration" href="/tags.html">标签</a>
+          <a class="glow no-decoration" href="/archive.html">归档</a>
+          <a class="glow no-decoration" href="/about.html">关于</a>
         </nav>
-
-        <div class="title-wrapper {% if page.bodyBg %}dark{% endif %}">
-          {% capture title %}{{page.title}}{% endcapture %}
-          {% if title == "" %}
-            <a class="logo" href="/">
-              <i class="fa fa-h-square"></i> 
-              <span class="logo-title">arttle&nbsp;Land</span>
-            </a>
-          {% else %}
-            <a class="logo" href="/">
-              <i class="fa fa-h-square"></i> 
-            </a>
-            <span class="page-title">{{title}}</span>
-          {% endif %}
-          {% unless page.simpleTitle %}
-            <p class="desc">{{site.description}}</p>
-          {% endunless %}
-        </div>
-
+        <a class="logo no-decoration" href="/">
+          <i class="logo-h fa fa-h-square"></i> 
+          <span class="logo-arttle glow">arttle</span>
+          <span class="logo-land">Land</span>
+        </a>
+        {% unless page.noSubtitle %}
+          <p class="desc">{{site.description}}</p>
+        {% endunless %}
       </div>
     </div>
 
@@ -45,15 +28,6 @@
     </a>
 
     {% include footer.html %}
-
-    {% if page.bodyBg %}
-      <div class="bg-layer bg">
-        <div class="bg-layer horizontal">
-          <div class="bg-layer vertical">
-          </div>
-        </div>
-      </div>
-    {% endif %}
 
   </body>
 </html>

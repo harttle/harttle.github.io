@@ -1,5 +1,8 @@
-$color-link: rgb(59, 134, 176);
-$green: #77cc6d;
-$red: #f6653c;
-$blue: #2ac4ea;
-$grey: #b5b5b5;
+$green: #5ABA59;
+$red: #BA5A5D;
+$blue: #4D85D1;
+$yellow: #D1914D;
+$grey: darken(desaturate($blue, 40%), 20%);
+$light-grey: lighten(desaturate($blue, 40%), 20%);
+
+$toc-width: 280px;

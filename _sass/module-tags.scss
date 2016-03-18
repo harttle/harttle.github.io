@@ -8,7 +8,7 @@ $left-width: 50%;
 
 &{
   position: fixed;
-  @include trbl( 77px + 40px, 30px, 30px, 30px);
+  @include trbl( 111px, 0, 0, 0);
 }
 
 .left-panel, .right-panel{
@@ -20,7 +20,7 @@ $left-width: 50%;
   width: $left-width;
   .tag-cloud, .tag-chart{
     position: absolute;
-    @include trbl(0, 0, 0, 0);
+    @include trbl(0, 0, 30px, 30px);
   }
   .tag-chart{
     display: none;
@@ -28,13 +28,10 @@ $left-width: 50%;
   #tags-display-toggle{
     display: none;
     position: absolute;
-    bottom: 0;
-    left: 0;
-    color: #ccc;
+    bottom: 30px;
+    left: 30px;
     margin: 0;
-  }
-  #tags-display-toggle:hover{
-    color: lighten($red, 10%);
+    @include link-hover($light-grey, $green);
   }
 }
 
@@ -42,6 +39,9 @@ $left-width: 50%;
   overflow: auto;
   left:$left-width;
   padding-left: 20px;
+  .post-list{
+    margin: 30px 30px 30px 0;
+  }
 }
 
 li{
@@ -51,7 +51,6 @@ li{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: $red;
   }
   time{
     float: right;

@@ -1,14 +1,9 @@
-<section class="module-taglist" style="display:none;">
-  <ol class="list-unstyled">
-    {% for tag in site.tags %}
-      {% if tag[1].size > 2 %}
-        <li>
-          <a data-tag="{{tag[0]}}">
-            {{tag[0]}} 
-          </a> 
-          <span class="count">{{tag[1] | size}}</span>
-        </li>
-      {% endif %}
-    {% endfor %}
-  </ol>
-</section>
+<div class="module-taglist" style="display:none;">
+  {% for tag in site.tags %}
+    {% if tag[1].size >= 1 %}
+      <a data-tag="{{tag[0]}}" class="tag">
+        {{tag[0]}}({{tag[1] | size}})
+      </a> 
+    {% endif %}
+  {% endfor %}
+</div>

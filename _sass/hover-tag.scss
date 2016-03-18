@@ -1,0 +1,37 @@
+@import 'variables';
+@import 'mixins';
+
+.tag{
+  @include sans;
+  color: $green;
+  line-height: 1;
+  margin: 0 0.1em 0.4em;
+  padding: 0.3em 0.6em;
+  font-size: 12px; 
+  background: white;
+  border: 1px solid $green;
+  display: inline-block;
+  position: relative;
+  @include transform(translateZ(0));
+  @include transition(color 0.5s);
+}
+.tag:hover, .tag:focus, .tag:active{
+  color: white;
+  text-decoration: none;
+}
+.tag::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $green;
+  @include transform(scaleX(0));
+  @include transform-origin(0 50%);
+  @include transition(transform 0.3s ease-in-out);
+}
+.tag:hover:before, .tag:focus:before, .tag:active:before {
+  @include transform(scaleX(1));
+}

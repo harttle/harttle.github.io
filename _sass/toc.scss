@@ -2,37 +2,34 @@
 @import 'variables';
 
 .sidebar {
-  width: 200px;
-  //margin-top: 20px;
-  border: 1px solid #eaeaeb;
+  width: $toc-width;
+  border-bottom: 1px solid $light-grey;
   ul {
     margin-top: 0;
     margin-bottom: 0;
   }
   .nav{
-    font-size: 13px;
-    > .active > a, > :hover > a{
-      color: #333;
+    > .active > a{
+      color: $grey;
       text-decoration: none;
-      border-right: 2px solid $red;
+      border-right: 2px solid $green;
     }
     > .active > ul {
       display: block;
     }
     > li > a {
       display: block;
-      padding: 5px 15px;
-      color: #999;
+      padding: 8px 25px;
+      color: $light-grey;
       text-decoration: none;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      border-right: 1px solid $light-grey;
     }
     .nav {
       display: none;
       > li > a {
-        padding-top: 3px;
-        padding-bottom: 3px;
         margin-left: 10px;
         font-size: 90%;
       }
@@ -58,20 +55,11 @@
   }
 }
 
-
-.nav>li>a:hover, .nav>li>a:focus:hover {
-  text-decoration: none;
-  background-color: #f0f0f0;
-}
-.nav>li>a:focus{
-  background-color: transparent;
-}
 .sidenav {
   margin-top: 20px;
   margin-bottom: 20px;
   background: #fff;
 }
-
 
 .sidebar.affix {
   position: fixed;

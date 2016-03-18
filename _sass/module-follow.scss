@@ -2,11 +2,6 @@
 @import 'variables';
 @mixin share-block($color) {
   background: $color;
-  //background: lighten($color, 10%);
-  &:hover {
-    //background: $color;
-    box-shadow: lighten($color, 10%) 0 0 10px 2px;
-  }
 }
 
 ul{
@@ -22,10 +17,10 @@ li {
     border-radius: 20px;
     font-size: 18px;
     @include inline-size(36px);
-    transition: transform 0.7s, box-shadow 0.1s;
+    transition: transform 0.7s;
   }
   a:hover {
-    transform: rotate(360deg);
+    transform: rotate(720deg);
   }
 }
 
@@ -34,7 +29,7 @@ li {
 }
 
 .github a {
-  @include share-block($grey);
+  @include share-block($light-grey);
 }
 
 .facebook a {
@@ -42,11 +37,9 @@ li {
 }
 
 .linkedin a {
-  // #4875B4
   @include share-block($blue);
 }
 
 .feed a{
-  // rgb(255, 153, 0))
   @include share-block($red);
 }
