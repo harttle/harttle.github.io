@@ -29,11 +29,25 @@ header{
       border-color: white;
     }
   }
+  @include media-xs{
+    padding-top: 35px;
+    h3{
+      margin-bottom: 20px;
+    }
+    .tag-list{
+      margin-bottom: 10px;
+    }
+  }
 }
 
 &.collapsed{
   @include collapsed();
 }
+
+@include media-xs{
+  @include collapsed();
+}
+
 
 aside{
   float: left;
@@ -44,13 +58,14 @@ aside{
 .content{
   margin-left: $toc-width + 50px;  
   margin-top: 50px;
+  @include media-xs{
+    margin-top: 30px;
+    margin-left: 0;  
+  }
 }
 
 .md .copyright{
   margin-top: 20px;
-}
-
-.post-meta{
 }
 
 .module-follow{
@@ -67,14 +82,4 @@ aside{
     float: right;
   }
 }
-
-@media (max-width: 768px) {
-  &{
-    margin-top: 30px;
-  }
-  .post-meta{
-  }
-  @include collapsed();
-}
-
 

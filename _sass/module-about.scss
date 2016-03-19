@@ -65,6 +65,9 @@
         line-height: 24px;
       }
     }
+    @media(max-width: 768px){
+      margin-bottom: 30px;
+    }
   }
 }
 
@@ -73,10 +76,10 @@ footer{
   text-align: center;
   line-height: 50px;
   background-color: #111;
+  div{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
-@media(max-width: 768px){
-  section{
-    margin-bottom: 30px;
-  }  
-}

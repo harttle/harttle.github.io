@@ -122,7 +122,6 @@
 }
 
 .md div.mathjax{
-    color: #000!important;
     overflow-x:auto;
     overflow-y:hidden;
 }
@@ -137,4 +136,8 @@
 }
 .md img[src*='@1.5x'], .md img[alt*='@1.5x']{
     zoom: 66.67%;
+}
+
+.MathJax{
+  padding: 0 0.2em!important;
 }

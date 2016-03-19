@@ -93,6 +93,18 @@
   }
 }
 
+@mixin media-xs{
+  @media(max-width: 768px){
+    @content;
+  }
+}
+
+@mixin media-md{
+  @media(min-width: 1200px){
+    @content;
+  }
+}
+
 @mixin transform($v...){
   -webkit-transform: $v;
   transform: $v;

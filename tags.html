@@ -10,6 +10,7 @@ simpleTitle: true
     <div class="tag-cloud"></div>
     <div class="tag-chart"></div>
     <a href="#" id="tags-display-toggle"><i class="fa fa-glass"></i></a>
+    <span id="current-tag">所有标签({{ site.posts | size }})</span>
   </div>
 
   <div class="right-panel">
@@ -19,17 +20,11 @@ simpleTitle: true
 </div>
 
 <script type="text/plain" id="tags-data">
-{% for tag in site.tags %}
-  {% if tag[1].size > 1 %}
-    {{ tag|first }}&{{ tag|last|size }};
-  {% endif %}
-{% endfor %}
+{% for tag in site.tags %}{% if tag[1].size > 1 %}{{ tag|first }}&{{ tag|last|size }};{% endif %}{% endfor %}
 </script>
 
 <script type="text/plain" id="posts-data">
-{% for post in site.posts %}
- {{ post.title }}&{{ post.date| date: '%Y-%m-%d'}}&{{post.url}}&{{ post.tags | join: ','}};
-{% endfor %}
+{% for post in site.posts %}{{ post.title }}&{{ post.date| date: '%Y-%m-%d'}}&{{post.url}}&{{ post.tags | join: ','}};{% endfor %}
 </script>
 
 <script src="http://code.highcharts.com/highcharts.js"></script>

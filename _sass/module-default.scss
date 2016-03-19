@@ -9,6 +9,7 @@
   .logo{
     line-height: 32px;
     font-weight: bold;
+    display: inline-block;
     letter-spacing: 0.03em;
     @include link-hover($light-grey, white);
     .logo-h{
@@ -29,11 +30,18 @@
     margin: 0;
     font-size: 13px;
     font-family: sans-serif;
+    @include media-xs{
+      display: none;
+    }
   }
   nav a{
     line-height: 56px;
     margin-left: 30px;
     @include link-hover($light-grey, white);
+    @include media-xs{
+      line-height: 38px;
+      margin-left: 10px;
+    }
   }
 }
 
@@ -59,5 +67,4 @@
 .site-content{
   z-index: 10;
 }
-
 

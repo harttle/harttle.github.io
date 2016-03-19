@@ -8,7 +8,10 @@ $left-width: 50%;
 
 &{
   position: fixed;
-  @include trbl( 111px, 0, 0, 0);
+  @include trbl(111px, 0, 0, 0);
+  @include media-xs{
+    position: static;
+  }
 }
 
 .left-panel, .right-panel{
@@ -20,7 +23,7 @@ $left-width: 50%;
   width: $left-width;
   .tag-cloud, .tag-chart{
     position: absolute;
-    @include trbl(0, 0, 30px, 30px);
+    @include trbl(30px, 30px, 30px, 30px);
   }
   .tag-chart{
     display: none;
@@ -32,6 +35,25 @@ $left-width: 50%;
     left: 30px;
     margin: 0;
     @include link-hover($light-grey, $green);
+    @include media-md{
+      &.shown{
+        display: inline;
+      }
+    }
+  }
+  #current-tag{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    color: $light-grey;
+    font-family: sans-serif;
+  }
+  @include media-xs{
+    position: relative;
+    height: 400px;
+    width: auto;
   }
 }
 
@@ -41,6 +63,13 @@ $left-width: 50%;
   padding-left: 20px;
   .post-list{
     margin: 30px 30px 30px 0;
+    @include media-xs{
+      margin: 0px 30px 30px;
+    }
+  }
+  @include media-xs{
+    position: static;
+    padding-left: 0;
   }
 }
 
@@ -55,34 +84,12 @@ li{
   time{
     float: right;
     color: #999;
-    display: inline-block;
     width: 100px;
     margin-left: 20px;
-  }
-}
-
-@media(max-width: 1200px){
-  li time{
     display: none;
-  }
-}
-@media(max-width: 768px){
-  &{
-    position: static;
-    margin: 40px 30px 30px;
-  }
-  .left-panel{
-    position: relative;
-    height: 400px;
-    width: auto;
-  }
-  .right-panel{
-    position: static;
-    margin-top: 30px;
-    padding-left: 0;
-  }
-  #tags-display-toggle{
-    display: none !important;
+    @include media-md{
+      display: inline-block;
+    }
   }
 }
 
