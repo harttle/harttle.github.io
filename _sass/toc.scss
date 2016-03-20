@@ -1,7 +1,7 @@
 @import 'mixins';
 @import 'variables';
 
-.sidebar {
+.toc {
   font-size: 14px;
   width: $toc-width;
   border-bottom: 1px solid $light-grey;
@@ -27,6 +27,12 @@
       text-overflow: ellipsis;
       white-space: nowrap;
       border-right: 1px solid $light-grey;
+      &:focus {
+        background-color: white; // override bootstrap #eee
+      }
+      &:hover {
+        background-color: lighten($light-grey,20%);
+      }
     }
     .nav {
       display: none;
@@ -62,11 +68,11 @@
   background: #fff;
 }
 
-.sidebar.affix {
+.toc.affix {
   position: fixed;
   top: 40px;
 }
 
-.sidebar.affix-bottom {
+.toc.affix-bottom {
   position: absolute;
 }

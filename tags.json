@@ -1,0 +1,12 @@
+---
+---
+
+[
+  {% for tag in site.tags %}
+    {
+      "name": "{{ tag|first }}",
+      "count": {{ tag|last|size }}
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
+

@@ -12,6 +12,7 @@
     display: inline-block;
     letter-spacing: 0.03em;
     @include link-hover($light-grey, white);
+    @include serif;
     .logo-h{
       color: $green;
       font-size: 32px;
@@ -29,7 +30,6 @@
     color: darken($light-grey, 10%);
     margin: 0;
     font-size: 13px;
-    font-family: sans-serif;
     @include media-xs{
       display: none;
     }

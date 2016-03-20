@@ -6,11 +6,9 @@ layout: default
   <aside class="hidden-xs">
     <section class="follow">
       <h4>关注</h4>
-      {% include follow.html %}
     </section>
-    <section class="taglist">
+    <section class="tag-list">
       <h4>标签</h4>
-      {% include taglist.html %}
     </section>
   </aside>
   <div class="content"> 
@@ -28,7 +26,7 @@ layout: default
             </h1>
             <span class="tags">
               {% for tag in post.tags %}
-                <a class="tag" data-tag="{{tag}}">{{tag}}</a>
+                <a class="tag" href="/tags.html#{{tag}}">{{tag}}</a>
               {% endfor %}
             </span>
           </header>

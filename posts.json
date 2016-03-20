@@ -1,0 +1,14 @@
+---
+---
+
+[
+  {% for post in site.posts %}
+    {
+      "title": "{{ post.title | xml_escape }}",
+      "date": "{{ post.date| date: '%Y-%m-%d'}}",
+      "tags": {{ post.tags | jsonify }},
+      "url": "{{post.url}}"
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
+

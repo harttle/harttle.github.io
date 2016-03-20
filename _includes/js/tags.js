@@ -3,15 +3,18 @@ window.modules.tags = function (console, $ele) {
     setHighchartsRadiationColors();
 
     // post/tag parsing
-    var posts = parsePosts(getRawArray('script#posts-data')),
-        tags = parseTags(getRawArray('script#tags-data')),
-        $toggle = $('#tags-display-toggle'), 
+    var $toggle = $('#tags-display-toggle'), 
         $currentTag = $('#current-tag'), 
         $tagChart = $('.tag-chart'),
-        $tagCloud = $('.tag-cloud');
+        $tagCloud = $('.tag-cloud'),
+        posts, tags;
 
-    showCloud(tags);
-    initList();
+    $.when(getTags(), getPosts()).done(function(ts, ps){
+        posts = ps;
+        tags = ts;
+        showCloud(tags);
+        initList();
+    });
 
     $tagCloud.on('click', 'span', function(e){
         var $span = $(e.target);
@@ -77,12 +80,13 @@ window.modules.tags = function (console, $ele) {
     }
 
     function showCloud(tags){
+        var displayTags = getTagCloudTags(tags),
+            options = getTagCloudOptions(function(){ 
+                $toggle.addClass('shown'); 
+            });
         $toggle.removeClass('shown');
-        $tagCloud.show().jQCloud(tags, {
-            afterCloudRender: function(){
-                $toggle.addClass('shown');
-            }
-        });
+        $tagCloud.show().jQCloud(displayTags, options);
+
     }
 
     function hideCloud(tags){
@@ -95,43 +99,34 @@ window.modules.tags = function (console, $ele) {
         });
     }
 
-    function getRawArray(query){
-        return $(query).html()
-        .split(';')
-        .filter(notEmpty)
-        .map(function (item) {
-            return item.split('&').map(trim);
+    function getPosts(){
+        return $.get('/posts.json').then(function(posts){
+            posts.forEach(function(post){
+                post.tagstr = ',' + post.tags.join(',') + ',';
+            });
+            return posts;
         });
     }
 
-    function parsePosts(rawPosts){
-        return rawPosts.map(function(raw){
-            return {
-                title: raw[0],
-                date: raw[1],
-                url: raw[2],
-                tags: raw[3].split(',').filter(notEmpty).map(trim),
-                tagstr: ',' + raw[3] + ','
-            };
+    function getTags(){
+        return $.get('/tags.json').then(function(tags){
+            return tags.sort(function(lhs, rhs){
+                return rhs.count - lhs.count;
+            });
         });
     }
 
-    function parseTags(rawTags){
+    function getTagCloudTags(rawTags){
         var norm = 0, offset = 0, last = -1;
-        var tags = rawTags
-        .sort(function(lhs, rhs){
-            return rhs[1] - lhs[1];
-        })
-        .slice(0, 100)
-        .map(function (raw) {
-            var wt = Math.log2(parseInt(raw[1])+1);
+        var tags = rawTags.slice(0, 100).map(function (raw) {
+            var wt = Math.log2(raw.count+1);
             norm = Math.max(norm, wt);
             return {
-                text: raw[0],
-                count: parseInt(raw[1]),
+                text: raw.name,
+                count: raw.count,
                 weight: wt,
                 afterWordRender: function(){
-                    this.attr('data-tag', raw[0]);
+                    //this.addClass('tag');
                 }
             };
         })
@@ -150,15 +145,11 @@ window.modules.tags = function (console, $ele) {
         return tags;
     }
 
-    function zeros(n){
-        var ret = [];
-        for(var i=0; i<n; i++) ret.push(0);
-        return ret;
+    function getTagCloudOptions(afterRender){
+        return {
+            afterCloudRender: afterRender
+        };
     }
-
-    function trim(item){ return item.trim(); }
-
-    function notEmpty(item){ return item.trim() !== ''; }
 
     function getTagChartOptions(tags, clickCallback){
         var chartOptions = {
@@ -191,7 +182,7 @@ window.modules.tags = function (console, $ele) {
             series: [{
                 name: 'Tags',
                 data: tags.map(function(tag){
-                    return { name: tag.text, y: tag.count };
+                    return { name: tag.name, y: tag.count };
                 })
             }]
         };

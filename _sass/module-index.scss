@@ -14,14 +14,12 @@ aside, .posts{
     width: $timeline-left-width;
     padding: 2px 18px 10px 0;
     border-bottom: 1px solid $light-grey;
-    @include sans;
+    color: $grey;
     .day{
       font-size: 22px;
       line-height: 22px;
-      color: $grey;
     }
     .month{
-      color: $light-grey;
       font-size: 14px;
       margin-bottom: 0;
       font-style: italic;
@@ -41,6 +39,7 @@ aside, .posts{
         margin-top: 0;
         a{
           @include link-hover($grey, $blue);
+          font-weight: normal;
         }
       }
     }
@@ -80,7 +79,6 @@ aside, .posts{
   p, h1, h2, h3, h4, h5, h6, b, strong{
     color: #777;
     font-weight: normal;
-    line-height: 1.8em;
     border-bottom: none;
   }
   img, table{
@@ -100,7 +98,7 @@ aside{
   float: right;
   margin-left: 80px;
   width: 235px;
-  section.taglist{
+  section.tag-list{
     margin-top: 70px;
     .tag{
       margin-bottom: 0.8em;
@@ -119,7 +117,7 @@ aside{
     width: 40px;
     margin-top: 5px;
     margin-bottom: -1px;
-    @include animation(width-percentage 30s infinite alternate);
+    @include animation(width-percentage 15s infinite alternate);
   }
   section:hover h4::after{
     @include animation(width-percentage .5s infinite alternate);

@@ -5,11 +5,8 @@ body {
   position: relative; /* for scroll spy with absolute position */
   color: rgb(96, 96, 96);
   font-size: 15px;
-  font-family: Georgia, serif;
-}
-
-h1, h2, h3, h4, h5, h6, nav li, .nav, nav, .page-title{
   @include sans;
+  -webkit-font-smoothing: antialiased;
 }
 
 a, a:hover, a:active, a:focus{
@@ -22,7 +19,6 @@ a, a:hover, a:active, a:focus{
 
 .btn-hover{
   @include link-hover($blue, white);
-  @include sans;
   padding: 0.3em 1em;
   font-size: 14px;
 }

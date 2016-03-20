@@ -25,14 +25,24 @@ li{
   font-size: 14px;
   line-height: 28px;
   time{
-    color: $light-grey;
-    margin-right: 30px;
     font-family: monospace;
+    color: $light-grey;
+    width: 150px;
+    float: left;
+  }
+  div{
+    margin-left: 160px;
+  }
+  .title{
+    margin-right: 10px;
+  }
+  @include media-xs{
+    div{
+      margin-left: 0;
+    }
+    time, .tag{
+      display:none;
+    }
   }
 }
 
-@media(max-width: 768px){
-  li time{
-    display:none;
-  }
-}

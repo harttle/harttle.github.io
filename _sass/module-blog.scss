@@ -21,7 +21,6 @@ header{
     color: white;
     font-size: 14px;
     font-style: italic;
-    font-family: sans-serif;
   }
   .tag-list{
     margin-bottom: 20px;
@@ -68,10 +67,6 @@ aside{
   margin-top: 20px;
 }
 
-.module-follow{
-  float: right;
-}
-
 .post-pager{
   margin-bottom: 50px;
   margin-top: 30px;
@@ -80,6 +75,13 @@ aside{
   }
   .next{
     float: right;
+  }
+}
+
+#social-share-block{
+  text-align: right;
+  .social-share{
+    display: inline-block;
   }
 }
 

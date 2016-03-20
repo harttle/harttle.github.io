@@ -1,14 +1,16 @@
 ---
 ---
 
+{% include /lib/jqcloud/jqcloud.scss %}
+{% include /lib/monokai-syntax.scss %}
+{% include /lib/social-share/social-share.min.css %}
+
 @import 'mixins';
 @import 'variables';
 @import 'paper';
 @import 'scroll-top';
 @import 'markdown';
-@import 'monokai-syntax';
 @import 'global';
-@import 'jqcloud';
 @import 'hover-tag';
 
 .module-about{
@@ -19,21 +21,12 @@
   @import 'module-404';
 }
 
-
-.module-follow{
-  @import 'module-follow';
-}
-
 .module-default{
   @import 'module-default';
 }
 
 .module-index{
   @import 'module-index';
-}
-
-.module-taglist{
-  @import 'module-taglist';
 }
 
 .module-tags{

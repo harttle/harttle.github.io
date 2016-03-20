@@ -3,7 +3,6 @@
 
 /* fonts */
 div.jqcloud {
-  font-family: "Helvetica", "Arial", sans-serif;
   font-size: 10px;
   line-height: normal;
 }
@@ -35,15 +34,15 @@ div.jqcloud a { color: inherit; }
 div.jqcloud a:hover { color: #0df; }
 div.jqcloud a:hover { color: #0cf; }
 div.jqcloud span.w10 { color: $red; }
-div.jqcloud span.w9 { color: adjust_hue($red, 20); }
-div.jqcloud span.w8 { color: adjust_hue($red, 40); }
-div.jqcloud span.w7 { color: adjust_hue($red, 60); }
-div.jqcloud span.w6 { color: adjust_hue($red, 80); }
-div.jqcloud span.w5 { color: adjust_hue($red, 100); }
-div.jqcloud span.w4 { color: adjust_hue($red, 120); }
-div.jqcloud span.w3 { color: adjust_hue($red, 140); }
-div.jqcloud span.w2 { color: adjust_hue($red, 160); }
-div.jqcloud span.w1 { color: adjust_hue($red, 180); }
+div.jqcloud span.w9 { color: $red; }
+div.jqcloud span.w8 { color: $red; }
+div.jqcloud span.w7 { color: $red; }
+div.jqcloud span.w6 { color: $red; }
+div.jqcloud span.w5 { color: $green; }
+div.jqcloud span.w4 { color: $green; }
+div.jqcloud span.w3 { color: $green; }
+div.jqcloud span.w2 { color: $blue; }
+div.jqcloud span.w1 { color: $blue; }
 
 /* layout */
 

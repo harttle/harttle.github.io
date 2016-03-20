@@ -6,12 +6,20 @@ layout: default
   <header>
     <div class="container-fluid">
       <time class="pull-right">
-        {{ page.date | date: "%A, %B %-d"}}
+        {% assign d = page.date | date: "%-d"  %}
+        {{ page.date | date: "%A, %B" }} 
+        {% case d %}
+          {% when '1' or '21' or '31' %}{{ d }}st
+          {% when '2' or '22' %}{{ d }}nd
+          {% when '3' or '23' %}{{ d }}rd
+          {% else %}{{ d }}th
+          {% endcase %}, 
+        {{ page.date | date: "%Y" }}
       </time>
       <h3>{{page.title}}</h3>
       <p class="pull-right tag-list">
         {% for tag in page.tags %}
-          <a class="tag" data-tag="{{tag}}">{{tag}}</a>
+          <a class="tag" href="/tags.html#{{tag}}">{{tag}}</a>
         {% endfor %}
       </p>
     </div>
@@ -19,7 +27,7 @@ layout: default
 
   <div class="container-fluid">
     <aside> 
-      <div class="sidebar"></div> 
+      <div class="toc"></div> 
     </aside>
 
     <div class="content">
@@ -30,9 +38,7 @@ layout: default
         </div>
       </article>
 
-      <div class="clearfix">
-        {% include follow.html %}
-      </div>
+      <div id="social-share-block">分享到：</div>
 
       {% include post-pager.html %}
       {% include comments.html %}

@@ -1,15 +1,15 @@
 window.modules.blog = function(console, $ele, mod) {
-    var toc = getTOC($('article'));
+    var toc = getTOC($('article')),
+        $toc = $('.toc');
     if (toc) {
-        $('.sidebar').append(toc);
+        $toc.append(toc);
 
-        //sidebar affix, this offset is for sidebar position recognition
+        //toc affix, this offset is for toc position recognition
         setTimeout(function() {
-            var $sideBar = $('.sidebar');
-            $sideBar.affix({
+            $toc.affix({
                 offset: {
                     top: function() {
-                        var offsetTop = $sideBar.offset().top;
+                        var offsetTop = $toc.offset().top;
                         return (this.top = offsetTop - 40);
                     },
                     bottom: function() {
@@ -19,9 +19,9 @@ window.modules.blog = function(console, $ele, mod) {
             });
         }, 100);
 
-        //sidebar scroll spy
+        //toc scroll spy
         $('body').scrollspy({
-            target: '.sidebar',
+            target: '.toc',
             offset: 10 //make sure to spy the element when scrolled to
         });
     } else {
@@ -62,4 +62,14 @@ window.modules.blog = function(console, $ele, mod) {
         $toc.find('ul').not(':parent').remove();
         return $toc;
     }
+
+    var links = {
+        weibo: 'http://v.t.sina.com.cn/share/share.php?' + $.param({
+            url: location.href,
+            title: $('meta[name=description]').attr('content')
+        }),
+        wechat: location.href
+    };
+    $('#social-share-block').socialShare({ links: links, size: 'xs'});
 };
+

@@ -1,7 +1,11 @@
 @import 'variables';
 
 @mixin sans{
-  font-family: 微软雅黑, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+}
+
+@mixin serif{
+  font-family: Georgia, '宋体', serif;
 }
 
 @mixin size($value){ 
