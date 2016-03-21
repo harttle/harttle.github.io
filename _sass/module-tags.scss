@@ -69,6 +69,7 @@ $left-width: 50%;
   .post-list{
     @include absolute(0, 0, 0, 0);
     overflow: auto;
+    margin: 0;
     padding: 30px 30px 30px 20px;
     @include media-xs{
       padding: 0px 30px 30px;

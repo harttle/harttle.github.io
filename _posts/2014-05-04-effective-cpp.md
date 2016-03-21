@@ -1,7 +1,6 @@
 ---
 layout: blog
-categories: reading
-title: Effective C++ 笔记
+title: Effective C++ 笔记概要
 tags: C++
 ---
 
