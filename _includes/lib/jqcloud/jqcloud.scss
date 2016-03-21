@@ -7,13 +7,11 @@ div.jqcloud {
   line-height: normal;
 }
 
-div.jqcloud a {
-  font-size: inherit;
-  text-decoration: none;
-}
-
 div.jqcloud span{
   cursor: pointer;
+}
+div.jqcloud span:hover{
+  text-decoration: underline;
 }
 
 div.jqcloud span.w10 { font-size: 30px; }

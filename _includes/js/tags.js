@@ -3,97 +3,134 @@ window.modules.tags = function (console, $ele) {
     setHighchartsRadiationColors();
 
     // post/tag parsing
-    var $toggle = $('#tags-display-toggle'), 
+    var $btnPie = $('#tags-display-toggle .btn-pie'), 
+        $btnCloud = $('#tags-display-toggle .btn-cloud'), 
+        $btns = $('#tags-display-toggle .btn'), 
+        $btnList = $('#tags-display-toggle .btn-list'), 
         $currentTag = $('#current-tag'), 
-        $tagChart = $('.tag-chart'),
+        $tagContainer = $('.tag-container'),
+        $tagPie = $('.tag-pie'),
+        $tagList = $('.tag-list'),
         $tagCloud = $('.tag-cloud'),
-        posts, tags;
+        $postList = $('.post-list');
 
-    $.when(getTags(), getPosts()).done(function(ts, ps){
-        posts = ps;
-        tags = ts;
+    $.when(getTags(), getPosts()).done(function(tags, posts){
+        var $statusBar = $('#status-bar');
+
         showCloud(tags);
         initList();
-    });
 
-    $tagCloud.on('click', 'span', function(e){
-        var $span = $(e.target);
-        setTag($span.html());
-    });
+        $tagContainer.on('click', 'span', function(e){
+            var tag = $(e.target).data('tag');
+            tag && onTagSelected(tag);
+        });
 
-    $toggle.click(function(){
-        if($tagCloud.is(':visible')){
-            hideCloud();
-            showChart();
-        } 
-        else{
-            hideChart();
+        $postList.on('mouseenter', 'a', function(e){
+            var tags = $(e.target).closest('li').data('tags');
+            $statusBar.html(tags.join(', '));
+        })
+        .on('mouseleave', 'a', function(e){
+            $statusBar.html('');
+        });
+
+        $btnCloud.click(function(){
+            hidePie();
+            hideList();
             showCloud(tags);
-        } 
+        });
+        $btnPie.click(function(){
+            hideCloud();
+            hideList();
+            showPie(tags, onTagSelected);
+        });
+        $btnList.click(function(){
+            hideCloud();
+            hidePie();
+            showList(tags);
+        });
+
+        function initList(){
+            var selectedTag = location.hash.replace('#', '');
+            if(selectedTag) setTag(posts, selectedTag);
+            else updateList(posts.slice(0, 30), true);
+        }
+
+        function onTagSelected(tag){
+            setTag(posts, tag);
+            $body.animate({
+                scrollTop: $('.right-panel').offset().top
+            }, 500);
+        }
     });
 
     // functions
-    function onTagSelected(tag){
-        setTag(tag);
-        $body.animate({
-            scrollTop: $('.right-panel').offset().top
-        }, 500);
-    }
-
-    function setTag(tag){
-        var selectedPosts = searchByTag(tag); 
+    function setTag(posts, tag){
+        var selectedPosts = searchByTag(posts, tag); 
         updateList(selectedPosts);
         updateCurrentTag(tag, selectedPosts.length);
         location.hash = tag;
     }
 
     function updateList(posts, disableAnimation){
-        var $ul = $('<ul>'), $list = $('.post-list');
-        $list.hide();
-        posts.map(function(p){
-            var $li = $('<li>', {class: 'clearfix'}),
+        var $ul = $('<ul>');
+        var $lis = posts.map(function(p){
+            var $li = $('<li>', {class: 'clearfix'}).data('tags', p.tags),
                 $anchor = $('<a>', { href: p.url}).html(p.title),
                 $time = $('<time>').html(p.date),
                 $title = $('<div>').append($anchor);
-            $ul.append($li.append($time).append($title));
+            return $li.append($time).append($title);
         });
-        $list.html($ul.html());
-        if(disableAnimation) $list.show();
-        else $list.fadeIn();
+        $postList.hide().html('').append($lis);
+        if(disableAnimation) $postList.show();
+        else $postList.fadeIn();
     }
 
-    function initList(){
-        var selectedTag = location.hash.replace('#', '');
-        if(selectedTag ) onTagSelected(selectedTag, true);
-        else updateList(posts.slice(0, 30), true);
+    function showList(tags){
+        $btnList.addClass('active');
+        $tagList.html('').append(tags.map(function(tag){
+            return $('<span>', {
+                class: 'tag'
+            })
+            .data('tag', tag.name)
+            .html(tag.name+'('+tag.count+')');
+        }));
+        $tagList.fadeIn();
     }
 
-    function showChart(){
-        var options = getTagChartOptions(tags.slice(0, 20), function(){
+    function hideList(){
+        $btnList.removeClass('active');
+        $tagList.fadeOut().html('');
+    }
+
+    function showPie(tags, onTagSelected){
+        $btnPie.addClass('active');
+        var options = getTagPieOptions(tags.slice(0, 20), function(){
             onTagSelected(this.name);
         });
-        $tagChart.show().highcharts(options);
+        $tagPie.html('').show().highcharts(options);
     }
 
-    function hideChart(){
-        $tagChart.hide().html('');
+    function hidePie(){
+        $btnPie.removeClass('active');
+        $tagPie.hide().html('');
     }
 
     function showCloud(tags){
         var displayTags = getTagCloudTags(tags),
             options = getTagCloudOptions(function(){ 
-                $toggle.addClass('shown'); 
+                $btns.attr('disabled', false);
             });
-        $toggle.removeClass('shown');
-        $tagCloud.show().jQCloud(displayTags, options);
-
+        $btns.attr('disabled', true);
+        $tagCloud.html('').show().jQCloud(displayTags, options);
+        $btnCloud.addClass('active');
     }
 
     function hideCloud(tags){
+        $btnCloud.removeClass('active');
         $tagCloud.html('').removeAttr('style').hide();
     }
 
-    function searchByTag(tag){
+    function searchByTag(posts, tag){
         return posts.filter(function(post){
             return post.tagstr.indexOf(',' + tag + ',') > -1;
         });
@@ -126,7 +163,7 @@ window.modules.tags = function (console, $ele) {
                 count: raw.count,
                 weight: wt,
                 afterWordRender: function(){
-                    //this.addClass('tag');
+                    this.data('tag', raw.name);
                 }
             };
         })
@@ -151,7 +188,7 @@ window.modules.tags = function (console, $ele) {
         };
     }
 
-    function getTagChartOptions(tags, clickCallback){
+    function getTagPieOptions(tags, clickCallback){
         var chartOptions = {
             title: { text: '' },
             credits: { enabled: false },

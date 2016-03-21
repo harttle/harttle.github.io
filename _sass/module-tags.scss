@@ -1,5 +1,6 @@
 $left-width: 50%;
-@mixin trbl($t, $r, $b, $l){
+@mixin absolute($t, $r, $b, $l){
+  position: absolute;
   top: $t;
   bottom: $b;
   left: $l;
@@ -7,33 +8,40 @@ $left-width: 50%;
 }
 
 &{
+  @include absolute(111px, 0, 0, 0);
   position: fixed;
-  @include trbl(111px, 0, 0, 0);
   @include media-xs{
     position: static;
   }
 }
 
 .left-panel, .right-panel{
-  position: absolute;
-  @include trbl(0, 0, 0, 0);
+  @include absolute(0, 0, 0, 0);
 }
 
 .left-panel{
   width: $left-width;
-  .tag-cloud, .tag-chart{
-    position: absolute;
-    @include trbl(30px, 30px, 30px, 30px);
-  }
-  .tag-chart{
+  .tag-container{
     display: none;
+    @include absolute(55px, 30px, 30px, 30px);
+  }
+  .tag-list{
+    padding-bottom: 50px;
+    overflow: auto;
+    span{
+      cursor: pointer;
+    }
   }
   #tags-display-toggle{
-    display: none;
     position: absolute;
+    opacity: 0.5;
     bottom: 30px;
     left: 30px;
     margin: 0;
+    transition: opacity .5s;
+    &:hover{
+      opacity: 1;
+    }
     @include link-hover($light-grey, $green);
     @include media-md{
       &.shown{
@@ -57,18 +65,30 @@ $left-width: 50%;
 }
 
 .right-panel{
-  overflow: auto;
   left:$left-width;
-  padding-left: 20px;
   .post-list{
-    margin: 30px 30px 30px 0;
+    @include absolute(0, 0, 0, 0);
+    overflow: auto;
+    padding: 30px 30px 30px 20px;
     @include media-xs{
-      margin: 0px 30px 30px;
+      padding: 0px 30px 30px;
     }
+  }
+  #status-bar{
+    margin: 0;
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
   }
   @include media-xs{
     position: static;
     padding-left: 0;
+    .post-list{
+      position: static;
+    }
+    #status-bar{
+      display: none;
+    }
   }
 }
 
@@ -82,7 +102,7 @@ li{
   }
   time{
     float: right;
-    color: #999;
+    color: $light-grey;
     width: 100px;
     margin-left: 20px;
     display: none;
