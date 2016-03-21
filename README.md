@@ -1,7 +1,7 @@
 harttle.github.io
 =================
 
-Source files for **[harttle's homepage](http://harttle.github.io)**.
+Source files for **[harttle's homepage](http://harttle.com)**.
 
 Features:
 
