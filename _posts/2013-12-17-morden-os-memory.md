@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: reading
 title:  Modern Operating Systems 笔记 - Memory Management
-tags: OS Virtual-Memory Page-Table LTB
+tags: 操作系统 虚拟内存 页表 LTB
 ---
 
 ## No Memory Abstraction

@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: reading
 title:  Modern Operating Systems 笔记 - Input/Output
-tags: OS DMA Memory-Map Pricise-Interrupt
+tags: 操作系统 DMA 内存映射 精确中断
 ---
 
 ## Principles of I/O Hardware

@@ -1,9 +1,8 @@
 ---
 layout: blog
-categories: reading
 title: Item 55：熟悉一下Boost
 subtitle: Effective C++笔记
-tags: C++ STL Boost
+tags: C++ STL Boost Lambda
 excerpt: Boost是一个C++开发者的社区，作为C++标准的试验场，收容了很多高质量、开源的、跨平台、独立于编译器的C++库，包括许多TR1组件的实现。
 ---
 

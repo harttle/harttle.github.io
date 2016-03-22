@@ -1,6 +1,5 @@
 ---
 layout: blog
-categories: reading
 title: Item 37：不要重写父类函数的默认参数
 subtitle: Effective C++笔记
 tags: C++ 动态绑定 虚函数 默认参数

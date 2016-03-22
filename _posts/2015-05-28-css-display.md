@@ -1,8 +1,7 @@
 ---
 layout: blog 
-categories: web
 title: CSS Display属性与盒模型
-tags: CSS HTML inline-block
+tags: CSS HTML inline-block inline
 ---
 
 因为HTML流式文档的特性，页面布局往往是新手最为头疼的问题之一。

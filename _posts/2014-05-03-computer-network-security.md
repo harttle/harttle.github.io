@@ -2,7 +2,7 @@
 layout: blog
 categories: reading
 title:  《计算机网络》笔记 - 网络安全
-tags: Kerckhoff 置换密码 转置密码 BB84 AES DES RSA PEM
+tags: Kerckhoff 置换密码 转置密码 BB84 AES DES RSA PEM Socket
 ---
 
 ## 密码学简介

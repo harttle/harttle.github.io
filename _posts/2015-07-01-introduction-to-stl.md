@@ -1,8 +1,7 @@
 ---
 layout: blog 
-categories: reading
 title: C++手稿：STL小记
-tags: C++ STL
+tags: C++ STL 二叉树 平衡二叉树 迭代器 算法
 excerpt: STL中有三个重要的概念： 1. 容器：容纳各种数据类型的数据结构，是一系列的类模板。 2. 迭代器：迭代器用来迭代地访问容器中的元素。 3. 算法：用来操作容器中的元素，是一系列的函数模板。
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: 如何使用 CSS 截断文本？ 
-tags: CSS HTML 盒模型 text-overflow overflow line-clamp 优雅降级
+tags: CSS HTML 盒模型 text-overflow overflow line-clamp 优雅降级 inline
 ---
 
 在很多UI设计中会限制文本长度，这时需要我们适当地截断文本显示省略号。

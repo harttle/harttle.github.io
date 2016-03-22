@@ -16,7 +16,9 @@ layout: default
           {% endcase %}, 
         {{ page.date | date: "%Y" }}
       </time>
-      <h3>{{page.title}}</h3>
+      <h3>{{page.title}}
+        {% if page.subtitle %}<small>{{page.subtitle}}</small>{% endif %}
+      </h3>
       <p class="pull-right tag-list">
         {% for tag in page.tags %}
           <a class="tag" href="/tags.html#{{tag}}">{{tag}}</a>

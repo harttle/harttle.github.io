@@ -2,7 +2,7 @@
 layout: blog
 categories: reading
 title:  《计算机网络》笔记 - 应用层
-tags: DNS ADSL HTTP TCP SMTP POP3
+tags: DNS ADSL HTTP TCP SMTP POP3 UDP
 ---
 
 ## DNS-域名系统

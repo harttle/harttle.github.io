@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: reading
 title:  Modern Operating Systems 笔记 - Processes 
-tags: OS Process fork kill
+tags: 操作系统 进程 fork kill Unix Windows
 ---
 
 **pseudoparallelism**

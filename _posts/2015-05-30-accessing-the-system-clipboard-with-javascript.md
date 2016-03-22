@@ -1,8 +1,7 @@
 ---
 layout: blog 
-categories: web
 title: Accessing the System Clipboard with JavaScript
-tags: Flash JavaScript 剪切板
+tags: Flash JavaScript 剪切板 inline
 ---
 
 Origin Post: https://brooknovak.wordpress.com/2009/07/28/accessing-the-system-clipboard-with-javascript/

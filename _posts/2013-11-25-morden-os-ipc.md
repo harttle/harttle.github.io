@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: reading
 title:  Modern Operating Systems 笔记 - Interprocess Communication
-tags: OS IPC mutex semaphore interrupt
+tags: 操作系统 IPC 中断 互斥量 信号量
 ---
 
 **race conditions**

@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: Effective C++ 笔记概要
-tags: C++
+tags: C++ 回调函数 inline 动态绑定
 ---
 
 两年前第一次接触 Scott Meyers 的 Effective C++，最近面试C++工程师，又拿来研读，整理了一些读书笔记。

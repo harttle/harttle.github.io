@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: reading
 title:  Modern Operating Systems 笔记 - Threads
-tags: OS thread pthread user-space
+tags: 操作系统 线程 pthread 用户空间 内核空间
 ---
 
 ## Thread Usage

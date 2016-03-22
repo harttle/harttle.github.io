@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: reading
 title:  Modern Operating Systems 笔记 - Deadlocks
-tags: OS Ostrich-Algorithm Banker's-Algorithm
+tags: 操作系统 Ostrich算法 银行家算法 算法
 ---
 
 ## Resources

@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: linux
 title: 那些鲜为人知的Vim小技巧
-tags: Vim Bash 
+tags: Vim Bash Markdown GNU
 ---
 
 # 用拷贝的内容替换

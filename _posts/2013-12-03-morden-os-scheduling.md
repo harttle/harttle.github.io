@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: reading
 title:  Modern Operating Systems 笔记 - Scheduling
-tags: OS Round-Robin Multiple-Queues
+tags: 操作系统 Round-Robin算法 Multiple-Queues
 ---
 
 ## Introduction to Scheduling

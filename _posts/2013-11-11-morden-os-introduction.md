@@ -2,7 +2,7 @@
 layout: blog
 categories: reading
 title:  Modern Operating Systems 笔记 - Introduction
-tags: OS SPOOLING Unix Windows Hypervisor
+tags: 操作系统 SPOOLING Unix Windows Hypervisor
 ---
 
 ## What is OS

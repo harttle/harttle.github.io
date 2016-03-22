@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: 寻找并删除Git记录中的大文件
-tags: Git Github Bash
+tags: Git Github Bash 排序 磁盘
 ---
 
 最近发现[HarttleLand的Git仓库][harttle-git]已经达到了142M，严重影响Fork和Clone。

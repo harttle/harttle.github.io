@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: 那些 JavaScript 的优秀特性
-tags: JavaScript DOM 函数 弱类型 编译 原型 继承
+tags: JavaScript DOM 弱类型 编译 原型 继承 Lambda 闭包
 ---
 
 说起编程语言，理科生们最初接触的应当是C++。那是P校的必修课。

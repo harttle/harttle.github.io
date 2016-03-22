@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: 函数式JavaScript编程
-tags: JavaScript 函数式编程 级联调用 回调函数 模块化 闭包 柯里化
+tags: JavaScript 函数式编程 级联调用 回调函数 模块化 闭包 柯里化 Lambda
 ---
 
 也许你还觉得函数式编程很陌生，但许多的函数式编程风格已经渐渐开始流行。

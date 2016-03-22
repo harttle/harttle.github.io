@@ -2,7 +2,7 @@
 layout: blog
 categories: reading
 title:  Modern Operating Systems 笔记 - Linux
-tags: OS MULTICS UNICS UNIX MINIX inode EXT2
+tags: 操作系统 MULTICS UNICS Unix MINIX inode EXT2 Linux GNU Socket
 ---
 
 ## History of Unix and Linux

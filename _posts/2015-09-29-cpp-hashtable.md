@@ -2,7 +2,7 @@
 layout: blog
 categories: reading
 title: 用C++实现一个简单的哈希表
-tags: 算法 哈希 C++ 智能指针 异常
+tags: 算法 哈希 C++ 智能指针 异常 二叉树
 ---
 
 > Wikipedia: [散列表][hashtable]（Hash table，也叫哈希表），是根据关键字（Key value）而直接访问在内存存储位置的数据结构。

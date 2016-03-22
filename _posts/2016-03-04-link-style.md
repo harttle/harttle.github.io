@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: 玩转超链接的样式
-tags: CSS 选择符 HTML
+tags: CSS 选择符 HTML inline-block
 ---
 
 超链接虽然不起眼，但它却是万维网（Web）的基石，它使得用户可以在整个万维网进行导航。
