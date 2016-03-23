@@ -1,6 +1,5 @@
 ---
 layout: blog
-categories: reading
 title: Item 19：把类的设计视作类型设计
 subtitle: Effective C++笔记
 tags: C++ 接口 类型转换 赋值运算符 构造函数 拷贝构造函数

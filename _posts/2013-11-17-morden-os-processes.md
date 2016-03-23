@@ -1,7 +1,7 @@
 ---
 layout: blog
 title:  Modern Operating Systems 笔记 - Processes 
-tags: 操作系统 进程 fork kill Unix Windows
+tags: 操作系统 进程 Unix Windows fork kill sed
 ---
 
 **pseudoparallelism**

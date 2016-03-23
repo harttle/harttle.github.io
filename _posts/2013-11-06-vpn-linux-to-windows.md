@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: misc
 title: 连接 Windows Server VPN
-tags: 网络 Bash ArchLinux 远程桌面 
+tags: ArchLinux Bash IP Linux Ubuntu Windows 网络 远程桌面
 ---
 
 Linux 连接 Windows Server VPN，以 archLinux 为例，适用于 Ubuntu。

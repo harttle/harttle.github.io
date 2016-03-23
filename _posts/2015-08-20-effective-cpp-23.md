@@ -1,9 +1,8 @@
 ---
 layout: blog
-categories: reading
 title: Item 23：非成员非友元函数好于成员函数
 subtitle: Effective C++笔记
-tags: C++ 封装
+tags: C++ 多态 封装 虚函数 成员函数
 excerpt: 相比于成员函数，非成员函数提供了更好的封装，包的灵活性（更少的编译依赖），以及功能扩展性。
 ---
 

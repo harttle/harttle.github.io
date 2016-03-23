@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: linux
 title: 打造前端开发的 Vim 环境
-tags: Vim Bash HTML CSS JavaScript
+tags: Bash CSS HTML JavaScript Vim Vundle YCM 快捷键
 ---
 
 前不久harttle着手搭建了[类似IDE的Vim环境][vim-ide]，然而对于前端开发者这还远远不够。

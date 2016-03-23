@@ -1,9 +1,8 @@
 ---
 layout: blog
-categories: reading
 title: Item 29：追求异常安全的代码
 subtitle: Effective C++笔记
-tags: C++ 异常
+tags: C++ 内存 异常 指针 线程 智能指针
 excerpt: 异常安全是指当异常发生时，不会泄漏资源，也不会使系统处于不一致的状态。通常有三个异常安全级别：基本保证、强烈保证、不抛异常（nothrow）保证。
 ---
 

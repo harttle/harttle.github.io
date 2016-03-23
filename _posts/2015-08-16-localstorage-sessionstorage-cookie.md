@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: web
 title: HTML5本地存储：SessionStorage, LocalStorage, Cookie
-tags: LocalStorage Cookie Session JavaScript jQuery
+tags: Cookie DOM HTTP JavaScript LocalStorage Session jQuery 
 ---
 
 SessionStorage, LocalStorage, Cookie这三者都可以被用来在浏览器端存储数据，而且**都是字符串类型的键值对**！。

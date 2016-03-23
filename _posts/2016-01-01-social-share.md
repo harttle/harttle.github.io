@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: jQuery社会化分享：支持微信、微博、Github...
-tags: JavaScript HTML CSS jQuery 二维码 微信
+tags: CSS Github HTML JavaScript jQuery 微信 二维码
 ---
 
 一个既美观有支持微信的社会化分享工具：[harttle/social-share][sc]。

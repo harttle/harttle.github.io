@@ -1,15 +1,14 @@
 ---
 layout: blog
-categories: reading
 title: Item 16：使用同样的形式来new和delete
 subtitle: Effective C++笔记
-tags: C++ 动态内存 指针
-excerpt: 如果你用`new`申请了内存，请用`delete`来销毁；如果你用`new xx[]`申请了内存，请用`delete[]`来销毁。
+tags: C++ 引用 指针 数组 动态内存 构造函数
+excerpt: 如果你用`new`申请了动态内存，请用`delete`来销毁；如果你用`new xx[]`申请了动态内存，请用`delete[]`来销毁。
 ---
 
 > Item 16: Use the same form in corresponding uses of new and delete.
 
-这是C++界中家喻户晓的规则：**如果你用`new`申请了内存，请用`delete`来销毁；如果你用`new xx[]`申请了内存，请用`delete[]`来销毁**。
+这是C++界中家喻户晓的规则：**如果你用`new`申请了动态内存，请用`delete`来销毁；如果你用`new xx[]`申请了动态内存，请用`delete[]`来销毁**。
 不必多说了，来个例子吧：
 
 ```cpp
@@ -28,7 +27,7 @@ delete[] p;
 因为`delete`需要调用相应的构造函数，所以它需要知道被删除的是数组还是单个对象。
 即使是基本数据类型，错误的调用也会导致未定义行为。
 
-不过在Homebrew gcc 5.1.0中，在`int`数组上调用`delete`不会引发严重后果。只是后面的内存未被释放而已。
+不过在Homebrew gcc 5.1.0中，在`int`数组上调用`delete`不会引发严重后果。只是后面的动态内存未被释放而已。
 但是用`delete`来删除`string`数组，会有如下错误：
 
 ```

@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: 那些 CSS 背景图的技巧
-tags: CSS HTML
+tags: CSS HTML float 搜索引擎
 ---
 
 HTML的精髓在于文本的、结构化的数据格式。

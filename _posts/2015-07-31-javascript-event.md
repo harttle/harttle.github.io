@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: web
 title: DOM Level 2 Event与jQuery源码：捕获与冒泡
-tags: JavaScript jQuery 事件
+tags: DOM HTML JavaScript jQuery 事件
 excerpt: 本文来讨论DOM标准中是如何规定这些JavaScript事件的，以及jQuery源码中DOM事件的实现方式。
 ---
 

@@ -1,8 +1,7 @@
 ---
 layout: blog 
-categories: web
 title: AngularJS 表单（ng-form）验证
-tags: AngularJS JavaScript 表单 MVC
+tags: AngularJS CSS DOM HTML JavaScript MVC 模板 表单 模块化 数据绑定 正则表达式
 ---
 
 在HTML中，用户通过`input`, `select`, `textarea`等元素进行输入，我们通常用表单来包装和管理这些控件。客户端表单验证非常重要，可以及时地为用户提供表单验证信息。但客户端表单验证只是为了增强用户体验，服务器端验证仍然是必要的。

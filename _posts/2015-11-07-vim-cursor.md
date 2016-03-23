@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: Linux
 title: Vim中如何快速进行光标移动？
-tags: Vim Bash
+tags: Bash Linux Unix Vim 宏 快捷键
 ---
 
 Vim最大的特征与最大的困难就是纯键盘操作，所以快速移动光标是Vim的最基本技能。我接触Vim也有四个年头了，

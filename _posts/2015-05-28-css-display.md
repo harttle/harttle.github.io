@@ -1,7 +1,7 @@
 ---
 layout: blog 
 title: CSS Display属性与盒模型
-tags: CSS HTML inline-block inline
+tags: CSS Chrome HTML inline inline-block 盒模型
 ---
 
 因为HTML流式文档的特性，页面布局往往是新手最为头疼的问题之一。

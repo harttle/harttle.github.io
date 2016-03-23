@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: PLC 中的变量语法与使用
-tags: PLC 
+tags: PLC 引用 数组 作用域 全局变量
 ---
 
 PLC语言规约在IEC 61131-3中。本文详述了变量的表示法、变量初始化、变量声明以及使用。

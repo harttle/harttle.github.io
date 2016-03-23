@@ -2,7 +2,7 @@
 layout: blog
 categories: reading
 title:  算法导论笔记 - 图算法
-tags: 算法 单源最短路径 最小生成树 拓扑排序 Dijkstra Prim Kruskal 广度优先搜索 深度优先搜索
+tags: Dijkstra IP Kruskal Prim 排序 数组 算法 贪心 链表 闭包 队列 全局变量 拓扑排序 最小生成树 单源最短路径 广度优先搜索 深度优先搜索
 ---
 
 ## 基本的图算法

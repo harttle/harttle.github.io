@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: JavaScript 实现类的继承
-tags: JavaScript 继承 构造函数
+tags: JavaScript 继承 原型继承 构造函数
 ---
 
 JavaScript采取原型继承机制，对象直接继承其他对象；在类继承语言中，类继承其他类，对象是类的实例。事实上JavaScript提供了更加丰富的重用机制，可以模仿类继承，也可以支持更加复杂的代码重用模式。本文关注于如何用JavaScript模拟其他语言中的类继承机制。

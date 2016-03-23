@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: misc
 title: 搜索引擎搭建：heritrix+lucene
-tags: 网络 搜索引擎 Bash CentOS Bash Java
+tags: Apache Bash C++ CentOS Git HTML HTTP Java awk sed 内存 算法 网络 搜索引擎
 ---
 
 采用 heritix+pagerank+lucene 方式搭建搜索引擎原型，并评估其性能。

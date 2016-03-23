@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: web
 title: JavaScript 内置对象与原型链结构
-tags: JavaScript 继承 原型
+tags: Chrome JavaScript 原型继承 原型链
 excerpt: 本文便来介绍使用JavaScript进行面向对象编程的核心概念：原型链。 不同于Java、C#等面向对象语言，JavaScript采用基于原型的继承方式。
 ---
 

@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: linux
 title: 感受Vim的强大：进阶技巧
-tags: Vim Bash Markdown
+tags: Bash Markdown Unix Vim 宏 寄存器 快捷键
 ---
 
 Vim是从vi发展出来的一个文本编辑器。代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。和Emacs并列成为类Unix系统用户最喜欢的编辑器。

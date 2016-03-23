@@ -1,9 +1,8 @@
 ---
 layout: blog
-categories: reading
 title: Item 2：避免使用define
 subtitle: Effective C++笔记
-tags: C++ 宏
+tags: C++ 宏 封装 常量 编译 模块化
 excerpt: 尽量使用常量、枚举和内联函数，代替`#define`。
 ---
 

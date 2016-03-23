@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: Linux
 title: Vim 多文件编辑：窗口
-tags: Vim Bash window 
+tags: Bash Linux Vim 快捷键
 ---
 
 **标签页(tab)**、**窗口(window)**、**缓冲区(buffer)**是Vim多文件编辑的三种方式，它们可以单独使用，也可以同时使用。

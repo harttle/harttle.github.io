@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: linux
 title: 用 Cron 定时任务更新壁纸
-tags: crontab Bash Vim
+tags: Bash HTML Linux Unix Vim awk crontab grep sed
 ---
 
 最近看到[Set Desktop to NASA Astronomy Picture of the Day][nasa-automator]一文，这个OSX下的Automator脚本可以每天自动去NASA（美国宇航局）下载“每日一图”，并设置为桌面。居然有这么酷的事情！于是harttle按照这篇文章的指示，完成了这个脚本。

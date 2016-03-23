@@ -1,20 +1,20 @@
 ---
 layout: blog
 title: 寻找并删除Git记录中的大文件
-tags: Git Github Bash 排序 磁盘
+tags: Bash Git Github awk grep 排序 磁盘
 ---
 
 最近发现[HarttleLand的Git仓库][harttle-git]已经达到了142M，严重影响Fork和Clone。
 今晨Harttle从Git记录中定位了数百个大文件并将其删除，现在仓库恢复了27M的大小。
 借此机会，本文来介绍查找和重写Git记录的命令：`git rev-list`, `git filter-branch`。
 
-首先通过`rev-list`来识别仓库记录中的大文件：
+首先通过`rev-list`来找到仓库记录中的大文件：
 
 ```bash
 git rev-list --objects --all | grep "$(git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -5 | awk '{print$1}')"
 ```
 
-经过确认后，通过`filter-branch`来重写涉及到的所有提交：
+然后通过`filter-branch`来重写这些大文件涉及到的所有提交（重写历史记录）：
 
 ```bash
 git filter-branch -f --prune-empty --index-filter 'git rm -rf --cached --ignore-unmatch your-file-name' --tag-name-filter cat -- --all

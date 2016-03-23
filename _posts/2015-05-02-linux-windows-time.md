@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: linux
 title: Linux/Windows 时间不一致问题
-tags: UTC GMT CST Bash hwclock
+tags: Bash CST CentOS GMT Linux UTC Windows hwclock 网络
 ---
 
 在使用Linux/Windows的双系统时，经常发现时间不正确：liunx下的时间或windows下的时间不对，往往相差8小时。在此给出解释和推荐解决方案。

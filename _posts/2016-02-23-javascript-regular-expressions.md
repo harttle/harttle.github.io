@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: 用正则表达式分析 URL
-tags: 正则表达式 JavaScript
+tags: JavaScript 表单 字符串 正则表达式
 ---
 
 [正则表达式][regex]是编程语言中非常重要的一部分，

@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: reading
 title:  《计算机网络》笔记 - 概述
-tags: TCP IP
+tags: ALOHA IP LAN TCP WAN 栈 接口 网络 蓝牙 路由 多路复用 操作系统 电话网络
 ---
 
 顾名思义，计算机网络是指计算机连接而成的网络。但我们首先还是需要区分一下*计算机网络*和*分布式系统*：

@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: reading
 title:  算法导论笔记 - 基础知识
-tags: 算法 排序 插入排序 分治 归并排序
+tags: 分治 排序 数组 算法 归并排序 插入排序
 ---
 
 # 算法基础

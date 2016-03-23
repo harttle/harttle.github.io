@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: reading
 title: C++运算符优先级与结合性
-tags:  C++ 运算符
+tags:  C++ 运算符 类型转换
 ---
 
 最近总是由于不清楚运算符优先级不小心写错代码，每次都去查[cppreference][cppref]。现在把[cppreference][cppref]内容拷贝至此，方便查询。

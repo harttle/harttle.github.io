@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: linux
 title: 熟悉 Bash 快捷键来提高效率
-tags: Bash 快捷键
+tags: Bash GNU Linux 快捷键
 ---
 
 [Bash][bash]是GNU计划的一部分，是多数Linux发行版提供的默认Shell。

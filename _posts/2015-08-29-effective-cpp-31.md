@@ -1,9 +1,8 @@
 ---
 layout: blog
-categories: reading
 title: Item 31：最小化文件之间的编译依赖
 subtitle: Effective C++笔记
-tags: C++ 编译 依赖
+tags: C++ 常量 引用 指针 接口 编译 接口类 虚函数 工厂方法
 excerpt: 最小化编译依赖的一般做法是依赖于声明而非定义，这个想法可以通过句柄类或接口类来实现。库的声明应当包括“完整的”和“只有声明的”两种形式。
 ---
 

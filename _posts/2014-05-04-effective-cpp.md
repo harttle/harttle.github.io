@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: Effective C++ 笔记概要
-tags: C++ 回调函数 inline 动态绑定
+tags: C++ 回调函数 动态绑定 指针 RAII 模板 静态变量 构造函数 析构函数 Boost STL
 ---
 
 两年前第一次接触 Scott Meyers 的 Effective C++，最近面试C++工程师，又拿来研读，整理了一些读书笔记。

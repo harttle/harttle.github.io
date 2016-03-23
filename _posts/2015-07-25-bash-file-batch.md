@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: linux
 title: 博客迁移：Shell脚本批量文件处理
-tags: HTML Bash
+tags: Bash Github HTML HTTP Linux Makefile UTF-8 awk sed 搜索引擎
 ---
 
 近期我对所有文章链接（permalink）进行了重新设计，

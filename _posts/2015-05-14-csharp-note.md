@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: reading
 title: C# 学习笔记
-tags: C# .NET WPF
+tags: .NET C# WPF Windows 异常 引用 接口 进程 字符串 数据绑定 类型转换
 ---
 
 小编曾在软件工程国家工程研究中心做了两年的C#、WPF开发。现已全面转向Web开发了，

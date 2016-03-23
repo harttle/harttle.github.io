@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: 最佳实践：非阻塞脚本载入
-tags: JavaScript HTML XHR DOM Iframe
+tags: Chrome DNS DOM HTML Iframe JavaScript XHR 网络
 ---
 
 当今Web页面和脚本已经越来越复杂，页面性能有时会变得很差。

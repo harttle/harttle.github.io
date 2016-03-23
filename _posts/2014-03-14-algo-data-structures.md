@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: reading
 title:  算法导论笔记 - 数据结构
-tags: 算法 栈 队列 链表 二叉树 红黑树 线段树 哈希表
+tags: 栈 指针 数组 算法 链表 队列 二叉树 哈希表 字符串 红黑树 线段树 全局变量
 ---
 
 ## 栈和队列

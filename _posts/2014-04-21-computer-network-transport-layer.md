@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: reading
 title:  《计算机网络》笔记 - 传输层
-tags: ALOHA LAN WAN TCP UDP Socket Wifi 蓝牙
+tags: ALOHA IP LAN MAC Socket TCP UDP WAN Wifi 网络 蓝牙 路由 多路复用 拥塞控制 操作系统 用户空间 过程调用
 ---
 
 ## 传输服务
@@ -198,9 +197,9 @@ tags: ALOHA LAN WAN TCP UDP Socket Wifi 蓝牙
 * UDP（User Datagram Protocol，用户数据报协议）数据段由8字节头和净荷域构成。
 * UDP头：源端口、目标端口、UDP长度、UDP校验和
 
-### 远过程调用
+### 远程过程调用
 
-* RPC（remote procedure call，远过程调用）：让远程调用像本地过程调用一样，客户程序需要绑定一个小的库过程（客户存根），服务器程序绑定一个服务器存根。
+* RPC（remote procedure call，远程过程调用）：让远程调用像本地过程调用一样，客户程序需要绑定一个小的库过程（客户存根），服务器程序绑定一个服务器存根。
 * 参数包装：列集（marshaling）
 
 ### 实时传输协议

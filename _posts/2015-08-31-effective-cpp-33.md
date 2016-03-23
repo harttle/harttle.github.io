@@ -1,9 +1,8 @@
 ---
 layout: blog
-categories: reading
 title: Item 33：避免隐藏继承来的名称
 subtitle: Effective C++笔记
-tags: C++ 继承 using 转发函数 名称隐藏
+tags: C++ inline 继承 编译 作用域 名称隐藏 转发函数
 excerpt: 子类中的名称会隐藏父类中所有同名的属性。public继承表示这"is-a"的关系，应该避免这样做。使用using声明或者转发函数可以使父类名称再次可见。
 ---
 

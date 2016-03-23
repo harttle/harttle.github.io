@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: linux
 title: Windows/Linux远程桌面
-tags: 网络 Bash 远程桌面
+tags: Bash IP Linux MAC Windows 网络 磁盘挂载 远程桌面
 ---
 
 Windows和Linux如何互连远程桌面？这是曾经困扰过小编的一个大问题。

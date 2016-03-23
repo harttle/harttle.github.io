@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: "PKU 网关 Chrome 插件 PKUWebmaster 升级到 2.0 啦！"
-tags: JavaScript Chrome PKU
+tags: Chrome Github HTML JavaScript PKU
 ---
 
 早在2013年，为了方便PKU的Chrome用户连接校内网官，包括Rea和我在内的[鸟人团队][birdmen]一起编写了[PKUWebmaster][store]。

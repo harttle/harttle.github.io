@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: web
 title: 如何理解HTTP响应的状态码？
-tags: HTTP WebSocket
+tags: Cookie Git HTML HTTP Session TCP WebSocket 表单 搜索引擎
 ---
 
 我们知道HTTP协议是通过HTTP请求和HTTP响应来实现双向通信的。

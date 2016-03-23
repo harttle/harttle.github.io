@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: misc
 title: IOS软键盘弹出和隐藏
-tags: Objective-C 移动开发 iOS
+tags: Android Objective-C iOS 事件 操作系统 移动开发
 ---
 
 IOS 软键盘的行为是直接由开发者控制的，操作系统只提供很少的管理策略。这造成了很麻烦的问题：

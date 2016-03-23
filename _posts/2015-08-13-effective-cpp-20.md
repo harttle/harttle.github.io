@@ -1,6 +1,5 @@
 ---
 layout: blog
-categories: reading
 title: Item 20：传递常量引用比传值更好
 subtitle: Effective C++笔记
 tags: C++ 引用 常量

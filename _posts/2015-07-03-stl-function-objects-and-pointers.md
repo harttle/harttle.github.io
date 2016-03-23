@@ -1,8 +1,7 @@
 ---
 layout: blog 
-categories: reading
 title: C++手稿：STL中的函数对象与函数指针
-tags: C++ STL 函数指针 函数对象 指针
+tags: C++ STL 指针 模板 运算符 函数对象 函数指针 
 ---
 
 STL是C++的标准模板库（standard template library），自然其中定义的都是模板。

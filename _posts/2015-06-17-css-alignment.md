@@ -1,8 +1,7 @@
 ---
 layout: blog 
-categories: web
 title: inline元素的对齐问题
-tags: CSS HTML 盒模型 inline
+tags: CSS HTML inline inline-block 盒模型
 ---
 
 元素对齐是CSS中最常见的问题之一，控制元素对齐的属性包括`text-align`, `verticle-align`, `margin`, `line-height`等。

@@ -1,9 +1,8 @@
 ---
 layout: blog
-categories: reading
 title: Item 51：写new和delete时请遵循惯例
 subtitle: Effective C++笔记
-tags: C++ 动态内存
+tags: C++ 内存 异常 指针 数组 线程 继承 动态内存 成员函数 析构函数
 excerpt: new需要无限循环地获取资源，如果没能获取则调用"new handler"，不存在"new handler"时应该抛出异常； new应该处理size为零的情况； delete应该兼容空指针； new/delete作为成员函数应该处理size > sizeof(Base)的情况（因为继承的存在）。
 ---
 

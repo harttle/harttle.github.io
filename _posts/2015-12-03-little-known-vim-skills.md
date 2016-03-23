@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: 那些鲜为人知的Vim小技巧
-tags: Vim Bash Markdown GNU
+tags: Bash GNU HTML Markdown Vim 寄存器 快捷键
 ---
 
 # 用拷贝的内容替换

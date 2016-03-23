@@ -74,6 +74,18 @@ $left-width: 50%;
       padding: 0px 30px 30px;
     }
   }
+  .post-list:empty::before {
+    content: '未找到相应的文章';
+    font-size: 32px;
+    line-height: 32px;
+    color: #e5e5e5;
+    font-weight: bold;
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    margin: -16px 0 0 -128px;
+  }
   #status-bar{
     margin: 0;
     position: absolute;

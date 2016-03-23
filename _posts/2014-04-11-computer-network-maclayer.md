@@ -1,7 +1,7 @@
 ---
 layout: blog
 title:  《计算机网络》笔记 - 介质访问控制子层
-tags: MAC 多路复用 LAN WAN 蓝牙
+tags: ALOHA IP LAN MAC WAN 网络 蓝牙 路由 多路复用
 ---
 
 **介质访问控制子层**（MAC，medium access control）：用于确定多路访问信道的下一个使用者，属于数据链路层底下部分。用于LAN中，而WAN是用点对点连接（卫星除外）。

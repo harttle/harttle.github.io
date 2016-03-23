@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: web
 title: PHPCMS 目录结构
-tags: PHP 
+tags: Apache PHP 数据库 搜索引擎
 ---
 
 [phpcms](http://www.phpcms.cn/

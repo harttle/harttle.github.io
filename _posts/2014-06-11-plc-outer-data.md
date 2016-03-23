@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: PLC 中的字符与直接量
-tags: PLC 
+tags: PLC 事件 溢出 编译 字符串
 ---
 
 IEC 61131-3 中规约了 PLC 语言字符的使用与数据直接量的语法，本文详述了这两部分。

@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: reading
 title:  《计算机网络》笔记：数据链路层
-tags: 检错码 纠错码 滑动窗口
+tags: IP TCP 网络 路由 检错码 纠错码 滑动窗口
 ---
 
 ## 设计要点

@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: 用Grub Rescue手动引导来启动内核
-tags: Grub Ubuntu Bash GNU
+tags: Bash GNU Grub Linux Ubuntu Windows 操作系统
 ---
 
 > Wikipedia: [GNU Grub][grub]是一个来自GNU项目的启动引导程序。GRUB是多启动规范的实现，它允许用户可以在计算机内同时拥有多个操作系统，并在计算机启动时选择希望运行的操作系统。

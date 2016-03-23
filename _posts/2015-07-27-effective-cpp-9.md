@@ -1,6 +1,5 @@
 ---
 layout: blog
-categories: reading
 title: Item 9：在析构/构造时不要调用虚函数
 subtitle: Effective C++笔记
 tags: C++ 虚函数 析构函数 构造函数

@@ -1,9 +1,8 @@
 ---
 layout: blog
-categories: reading
 title: Item 4：确保变量的初始化
 subtitle: Effective C++笔记
-tags: C++ 构造函数
+tags: C++ 栈 编译 全局变量 构造函数 静态变量 拷贝构造函数
 excerpt: 出于效率原因，C++不保证**非成员对象的内置型**的初始化。对于成员变量的内置类型，会在构造函数进入之前进行初始化。
 ---
 

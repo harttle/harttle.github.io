@@ -1,8 +1,7 @@
 ---
 layout: blog 
-categories: web
 title: CSS Line Box：块级元素与行内元素
-tags: CSS 盒模型 HTML overflow white-space text-overflow inline-block
+tags: CSS DOM HTML inline inline-block overflow text-overflow white-space 盒模型
 ---
 
 CSS 将 DOM 树转换为由矩形 Box 构成的树，并通过设置这些 Box 的属性来改变其位置和大小，描述每个元素或文本的布局。这些 Box 分为三个级别：

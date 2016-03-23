@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: misc
 title: MySQL 学习笔记
-tags: SQL 数据库 MySQL Bash
+tags: Bash Django MySQL SQL 数据库
 ---
 
 在使用Django时学习过一些MySQL，暂作小记在此。小编的Django笔记在这里：

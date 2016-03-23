@@ -1,8 +1,7 @@
 ---
 layout: blog 
-categories: web
 title: AngularJS Resource：与 RESTful API 交互
-tags: AngularJS JavaScript HTTP
+tags: AngularJS HTML HTTP JavaScript 数组
 ---
 
 [REST][rest]（表征性状态传输，Representational State Transfer）是Roy Fielding博士在2000年他的博士论文中提出来的一种软件架构风格。RESTful风格的设计不仅具有更好的可读性（Human Readable），而且易于做缓存以及服务器扩展（scalability）。REST风格体现在URL设计上：

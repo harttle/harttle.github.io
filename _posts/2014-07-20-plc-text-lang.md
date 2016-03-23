@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: PLC 中的文本语言
-tags: PLC 
+tags: PLC SFC 反码 溢出 作用域 运算符
 ---
 
 IEC 61131-3 定义的文本语言包括IL语言和ST语言，SFC元素可以用于这些语言之间的连接。

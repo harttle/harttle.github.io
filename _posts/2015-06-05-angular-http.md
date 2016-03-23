@@ -1,8 +1,7 @@
 ---
 layout: blog 
-categories: web
 title: AngularJS $http Service
-tags: AngularJS JavaScript HTTP AJAX Promise 链式调用
+tags: AJAX AngularJS HTTP JavaScript Promise 链式调用
 ---
 
 `$http`是[AngularJS][angular]提供的一个核心Service，通过浏览器的`XMLHttpRequest`或JSONP与服务器进行交互。

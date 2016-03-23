@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: web
 title: JavaScript显式类型转换与隐式类型转换
-tags: JavaScript 类型转换 字符串
+tags: JavaScript 接口 弱类型 构造函数 类型转换
 ---
 
 本文谈谈JavaScript的类型转换，我们知道在JavaScript中声明变量不需指定类型，

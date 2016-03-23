@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: web
 title: 事件处理中的this：attachEvent, addEventListener, onclick
-tags: JavaScript 事件 DOM
+tags: DOM HTML JavaScript jQuery 事件
 ---
 
 事件处理函数中，我们通常使用`this`来获取当前被操作的对象。这无疑是很方便的一个特性，

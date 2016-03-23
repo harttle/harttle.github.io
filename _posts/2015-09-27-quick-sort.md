@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: reading
 title: 快速排序的时间和空间复杂度
-tags: 算法 C++ 排序
+tags: C++ STL 分治 排序 数组 算法 快速排序 插入排序 冒泡排序
 excerpt: 平均情况下快速排序的时间复杂度是nlgn，最坏情况是n^2，但通过随机算法可以避免最坏情况。由于递归调用，快排的空间复杂度是lgn。
 ---
 

@@ -1,9 +1,8 @@
 ---
 layout: blog
-categories: reading
 title: Item 48：了解模板元编程
 subtitle: Effective C++笔记
-tags: C++ 模板
+tags: C++ 模板 traits 编译 矩阵连乘 类型检查
 excerpt: 模板元编程（Template Metaprogramming，TMP）就是利用模板来编写那些在编译时运行的C++程序。模板元程序（Template Metaprogram）是由C++写成的，运行在编译器中的程序。当程序运行结束后，它的输出仍然会正常地编译。
 ---
 

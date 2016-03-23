@@ -1,7 +1,7 @@
 ---
 layout: blog 
 title: AngularJS 数据绑定与 $digest 循环
-tags: AngularJS JavaScript 数据绑定 MVC 回调函数 WebSocket
+tags: AngularJS DOM HTML HTTP JavaScript MVC WebSocket 事件 回调函数 数据绑定
 ---
 
 数据绑定可以说是[AngularJS][angular]最大的特色。在Angular中，视图和模型的数据不仅是双向绑定的，并而且是实时的。

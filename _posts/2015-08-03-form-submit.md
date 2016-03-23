@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: web
 title: 表单提交：button input submit 的区别
-tags: 表单 HTML JavaScript
+tags: HTML JavaScript jQuery 事件 表单
 excerpt: 建议使用`button[type=submit]`来提交表单，而不是`input`；只有单行文本控件时，回车会引发表单提交；通过`onsubmit`事件可阻止表单提交
 ---
 

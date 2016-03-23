@@ -1,21 +1,20 @@
 ---
 layout: blog
-categories: linux
-tags: ArchLinux 操作系统 Bash 网络 字体
+tags: ArchLinux Bash Linux MAC UTF-8 Ubuntu Windows hwclock 字体 磁盘 网络 操作系统
 title: 安装 Arch Linux
 ---
 
 本文介绍如何安装 Arch Linux，一个轻量级、简单的 Linux 发行版。
 
-相关链接  
-[Beginner's Guide](https://wiki.archlinux.org/index.php/Beginners'_Guide)  
+相关链接
+[Beginner's Guide](https://wiki.archlinux.org/index.php/Beginners'_Guide)
 [汉化](https://wiki.archlinux.org/index.php/Arch_Linux_Localization_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
 
 ## 制作镜像并启动
 
 在arch官方或者bjtu下载到镜像（X86和64）是同一镜像。然后刻录安装盘：
 
-* linux:   
+* linux:
 
     ```bash
     dd if=/path/to/iso of=/dev/sdc  # 确认 sdc 为你的U盘
@@ -115,7 +114,7 @@ title: 安装 Arch Linux
     * 设置地区：`ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime`
     * 设置硬件时钟：`hwclock --systohc --utc`
         * 自动同步时间：`sudo systemctl enable ntpd（需要ntp）`
-        * fix windows:   
+        * fix windows:
             * add a DWORD value with hexadecimal value 1 to the registry:
                 `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\RealTimeIsUniversal `
             * disable time auto sync
@@ -124,7 +123,7 @@ title: 安装 Arch Linux
     * 设置语言选项：修改 `/etc/locale.gen` 并 `locale-gen`
     * 设置语言：`echo LANG=en_US.UTF-8 > /etc/locale.conf`
     * 设置主机：`echo myhostname > /etc/hostname`
-        
+
 4. 配置网络
     * 安装netcfg用到的工具包：`pacman -S wireless_tools wpa_supplicant wpa_actiond ifplugd dialog`
     * 启用自动连接
@@ -214,7 +213,7 @@ title: 安装 Arch Linux
     ```bash
     /dev/hda1        /mnt/winC        ntfs-3g iocharset=utf8,umask=022,noatime 0 0
     ```
-        
+
 ## 汉化
 
 * 设置X默认字符集：在 `~/.bashrc`、`~/.xinitrc` 或 `~/.xprofile` 中加入

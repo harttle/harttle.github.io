@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: PLC 中的数据类型
-tags: PLC 
+tags: PLC 数组 字符串 函数重载
 ---
 
 IEC 61131-3 规约了 PLC 中的数据类型，包括21种基本数据类型（basic datatype）、用于函数重载的泛化数据类型（general datatype）、以及自定义数据类型（derived datatype）。

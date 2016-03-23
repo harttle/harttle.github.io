@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: web
 title: Django 搭建过程记录
-tags: Python Django Bash SQL
+tags: Bash Django Github Python SQL 数据库
 ---
 
 2011年小编第一次想做Web开发于是找到了Django，因为完全不懂数据库而以失败告终。

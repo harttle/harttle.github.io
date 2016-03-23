@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: misc
 title: 中文乱码辨识
-tags: 字符编码 UTF-8
+tags: UTF-8 字符串 字符编码
 ---
 
 在软件开发中常常会碰到中文乱码。有时我们不知道该文件的正确编码是什么，会使用文本编辑器（如UltraEdit）来尝试所有可能的编码。然而，乱码本身也有一定的规律，从乱码的样子大致可以得知正确的编码类型。在此给出各种编码的字符串被错误解析时的样子。
@@ -17,54 +16,54 @@ tags: 字符编码 UTF-8
 
 以下列编码解析的显示结果：
 
-* BIG-5  
+* BIG-5
 餈口口銝€銝芸?蝚阡?瘚口?嚗口??口蛹Harttle??
 
-* ASCII  
+* ASCII
 ???????????????????????????????????????Harttle???
 
-* GBK  
+* GBK
 杩欐槸涓€涓瓧绗﹂泦娴嬭瘯锛屼綔鑰呬负Harttle銆?
 
-* Unicode  
+* Unicode
 뿨꾘룤ꪸ귥ꚬ鯩讵꿨貼뷤薀룤䢺牡瑴敬胣�
 
 ## 以GBK编码
 
 以下列编码解析的显示结果：
 
-* BIG-5   
+* BIG-5
 涴岆珨跺趼睫摩聆彸ㄛ釬氪峈Harttle﹝
 
-* UTF8  
+* UTF8
 ����һ���ַ������ԣ�����ΪHarttle��
 
-* Unicode  
+* Unicode
 쟊믒훗﮷꾼퓊겣�꫎慈瑲汴ꅥ�
 
-* ASCII  
+* ASCII
 ??????????????????????????Harttle??
 
 ## 以Unicode编码
 
 以下列编码解析的显示结果：
 
-* BIG-5    
+* BIG-5
 ?/f口N*NW[&?Km?
-口\O:NH口a口r口t口t口l口e口0  
+口\O:NH口a口r口t口t口l口e口0
 
-* UTF8  
+* UTF8
 '/f口N*NW[&{lKmՋ
-�\O�:NH口a口r口t口t口l口e口0  
+�\O�:NH口a口r口t口t口l口e口0
 
-* UTF32  
+* UTF32
 �����������
 
-* GBK  
+* GBK
 購/f口N*NW[&{茤Km諎
 口\O€:NH口a口r口t口t口l口e口0
 
-## 规律  
+## 规律
 
 1. 错误地选择ASCII显示时，问号居多，ASCII字符255个也很容易识别。
 

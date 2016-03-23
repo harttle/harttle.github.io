@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: linux
 title: Gnuplot 笔记
-tags: Bash X11 
+tags: Bash Linux Windows X11 sed 异常 运算符
 ---
 
 gnuplot是一个免费的命令行的绘图软件，在Linux，Windows，OSX等平台都有支持，

@@ -1,9 +1,8 @@
 ---
 layout: blog
-categories: reading
 title: Item 8：析构函数不要抛出异常
 subtitle: Effective C++笔记
-tags: C++ 异常 析构函数
+tags: C++ 内存 异常 数组 析构函数
 excerpt: 由于析构函数常常被自动调用，在析构函数中抛出的异常往往会难以捕获，引发程序非正常退出或未定义行为。
 ---
 

@@ -1,9 +1,8 @@
 ---
 layout: blog
-categories: reading
 title: Item 3：尽量使用常量
 subtitle: Effective C++笔记
-tags: C++ 宏
+tags: C++ STL 宏 常量 指针 编译 函数重载
 excerpt: 尽量使用常量，以逻辑常量的方式编写常量方法，使用普通方法调用常量方法可避免代码重复。
 ---
 

@@ -1,8 +1,7 @@
 ---
 layout: blog
-categories: reading
 title:  《计算机网络》笔记 - 应用层
-tags: DNS ADSL HTTP TCP SMTP POP3 UDP
+tags: ADSL DNS HTML HTTP IP Java JavaScript LAN PHP POP3 RAID SMTP TCP UDP XML 磁盘 网络 表单 路由 操作系统 电路交换 过程调用
 ---
 
 ## DNS-域名系统
