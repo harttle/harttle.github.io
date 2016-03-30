@@ -70,6 +70,6 @@ window.modules.blog = function(console, $ele, mod) {
         }),
         wechat: location.href
     };
-    $('#social-share-block').socialShare({ links: links, size: 'xs'});
+    $('#social-share-block').socialShare({ links: links, size: 'sm'});
 };
 

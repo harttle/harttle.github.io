@@ -1,10 +1,10 @@
 @import 'mixins';
 @import 'variables';
+$padding-horizontal: 25px;
 
 .toc {
   font-size: 14px;
   width: $toc-width;
-  border-bottom: 1px solid $light-grey;
   ul {
     margin-top: 0;
     margin-bottom: 0;
@@ -13,20 +13,19 @@
     > .active > a{
       color: $grey;
       text-decoration: none;
-      border-right: 2px solid $green;
+      border-left: 1px solid $green;
     }
     > .active > ul {
       display: block;
     }
     > li > a {
       display: block;
-      padding: 8px 25px;
+      padding: 8px $padding-horizontal;
       color: $light-grey;
       text-decoration: none;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      border-right: 1px solid $light-grey;
       &:focus {
         background-color: white; // override bootstrap #eee
       }
@@ -37,23 +36,23 @@
     .nav {
       display: none;
       > li > a {
-        margin-left: 10px;
+        padding-left: 10px + $padding-horizontal;
         font-size: 90%;
       }
       .nav{
         > li > a {
-          margin-left: 20px;
+          padding-left: 20px + $padding-horizontal;
         }
         .nav{
           > li > a {
-            margin-left: 30px;
+            padding-left: 30px + $padding-horizontal;
           }
           .nav{
             > li > a {
-              margin-left: 40px;
+              padding-left: 40px + $padding-horizontal;
             }
             .nav > li > a {
-              margin-left: 50px;
+              padding-left: 50px + $padding-horizontal;
             }
           } 
         } 

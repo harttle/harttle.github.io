@@ -36,11 +36,11 @@ layout: default
       <article class="md">
         {{ content }}
         <div class="copyright">
+          <div id="social-share-block" class="pull-right"></div>
           <p>本文地址：<a href="{{page.url}}">{{site.url}}{{ page.url }}</a></p>
         </div>
       </article>
 
-      <div id="social-share-block">分享到：</div>
 
       {% include post-pager.html %}
       {% include comments.html %}

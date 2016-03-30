@@ -60,7 +60,7 @@ aside{
 }
 
 .content{
-  margin-left: $toc-width + 50px;  
+  margin-left: $toc-width + 30px;  
   margin-top: 50px;
   @include media-xs{
     margin-top: 30px;
@@ -73,20 +73,24 @@ aside{
 }
 
 .post-pager{
-  margin-bottom: 50px;
-  margin-top: 30px;
+  margin-top: 50px;
+  margin-bottom: 20px;
   .previous{
     float: left;
+    border-left: 1px solid $blue;
   }
   .next{
     float: right;
+    border-right: 1px solid $blue;
   }
 }
 
 #social-share-block{
-  text-align: right;
   .social-share{
     display: inline-block;
+  }
+  a{
+    margin: 0;
   }
 }
 

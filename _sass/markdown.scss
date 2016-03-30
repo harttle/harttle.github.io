@@ -7,9 +7,9 @@
     margin-top: 0;
 }
 .md{ overflow-wrap: break-word; }
-.md a, .md code{
-    margin-left: 3px;
-    margin-right: 3px;
+.md a, .md code, .md strong, .md em{
+    margin-left: 5px;
+    margin-right: 5px;
     word-wrap: break-word;
 }
 .md pre code{
