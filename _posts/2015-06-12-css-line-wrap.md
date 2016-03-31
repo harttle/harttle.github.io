@@ -8,16 +8,16 @@ CSS 将 DOM 树转换为由矩形 Box 构成的树，并通过设置这些 Box �
 
 * `block-level` Box：`display`属性为`block`的Box，比如段落标签`<p>`；
 * `inline-level` Box：`display`属性为`inline-block`的Box，它们就像一行中的单词一样布局。它里面可以包含其他`inline-level`的Box，也可以包含`block-level`的Box；
-* `line` Box：一行单词就构成一个`line`Box，这种Box是自动生成的，可以看做是`inline-level`Box的容器。
+* Line Box：一行单词就构成一个LineBox，这种Box是自动生成的，可以看做是`inline-level`Box的容器。
 
-溢出、折行、断词是`line`Box中常见的问题，设置这些行为的CSS属性包括`white-space`、`line-spacing`、`text-overflow`、`word-wrap`、`word-break`等。
+溢出、折行、断词是Line Box中常见的问题，设置这些行为的CSS属性包括`white-space`、`line-spacing`、`text-overflow`、`word-wrap`、`word-break`等。
 下面几小节中详细介绍这些属性的取值与对应的行为、以及常见的使用方法。
 
 更多信息请参考：[W3C 标准：CSS3-Box][css-box]
 
 # line Box
 
-下面的小节中介绍的CSS属性只适用于`line`Box，那么什么是`line`Box呢？请看下面的HTML片段：
+下面的小节中介绍的CSS属性只适用于LineBox，那么什么是LineBox呢？请看下面的HTML片段：
 
 ```html
 <ul>
@@ -27,7 +27,7 @@ CSS 将 DOM 树转换为由矩形 Box 构成的树，并通过设置这些 Box �
 ```
 
 `ul`会生成一个`block-level`的 Box，然后为每个`li`元素生成一个`block-level`的 Box。
-而每个`li`的 Box 中有一个`line` Box，它包含了两个`inline-level`的 Box：
+而每个`li`的 Box 中有一个Line Box，它包含了两个`inline-level`的 Box：
 一个用来显示“ &middot; ”，一个用来显示文本。
 
 > 如果`li`产生了换行，将会变成多个`inline-level`Box，如果在`ul`中间产生了分页，那么`ul`会显示为两个`block-level`Box。

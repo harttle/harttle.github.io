@@ -93,7 +93,7 @@ Function instanceof Function    // true, why??
 上图其实已经解释了不同内置对象`instanceof`的行为，我们来看`Function`和`Object`的特殊之处：
 
 1. `Object`是由`Function`创建的：因为`Object.__proto__ === Funciton.prototype`；
-2. 同理，`Function.prototype`是由`Object.prototype`创建的；
+2. 同理，`Function.prototype`是由`Object`创建的；
 3. `Funciton`是由`Function`自己创建的！
 4. `Object.prototype`是凭空出来的！
 
