@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: 使用viewport控制移动浏览器宽度
+title: 使用viewport控制移动浏览器渲染宽度
 tags: 媒体查询 响应式设计 viewport CSS
 ---
 

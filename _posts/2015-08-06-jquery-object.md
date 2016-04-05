@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: jQuery中$()函数的用法
+title: jQuery中$()函数有几种用法
 tags: DOM HTML JavaScript jQuery 事件 选择符 链式调用
 excerpt: DOM选择，可以指定上下文；DOM创建，可以指定所属的document、属性、事件、甚至所有jQuery方法；DOM加载完成事件监听，是`$(document).ready()`的简化写法。
 ---
