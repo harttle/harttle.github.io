@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: 如何理解HTTP响应的状态码？
-tags: Cookie Git HTML HTTP Session TCP WebSocket 表单 搜索引擎
+tags: Cookie Git HTML HTTP Session WebSocket 表单 搜索引擎 缓存
 ---
 
 我们知道HTTP协议是通过HTTP请求和HTTP响应来实现双向通信的。
@@ -114,7 +114,7 @@ If-None-Match: "686897696a7c876b7e"
 
 #### 关于HTTP缓存的讨论
 
-除了使用`ETag/If-None-Match`通过文件内容来缓存外，还可以使用`Last-Modified/If-Modified-Since`通过文件修改时间来进行缓存。
+除了使用`ETag/If-None-Match/If-Match`通过文件内容来缓存外，还可以使用`Last-Modified/If-Modified-Since`通过文件修改时间来进行缓存。
 这两者都需要客户端再次发送HTTP请求，如果文件未发生改变，服务器返回304。
 
 而另外一种缓存策略`Expires/Cache-Control`则可以让客户端避免再次发送请求。一般会优先使用`Cache-Control`，它能够更加精细地控制缓存策略。

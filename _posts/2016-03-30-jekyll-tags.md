@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: Github Pages (Jekyll) 自动生成文章标签
-tags: Bash Github Vim grep awk sed
+tags: Bash Github Vim grep awk sed JSON
 ---
 
 在Github Pages上写博客快三年了，为文章添加标签一直是一件困难的事情。

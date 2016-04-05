@@ -1,7 +1,7 @@
 ---
 layout: blog
 title:  API 服务器搭建笔记：CentOS + Node.js + MongoDB
-tags: CentOS JavaScript MongoDB Node.js SQL 内存 数据库 内存数据库
+tags: CentOS JavaScript MongoDB Node.js SQL 内存 数据库 内存数据库 JSON
 ---
 
 本文尝试在CentOS服务器上，使用js来构建整个web服务，包括nodejs运行时、MongoDB json风格数据库、redis内存数据库。首先安装这些软件：

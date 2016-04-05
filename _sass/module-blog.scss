@@ -68,13 +68,15 @@ aside{
   }
 }
 
-.md .copyright{
-  margin-top: 20px;
-}
-
 .post-pager{
-  margin-top: 45px;
-  margin-bottom: 80px;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  .btn-hover{
+    max-width: 380px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .previous{
     float: left;
     border-left: 1px solid $blue;
@@ -86,11 +88,27 @@ aside{
 }
 
 #social-share-block{
+  text-align: center;
   .social-share{
-    display: inline-block;
+    margin: -2px 0 0;
   }
-  a{
-    margin: 0;
+  li a{
+    @include inline-size(32px);
   }
 }
 
+@media(max-width:1199px){
+  .post-pager{
+    .next, .previous{
+      float: none;
+      display: block;
+    }
+    .next{
+      border-left: 1px solid $blue;
+      border-right: none;
+    }
+  }
+  #social-share-block{
+    text-align: right;
+  }
+}
