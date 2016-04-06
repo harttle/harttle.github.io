@@ -37,12 +37,16 @@ tags: CSS HTML 盒模型 text-overflow overflow line-clamp 优雅降级 inline
 
 ![line clamp][line-clamp]
 
-首先使用`-webkit-line-clamp`使得webkit浏览器中显示三行文本，溢出部分显示省略号。
-在其他浏览器中我们设置高度并使用`overflow:hidden`简单地隐藏溢出部分即可。
+需要设置`display`为`-webkit-box`以及方向为纵向，
+然后使用`-webkit-line-clamp`来只显示三行文本，溢出部分会显示为省略号。
+在非webkit内核的浏览器中降级：设置`max-height`并使用`overflow:hidden`隐藏溢出部分。
 
 ```css
 .ellip-block{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+  /* degradation */
   height: 52px;
   overflow: hidden;
 }

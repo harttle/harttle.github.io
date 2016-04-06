@@ -47,6 +47,15 @@
   text-overflow: ellipsis;
 }
 
+@mixin ellipsis-v($height){
+  max-height: $height;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
 @mixin animation($v...){
     animation: $v; 
     -webkit-animation: $v; 

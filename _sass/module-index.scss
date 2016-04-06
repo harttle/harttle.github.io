@@ -7,6 +7,13 @@ $timeline-left-width: 95px;
 aside, .posts{
   margin-top: $top-blank;
 }
+
+@include media-xs{
+  .posts {
+    margin-top: 30px;
+  }
+}
+
 .post {
   time{
     float: left;
@@ -25,6 +32,9 @@ aside, .posts{
       font-style: italic;
       font-family: cursive;
     }
+    @include media-xs{
+      display: none;
+    }
   }
   article{
     border-left: 6px solid $light-grey;
@@ -37,6 +47,7 @@ aside, .posts{
       h1{
         font-size: 1.5em;
         margin-top: 0;
+        @include ellipsis;
         a{
           @include link-hover($grey, $blue);
           font-weight: normal;
@@ -45,6 +56,14 @@ aside, .posts{
     }
     .more{
       margin-top: 10px;
+      @include media-xs{
+        display: none;
+      }
+    }
+    @include media-xs{
+      padding-left: 0;
+      margin-left: 0;
+      border-left: none;
     }
   }
 }
@@ -59,22 +78,6 @@ aside, .posts{
   }
 }
 
-@media(max-width: 768px){
-  .posts {
-    margin-top: 30px;
-  }
-  .post{
-    time{
-      display: none;
-    }
-    article{
-      padding-left: 0;
-      margin-left: 0;
-      border-left: none;
-    }
-  } 
-}
-
 .md{
   h1, h2, h3, h4, h5, h6{
     margin: 20px 0 10px;
@@ -85,14 +88,20 @@ aside, .posts{
     font-weight: normal;
     border-bottom: none;
   }
-  /*img, table{*/
-    /*display: none;*/
-  /*}*/
   blockquote{
     border-left: none;
     padding: 0;
     p, h1, h2, h3, h4, h5, h6, b, strong{
       color: #999;
+    }
+  }
+  @include media-xs{
+    @include ellipsis-v(80px);
+    img, pre, table{
+      display: none;
+    }
+    h1, h2, h3, h4, h5, h6{
+      margin: 0;
     }
   }
 }
@@ -135,10 +144,8 @@ aside{
 
 .content{
   margin-right: 235px + 60px;
-}
-
-@media(max-width: 768px){
-  .content{
+  @include media-xs{
     margin-right:0;
   }
 }
+

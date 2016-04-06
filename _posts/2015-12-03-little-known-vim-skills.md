@@ -15,7 +15,7 @@ void letus_fuckit_with_vim(){
 let_fuckat_with_vom();
 ```
 
-只需要先复制上面的函数名，再把光标切换到拼错的词首。然后按下`viwp`，就替换过来了：
+只需要先复制上面的函数名，再把光标切换到拼错的词首。然后按下`vep`，就替换过来了：
 
 ```cpp
 void letus_fuckit_with_vim(){
@@ -24,7 +24,7 @@ void letus_fuckit_with_vim(){
 letus_fuckit_with_vim();
 ```
 
-> `v`进入可视模式，输入`i`表示选好之后要插入，然后`w`来选择一个单词（你可以选择任何区域），最后按下`p`来粘贴。
+> `v`进入可视模式，然后`w`来选择一个单词（你可以选择任何区域），最后按下`p`来粘贴。
 
 # 字符查找
 
@@ -42,6 +42,8 @@ tmystr_meta_description
 
 按下`*`即可搜索当前光标所在的词（word），再次按下搜索下一个。
 按下`#`搜索上一个。
+
+> `*`只匹配出现的单词，对于中文没有断字。如果查找当前词的所有字串，可以使用`g*`。
 
 # 段落跳转
 
@@ -65,7 +67,7 @@ set omnifunc=syntaxcomplete#Complete
 
 参考： http://vim.wikia.com/wiki/Omni_completion
 
-# 搜索选区
+# 用搜索来选区
 
 当你需要选择一大段文字时，不妨先进入visual模式，再进行正则搜索。例如在markdown中，选择某个`##`的内容可以这样操作：
 移动光标到要选中的`##`上，按下`v`进入visual模式，输入`/^## `匹配下一个二级标题，按下`j`回到上一行。
@@ -75,12 +77,16 @@ set omnifunc=syntaxcomplete#Complete
 使用`:let @"=expand("%")`可以拷贝当前文件名，我们可以给这个命令设一个快捷键：
 
 ```vim
-nnoremap yf :let @"=expand("%:t")<CR>
-nnoremap yp :let @"=expand("%:p")<CR>
+nnoremap yf :let @f=expand("%:t")<CR>
+nnoremap yp :let @p=expand("%:p")<CR>
 ```
 
-其中`yf`拷贝当前文件名，`yp`拷贝完整文件路径。然后按下`p`即可粘贴。
-当然你可以拷贝到任何一个寄存器，比如拷贝到寄存器`k`：`:let @k=expand("%")`。
-然后粘贴`k`中的内容：`"kp`。
+其中`yf`拷贝当前文件名到寄存器`f`，`yp`拷贝完整文件路径到寄存器`p`。然后分别按下`"fp`和`"pp`即可粘贴。
+
+# 大小写不敏感搜索
+
+可以在模式的任何位置加入`\c`来进行大小写不敏感搜索，在任何位置加入`\C`来进行大小写敏感搜索。
+可以设置`set ignorecase`来默认进行大小写不敏感搜索，同时可以设置`set smartcase`：
+当模式包含大写字母时忽略`ignorecase`设置。
 
 [vim-cursor]: {% post_url 2015-11-07-vim-cursor %}
