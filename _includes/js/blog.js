@@ -32,11 +32,6 @@ window.modules.blog = function(console, $ele, mod) {
         $('body').scrollspy('refresh');
     });
 
-    // enable lightbox 
-    $('.md img').wrap(function(){
-        return '<a data-lightbox="true" href="'+$(this).attr("src")+'"></a>';
-    });
-
     //生成目录
     function getTOC($content) {
         var $toc = $('<ul class="nav level-0" >').addClass("nav sidenav");

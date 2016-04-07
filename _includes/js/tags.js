@@ -69,6 +69,16 @@ window.modules.tags = function (console, $ele) {
         updateList(selectedPosts);
         updateCurrentTag(tag, selectedPosts.length);
         location.hash = tag;
+
+        function searchByTag(posts, tag){
+            return posts.filter(function(post){
+                return post.tagstr.indexOf(',' + tag.toLowerCase() + ',') > -1;
+            });
+        }
+        function updateCurrentTag(tag, count){
+            $('head title').html('技术标签：' + tag + '（'+ count + '）');
+            $currentTag.html(tag + '('+count+')');
+        }
     }
 
     function updateList(posts, disableAnimation){
@@ -130,16 +140,11 @@ window.modules.tags = function (console, $ele) {
         $tagCloud.html('').removeAttr('style').hide();
     }
 
-    function searchByTag(posts, tag){
-        return posts.filter(function(post){
-            return post.tagstr.indexOf(',' + tag + ',') > -1;
-        });
-    }
 
     function getPosts(){
         return $.get('/posts.json').then(function(posts){
             posts.forEach(function(post){
-                post.tagstr = ',' + post.tags.join(',') + ',';
+                post.tagstr = ',' + post.tags.join(',').toLowerCase() + ',';
             });
             return posts;
         });
@@ -224,11 +229,6 @@ window.modules.tags = function (console, $ele) {
             }]
         };
         return chartOptions;
-    }
-
-    function updateCurrentTag(tag, count){
-        $('head title').html('技术标签：' + tag + '（'+ count + '）');
-        $currentTag.html(tag + '('+count+')');
     }
 
     function setHighchartsRadiationColors(){
