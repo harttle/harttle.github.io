@@ -130,7 +130,7 @@ return cacheEnabled && cache[key] || read(key);
 该表达式返回的类型仍然是`cach[key]`和`read(key)`的类型，而不是`Boolean`。
 在逻辑运算的同时没有进行隐式类型转换，仍然保留着原有的类型信息。
 
-[brk]: https://github.com/harttle/brick.js
+[brk]: https://github.com/brick-js/brick.js
 [type-sys]: https://en.wikipedia.org/wiki/Type_system
 [min-cast]: {% post_url 2015-08-25-effective-cpp-27 %}
 [compile-dep]: {% post_url 2015-08-29-effective-cpp-31 %}

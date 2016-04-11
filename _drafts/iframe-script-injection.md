@@ -28,9 +28,13 @@ var idocument = $('iframe').prop('contentDocument');
 var idocument = $('iframe').prop('contentWindow').document;
 ```
 
+> `contentDocument`属性在 IE 8 才开始支持，为了支持 IE 7，推荐使用`contentWindow.document`。
+
 <!--more-->
 
 # 通过appendChild注入
+
+## 实现方式
 
 iframe中脚本的上下文无非两种：1）与父元素共享`window`，2）与父元素隔离的`window`。
 为了检查该上下文，我们设置父元素`window.id`并在iframe中打印出来。
@@ -48,33 +52,58 @@ el.text = injected_script;
 idocument.body.appendChild(el);
 ```
 
-执行结果：
+## 执行结果
 
 ```
 window.id == undefined
 ```
 
-这意味着通过DOM API`appendChild()`注入的脚本上下文为iframe上下文，与父容器隔离。
+脚本样式文件被正常载入并执行，脚本的运行上下文也是与父容器隔离的。
 
 > 注意：使用jQuery`.append()`方法注入：`$(idocument.body).append(el)`，
 > 上下文总是当前jQuery所在的`window`，因为jQuery总是用`eval`来执行注入的脚本。
 > 见：[jQuery2.2 iframe 脚本注入的上下文 Bug][jquery-script-bug]。
 
+## 缺点
+
+难以显示完整的HTML。因为`appendChild`是`document.body`的方法，
+如果要在`<head>`下添加元素或操作整个`<html>`则会比较困难。
+
+另外，只能与同域iframe进行互操作。
+
 # 通过innerHTML注入
 
-你可能知道为`<script>`设置内容需要用`text`属性，`innerHTML`属性只能设置文本，并不执行内容。
-iframe也是同样的问题，通过`innerHTML`给iframe注入的脚本不会被执行：
+## 实现方式
+
+DOM元素都有`innerHTML`属性可以设置其HTML内容，
+我们利用`body.innerHTML`即可注入脚本。
 
 ```javascript
 var html = "<script>" + injected_script + "</script>";
 idocument.body.innerHTML = html;
 ```
 
-该方法适用于给DOM注入文本内容，配合CSS用来显示页面效果。注入的页面脚本并不会起作用。
+## 执行结果
+
+```
+
+```
+
+上述代码没有任何输出，因为以`innerHTML`注入的HTML中的脚本不会执行。
+你可能知道为`<script>`设置`innerHTML`也不会执行脚本内容，需要设置`script.text`属性才可以执行。
+设置`innerHTML`的方法只适用于给DOM注入文本内容。
+
+## 缺点
+
+注入内容中的脚本不会被执行。如果非要执行的话，需要为所有脚本一一设置`script.text`属性，非常麻烦。
+
+另外，只能与同域iframe进行互操作。
 
 # 通过data src注入
 
-`<img>`标签接受data类型的`src`，你一定见过！data URI的语法如下：
+## 实现方式
+
+`<img>`标签接受data URI类型的`src`，你一定见过！data URI的语法如下：
 
 ```
 data:[<mime type>][;charset=<charset>][;base64],<encoded data>
@@ -82,7 +111,6 @@ data:[<mime type>][;charset=<charset>][;base64],<encoded data>
 
 同样地，`<iframe>`也可以设置data类型的`src`属性，
 这是iframe页面内容和脚本注入最通用最健壮的办法。
-脚本样式文件都会被载入并执行，脚本的运行上下文也是与父容器隔离的。
 
 ```javascript
 var html = '<script>' + injected_script + '</script>';
@@ -90,17 +118,69 @@ var html_src = 'data:text/html;charset=utf-8,' + encodeURI(html);
 iframe.src = html_src;
 ```
 
-执行结果：
+## 执行结果
 
 ```
 window.id == undefined
 ```
 
-当然这种办法也有缺点：由于设置了`src`，iframe和父容器是跨域的。
+脚本样式文件被正常载入并执行，脚本的运行上下文也是与父容器隔离的。
+
+另外，通过Data URI设置内容会使得iframe与容器跨域，没有脚本注入问题，但也不允许互操作。
+
+## 缺点
+
+### 跨域问题
+
+由于设置了`src`，iframe和父容器是跨域的。
 在父容器的上下文中，无法通过`contentWindow.document`访问`iframe`内容
 
 ```
 Uncaught DOMException: Blocked a frame with origin "https://xxx" from accessing a cross-origin frame.
 ```
+
+### IE不兼容
+
+在Microsoft IE中，只有五类DOM元素可以设置Data URI：
+
+* object (images only)
+* img
+* input type=image
+* link
+* CSS declarations that accept a URL, such as background, backgroundImage, and so on.
+
+为iframe设置Data URI之后iframe会显示『无法显示该页面』。
+
+参见：<https://msdn.microsoft.com/en-us/library/cc848897(v=VS.85).aspx>
+
+# 通过document.write注入
+
+## 实现方式
+
+使用DOM API`document.open()`方法打开并擦除一个文档，
+然后调用`document.write()`写入内容，
+最后调用`document.close()`关闭文档，迫使文档进行渲染和显示。
+
+```javascript
+idocument.open();
+idocument.write($html.prop('outerHTML'));
+idocument.close();
+```
+
+参见：<http://www.w3school.com.cn/jsref/met_doc_open.asp>
+
+## 执行结果
+
+```
+window.id == undefined
+```
+
+脚本样式文件被正常载入并执行，脚本的运行上下文也是与父容器隔离的。
+`document.write`的方式主流浏览器均可支持，包括：MSIE、Chrome、Safari、Firefox。
+
+## 缺点
+
+通过DOM API互操作，要求iframe与父容器是同域的。
+与前面所有DOM操作的注入方式同样会存在XSS安全问题。
 
 [jquery-script-bug]: /2016/04/07/jquery-script-context-bug.html

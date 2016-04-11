@@ -90,5 +90,5 @@ Static.prototype.getCss = function() {
 上述代码使用了[ES6的新特性][es6]，包括Lambda表达式、内置Promise等（当然我引入了`promise-helper`）。
 JavaScript取默认值的`||`操作符，数组的`map`, `reduce`等操作也非常简洁。
 
-[brick]: https://github.com/harttle/brick.js
+[brick]: https://github.com/brick-js/brick.js
 [es6]: https://nodejs.org/en/docs/es6/

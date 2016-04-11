@@ -45,18 +45,12 @@ tags: CSS Github HTML JavaScript jQuery 微信 二维码
 
 ```javascript
 var links = {
-    weibo: {
-        url: 'http://v.t.sina.com.cn/share/share.php?url=xxx&title=xxx&appid=xxx'
-    },
-    wechat: {
-        url: location.href
-    },
-    github: {
-        url: 'https://github.com/harttle'
-    }
+    weibo: 'http://v.t.sina.com.cn/share/share.php?url=xxx&title=xxx&appid=xxx',
+    wechat: location.href,
+    github: 'https://github.com/harttle',
 };
 
-$('div').socialShare({ links: links});
+$('div').socialShare(links);
 ```
 
 此时即可得到一个具有微博、微信、Github按钮的社会化分享栏。
