@@ -50,7 +50,7 @@ window.modules.tags = function (console, $ele) {
         });
 
         function initList(){
-            var selectedTag = location.hash.replace('#', '');
+            var selectedTag = decodeURIComponent(location.hash.replace('#', ''));
             if(selectedTag) setTag(posts, selectedTag);
             else updateList(posts.slice(0, 30), true);
         }

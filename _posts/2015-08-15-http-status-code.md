@@ -141,7 +141,7 @@ If-None-Match: "686897696a7c876b7e"
 
 HTTP Basic Auth就是这样实现的。当服务器返回401时浏览器会弹出窗口：
 
-![][basic-auth]
+![basic auth][basic-auth]
 
 输入验证信息并点击确定，浏览器会根据你的输入填写`Authorization`头并重新发送请求。对于Basic Auth看起来是这样的：
 

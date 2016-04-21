@@ -24,7 +24,7 @@ tags: CSS HTML inline inline-block 盒模型
 </div>
 ```
 
-![](/assets/img/blog/css/pull-right@2x.png)
+![css: pull right](/assets/img/blog/css/pull-right@2x.png)
 
 # vertical-align
 
@@ -57,7 +57,7 @@ tags: CSS HTML inline inline-block 盒模型
 
 让`.block2`对齐整行的底部：
 
-![](/assets/img/blog/css/vertical-bottom@2x.png)
+![vertical bottom](/assets/img/blog/css/vertical-bottom@2x.png)
 
 注意：`vertical-align`指定的对齐顶部、底部或中间是**相对于当前行而不是父元素**。例如：
 
@@ -79,7 +79,7 @@ tags: CSS HTML inline inline-block 盒模型
 
 上面的CSS不会将`span`对齐到父元素的底部，因为`span`单独构成了一行。效果如下：
 
-![](/assets/img/blog/css/vertical-bottom-failed@2x.png)
+![vertical bottom failed](/assets/img/blog/css/vertical-bottom-failed@2x.png)
 
 # 实例：表单元素对齐
 
@@ -94,7 +94,7 @@ tags: CSS HTML inline inline-block 盒模型
 
 上述的表单中，有一个输入空间和一个按钮。因为`vertical-align`的默认值为`baseline`，所以它们的文字基线是对齐的：
 
-![](/assets/img/blog/css/form-baseline@2x.png)
+![form baseline](/assets/img/blog/css/form-baseline@2x.png)
 
 假设由于种种原因，我们给`button`添加了上下不对称的`padding`：
 
@@ -106,7 +106,7 @@ form button{
 
 可以看到它仍然是按照`baseline`对齐的：
 
-![](/assets/img/blog/css/form-baseline2@2x.png)
+![form baseline vertical padding](/assets/img/blog/css/form-baseline2@2x.png)
 
 然而，我们希望的是整个`button`和`input`的中线对齐，此时便可以重设它的`vertical-align`属性：
 
@@ -119,7 +119,7 @@ form button{
 
 现在它们终于居中对齐啦！
 
-![](/assets/img/blog/css/form-middle@2x.png)
+![form middle](/assets/img/blog/css/form-middle@2x.png)
 
 [ta]: https://developer.mozilla.org/zh-CN/docs/CSS/text-align
 [va]: https://developer.mozilla.org/zh-CN/docs/Web/CSS/vertical-align

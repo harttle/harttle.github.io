@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: Socket.IO 订阅 Redis Channel
-tags: Bash Node.js Redis Socket.IO
+tags: Bash Node.js Redis Socket.IO NPM
 ---
 
 在Node.js程序中，可以借助[Socket.IO][Socket.IO]来构建实时应用。

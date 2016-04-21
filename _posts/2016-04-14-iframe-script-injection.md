@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: 为iframe注入脚本的不同方式比较
+title: 为Iframe注入脚本的不同方式比较
 tags: DOM HTML JavaScript jQuery iframe 
 ---
 

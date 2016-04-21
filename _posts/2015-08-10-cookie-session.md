@@ -10,7 +10,7 @@ Cookie和Session是为了在无状态的HTTP协议之上维护会话状态，使
 
 > Cookie是由网景公司的前雇员Lou Montulli在1993年发明的，现今Cookie已经广泛使用了。
 
-![][cookie]
+![cookie][cookie]
 
 <!--more-->
 

@@ -42,7 +42,7 @@ $(function() {
     initScrollTopButton();
 
     // enable lightbox 
-    $('.md img').wrap(function(){
+    $('.md img').not('a img').wrap(function(){
         return '<a data-lightbox="true" href="'+$(this).attr("src")+'"></a>';
     });
     $('.md a').attr('target', '_blank');

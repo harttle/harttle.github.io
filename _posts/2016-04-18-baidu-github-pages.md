@@ -19,13 +19,13 @@ Github对Baidu Spider的用户代理都会返回403状态码，因而百度无�
 
 百度收录情况如下，21日创建镜像后22日就开始有页面被收录了。
 
-![](/assets/img/blog/baidu-index@2x.jpg)
+![baidu index](/assets/img/blog/baidu-index@2x.jpg)
 
 <!--more-->
 
 近一月来的抓取频次如下图，每天都有5次左右的抓取。
 
-![](/assets/img/blog/baidu-crawl@2x.jpg)
+![baidu crawl](/assets/img/blog/baidu-crawl@2x.jpg)
 
 # 仓库同步
 
