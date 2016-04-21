@@ -59,6 +59,7 @@ aside, .posts{
       @include media-xs{
         display: none;
       }
+      border-right: 1px solid $blue;
     }
     @include media-xs{
       padding-left: 0;
