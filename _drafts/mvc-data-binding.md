@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: 从MVC的数据同步到AngularJS的双向绑定
+title: 从MVC数据同步到AngularJS双向绑定
 tags: AngularJS MVC Unix WPF 事件 数据绑定 MVVM
 ---
 

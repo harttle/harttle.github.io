@@ -1,0 +1,16 @@
+@import 'mixins';
+
+img{
+  @include circle(64px);
+  float: left;
+  margin-right: 10px;
+}
+header{
+  overflow: hidden;
+  font-size: 18px;
+  margin-bottom: 3px;
+}
+p{
+  font-size: 13px;
+  color: #aaa;
+}

@@ -123,36 +123,48 @@ aside{
   float: right;
   margin-left: 80px;
   width: 235px;
-  section.tag-list{
-    margin-top: 70px;
-    .tag{
-      margin-bottom: 1em;
-      margin-right: 0.5em;
-    }
+  section{
+    margin-bottom: 70px;
+    overflow: hidden;
   }
   h4{
     color: $grey;
-    margin-bottom: 20px;
+    margin: 0 0 20px;
     font-weight: normal;
-    border-bottom: 1px solid #F5F5F5;
+    border-bottom: 1px solid #eee;
   }
   h4::after{
     content: ' ';
     display: block;
     border-bottom: 1px solid $light-grey;
-    width: 40px;
+    width: 100%;
+    margin-left: -100%;
     margin-top: 5px;
     margin-bottom: -1px;
-    @include animation(width-percentage 15s infinite alternate);
+  }
+  section.follow{
+    h4::after{
+      @include animation(width-percentage 14s linear infinite);
+    }
+  }
+  section.tag-list{
+    .tag{
+      margin-bottom: 1em;
+      margin-right: 0.5em;
+    }
+    h4::after{
+      @include animation(width-percentage 14s linear 7s infinite);
+    }
   }
   section:hover h4::after{
-    @include animation(width-percentage .5s infinite alternate);
+    border-bottom: 1px solid $blue;
+    @include animation(width-percentage 1s linear infinite);
   }
 }
 
 @include keyframes(width-percentage){
-  from{ width: 40px; }
-  to{ width: 100%; }
+  from{margin-left: -100%;}
+  to{margin-left: 100%;}
 }
 
 .content{

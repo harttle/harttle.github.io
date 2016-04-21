@@ -3,7 +3,7 @@ layout: default
 ---
 
 <div class="module-blog">
-  <header>
+  <header class="blog-header">
     <div class="container-fluid">
       <time class="pull-right">
         {% assign d = page.date | date: "%-d"  %}
@@ -37,6 +37,9 @@ layout: default
         {{ content }}
       </article>
 
+      <div class="author-wrapper">
+        {% include author.html %}
+      </div>
       {% include post-pager.html %}
       {% include comments.html %}
     </div>

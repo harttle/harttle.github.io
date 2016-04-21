@@ -12,6 +12,11 @@
   width: $value;
   height: $value;
 }
+@mixin circle($value){ 
+  width: $value;
+  height: $value;
+  border-radius: $value/2;
+}
 @mixin inline-size($value){ 
   @include size($value);
   line-height: $value;

@@ -10,7 +10,7 @@
   }
 }
 
-header{
+.blog-header{
   background: linear-gradient(172deg, $grey 0, $grey 15%, $blue 70%);
   color: white;
   h3{
@@ -68,8 +68,16 @@ aside{
   }
 }
 
+.author-wrapper{
+  .module-author{
+    float: right;
+  }
+  overflow: hidden;
+  margin-top: 20px;
+}
+
 .post-pager{
-  margin-top: 50px;
+  margin-top: 30px;
   margin-bottom: 100px;
   .btn-hover{
     max-width: 380px;
