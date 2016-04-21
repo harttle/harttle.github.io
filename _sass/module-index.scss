@@ -56,10 +56,21 @@ aside, .posts{
     }
     .more{
       margin-top: 10px;
+      border-right: 1px solid $blue;
+      position: relative;
+      &::after {
+        content: ' ';
+        background: #3d85d1;
+        height: 1px;
+        width: 15%;
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
       @include media-xs{
         display: none;
       }
-      border-right: 1px solid $blue;
     }
     @include media-xs{
       padding-left: 0;
