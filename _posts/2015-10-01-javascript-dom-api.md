@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: 原生JavaScript的DOM操作汇总
-tags: JavaScript DOM HTML XML 数组 集合
+tags: JavaScript DOM HTML XML 数组 集合 jQuery IE
 excerpt: 程序员经常讲在IDE中写C#、Java会越来越手残，那么经常用jQuery也会让我们忘记JavaScript是如何作用于DOM的。 JavaScript的DOM操作也是面试中的常见问题，尤其是当你需要回答jQuery的性能问题时，便需要再次回到JavaScript DOM API。本文便总结一下常见的JavaScript DOM操作方法
 ---
 

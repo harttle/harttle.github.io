@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: 利用overflow清除浮动（BFC）
+title: 利用overflow控制float元素（BFC）
 tags: CSS HTML float overflow BFC
 ---
 

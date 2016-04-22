@@ -16,7 +16,7 @@ excerpt: DOM选择，可以指定上下文；DOM创建，可以指定所属的do
 ```
 
 jQuery的`$()`函数文档在这里： http://api.jquery.com/jQuery/
-jQuery的$()函数的用法包括：
+jQuery的`$()`函数的用法包括：
 
 * DOM选择，可以指定上下文；
 * DOM创建，可以指定所属的document、属性、事件、甚至所有jQuery方法；
@@ -104,8 +104,8 @@ $(function(){
 });
 ```
 
-`$(callback)`的作用完全相当于`$(document).ready(callback)`。二者的返回值都是包含document的jQuery对象。
-因此二者的区别就在于后者可以链式地书写：`$(document).ready(x).ready(x)...`。然并卵。
+`$(callback)`只是`$(document).ready(callback)`的缩写，
+两种写法的作用相同，返回值也都是包含`document`的jQuery对象。
 
 这里提一下`$(document).ready`和`$(window).load`的区别：
 

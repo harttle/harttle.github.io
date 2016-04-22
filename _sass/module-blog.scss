@@ -8,6 +8,11 @@
   aside{
     display: none;
   }
+  .blog-header{
+    h3{
+      margin: 20px 0 10px;
+    }
+  }
 }
 
 .blog-header{
@@ -26,9 +31,10 @@
     margin-top: 10px;
   }
   .tag-list{
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     .tag{
       border-color: white;
+      margin-bottom: 0;
     }
   }
   @include media-xs{
@@ -73,7 +79,7 @@ aside{
     float: right;
   }
   overflow: hidden;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .post-pager{

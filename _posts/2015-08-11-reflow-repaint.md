@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: 减少页面回流与重绘（Reflow & Repaint）
-tags: CSS DOM HTML JavaScript 回流 重绘 队列 盒模型
+tags: CSS DOM HTML JavaScript 回流 重绘 队列 盒模型 clientHeight scrollHeight
 ---
 
 如果你的HTML变得很大很复杂，那么影响你JavaScript性能的可能并不是JavaScript代码的复杂度，而是页面的回流和重绘。
@@ -53,57 +53,41 @@ HTML使用流式布局模型（flow based layout），
 如果你是Web开发者，可能更关注的是哪些具体原因会引起浏览器的回流，下面罗列一下：
 
 1. 调整窗口大小
-2. 改变字体大小
+2. 字体大小
 3. 样式表变动
 4. 元素内容变化，尤其是输入控件
-5. CSS伪类激活
-6. DOM操作
-7. `offsetWidth`, `width`, `clientWidth`, `scrollTop/scrollHeight`的计算，
-    会使浏览器将渐进回流队列Flush，立即执行回流。
+5. CSS伪类激活，在用户交互过程中发生
+6. DOM操作，DOM元素增删、修改
+7. `width`, `clientWidth`, `scrollTop`等布局宽高的计算（见[视口的宽高与滚动高度][wh]一文）。
 
-既然提到了`offsetHeight`，来总结一下这几个容易混淆的HTML元素属性吧：
+  > 计算这些元素和布局大小时，浏览器会立即Flush渐进回流队列。
 
-* `clientHeight`: 内部可视区域大小。
-
-    > returns the inner height of an element in pixels, including padding but not the horizontal scrollbar height, border, or margin
-
-* `offsetHeight`：整个可视区域大小，包括border和scrollbar在内。
-
-    > is a measurement which includes the element borders, the element vertical padding, the element horizontal scrollbar (if present, if rendered) and the element CSS height.
-
-* `scrollHeight`：元素内容的高度，包括溢出部分。
-
-    > is a measurement of the height of an element's content including content not visible on the screen due to overflow
-
-* `scrollTop`：元素内容向上滚动了多少像素。
-
-    >  the number of pixels that the content of an element is scrolled upward. 
-
-![][height]
+这些会引起回流的操作中，6、7 是和JavaScript代码相关的。
+所以为了避免回流提高页面性能，前端开发需要注意的主要是这两点：**避免大量的DOM操作和布局计算**。
 
 # 最佳实践
 
-对我们Web开发者最有用的还是如何去做，才能减少页面回流。先来个例子：
+避免布局宽高的计算，意味着尽量使用CSS而不是JS来实现页面的布局效果。
+另外一方面，布局宽高的计算结果应当尽量保存避免重复计算。
+
+下面来讨论如何避免大量的DOM操作。请看示例：
 
 ```javascript
 var s = document.body.style; 
-
 s.padding = "2px"; // 回流+重绘
 s.border = "1px solid red"; // 再一次 回流+重绘
-
 s.color = "blue"; // 再一次重绘
 s.backgroundColor = "#ccc"; // 再一次 重绘
-
 s.fontSize = "14px"; // 再一次 回流+重绘
-
 // 添加node，再一次 回流+重绘
 document.body.appendChild(document.createTextNode('abc!'));
 ```
 
-可以看到每次DOM元素的样式操作都会引发重绘，如果涉及布局还会引发回流。
-该例子来源于：http://www.blogjava.net/BearRui/archive/2010/05/10/320502.html
+> 来源：<http://www.blogjava.net/BearRui/archive/2010/05/10/320502.html>
 
-避免大量页面回流的手段也有很多，其本质都是尽量减少引起回流和重绘的DOM操作：
+可见，通过DOM API进行CSS样式操作会产生大量的回流和重绘。
+这一点是可以避免的，比如：预定义CSS类，在JS中进行类的替换（DOM 属性操作）即可。
+除此之外，还有很多小技巧可以减少页面回流。下面来总结一下：
 
 1. 避免逐项更改样式。最好一次性更改`style`属性，或者将样式列表定义为`class`并一次性更改`class`属性。
 2. 避免循环操作DOM。创建一个`documentFragment`或`div`，在它上面应用所有DOM操作，最后再把它添加到`window.document`。
@@ -114,6 +98,5 @@ document.body.appendChild(document.createTextNode('abc!'));
     
     > 使用CSS3的transition也可以获得不错的性能。
 
-[height]: /assets/img/blog/css/height.png
 [css-display]: {% post_url 2015-05-28-css-display %}
-
+[wh]: /2016/04/24/client-height-width.html

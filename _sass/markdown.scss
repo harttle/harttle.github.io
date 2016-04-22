@@ -18,12 +18,6 @@
     margin-right: 3px;
     word-wrap: break-word;
   }
-  a:first-child, code:first-child, strong:first-child, em:first-child{
-    margin-left: 0;
-  }
-  a:last-child, code:last-child, strong:last-child, em:last-child{
-    margin-right: 0;
-  }
 }
 
 .md pre code {
@@ -127,7 +121,8 @@
 
 .md *:not(pre) > code {
   border: 1px solid #ddd;
-  color: #777;
+  /*color: #777;*/
+  color: $red;
 
   /*#c03;*/
   background-color: #f8f8f8;
