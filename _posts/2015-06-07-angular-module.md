@@ -28,7 +28,7 @@ tags: AngularJS HTML JavaScript MVC 模块化 依赖注入 工厂方法 构造�
 在Angular中，Directive、Service、Filter、Controller都是以工厂方法的方式给出，而工厂方法的参数名对应着该工厂方法依赖的Service。如：
 
 ```javascript
-app.controller('wolrdCtrl', function($scope, $http){
+app.controller('worldCtrl', function($scope, $http){
     // ...
 });
 ```
@@ -37,7 +37,7 @@ app.controller('wolrdCtrl', function($scope, $http){
 如果你希望对JS进行压缩处理，那么参数名就可能发生变化，Angular Injector将不能够正确地注入依赖的Service。于是有另外一种写法：
 
 ```javascript
-app.controller('wolrdCtrl', ['$scope', '$http', function($scope, $http){
+app.controller('worldCtrl', ['$scope', '$http', function($scope, $http){
     // ...
 }]);
 ```
