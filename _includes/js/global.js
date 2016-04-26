@@ -6,6 +6,14 @@ window.uuid = function(){
     Math.random().toString(36).substr(2);
 };
 
+$(window).load(function(){
+    $('script[type="text/async-script"]').each(function(idx, el){
+        el.type="application/javascript";
+        if(el.dataset.src)
+            el.src = el.dataset.src;
+    });
+});
+
 location.query = function(name, val) {
     if(arguments.length == 1){
         name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");

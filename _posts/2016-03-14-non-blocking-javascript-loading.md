@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: 最佳实践：非阻塞脚本载入
+title: 非阻塞脚本载入的几种方式
 tags: Chrome DNS DOM HTML Iframe JavaScript XHR 网络
 ---
 

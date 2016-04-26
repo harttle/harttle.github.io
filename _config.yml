@@ -37,3 +37,15 @@ gems:
   - jekyll-paginate
   - jekyll-seo-tag
 
+defaults:
+  -
+    scope:
+      path: "_drafts"
+    values:
+      layout: "blog"
+  -
+    scope:
+      path: "_posts"
+    values:
+      layout: "blog"
+
