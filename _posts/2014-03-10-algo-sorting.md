@@ -31,16 +31,17 @@ tags: 排序 数组 算法 队列 二叉树 堆排序 桶排序 基数排序 归
 
 * 计算父节点、左右孩子节点下标
 
-    ```cpp
-    PARENT(i)
-        return i/2
+  ```cpp
+  PARENT(i)
+      return i/2
 
-    LEFT(i)
-        return 2i
+  LEFT(i)
+      return 2i
 
-    RIGHT(i)
-        return 2i+1
-    ```
+  RIGHT(i)
+      return 2i+1
+  ```
+
 * **最大堆**
 	除了根以外的所有节点 i 满足：$A[\rm{PARENT}(i)]\geq A[i]$
 * **最小堆**
@@ -69,7 +70,7 @@ if largest != i
 每个孩子的子树的大小最多为 $2n/3$（最坏情况发生在树的最底层半满的时候），故MAX-HEAPIFY运行时间 
 $T(n) \leq T(2n/3) + \Theta(1)$，解为$T(n) = O(\lg n)$。
 
-###建堆
+### 建堆
 
 BUILD-MAX-HEAP 把大小为 n = A.length 的数组 A[1..n] 转换为最大堆。
 

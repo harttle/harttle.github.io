@@ -8,9 +8,11 @@ window.uuid = function(){
 
 $(window).load(function(){
     $('script[type="text/async-script"]').each(function(idx, el){
-        el.type="application/javascript";
-        if(el.dataset.src)
-            el.src = el.dataset.src;
+        var $script = $('<script>');
+        if(el.dataset.src) $script.attr('src', el.dataset.src);
+        else $script.html(el.text);
+        $script.appendTo('body');
+        el.remove();
     });
 });
 
