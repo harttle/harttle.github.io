@@ -19,7 +19,10 @@ layout: default
       <h3>{{page.title}}
         {% if page.subtitle %}<small>{{page.subtitle}}</small>{% endif %}
       </h3>
-      <p class="pull-right tag-list">
+
+      <aside> <div class="toc"></div> </aside>
+
+      <p class="tag-list">
         {% for tag in page.tags %}
           <a class="tag" href="/tags.html#{{tag}}">{{tag}}</a>
         {% endfor %}
@@ -28,10 +31,6 @@ layout: default
   </header>
 
   <div class="container-fluid">
-    <aside> 
-      <div class="toc"></div> 
-    </aside>
-
     <div class="content">
       <article class="md">
         {{ content }}

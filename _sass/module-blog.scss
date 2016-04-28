@@ -10,7 +10,7 @@
   }
   .blog-header{
     h3{
-      margin: 20px 0 10px;
+      margin: 20px 0 20px;
     }
   }
 }
@@ -19,7 +19,7 @@
   background: linear-gradient(172deg, $grey 0, $grey 15%, $blue 70%);
   color: white;
   h3{
-    margin: 50px 0 45px;
+    margin: 50px 0 35px;
     small{
       color: $light-grey;
     }
@@ -31,9 +31,20 @@
     margin-top: 10px;
   }
   .tag-list{
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    margin-left: $toc-width + 30px;  
     .tag{
       border-color: white;
+      margin-bottom: .5em;
+    }
+  }
+  .container-fluid{
+    aside{
+      float: left;
+      @import 'toc';
+    }
+    &::after{
+      clear: none;
     }
   }
   @include media-xs{
@@ -41,7 +52,7 @@
       margin: 35px 0 20px;
     }
     .tag-list{
-      margin-bottom: 10px;
+      margin-left: 0;
     }
     time{
       display: none;
@@ -55,13 +66,6 @@
 
 @include media-xs{
   @include collapsed();
-}
-
-
-aside{
-  float: left;
-  margin-top: -55px;
-  @import 'toc';
 }
 
 .content{
