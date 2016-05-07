@@ -82,26 +82,24 @@ title: 安装 Arch Linux
 
 * GPGME error  
 
-    > No data：error: failed to update core (invalid or corrupted database (PGP signature))
+  > No data：error: failed to update core (invalid or corrupted database (PGP signature))
 
-    在 `/etc/pacman.conf` 的 `[options]` 加入 `SigLevel = Never`
+  在 `/etc/pacman.conf` 的 `[options]` 加入 `SigLevel = Never`
 
 * 使用交换文件
 
-    ```bash
-    # 建立swap文件
-    fallocate -l 512M /swapfile
-    # 或者
-    dd if=/dev/zero of=/swapfile bs=1M count=512
-    
-    # 设置swap
-    chmod 600 /swapfile
-    mkswap /swapfile
-    swapon /swapfile
-
-    # 更新静态文件系统信息 /etc/fstab 中加入：
-    /swapfile none swap defaults 0 0
-    ```
+  ```bash
+  # 建立swap文件
+  fallocate -l 512M /swapfile
+  # 或者
+  dd if=/dev/zero of=/swapfile bs=1M count=512
+  # 设置swap
+  chmod 600 /swapfile
+  mkswap /swapfile
+  swapon /swapfile
+  # 更新静态文件系统信息 /etc/fstab 中加入：
+  /swapfile none swap defaults 0 0
+  ```
 
 ## 配置系统
 
