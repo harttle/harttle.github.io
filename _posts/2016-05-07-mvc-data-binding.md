@@ -12,7 +12,7 @@ MVC也成为一整个系列的设计模式，衍生品包括PAC、HMVC、MVP、M
 # MVC
 
 **MVC**（Model-View-Controller）一词最初在1979年由Trygve Reenskaug提出（Smalltalk-79），
-此后Krasner和Pope在Smalltalk-80中重新描述了MVC设计模式。
+此后Krasner和Pope在Smalltalk-80中再次进行了描述。
 最初Krasner和Pope描述的MVC设计是这样工作的：
 
 ![mvc](/assets/img/blog/angular/mvc_krasner_pope.png)
