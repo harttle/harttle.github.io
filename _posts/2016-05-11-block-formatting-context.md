@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: 利用overflow控制float元素（BFC）
+title: overflow 与布局上下文（BFC）
 tags: CSS HTML float overflow BFC
 ---
 
@@ -11,8 +11,11 @@ HTML采用流式布局方式，CSS的`float`在这种环境下非常重要。
 **BFC**（Block Formatting Context，布局上下文）
 是CSS渲染过程中进行布局的盒子，所有浮动子元素都在盒子内进行布局。
 也就是说BFC内的浮动元素不会影响到BFC外部，BFC外部的环境也不会影响BFC内的布局。
-MDN共列出8类元素可以生成一个BFC，包括浮动和绝对定位元素、行内块，以及`overflow`不为`visible`的元素。
+[MDN][mdn]共列出8类元素可以生成一个BFC，包括浮动和绝对定位元素、行内块，以及`overflow`不为`visible`的元素。
 可见，**设置`overflow:hidden`可以开启一个BFC**。
+
+> BFC很多时候翻译为块级格式化上下文，其实笔者认为布局上下文更为贴切。
+> 本质上讲一个BFC就是一个矩形块的独立布局环境。
 
 参考：<https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context>
 
@@ -171,3 +174,4 @@ CSS决定这时就用父元素来包裹子元素吧！
 
 
 [float]: {% post_url 2016-01-28-css-floating %}
+[mdn]: https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context
