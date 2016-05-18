@@ -1,5 +1,5 @@
 ---
-title: 样式表的载入会延迟DOM载入事件
+title: 外部样式表与DOMContentLoaded事件延迟
 tags: CSS DOM JavaScript 事件 Firefox Safari IE Chrome Opera
 ---
 
