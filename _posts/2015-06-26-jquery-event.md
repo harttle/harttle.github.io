@@ -1,5 +1,4 @@
 ---
-layout: blog 
 title: jQuery事件：bind、delegate、on的区别
 tags: AngularJS DOM HTML JavaScript jQuery 事件
 ---
