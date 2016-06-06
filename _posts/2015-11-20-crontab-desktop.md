@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: 用 Cron 定时任务更新壁纸
 tags: Bash HTML Linux Unix Vim awk crontab grep sed
 ---

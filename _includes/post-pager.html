@@ -9,6 +9,18 @@
       下一篇：{{page.next.title}}
     </a>
   {% endif %}
-  <div id="social-share-block"></div>
+
+  {% unless page.next %}
+    <div id="social-share-block" class="text-right"></div>
+  {% endunless %}
+
+  {% unless page.previous %}
+    <div id="social-share-block" class="text-left"></div>
+  {% endunless %}
+
+  {% if page.previous and page.next %}
+    <div id="social-share-block" class="text-center"></div>
+  {% endif %}
+
 </div>
 
