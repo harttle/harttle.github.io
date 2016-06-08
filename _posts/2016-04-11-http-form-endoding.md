@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: HTTP 表单编码 enctype
 tags: HTML HTTP JSON XML 表单
 ---
@@ -147,5 +146,5 @@ Content-Type: text/xml
 </methodcall>
 ```
 
-
+> 2016.6.7: 我擦，这篇文章的URL居然有拼写错误 :(
 
