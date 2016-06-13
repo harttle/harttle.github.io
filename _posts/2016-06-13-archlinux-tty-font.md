@@ -67,7 +67,7 @@ cursor-interval=500
 在登录Shell时，自动运行FBTerm这个终端模拟器，同时启动`fcitx`中文输入法：
 
 ```bash
-// file: ~/.bash_login
+# file: ~/.bash_login
 if [[ $(tty) = /dev/tty1 ]] ; then
     fcitx > /dev/null 2>&1 &
     exec fbterm 
