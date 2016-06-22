@@ -58,6 +58,7 @@ window.modules.blog = function(console, $ele, mod) {
         return $toc;
     }
 
+    //分享
     var links = {
         weibo: 'http://v.t.sina.com.cn/share/share.php?' + $.param({
             url: location.href,

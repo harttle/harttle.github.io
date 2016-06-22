@@ -1,7 +1,6 @@
 ---
-layout: blog
 title:  部署自己的博客：Github+Jekyll
-tags: Bash CentOS Git Github HTML LaTex Linux Markdown Ruby Ubuntu 模板 搜索引擎
+tags: Bash CentOS Git Github HTML LaTex Linux Markdown Ruby 模板 搜索引擎 Liquid Jekyll
 ---
 
 最近终于完成了个人博客的开发和部署，就把整个过程记录在这里。利用 GitHub 提供的文件服务部署，采用 github+GFM+jekyll 方式构建静态博客站点。

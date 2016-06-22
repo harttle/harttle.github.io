@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: 打造前端开发的 Vim 环境
 tags: Bash CSS HTML JavaScript Vim Vundle YCM 快捷键 NPM
 ---
@@ -92,7 +91,7 @@ Plugin 'hail2u/vim-css3-syntax'
 Plugin 'groenewege/vim-less'
 ```
 
-CSS的语法中，前后大括号是要匹配的。可以用delimitMate来自动补全后大括号，它支持大多数的编程语言。
+CSS的语法中，前后大括号是要匹配的。可以用[delimitMate][dm]来自动补全后大括号，它支持大多数的编程语言。
 
 ```vim
 Plugin 'Raimondi/delimitMate'
@@ -153,3 +152,4 @@ npm install -g jshint
 [jade]: https://github.com/jadejs/jade
 [vim-ide]: {% post_url 2015-11-04-vim-ide %}
 [emmet]: https://github.com/mattn/emmet-vim
+[dm]: https://github.com/Raimondi/delimitMate

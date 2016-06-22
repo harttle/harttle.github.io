@@ -8,7 +8,7 @@ $left-width: 50%;
 }
 
 &{
-  @include absolute(111px, 0, 0, 0);
+  @include absolute(102px, 0, 0, 0);
   position: fixed;
   @include media-xs{
     position: static;
@@ -86,12 +86,6 @@ $left-width: 50%;
     left: 50%;
     margin: -16px 0 0 -128px;
   }
-  #status-bar{
-    margin: 0;
-    position: absolute;
-    right: 30px;
-    bottom: 30px;
-  }
   @include media-xs{
     position: static;
     padding-left: 0;
@@ -104,6 +98,14 @@ $left-width: 50%;
   }
 }
 
+#status-bar{
+  margin: 0;
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  color: #415877;
+  font-style: italic;
+}
 li{
   line-height: 28px;
   font-size: 14px;

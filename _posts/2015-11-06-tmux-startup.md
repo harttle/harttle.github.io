@@ -71,6 +71,13 @@ yum install tmux        # Centos
 
 > 注意，通过`<prefix>r`重新载入配置并不等同于重启，只是增量地执行了配置文件中的所有命令而已。如果配置未生效，可以通过`tmux kill-server`来强行关闭Tmux。
 
+如果你想知道当前tmux的设置，可通过`tmux show -g`来查看（该命令需要tmux正在运行）。
+你可能会需要把这些设置导出为文件：
+
+```bash
+tmux show -g >> current.tmux.conf
+```
+
 # 窗格切换
 
 可以把`hjkl`设置为切换窗格的快捷键：

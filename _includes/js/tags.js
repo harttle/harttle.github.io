@@ -25,13 +25,15 @@ window.modules.tags = function (console, $ele) {
             tag && onTagSelected(tag);
         });
 
-        $postList.on('mouseenter', 'a', function(e){
-            var tags = $(e.target).closest('li').data('tags');
-            $statusBar.html(tags.join(', '));
-        })
-        .on('mouseleave', 'a', function(e){
-            $statusBar.html('');
-        });
+        if(location.query('verbose')){
+            $postList.on('mouseenter', 'a', function(e){
+                var tags = $(e.target).closest('li').data('tags');
+                $statusBar.html(tags.join(', '));
+            })
+            .on('mouseleave', 'a', function(e){
+                $statusBar.html('');
+            });
+        }
 
         $btnCloud.click(function(){
             hidePie();

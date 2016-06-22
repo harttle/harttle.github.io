@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: Vim 多文件编辑：缓冲区
 tags: Bash Linux Vim 内存
 ---

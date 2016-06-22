@@ -26,6 +26,18 @@ letus_fuckit_with_vim();
 
 > `v`进入可视模式，然后`iw`来选择光标所在单词，最后按下`p`来粘贴。`iw`表示inner word，有用的搭配还有`yiw`, `ciw`等。
 
+# 暂时离开插入模式
+
+当我们处在insert模式时，有时会希望在normal模式下执行某个命令再马上回到insert模式。
+可能需要先按下`<Esc>`，执行命令，再按下`i`。Vim为此提供了方便：
+
+当我们需要暂时离开insert模式并执行一个命令时，可以按下`<c-o>`执行完后续命令后Vim自动回到insert模式。例如：
+
+```
+:map <F5> :! g++ % && ./a.out <CR>
+:imap <F5> <c-o><F5>
+```
+
 # 字符查找
 
 [Vim光标跳转][vim-cursor]虽然有数十种快捷键，但你有没有发现当我们碰到长单词时会很无力，比如我想把下面的`description`替换为`keywords`：

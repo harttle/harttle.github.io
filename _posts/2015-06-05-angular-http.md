@@ -1,6 +1,5 @@
 ---
-layout: blog 
-title: AngularJS $http Service
+title: AngularJS HTTP Service
 tags: AJAX AngularJS HTTP JavaScript Promise 链式调用
 ---
 

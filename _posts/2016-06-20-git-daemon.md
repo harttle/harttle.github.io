@@ -1,5 +1,5 @@
 ---
-title: 极简的Git服务器：git-daemon
+title: 极简的 Git 服务器：git-daemon
 tags: Git Github IP Linux SSH Ubuntu Archlinux
 ---
 

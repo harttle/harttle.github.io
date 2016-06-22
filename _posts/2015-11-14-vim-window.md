@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: Vim 多文件编辑：窗口
 tags: Bash Linux Vim 快捷键
 ---
@@ -49,6 +48,9 @@ vim -O main.cpp my-oj-toolkit.h
 Ctrl+w s        水平分割当前窗口
 Ctrl+w v        垂直分割当前窗口
 Ctrl+w q        关闭当前窗口
+Ctrl+w n        打开一个新窗口（空文件）
+Ctrl+w o        关闭出当前窗口之外的所有窗口
+Ctrl+w T        当前窗口移动到新标签页
 ```
 
 # 切换窗口
