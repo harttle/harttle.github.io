@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: Vim初级：配置和使用
 tags: Bash Unix Vim sed 编译
 ---

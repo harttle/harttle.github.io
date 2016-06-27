@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: 用正则表达式分析 URL
 tags: JavaScript 表单 字符串 正则表达式
 ---
@@ -125,6 +124,26 @@ hash:   HTML
 前面是一个可选的非获取匹配，内容为`#(.*)`。
 `.`表示任何单个字符，即`#`开头的任何长度的字符串。
 被获取的内容`HTML`存入了`fields[7]`中。
+
+# 最佳实践
+
+上文中的URL正则表达式略显复杂，在真实的实践中通常会切分为一系列的正则表达式单元。
+为了实现正则表达式的拼接，我们需要定义一系列的字符串来初始化正则表达式。
+这意味着需要做一些转义工作，费时费力事小，容易出错事大。例如上述Query参数：
+
+```javascript
+var queryRegex1 = /(?:\?([^#]*))?/;
+// 斜线都需要转义
+var queryRegex2 = new RegExp("(?:\\?([^#]*))?");
+```
+
+好在JavaScript的RegExp提供了`source`属性，可以帮我们转义正则表达式：
+
+```javascript
+var queryRegex = /(?:\?([^#]*))?/;
+queryRegex.source === "(?:\\?([^#]*))?";
+var urlRegex = new RegExp(`...${queryRegex.source}...`);
+```
 
 [vim]: /tags.html#Vim
 [ng]: /tags.html#AngularJS

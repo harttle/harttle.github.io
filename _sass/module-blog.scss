@@ -36,6 +36,7 @@
   .tag-list{
     margin-bottom: 10px;
     margin-left: $toc-width + 30px;  
+    min-height: 28px;
     .tag{
       border-color: white;
       margin-bottom: .5em;

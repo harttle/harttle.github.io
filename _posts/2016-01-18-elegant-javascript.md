@@ -61,7 +61,7 @@ JavaScript的原型继承方式却是一个备受争议的特性。
 
 # JavaScript代码片段
 
-下面给出一段JavaScript来感受一下JavaScript中的优雅。
+下面给出一段JavaScript来感受一下JavaScript的简洁。
 这是[brick.js][brick]项目中的JavaScript代码片段，它们的用途分别是更新`this.modules`以及合并编译LESS代码。
 
 ```javascript
