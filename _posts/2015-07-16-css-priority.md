@@ -62,7 +62,7 @@ Demo如下：
 </style>
 <link rel="stylesheet" href="./index.css">
 
-// file: index.csscss
+// file: index.css
 h2{
   color: blue;
 }
@@ -72,10 +72,10 @@ h2{
 
 # 参考阅读
 
-* http://www.w3.org/wiki/CSS/Training/Priority_level_of_selector
-* http://www.hongkiat.com/blog/css-priority-level/
-* https://www.w3.org/TR/css3-selectors/#specificity
-* https://www.w3.org/TR/2011/REC-CSS2-20110607/cascade.html#specificity
+* <http://www.w3.org/wiki/CSS/Training/Priority_level_of_selector>
+* <http://www.hongkiat.com/blog/css-priority-level/>
+* <https://www.w3.org/TR/css3-selectors/#specificity>
+* <https://www.w3.org/TR/2011/REC-CSS2-20110607/cascade.html#specificity>
 
 [css3-spec]: https://www.w3.org/TR/css3-selectors/#specificity
 [css21-spec]: https://www.w3.org/TR/2011/REC-CSS2-20110607/cascade.html#specificity
