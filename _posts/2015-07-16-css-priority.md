@@ -1,65 +1,81 @@
 ---
-layout: blog
 title: 各种CSS选择器的优先级
-tags: CSS HTML 伪类 盒模型
+tags: CSS HTML 伪类 选择符
 ---
 
-CSS规则之间可以互相覆盖，这一点我们应该已经习以为常了。然而正是由于规则之间可以互相覆盖、子元素继承父元素的默认行为，导致了CSS冲突的问题。
-碰到CSS冲突时，通常我们会加入一些更加详细的规则来明确如何显示，以此解决冲突。通常越详细的规则优先级会越高，但优先级究竟是如何定义的呢？
+由于规则之间可以互相覆盖、子元素会继承父元素的部分规则，导致了CSS冲突的问题。
+碰到CSS冲突时，通常我们会加入一些更加详细的规则或调整规则顺序来解决冲突。
+那么优先级究竟是如何定义的呢？
 
-首先根据CSS定义位置来区别，优先级从低到高如下：
-
-* 浏览器默认样式（Browser Default Style）
-* 外部样式表
-* 内部样式表
-* 行内样式 (e.g., style="font-weight:bold")
-
-同样定义位置的规则，根据不同类型选择器的个数来确定。选择器的优先级从低到高如下规则：
-
-* F: Universal selectors (e.g., *)
-* E: Type selectors (e.g., h1)
-* D: Class selectors (e.g., .example)
-* C: Attributes selectors (e.g., [type="radio"])
-* B: Pseudo-classes (e.g., :hover)
-* A: ID selectors (e.g., #example)
-
-> 即 ID > 伪类 > 属性 > 类 > 元素 > 通配符，首先我们数规则中ID的个数，ID个数越多的规则优先级越高。如果相同，再数伪类，以此类推。
+先给出结论：ID>类或伪类或属性>类型或伪元素>通配选择器，
+外部样式表和内部样式表拥有相同的优先级，
+HTML style属性拥有最高优先级，浏览器默认样式（UA Default）优先级最低。
+对于相同优先级的规则，写在后面的会覆盖前面的。
 
 <!--more-->
 
-来个例子：
+# CSS标准
+
+根据[CSS3标准中关于选择符优先级的说明][css3-spec]，CSS选择器的优先级计算方式如下：
+
+1. 记ID选择器的个数为`a`
+2. 记类选择器、属性选择器、伪类选择器的个数为`b`
+3. 记类型选择器（元素名）、伪元素选择器的个数为`c`
+4. 忽略所有的通配选择器（`*`）
+
+注意：
+
+* 将`a`, `b`,`c`连接起来构成整个选择符的优先级。
+* 否定伪类选择器`:not()`中的选择符同样会被计算优先级，但否定选择器本身不计算。
+* 外部样式表与当前文件内样式表具有同样的优先级。
+* [CSS2.1标准][css21-spec]中指出，HTML`style`属性比样式表拥有更高的优先级。
+* 重复同样的选择符可用来增加优先级（例如`.active.active`）。
+
+# 一个例子
 
 ```css
-article p span{
+*               /* a=0 b=0 c=0 -> 优先级 =   0 */
+li              /* a=0 b=0 c=1 -> 优先级 =   1 */
+ul li           /* a=0 b=0 c=2 -> 优先级 =   2 */
+ul ol+li        /* a=0 b=0 c=3 -> 优先级 =   3 */
+h1 + *[rel=up]  /* a=0 b=1 c=1 -> 优先级 =  11 */
+ul ol li.red    /* a=0 b=1 c=3 -> 优先级 =  13 */
+li.red.level    /* a=0 b=2 c=1 -> 优先级 =  21 */
+#x34y           /* a=1 b=0 c=0 -> 优先级 = 100 */
+#s12:not(foo)   /* a=1 b=0 c=1 -> 优先级 = 101 */
+```
+
+> 代码来源：<https://www.w3.org/TR/css3-selectors/#specificity>
+
+# 外部样式表
+
+外部样式表（`<link>`）与文件内样式表（`<style>`）具有相同的优先级。
+Demo如下：
+
+```
+// file: index.html
+<h2>hello</h2>
+<style>
+  h2 {
+    color: red;
+  }
+</style>
+<link rel="stylesheet" href="./index.css">
+
+// file: index.csscss
+h2{
   color: blue;
 }
-#red{
-  color: red;
-}
 ```
 
-* `article p span`的优先级："A=0, B=0, C=0, D=0, E=3, F=0 (000030)"
-* `#red`的优先级："A=1, B=0, C=0, D=0, E=0, F=0 (100000)"（更高！）
+`index.html`的`<h2>`在Chrome中显示为蓝色，证明`<style>`优先级并不比`<link>`高。
 
-再比如：
-
-```css
-#wrapper header div nav #gnavi{
-  list-style-type: none;
-}
-#top #hright #gnavi{
-  list-style-type: square;
-}
-```
-
-* `#wrapper header div nav #gnavi`的优先级："A=2, B=0, C=0, D=0, E=3, F=0 (200030)"
-* `#top #hright #gnavi`的优先级："A=3, B=0, C=0, D=0, E=0, F=0 (300000)"（更高！）
-
-此外，**最高优先级的是`!import`的属性**，如果都加了`!important`那就继续数规则中属性和元素的个数。
-
-> 能避免`!important`的话就不要这样写了，这样的样式太难扩展了。
-
-参考链接： 
+# 参考阅读
 
 * http://www.w3.org/wiki/CSS/Training/Priority_level_of_selector
 * http://www.hongkiat.com/blog/css-priority-level/
+* https://www.w3.org/TR/css3-selectors/#specificity
+* https://www.w3.org/TR/2011/REC-CSS2-20110607/cascade.html#specificity
+
+[css3-spec]: https://www.w3.org/TR/css3-selectors/#specificity
+[css21-spec]: https://www.w3.org/TR/2011/REC-CSS2-20110607/cascade.html#specificity
