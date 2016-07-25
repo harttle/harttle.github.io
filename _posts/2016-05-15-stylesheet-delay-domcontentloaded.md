@@ -1,5 +1,5 @@
 ---
-title: 外部样式表与DOMContentLoaded事件延迟
+title: CSS载入与DOMContentLoaded事件延迟
 tags: CSS DOM JavaScript 事件 Firefox Safari IE Chrome Opera
 ---
 
@@ -30,7 +30,7 @@ HTML文档不会等待样式文件，图片文件，Iframe页面的加载。
 JavaScript的作者往往会假设CSS规则已经生效，尤其是在进行一些显示相关的操作时，
 比如需要得到DOM元素的位置和大小的场景。
 
-事实上，在多数浏览器中`DOMContentLoaded`事件的触发会考虑到外部样式文件的载入，
+事实上，在多数浏览器中`DOMContentLoaded`事件的触发会考虑到外部样式文件（CSS）的载入，
 以及在HTML中脚本标签和样式标签的相对位置。
 如果脚本位于样式之后，浏览器通常会认为该脚本依赖于样式的渲染结果，
 也就更倾向于延迟脚本的执行（直到样式渲染结束）。

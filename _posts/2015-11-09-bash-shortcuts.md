@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: 熟悉 Bash 快捷键来提高效率
 tags: Bash GNU Linux 快捷键
 ---
@@ -12,50 +11,60 @@ Linux的精髓就在于命令行的高效，而学习命令行的第一步便是
 
 <!--more-->
 
-# 命令编辑
+# 光标移动
 
 快捷键 | 描述
 --- | ---
-`Ctrl + a` | go to the start of the command line
-`Ctrl + e` | go to the end of the command line
-`Ctrl + k` | delete from cursor to the end of the command line
-`Ctrl + u` | delete from cursor to the start of the command line
-`Ctrl + w` | delete from cursor to start of word (i.e. delete backwards one word)
-`Ctrl + y` | paste word or text that was cut using one of the deletion shortcuts (such as the one above) after the cursor
-`Ctrl + xx` | move between start of command line and current cursor position aand back again
-`Alt + b` | move backward one word (or go to start of word the cursor is currently on)
-`Alt + f` | move forward one word (or go to end of word the cursor is currently on)
-`Alt + d` | delete to end of word starting at cursor (whole word if cursor is at the beginning of word)
-`Alt + c` | capitalize to end of word starting at cursor (whole word if cursor is at the beginning of word)
-`Alt + u` | make uppercase from cursor to end of word
-`Alt + l` | make lowercase from cursor to end of word
-`Alt + t` | swap current word with previous
-`Ctrl + f` | move forward one character
-`Ctrl + b` | move backward one character
-`Ctrl + d` | delete character under the cursor
-`Ctrl + h` | delete character before the cursor
-`Ctrl + t` | swap character under cursor with the previous one
+`Ctrl + a` | 移动光标到行首
+`Ctrl + e` | 移动光标到行尾
+`Alt + b`  | 移动光标后退一个单词（词首）
+`Alt + f`  | 移动光标前进一个单词（词首）
+`Ctrl + f` | 光标前进一个字母
+`Ctrl + b` | 光标后退一个字母
+`Ctrl + xx`| 当前位置与行首之间光标切换
+
+# 剪切粘贴
+
+快捷键 | 描述
+--- | ---
+`Ctrl + k` | 删除从光标到行尾
+`Ctrl + u` | 删除从光标到行首
+`Ctrl + w` | 从光标向前删除一个单词
+`Alt + d`  | 从光标向后删除一个单词
+`Ctrl + d` | 删除光标下一个字母
+`Ctrl + h` | 删除光标前一个字母
+`Alt + t`  | swap(当前单词, 上一个单词)
+`Ctrl + t` | swap(当前字母, 上一个字母)
+`Ctrl + y` | 粘贴上一次删除的文本
+
+# 大小写转换
+
+快捷键 | 描述
+--- | ---
+`Alt + c` | 大写当前字母，并移动光标到单词尾
+`Alt + u` | 大写从当光标到单词尾
+`Alt + l` | 小写从当光标到单词尾
 
 # 历史命令
 
 快捷键 | 描述
 --- | ---
-`Ctrl + r` | search the history backwards
-`Ctrl + g` | escape from history searching mode
-`Ctrl + p` | previous command in history (i.e. walk back through the command history)
-`Ctrl + n` | next command in history (i.e. walk forward through the command history)
-`Alt + .` | use the last word of the previous command
+`Ctrl + r` | 向后搜索历史命令
+`Ctrl + g` | 退出搜索
+`Ctrl + p` | 历史中上一个命令
+`Ctrl + n` | 历史中下一个命令
+`Alt + .`  | 上一个命令的最后一个单词
 
-# 命令控制
+# 终端指令
 
 快捷键 | 描述
 --- | ---
-`Ctrl + l` | clear the screen
-`Ctrl + s` | stops the output to the screen (for long running verbose command)
-`Ctrl + q` | allow output to the screen (if previously stopped using command above)
-`Ctrl + c` | terminate the command
-`Ctrl + z` | suspend/stop the command
-`Ctrl + d` | end of input
+`Ctrl + l` | 清屏
+`Ctrl + s` | 停止输出（在Zsh中为向前搜索历史命令）
+`Ctrl + q` | 继续输出
+`Ctrl + c` | 终止当前命令
+`Ctrl + z` | 挂起当前命令
+`Ctrl + d` | 结束输入（产生一个EOF）
 
 参考链接：
 

@@ -28,7 +28,7 @@ kramdown:
   hard_wrap: false
 lsi: false
 
-exclude: ['README.md', '.*', 'scripts/', 'bak', 'Gemfile']
+exclude: ['README.md', '.*', 'bin/', 'Gemfile']
 
 gems:
   - jekyll-sitemap

@@ -1,18 +1,16 @@
 ---
-layout: blog
 title: 如何理解HTTP响应的状态码？
 tags: Cookie Git HTML HTTP Session WebSocket 表单 搜索引擎 缓存
 ---
 
 我们知道HTTP协议是通过HTTP请求和HTTP响应来实现双向通信的。
-HTTP状态码（HTTP Status Code）是用以表示Web服务器HTTP响应状态的3位数字代码，由RFC 2616规范定义。
+[HTTP状态码][http-code]（HTTP Status Code）是用以表示Web服务器HTTP响应状态的3位数字代码，由RFC 2616规范定义。
 合理的状态码不仅可以让用户或者浏览器做出更加合适的进一步操作，而且可以让客户端代码更加易于理解和维护。
 
 HTTP状态码分为5类：1xx表示继续发送请求；2xx表示请求成功；3xx表示资源已找到但需要继续进行其他操作；
 4xx表示客户端错误；5xx表示服务器错误。下面就具体详述常见状态码的语义，及其使用方式。
 
-关于HTTP协议规范以及状态码在其中的作用，参见：[读 HTTP 协议][http]。
-参考链接：http://zh.wikipedia.org/wiki/HTTP%E7%8A%B6%E6%80%81%E7%A0%81
+> 关于HTTP协议规范以及状态码在其中的作用，参见：[读 HTTP 协议][http]。
 
 <!--more-->
 
@@ -243,3 +241,4 @@ Authorization:Basic eWFuZ2p2bjp5YW5nanZuaGFydA==
 
 [http]: {% post_url 2014-10-01-http %}
 [basic-auth]: /assets/img/blog/basic-auth@2x.png
+[http-code]: http://zh.wikipedia.org/wiki/HTTP%E7%8A%B6%E6%80%81%E7%A0%81

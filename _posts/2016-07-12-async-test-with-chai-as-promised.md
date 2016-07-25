@@ -8,8 +8,6 @@ tags: JavaScript NPM Promise 回调函数 Chai Mocha 测试 BDD
 这意味着在JavaScript测试中往往会需要异步断言。
 本文介绍如何使用[Chai][chai]和[chai-as-promised][chai-ap]来测试Promise。
 
-<!--more-->
-
 # Mocha测试异步代码
 
 [Mocha][mocha]本身是支持异步测试的。只需要为`describe`回调函数添加一个`done`参数，
@@ -27,6 +25,8 @@ describe('db', function() {
     });
 });
 ```
+
+<!--more-->
 
 * 如果未调用`done`函数，Mocha会一直等待直到超时。
 * 如果未添加`done`参数，Mocha会直接返回成功，不会捕获到异步的断言失败。例如：

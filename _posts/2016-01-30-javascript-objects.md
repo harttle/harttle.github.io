@@ -1,7 +1,6 @@
 ---
-layout: blog
 title: 细说 JavaScript 的对象
-tags: JavaScript 原型链 继承 反射
+tags: JavaScript 原型链 继承 反射 ES6
 ---
 
 JavaScript是面向对象语言，通过原型机制实现继承，通过『闭包』等方式可以实现封装。
