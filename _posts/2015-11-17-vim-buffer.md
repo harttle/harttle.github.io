@@ -73,6 +73,43 @@ vim a.txt b.txt
 set path=$PWD/**
 ```
 
+# 利用通配符进行缓冲区跳转
+
+这是缓冲区最强大的功能之一。我们可以使用通配符来指定要跳转到的缓冲区文件名。
+在此之前，我们启动`wildmenu`并设置匹配后文件选择模式为`full`。
+`wildchar`为选择下一个备选文件的快捷键，
+而`wildcharm`用于宏定义中（语义同`wildchar`），比如后面的`noremap`。
+
+```vim
+set wildmenu wildmode=full 
+set wildchar=<Tab> wildcharm=<C-Z>
+```
+
+比如现在按下打开这些文件：
+
+```
+vehicle.c vehicle.h car.c car.h jet.c jet.h jetcar.c jetcar.h
+```
+
+然后按下`:b <Tab>`便可看到Vim提供的备选文件列表了，
+按下`<Tab>`选择下一个，按下回车打开当前文件。
+
+```vim
+:b <Tab>       " 显示所有Buffer中的文件
+:b car<Tab>    " 显示 car.c car.h
+:b *car<Tab>   " 显示 car.c jetcar.c car.h jetcar.h
+:b .h<Tab>     " 显示 vehicle.h car.h jet.h jetcar.h
+:b .c<Tab>     " 显示 vehicle.c car.c jet.c jetcar.c
+:b ar.c<Tab>   " 显示 car.c jetcar.c
+:b j*c<Tab>    " 显示 jet.c jetcar.c jetcar.h
+```
+
+我们可以为`:b <Tab>`设置一个快捷键`<c-n>`，这时便用到上文中设置的`wildcharm`了：
+
+```vim
+noremap <c-n> :b <c-z>
+```
+
 [vim-window]: /2015/11/14/vim-window.html
 [vim-tabpage]: /2015/11/12/vim-tabpage.html
 [vim-buffer]: http://vim.wikia.com/wiki/Buffers
