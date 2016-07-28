@@ -49,7 +49,7 @@ it('#get', function(){
 测试Promise有两种方式：可以采用上述`done`的方式，也可以直接返回该Promise。
 注意Promise也属于异步代码，如果未采用上述方式，Mocha将无法捕捉到异步的断言失败。
 
-## `done`回调的方式
+## done回调的方式
 
 ```javascript
 describe('#find()', function() {
@@ -97,10 +97,16 @@ npm install --save-dev chai-as-promised
 现在我们用[chai as promised][chai-ap]重写上述测试逻辑：
 
 ```javascript
+var chai = require('chai');
+chai.use(require("chai-as-promised"));
+
 describe('#find()', function() {
     it('respond with matching records', function() {
-        return db.find({ name: 'harttle' })
-            .should.eventually.have.property('name', 'harttle');
+        return expect(db.find({ name: 'harttle' }))
+            .to.eventually.have.property('name', 'harttle');
+    });
+    it('should be fulfilled', function(){
+        return expect(db.remove('user')).to.eventually.be.fulfilled;
     });
 });
 ```
