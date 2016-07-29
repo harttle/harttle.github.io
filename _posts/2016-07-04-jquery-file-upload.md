@@ -1,6 +1,6 @@
 ---
 title: jQuery 利用 FormData 上传文件
-tags: FormData HTML HTTP IE JavaScript jQuery 表单 
+tags: FormData HTML HTTP IE JavaScript jQuery 表单 异步
 ---
 
 文件上传是Web开发中的重要话题，最直接和简单的方式是通过表单直接提交文件。

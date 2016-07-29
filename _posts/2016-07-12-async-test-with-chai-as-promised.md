@@ -1,6 +1,6 @@
 ---
 title: Mocha 下测试异步代码
-tags: JavaScript NPM Promise 回调函数 Chai Mocha 测试 BDD
+tags: JavaScript NPM Promise 回调函数 Chai Mocha 测试 BDD 异步
 ---
 
 在[利用 Mocha 进行 BDD 风格测试][mocha-bdd]中介绍了[Mocha][mocha]测试框架和

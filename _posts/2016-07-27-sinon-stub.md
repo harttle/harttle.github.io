@@ -94,6 +94,20 @@ it('should calculate multiply', function () {
 });
 ```
 
+如果Stub（测试桩）具有确定的返回值，可以使用`yields`语法。例如：
+
+```javascript
+sinon.stub(jQuery, 'ajax').yieldsTo('success', 1, 2);
+jQuery.ajax({
+    url: 'http://harttle.com',
+    success: function(arg1, arg2){
+        assert(arg1 === 1);
+        assert(arg2 === 2);
+    }
+});
+jQuery.ajax.restore();
+```
+
 Sinonjs Stubs 文档：<http://sinonjs.org/docs/#stubs>
 
 # Matchers

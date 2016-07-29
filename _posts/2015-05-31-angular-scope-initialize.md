@@ -1,7 +1,6 @@
 ---
-layout: blog 
 title: AngularJS 初始化过程
-tags: AngularJS DOM HTML JavaScript MVC 模板 模块化 依赖注入
+tags: AngularJS DOM HTML JavaScript MVC 模板 模块化 依赖注入 异步
 ---
 
 [AngularJS][angularjs]属于典型的单页APP框架，现由Google维护，用在了Google的多款产品中。

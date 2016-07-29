@@ -1,7 +1,6 @@
 ---
-layout: blog
 title: 2016校招面试经验
-tags: Node.js CSS HTML JavaScript C++ AngularJS
+tags: Node.js CSS HTML JavaScript C++ AngularJS 异步
 ---
 
 马上要毕业了，记录一下去年校招的面经，希望能帮到找工作的学弟学妹们。
