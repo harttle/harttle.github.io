@@ -48,8 +48,8 @@ JavaScript中的函数有4种调用模式：方法调用、函数调用、构造
 ```javascript
 var obj = {
     val: 0,
-    count: function(i){
-        this.val += i;
+    count: function(){
+        this.val ++;
         console.log(this.val);
     }
 };
