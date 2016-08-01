@@ -1,6 +1,6 @@
 ---
 title: 利用 Sinonjs 构建测试桩：Spies and Stubs
-tags: 事件 异常 类型检查 测试 Mocha 测试桩
+tags: 事件 异常 类型检查 测试 Mocha 测试桩 Mock
 ---
 
 在[利用 Mocha 进行 BDD 风格测试][mocha-bdd]一文中介绍了[Mocha][mocha]测试框架的使用，
