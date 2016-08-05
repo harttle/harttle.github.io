@@ -1,7 +1,6 @@
 ---
-layout: blog
 title:  《计算机网络》笔记 - 网络安全
-tags: AES BB84 DES DNS IP JavaScript Kerckhoff PEM RSA Socket TCP 算法 网络 蓝牙 路由 纠错码 置换密码 转置密码
+tags: AES BB84 DES DNS IP Kerckhoff PEM RSA Socket TCP 算法 网络 蓝牙 路由 纠错码 置换密码 转置密码
 ---
 
 ## 密码学简介

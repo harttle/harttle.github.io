@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: Vim中如何快速进行光标移动？
 tags: Bash Linux Unix Vim 宏 快捷键
 ---
