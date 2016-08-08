@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: 用Ag/Ack在Vim中搜索项目代码
 tags: Ack Ag Bash Ubuntu Vim Vundle grep 快捷键
 ---
