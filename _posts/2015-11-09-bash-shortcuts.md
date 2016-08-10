@@ -68,8 +68,8 @@ Linux的精髓就在于命令行的高效，而学习命令行的第一步便是
 
 参考链接：
 
-* http://www.skorks.com/2009/09/bash-shortcuts-for-maximum-productivity/
-* http://ss64.com/bash/syntax-keyboard.html
+* <http://www.skorks.com/2009/09/bash-shortcuts-for-maximum-productivity/>
+* <http://ss64.com/bash/syntax-keyboard.html>
 
 [bash]: http://www.gnu.org/software/bash/
 [readline]: http://tiswww.case.edu/php/chet/readline/rltop.html

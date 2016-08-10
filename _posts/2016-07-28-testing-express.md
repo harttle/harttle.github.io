@@ -147,7 +147,7 @@ describe('loading express', function () {
 });
 ```
 
-本文翻译自：https://glebbahmutov.com/blog/how-to-correctly-unit-test-express-server/
+本文翻译自：<https://glebbahmutov.com/blog/how-to-correctly-unit-test-express-server/>
 
 [st]: https://github.com/visionmedia/supertest
 [rn]: https://www.npmjs.com/package/really-need
