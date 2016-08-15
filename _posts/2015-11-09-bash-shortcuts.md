@@ -3,11 +3,14 @@ title: 熟悉 Bash 快捷键来提高效率
 tags: Bash GNU Linux 快捷键
 ---
 
-[Bash][bash]是GNU计划的一部分，是多数Linux发行版提供的默认Shell。
-Linux的精髓就在于命令行的高效，而学习命令行的第一步便是学习如何快速地输入命令。
+[Bash][bash]快捷键其实是[GNU Readline][readline]快捷键，
+[GNU Readline Library][readline]是一个来接受用户输入的GNU软件包。
+它是包括[Bash][bash]在内的绝大多数Shell的底层库，
+甚至OSX/Windows/Linux下的绝大多数软件都采用与之兼容快捷键。
+因此这些快捷键可以在很大程度上支持纯键盘操作，尤其是在Linux/OSX下。
 
-> 其实包括Bash在内的多数Linux Shell都是使用一个叫[GNU Readline Library][readline]的库来接受用户输入。
-> 所以这些快捷键在多数Shell下都适用~
+> [Bash][bash]是GNU计划的一部分，是多数Linux发行版提供的默认Shell。
+> Linux的精髓就在于命令行的高效，而学习命令行的第一步便是学习如何快速地输入Bash命令。
 
 <!--more-->
 
@@ -66,10 +69,21 @@ Linux的精髓就在于命令行的高效，而学习命令行的第一步便是
 `Ctrl + z` | 挂起当前命令
 `Ctrl + d` | 结束输入（产生一个EOF）
 
-参考链接：
+# 纯键盘写邮件？
+
+绝大多数操作系统（OSX，Windows，Linux）中的绝大多数软件（GUI的、命令行的）
+在底层都使用GNU Readline兼容的库来读取用户输入。
+**因此Bash快捷键完全可以胜任纯键盘写邮件**：
+
+* 同一行内移动光标：`Ctrl-B`, `Ctrl-F`, `Ctrl-A`, `Ctrl-E`等。
+* 上下行移动光标：`Ctrl-P`, `Ctrl-N`。
+* 剪切/粘贴：`Ctrl-W`, `Alt-D`等。
+
+# 参考链接
 
 * <http://www.skorks.com/2009/09/bash-shortcuts-for-maximum-productivity/>
 * <http://ss64.com/bash/syntax-keyboard.html>
+* GNU readline：<http://www.bigsmoke.us/readline/shortcuts>
 
 [bash]: http://www.gnu.org/software/bash/
 [readline]: http://tiswww.case.edu/php/chet/readline/rltop.html
