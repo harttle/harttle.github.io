@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: 寻找并删除Git记录中的大文件
 tags: Bash Git Github awk grep 排序 磁盘
 ---
