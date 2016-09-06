@@ -70,6 +70,21 @@ git reset --soft HEAD^
 
 > `HEAD^`回到表示重置到当前状态的前一个`commit`。
 
+## 撤销工作区所有改动
+
+**场景**：希望撤销所有工作区的改动，回到最后一次commit的状态。
+
+**步骤**：`git checkout`和`git reset`都可达到目的。
+
+**文档**：<https://git-scm.com/docs/git-reset>, <https://git-scm.com/docs/git-checkout>
+
+```bash
+# 重置工作区的所有改动
+git reset --hard
+# 该命令可以指定当前目录，还是某个文件
+git checkout .
+```
+
 ## 空提交
 
 **场景**：只想产生一个commit而不想改动文件。比如需要push一个commit以触发重新部署的Git Hook时。
