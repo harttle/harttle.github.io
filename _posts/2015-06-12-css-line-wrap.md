@@ -1,6 +1,5 @@
 ---
-layout: blog 
-title: CSS Line Box：块级元素与行内元素
+title: CSS Line Box：溢出与折行
 tags: CSS DOM HTML inline inline-block overflow text-overflow white-space 盒模型
 ---
 

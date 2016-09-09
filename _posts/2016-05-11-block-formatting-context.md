@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: overflow 与布局上下文（BFC）
 tags: CSS HTML float overflow BFC
 ---
