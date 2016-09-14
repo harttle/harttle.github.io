@@ -1,5 +1,5 @@
 ---
-title: "Shell配置文件：.profile, .bashrc, .login"
+title: Shell的相关概念和配置方法
 tags: Shell Bash GNU Linux SSH Unix crontab 操作系统
 ---
 

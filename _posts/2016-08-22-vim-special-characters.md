@@ -112,6 +112,21 @@ foo
 bar
 ```
 
+# 查看不可见字符
+
+除了特殊字符外，ASCII字符中还有大量的不可见字符，例如空格回车制表符等。
+这些字符可以通过`list`变量来控制它们的显示与否：
+
+```
+" 显示隐藏字符
+:set list
+" 不显示隐藏字符
+:set nolist
+" 设置显示哪些隐藏字符
+:set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+```
+
+
 # 参考阅读
 
 * Vim Tips Wiki：<http://vim.wikia.com/wiki/Entering_special_characters>

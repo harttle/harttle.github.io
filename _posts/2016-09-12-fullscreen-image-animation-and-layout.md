@@ -51,6 +51,8 @@ Harttle能想到这几种实现方式：
 * 设置`<img>`为`table-cell`，使用`vertical-aligh:middle`纵向居中。
 * 使用传说中的flex。诸多浏览器连border都有问题，flex会打死一片的国产浏览器。
 
+> 感谢[小武][xuexb]评论，通过`fixed + left 50%,top 50% + transform:translate(-50%, -50%)`也可完美实现。
+
 Harttle有洁癖，完成此任务不可使用任何JavaScript，以及硬编码的宽高属性。
 因此只有方案三可行，大致代码如下：
 
@@ -179,3 +181,4 @@ $(window).on('orientationchange', function(){
 而不需要重新为之计算宽高和位置。
 
 [jqe]: http://harttle.com/2015/06/26/jquery-event.html
+[xuexb]: https://xuexb.com/
