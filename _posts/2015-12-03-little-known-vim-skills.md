@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: 那些鲜为人知的Vim小技巧
 tags: Bash GNU HTML Markdown Vim 寄存器 快捷键
 ---
@@ -25,6 +24,15 @@ letus_fuckit_with_vim();
 ```
 
 > `v`进入可视模式，然后`iw`来选择光标所在单词，最后按下`p`来粘贴。`iw`表示inner word，有用的搭配还有`yiw`, `ciw`等。
+
+# 拷贝整个文件
+
+当我们刚开始使用Vim时，大神会告诉我们如何拷贝整个文件：`ggyG`，也有弱一些的大神会告诉我们：`ggvGy`。
+现在Harttle告诉你：
+
+```
+:%y
+```
 
 # 暂时离开插入模式
 

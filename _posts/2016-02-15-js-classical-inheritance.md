@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: JavaScript 实现类的继承
 tags: JavaScript 继承 原型继承 构造函数
 ---

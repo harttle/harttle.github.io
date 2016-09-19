@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: JavaScript实现函数式继承
 tags: JavaScript 封装 继承 闭包 作用域 原型继承 函数式编程
 ---

@@ -1,5 +1,5 @@
 ---
-title: SSH 自动登录
+title: 配置 SSH 自动登录
 tags: Linux RSA SSH Shell TCP Unix X11
 ---
 

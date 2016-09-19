@@ -30,12 +30,24 @@ window.modules.index = function() {
         });
         $('.tag-list').append(tagEls);
     });
-    var links = {
-        facebook: 'https://www.facebook.com/harttle',
-        github: 'https://github.com/harttle',
-        weibo: 'http://weibo.com/harttle',
-        linkedin: 'https://linkedin.com/in/harttle',
-        rss: 'http://harttle.com/feed.xml'
-    };
-    $('.follow').socialShare({ links: links, size: 'sm'});
+    var links = [{
+        icon: 'fa-code-fork',
+        url: 'https://github.com/harttle/harttle.github.io',
+        target: '_blank'
+    },{
+        plugin: 'weibo',
+        target: '_blank',
+        url: 'http://weibo.com/harttle'
+    }, {
+        plugin: 'wechat'
+    },{
+        plugin: 'linkedin',
+        url: 'https://linkedin.com/in/harttle',
+        target: '_blank'
+    },{
+        plugin: 'rss',
+        url: 'http://harttle.com/feed.xml',
+        target: '_blank'
+    }];
+    socialShare($('.follow').get(0), links, {size: 'sm'});
 };
