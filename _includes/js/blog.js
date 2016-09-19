@@ -59,13 +59,17 @@ window.modules.blog = function(console, $ele, mod) {
     }
 
     //分享
-    var links = {
-        weibo: 'http://v.t.sina.com.cn/share/share.php?' + $.param({
-            url: location.href,
-            title: $('meta[name=description]').attr('content')
-        }),
-        wechat: location.href
-    };
-    $('#social-share-block').socialShare({ links: links, size: 'sm'});
+    var links = [{
+        plugin: 'weibo',
+        target: '_blank',
+        args: {
+            title: $('meta[name=description]').attr('content') + ' - '
+                + document.title
+        }
+    }, {
+        plugin: 'wechat'
+    }];
+    socialShare($('#social-share-block').get(0), links, {
+        size: 'sm'
+    });
 };
-
