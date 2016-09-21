@@ -148,6 +148,7 @@ Plugin 'scrooloose/syntastic'
 npm install -g jshint
 ```
 
+可以通过`:SyntasticInfo`来查看当前Syntastic在使用的外部Lint工具。
 
 [jade]: https://github.com/jadejs/jade
 [vim-ide]: {% post_url 2015-11-04-vim-ide %}

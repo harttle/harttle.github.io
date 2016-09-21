@@ -169,9 +169,14 @@ setTimeout(function(){
 
 ```javascript
 $(window).on('orientationchange', function(){
-    $('.wrapper')
-        .css('top', document.body.scrollTop + 'px')
-        .css('height', window.innerHeight + 'px');
+    // 等待DOM渲染结束
+    setTimeout(function(){
+        $('.wrapper')
+            .css('top', document.body.scrollTop + 'px')
+            .css('height', window.innerHeight + 'px');
+    }, 200);
+    // 时间设为0，在微信浏览器中仍然不能正确获取宽高
+    // 参考：http://stackoverflow.com/questions/12452349/mobile-viewport-height-after-orientation-change
 });
 ```
 

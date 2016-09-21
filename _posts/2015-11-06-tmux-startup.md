@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: 优雅地使用命令行：Tmux 终端复用
 tags: Bash GNU Linux Node.js Session Tmux Ubuntu Vim Windows 快捷键
 ---

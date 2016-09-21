@@ -4,7 +4,7 @@ tags: Makefile Gulp CommonJS Grunt JavaScript 测试 模块化
 ---
 
 社区中有不少项目引入[Gulp][gulp]，[Grunt][grunt]，[Webpack][webpack]等工具来支持测试和发布流程。
-这些构建工具都有着这样的或者那样的缺点，因此Node社区兴起了一群npm党。
+这些构建工具都有着这样的或者那样的缺点，此时Node社区悄悄兴起了一群npm党。
 他们认为应该坚决干掉这些构建工具，其坚决程度好不亚于Vim党。
 
 例如 2014 年发布在 keithcirkel 的[why-we-should-stop-using-grunt][why]
@@ -106,13 +106,27 @@ Make是以来解决工具，可以解决任何树状依赖并根据文件修改�
 构建工具的优势在于可直接调用JS工具的CLI接口，可以自由地选择任何JS工具而不需包装。
 缺点便是没有针对Web前端提供更多的构建功能。
 
+## 关于NPM Script
+
+我们知道NPM是包管理工具，但随着NPM的流行它的[NPM Script][npm-s]开始被广泛用于构建。
+NPM Script是定义在`package.json`中的脚本，可通过`npm run`来运行。
+
+> NPM Script在使用上也有个不直观的地方：`npm test`会运行`script:test`，
+> 而`npm build`却不会运行`script:build`。
+> 作为建议，统一使用`npm run`来运行npm script以避免不必要的误解。
+
+NPM Script不依赖于任何外部工具，而且有着`./node_modules/.bin`作为`PATH`，
+在NPM包中做简单的JavaScript构建相当便捷。
+
 # 我们需要构建工具吗？
 
-npm 党支持干掉所有构建工具，其主要观点大概包括『为什么我需要构建工具？』
-以及『为什么我为构建学习一个框架？』但Harttle认为不可。
+因NPM Script如此方便，[npm][npm] 党支持替换掉其他的构建工具，但Harttle认为不可。
+反对构建工具的观点大概包括『为什么我需要构建工具？』
+以及『为什么我为构建学习一个框架？』
 
 毫无疑问第二个问题问的非常好，在现有工具可以解决所有问题时没必要学习新的工具。
-因此npm党会选择使用npm script来替代Gulp/Grunt，非常clean。
+因此npm党会选择使用[npm script][npm-s]来替代Gulp/Grunt，非常clean。
+然而npm script只是npm软件的一个子功能，并非严格意义上的构建工具，
 那么命令间存在依赖怎么办？需要中间处理过程怎么办？那么如果命令非常复杂怎么办？
 他们会搞一个JavaScript文件来手写整个构建流。
 
@@ -124,8 +138,8 @@ npm 党支持干掉所有构建工具，其主要观点大概包括『为什么�
 Ok，现在npm党已经完成了一个简单的构建工具。
 那么何不直接使用一个构建工具呢？Harttle认为Make就很合适，刚好与JS工具库能够互补：
 
+* [Make][make]提供依赖解决。
 * JS工具库提供具体的构建过程实现。
-* Make提供依赖解决。
 
 [tmy]: https://www.tianmaying.com
 [why]: https://www.keithcirkel.co.uk/why-we-should-stop-using-grunt/
@@ -135,3 +149,5 @@ Ok，现在npm党已经完成了一个简单的构建工具。
 [grunt]: http://gruntjs.com/
 [webpack]: https://webpack.github.io/docs/
 [fis]: http://fis.baidu.com/
+[npm]: https://www.npmjs.com/
+[npm-s]: https://docs.npmjs.com/misc/scripts
