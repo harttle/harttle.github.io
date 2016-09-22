@@ -97,3 +97,15 @@ git checkout feature-x
 git pull
 ```
 
+## 删除远程分支
+
+**场景**：不小心把一个分支名Push上去了，需要在远程删除一个分支。
+
+**步骤**：直接push，添加--delete参数即可。
+
+**文档**：<https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF>
+
+```bash
+# 删除远程origin上的serverfix分支
+git push origin --delete serverfix
+```
