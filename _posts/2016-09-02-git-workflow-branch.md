@@ -30,7 +30,7 @@ git branch -a
 
 ```bash
 # 创建一个名为`test`的分支并切换到该分支：
-git branch -b test
+git checkout -b test
 # 切换回`master`分支：
 git checkout master
 # 删除`test`分支：
