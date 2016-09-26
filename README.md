@@ -1,14 +1,14 @@
-harttle.github.io
+harttle.com
 =================
 
-Source files for **[harttle's homepage](http://harttle.com)**.
+Source files for **[Harttle Land](http://harttle.com)**.
 
 Features:
 
-* Github Flavored Markdown
-* Code highlighting
+* Code highlight
 * laTex lines/blocks
-* Img gallary
+* Social Share
+* Tag Cloud
 * Automate table of contents
 
 
