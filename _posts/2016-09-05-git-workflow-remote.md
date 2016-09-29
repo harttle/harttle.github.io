@@ -109,3 +109,15 @@ git pull
 # 删除远程origin上的serverfix分支
 git push origin --delete serverfix
 ```
+
+## 删除远程Tag
+
+**场景**：Tag命名错误，或者需要统一命名风格。
+
+**步骤**：在本地删除Tag，然后Push到服务器。
+
+```bash
+git tag -d some-tag
+git push origin :refs/tags/some-tags
+```
+

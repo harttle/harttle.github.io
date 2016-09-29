@@ -106,18 +106,23 @@ git commit -a 'merged feature 2'
 ```bash
 # 列出所有
 git tag
+# 同时列出message
+git tag -n
 # 过滤
 git tag -l 'v1.2.*'
 ```
 
-## 新建Tag
+## 新建/删除Tag
 
 **场景**：新建某个Tag。
 
-**步骤**：使用`-a`（annotated）参数运行`git tag`。
+**步骤**：使用`-a`（annotated），`-d`（delete）参数运行`git tag`。
 
 ```bash
+# 创建
 git tag -a v1.4 -m 'my version 1.4'
+# 删除
+git tag -d old
 ```
 
 ## 衍合
