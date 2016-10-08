@@ -1,4 +1,4 @@
-var footHeight = $('#footer').outerHeight(true);
+window.footHeight = $('#footer').outerHeight(true);
 
 window.$body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
 
@@ -12,7 +12,7 @@ $(window).load(function(){
     });
 });
 
-location.query = function(name, val) {
+window.location.query = function(name, val) {
     if(arguments.length == 1){
         name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
         var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -22,7 +22,7 @@ location.query = function(name, val) {
             decodeURIComponent(results[1].replace(/\+/g, " "));
     }
     else{
-        history.replaceState(null, document.title, '?'+name+'='+encodeURIComponent(val));
+        window.history.replaceState(null, document.title, '?'+name+'='+encodeURIComponent(val));
     }
 };
 
@@ -35,12 +35,8 @@ $(function() {
 
     // 页面内链接滑动效果
     $('a.animate').click(function() {
-        var $this = $(this);
-        if ($this.attr('offset')) {
-            offset += parseInt($(this).attr('offset'));
-        }
-        $body.animate({
-            scrollTop: $($this.attr('href')).offset().top
+        $('body').animate({
+            scrollTop: $($(this).attr('href')).offset().top
         }, 500);
         return false;
     });
