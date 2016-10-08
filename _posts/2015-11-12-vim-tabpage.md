@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: Vim 多文件编辑：标签页
 tags: Bash Linux Vim 快捷键
 ---
