@@ -1,38 +1,44 @@
-window.modules.blog = function(console, $ele, mod) {
-    var toc = getTOC($('article')),
-        $toc = $('.toc');
-    if (toc) {
-        $toc.append(toc);
+window.modules.blog = function(console, $ele) {
 
-        //toc affix, this offset is for toc position recognition
-        setTimeout(function() {
-            $toc.affix({
-                offset: {
-                    top: function() {
-                        var offsetTop = $toc.offset().top;
-                        return (this.top = offsetTop - 40);
-                    },
-                    bottom: function() {
-                        return (this.bottom = $(document).height() - $('.md').offset().top - $('.md').height());
-                    }
-                }
+    initTOC();
+    initShareButtons();
+    initRecommends();
+
+    function initTOC() {
+        var toc = getTOC($('article')),
+            $toc = $('.toc');
+            if (toc) {
+                $toc.append(toc);
+
+                //toc affix, this offset is for toc position recognition
+                setTimeout(function() {
+                    $toc.affix({
+                        offset: {
+                            top: function() {
+                                var offsetTop = $toc.offset().top;
+                                return (this.top = offsetTop - 40);
+                            },
+                            bottom: function() {
+                                return (this.bottom = $(document).height() - $('.md').offset().top - $('.md').height());
+                            }
+                        }
+                    });
+                }, 100);
+
+                //toc scroll spy
+                $('body').scrollspy({
+                    target: '.toc',
+                    offset: 10 //make sure to spy the element when scrolled to
+                });
+            } else {
+                $ele.addClass('collapsed');
+            }
+
+            $(window).resize(function() {
+                $('body').scrollspy('refresh');
             });
-        }, 100);
-
-        //toc scroll spy
-        $('body').scrollspy({
-            target: '.toc',
-            offset: 10 //make sure to spy the element when scrolled to
-        });
-    } else {
-        $ele.addClass('collapsed');
     }
 
-    $(window).resize(function() {
-        $('body').scrollspy('refresh');
-    });
-
-    //生成目录
     function getTOC($content) {
         var $toc = $('<ul class="nav level-0" >').addClass("nav sidenav");
 
@@ -48,8 +54,8 @@ window.modules.blog = function(console, $ele, mod) {
             var offset = level - base_level;
 
             var li = new $('<li/>')
-                .append('<a href="#' + i + '" class="animate">' + $this.text() + '</a>')
-                .append($('<ul class="nav level-' + (offset + 1) + '"/>'));
+            .append('<a href="#' + i + '" class="animate">' + $this.text() + '</a>')
+            .append($('<ul class="nav level-' + (offset + 1) + '"/>'));
 
             $('<div>').append($toc).find('ul.level-' + offset + ':last').append(li);
         });
@@ -58,18 +64,77 @@ window.modules.blog = function(console, $ele, mod) {
         return $toc;
     }
 
-    //分享
-    var links = [{
-        plugin: 'weibo',
-        target: '_blank',
-        args: {
-            title: $('meta[name=description]').attr('content') + ' - '
-                + document.title
-        }
-    }, {
-        plugin: 'wechat'
-    }];
-    socialShare($('#social-share-block').get(0), links, {
-        size: 'sm'
-    });
+    function initShareButtons() {
+        var links = [{
+            plugin: 'weibo',
+            target: '_blank',
+            args: {
+                title: $('meta[name=description]').attr('content') + ' - ' + document.title
+            }
+        }, {
+            plugin: 'wechat'
+        }];
+        window.socialShare($('#social-share-block').get(0), links, {
+            size: 'sm'
+        });
+    }
+
+    function initRecommends(){
+        $.get('/posts.json').done(function(posts){
+            if(typeof posts === 'string'){
+                posts = JSON.parse(posts);
+            }
+            if(posts.length < 2) return;
+
+            var current;
+            var mostSimilar = null;
+            posts
+            .filter(function(post){
+                if( post.url == location.pathname){
+                    current = post;
+                    return false;
+                }
+                return true;
+            })
+            .forEach(function(post){
+                post.similarity = cosine(post.tags, current.tags); 
+                if(!mostSimilar || mostSimilar.similarity < post.similarity){
+                    mostSimilar = post;
+                }
+                return post;
+            });
+
+            var $recommend = $('.recommend');
+            $(window).scroll(function(){
+                if($recommend.hasClass('in')) return;
+
+                var article = $('article').get(0);
+                var total = article.clientHeight + article.offsetTop;
+                var scroll = document.body.scrollTop + window.innerHeight;
+                var icon = $('<i>').addClass('fa fa-hand-o-right');
+
+                if(total - scroll < 200){
+                    $recommend
+                        .addClass('in')
+                        .find('.post-link')
+                        .attr('href', mostSimilar.url)
+                        .append(icon)
+                        .append(mostSimilar.title);
+                }
+            });
+        });
+    }
+    function cosine(lhs, rhs){
+        var lhsSet = {};
+        lhs.forEach(function(i){
+            lhsSet[i] = true;
+        });
+
+        var count = 0;
+        rhs.forEach(function(i){
+            if(lhsSet[i]) count++;
+        });
+
+        return count / Math.sqrt(lhs.length) / Math.sqrt(rhs.length);
+    }
 };

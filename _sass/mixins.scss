@@ -38,6 +38,11 @@
   -ms-transition: $value;
 }
 
+@mixin transform($value){
+  transform: $value;
+  -webkit-transform: $value;
+}
+
 @mixin filter-blur($v){
   filter: blur($v);
   -webkit-filter: blur($v);
