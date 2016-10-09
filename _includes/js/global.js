@@ -59,8 +59,6 @@ $(function() {
                 "<a href='http://harttle.com'>Harttle</a>");
             return $('<span>').html(html);
         });
-
-    $('.md a').attr('target', '_blank');
 });
 
 function initScrollTopButton(){

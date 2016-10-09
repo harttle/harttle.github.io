@@ -1,5 +1,6 @@
 window.modules.blog = function(console, $ele) {
 
+    recordPageView();
     initTOC();
     initShareButtons();
     initRecommends();
@@ -88,6 +89,7 @@ window.modules.blog = function(console, $ele) {
 
             var current;
             var mostSimilar = null;
+            var pv = getPageView();
             posts
             .filter(function(post){
                 if( post.url == location.pathname){
@@ -97,7 +99,8 @@ window.modules.blog = function(console, $ele) {
                 return true;
             })
             .forEach(function(post){
-                post.similarity = cosine(post.tags, current.tags); 
+                post.similarity = pv[post.url] ? 0 
+                    : cosine(post.tags, current.tags); 
                 if(!mostSimilar || mostSimilar.similarity < post.similarity){
                     mostSimilar = post;
                 }
@@ -129,12 +132,20 @@ window.modules.blog = function(console, $ele) {
         lhs.forEach(function(i){
             lhsSet[i] = true;
         });
-
         var count = 0;
         rhs.forEach(function(i){
             if(lhsSet[i]) count++;
         });
-
         return count / Math.sqrt(lhs.length) / Math.sqrt(rhs.length);
+    }
+    function recordPageView(){
+        var pv = getPageView();
+        var k = location.pathname;
+        pv[k] = (pv[k] || 0) + 1;
+        window.sessionStorage.setItem('pv', JSON.stringify(pv));
+    }
+    function getPageView(){
+        var str = window.sessionStorage.getItem('pv');
+        return str ? JSON.parse(str) : {};
     }
 };
