@@ -35,18 +35,19 @@ window.modules.index = function() {
         url: 'https://github.com/harttle/harttle.github.io',
         target: '_blank'
     },{
-        plugin: 'weibo',
-        target: '_blank',
-        url: 'http://weibo.com/harttle'
+        plugin: 'rss',
+        url: 'http://harttle.com/feed.xml',
+        target: '_blank'
+    },{
+        icon: 'fa-envelope',
+        background: '#5484d6',
+        url: 'mailto:yangjvn@126.com?subject=来自HarttleLand'
     }, {
-        plugin: 'wechat'
+        plugin: 'qrcode',
+        title: '扫一扫！'
     },{
         plugin: 'linkedin',
         url: 'https://linkedin.com/in/harttle',
-        target: '_blank'
-    },{
-        plugin: 'rss',
-        url: 'http://harttle.com/feed.xml',
         target: '_blank'
     }];
     socialShare($('.follow').get(0), links, {size: 'sm'});

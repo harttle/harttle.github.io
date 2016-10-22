@@ -1,18 +1,4 @@
-&{
-  margin-top: -140px;
-  padding-top: 140px;
-  &:before{
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    background: url('/assets/img/cover/4.jpg');
-    background-size: cover;
-  }
-}
+$footer-height: 50px;
 
 .avatar-wrapper{
   text-align: center;
@@ -25,15 +11,15 @@
   .lead{
     color: #7B7B7B;
     font-size: 24px;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
   }
 }
 
 .links{
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.2);
   .container-fluid{
     padding-top: 70px;
-    padding-bottom: 50px;
+    padding-bottom: 70px;
   }
   section{
     $border-color: #555;
@@ -71,10 +57,43 @@
   }
 }
 
+& , body, .site-content, .module-about {
+  height: 100%;
+}
+.page-wrapper {
+  /* 页面内容撑满100%的屏幕 */
+  min-height: 100%;
+  /* 负边距大小即为页脚高度 */
+  margin-bottom: -$footer-height; 
+  position: relative;
+}
+.page-wrapper:before{
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: url('/assets/img/cover/4.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* 用来填充被页脚遮挡部分 */
+.page-wrapper:after {
+  content: "";
+  display: block;
+}
+/* 填充块和页脚一样高 */
+.page-wrapper:after {
+  height: $footer-height; 
+}
+
 footer{
-  height: 50px;
+  height: $footer-height;
   text-align: center;
-  line-height: 50px;
+  line-height: $footer-height;
   background-color: #111;
   div{
     white-space: nowrap;

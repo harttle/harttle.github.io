@@ -1,64 +1,91 @@
 ---
-layout: default
 title: 关于
 excerpt: Copyright © 2013 Harttle. Hosted by GitHub, powered by Jekyll.
-bannerTransparent: true
 ---
 
-<div class="module-about">
-  <section class="avatar-wrapper">
-    <div class="container-fluid">
-      <img class="avatar" src="/assets/img/avatar.png" alt="avatar">
-      <p class="lead">{{site.description}}</p>
-    </div>
-  </section>
-  <div class="links">
-    <div class="container-fluid">
-      <div class="row">
+<!DOCTYPE html>
+<html class="module-default module-about">
+  <head> {% include head.html %} </head>
+  <body id="body" >
 
-        <div class="col-sm-4">
-          <section class="interests ">
-            <header>Interests</header>
-            <ul class="list-unstyled">
-              <li>Web Development</li>
-              <li>ArchLinux</li>
-              <li>Latex and Beamer</li>
-              <li>Electrodynamics</li>
-              <li>Astronomy/Pulsars</li>
-            </ul>
-          </section>
+    <div class="page-wrapper">
 
-        </div>
-        <div class="col-sm-4">
-          <section class="thanks">
-            <header>Thanks</header>
-            <ul class="list-unstyled">
-              <li><a href="//pages.github.com/" target="_blank"> Github Pages</a></li>
-              <li><a href="//jekyllrb.com/" target="_blank"> Jekyll </a></li>
-              <li><a href="//jquery.com/" target="_blank"> jQuery </a></li>
-              <li><a href="//fortawesome.github.io/Font-Awesome" target="_blank"> Fontawesome </a></li>
-              <li><a href="//bootcss.com/" target="_blank"> Bootstrap </a></li>
-            </ul>
-          </section>
-
-        </div>
-        <div class="col-sm-4">
-          <section class="thanks">
-            <header>Links</header>
-            <ul class="list-unstyled">
-              <li><a href="//tianmaying.com" target="_blank">天码营</a></li>
-              <li><a href="//onboard.cn" target="_blank">Onboard</a></li>
-              <li><a href="//blog.lisongyi.com" target="_blank">meriky的博客</a></li>
-              <li><a href="mailto:yangjvn@126.com?subject=From%3A%20harttle.com" target="_blank">联系我</a></li>
-            </ul>
-          </section>
+      <div class="banner transparent">
+        <div class="container-fluid">
+          <nav class="pull-right">
+            <a class="glow no-decoration" href="/tags.html">标签</a>
+            <a class="glow no-decoration" href="/archive.html">归档</a>
+            <a class="glow no-decoration" href="/about.html">关于</a>
+          </nav>
+          <a class="logo no-decoration" href="/">
+            <i class="logo-h fa fa-h-square"></i> 
+            <span class="logo-arttle glow">arttle</span>
+            <span class="logo-land">Land</span>
+          </a>
         </div>
       </div>
+
+      <section class="avatar-wrapper">
+        <div class="container-fluid">
+          <img class="avatar" src="/assets/img/avatar.png" alt="avatar">
+          <p class="lead">{{site.description}}</p>
+        </div>
+      </section>
+
+      <div class="links">
+        <div class="container-fluid">
+          <div class="row">
+
+            <div class="col-sm-4">
+              <section class="interests ">
+                <header>Interests</header>
+                <ul class="list-unstyled">
+                  <li>Web Development</li>
+                  <li>ArchLinux</li>
+                  <li>Latex and Beamer</li>
+                  <li>Electrodynamics</li>
+                  <li>Astronomy/Pulsars</li>
+                </ul>
+              </section>
+
+            </div>
+            <div class="col-sm-4">
+              <section class="thanks">
+                <header>Thanks</header>
+                <ul class="list-unstyled">
+                  <li><a href="//pages.github.com/" target="_blank"> Github Pages</a></li>
+                  <li><a href="//jekyllrb.com/" target="_blank"> Jekyll </a></li>
+                  <li><a href="//jquery.com/" target="_blank"> jQuery </a></li>
+                  <li><a href="//fortawesome.github.io/Font-Awesome" target="_blank"> Fontawesome </a></li>
+                  <li><a href="//bootcss.com/" target="_blank"> Bootstrap </a></li>
+                </ul>
+              </section>
+
+            </div>
+            <div class="col-sm-4">
+              <section class="thanks">
+                <header>Links</header>
+                <ul class="list-unstyled">
+                  <li><a href="//tianmaying.com" target="_blank">天码营</a></li>
+                  <li><a href="//onboard.cn" target="_blank">Onboard</a></li>
+                  <li><a href="//blog.lisongyi.com" target="_blank">meriky的博客</a></li>
+                  <li><a href="mailto:yangjvn@126.com?subject=From%3A%20harttle.com" target="_blank">联系我</a></li>
+                </ul>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </div>
-  <footer>
-    <div class="container-fluid">
-      {{page.excerpt}}
-    </div>
-  </footer>
-</div>
+
+    <footer class="page-footer">
+      <div class="container-fluid">
+        {{page.excerpt}}
+      </div>
+    </footer>
+
+    {% include footer.html %}
+
+  </body>
+</html>
