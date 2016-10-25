@@ -70,6 +70,21 @@ git reset --soft HEAD^
 
 > `HEAD^`回到表示重置到当前状态的前一个`commit`。
 
+## 修改上次Commit
+
+**场景**：漏掉了某个文件，或者写错了Commit信息，希望能够补充一下而不是撤销再重新Commit。
+
+**步骤**：使用`--amend`参数即可修改上次Commit。
+
+**文档**：<https://git-scm.com/book/zh/v1/Git-%E5%9F%BA%E7%A1%80-%E6%92%A4%E6%B6%88%E6%93%8D%E4%BD%9C>
+
+```bash
+# 下面三条命令只产生一个Commit
+git commit -m 'initial commit'
+git add forgotten_file  # 添加漏掉的文件
+git commit --amend      # 补充Commit信息
+```
+
 ## 撤销工作区所有改动
 
 **场景**：希望撤销所有工作区的改动，回到最后一次commit的状态。

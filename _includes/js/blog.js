@@ -73,7 +73,8 @@ window.modules.blog = function(console, $ele) {
                 title: $('meta[name=description]').attr('content') + ' - ' + document.title
             }
         }, {
-            plugin: 'wechat'
+            plugin: 'wechat',
+            title: '扫一扫！'
         }];
         window.socialShare($('#social-share-block').get(0), links, {
             size: 'sm'
