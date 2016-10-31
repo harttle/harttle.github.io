@@ -75,7 +75,7 @@ tags: CSS HTML 盒模型 text-overflow overflow line-clamp 优雅降级 inline
 除了行内元素，`ellipsis`元素里面的浮动元素也是不会被截断的。
 
 [text-overflow]: https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-overflow
-[line-clamp]: /assets/img/blog/css/line-clamp.png
+[line-clamp]: /assets/img/blog/css/line-clamp@2x.png
 [css-display]: {% post_url 2015-05-28-css-display %}
 [line-wrap]: {% post_url 2015-06-12-css-line-wrap %}
 
