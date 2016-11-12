@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: 弱类型只是一种信仰
 tags: C++ Java JavaScript 接口 弱类型 类型转换
 ---

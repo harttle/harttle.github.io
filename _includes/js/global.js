@@ -48,17 +48,6 @@ $(function() {
         return '<a data-lightbox="true" href="'+$(this).attr("src")+'"></a>';
     });
 
-    // 关键字链接
-    $('.md p, .md li').contents()
-        .filter(function() { 
-            return (this.nodeType == 3) && this.nodeValue.match(/\S/); 
-        })
-        .replaceWith(function(){
-            var html = this.textContent;
-            html = html.replace(/harttle/ig, 
-                "<a href='http://harttle.com'>Harttle</a>");
-            return $('<span>').html(html);
-        });
 });
 
 function initScrollTopButton(){
