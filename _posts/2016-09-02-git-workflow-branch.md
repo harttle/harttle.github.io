@@ -97,6 +97,32 @@ git add a.txt
 git commit -a 'merged feature 2'
 ```
 
+## 新建/删除Tag
+
+**场景**：新建某个Tag。
+
+**步骤**：使用`-a`（annotated），`-d`（delete）参数运行`git tag`。
+
+```bash
+# 创建
+git tag -a v1.4 -m 'my version 1.4'
+# 删除
+git tag -d old
+```
+
+## 重命名Tag
+
+**场景**：当然是Tag名字起错了。
+
+**步骤**：先从旧的Tag创建新的，删除Tag，push到远程。
+
+```bash
+git tag new old
+git tag -d old
+git push origin :refs/tags/old
+git push --tags
+```
+
 ## 列出所有Tag
 
 **场景**：需要列出所有Tag。
@@ -112,17 +138,14 @@ git tag -n
 git tag -l 'v1.2.*'
 ```
 
-## 新建/删除Tag
+## 列出Tag之间的Commit日志
 
-**场景**：新建某个Tag。
+**场景**：需要知道版本之间有哪些改动，以生成Chnagelog或ReleaseNote。
 
-**步骤**：使用`-a`（annotated），`-d`（delete）参数运行`git tag`。
+**步骤**：查询Git日志，使用`..`来选择一段区间。
 
 ```bash
-# 创建
-git tag -a v1.4 -m 'my version 1.4'
-# 删除
-git tag -d old
+git log v1.1..v1.2
 ```
 
 ## 衍合

@@ -21,6 +21,7 @@ tags: AngularJS Django Github HTML NPM Node.js Ruby 模板 Liquid
 在C++的`printf("Name: %s", str)`中，`printf()`函数便是模板引擎，
 它负责将格式化字符串与上下文数据结合生成最终的字符串。
 其中`"Name: %s"`是模板，`%s`是一种模板语法。而`str`则为上下文数据。
+这里有一个Live Demo：<http://harttle.com/shopify-liquid/>
 
 # 历数那些著名的模板引擎
 
