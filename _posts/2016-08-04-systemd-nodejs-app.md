@@ -41,6 +41,15 @@ systemctl disable mongod
 分别存放安装软件包（比如[MongoDB][mongodb]）和系统管理员的单元文件。
 systemd启动时会扫描上述路径并载入相应的单元。
 
+Systemd Unit Files Locations ([provided by redhat][redhat-doc]):
+
+Directory |	Description
+--- | ---
+`/usr/lib/systemd/system/` | Systemd unit files distributed with installed RPM packages.
+`/run/systemd/system/` | Systemd unit files created at run time. This directory takes precedence over the directory with installed service unit files.
+`/etc/systemd/system/` | Systemd unit files created by systemctl enable as well as unit files added for extending a service. This directory takes precedence over the directory with runtime unit files.
+
+
 所以在修改或添加单元文件后，需要让systemd重新加载扫描并加载这些文件：
 
 ```bash
@@ -124,3 +133,4 @@ Environment=HOST=localhost
 [mongodb]: https://www.mongodb.com
 [redis]: https://github.com/antirez/redis
 [node]: http://nodejs.org
+[redhat-doc]: https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/chap-Managing_Services_with_systemd.html#tabl-Managing_Services_with_systemd-Introduction-Units-Locations

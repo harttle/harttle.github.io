@@ -70,7 +70,7 @@ Console的叫法是从物理意义上来的，直接连在设备上的那个终�
 **Interactive Shell**（交互式Shell）是指可以让用户通过键盘进行交互的Shell。
 我们在使用的CLI都是交互式Shell。
 
-**Non-interactive Shell**（非交互式Shell）是指被自动执行的脚步，
+**Non-interactive Shell**（非交互式Shell）是指被自动执行的脚本，
 通常不会请求用户输入，输出也一般会存储在日志文件中。
 比如[用 Cron 定时任务更新壁纸][cron]一文中被`crontab`定时执行的脚本就运行在非交互式Shell中。
 
