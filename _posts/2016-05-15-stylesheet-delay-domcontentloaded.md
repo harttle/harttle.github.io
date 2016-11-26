@@ -1,6 +1,6 @@
 ---
 title: CSS载入与DOMContentLoaded事件延迟
-tags: CSS DOM JavaScript 事件 Firefox Safari IE Chrome Opera
+tags: CSS DOM JavaScript 事件 DOM渲染
 ---
 
 绝大多数情况下我们总是让JavaScript在DOM载入后再开始执行。
@@ -48,7 +48,7 @@ JavaScript的作者往往会假设CSS规则已经生效，尤其是在进行一�
 渲染引擎 | 样式表之前的脚本 | 样式表之后的外部脚本 | 样式表之后的行内脚本
 --- | --- | --- | --- 
 Presto (Opera)           | 否 | 否 | 否
-Webkit (Safari, Chrome)  | 否 | 是 | 否
+Webkit (Safari, Chrome)  | 否 | 是 | 是
 Gecko (Firefox)          | 否 | 是 | 是
 Trident (MSIE)           |    | 是 | 是
 

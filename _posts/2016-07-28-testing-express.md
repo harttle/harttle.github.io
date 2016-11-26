@@ -26,7 +26,6 @@ app.get('/', function (req, res) {
 });
 var server = app.listen(3000, function () {
   var port = server.address().port;
-  console.log('Example app listening at port %s', port);
 });
 module.exports = server;
 ```
@@ -139,7 +138,6 @@ describe('loading express', function () {
       .expect(200, done);
   });
   it('404 everything else', function testPath(done) {
-    console.log('test 404')
     request(server)
       .get('/foo/bar')
       .expect(404, done);

@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: 非阻塞脚本载入的几种方式
 tags: Chrome DNS DOM HTML Iframe JavaScript XHR 网络
 ---
@@ -25,7 +24,7 @@ tags: Chrome DNS DOM HTML Iframe JavaScript XHR 网络
 
 在[Web性能优化：prefetch, prerender][network]一文中提到，
 浏览器在获取资源时会经过DNS解析、建立连接、下载文件、渲染页面等过程。
-浏览器只会同时下载3-5个脚本，然后顺序执行它们。
+浏览器只会同时下载2-8个脚本，然后顺序执行它们。
 并且在下载和执行过程中，页面会停止渲染和响应（也就是我们说的页面卡死）。
 
 性能最差的情形是某个脚本下载超时，后面的脚本和样式都会被阻塞很长时间，
