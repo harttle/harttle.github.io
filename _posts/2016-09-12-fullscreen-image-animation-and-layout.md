@@ -130,7 +130,7 @@ setTimeout(function(){
     // 放大到全屏
     var to = {
         left: 0,
-        top: window.body.scrollTop,
+        top: document.body.scrollTop,
         width: window.innerWidth,
         height window.innerHeight
     };
@@ -139,8 +139,11 @@ setTimeout(function(){
 });
 ```
 
-> 上述代码应该在点击缩略图`img.thumbnail`时得到执行，只需要绑定其`onclick`事件。
-> 点击关闭全屏控件也是同样的道理。
+> 需要注意的是对`width`和`height`做动画也有性能问题，
+> 可以考虑使用`scale3d`+`translate3d`的方式，需要不少的计算哈~
+
+上述代码应该在点击缩略图`img.thumbnail`时得到执行，只需要绑定其`onclick`事件。
+点击关闭全屏控件也是同样的道理。
 
 # 自适应的布局
 
