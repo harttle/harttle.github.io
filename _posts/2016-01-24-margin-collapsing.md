@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: CSS 外边距合并
 tags: CSS HTML inline-block
 ---
