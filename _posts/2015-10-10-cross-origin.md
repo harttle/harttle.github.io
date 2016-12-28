@@ -4,11 +4,16 @@ tags: DOM HTML HTTP JavaScript jQuery iframe JSON 跨域
 excerpt: 这些办法大致可以分为两类： 一类是Hack，比如通过`title`, `navigation`等对象传递信息，JSONP可以说是一个最优秀的Hack。 另一类是HTML5支持，一个是`Access-Control-Allow-Origin`响应头，一个是`window.postMessage`。 跨域的正道还是HTML5提供的CORS头字段以及`window.postMessage`， 可以支持POST, PUT等HTTP方法，从机制上解决跨域问题。
 ---
 
-出于安全考虑，HTML的同源策略不允许JavaScript进行跨域操作，但随着Web App的功能越来越强
+出于安全考虑，HTML的同源策略不允许JavaScript进行跨域操作，
+直接发送跨域 AJAX 会得到如下错误：
+
+![cors-err][cors-err]
+
+随着Web App的功能越来越强
 各种跨域的需求催生了无数的跨域手法。甚至在HTML5标准中都给出了官方的跨域方法，
 也是最近应付面试的需要，拿一篇文章来总结既有的各种跨域手段。
 
-经过一番调研，终于把跨域的基本做法都搞清楚了。这些办法大致可以分为两类：
+这些跨域通信的方法大致可以分为两类：
 
 * 一类是Hack，比如通过`title`, `navigation`等对象传递信息，JSONP可以说是一个最优秀的Hack。
 * 另一类是HTML5支持，一个是`Access-Control-Allow-Origin`响应头，一个是`window.postMessage`。
@@ -213,3 +218,4 @@ window.addEventListener('message',function(event) {
 [event-this]: {% post_url 2015-08-14-event-and-this %}
 [rfc2616]: http://www.faqs.org/rfcs/rfc2616.html
 [statuscode]: {% post_url 2015-08-15-http-status-code %}
+[cors-err]: /assets/img/blog/cors/error@2x.png
