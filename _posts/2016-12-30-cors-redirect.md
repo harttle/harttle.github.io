@@ -43,7 +43,7 @@ Origin 'null' is therefore not allowed access.
 
 # 重定向preflight 请求
 
-**preflight 不允许重定向，任何非 2xx 状态码都认为 preflight 失败。**
+**任何非 2xx 状态码都认为 preflight 失败**，
 所以 preflight 不允许重定向。各浏览器表现一致不再赘述，可参考 W3C：
 
 > The following request rules are to be observed while making the preflight request:
@@ -77,7 +77,7 @@ OSX 下 Chrome 的行为是标准的，即使设置了[`DNT`][dnt]也会直接�
 Safari 在设置`DNT`字段后，会向重定向后的地址首先发起 preflight（可能是它忘记了该头部是自己设置的？）。
 这一行为在桌面 Safari 的隐身模式，以及 iOS 很多浏览器中都可以观察到。
 Safari 远程调试 iPhone，遇此行为调试器会崩掉（笔者试了3个 Mac+iPhone Pair）。
-建议使用[tcpdump][tcpdump]或者写一个[简单的 CORS 服务器][cors-demo]来调试。
+建议使用[tcpdump][tcpdump]或者写[一个简单的 CORS 服务器][cors-demo]来调试。
 在 OPTIONS 请求中，会带有[`Access-Control-Request-Headers`][acrh]来声明需要发送`dnt`。
 
 ```
