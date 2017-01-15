@@ -11,6 +11,8 @@ tags: Raspbian GPIO UART
 
 > 如果你不是在使用 GPIO（比如连接 Arduino、传感器等等）引脚，本文基本与你无关。
 
+<!--more-->
+
 # 相关概念
 
 > 只关心如何配置可跳过本节。

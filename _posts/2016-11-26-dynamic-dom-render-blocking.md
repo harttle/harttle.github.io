@@ -1,5 +1,5 @@
 ---
-title: 异步渲染DOM元素的加载时机
+title: 异步渲染的下载和阻塞行为
 tags: CSS Chrome DOM IE 事件 DOM渲染 异步 Firefox
 ---
 
