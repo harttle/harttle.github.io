@@ -121,3 +121,12 @@ git tag -d some-tag
 git push origin :refs/tags/some-tags
 ```
 
+## Push 到不同的分支
+
+**场景**：同样的改动出现在本地和远程的不同分支，例如远程分支只用来部署时。
+
+**步骤**：Push到远程时，指定本地分支与对应的远程分支。
+
+```bash
+git push origin branch-with-changes:another-branch
+```
