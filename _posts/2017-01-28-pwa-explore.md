@@ -13,6 +13,8 @@ Harttle 能找到的关于 PWA 最早的一篇文章是 2015年6月 Alex Russell
 
 > Progressive Web Apps use modern web capabilities to deliver an app-like user experience. They evolve from pages in browser tabs to immersive, top-level apps, maintaining the web's low friction at every moment. -- Google PWA Tutorials
 
+<!--more-->
+
 # What is a Progressive Web App?
 
 PWA 就是提供类似 App 体验的网站，其具体技术包括[Service worker][service-worker]、[manifest][manifest]、
