@@ -1,14 +1,14 @@
 ---
-layout: blog
-tags: ArchLinux Bash Linux MAC UTF-8 Ubuntu Windows hwclock 字体 磁盘 网络 操作系统
 title: 安装 Arch Linux
+tags: ArchLinux Linux 镜像 磁盘 网络 操作系统
 ---
 
 本文介绍如何安装 Arch Linux，一个轻量级、简单的 Linux 发行版。
 
 # 制作镜像并启动
 
-在arch官方或者bjtu下载到镜像（X86和64）是同一镜像。然后刻录安装盘：
+在 [Arch 官网下载][download] 下载镜像（x86 和 x86_64是同一镜像）。
+然后[刻录 USB 安装盘][usb-flash]：
 
 * linux:
 
@@ -16,60 +16,68 @@ title: 安装 Arch Linux
   dd if=/path/to/iso of=/dev/sdc  # 确认 sdc 为你的U盘
   ```
 * windows:
-  1. 下载 dd4dos
+  1. 下载 [dd4dos][dd4dos]
   2. `dd if=/path/to/iso of="\\.\G:"   # 确认G盘为你的U盘`
 
+> 另外，有些 U 盘就是启动不了，换一个即可。 
 
-> 另外，启动不了很正常，和U盘有关。 
-
+<!--more-->
 
 # 连接网络
 
-* 无线网络
+* 无线网络通过`netcfg`来连接，需要先创建配置文件。（也可直接使用`wifi-menu`连接无线网）
 
   ```bash
-  netcfg  # wifi-menu连接无线网
   cd /etc/network.d
   cp ./examples/wireless_XXX ./    
   vi wireless_XXX  #修改参数
   netcfg wireless_XXX
   ```
-* 对于内核没有支持的无线网卡，安装ndiswrapper使用windows驱动  
+* 对于内核没有支持的无线网卡，安装 `ndiswrapper` 使用 Windows 驱动
   1. 安装    `pacman -S ndiswrapper  `
-  2. 加载    `ndiswrapper -i winXP_driver.inf(可以从windows目录下或驱动安装包找到) `
+  2. 加载    `ndiswrapper -i winXP_driver.inf`(可以从windows目录下或驱动安装包找到)
   3. 确认    `ndiswrapper -l ` 
-  4. 载入模块    `modprobe ndiswrapper`  
+  4. 载入模块    `modprobe ndiswrapper`
   5. 若无线网卡的状态指示灯不亮，重新载入网卡    `cardctl eject && cardctl insert`
 
 > 使用 `iwconfig` 可查看网络设备(wlan0,eth0等)，若没有识别请参照wiki
 
-<!--more-->
-
 ## 准备硬盘
 
-磁盘分区：
+对目标磁盘进行分区，至少要有一个主分区。
 
 ```bash
-cfdisk /dev/sda #至少一个主分区。
+cfdisk /dev/sda
 ```
 
-格式化：
+在目标磁盘上格式化文件系统，之后可用 `lsblk /dev/sda` 查看分区。
 
 ```bash
-mkfs.ext4 /dev/sda1，mkswap /dev/sda2（之后可用 lsblk /dev/sda 查看分区）
+mkfs.ext4 /dev/sda1
+mkswap /dev/sda2
 ```
 
-挂载：
+挂载目标文件系统到`/mnt`：
 
 ```bash
-mount /dev/sda1 /mnt，swapon /dev/sda2
+mount /dev/sda1 /mnt
+swapon /dev/sda2
 ```
 
-安装
+安装系统
 
 ```bash
-/etc/pacmand./mirrorlist    #配置源
-pacstrap -i /mnt base base-devel    #安装
+# 配置源：在学校则选择 bjtu，ustc 等，在外则选择 163 等
+vim /etc/pacman.d/mirrorlist
+# 安装系统到 /mnt
+pacstrap -i /mnt base base-devel
+```
+
+过程中如果发生下列 GPGME error，在
+`/etc/pacman.conf` 的 `[options]` 加入 `SigLevel = Never` 即可。
+
+```bash
+No data：error: failed to update core (invalid or corrupted database (PGP signature))
 ```
 
 更新静态文件系统信息
@@ -78,64 +86,87 @@ pacstrap -i /mnt base base-devel    #安装
 genfstab -U -p /mnt >> /mnt/etc/fstab
 ```
 
-## 可能出现的问题
+## 使用交换文件
 
-* GPGME error  
+如果你不喜欢交换分区，可以用一个交换文件来代替：
 
-  > No data：error: failed to update core (invalid or corrupted database (PGP signature))
-
-  在 `/etc/pacman.conf` 的 `[options]` 加入 `SigLevel = Never`
-
-* 使用交换文件
-
-  ```bash
-  # 建立swap文件
-  fallocate -l 512M /swapfile
-  # 或者
-  dd if=/dev/zero of=/swapfile bs=1M count=512
-  # 设置swap
-  chmod 600 /swapfile
-  mkswap /swapfile
-  swapon /swapfile
-  # 更新静态文件系统信息 /etc/fstab 中加入：
-  /swapfile none swap defaults 0 0
-  ```
+```bash
+# 建立swap文件
+fallocate -l 512M /swapfile
+# 或者
+dd if=/dev/zero of=/swapfile bs=1M count=512
+# 设置swap
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+# 更新静态文件系统信息 /etc/fstab 中加入：
+/swapfile none swap defaults 0 0
+```
 
 # 配置系统
 
-1. 进入新系统
+## 进入新系统
 
-  更换主目录：`arch-chroot /mnt`
-  更新系统：`配置/etc/pacman.d/mirrorlist并pacman -Syu`
+* 更换主目录：`arch-chroot /mnt`
+* 更新系统：`pacman -Syu`（需要先配置`/etc/pacman.d/mirrorlist`）
+ 
+## 设置区域
 
-2. 设置区域
-  * 设置地区：`ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime`
-  * 设置硬件时钟：`hwclock --systohc --utc`
-  * 自动同步时间：`sudo systemctl enable ntpd（需要ntp）`
-  * fix windows:
-    * add a DWORD value with hexadecimal value 1 to the registry: `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\RealTimeIsUniversal `
-    * disable time auto sync
+* 设置地区：`ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime`
+* 设置硬件时钟：`hwclock --systohc --utc`
+* 自动同步时间：`systemctl enable ntpd（需要ntp）`
 
-3. 设置语言
-  * 设置语言选项：修改 `/etc/locale.gen` 并 `locale-gen`
-  * 设置语言：`echo LANG=en_US.UTF-8 > /etc/locale.conf`
-  * 设置主机：`echo myhostname > /etc/hostname`
+修复 Windows 下时间不正常：
 
-4. 配置网络
-  * 安装netcfg用到的工具包：`pacman -S wireless_tools wpa_supplicant wpa_actiond ifplugd dialog`
-  * 启用自动连接
-    * 单一网络：`systemctl enable dhcpcd@eth0.service`
-    * 变化网络：自动连接在 `/etc/network.d` 下的网络
+* add a DWORD value with hexadecimal value 1 to the registry: `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\RealTimeIsUniversal `
+* disable time auto sync
 
-      ```bash
-      systemctl enable net-auto-wired.service
-      systemctl enable net-auto-wireless.service
-      ```
+## 设置语言
 
-5. 设置用户
-  * 设置root密码：`passwd`
-  * 添加用户：`useradd -m -g users -s /bin/bash harttle`，设置用户密码：`passwd harttle`
-  * 删除用户：`userdel -r harttle`
+* 设置语言选项：修改 `/etc/locale.gen` 并 `locale-gen`
+* 设置语言：`echo LANG=en_US.UTF-8 > /etc/locale.conf`
+* 设置主机：`echo myhostname > /etc/hostname`
+
+## 配置网络
+
+[`netctl`][netctl] 是 `base` 组中已经安装到了系统，
+但你还需要安装一些依赖来增强它的功能（比如下面用到的`wifi-menu`）：
+
+```bash
+pacman -S wireless_tools wpa_supplicant wpa_actiond ifplugd dialog
+```
+
+对于有线网络直接使用 `systemctl enable dhcpcd@eth0.service` 来启动自动连接。
+对于无线网络可使用`netctl`来连接，需要首先在 `/etc/netctl` 创建一个配置文件，
+可以先从 `/etc/netctl/examples/` 下的示例拷贝一个出来。
+比如我的 `/etc/netctl/wlp4s0-tiny-router` 文件：
+
+```
+Description='My Tiny Router'
+Interface=wlp4s0
+Connection=wireless
+Security=wpa
+ESSID=tiny-router
+IP=dhcp
+Key=mywirelesskey
+```
+
+该配置文件也可以使用`wifi-menu`（交互式图形界面连接 Wifi）来产生。
+然后可以启动该配置，也可以 `systemd` 脚本的方式启用：
+
+```bash
+# 启动该配置
+netctl start wlp4s0-tiny-router
+# 作为 systemd 脚本启用（开机自动连接）
+netctl enable wlp4s0-tiny-router
+```
+
+## 设置用户
+
+* 设置root密码：`passwd`
+* 添加用户：`useradd -m -g users -s /bin/bash harttle`
+* 设置用户密码：`passwd harttle`
+* 删除用户：`userdel -r harttle`
 
 # 重建引导
 
@@ -143,13 +174,13 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
 
 * 安装grub：`pacman -S grub-bios`
 * 写入主引导：`grub-install --target=i386-pc --recheck /dev/sda`
-* 设置grub区域：
+* 设置grub时区：
 
   ```bash
   cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
   ```
 
-* 更新启动列表
+* 生成启动列表
   * 搜索windows：`pacman -S os-prober`
   * 更新列表：`grub-mkconfig -o /boot/grub/grub.cfg`
 * 重启：`exit;umount /mnt{boot,home,};reboot`
@@ -158,7 +189,7 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
 
 # 安装工具
 
-* AUR
+* 启用 AUR
 
   ```bash
   # /etc/pacman.conf 中加入
@@ -168,18 +199,18 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
   pacman -Syu yaourt
   ```
 
-* `sudo`
+* 启用 `sudo`
 
   * 安装：`pacman -S sudo`
   * 配置：`/etc/sudoers` 添加 `harttle ALL=(ALL) ALL`，使harttle可以使用sudo
 
-* `bash` 自动补全：`bash-completion`
-
-* `vim`
+* 其他软件：`vim`, `openssh`, `zsh`, `git`
 
 # 安装图形界面
 
-以KDE为例，可选gnome
+下面以 KDE 安装为例，也可选 Gnome。
+
+## 基本安装
 
 1. 安装驱动：`mesa(3D)`,`xf86-video-vesa(Default)`,`xf86-video-nouveau(open nvidia)`,`nouveau-dri`(open nvidia)
 
@@ -194,22 +225,30 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
     * 安装 `kdebase-workspace`，编辑 `~/.xprofile`
     * 设置 kdm 启动：`systemctl enable kdm`
 
-1. kde的gtk支持：安装 `oxygen-gtk2`，`oxygen-gtk3`，`kde-gtk-config`(AUR) 进入系统设置->公共外观行为->应用程序外观->gtk configuration相关设置
+## 定制功能
 
-1. kde网络管理
+### kde 的 gtk 支持
 
-  ```bash
-  pacman -S networkmanager kdeplasma-applets-networkmanagement
-  systemctl enable NetworkManager.service 
-  ```
+安装 `oxygen-gtk2`，`oxygen-gtk3`，`kde-gtk-config`(AUR) 进入系统设置->公共外观行为->应用程序外观->gtk configuration相关设置
 
-1. 设置登录屏幕主题：`archlinux-themes-kdm(AUR)`，kde systemsettings 中的设置不起作用
+### 桌面网络管理工具
 
-1. 在fstab加入开机挂载的分区，需要 `ntfs-3g`(AUR)
+```bash
+pacman -S networkmanager kdeplasma-applets-networkmanagement
+systemctl enable NetworkManager.service 
+```
 
-  ```bash
-  /dev/hda1        /mnt/winC        ntfs-3g iocharset=utf8,umask=022,noatime 0 0
-  ```
+### 登录屏幕主题
+
+需要安装`archlinux-themes-kdm(AUR)`，直接在 kde systemsettings 中设置不起作用。
+
+### 挂载 Windows NTFS 分区
+
+直接在 fstab 加入开机挂载的分区，需要安装 `ntfs-3g`(AUR)
+
+```bash
+/dev/hda1        /mnt/winC        ntfs-3g iocharset=utf8,umask=022,noatime 0 0
+```
 
 # 汉化
 
@@ -242,34 +281,9 @@ export QT_IM_MODULE=fcitx
 ```
 
 设置启动：`cp /etc/xdg/autostart/fcitx-autostart.desktop ~/.config/autostart/`
+输入法对不同语言的键盘映射在`~/.config/fcitx/data/punc.mb.<LANG>`，可以手动更改（例如中文中括号）。
 
-> 输入法对不同语言的键盘映射在`~/.config/fcitx/data/punc.mb.<LANG>`，可以手动更改（例如中文中括号）。
-
-## 终端输入法
-
-fbterm
-
-* 安装
-
-  ```bash
-  yaourt -S fbterm fcitx-fbterm
-  sudo gpasswd -a YOUR_USERNAME video #非根用户运行fbterm
-  sudo setcap 'cap_sys_tty_config+ep' /usr/bin/fbterm 或：sudo chmod u+s /usr/bin/fbterm #非根用户可使用键盘快捷方式
-  ```
-
-* 配置
-
-  ```bash
-  # ~/.fbtermrc
-  font-names = Consolas（Monaco）,微软雅黑
-  font-size=15
-
-  # ~/.bashrc
-  if [ "$TERM" = "linux" ]; then  
-    alias fbterm='LANG=zh_CN.UTF-8 fbterm'  
-    fbterm  
-  fi
-  ```
+> 关于终端字体配置和终端输入法配置可参考[ArchLinux TTY 中文字体渲染](/2016/06/13/archlinux-tty-font.html)一文。
 
 # 字体
 
@@ -382,6 +396,8 @@ fbterm
 
 > Ubuntu 的`hintstyle`选择`slighthint`较好。有些桌面环境的字体配置模块会在桌面启动时对`~/.config/fontconfig/fonts.conf`进行修改，此时应保持字体模块的设置与此相同。
 
+# Konsole 字体配置
+
 对于konsole终端字体，可以在`~/.kde4/share/apps/konsole/Shell.profile`配置（设置页面的配置文件)，在页面中只允许更改monospace字体，可以在这里任意修改字体，如：
 
 ```bash
@@ -406,3 +422,7 @@ QFont::Black    | 87    |  87
 
 
 [localization]: https://wiki.archlinux.org/index.php/Arch_Linux_Localization_(简体中文)
+[download]: https://www.archlinux.org/download/
+[usb-flash]: https://wiki.archlinux.org/index.php/USB_flash_installation_media
+[dd4dos]: http://www.chrysocome.net/dd
+[netctl]: https://wiki.archlinux.org/index.php/netctl

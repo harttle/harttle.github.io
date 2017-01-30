@@ -1,6 +1,6 @@
 ---
 title: ArchLinux TTY 中文字体渲染
-tags: ArchLinux Bash DOCTYPE Linux Ubuntu Windows 字体
+tags: ArchLinux Bash Linux Windows 字体
 ---
 
 [ArchLinux][arch]的[User Centrality][arch-way]原则中提出，
@@ -31,18 +31,31 @@ Harttle找到了一种简单的配置方式，使得[ArchLinux][arch]可以显�
 
 # TTY显示中文字体
 
+> [Shell配置文件：.profile, .bashrc, .login][shell-config]一文详细介绍了终端、终端模拟器、Shell等概念的区别。
+
 TTY是字符终端只接受键盘的字符输入并显示字符输出，
 并未提供Unicode字符的渲染和显示。这时我们需要一个终端模拟器。
-恰恰有一个可以在很好地显示中文的终端模拟器：`fbterm`，
-以及中文输入法软件`fcitx`的`fbterm`插件叫做：`fcitx-fbterm`。
+恰恰有一个可以在很好地显示中文的终端模拟器：[`fbterm`][fbterm]，
+以及中文输入法软件[`fcitx`][fcitx]的`fbterm`插件叫做：`fcitx-fbterm`。
 
-安装：
+安装相关软件：
 
 ```bash
 yaourt -S fbterm fcitx fcitx-fbterm
+# To run fbterm as a non-root user, do:
+sudo gpasswd -a YOUR_USERNAME video
+# To enable keyboard shortcuts for non-root users, do:
+sudo chmod u+s /usr/bin/fbterm
 ```
 
-> [Shell配置文件：.profile, .bashrc, .login][shell-config]一文详细介绍了终端、终端模拟器、Shell等概念的区别。
+设置 X11 的默认输入法，配置文件为`.xprofile`（KDM, GDM, LightDM 或 SDDM）或
+`.xinitrc`（startx 或 Slim）。
+
+```
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+```
 
 ## 配置FBTerm
 
@@ -130,14 +143,14 @@ yaourt -S adobe-source-han-sans-cn-fonts ttf-dejavu
 用户级别的配置文件为`~/.fonts.conf`。
 
 [ArchLinux][arch]虽然不提供默认字体，但给出了很多预设配置文件来支持不同的需求。
-这些文件在`/etc/fonts/conf.aval/`下。要使用这些预设，可以直接创建软链接：
+这些文件在`/etc/fonts/conf.aval/`下。如果要使用这些预设，可以直接创建软链接，比如：
 
 ```
 cd /etc/fonts/conf.d
 ln -s ../conf.avail/10-sub-pixel-rgb.conf .
 ```
 
-下文中我们配置的文件是`~/.fonts.conf`。
+下文中我们只对当前用户做配置，配置的文件是`~/.fonts.conf`。
 
 ## 字体渲染配置
 
@@ -169,3 +182,5 @@ ln -s ../conf.avail/10-sub-pixel-rgb.conf .
 [hinting]: https://en.wikipedia.org/wiki/Font_hinting
 [shell-config]: /2016/06/08/shell-config-files.html
 [arch-way]: https://wiki.archlinux.org/index.php/Arch_terminology#The_Arch_Way
+[fcitx]: https://wiki.archlinux.org/index.php/Fcitx
+[fbterm]: https://wiki.archlinux.org/index.php/Fbterm
