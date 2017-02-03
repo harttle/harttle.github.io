@@ -20,7 +20,7 @@ app.use(express.static('./assets', {
 
 <!--more-->
 
-如此依赖浏览器请求静态文件时就会添加`If-Modified-Since`头字段，
+如此一来浏览器请求静态文件时就会添加`If-Modified-Since`头字段，
 而服务器会响应304（不发送响应体）来指示浏览器使用本地缓存。
 
 # 响应体压缩

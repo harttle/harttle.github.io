@@ -16,7 +16,7 @@ Tmux是一个终端复用软件，BSD协议发布。一般用于在一个命令�
 ## iTerm的窗格和Tmux有什么区别？
 
 iTerm是一个GUI软件，它的窗格只是窗格而已！而Tmux是终端复用，在一个命令行窗口中不仅可以显示多个Shell的内容，而且可以保持多个会话。
-最重要的是：Tmux和Vim一样，属于字符终端软件，不需要任何GUI的支持，在远程登录时尤其有用。
+最重要的是：Tmux和Vim一样属于字符终端软件，不需要任何GUI的支持，在远程登录时尤其有用。
 
 ## Tmux和screen有什么区别？
 
@@ -194,11 +194,12 @@ set -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh"
     :  prompt
 
 
-参考链接：
+# 扩展阅读
 
-* http://unix.stackexchange.com/questions/549/tmux-vs-gnu-screen
-* https://gist.github.com/MohamedAlaa/2961058
-* https://en.wikipedia.org/wiki/Tmux
+* TMUX 与 Screen 的区别：<http://unix.stackexchange.com/questions/549/tmux-vs-gnu-screen>
+* Cheetsheet: <https://gist.github.com/MohamedAlaa/2961058>
+* Wikipedia：<https://en.wikipedia.org/wiki/Tmux>
+* Vim 控制 Tmux：<https://github.com/benmills/vimux>
 
 [node-web]: {% post_url 2015-02-24-node-web-api %}
 [tmux-shot]: /assets/img/blog/tmux-concept.png
