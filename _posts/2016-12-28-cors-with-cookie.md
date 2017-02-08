@@ -15,7 +15,7 @@ CORS 推荐使用额外的响应头字段来允许跨域发送 Cookie。
 # 客户端代码
 
 在`open` [XMLHttpRequest][xhr]后，设置`withCredentials`为`true`即可让该跨域请求携带 Cookie。
-注意携带的是当前页面所在域的 Cookie。
+注意携带的是目标页面所在域的 Cookie。
 
 ```javascript
 var xhr = new XMLHttpRequest();

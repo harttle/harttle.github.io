@@ -1,6 +1,6 @@
 ---
 title: 非阻塞脚本载入的几种方式
-tags: Chrome DNS DOM HTML Iframe JavaScript XHR 网络
+tags: Chrome DNS DOM HTML iframe JavaScript XHR 网络
 ---
 
 当今Web页面和脚本已经越来越复杂，页面性能有时会变得很差。

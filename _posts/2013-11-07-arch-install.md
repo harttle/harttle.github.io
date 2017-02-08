@@ -204,7 +204,7 @@ netctl enable wlp4s0-tiny-router
   * 安装：`pacman -S sudo`
   * 配置：`/etc/sudoers` 添加 `harttle ALL=(ALL) ALL`，使harttle可以使用sudo
 
-* 其他软件：`vim`, `openssh`, `zsh`, `git`
+* 其他软件：`vim`, `openssh`, `zsh`, `git`, `node`
 
 # 安装图形界面
 
