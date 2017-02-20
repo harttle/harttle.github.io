@@ -43,6 +43,11 @@
       margin-left: 10px;
     }
   }
+  @media(max-width:370px){
+    nav{
+      display: none;
+    }
+  }
 }
 
 .banner.transparent{
