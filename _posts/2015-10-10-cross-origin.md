@@ -1,6 +1,6 @@
 ---
 title: Web开发中跨域的几种解决方案
-tags: DOM HTML HTTP JavaScript jQuery iframe JSON 跨域
+tags: DOM HTML HTTP JavaScript jQuery iframe JSON 跨域 CORS
 excerpt: 这些办法大致可以分为两类： 一类是Hack，比如通过`title`, `navigation`等对象传递信息，JSONP可以说是一个最优秀的Hack。 另一类是HTML5支持，一个是`Access-Control-Allow-Origin`响应头，一个是`window.postMessage`。 跨域的正道还是HTML5提供的CORS头字段以及`window.postMessage`， 可以支持POST, PUT等HTTP方法，从机制上解决跨域问题。
 ---
 
@@ -178,6 +178,8 @@ Access-Control-Allow-Origin: *              # 允许所有域名访问，或者
 Access-Control-Allow-Origin: http://a.com   # 只允许所有域名访问
 ```
 
+为 `xhr` 设置 `withCredentials` 后 CORS 方法跨域还可 [携带Cookie][cors-cookie]，但 PUT/POST 请求需要注意[处理 preflight 请求][cors-preflight]。
+
 # window.postMessage
 
 * 原理：HTML5允许窗口之间发送消息
@@ -219,3 +221,5 @@ window.addEventListener('message',function(event) {
 [rfc2616]: http://www.faqs.org/rfcs/rfc2616.html
 [statuscode]: {% post_url 2015-08-15-http-status-code %}
 [cors-err]: /assets/img/blog/cors/error@2x.png
+[cors-cookie]: /2016/12/28/cors-with-cookie.html
+[cors-preflight]: /2016/12/30/cors-preflight.html
