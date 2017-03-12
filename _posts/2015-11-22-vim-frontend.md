@@ -1,6 +1,6 @@
 ---
 title: 打造前端开发的 Vim 环境
-tags: CSS HTML JavaScript Vim YCM 快捷键 Syntastic
+tags: CSS HTML JavaScript Vim YCM 快捷键 Syntastic 代码风格
 ---
 
 前不久harttle着手搭建了[类似IDE的Vim环境][vim-ide]，然而对于前端开发者这还远远不够。
@@ -137,10 +137,10 @@ Javascript 的自动补全仍然是使用YCM，但我们用一个叫tern的插�
 Plugin 'marijnh/tern_for_vim'
 ```
 
-# Linting
+# 代码风格检查
 
-养成好的编程习惯，第一步是安装一个 Linting 工具。
-[syntastic][syntastic] 是 Vim 中的一个语法风格检查工具，可以为不同的编程语言
+养成好的编程习惯，第一步是安装一个代码风格检查工具。
+[syntastic][syntastic] 是 Vim 中的一个代码风格检查工具，可以为不同的编程语言
 （对应为 Vim 中的 filetype）配置不同的 checker。
 甚至每个文件类型可以有若干个 checker，syntastic 会负责聚合警告和错误。
 
@@ -150,8 +150,8 @@ Plugin 'marijnh/tern_for_vim'
 Plugin 'scrooloose/syntastic'
 ```
 
-装好之后就可以为你需要的语言安装 checker 了，比如 JavaScript 语法检查 eslint、
-HTML 语法检查 tidy、CSS 语法检查 stylelint 等。
+装好之后就可以为你需要的语言安装 checker 了，比如 JavaScript 代码风格检查 eslint、
+HTML 代码风格检查 tidy、CSS 代码风格检查 stylelint 等。
 以 eslint 为例，其安装和配置过程只有两步：
 
 1. 安装 checker 命令行工具

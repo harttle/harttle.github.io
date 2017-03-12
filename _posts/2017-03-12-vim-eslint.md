@@ -1,11 +1,12 @@
 ---
-title: Vim 中使用 eslint 语法检查
+title: Vim 中使用 eslint 代码风格
+tags: ES6 JavaScript Vim 代码风格 Vundle 快捷键
 ---
 
-[eslint][eslint] 是一款可配置的插件式架构的语法检查工具。可配置不足为奇，但插件式的架构却能带来很多方便。
+[eslint][eslint] 是一款可配置的插件式架构的代码风格检查工具。可配置不足为奇，但插件式的架构却能带来很多方便。
 例如在单元测试代码中，引入 mocha 插件便可自动引入一系列额外的语法规则。
 
-[打造前端开发的 Vim 环境](/2015/11/22/vim-frontend.html) 一文中提到了使用 Syntastic 对代码进行语法检查。
+[打造前端开发的 Vim 环境](/2015/11/22/vim-frontend.html) 一文中提到了使用 Syntastic 对代码进行代码风格检查。
 但同时我们需要按照**同样一份规则**（就是下文的 eslintrc）来进行代码格式化。
 本文详细介绍如何在 Vim 中引入 eslint，以及用 eslint 规则来格式化代码。
  
@@ -23,7 +24,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'Chiel92/vim-autoformat'
 ```
 
-其中 [syntastic][syntastic] 可以调用外部命令行工具来进行语法检查，
+其中 [syntastic][syntastic] 可以调用外部命令行工具来进行代码风格检查，
 [vim-autoformat][vaf] 则可以调用外部命令行工具来格式化代码。
 下文要介绍的就是让两者都调用 [eslint][eslint-cli]，并使用同一份 `eslintrc`。
 
@@ -35,7 +36,7 @@ eslint 可直接通过 npm 安装：
 sudo npm install -g eslint
 ```
 
-eslint 使用配置文件来指定语法检查规则。可以创建一个简单的配置文件`.eslintrc.json`
+eslint 使用配置文件来指定代码风格检查规则。可以创建一个简单的配置文件`.eslintrc.json`
 （你也可以使用 `eslint --init` 来生成一份自定义的配置文件）：
 
 ```json
@@ -118,7 +119,7 @@ let g:formatters_javascript = ['eslint']
 * 干掉文件尾的换行。这是因为 Vim 读入文件尾的换行后，会再来一个换行产生两个`\n`。
 
 到此为止，在 `a.js` 中运行 `:Autoformat` 即可格式化整个文件；
-再次写入（`:w`）即可重新触发语法检查。这一流程可以在 `~/.vimrc` 中设置一个快捷键：
+再次写入（`:w`）即可重新触发代码风格检查。这一流程可以在 `~/.vimrc` 中设置一个快捷键：
 
 ```vim
 noremap <F3> :Autoformat<CR>:w<CR>
