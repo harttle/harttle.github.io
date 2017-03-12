@@ -100,6 +100,7 @@ window.modules.blog = function(console, $ele) {
                 return true;
             })
             .forEach(function(post){
+                if(!current) return;
                 post.similarity = pv[post.url] ? 0 
                     : cosine(post.tags, current.tags); 
                 if(!mostSimilar || mostSimilar.similarity < post.similarity){
