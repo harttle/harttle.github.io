@@ -1,6 +1,6 @@
 ---
 title: 打造前端开发的 Vim 环境
-tags: Bash CSS HTML JavaScript Vim Vundle YCM 快捷键 NPM
+tags: CSS HTML JavaScript Vim YCM 快捷键 Syntastic
 ---
 
 前不久harttle着手搭建了[类似IDE的Vim环境][vim-ide]，然而对于前端开发者这还远远不够。
@@ -54,7 +54,8 @@ set expandtab autoindent
 </div>
 ```
 
-完整的Emmet功能在[这里][emmet]可以查到。如果你在使用Vundle，可以在`~/.vimrc`里直接添加这个插件：
+完整的Emmet功能在[这里][emmet]可以查到。如果你在使用[Vundle][vundle]，
+可以在`~/.vimrc`里直接添加这个插件：
 
 ```vim
 Plugin 'mattn/emmet-vim'
@@ -136,21 +137,42 @@ Javascript 的自动补全仍然是使用YCM，但我们用一个叫tern的插�
 Plugin 'marijnh/tern_for_vim'
 ```
 
-如果你有很好的编程习惯，想必会需要下面这个Linting工具。
+# Linting
+
+养成好的编程习惯，第一步是安装一个 Linting 工具。
+[syntastic][syntastic] 是 Vim 中的一个语法风格检查工具，可以为不同的编程语言
+（对应为 Vim 中的 filetype）配置不同的 checker。
+甚至每个文件类型可以有若干个 checker，syntastic 会负责聚合警告和错误。
+
+首先需要安装 syntastic，使用 [Vundle][vundle] 较为方便：
 
 ```vim
 Plugin 'scrooloose/syntastic'
 ```
 
-它像YCM一样，通过调用外部Linter来完成代码风格检查。所以你还需要安装一个外部工具：
+装好之后就可以为你需要的语言安装 checker 了，比如 JavaScript 语法检查 eslint、
+HTML 语法检查 tidy、CSS 语法检查 stylelint 等。
+以 eslint 为例，其安装和配置过程只有两步：
 
-```bash
-npm install -g jshint
-```
+1. 安装 checker 命令行工具
 
-可以通过`:SyntasticInfo`来查看当前Syntastic在使用的外部Lint工具。
+    ```bash
+    npm install -g eslint
+    ```
+2. 在 `~/.vimrc` 中将它配置为某个文件类型（比如`javascript`）的 checker：
+
+    ```vim
+    let g:syntastic_javsacript_checkers = ['eslint']
+    ```
+
+在 Vim 中使用 `:SyntasticInfo` 可查看 checker 信息，
+更多 Syntastic 配置方法可参考 <https://github.com/vim-syntastic/syntastic>。
+在 [Vim 中使用 eslint](/2017/03/12/vim-eslint.html) 一文对 eslint 有更详细的讨论，
+包括如何使用同一份 `eslintrc` 配置进行 format 以及 lint 。
 
 [jade]: https://github.com/jadejs/jade
 [vim-ide]: {% post_url 2015-11-04-vim-ide %}
 [emmet]: https://github.com/mattn/emmet-vim
 [dm]: https://github.com/Raimondi/delimitMate
+[vundle]: https://github.com/gmarik/vundle#about
+[syntastic]: https://github.com/vim-syntastic/syntastic
