@@ -13,11 +13,11 @@ Git已经成为当今版本控制工具的主流，而分布式的结构和日�
 
 <!--more-->
 
-## 将改动添加到暂存区
+## 添加到暂存区并提交
 
-**场景**：在提交前需要选择提交的文件（到暂存区），否则git会提示没有要提交的东西。
+**场景**：将新增或改动的文件添加到暂存区，并提交到 Git 仓库。
 
-**步骤**：使用`git add`命令即可将某个文件（的修改）添加到暂存区。
+**步骤**：使用`git add`命令即可将某个文件（的修改）添加到暂存区，再 `git commit` 来提交。
 
 **文档**：<https://git-scm.com/docs/git-add>
 
@@ -28,9 +28,11 @@ git add README.md
 git add .
 # 强制添加，忽略.gitignore配置
 git add node_modules/ --force
+git commit -m 'first commit'
 ```
 
-> `git add`会忽略列在`.gitignore`中的文件/目录。
+* `git add`会忽略列在`.gitignore`中的文件/目录，通过`--force`参数可以强制添加。
+* 添加并提交是 Git 中最常见的代码提交方式。 Git 提交总会完整地记录一次变更，即提交总会使 Git 仓库变大，不论是新增还是删除。真正从仓库中移除记录需要[更改 Git 历史记录][purge-git-history]。
 
 ## 提交对仓库中文件的改动
 

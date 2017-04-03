@@ -1,11 +1,11 @@
 ---
 title: Makefile构建前端项目
-tags: Bash Linux Makefile Unix awk grep sed
+tags: Shell Linux Makefile Unix awk grep sed
 ---
 
 [Make][make]是GNU下的构建自动化工具，用于从源文件构建可执行程序和程序库。
 由Makefile定义构建依赖关系，运行Make时这些依赖会递归地展开。
-可以说Make和Bash是Linux下生存的必备技能，当然还需要一款你热爱的编辑器。
+可以说Make和Shell是Linux下生存的必备技能，当然还需要一款你热爱的编辑器。
 
 > Make还会检查文件修改时间来判断是否需要执行某条依赖。
 > 因此除了程序库外，Make也常常用于自动更新存在文件间依赖的项目。
@@ -68,7 +68,7 @@ dist/out.min.js: out.js lib/jquery.js
 
 # 批量处理
 
-在JavaScript世界中我们通过Glob来批量选择文件，在Make中则需要借助于Bash通配符和命令。
+在JavaScript世界中我们通过Glob来批量选择文件，在Make中则需要借助于Shell通配符和命令。
 
 ```makefile
 SOURCES = src/*.js

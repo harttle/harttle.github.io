@@ -140,4 +140,3 @@ C Shell, TCShell启动时却总是会去读取 `cshrc`, `.tcshrc`，无论当前
 [screen]: http://en.wikipedia.org/wiki/Gnu_screen
 [ssh]: http://en.wikipedia.org/wiki/Secure_shell
 [cron]: {% post_url 2015-11-20-crontab-desktop %}
-

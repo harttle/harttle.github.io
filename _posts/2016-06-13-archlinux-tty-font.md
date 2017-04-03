@@ -1,6 +1,6 @@
 ---
 title: ArchLinux TTY 中文字体渲染
-tags: ArchLinux Bash Linux Windows 字体
+tags: ArchLinux Shell Linux Windows 字体
 ---
 
 [ArchLinux][arch]的[User Centrality][arch-way]原则中提出，

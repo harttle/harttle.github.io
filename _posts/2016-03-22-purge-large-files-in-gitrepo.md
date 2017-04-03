@@ -1,6 +1,6 @@
 ---
 title: 寻找并删除Git记录中的大文件
-tags: Bash Git Github awk grep 排序 磁盘
+tags: Shell Git Github awk grep
 ---
 
 最近发现[HarttleLand的Git仓库][harttle-git]已经达到了142M，严重影响Fork和Clone。

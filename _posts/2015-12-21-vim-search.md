@@ -1,9 +1,9 @@
 ---
 title: 用Ag/Ack在Vim中搜索项目代码
-tags: Ack Ag Bash Ubuntu Vim Vundle grep 快捷键
+tags: Ack Ag CLI Vim Vundle grep 快捷键
 ---
 
-[Ag][ag](The Silver Searcher)和[Ack][ack]都是CLI的全局搜索工具，其中Ag更快一些，而Ack也比Vim自带的grep快很多。这些工具的Vim插件可以通过Vim Quickfix窗口来提供代码搜索的结果。
+[Ag][ag](The Silver Searcher)和[Ack][ack]都是 CLI 的全局搜索工具，其中Ag更快一些，而Ack也比Vim自带的grep快很多。这些工具的Vim插件可以通过Vim Quickfix窗口来提供代码搜索的结果。
 本文便来详细介绍如何在Vim中使用Ag全局搜索。
 
 那么什么是Quickfix窗口呢？
@@ -27,7 +27,7 @@ pacman -S the_silver_searcher
 apt-get install silversearcher-ag
 ```
 
-装好之后可以在Bash中试试：
+装好之后可以在 Shell 中试试：
 
 ```bash
 ack test_blah ~/code/

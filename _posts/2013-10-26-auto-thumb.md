@@ -1,6 +1,6 @@
 ---
 title: Makefile 批量更新缩略图
-tags: Bash Linux Makefile Unix
+tags: Linux Makefile Unix
 ---
 
 # 背景

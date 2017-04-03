@@ -79,11 +79,12 @@ tags: Bash GNU Linux 快捷键
 * 上下行移动光标：`Ctrl-P`, `Ctrl-N`。
 * 剪切/粘贴：`Ctrl-W`, `Alt-D`等。
 
-# 参考链接
+# 相关阅读
 
 * <http://www.skorks.com/2009/09/bash-shortcuts-for-maximum-productivity/>
 * <http://ss64.com/bash/syntax-keyboard.html>
 * GNU readline：<http://www.bigsmoke.us/readline/shortcuts>
+* [Shell 中的变量作用域](/2017/04/03/shell-variable-scope.html)
 
 [bash]: http://www.gnu.org/software/bash/
 [readline]: http://tiswww.case.edu/php/chet/readline/rltop.html
