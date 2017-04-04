@@ -109,6 +109,10 @@ window.modules.blog = function(console, $ele) {
                 return post;
             });
 
+            if (!mostSimilar) {
+                console.info('no similar posts found, recommendation disabled');
+                return;
+            }
             var $recommend = $('.recommend');
             $(window).scroll(function(){
                 if($recommend.hasClass('in')) return;
