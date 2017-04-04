@@ -20,8 +20,9 @@ app.use(express.static('./assets', {
 
 <!--more-->
 
-如此一来浏览器请求静态文件时就会添加`If-Modified-Since`头字段，
-而服务器会响应304（不发送响应体）来指示浏览器使用本地缓存。
+对于不常改变的静态文件可以在`Cache-Control`上设置 `max-age` 来避免不必要的服务器请求。
+`Cache-Control` 与 `If-Modified-Since` 等头字段的区别可参考
+["使用 HTTP 缓存：Etag, Last-Modified 与 Cache-Control"](/2017/04/04/using-http-cache.html) 一文。
 
 # 响应体压缩
 

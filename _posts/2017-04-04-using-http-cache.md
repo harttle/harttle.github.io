@@ -1,5 +1,5 @@
 ---
-title: "利用 HTTP 缓存：Etag, Last-Modified 与 Cache-Control"
+title: "使用 HTTP 缓存：Etag, Last-Modified 与 Cache-Control"
 tags: Chrome HTTP Node.js 性能 缓存 浏览器
 ---
 
@@ -45,7 +45,8 @@ Web 服务器（比如 Tomcat、Apache、Virgo）或服务器端框架（比如 
 
 当`Cache-Control`为可缓存时，同时可指定缓存时间（比如`public, max-age:86400`）。
 这意味着在 1 天（60x60x24=86400）时间内，浏览器都可以直接使用该缓存（此时服务器收不到任何请求）。
-当然浏览器也有权随时丢弃任何一项缓存。注意下图中状态码附近的 `from disk cache` 标识。
+当然浏览器也有权随时丢弃任何一项缓存，因此这里可能有[一致性问题][best-practice]。
+注意下图中状态码附近的 `from disk cache` 标识。
 
 ![cache-control](/assets/img/blog/http/cache-control@2x.png)
 
@@ -160,3 +161,4 @@ Cache-Control:max-age=0
 [expires]: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Expires
 [vary]: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/vary
 [cond]: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Conditional_requests
+[best-practice]: /2017/04/04/http-cache-best-practice.html
