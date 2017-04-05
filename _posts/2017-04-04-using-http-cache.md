@@ -70,11 +70,11 @@ server.listen(3333)
 如果资源本身确实会随时发生改动，还用 `Cache-Control` 就会使用户看到的页面得不到更新。
 但如果还希望利用 HTTP 缓存（万一资源没变呢），这就需要有条件的（conditional）HTTP 请求。
 
-`Etag` 响应头字段表示资源的版本，浏览器在发送请求时会带 `If-Non-Match` 头字段，
+`Etag` 响应头字段表示资源的版本，浏览器在发送请求时会带 `If-None-Match` 头字段，
 来询问服务器该版本是否仍然可用。如果服务器发现该版本仍然是最新的，
-就可以返回 304 状态码指示 UA 继续使用缓存。注意下图中的 `If-Non-Match` 字段。
+就可以返回 304 状态码指示 UA 继续使用缓存。注意下图中的 `If-None-Match` 字段。
 
-![if-non-match](/assets/img/blog/http/if-non-match@2x.png)
+![if-none-match](/assets/img/blog/http/if-none-match@2x.png)
 
 其服务器端代码如下：
 
@@ -135,7 +135,7 @@ server.listen(3333)
 
 按下刷新按钮或快捷键（在 MacOS 中是 Cmd+R）会触发浏览器的“正常重新加载”（normal reload），
 此时浏览器会执行一次 [Conditional GET][cond]。
-`Cache-Control` 等缓存头字段会被忽略，并且带`If-Non-Match`, `If-Modified-Since`等头字段。
+`Cache-Control` 等缓存头字段会被忽略，并且带`If-None-Match`, `If-Modified-Since`等头字段。
 此时服务器总会收到一次 HTTP GET 请求。
 在 Chrome 中按下刷新，浏览器还会带如下请求头：
 
