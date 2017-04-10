@@ -6,7 +6,7 @@ tags: Android Chrome PWA 缓存 Service-Worker
 [PWA][pwa](Progressive Web Apps)是 Google 最近在提的一种 Web App 形态
 （或者如 Wikipedia 所称的“软件开发方法”）。
 Harttle 能找到的关于 PWA 最早的一篇文章是 2015年6月 Alex Russell 的一篇博客：
-[Progressive apps escaping tabs without losing our soul][alax-pwa]，
+[Progressive apps escaping tabs without losing our soul][alex-pwa]，
 **让 Web App 从标签页跳出来，同时保持 Web 的灵魂。**
 
 如 Alex 所述，PWA 意图让 Web 在保留其本质（开放平台、易于访问、可索引）的同时，
@@ -16,6 +16,30 @@ PWA 具有这些特性：Reliable, Fast, Engaging。
 > Progressive Web Apps use modern web capabilities to deliver an app-like user experience. They evolve from pages in browser tabs to immersive, top-level apps, maintaining the web's low friction at every moment. -- Google PWA Tutorials
 
 <!--more-->
+
+# Native or Web?
+
+从 HTTP 的发明到 AJAX 的流行，Web 在整个应用市场中获得了极大的胜利，
+但智能手机带来的移动互联网潮流中，Native 应用凭借更好的系统集成以及快速的技术迭代成为这一时代的弄潮儿。
+此时的 Native 在很多方面都超越 Web：
+
+* 一方面，与操作系统集成度比较高，比 Web 应用的功能更加丰富。比如推送通知，离线可用，重力、健康等传感器，蓝牙、Wifi 等操作系统接口。
+* 另一方面，技术迭代非常迅速。Android、iOS 有 Google 和 Apple 等厂商的推动，操作系统接口升级很快。
+
+与此同时，Web 确实也在不断地更新技术，比如 [蓝牙协议][bluetooth]、[推送 API][pushapi]，还有下文中的诸多技术标准。
+但确实不可否认 Web 技术的更新非常缓慢，这是开放技术的代价：
+技术更新依赖于标准化的推行。
+只在标准制定阶段就需要历经提案（Proposal）、作者草案（Editor's Draft）、官方草案（Working Draft），建议（Recommendation）等过程
+（当然从这个角度讲 WHATWG 的标准化过程就比 W3C 聪明很多）。
+此后的浏览器厂商实现、Web 开发者的推广又需要更长的时间。
+
+但 Web 从来都是以开放性和扩展性取胜，开放才是 Web 的本质。正如 Alex 所述，Web 同样拥有 Native 无法比拟的优势：
+
+* 连通性，整个 Web 系统由超链接相互连接。
+* 一致性和可访问性，所有人或机器都可以很好地理解 Web 文档。
+* 开放性，开发和访问无需授权或支付费用。
+
+下文关于 PWA 系列技术标准的介绍，回答了如何以 Web 的方式满足移动互联网的需求。
 
 # What is a Progressive Web App?
 
@@ -101,11 +125,11 @@ Fetch API 不是 Magic，同样遵循 [HTTP 缓存机制][http-cache]，它与`x
 需要 User Agent 接收信息并唤醒对应的 Service Worker，因此该特性依赖于浏览器厂商。
 
 相比而言推送消息较为复杂，PWA 的 Push 机制包括 [Notification][notifycation] 和 [Push API][push-api]
-两部分，前者用于向用户展示通知，后者用于订阅推送消息。其中 Notification 标准早已有之，在桌面浏览器上使用较多。
+两部分标准，前者用于向用户展示通知，后者用于订阅推送消息。其中 Notification 标准早已有之，在桌面浏览器上使用较多。
 此外通知的发送过程还依赖于 [Web Push Protocol][web-push]，由于移动设备在通信上的电量耗费问题，
 Apple 早就托管了 iOS 的通知推送，国内众厂商也有托管所有通知的倾向。WebPush 成为这一过程的标准对开发者和 Web 的长远发展都有好处。
 
-> 目前在 PWA 上使用推送通知，需要借助于 [Google Cloud Messaging][google-cloud-messaging]。
+> 目前在 Chrome 上使用推送通知，需要借助于 [Google Cloud Messaging][google-cloud-messaging]。
 
 * Push API（Working Draft）: <https://www.w3.org/TR/push-api/>
 * Web Push Protocol（Internet Draft）: <https://tools.ietf.org/html/draft-ietf-webpush-protocol-12>
@@ -176,8 +200,21 @@ Web App 也可以启用一些像 Native App 一样的特性：
 还有一些其他特性也很有用，比如利用 [Background Sync][bg-sync] 可以让浏览器在下一次联网时后台发送未完成的请求。
 最后 Harttle 给一个简单的 PWA Demo，以供参考和点评：<https://weatherpwa.baidu.com>
 
+# 扩展阅读
+
+* PWA (by Google Developers): <https://developers.google.com/web/progressive-web-apps/>
+* PWA (by Alex Russell) <https://infrequently.org/2015/06/progressive-apps-escaping-tabs-without-losing-our-soul/>
+* AppCache: <https://developer.mozilla.org/zh-CN/docs/Web/HTML/Using_the_application_cache>
+* Push Api: https://www.w3.org/TR/push-api/
+* Fetch Api: <https://fetch.spec.whatwg.org/>
+* Web Push Protocol: <https://tools.ietf.org/html/draft-ietf-webpush-protocol-12>
+* Notifycation: <https://www.w3.org/TR/notifications/>
+* Web App Manifest: <https://w3c.github.io/manifest/>
+* Web Worker: <https://html.spec.whatwg.org/multipage/#dom-worker>
+* Service Worker: <https://www.w3.org/TR/service-workers/>
+
 [pwa]: https://developers.google.com/web/progressive-web-apps/
-[alax-pwa]: https://infrequently.org/2015/06/progressive-apps-escaping-tabs-without-losing-our-soul/
+[alex-pwa]: https://infrequently.org/2015/06/progressive-apps-escaping-tabs-without-losing-our-soul/
 [appcache]: https://developer.mozilla.org/zh-CN/docs/Web/HTML/Using_the_application_cache
 [api-cache]: https://developer.mozilla.org/zh-CN/docs/Web/API/Cache
 [offline-cookbook]: https://jakearchibald.com/2014/offline-cookbook
@@ -201,3 +238,5 @@ Web App 也可以启用一些像 Native App 一样的特性：
 [push-api]: https://www.w3.org/TR/push-api/
 [webapp-manifest]: https://w3c.github.io/manifest/
 [web-worker]: https://html.spec.whatwg.org/multipage/#dom-worker
+[bluetooth]: https://webbluetoothcg.github.io/web-bluetooth/
+[pushapi]: https://www.w3.org/TR/push-api/

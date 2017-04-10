@@ -106,8 +106,6 @@ self.addEventListener('install', function() {
 [sw]: https://w3c.github.io/ServiceWorker/
 [register]: https://w3c.github.io/ServiceWorker/#navigator-service-worker-register
 [register-algo]: https://w3c.github.io/ServiceWorker/#register-algorithm
-[update]: https://www.w3.org/TR/service-workers/#service-worker-registration-update
-[cc]: /2017/04/04/using-http-cache.html
 [web-worker]: https://html.spec.whatwg.org/multipage/workers.html
 [install-algo]: https://www.w3.org/TR/service-workers/#installation-algorithm
 [chrome]: http://harttle.com/tags.html#Chrome
