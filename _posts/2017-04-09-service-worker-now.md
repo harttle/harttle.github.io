@@ -5,8 +5,8 @@ tags: AppCache Chrome JavaScript PWA Safari 缓存
 
 Web 相比于 Native 最大的弱势莫过于离线能力，如果你没有连接到网络想必网页一定是打不开的。
 为了离线能力 Web 也有过很多的尝试，比如很多浏览器提供的 Reading List，HTML5 的 APPCache，
-indexDB、localStorage、sessionStorage 等一系列的存储 API，
-以及本文要介绍的 Service Worker。
+indexDB、localStorage、sessionStorage 等一系列的存储 API，以及本文要介绍的 Service Worker。
+本文的主要内容包括为什么可以立即使用 Service Worker，以及如何借助 Service Worker 快速搭建离线可用的 App。
 
 **Service Worker 可以平滑引入**。[Service Worker][sw] 是 [PWA 系列技术][pwa-explore] 中实现离线能力的关键技术。
 它属于一种共享的 [Web Worker][web-worker]（shared worker），运行在页面进程之外。
@@ -100,22 +100,39 @@ self.addEventListener('fetch', function(event) {
 除了静态的页面和文件之外，如果对 AJAX 数据加以适当的缓存可以实现真正的离线可用，
 要达到这一步可能需要对既有的 Web App 进行一些重构以分离数据和模板。
 
-# Service Worker 更新
+# 版本更新
+
+Service Worker 在客户端进行页面缓存，那么服务器提供的 HTTP 缓存就需要配合，让两者更好地一起工作。
+PWA 的版本更新其实就是 Service Worker 的更新：**给 Service Worker 打版本号，资源文件使用该版本号作为 [CacheStorage][CacheStorage] 的键值**。
+
+Service Worker 标准提供了完整的安装和版本支持，PWA 可以利用上文中的 `install` 事件进行资源初始化，`activate` 事件用来更新缓存。
+[`activate` 事件][activate] 会在 Service Worker 真正激活时触发，此时所有的功能事件（包括`fetch`）都会经过 Service Worker。
+此时通常会清空过期的缓存：
+
+```javascript
+self.addEventListener('activate', function(event) {
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        // VERION === 'harttle.com-v1.0.1'
+        cacheNames.filter(function(cacheName) {
+          return cacheName !== VERSION
+        }).map(function(cacheName) {
+          return caches.delete(cacheName);
+        })
+      );
+    })
+  );
+});
+```
 
 Service Worker 用来控制页面资源缓存，那么`sw.js`文件本身如何进行更新呢？
-Service Worker 标准中给出了 `ServiceWorkerRegistration#update()` 方法，调用该方法会导致立即更新 Service Worker。
-
-> update() pings the server for an updated version of this script without consulting caches. This is conceptually the same operation that UA does maximum once per every 24 hours.
->
-> -- [ServiceWorkerRegistration.update()][update], W3C Service Worker
-
-如果没有手动调用 `update()` 方法，Chrome 中 Service Worker 的更新周期会遵循该文件的
-[HTTP 缓存设置][http-cache]，但至少每天更新一次：
-
-> Updates obey the freshness headers of the worker script (such as max-age), unless the max-age is greater than 24 hours, in which case it is capped to 24 hours.
+一个原则是不在 Service Worker 中缓存 `sw.js` 自己，让服务器来决定 `sw.js` 本身的更新。
+浏览器在检查 Service Worker 是否有更新时会遵循该文件的[HTTP缓存设置][http-cache]，但每天至少一次。
 
 调试时更新 [Service Worker][sw] 和 [CacheStorage][CacheStorage] 有更方便的方法，可参考
 [Service Worker 调试技巧](/2017/04/08/service-worker-debug.html) 一文。
+关于 Service Worker 的更新机制的更详细讨论，可参考 [Service Worker 更新机制](/2017/04/10/service-worker-update.html) 一文。
 
 # 兼容性考虑
 
@@ -136,3 +153,4 @@ Service Worker 兼容性列表：<https://jakearchibald.github.io/isserviceworke
 [CacheStorage]: https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage
 [http-cache]: /2017/04/04/using-http-cache.html
 [update]: https://www.w3.org/TR/service-workers/#service-worker-registration-update
+[activate]: https://www.w3.org/TR/service-workers/#service-worker-global-scope-activate-event
