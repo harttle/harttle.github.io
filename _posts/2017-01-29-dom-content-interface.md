@@ -23,6 +23,15 @@ document.body.innerHTML = '';
 ```
 
 需要注意`innerHTMl`设置的脚本内容将不会被执行，参考[在 DOM 中动态插入并执行脚本][script-insert]。
+另外 `innerHTML` 获取 HTML 内容时会执行 DOM 的序列化，序列化结果与源码不一定相同。
+即一次 Parse + 一次序列化得到的结果可能与 HTML 源码不同。例如对于下面的 HTML 片段：
+
+```html
+<div id="foo">></div>
+```
+
+`document.getElementById('foo').innerHTML` 的结果是 `&gt;`。
+正因为转义的存在，使用 `<template>` 容纳的模板字符串是安全的。这也是为什么 [AMP 可以在保证安全的同时引入模板引擎][amp-mustache]。
 
 # innerText/outerText
 
@@ -154,3 +163,4 @@ text: function( value ) {
 [appendChild]: https://developer.mozilla.org/zh-CN/docs/Web/API/Node/appendChild
 [removeChild]: https://developer.mozilla.org/zh-CN/docs/Web/API/Node/removeChild
 [jq-text]: http://api.jquery.com/text/
+[amp-mustache]: https://www.ampproject.org/docs/reference/components/dynamic/amp-mustache
