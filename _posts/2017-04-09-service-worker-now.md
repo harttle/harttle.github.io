@@ -1,6 +1,6 @@
 ---
 title: 立即使用 Service Worker！
-tags: AppCache Chrome JavaScript PWA Safari 缓存
+tags: AppCache Chrome JavaScript PWA Safari 缓存 Service-Worker
 ---
 
 Web 相比于 Native 最大的弱势莫过于离线能力，如果你没有连接到网络想必网页一定是打不开的。

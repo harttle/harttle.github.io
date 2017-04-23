@@ -1,6 +1,6 @@
 ---
 title: Service Worker 更新机制
-tags: Chrome HTTP 缓存 进程 浏览器
+tags: Chrome HTTP 缓存 进程 浏览器 Service-Worker PWA
 ---
 
 [Service Worker][sw] 用来控制页面资源缓存，那么`sw.js`文件本身如何进行更新呢？
