@@ -1,6 +1,6 @@
 ---
 title: 异步脚本载入提高页面性能
-tags: AJAX Chrome DOM HTML JavaScript Node.js jQuery 事件
+tags: DOM async defer JavaScript 异步 性能
 ---
 
 可能很多人都知道JavaScript的载入和渲染会暂停DOM解析，但可能仍缺乏直观的体验。
