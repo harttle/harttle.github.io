@@ -6,7 +6,7 @@ tags: 跨域 CORS preflight AJAX HTTP XHR
 我们知道借助[`Access-Control-Allow-Origin`][acao]响应头字段可以允许跨域 AJAX，
 对于非**简单请求**，CORS 机制跨域会首先进行 preflight（一个 OPTIONS 请求），
 该请求成功后才会发送真正的请求。
-这一设计旨在确保服务器对 CORS 标准知情，以保护不支持 CORS 的旧服务器，
+这一设计旨在确保服务器对 CORS 标准知情，以保护不支持 CORS 的旧服务器。
 
 ![Flowchart_showing_Simple_and_Preflight_XHR][Flowchart_showing_Simple_and_Preflight_XHR]
 

@@ -125,6 +125,12 @@ Tmux和Vim风格非常像，也可以设置鼠标模式。下面的设置开启�
     set -g mouse-resize-pane on
     set -g mouse-select-window on
 
+从 2.1 版本开始（发布于 2015.10.18），上述 4 个选项就不可用了。统一使用下面的配置：
+
+    set -g mouse on
+
+> 使用 `tmux -V` 可以查看当前安装的 tmux 版本，版本更新日志见 [Tmux Changelog][changelog]。
+
 # 恢复用户空间
 
 Tmux有一个Bug，其中Shell的用户空间不是当前用户，结果就是mac下的open, sudo等命令都会失效。错误如下：
@@ -204,3 +210,4 @@ set -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh"
 [node-web]: {% post_url 2015-02-24-node-web-api %}
 [tmux-shot]: /assets/img/blog/tmux-concept.png
 [vim-ide]: {% post_url 2015-11-04-vim-ide %}
+[changelog]: https://raw.githubusercontent.com/tmux/tmux/master/CHANGES

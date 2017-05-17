@@ -43,8 +43,14 @@ PWA 具有这些特性：Reliable, Fast, Engaging。
 
 # What is a Progressive Web App?
 
-PWA 就是提供类似 App 体验的网站，其具体技术包括[Service worker][service-worker]、[manifest][manifest]、
-[Cache API][api-cache] 等等。
+PWA 就是提供类似 App 体验的网站，其具体技术包括
+[Service worker][service-worker]、
+[Web App Manifest][manifest]、
+[Cache API][api-cache]、
+[Fetch API][fetch-api]、
+[Push API][push-api]、
+[Web Push Protocol][web-push]、
+[Notification][notification] 等等。
 目前这些技术标准多数处于草案阶段，兼容性的浏览器只有 Chrome 40, Firefox 40 和 Opera，
 对于推送通知、indexedDB 等技术则需要更高版本的浏览器。
 
@@ -56,7 +62,7 @@ PWA 就是提供类似 App 体验的网站，其具体技术包括[Service worke
 相比于开发一个 App，在原生的 Web 页面上启用 PWA 特性非常容易：
 通过 JavaScript API 完全控制页面缓存、通过 HTML 扩展支持清单文件，
 这一切都是 Web，有着开放的标准和文档，以及开放的解决方案。
-下文中就 PWA 中的关键技术做概述性的介绍，包括 Service Worker、Fetch API、Push Notification，以及Web App Manifest。
+下文中就 PWA 中的关键技术做概述性的介绍。
 
 # Service Worker
 
@@ -118,13 +124,13 @@ Fetch API 不是 Magic，同样遵循 [HTTP 缓存机制][http-cache]，它与`x
 但回调函数的上下文现在是 [ServiceWorkerGlobalScope][swgs]，而不是页面脚本中的 `window`。
 `fetch` CORS 资源并需要读取其内容时，不仅服务器需要返回 CORS 相关状态码，在发送请求时也需要[声明 `cors`][fetch-cors]。
 
-# Push Notifycation
+# Push Notification
 
-[推送通知][push]（Push Notifycation）是 Engagement 特性的技术支撑，这可能商业网站最关心的一点。
+[推送通知][push]（Push Notification）是 Engagement 特性的技术支撑，这可能商业网站最关心的一点。
 需要 Chrome 50（Android Chrome 55）。离线推送时 Service Worker 并不在运行，
 需要 User Agent 接收信息并唤醒对应的 Service Worker，因此该特性依赖于浏览器厂商。
 
-相比而言推送消息较为复杂，PWA 的 Push 机制包括 [Notification][notifycation] 和 [Push API][push-api]
+相比而言推送消息较为复杂，PWA 的 Push 机制包括 [Notification][notification] 和 [Push API][push-api]
 两部分标准，前者用于向用户展示通知，后者用于订阅推送消息。其中 Notification 标准早已有之，在桌面浏览器上使用较多。
 此外通知的发送过程还依赖于 [Web Push Protocol][web-push]，由于移动设备在通信上的电量耗费问题，
 Apple 早就托管了 iOS 的通知推送，国内众厂商也有托管所有通知的倾向。WebPush 成为这一过程的标准对开发者和 Web 的长远发展都有好处。
@@ -208,7 +214,7 @@ Web App 也可以启用一些像 Native App 一样的特性：
 * Push Api: https://www.w3.org/TR/push-api/
 * Fetch Api: <https://fetch.spec.whatwg.org/>
 * Web Push Protocol: <https://tools.ietf.org/html/draft-ietf-webpush-protocol-12>
-* Notifycation: <https://www.w3.org/TR/notifications/>
+* Notification: <https://www.w3.org/TR/notifications/>
 * Web App Manifest: <https://w3c.github.io/manifest/>
 * Web Worker: <https://html.spec.whatwg.org/multipage/#dom-worker>
 * Service Worker: <https://www.w3.org/TR/service-workers/>
@@ -234,7 +240,7 @@ Web App 也可以启用一些像 Native App 一样的特性：
 [cross-origin]: /2015/10/10/cross-origin.html
 [http-cache]: /2017/04/04/using-http-cache.html
 [web-push]: https://tools.ietf.org/html/draft-ietf-webpush-protocol-12
-[notifycation]: https://www.w3.org/TR/notifications/
+[notification]: https://www.w3.org/TR/notifications/
 [push-api]: https://www.w3.org/TR/push-api/
 [webapp-manifest]: https://w3c.github.io/manifest/
 [web-worker]: https://html.spec.whatwg.org/multipage/#dom-worker
