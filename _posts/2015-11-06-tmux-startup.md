@@ -18,6 +18,9 @@ Tmux是一个终端复用软件，BSD协议发布。一般用于在一个命令�
 iTerm是一个GUI软件，它的窗格只是窗格而已！而Tmux是终端复用，在一个命令行窗口中不仅可以显示多个Shell的内容，而且可以保持多个会话。
 最重要的是：Tmux和Vim一样属于字符终端软件，不需要任何GUI的支持，在远程登录时尤其有用。
 
+> 终端和 Shell 有什么区别？请参考 
+[Shell的相关概念和配置方法](/2016/06/08/shell-config-files.html)。
+
 ## Tmux和screen有什么区别？
 
 这两个都是做终端复用的，我在阿里云ECS上[搭建Node.js API服务器][node-web]时用过`screen`，它是GNU软件，而Tmux是BSD的协议。

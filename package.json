@@ -1,0 +1,26 @@
+{
+  "name": "harttle.com",
+  "version": "1.0.0",
+  "description": "harttle.com =================",
+  "main": "evil.js",
+  "dependencies": {
+    "eslint-config-es5": "^0.5.0"
+  },
+  "devDependencies": {
+    "eslint-config-es5": "^0.5.0"
+  },
+  "scripts": {
+    "lint": "eslint ./_includes/js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harttle/harttle.github.io.git"
+  },
+  "author": "harttle <yangjvn@126.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/harttle/harttle.github.io/issues"
+  },
+  "homepage": "https://github.com/harttle/harttle.github.io#readme"
+}

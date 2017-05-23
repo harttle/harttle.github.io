@@ -123,9 +123,12 @@ aside{
   float: right;
   margin-left: 80px;
   width: 235px;
-  section{
-    margin-bottom: 70px;
+  .side-panel{
+    margin-bottom: 50px;
     overflow: hidden;
+  }
+  .follow{
+    margin-top: 15px;
   }
   h4{
     color: $grey;

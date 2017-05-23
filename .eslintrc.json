@@ -1,0 +1,16 @@
+{
+  "extends": "standard",
+  "env": {
+    "browser": true,
+    "jquery": true
+  },
+  "globals": {
+   "IASSpinnerExtension": true,
+   "IASNoneLeftExtension": true,
+   "socialShare": true,
+   "MathJax": true
+  },
+  "plugins": [
+    "standard"
+  ]
+}
