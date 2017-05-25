@@ -41,7 +41,6 @@ $left-width: 50%;
     &:hover{
       opacity: 1;
     }
-    @include link-hover($light-grey, $green);
     @include media-md{
       &.shown{
         display: inline;

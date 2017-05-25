@@ -98,7 +98,7 @@
 }
 
 .md pre {
-  padding: 15px 20px;
+  padding: 20px 25px;
   border: 0;
   overflow-x: auto;
 }
@@ -106,13 +106,13 @@
 .md code, .md pre {
   font-family: Consolas, "Liberation Mono", Courier, monospace;
   font-size: 12px;
+  line-height: 1.5em;
 }
 
 .md pre code {
   word-wrap: normal;
   white-space: pre;
   overflow-wrap: normal;
-  line-height: 20px;
 }
 
 .md *:not(pre) > code {

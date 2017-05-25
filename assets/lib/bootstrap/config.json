@@ -1,0 +1,12 @@
+{
+  "vars": {},
+  "css": [
+    "grid.less",
+    "responsive-utilities.less"
+  ],
+  "js": [
+    "affix.js",
+    "scrollspy.js"
+  ],
+  "customizerUrl": "http://getbootstrap.com/customize/?id=811e544829461e2ed6346741583b72f0"
+}
