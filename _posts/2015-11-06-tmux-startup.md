@@ -1,6 +1,6 @@
 ---
 title: 优雅地使用命令行：Tmux 终端复用
-tags: Bash GNU Linux Node.js Session Tmux Ubuntu Vim Windows 快捷键
+tags: Bash GNU Linux Node.js Session Tmux Vim 快捷键
 ---
 
 你是否曾经开过一大堆的Terminal？有没有把它们都保存下来的冲动？Tmux 的Session就是做这件事情的！你可以随时退出或者进入任何一个Session。每个Session有若干个Window，每个Window又可以分成多个窗格（Pane）。
@@ -9,24 +9,24 @@ tags: Bash GNU Linux Node.js Session Tmux Ubuntu Vim Windows 快捷键
 
 Tmux是一个终端复用软件，BSD协议发布。一般用于在一个命令行窗口中访问多个命令行会话，或者在一个命令行终端中同时使用多个程序。Tmux用起来是怎样的呢？看图：
 
+<!--more-->
+
 ![tmux screen shot][tmux-shot]
 
 > Tmux 最经典的使用场景便是用 Tmux+Vim 来做一个IDE，其中Vim部分的配置过程记录在了[这里][vim-ide]，本文介绍Tmux的配置和使用。
 
-## iTerm的窗格和Tmux有什么区别？
+## iTerm 的窗格和 Tmux 有什么区别？
 
 iTerm是一个GUI软件，它的窗格只是窗格而已！而Tmux是终端复用，在一个命令行窗口中不仅可以显示多个Shell的内容，而且可以保持多个会话。
 最重要的是：Tmux和Vim一样属于字符终端软件，不需要任何GUI的支持，在远程登录时尤其有用。
 
 > 终端和 Shell 有什么区别？请参考 
-[Shell的相关概念和配置方法](/2016/06/08/shell-config-files.html)。
+> [Shell的相关概念和配置方法](/2016/06/08/shell-config-files.html)。
 
-## Tmux和screen有什么区别？
+## Tmux 和 screen 有什么区别？
 
-这两个都是做终端复用的，我在阿里云ECS上[搭建Node.js API服务器][node-web]时用过`screen`，它是GNU软件，而Tmux是BSD的协议。
-它们最主要的区别是Tmux支持Vi/Emacs风格的键盘映射，更好的接口和文档，以及更好的脚本控制。所以建议使用Tmux！
-
-<!--more-->
+这两个都是做终端复用的，我在阿里云 ECS 上 [搭建Node.js API服务器][node-web] 时用过 `screen`，它是 GNU 软件，而 Tmux 是 BSD 的协议。
+它们最主要的区别是 Tmux 支持 Vi/Emacs 风格的键盘映射，更好的接口和文档，以及更好的脚本控制。所以建议使用 Tmux！
 
 # 安装Tmux
 
@@ -117,13 +117,14 @@ tmux show -g >> current.tmux.conf
     setw -g mode-keys vi      # Vi风格选择文本
 
 这样，按下`<Escape>`进入拷贝模式，`v`进行选择，`y`拷贝所选内容，`p`进行粘贴。
+另外只要开启鼠标模式（见下文），还可以用鼠标选取拷贝文字。
 
 > 旧版本中开始选择和复制选中快捷键绑定方式不同，请参考 <https://github.com/tmux/tmux/issues/592>
 
-# 鼠标切换窗格
+# 启用鼠标
 
 Tmux 和 Vim 风格非常像，也可以设置鼠标模式。下面的设置开启了所有鼠标功能：
-通过点击选择窗格，通过拖动更改窗格大小，通过鼠标选择窗口，还可以通过鼠标选择复制区域。
+点击选择窗格/窗口，拖动窗格大小，以及拖动鼠标复制文字。
 
     set -g mouse on
 
@@ -133,28 +134,36 @@ Tmux 和 Vim 风格非常像，也可以设置鼠标模式。下面的设置开�
 
 # 恢复用户空间
 
-Tmux有一个Bug，其中Shell的用户空间不是当前用户，结果就是mac下的open, sudo等命令都会失效。错误如下：
+Tmux 中的 Shell 没有运行在 Mac 的 GUI Session 中，因此需要访问 GUI Session 内容时就会出错。
+
+例如 `open`, `sudo` 等命令会有错误如下：
 
 ```
 The window server could not be contacted. open must be run with a user logged in at the console, either as that user or as root.
 ```
 
-如果你在使用 MacOS Sierra，只需要设置 iTerm2 的
-"Applications in terminal may access clipboard" 选项。
-否则你需要安装（MacOS） `reattach-to-user-namespace`：
+Vim [匿名寄存器][vim-registers] 访问不到系统剪切板，粘贴时有错误如下：
+
+```
+Nothing in register *
+```
+
+为了解决这些问题，可以使用 ChrisJohnsen 提供的 [`reattach-to-user-namespace`][reattach] 工具，
+在 Tmux 中启动 Shell 时立即挂载到 GUI Session 中。首先安装这一工具：
 
 ```bash
 brew update
 brew upgrade reattach-to-user-namespace
 ```
 
-并在`.tmux.conf`中添加： 
+然后在`.tmux.conf`中添加启动命令：
 
 ```
 set -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh"
 ```
 
-> 这里的 `/usr/local/bin/zsh` 要对应于你的默认Shell，如果你没做过手脚的话，应该在`/usr/bin/bash`。
+> 这里的 `/usr/local/bin/zsh` 要对应于你的默认 Shell 的路径，如果你没做过手脚的话，应该在`/usr/bin/bash`。
+> 可以通过 `echo $SHELL` 查看当前 Shell 的路径。
 
 # 快捷键
 
@@ -207,7 +216,12 @@ set -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh"
 * Wikipedia：<https://en.wikipedia.org/wiki/Tmux>
 * Vim 控制 Tmux：<https://github.com/benmills/vimux>
 
+[Harttle][harttle] 的 Mac 下 Tmux 配置在这里，供参考：<https://github.com/harttle/unix-home/blob/macos/.tmux.conf>
+
+[harttle]: http://harttle.com
 [node-web]: /2015/02/24/node-web-api.html
 [tmux-shot]: /assets/img/blog/tmux-concept.png
 [vim-ide]: /2015/11/04/vim-ide.html
 [changelog]: https://raw.githubusercontent.com/tmux/tmux/master/CHANGES
+[vim-registers]: /2016/07/25/vim-registers.html
+[reattach]: https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard

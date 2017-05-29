@@ -1,7 +1,6 @@
 ---
 layout: blog
 title: Item 3：尽量使用常量
-
 tags: C++ STL 宏 常量 指针 编译 函数重载
 excerpt: 尽量使用常量，以逻辑常量的方式编写常量方法，使用普通方法调用常量方法可避免代码重复。
 ---
@@ -24,16 +23,16 @@ char * const p = greeting;             // const pointer, non-const data
 const char * const p = greeting;       // const pointer, const data 
 ```
 
-`const`出现在`*`左边则被指向的对象是常量，出现在`*`右边则指针本身是常量。
-然而对于常量对象，有人把`const`放在类型左边，有人把`const`放在`*`左边，都是可以的：
+`const` 出现在 `*` 左边则被指向的对象是常量，出现在 `*` 右边则指针本身是常量。
+然而对于常量对象，有人把 `const` 放在类型左边，有人把 `const` 放在 `*` 左边，都是可以的：
 
 ```cpp
 void f1(const Widget *pw);   // f1 takes a pointer to a constant Widget object
 void f2(Widget const *pw);   // 等效
 ```
 
-STL的iterator也是类似的，如果你希望指针本身是常量，可以声明`const iterator`；
-如果你希望指针指向的对象是常量，请使用`const_iterator`：
+STL的iterator也是类似的，如果你希望指针本身是常量，可以声明 `const iterator`；
+如果你希望指针指向的对象是常量，请使用 `const_iterator`：
 
 ```cpp
 std::vector<int> vec;
@@ -55,7 +54,7 @@ std::vector<int>::const_iterator cIter = vec.begin();
 const Rational operator*(const Rational& lhs, const Rational& rhs);
 ```
 
-当用户错误地使用`=`时：
+当用户错误地使用 `=` 时：
 
 ```cpp
 Rational a, b, c;
@@ -75,7 +74,7 @@ if (a * b = c){
 
 成员方法添加常量限定符属于函数重载。常量对象只能调用常量方法，
 非常量对象优先调用非常量方法，如不存在会调用同名常量方法。
-常量成员函数也可以在类声明外定义，但声明和定义都需要指定`const`关键字。
+常量成员函数也可以在类声明外定义，但声明和定义都需要指定 `const` 关键字。
 例如：
 
 ```cpp
@@ -117,12 +116,12 @@ char *p = &tb[1];
 *p = 'a';
 ```
 
-因为`char* text`并未发生改变，所以编译器认为我们的操作都是合法的。
-然而我们定义了一个常量对象`tb`，只调用它的常量方法，却能够修改`tb`的数据。
-对数据的操作甚至可以放在`operator[]()`方法里面。
+因为 `char* text` 并未发生改变，所以编译器认为我们的操作都是合法的。
+然而我们定义了一个常量对象 `tb`，只调用它的常量方法，却能够修改`tb`的数据。
+对数据的操作甚至可以放在 `operator[]()` 方法里面。
 
 这一点不合理之处引发了**逻辑常量**（logical constness）的讨论：常量方法可以修改数据成员，
-只要客户检测不到变化就可以。可是常量方法修改数据成员C++编译器不会同意的！这时我们需要`mutable`限定符：
+只要客户检测不到变化就可以。可是常量方法修改数据成员C++编译器不会同意的！这时我们需要 `mutable` 限定符：
 
 ```cpp
 class CTextBlock {
@@ -164,6 +163,6 @@ char& operator[](size_t pos){
 }
 ```
 
-1. `*this`的类型是`TextBlock`，先把它强制隐式转换为`const TextBlock`，这样我们才能调用那个常量方法。
-2. 调用`operator[](size_t) const`，得到的返回值类型为`const char&`。
-3. 把返回值去掉`const`属性，得到类型为`char&`的返回值。
+1. `*this` 的类型是 `TextBlock`，先把它强制隐式转换为 `const TextBlock`，这样我们才能调用那个常量方法。
+2. 调用 `operator[](size_t) const`，得到的返回值类型为 `const char&`。
+3. 把返回值去掉 `const` 属性，得到类型为 `char&` 的返回值。
