@@ -2,7 +2,7 @@
 @import 'variables';
 $padding-horizontal: 25px;
 
-.toc {
+& {
   font-size: 14px;
   width: $toc-width;
   ul {
@@ -63,16 +63,15 @@ $padding-horizontal: 25px;
 }
 
 .sidenav {
-  margin-top: 20px;
   margin-bottom: 20px;
   background: #fff;
 }
 
-.toc.affix {
+&.affix {
   position: fixed;
   top: 40px;
 }
 
-.toc.affix-bottom {
+&.affix-bottom {
   position: absolute;
 }

@@ -76,6 +76,6 @@ tags: CSS HTML 盒模型 text-overflow overflow line-clamp 优雅降级 inline
 
 [text-overflow]: https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-overflow
 [line-clamp]: /assets/img/blog/css/line-clamp@2x.png
-[css-display]: {% post_url 2015-05-28-css-display %}
-[line-wrap]: {% post_url 2015-06-12-css-line-wrap %}
+[css-display]: /2015/05/28/css-display.html
+[line-wrap]: /2015/06/12/css-line-wrap.html
 

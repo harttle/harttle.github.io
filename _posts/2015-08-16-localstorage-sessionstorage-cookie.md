@@ -86,6 +86,6 @@ console.log('retrievedObject: ', JSON.parse(retrievedObject));
 
 > 这段代码来自StackOverflow： http://stackoverflow.com/questions/2010892/storing-objects-in-html5-localstorage
 
-[s-c]: {% post_url 2015-08-10-cookie-session %}
-[http]: {% post_url 2014-10-01-http %}
+[s-c]: /2015/08/10/cookie-session.html
+[http]: /2014/10/01/http.html
 [mdn-ls]: https://developer.mozilla.org/zh-CN/docs/Web/Guide/API/DOM/Storage

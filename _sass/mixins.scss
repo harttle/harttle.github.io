@@ -92,7 +92,7 @@
 
 @mixin link-hover($normal, $hover){
   color: $normal;
-  transition: all 0.3s;
+  transition: all 0.15s;
   &:hover, &:active{
     color: $hover;
   }
@@ -136,4 +136,54 @@
 @mixin transform-origin($v...){
   -webkit-transform-origin: $v;
   transform-origin: $v;
+}
+
+@mixin random-bg(){
+  background: url(https://unsplash.it/1500/600?random) #4670a9;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+  .overlay{
+    background: rgba(0,0,0,0.3);
+  }
+  h1{
+    font-size: 2.5em;
+    text-shadow: 0px 2px 5px black;
+    text-align: center;
+  }
+  time{
+    color: white;
+    text-shadow: 0 0 1px black;
+    font-size: 14px;
+    font-style: italic;
+    margin-top: 10px;
+  }
+}
+
+@mixin flattened-md(){
+  h1, h2, h3, h4, h5, h6{
+    margin: 20px 0 10px;
+    font-size: 18px;
+  }
+  p, h1, h2, h3, h4, h5, h6, b, strong, ul, ol, li{
+    color: #777;
+    font-weight: normal;
+    border-bottom: none;
+  }
+  blockquote{
+    border-left: none;
+    padding: 0;
+    p, h1, h2, h3, h4, h5, h6, b, strong{
+      color: #999;
+    }
+  }
+  @include media-xs{
+    @include ellipsis-v(80px);
+    img, pre, table{
+      display: none;
+    }
+    h1, h2, h3, h4, h5, h6{
+      margin: 0;
+    }
+  }
 }

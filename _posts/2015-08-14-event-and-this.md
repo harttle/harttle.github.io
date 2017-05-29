@@ -150,5 +150,5 @@ l1 bubbling <div id=​"l1">​…​</div>​  <div id=​"l1">​…​</div>�
 
 可见`currentTarget`总是和`this`相同，而`target`指向事实上被点击的目标DOM对象。
 
-[jquery-event]: {% post_url 2015-06-26-jquery-event %}
-[js-event]: {% post_url 2015-07-31-javascript-event %}
+[jquery-event]: /2015/06/26/jquery-event.html
+[js-event]: /2015/07/31/javascript-event.html

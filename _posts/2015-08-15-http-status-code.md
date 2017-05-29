@@ -239,6 +239,6 @@ Authorization:Basic eWFuZ2p2bjp5YW5nanZuaGFydA==
 * 505（HTTP Version not supported）
 
 
-[http]: {% post_url 2014-10-01-http %}
+[http]: /2014/10/01/http.html
 [basic-auth]: /assets/img/blog/basic-auth@2x.png
 [http-code]: http://zh.wikipedia.org/wiki/HTTP%E7%8A%B6%E6%80%81%E7%A0%81

@@ -1,17 +1,22 @@
 @import 'mixins';
 
+&{
+  overflow: hidden;
+}
 img{
-  @include circle(64px);
+  @include size(64px);
+  border-radius: 5px;
   float: left;
   margin-right: 10px;
 }
 header{
   overflow: hidden;
   font-size: 18px;
-  margin-bottom: 3px;
+  margin-top: 5px;
 }
 p{
   font-size: 13px;
+  margin-top: 5px;
   color: #aaa;
   font-style: italic;
 }

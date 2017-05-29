@@ -141,6 +141,6 @@ jQuery的`.html()`会调用`.innerHTML`来操作，但同时也会`catch`异常�
 这是因为IE8中有些元素的`.innerHTML`是只读的。见：http://stackoverflow.com/questions/3563107/jquery-html-vs-innerhtml
 
 
-[js-event]: {% post_url 2015-07-31-javascript-event %}
+[js-event]: /2015/07/31/javascript-event.html
 [dom]: https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model/Introduction
 [create]: http://www.w3school.com.cn/xmldom/met_document_createelement.asp

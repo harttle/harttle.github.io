@@ -163,4 +163,4 @@ int main() { std::cout<<"main"; return 0; }
 因此软件设计时不要依赖于其他编译单元的静态变量，可以通过单例模式来避免这一点。
 
 
-[mem-seg]: {% post_url 2015-07-22-memory-segment %}
+[mem-seg]: /2015/07/22/memory-segment.html

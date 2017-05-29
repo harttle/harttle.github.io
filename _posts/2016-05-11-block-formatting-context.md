@@ -172,5 +172,5 @@ CSS决定这时就用父元素来包裹子元素吧！
 </div>
 
 
-[float]: {% post_url 2016-01-28-css-floating %}
+[float]: /2016/01/28/css-floating.html
 [mdn]: https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context

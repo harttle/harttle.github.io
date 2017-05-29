@@ -3,7 +3,7 @@
 
 body {
   position: relative; /* for scroll spy with absolute position */
-  color: rgb(96, 96, 96);
+  color: #333;
   font-size: 15px;
   @include sans;
   -webkit-font-smoothing: antialiased;
@@ -36,4 +36,8 @@ padding: 0 30px;
 .list-unstyled{
   padding-left: 0px;
   list-style: none;
+}
+
+.text-center{
+  text-align: center;
 }

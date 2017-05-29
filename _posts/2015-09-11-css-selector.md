@@ -120,5 +120,5 @@ table tr td:first-child{
 * http://www.w3school.com.cn/css/css_selector_type.asp
 
 [pseudo-ele]: http://www.w3school.com.cn/css/css_pseudo_elements.asp
-[css-pri]: {% post_url 2015-07-16-css-priority %}
+[css-pri]: /2015/07/16/css-priority.html
 

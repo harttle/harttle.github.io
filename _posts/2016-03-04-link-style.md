@@ -150,8 +150,8 @@ a[href^=/], a[href^=http://hartle.com], a[href^=http://blog.harttle.com]{
 }
 ```
 
-[css-prior]: {% post_url 2015-07-16-css-priority %}
-[selector]: {% post_url 2015-09-11-css-selector %}
+[css-prior]: /2015/07/16/css-priority.html
+[selector]: /2015/09/11/css-selector.html
 [bg]: /2016/02/27/background-image.html
 [ext-link]: /assets/img/blog/css/ext-link@2x.png
 [display]: /2015/05/28/css-display.html

@@ -10,7 +10,7 @@ aside, .posts{
 
 @include media-xs{
   .posts {
-    margin-top: 30px;
+    margin-top: 20px;
   }
 }
 
@@ -25,6 +25,7 @@ aside, .posts{
     .day{
       font-size: 22px;
       line-height: 22px;
+      margin-top: 0;
     }
     .month{
       font-size: 14px;
@@ -53,6 +54,9 @@ aside, .posts{
           font-weight: normal;
         }
       }
+    }
+    .md{
+      @include flattened-md();
     }
     .more{
       margin-top: 10px;
@@ -90,48 +94,18 @@ aside, .posts{
   }
 }
 
-.md{
-  h1, h2, h3, h4, h5, h6{
-    margin: 20px 0 10px;
-    font-size: 18px;
-  }
-  p, h1, h2, h3, h4, h5, h6, b, strong{
-    color: #777;
-    font-weight: normal;
-    border-bottom: none;
-  }
-  blockquote{
-    border-left: none;
-    padding: 0;
-    p, h1, h2, h3, h4, h5, h6, b, strong{
-      color: #999;
-    }
-  }
-  @include media-xs{
-    @include ellipsis-v(80px);
-    img, pre, table{
-      display: none;
-    }
-    h1, h2, h3, h4, h5, h6{
-      margin: 0;
-    }
-  }
-}
-
 // layout
 aside{
-  float: right;
-  margin-left: 80px;
-  width: 235px;
-  .side-panel{
-    margin-bottom: 50px;
-    overflow: hidden;
+  section{
+    margin-bottom: 30px;
   }
   .follow{
     margin-top: 15px;
   }
   h4{
     color: $grey;
+    overflow: hidden;
+    font-size: 18px;
     margin: 0 0 20px;
     font-weight: normal;
     border-bottom: 1px solid #eee;
@@ -143,25 +117,32 @@ aside{
     width: 100%;
     margin-left: -100%;
     margin-top: 5px;
-    margin-bottom: -1px;
   }
-  section.follow{
-    h4::after{
-      @include animation(width-percentage 14s linear infinite);
-    }
+  section.module-author{
+    margin-bottom: 20px;
+  }
+  section.collection-list{
+    li{
+      margin-bottom: 10px;
+      a{
+        @include link-hover(#777, $blue);
+      }
+    } 
   }
   section.tag-list{
     .tag{
       margin-bottom: 1em;
       margin-right: 0.5em;
     }
+  }
+  section.collection-list, section.tag-list{
     h4::after{
       @include animation(width-percentage 14s linear 7s infinite);
     }
-  }
-  section:hover h4::after{
-    border-bottom: 1px solid $blue;
-    @include animation(width-percentage 1s linear infinite);
+    &:hover h4::after{
+      border-bottom: 1px solid $blue;
+      @include animation(width-percentage 1s linear infinite);
+    }
   }
 }
 
@@ -169,11 +150,3 @@ aside{
   from{margin-left: -100%;}
   to{margin-left: 100%;}
 }
-
-.content{
-  margin-right: 235px + 60px;
-  @include media-xs{
-    margin-right:0;
-  }
-}
-

@@ -1,8 +1,7 @@
 {
   "name": "harttle.com",
   "version": "1.0.0",
-  "description": "harttle.com =================",
-  "main": "evil.js",
+  "description": "source code for http://harttle.com",
   "dependencies": {
     "eslint-config-es5": "^0.5.0"
   },
@@ -11,6 +10,8 @@
   },
   "scripts": {
     "lint": "eslint ./_includes/js",
+    "start": "bundle exec jekyll serve -w --drafts --host 0.0.0.0 --incremental",
+    "build": "bundle exec jekyll build --incremental",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

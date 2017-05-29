@@ -9,6 +9,7 @@ tags: Bash Django Github Python SQL 数据库
 最初部署在BAE上，现在已经打包封存在Github了：https://github.com/harttle/godnotes
 本文记录了小编的第一个Django应用是如何开始的。
 
+<!--more-->
 
 # 安装
 

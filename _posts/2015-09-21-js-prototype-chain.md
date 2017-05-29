@@ -12,6 +12,8 @@ JavaScript的灵活性不亚于C++，你可以使用JavaScript尝试不同的程
 **不同于Java、C#等面向对象语言，JavaScript采用基于原型的继承方式。
 本文便来介绍使用JavaScript进行面向对象编程的核心概念：原型链。**
 
+<!--more-->
+
 # 用户定义类型的原型链
 
 [如何检查JavaScript变量类型？][type-check]一文指出，[instanceof][instanceof]关键字可以基于原型链来检测变量的类型。

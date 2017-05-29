@@ -120,4 +120,4 @@ void f(){}              // 注意：这里没有"模板实参"
 [meta]: /2015/08/25/2015-09-16-effective-cpp-48.html
 [partial]: http://en.cppreference.com/w/cpp/language/partial_specialization
 [full]: http://en.cppreference.com/w/cpp/language/template_specialization
-[item25]: {% post_url 2015-08-23-effective-cpp-25 %}
+[item25]: /2015/08/23/effective-cpp-25.html

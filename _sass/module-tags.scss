@@ -8,7 +8,7 @@ $left-width: 50%;
 }
 
 &{
-  @include absolute(102px, 0, 0, 0);
+  @include absolute(62px, 0, 0, 0);
   position: fixed;
   @include media-xs{
     position: static;
@@ -34,12 +34,14 @@ $left-width: 50%;
   }
   #tags-display-toggle{
     position: absolute;
-    opacity: 0.5;
     bottom: 30px;
     left: 30px;
     margin: 0;
-    &:hover{
-      opacity: 1;
+    button{
+      opacity: 0.5;
+      &:hover{
+        opacity: 1;
+      }
     }
     @include media-md{
       &.shown{
@@ -52,8 +54,7 @@ $left-width: 50%;
     top: 30px;
     left: 30px;
     font-size: 14px;
-    font-weight: bold;
-    color: $light-grey;
+    color: $grey;
   }
   @include media-xs{
     position: relative;

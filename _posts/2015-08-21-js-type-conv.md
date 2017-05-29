@@ -141,4 +141,4 @@ JavaScript给这些函数传入的参数也会进行隐式转换。例如BOM提�
 alert({a: 1});    // => [object Object]
 ```
 
-[item15]: {% post_url 2015-08-05-effective-cpp-15 %}
+[item15]: /2015/08/05/effective-cpp-15.html

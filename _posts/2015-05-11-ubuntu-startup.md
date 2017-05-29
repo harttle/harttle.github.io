@@ -7,6 +7,7 @@ tags: ArchLinux Bash Grub LAN Linux UTF-8 Ubuntu X11 磁盘 操作系统
 小编从2010年开始使用Ubuntu，直至2012年。也有3个年头了，历经了很多次从04升级到10，从10升级到04……
 现已全面转入ArchLinux和MacOS了，还是在此记录下Ubuntu使用过程中遇到的那些坑。
 
+<!--more-->
 
 ## Grub
 

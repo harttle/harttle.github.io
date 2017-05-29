@@ -1,11 +1,13 @@
 ---
 layout: blog
 title: LAMP 搭建
-tags: Apache Linux PHP kill 数据库
+tags: Apache Linux PHP 数据库
 ---
 
 听说PHP是世界上最好的编程语言，小编也试了一把。暂作记录在此。
 万一小编以后转向PHP了呢？
+
+<!--more-->
 
 # 下载安装
 

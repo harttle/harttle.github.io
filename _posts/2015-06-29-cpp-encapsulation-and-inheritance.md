@@ -121,6 +121,6 @@ public:
 };
 ```
 
-[item23]: {% post_url 2015-08-20-effective-cpp-23 %}
-[item32]: {% post_url 2015-08-30-effective-cpp-32 %}
-[item33]: {% post_url 2015-08-31-effective-cpp-33 %}
+[item23]: /2015/08/20/effective-cpp-23.html
+[item32]: /2015/08/30/effective-cpp-32.html
+[item33]: /2015/08/31/effective-cpp-33.html

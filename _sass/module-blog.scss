@@ -9,9 +9,6 @@
     display: none;
   }
   .blog-header{
-    h3{
-      margin: 20px 0 20px;
-    }
     .tag-list{
       margin-left: 0;
     }
@@ -19,19 +16,12 @@
 }
 
 .blog-header{
-  background: linear-gradient(172deg, $grey 0, $grey 15%, $blue 70%);
-  color: white;
-  h3{
-    margin: 50px 0 35px;
-    small{
-      color: $light-grey;
+  @include random-bg();
+  h1{
+    margin: 200px 0 120px;
+    a.collection{
+      font-size: 17px;
     }
-  }
-  time{
-    color: white;
-    font-size: 14px;
-    font-style: italic;
-    margin-top: 10px;
   }
   .tag-list{
     margin-bottom: 10px;
@@ -40,6 +30,8 @@
     .tag{
       border-color: white;
       margin-bottom: .5em;
+      background-color: transparent;
+      color: white;
     }
   }
   .container-fluid{
@@ -51,17 +43,6 @@
       clear: none;
     }
   }
-  @include media-xs{
-    h3{
-      margin: 35px 0 20px;
-    }
-    .tag-list{
-      margin-left: 0;
-    }
-    time{
-      display: none;
-    }
-  }
 }
 
 &.collapsed{
@@ -70,6 +51,16 @@
 
 @include media-xs{
   @include collapsed();
+  .blog-header{
+    time{
+      display: none;
+    }
+    h1{
+      margin: 20px 0 20px;
+      font-size: 1.8em;
+      text-align: left;
+    }
+  }
 }
 
 .content{
@@ -79,41 +70,29 @@
     margin-top: 30px;
     margin-left: 0;  
   }
+  .md {
+    margin-bottom: 50px;
+    color: #333;
+  }
 }
 
-.author-wrapper{
-  .module-author{
-    float: right;
-  }
-  overflow: hidden;
-  margin-top: 30px;
+.module-author{
+  float: right;
 }
 
 .post-pager{
-  margin-top: 30px;
-  margin-bottom: 100px;
+  margin-top: 10px;
+  margin-bottom: 20px;
   .btn-hover{
     max-width: 380px;
+    min-width: 200px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .previous{
-    float: left;
+  .previous, .next{
+    display: block;
     border-left: 1px solid $blue;
-  }
-  .next{
-    float: right;
-    border-right: 1px solid $blue;
-  }
-}
-
-#social-share-block{
-  .social-share{
-    margin: -2px 0 0;
-  }
-  li a{
-    @include inline-size(32px);
   }
 }
 

@@ -13,6 +13,8 @@ yum install git nodejs npm mongodb mongodb-server redis
 brew install mongodb nodejs redis
 ```
 
+<!--more-->
+
 # Node
 
 ## 运行服务器

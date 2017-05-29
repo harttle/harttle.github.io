@@ -163,5 +163,5 @@ void f(int arr[2][5]);
 ```
 
 [pr]: /cpp-pointers-and-references.html
-[item27]: {% post_url 2015-08-25-effective-cpp-27 %}
+[item27]: /2015/08/25/effective-cpp-27.html
 

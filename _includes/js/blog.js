@@ -1,11 +1,10 @@
 window.modules.blog = function (console, $ele) {
   recordPageView()
   initTOC()
-  initShareButtons()
   initRecommends()
 
   function initTOC () {
-    var toc = getTOC($('article'))
+    var toc = getTOC($('.md'))
     var $toc = $('.toc')
     if (toc) {
       $toc.append(toc)
@@ -59,25 +58,9 @@ window.modules.blog = function (console, $ele) {
 
       $('<div>').append($toc).find('ul.level-' + offset + ':last').append(li)
     })
-        // remove empty ul
+    // remove empty ul
     $toc.find('ul').not(':parent').remove()
     return $toc
-  }
-
-  function initShareButtons () {
-    var links = [{
-      plugin: 'weibo',
-      target: '_blank',
-      args: {
-        title: $('meta[name=description]').attr('content') + ' - ' + document.title
-      }
-    }, {
-      plugin: 'wechat',
-      title: '扫一扫！'
-    }]
-    window.socialShare($('#social-share-block').get(0), links, {
-      size: 'sm'
-    })
   }
 
   function initRecommends () {
@@ -131,7 +114,7 @@ window.modules.blog = function (console, $ele) {
       $(window).scroll(function () {
         if ($recommend.hasClass('in')) return
 
-        var article = $('article').get(0)
+        var article = $('.md').get(0)
         var total = article.clientHeight + article.offsetTop
         var scroll = document.body.scrollTop + window.innerHeight
         var icon = $('<i>').addClass('fa fa-hand-o-right')

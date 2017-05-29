@@ -108,6 +108,6 @@ John Gossman在2006年的[一篇博客][mvvm-ms]中也提到了WPF中MVVM的性�
 * MVC - Martin Fowler: <http://martinfowler.com/eaaDev/uiArchs.html#ModelViewController>
 * Observer Synchronization - Martin Fowler: <http://martinfowler.com/eaaDev/MediatedSynchronization.html>
 
-[angular-binding]: {% post_url 2015-06-06-angular-data-binding-and-digest %}
+[angular-binding]: /2015/06/06/angular-data-binding-and-digest.html
 [mvvm-ms]: https://blogs.msdn.microsoft.com/johngossman/2006/03/04/advantages-and-disadvantages-of-m-v-vm/
 [ms-binding]: https://msdn.microsoft.com/zh-cn/library/ms752347(v=vs.110).aspx

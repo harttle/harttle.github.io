@@ -115,8 +115,8 @@ if ( document.readyState === "complete" ||
 * MDN `DOMContentLoaded`事件：<https://developer.mozilla.org/zh-CN/docs/Web/Events/DOMContentLoaded>
 * MDN `document.readyState`属性：<https://developer.mozilla.org/zh-CN/docs/Web/API/Document/readyState>
 
-[jq-obj]: {% post_url 2015-08-06-jquery-object %}
+[jq-obj]: /2015/08/06/jquery-object.html
 [molily]: http://molily.de/domcontentloaded/
-[event]: {% post_url 2015-07-31-javascript-event %}
+[event]: /2015/07/31/javascript-event.html
 [jq-ready]: http://api.jquery.com/ready/
 [css-delay-dom]: /2016/05/15/stylesheet-delay-domcontentloaded.html

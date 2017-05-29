@@ -2,13 +2,12 @@
 @import 'variables';
 
 .banner{
-  padding: 35px 0 35px;
+  padding: 15px 0 15px;
   position: relative;
   z-index: 1000;
   background: $grey;
   .logo{
     line-height: 32px;
-    font-weight: bold;
     display: inline-block;
     letter-spacing: 0.03em;
     @include link-hover($light-grey, white);
@@ -20,9 +19,12 @@
     .logo-h{
       color: $green;
       font-size: 32px;
+      transition: color .15s;
+    }
+    &:hover .logo-h{
+      color: white;
     }
     .logo-land{
-      color: white;
       margin-left: 5px;
     }
   }

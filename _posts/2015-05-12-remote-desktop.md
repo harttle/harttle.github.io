@@ -5,8 +5,10 @@ tags: Bash IP Linux MAC Windows 网络 磁盘挂载 远程桌面
 ---
 
 Windows和Linux如何互连远程桌面？这是曾经困扰过小编的一个大问题。
-在小编已经熟悉Linux的今天这项技巧已经难以谈得上技巧了，
+在 [Harttle][harttle] 已经熟悉Linux的今天这项技巧已经难以谈得上技巧了，
 不过为了方便别人，以及方便多年后的自己，还是记录在这里吧。
+
+<!--more-->
 
 # Linux -> windows
 
@@ -51,3 +53,5 @@ rdesktop <IP>:<PORT> -r disk:floppy=/mnt/floppy
 		[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Tenninal Server\WinStations\RDP-Tcp]
 		
 3. 重启
+
+[harttle]: http://harttle.com

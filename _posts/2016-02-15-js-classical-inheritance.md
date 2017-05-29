@@ -117,4 +117,4 @@ var Man = function(girl){
 > 欲知后事如何，且关注后续的文章！
 
 [func-inv]: /2016/02/03/js-function-invocation.html
-[js-type]: {% post_url 2015-09-18-js-type-checking %}
+[js-type]: /2015/09/18/js-type-checking.html

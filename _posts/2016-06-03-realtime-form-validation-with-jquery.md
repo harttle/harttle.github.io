@@ -160,5 +160,5 @@ jQuery.validator.addMethod("regex", function(value, element, regexp) {
 
 * 在这里给出了内置的validator列表：<https://jqueryvalidation.org/documentation/#link-list-of-built-in-validation-methods>
 
-[dom-ready]: {% post_url 2016-05-14-binding-document-ready-event %}
-[jquery-event]: {% post_url 2015-06-26-jquery-event %}
+[dom-ready]: /2016/05/14/binding-document-ready-event.html
+[jquery-event]: /2015/06/26/jquery-event.html

@@ -131,5 +131,5 @@ return cacheEnabled && cache[key] || read(key);
 
 [brk]: https://github.com/brick-js/brick.js
 [type-sys]: https://en.wikipedia.org/wiki/Type_system
-[min-cast]: {% post_url 2015-08-25-effective-cpp-27 %}
-[compile-dep]: {% post_url 2015-08-29-effective-cpp-31 %}
+[min-cast]: /2015/08/25/effective-cpp-27.html
+[compile-dep]: /2015/08/29/effective-cpp-31.html

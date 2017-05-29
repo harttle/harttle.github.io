@@ -149,6 +149,6 @@ Man.prototype.fuck.apply(animal, args);
 
 Apply使得一个方法可以用不同的对象对象来调用，比如`animal`也可以用`Man`的方式来`fuck`。
 
-[elegant-js]: {% post_url 2016-01-18-elegant-javascript %}
+[elegant-js]: /2016/01/18/elegant-javascript.html
 
 

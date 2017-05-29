@@ -98,5 +98,5 @@ document.body.appendChild(document.createTextNode('abc!'));
     
     > 使用CSS3的transition也可以获得不错的性能。
 
-[css-display]: {% post_url 2015-05-28-css-display %}
+[css-display]: /2015/05/28/css-display.html
 [wh]: /2016/04/24/client-height-width.html

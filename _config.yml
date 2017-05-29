@@ -1,5 +1,5 @@
 title: Harttle Land
-description: 致力于简单的、一致的、高效的前端开发
+description: 分享技术，共建开放平台
 url: http://harttle.com
 author: Harttle
 twitter:
@@ -19,6 +19,17 @@ permalink: /:year/:month/:day/:title.html
 paginate: 7
 paginate_path: "page:num"
 
+collections:
+  effective-cpp:
+    output: true
+    permalink: /:year/:month/:day/:title.html
+  git-workflow:
+    output: true
+    permalink: /:year/:month/:day/:title.html
+  vim-practice:
+    output: true
+    permalink: /:year/:month/:day/:title.html
+
 markdown: kramdown
 markdown_ext:  md
 excerpt_separator: "<!--more-->"
@@ -28,7 +39,7 @@ kramdown:
   hard_wrap: false
 lsi: false
 
-exclude: ['README.md', '.*', 'bin/', 'Gemfile']
+exclude: ['README.md', '.*', 'bin/', 'Gemfile', 'node_modules', '*.log', 'package.json']
 
 gems:
   - jekyll-sitemap
@@ -48,4 +59,18 @@ defaults:
       path: "_posts"
     values:
       layout: "blog"
-
+  -
+    scope:
+      path: "_effective-cpp"
+    values:
+      layout: "blog"
+  -
+    scope:
+      path: "_git-workflow"
+    values:
+      layout: "blog"
+  -
+    scope:
+      path: "_vim-practice"
+    values:
+      layout: "blog"

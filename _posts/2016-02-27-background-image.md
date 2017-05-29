@@ -184,5 +184,5 @@ h2 {
 
 [bullet]: /assets/img/blog/css/bullet@2x.png
 [background-positioning]: /assets/img/blog/css/background-positioning@2x.png
-[doctype]: {% post_url 2016-01-22-doctype %}
+[doctype]: /2016/01/22/doctype.html
 [rounded-corner]: /assets/img/blog/css/rounded-corner@2x.png

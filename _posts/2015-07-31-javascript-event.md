@@ -8,7 +8,7 @@ excerpt: 本文来讨论DOM标准中是如何规定这些JavaScript事件的，�
 
 在项目开发中通常会使用类似jQuery的工具来绑定事件处理函数，
 也可以设置捕获，或者中断事件流，正如这篇文章锁讨论的：
-[jQuery事件：bind、delegate、on的行为与性能]({% post_url 2015-06-26-jquery-event %})。
+[jQuery事件：bind、delegate、on的行为与性能][jquery-event]。
 本文来讨论[DOM标准][dom-spec]中是如何规定这些JavaScript事件的，以及jQuery源码中DOM事件的实现方式。
 
 # JavaScript 事件
@@ -262,4 +262,4 @@ jQuery.removeEvent = function(elem, type, handle){
 [ie]: https://msdn.microsoft.com/en-us/library/ms536343(v=vs.85).aspx
 [level3]: http://www.w3.org/TR/DOM-Level-3-Events/
 [dom-spec]: http://www.w3.org/TR/DOM-Level-2-Events/events.html
-[jquery-event]: {% post_url 2015-06-26-jquery-event %}
+[jquery-event]: /2015/06/26/jquery-event.html

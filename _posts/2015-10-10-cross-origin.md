@@ -217,9 +217,9 @@ window.addEventListener('message',function(event) {
 访问控制的责任仍然是在提供资源的服务器一方，这和JSONP是一样的。
 
 [jquery-json]: http://api.jquery.com/jquery.getjson/
-[event-this]: {% post_url 2015-08-14-event-and-this %}
+[event-this]: /2015/08/14/event-and-this.html
 [rfc2616]: http://www.faqs.org/rfcs/rfc2616.html
-[statuscode]: {% post_url 2015-08-15-http-status-code %}
+[statuscode]: /2015/08/15/http-status-code.html
 [cors-err]: /assets/img/blog/cors/error@2x.png
 [cors-cookie]: /2016/12/28/cors-with-cookie.html
 [cors-preflight]: /2016/12/30/cors-preflight.html

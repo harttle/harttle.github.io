@@ -9,6 +9,8 @@ tags: ArchLinux Bash DHCP DNS HTTP IP Linux MAC Socket TCP 网络 路由 systemd
 
 > 以下以我使用的linux发行版`ArchLinux`为例，并忽略了发行版相关的软件安装过程。我的linux有两块网卡，无线网卡`wlp13s0`用于开通子网，有线网卡`enp14s0`作为出口。
 
+<!--more-->
+
 # DHCP
 
 DHCP是为客户端提供网络配置的服务器（[RFC 2131](https://www.ietf.org/rfc/rfc2131.txt)）。我们用它来配置局域网内的主机，让它们从我的linux主机路由。

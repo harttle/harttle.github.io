@@ -1,0 +1,31 @@
+---
+layout: default
+title: 细读 Effective C++
+description: 深入 C++ 的诸多设计细节，了解实际场景的最佳实践，以面向对象的方式重新认识 C++。
+---
+
+<div class="module-collection">
+  <div class="jumbotron">
+    <div class="container-fluid overlay">
+      <h1>{{page.title}}</h1>
+      <p>{{page.description}}</p>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+    {%for post in site.effective-cpp %}
+      <article class="col-sm-6">
+        <h3>
+          <a class="title" href="{{ post.url }}">{{ post.title }}</a>
+        </h3>
+        <p class="tag-list">
+          {% for tag in post.tags %}
+          <a class="tag" href="/tags.html#{{tag}}">{{tag}}</a>
+          {% endfor %}
+        </p>
+        <div class="md">{{ post.excerpt }}</div>
+      </article>
+    {% endfor %}
+    </div>
+  </div>
+</div>

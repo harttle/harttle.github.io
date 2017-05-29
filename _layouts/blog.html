@@ -2,25 +2,16 @@
 layout: default
 ---
 
-<div class="module-blog">
+<article class="module-blog">
   <header class="blog-header">
-    <div class="container-fluid">
-      <time class="pull-right">
-        {% assign d = page.date | date: "%-d"  %}
-        {{ page.date | date: "%A, %B" }} 
-        {% case d %}
-          {% when '1' or '21' or '31' %}{{ d }}st
-          {% when '2' or '22' %}{{ d }}nd
-          {% when '3' or '23' %}{{ d }}rd
-          {% else %}{{ d }}th
-          {% endcase %}, 
-        {{ page.date | date: "%Y" }}
-      </time>
-      <h3>{{page.title}}
-        {% if page.subtitle %}<small>{{page.subtitle}}</small>{% endif %}
-      </h3>
+    <div class="container-fluid overlay">
+      <time class="pull-right">{{ page.date | date: "%Y/%m/%d" }}</time>
+      <h1>
+        {{page.title}}
+        <a class="collection" href="/{{page.collection}}.html">{{page.collection}}</a>
+      </h1>
 
-      <aside> <div class="toc"></div> </aside>
+      <aside class="toc"></aside>
 
       <p class="tag-list">
         {% for tag in page.tags %}
@@ -32,14 +23,12 @@ layout: default
 
   <div class="container-fluid">
     <div class="content">
-      <article class="md">
+      <div class="md">
         {{ content }}
         <p>转载请注明来源： <a href="http://harttle.com{{page.url}}">http://harttle.com{{page.url}}</a></p>
-      </article>
-
-      <div class="author-wrapper">
-        {% include author.html %}
       </div>
+
+      {% include author.html %}
       {% include post-pager.html %}
       {% include comments.html %}
     </div>
@@ -51,5 +40,5 @@ layout: default
   </div>
 
   {% include latex.html %}
-</div>
+</article>
 

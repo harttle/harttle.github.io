@@ -86,6 +86,6 @@ DOM解析到`<script>`标签时会阻塞DOM解析，开始如下操作：
 * MDN `DOMContentLoaded`事件：<https://developer.mozilla.org/zh-CN/docs/Web/Events/DOMContentLoaded>
 
 [molily]: http://molily.de/domcontentloaded/
-[event]: {% post_url 2015-07-31-javascript-event %}
+[event]: /2015/07/31/javascript-event.html
 [jq-ready]: http://api.jquery.com/ready/
 [dom-ready]: /2016/05/14/binding-document-ready-event.html

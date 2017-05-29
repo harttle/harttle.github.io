@@ -166,6 +166,6 @@ int main(){
 **封闭类中成员对象的内置类型成员变量的"默认初始化"行为取决于当前封闭类对象的存储类型，而存储类型对应的默认初始化规则仍然是不变的**。
 
 
-[item4]: {% post_url 2015-07-22-effective-cpp-4 %}
-[mem]: {% post_url 2015-07-22-memory-segment %}
+[item4]: /2015/07/22/effective-cpp-4.html
+[mem]: /2015/07/22/memory-segment.html
 

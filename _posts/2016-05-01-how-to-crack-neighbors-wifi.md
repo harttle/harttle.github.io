@@ -76,4 +76,4 @@ ifr.contentDocument.getElementsByTagName('passphrase')[0].value
 
 控制台便出现明文密码了！见上图。
 
-[ifr-injection]: {% post_url 2016-04-14-iframe-script-injection %}
+[ifr-injection]: /2016/04/14/iframe-script-injection.html

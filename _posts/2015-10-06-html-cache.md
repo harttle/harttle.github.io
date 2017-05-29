@@ -74,4 +74,4 @@ excerpt: 本文从预加载的角度介绍如何优化页面载入和渲染的�
 
 
 [pva]: https://developer.mozilla.org/zh-CN/docs/Web/Guide/User_experience/Using_the_Page_Visibility_API
-[status-code]: {% post_url 2015-08-15-http-status-code %}
+[status-code]: /2015/08/15/http-status-code.html

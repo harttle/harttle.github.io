@@ -6,6 +6,8 @@ tags: MySQL SQL 引用 排序 字符串 数据库
 
 SQL 是一门 ANSI 的标准计算机语言，用来访问和操作数据库系统。有些命令不同的RDBMS中不一致，以MySQL为例。
 
+<!--more-->
+
 # DATABASE
 
 ```sql

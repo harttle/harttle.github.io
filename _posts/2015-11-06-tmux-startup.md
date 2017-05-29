@@ -210,7 +210,7 @@ set -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh"
 * Wikipedia：<https://en.wikipedia.org/wiki/Tmux>
 * Vim 控制 Tmux：<https://github.com/benmills/vimux>
 
-[node-web]: {% post_url 2015-02-24-node-web-api %}
+[node-web]: /2015/02/24/node-web-api.html
 [tmux-shot]: /assets/img/blog/tmux-concept.png
-[vim-ide]: {% post_url 2015-11-04-vim-ide %}
+[vim-ide]: /2015/11/04/vim-ide.html
 [changelog]: https://raw.githubusercontent.com/tmux/tmux/master/CHANGES

@@ -193,6 +193,6 @@ cout<<p1 + 3<<endl;   // CPerson(3)，p.int();
 p1 = 3 + p1;          // p1.int()，CPerson(4)
 ```
 
-[item3]: {% post_url 2015-07-21-effective-cpp-3 %}
-[item20]: {% post_url 2015-08-13-effective-cpp-20 %}
-[item25]: {% post_url 2015-08-23-effective-cpp-25 %}
+[item3]: /2015/07/21/effective-cpp-3.html
+[item20]: /2015/08/13/effective-cpp-20.html
+[item25]: /2015/08/23/effective-cpp-25.html

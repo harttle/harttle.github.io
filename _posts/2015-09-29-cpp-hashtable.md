@@ -107,5 +107,5 @@ const int HashTable::get(key){
 ```
 
 [hashtable]: https://zh.wikipedia.org/wiki/%E5%93%88%E5%B8%8C%E8%A1%A8
-[item13]: {% post_url 2015-08-02-effective-cpp-13 %}
-[item29]: {% post_url 2015-08-27-effective-cpp-29 %}
+[item13]: /2015/08/02/effective-cpp-13.html
+[item29]: /2015/08/27/effective-cpp-29.html

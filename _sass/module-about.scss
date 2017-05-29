@@ -9,14 +9,13 @@ $footer-height: 50px;
     margin-bottom: 20px;
   }
   .lead{
-    color: #7B7B7B;
+    color: white;
     font-size: 24px;
     margin-bottom: 100px;
   }
 }
 
 .links{
-  background-color: rgba(0,0,0,0.2);
   .container-fluid{
     padding-top: 70px;
     padding-bottom: 70px;
@@ -39,7 +38,7 @@ $footer-height: 50px;
       border-bottom: 1px solid $border-color;
     }
     ul{
-      $fore-color: #888;
+      $fore-color: #aaa;
       list-style: none;
       min-height: 140px;
       color: $fore-color;
@@ -96,6 +95,7 @@ footer{
   text-align: center;
   line-height: $footer-height;
   background-color: #111;
+  color: #777;
   div{
     white-space: nowrap;
     overflow: hidden;

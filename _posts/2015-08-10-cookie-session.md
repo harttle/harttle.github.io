@@ -122,7 +122,7 @@ Web应用框架都会实现上述过程，在Web应用中可以直接获得当�
 
 
 [cookie]: https://zh.wikipedia.org/zh-cn/Cookie
-[http]: {% post_url 2014-10-01-http %}
+[http]: /2014/10/01/http.html
 [2109]: https://www.ietf.org/rfc/rfc2109.txt
 [cookie]: /assets/img/blog/cookie.png
 
