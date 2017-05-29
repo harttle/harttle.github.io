@@ -8,7 +8,9 @@ layout: default
       <time class="pull-right">{{ page.date | date: "%Y/%m/%d" }}</time>
       <h1>
         {{page.title}}
+        {% if page.collection != "posts" %}
         <a class="collection" href="/{{page.collection}}.html">{{page.collection}}</a>
+        {% endif %}
       </h1>
 
       <aside class="toc"></aside>
