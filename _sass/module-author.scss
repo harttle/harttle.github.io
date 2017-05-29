@@ -2,6 +2,7 @@
 
 &{
   overflow: hidden;
+  min-width: 220px;
 }
 img{
   @include size(64px);

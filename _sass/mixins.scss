@@ -178,7 +178,6 @@
     }
   }
   @include media-xs{
-    @include ellipsis-v(80px);
     img, pre, table{
       display: none;
     }
