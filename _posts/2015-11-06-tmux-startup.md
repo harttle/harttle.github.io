@@ -110,28 +110,25 @@ tmux show -g >> current.tmux.conf
 我们可以让上述拷贝快捷键符合Vi风格：
 
     bind Escape copy-mode
-    bind -t vi-copy v begin-selection
-    bind -t vi-copy y copy-selection
+    bind-key -Tcopy-mode-vi 'v' send -X begin-selection
+    bind-key -Tcopy-mode-vi 'y' send -X copy-selection
     unbind p
     bind p pasteb
     setw -g mode-keys vi      # Vi风格选择文本
 
 这样，按下`<Escape>`进入拷贝模式，`v`进行选择，`y`拷贝所选内容，`p`进行粘贴。
 
+> 旧版本中开始选择和复制选中快捷键绑定方式不同，请参考 <https://github.com/tmux/tmux/issues/592>
+
 # 鼠标切换窗格
 
-Tmux和Vim风格非常像，也可以设置鼠标模式。下面的设置开启了所有鼠标功能：
+Tmux 和 Vim 风格非常像，也可以设置鼠标模式。下面的设置开启了所有鼠标功能：
 通过点击选择窗格，通过拖动更改窗格大小，通过鼠标选择窗口，还可以通过鼠标选择复制区域。
-
-    setw -g mode-mouse on
-    set -g mouse-select-pane on
-    set -g mouse-resize-pane on
-    set -g mouse-select-window on
-
-从 2.1 版本开始（发布于 2015.10.18），上述 4 个选项就不可用了。统一使用下面的配置：
 
     set -g mouse on
 
+> 2.1 之前的版本(发布于 2015.10.18) 需要设置 `mode-mouse`, `mouse-select-pane`, `mouse-resize-pane`, `mouse-select-window`
+> 等4 个选项来开启所有鼠标功能，现在只需要设置 `mouse` 选项了。
 > 使用 `tmux -V` 可以查看当前安装的 tmux 版本，版本更新日志见 [Tmux Changelog][changelog]。
 
 # 恢复用户空间
@@ -142,22 +139,22 @@ Tmux有一个Bug，其中Shell的用户空间不是当前用户，结果就是ma
 The window server could not be contacted. open must be run with a user logged in at the console, either as that user or as root.
 ```
 
-解决办法如下：
-
-更新`reattach-to-user-namespace`：
+如果你在使用 MacOS Sierra，只需要设置 iTerm2 的
+"Applications in terminal may access clipboard" 选项。
+否则你需要安装（MacOS） `reattach-to-user-namespace`：
 
 ```bash
 brew update
 brew upgrade reattach-to-user-namespace
 ```
 
-在`.tmux.conf`中添加： 
+并在`.tmux.conf`中添加： 
 
 ```
 set -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh"
 ```
 
-> 这里的`/usr/local/bin/zsh`要对应于你的默认Shell，如果你没做过手脚的话，应该在`/usr/bin/bash`。
+> 这里的 `/usr/local/bin/zsh` 要对应于你的默认Shell，如果你没做过手脚的话，应该在`/usr/bin/bash`。
 
 # 快捷键
 
@@ -167,7 +164,7 @@ set -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh"
     s  list sessions
     $  name session
 
-> `:new -s <session-name>`可以指定新Session的名字。
+> `:new -s <session-name>`可以指定新 Session 的名字。
 
 ## Windows (tabs)
 
