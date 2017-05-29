@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: 概念建模与数据库设计
-subtitle: 数据库系统基础笔记
+
 tags: SQL 排序 磁盘 集合 数据库 
 ---
 

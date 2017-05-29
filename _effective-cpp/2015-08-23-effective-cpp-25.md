@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: Item 25：考虑实现一个不抛异常的swap
-subtitle: Effective C++笔记
+
 tags: C++ STL 异常 模板 特化 作用域 函数重载 
 excerpt: 提供一个更加高效的，不抛异常的共有成员函数（比如`Widget::swap`）。在你类（或类模板）的同一命名空间下提供非成员函数`swap`，调用你的成员函数。如果你写的是类而不是类模板，请偏特化`std::swap`，同样应当调用你的成员函数。调用时，请首先用`using`使`std::swap`可见，然后直接调用`swap`。 
 ---

@@ -1,7 +1,7 @@
 ---
 layout: blog
 title:  关系数据模型
-subtitle: 数据库系统基础笔记
+
 tags: 数据库
 ---
 

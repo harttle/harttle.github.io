@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: Item 38：通过组合表示"拥有"或"以...实现"的关系
-subtitle: Effective C++笔记
+
 tags: C++ 对象组合 继承
 excerpt: 一个类型包含另一个类型的对象时，我们这两个类型之间是组合关系。组合是比继承更加灵活的软件复用方法。
 ---

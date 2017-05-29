@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: Linux下的触摸板设置 
-subtitle: 以 Arch Linux 为例
+
 tags: ArchLinux Bash Linux X11 grep 事件 编译 触摸板
 excerpt: Arch Linux 下的触摸板配置：基本设置、输入时禁止触摸板敲击、外接鼠标时禁用触摸板。
 ---

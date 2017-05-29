@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: Item 28：不要返回对象内部的句柄
-subtitle: Effective C++笔记
+
 tags: C++ 内存 封装 引用 指针 迭代器
 excerpt: 这里的“句柄”（handle）包括引用、指针和迭代器。这样可以增加类的封装性、使得`const`函数更加`const`，也避免了空引用的创建（dangling handles）。
 ---

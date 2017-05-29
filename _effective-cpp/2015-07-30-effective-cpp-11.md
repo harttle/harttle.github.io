@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: Item 11：赋值运算符的自赋值问题
-subtitle: Effective C++笔记
+
 tags: C++ 异常 引用 指针 流水线 赋值运算符 运算符重载
 excerpt:  赋值运算符的重载要注意自赋值安全和异常安全。有三种方法： 1. 判断两个地址是否相同 2. 仔细地排列语句顺序 3. Copy and Swap
 ---

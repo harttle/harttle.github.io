@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: Item 16：使用同样的形式来new和delete
-subtitle: Effective C++笔记
+
 tags: C++ 引用 指针 数组 动态内存 构造函数
 excerpt: 如果你用`new`申请了动态内存，请用`delete`来销毁；如果你用`new xx[]`申请了动态内存，请用`delete[]`来销毁。
 ---

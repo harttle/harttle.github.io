@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: Item 13：使用对象来管理资源
-subtitle: Effective C++笔记
+
 tags: C++ RAII STL 内存 异常 作用域 智能指针 析构函数 运算符重载 栈空间 堆空间
 excerpt: 创建资源后立即放入资源管理对象中，并利用资源管理对象的析构函数来确保资源被释放。复制一个 auto_ptr 会使它变成空
 ---
