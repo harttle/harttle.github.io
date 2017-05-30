@@ -140,6 +140,9 @@
 
 @mixin random-bg(){
   background: url(https://unsplash.it/1500/600?random) #4670a9;
+  @include media-xs(){
+    background: #4670a9;
+  }
   background-size: cover;
   background-attachment: fixed;
   color: white;
