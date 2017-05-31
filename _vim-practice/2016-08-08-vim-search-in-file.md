@@ -136,31 +136,36 @@ replace with bar (y/n/a/q/l/^E/^Y)?
 
 ## 高亮颜色设置
 
-如果你像我一样觉得高亮的颜色不太舒服，也可以进行设置：
+如果你像我一样觉得高亮的颜色不太舒服，可以在 `~/.vimrc` 中进行设置：
 
 ```vim
-highlight Search ctermbg=grey ctermfg=black 
+highlight Search ctermbg=yellow ctermfg=black 
+highlight IncSearch ctermbg=black ctermfg=yellow 
+highlight MatchParen cterm=underline ctermbg=NONE ctermfg=NONE
 ```
 
-> 将上述配置粘贴到`~/.vimrc`，重新打开vim即可生效。
+上述配置指定 Search 结果的前景色（foreground）为黑色，背景色（background）为灰色；
+渐进搜索的前景色为黑色，背景色为黄色；光标处的字符加下划线。
 
-上述配置指定Search结果的前景色（foreground）为黑色，背景色（background）为灰色。
-更多的CTERM颜色可以查阅：<http://vim.wikia.com/wiki/Xterm256_color_names_for_console_Vim>
+> 更多的CTERM颜色可以查阅：<http://vim.wikia.com/wiki/Xterm256_color_names_for_console_Vim>
 
 ## 禁用/启用高亮
 
-有木有觉得每次查找替换后Vim仍然高亮着搜索结果？
+有木有觉得每次查找替换后 Vim 仍然高亮着搜索结果？
 可以手动让它停止高亮，在normal模式下输入：
 
-```
+```vim
 :nohighlight
 " 等效于
 :nohl
 ```
 
-其实上述命令禁用了所有高亮，正确的命令是`:set nohlsearch`。
+其实上述命令禁用了所有高亮，只禁用搜索高亮的命令是`:set nohlsearch`。
 下次搜索时需要`:set hlsearch`再次启动搜索高亮。
-怎么能够让Vim查找/替换后自动取消高亮，下次查找时再自动开启呢？
+
+### 延时禁用
+
+怎么能够让Vim查找/替换后一段时间自动取消高亮，发生查找时自动开启呢？
 
 ```vim
 " 当光标一段时间保持不动了，就禁用高亮
@@ -174,6 +179,25 @@ noremap * *:set hlsearch<cr>
 ```
 
 > 将上述配置粘贴到`~/.vimrc`，重新打开vim即可生效。
+
+### 一键禁用
+
+如果延时禁用搜索高亮仍然不够舒服，可以设置快捷键来一键禁用/开启搜索高亮：
+
+```
+noremap n :set hlsearch<cr>n
+noremap N :set hlsearch<cr>N
+noremap / :set hlsearch<cr>/
+noremap ? :set hlsearch<cr>?
+noremap * *:set hlsearch<cr>
+
+nnoremap <c-h> :call DisableHighlight()<cr>
+function! DisableHighlight()
+    set nohlsearch
+endfunc
+```
+
+希望关闭高亮时只需要按下 `Ctrl+H`，当发生下次搜索时又会自动启用。
 
 # 参考阅读
 

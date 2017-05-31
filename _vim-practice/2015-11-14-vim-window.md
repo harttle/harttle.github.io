@@ -16,7 +16,7 @@ tags: Bash Linux Vim 快捷键
 
 ![vim window][vim-window]
 
-# 打开关闭
+# 分屏打开多个文件
 
 使用`-O`参数可以让Vim以分屏的方式打开多个文件：
 
@@ -58,11 +58,11 @@ Ctrl+w T        当前窗口移动到新标签页
 切换窗口的快捷键就是`Ctrl+w`前缀 + `hjkl`：
 
 ```
-Ctrl+W h        切换到左边窗口
-Ctrl+W j        切换到下边窗口
-Ctrl+W k        切换到上边窗口
-Ctrl+W l        切换到右边窗口
-Ctrl+W w        遍历切换窗口
+Ctrl+w h        切换到左边窗口
+Ctrl+w j        切换到下边窗口
+Ctrl+w k        切换到上边窗口
+Ctrl+w l        切换到右边窗口
+Ctrl+w w        遍历切换窗口
 ```
 
 > 还有`t`切换到最上方的窗口，`b`切换到最下方的窗口。
@@ -72,10 +72,10 @@ Ctrl+W w        遍历切换窗口
 分屏后还可以把当前窗口向任何方向移动，只需要将上述快捷键中的`hjkl`大写：
 
 ```
-Ctrl+W H        向左移动当前窗口
-Ctrl+W J        向下移动当前窗口
-Ctrl+W K        向上移动当前窗口
-Ctrl+W L        向右移动当前窗口
+Ctrl+w H        向左移动当前窗口
+Ctrl+w J        向下移动当前窗口
+Ctrl+w K        向上移动当前窗口
+Ctrl+w L        向右移动当前窗口
 ```
 
 # 调整大小
@@ -83,9 +83,9 @@ Ctrl+W L        向右移动当前窗口
 调整窗口大小的快捷键仍然有`Ctrl+W`前缀：
 
 ```
-Ctrl+W +        增加窗口高度
-Ctrl+W -        减小窗口高度
-Ctrl+W =        统一窗口高度
+Ctrl+w +        增加窗口高度
+Ctrl+w -        减小窗口高度
+Ctrl+w =        统一窗口高度
 ```
 
 [tmux]: /2015/11/06/tmux-startup.html

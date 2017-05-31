@@ -7,13 +7,14 @@
   z-index: 1000;
   background: $grey;
   .logo{
-    line-height: 32px;
+    height: 38px;
+    line-height: 38px;
     display: inline-block;
     letter-spacing: 0.03em;
     @include link-hover($light-grey, white);
     @include serif;
-    * {
-      vertical-align: bottom;
+    > * {
+      vertical-align: middle;
       font-size: 24px;
     }
     .logo-h{
