@@ -13,7 +13,7 @@ tags: Git Github LaTeX Markdown 搜索引擎 Liquid Jekyll
 * **[GitHub](http://github.com/)** 是一个用于使用Git版本控制系统项目的共享虚拟主机服务，提供了无限的存储空间以及网络流量。
 * **markdown** 是一种轻量级标记语言，可用少量的编辑工作生成美观的 HTML 文件。已经成为 GitHub 托管的项目中默认的文档格式，当然 GitHub 也扩展了该语言（GFM）并提供渲染支持。
 * **[Jekyll](http://jekyllrb.com/)** 是基于 Ruby 的 package，用于编译生成静态站点。GitHub 提供了静态站点支持，并采用 Jekyll 作为其编译引擎。于是，在 GitHub 提交文件后，在10分钟内 GitHub 将编译生成静态站点并开始提供服务。
-* **[highlight.js](http://highlightjs.org)** 是用于web页面的代码高亮，在程序员的博客中想必是不可或缺的。这个开源项目在托管在github的，开发很活跃，因此我放弃了使用Google的prettify，并且加入到highlight.js的开发项目中，为我的vimrc加入了高亮规则。
+* **[highlight.js](http://highlightjs.org)** 是用于web页面的代码高亮，在前端博客中想必是不可或缺的。这个开源项目托管在 github 且开发很活跃，因此我放弃了使用 Google 的 prettify，选择去增强 highlight.js 为 vim script 添加高亮规则。
 * **[MathJax](http://www.mathjax.org/)** 用于将latex公式转换为html、矢量图的js框架。不必说，理工背景的一定会用得到。能转换为html实在是太NB了！与图片不同，可以实现与上下文的完美拼接。
 
 <!--more-->
