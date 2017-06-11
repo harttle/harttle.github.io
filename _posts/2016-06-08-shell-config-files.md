@@ -100,7 +100,11 @@ Shell配置文件可以分为系统级别的配置文件和用户级别的配置
 
 ## 登录Shell
 
-有一些配置文件是只会被登录Shell读取的，包括：`.profile`，`.login`等。
+登录 Shell 会读取登录相关的配置文件，一般可分为三类：
+
+* `.profile` 配置登录 Shell 的行为。在作为登录 Shell 启动时读取。
+* `.login` 登录时的读取。
+* `.logout` 登出时读取。
 
 * `.profile`是`/bin/sh`的配置文件。Bash兼容于sh，因此Bash作为登录Shell时也会读取`/etc/profile`和`~/.profile`（其实几乎所有Shell都会这样做）。
 * `.login`是登录Shell在用户登录后读取的配置文件，csh、tcsh都会读取它。
@@ -112,7 +116,7 @@ Shell配置文件可以分为系统级别的配置文件和用户级别的配置
 * `.bash_login`是Bash作为登录Shell，用户登录后读取的配置文件。
 * `.bash_logout`是Bash作为登录Shell，用户退出时读取的配置文件。
 
-比较特殊的是`.inputrc`，它是Readline的启动配置文件。Bash等众多Shell都用使用Readline来读取用户输入。该文件通常会定义键盘映射相关设置。
+比如 Zsh 的 `.zprofile`, `.zlogout`, `.zlogin` 等等，详见 <https://wiki.archlinux.org/index.php/zsh>
 
 ## 交互式Shell
 
@@ -128,6 +132,16 @@ Shell配置文件可以分为系统级别的配置文件和用户级别的配置
 `.zshrc`会被任何交互式Z Shell读取，除非设置了`-f`参数。
 
 C Shell, TCShell启动时却总是会去读取 `cshrc`, `.tcshrc`，无论当前Shell是否为交互式的、或者登录Shell。
+
+## 相关软件配置文件
+
+有一些软件是和 Shell 一同启动的，比如 terminal、readline 等。
+它们的配置文件也会在 Shell 启动时被读取。
+
+比如 `.inputrc` 是Readline的启动配置文件，该文件通常会定义键盘映射相关设置。
+Bash等众多Shell都用使用Readline来读取用户输入，包括各种桌面系统给出的文本框、编辑区域。
+因此在 [熟悉 Bash 快捷键来提高效率](/2015/11/09/bash-shortcuts.html) 一文中提到的
+快捷键在普通的 GUI 编辑组件中都可以用，比如浏览器地址栏、HTML 输入表单控件、邮件客户端的输入区域等等。
 
 # 参考阅读
 

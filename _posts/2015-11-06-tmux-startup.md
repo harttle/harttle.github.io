@@ -208,6 +208,24 @@ set -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh"
     ?  list shortcuts
     :  prompt
 
+# Unicode 显示问题
+
+Tmux 通过 `LC_ALL`, `LC_CTYPE`, `LANG` 环境变量来判断是否终端支持 UTF-8。
+这样的判断有时是不准确的，导致 Tmux 中无法显示 Unicode。解决思路有两个：
+
+* 在启动 `tmux` 或 `tmux attach` 所在的 Shell 中添加 `LC_ALL` 环境变量。
+* 启动 Tmux 时增加 `-u` 参数可以显式地通知 tmux 终端支持 UTF-8（`man tmux`）。
+
+    ```bash
+    tmux -u
+    ```
+
+# Session 丢失问题
+
+Tmux 中 Session 或 Window 丢失可能的原因有很多，需要仔细排查。检查 `tmux` 日志，以及检查 [Shell 的各级配置][shell]。
+
+* 比如 Shell 的 `TMOUT` 环境变量会让超时后的 Shell 自动退出，最终导致 Session 关闭。
+* 比如临时文件夹被清空导致 socket 丢失，参考：<https://community.webfaction.com/questions/9462/tmux-session-lost-in-unknown-pts-cause-and-possible-solution>
 
 # 扩展阅读
 
@@ -225,3 +243,4 @@ set -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh"
 [changelog]: https://raw.githubusercontent.com/tmux/tmux/master/CHANGES
 [vim-registers]: /2016/07/25/vim-registers.html
 [reattach]: https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
+[shell]: /2016/06/08/shell-config-files.html

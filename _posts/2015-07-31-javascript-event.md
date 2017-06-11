@@ -130,14 +130,12 @@ div.removeEventListener('click', listener, false);
 </div>
 
 <script type="text/javascript">
-  var l1 = document.getElementById('l1'), l2 = document.getElementById('l2');
+  var l1 = document.getElementById('l1');
+  var l2 = document.getElementById('l2');
 
   l1.addEventListener('click', function(){ console.log('l1 capture')}, true);
-  
   l1.addEventListener('click', function(){ console.log('l1 bubbling')});
-  
   l2.addEventListener('click', function(){ console.log('l2 target')});
-  
   l2.addEventListener('click', function(){ console.log('l2 target, invalid capture')}, true);
 </script>
 ```

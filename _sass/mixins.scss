@@ -67,11 +67,11 @@
 }
 
 @mixin animation($v...){
-    animation: $v; 
-    -webkit-animation: $v; 
-    -moz-animation: $v; 
-    -o-animation: $v; 
-    -ms-animation: $v; 
+  animation: $v; 
+  -webkit-animation: $v; 
+  -moz-animation: $v; 
+  -o-animation: $v; 
+  -ms-animation: $v; 
 }
 
 @mixin box-shadow($shadows...) {
@@ -139,10 +139,8 @@
 }
 
 @mixin random-bg(){
-  background: url(https://unsplash.it/1500/600?random) #4670a9;
-  @include media-xs(){
-    background: #4670a9;
-  }
+  background-color: #545da9;
+  background-image: url(https://unsplash.it/1500/600?random), linear-gradient(to bottom left, rgba(100,255,250,0) 0%, rgba(100,255,250,.5) 75%, rgba(100,255,250,.5) 100%);
   background-size: cover;
   background-attachment: fixed;
   color: white;

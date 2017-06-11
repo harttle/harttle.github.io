@@ -38,7 +38,7 @@
     }
   }
   nav a{
-    line-height: 32px;
+    line-height: 38px;
     margin-left: 30px;
     @include link-hover($light-grey, white);
     @include media-xs{

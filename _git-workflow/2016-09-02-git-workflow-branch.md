@@ -97,17 +97,28 @@ git add a.txt
 git commit -a 'merged feature 2'
 ```
 
-## 新建/删除Tag
+## 新建 Tag
 
 **场景**：新建某个Tag。
 
-**步骤**：使用`-a`（annotated），`-d`（delete）参数运行`git tag`。
+**步骤**：使用`-a`（annotated），`-d`（delete）参数运行`git tag`，最后更新到远程仓库。
 
 ```bash
 # 创建
 git tag -a v1.4 -m 'my version 1.4'
-# 删除
+# Push 到远程
+git push --tags
+```
+
+## 删除
+
+**场景**：有一个错误的Tag。
+
+**步骤**：先在本地仓库删除，然后 push 到远程仓库。
+
+```bash
 git tag -d old
+git push origin :refs/tags/old
 ```
 
 ## 重命名Tag
