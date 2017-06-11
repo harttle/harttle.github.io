@@ -144,6 +144,9 @@
   background-size: cover;
   background-attachment: fixed;
   color: white;
+  @include media-xs(){
+    background-image: linear-gradient(to bottom left, rgba(100,255,250,0) 0%, rgba(100,255,250,.5) 75%, rgba(100,255,250,.5) 100%);
+  }
   .overlay{
     background: rgba(0,0,0,0.3);
   }
