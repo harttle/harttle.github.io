@@ -10,6 +10,8 @@ JavaScript 作为天生的客户端脚本，编写异步逻辑有着天然的优
 
 > 读者有更精彩的反模式例子，欢迎评论或者邮件。本文中的代码仅用于示例，未必存在这样的接口。
 
+<!--more-->
+
 # 莫须有的嵌套
 
 Promise 模式意在 Flatten 异步代码（参考 [Callback Hell][callbackhell]），

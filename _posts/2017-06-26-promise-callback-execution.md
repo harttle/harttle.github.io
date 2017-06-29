@@ -14,6 +14,8 @@ tags: JavaScript Promise 异步
 * 构造 Promise 时传入的 `executor` 会立即执行
 * Promise 的各种实现表现一致
 
+<!--more-->
+
 # onFulfilled 是异步的
 
 根据 [PerformPromiseThen][PerformPromiseThen] 算法，调用 `.then()` 时会将 `onFulfilled`, `onRejected` 两个回调作为新的 Job 传入 `EnqueueJob (queueName, job, arguments)`。
