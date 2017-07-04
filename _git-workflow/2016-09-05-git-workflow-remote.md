@@ -85,7 +85,7 @@ git checkout feature-x
 
 # 方法二：切换到新的分支
 git checkout -b feature-x
-git branch --set-upstream-to=remote/feature-x
+git branch --set-upstream remote/feature-x
 # 等效于
 git branch -u remote/feature-x
 git pull
