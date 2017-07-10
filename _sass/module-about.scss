@@ -96,6 +96,8 @@ footer{
   line-height: $footer-height;
   background-color: #111;
   color: #777;
+	z-index: 200;
+	position: relative;
   div{
     white-space: nowrap;
     overflow: hidden;
