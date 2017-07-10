@@ -92,20 +92,9 @@ $left-width: 50%;
     .post-list{
       position: static;
     }
-    #status-bar{
-      display: none;
-    }
   }
 }
 
-#status-bar{
-  margin: 0;
-  position: absolute;
-  right: 10px;
-  bottom: 5px;
-  color: #415877;
-  font-style: italic;
-}
 li{
   line-height: 28px;
   font-size: 14px;

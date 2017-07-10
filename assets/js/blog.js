@@ -1,4 +1,4 @@
-window.modules.blog = function (console, $ele) {
+document.addEventListener('DOMContentLoaded', function () {
   recordPageView()
   initTOC()
   initRecommends()
@@ -24,13 +24,13 @@ window.modules.blog = function (console, $ele) {
         })
       }, 100)
 
-                // toc scroll spy
+      // toc scroll spy
       $('body').scrollspy({
         target: '.toc',
         offset: 10 // make sure to spy the element when scrolled to
       })
     } else {
-      $ele.addClass('collapsed')
+      $('article').addClass('collapsed')
     }
 
     $(window).resize(function () {
@@ -53,8 +53,8 @@ window.modules.blog = function (console, $ele) {
       var offset = level - baseLevel
 
       var li = new $('<li/>')
-            .append('<a href="#' + i + '" class="animate">' + $this.text() + '</a>')
-            .append($('<ul class="nav level-' + (offset + 1) + '"/>'))
+        .append('<a href="#' + i + '" class="animate">' + $this.text() + '</a>')
+        .append($('<ul class="nav level-' + (offset + 1) + '"/>'))
 
       $('<div>').append($toc).find('ul.level-' + offset + ':last').append(li)
     })
@@ -64,7 +64,7 @@ window.modules.blog = function (console, $ele) {
   }
 
   function initRecommends () {
-    $.get('/posts.json').done(function (posts) {
+    $.get('/api/posts.json').done(function (posts) {
       if (typeof posts === 'string') {
         posts = JSON.parse(posts)
       }
@@ -89,7 +89,7 @@ window.modules.blog = function (console, $ele) {
         .forEach(function (post) {
           if (!current) return
           post.sim = pv[post.url] ? 0
-                : cosine(post.tags, current.tags)
+              : cosine(post.tags, current.tags)
           if (!thirdSim || thirdSim.sim < post.sim) {
             thirdSim = post
           }
@@ -119,14 +119,15 @@ window.modules.blog = function (console, $ele) {
         var scroll = document.body.scrollTop + window.innerHeight
         var icon = $('<i>').addClass('fa fa-hand-o-right')
 
-        if (total - scroll < 200) {
-          $recommend
-            .addClass('in')
-            .find('.post-link')
-            .attr('href', mostSim.url)
-            .append(icon)
-            .append(mostSim.title)
+        if (total - scroll > 200) {
+          return
         }
+        $recommend
+          .addClass('in')
+          .find('.post-link')
+          .attr('href', mostSim.url)
+          .append(icon)
+          .append(mostSim.title)
       })
     })
   }
@@ -151,4 +152,4 @@ window.modules.blog = function (console, $ele) {
     var str = window.sessionStorage.getItem('pv')
     return str ? JSON.parse(str) : {}
   }
-}
+})

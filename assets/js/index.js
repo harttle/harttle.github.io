@@ -1,4 +1,4 @@
-window.modules.index = function () {
+document.addEventListener('DOMContentLoaded', function () {
   var ias = $.ias({
     container: '.posts',
     item: '.post',
@@ -17,7 +17,7 @@ window.modules.index = function () {
     html: '<div class="ias-noneleft" style="text-align: center;">{text}</div>'
   }))
 
-  $.get('/tags.json').done(function (tags) {
+  $.get('/api/tags.json').done(function (tags) {
     var tagEls = tags
     .sort(function (lhs, rhs) {
       return rhs.count - lhs.count
@@ -54,4 +54,4 @@ window.modules.index = function () {
     target: '_blank'
   }]
   socialShare($('.follow').get(0), links, {size: 'sm'})
-}
+})

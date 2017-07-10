@@ -2,8 +2,6 @@ title: Harttle Land
 description: 分享技术，共建开放平台
 url: http://harttle.com
 author: Harttle
-twitter:
-  username: harttleharttle
 logo: assets/img/favicon.png
 keywords: 
   - Web
@@ -18,6 +16,23 @@ keywords:
 permalink: /:year/:month/:day/:title.html
 paginate: 7
 paginate_path: "page:num"
+markdown: kramdown
+markdown_ext:  md
+excerpt_separator: "<!--more-->"
+highlighter: rouge
+lsi: false
+exclude: ['README.md', '.*', 'bin/', 'Gemfile', 'node_modules', '*.log', 'package.json']
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+ga: 'UA-65795020-1'
+disqus: 'disqus: harttleland'
+twitter:
+  username: harttleharttle
+
+sass:
+    style: compressed
 
 collections:
   effective-cpp:
@@ -29,24 +44,6 @@ collections:
   vim-practice:
     output: true
     permalink: /:year/:month/:day/:title.html
-
-markdown: kramdown
-markdown_ext:  md
-excerpt_separator: "<!--more-->"
-highlighter: rouge
-kramdown:
-  input: GFM
-  hard_wrap: false
-lsi: false
-
-exclude: ['README.md', '.*', 'bin/', 'Gemfile', 'node_modules', '*.log', 'package.json']
-
-gems:
-  - jekyll-sitemap
-  - jekyll-redirect-from
-  - jekyll-feed
-  - jekyll-paginate
-  - jekyll-seo-tag
 
 defaults:
   -
@@ -74,3 +71,9 @@ defaults:
       path: "_vim-practice"
     values:
       layout: "blog"
+
+gems:
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-seo-tag

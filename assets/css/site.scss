@@ -1,10 +1,6 @@
 ---
 ---
 
-{% include /lib/jqcloud/jqcloud.scss %}
-{% include /lib/monokai-syntax.scss %}
-{% include /lib/social-share/social-share.min.css %}
-
 @import 'mixins';
 @import 'variables';
 @import 'paper';
@@ -12,6 +8,9 @@
 @import 'markdown';
 @import 'global';
 @import 'hover-tag';
+@import 'jqcloud.scss';
+@import 'lib/monokai-syntax.scss';
+@import 'lib/social-share.scss';
 
 .module-about{
   @import 'module-about';
