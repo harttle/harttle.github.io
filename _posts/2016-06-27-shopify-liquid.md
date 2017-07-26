@@ -8,20 +8,20 @@ tags: AngularJS Django Github HTML NPM Node.js Ruby 模板 Liquid
 [模板引擎][ts]是Web应用中用来生成动态HTML的工具，
 它负责将数据模型与HTML模板结合（*模板渲染*），生成最终的HTML。
 编写HTML模板的语法称为模板语法，模板语法的表达能力和可扩展性决定了模板引擎的易用性。
-在转战不同的模板引擎后， Harttle 决定坚决支持Liquid，并在Node.JS下实现[Shopify Liquid][sl]模板引擎。
+在转战不同的模板引擎后， Harttle 决定坚决支持Liquid，并在Node.JS下实现[liquidjs][sl]模板引擎。
 此前用这篇文章来讨论模板引擎的用途及其优劣。
 
 <!--more-->
 
 > 模板引擎常常被作为Web应用框架的一部分，但也可以作为预处理器或过滤器单独运行（比如在Gulp中）。
-> Harttle 正在实现的[harttle/shopify-liquid][hsl]也应当提供命令行接口和编程接口来支持不同的使用方式。
+> Harttle 正在实现的[harttle/liquidjs][hsl]也应当提供命令行接口和编程接口来支持不同的使用方式。
 
 如果你还不确定什么是模板引擎，这里做一个简单的类比：
 
 在C++的`printf("Name: %s", str)`中，`printf()`函数便是模板引擎，
 它负责将格式化字符串与上下文数据结合生成最终的字符串。
 其中`"Name: %s"`是模板，`%s`是一种模板语法。而`str`则为上下文数据。
-这里有一个Live Demo：<http://harttle.com/shopify-liquid/>
+这里有一个Live Demo：<http://harttle.com/liquidjs/>
 
 # 历数那些著名的模板引擎
 
@@ -207,14 +207,14 @@ Harttle认为模板引擎更加了解如何进行数据的表示，这一过程�
 {{ article.date | date: '%Y-%m-%d' }}   <!-- 2016-06-21 -->
 ```
 
-除`date`以外，Shopify Liquid还提供了很多其他的过滤器，比如`upcase`, `capitalize`, `size`等。
+除`date`以外，Liquidjs 还提供了很多其他的过滤器，比如`upcase`, `capitalize`, `size`等。
 用户可根据业务逻辑定义自己的过滤器。
 
 > Liquid过滤器是可以级联的，例如：`{{ list | split: ',' | join: '-' }}`。
 
-# shopify-liquid 项目
+# liquidjs 项目
 
-最近Harttle发起了[harttle/shopify-liquid][hsl]项目，这是Node.JS下的Liquid实现，符合Shopify Liquid文档标准。
+最近Harttle发起了[harttle/liquidjs][hsl]项目，这是Node.JS下的Liquid实现，符合Shopify Liquid文档的要求。
 因此该模板引擎是与Jekyll或Github Pages兼容的。
 
 当前Node.js下有[liquid-node][liquid-node]作为Liquid实现，Harttle已经在长期使用。
@@ -223,15 +223,15 @@ liquid-node在进一步开发之前还需要CoffeeScript到ES6的整体迁移，
 所以Harttle决定发起一个Node.JS下的Liquid项目，将容易扩展作为首要特性。
 意在提供最强的功能特性，现已实现[Shopify Liquid][sl]文档中的所有标签和过滤器。
 
-* Github：<https://github.com/harttle/shopify-liquid>
-* NPM: <https://www.npmjs.org/package/shopify-liquid>
+* Github：<https://github.com/harttle/liquidjs>
+* NPM: <https://www.npmjs.org/package/liquidjs>
 
 > 欢迎大家提供意见、提供Tag或Filter的PR、开发其他框架下的插件包装。
 
 [ts]: https://en.wikipedia.org/wiki/Web_template_system
 [sl]: https://shopify.github.io/liquid/
 [liquid-node]: https://github.com/sirlantis/liquid-node
-[hsl]: https://github.com/harttle/shopify-liquid
+[hsl]: https://github.com/harttle/liquidjs
 [dt]: https://docs.djangoproject.com/en/1.9/ref/templates/
 [cs]: https://en.wikipedia.org/wiki/CodeCharge_Studio
 [Thymeleaf]: https://en.wikipedia.org/wiki/Thymeleaf

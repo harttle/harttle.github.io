@@ -205,4 +205,4 @@ AngularJS中，Provider的配置是在应用生命周期的configuration阶段�
 [srp]: https://en.wikipedia.org/wiki/Single_responsibility_principle
 [strategy-pattern]: https://en.wikipedia.org/wiki/Strategy_pattern
 [hljs]: https://github.com/isagalaev/highlight.js
-[liquid]: https://github.com/harttle/shopify-liquid
+[liquid]: https://github.com/harttle/liquidjs

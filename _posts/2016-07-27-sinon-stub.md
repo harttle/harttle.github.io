@@ -150,7 +150,7 @@ Sinonjs Matchers 文档：<http://sinonjs.org/docs/#matchers>
 `before`通常会初始化测试过程中不会发生改变的上下文或测试桩，
 而`beforeEach`是为了在每一项测试前都重新初始化特定的上下文或测试桩。
 `after`与`afterEach`以此类推。例如：
-在[shopify-liquid][sl]的标签测试中，在每项测试运行前都初始化上下文
+在[liquidjs][sl]的标签测试中，在每项测试运行前都初始化上下文
 （因为像`assign`这样的标签可能会更改上下文）：
 
 ```javascript
@@ -172,4 +172,4 @@ Mocha Hooks文档：<https://mochajs.org/#hooks>
 [mocha-bdd]: /2016/06/23/mocha-chai-bdd.html
 [mocha]: https://mochajs.org/
 [sinon]: http://sinonjs.org/docs/#stubs
-[sl]: https://github.com/harttle/shopify-liquid
+[sl]: https://github.com/harttle/liquidjs

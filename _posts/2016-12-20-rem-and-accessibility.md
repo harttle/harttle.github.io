@@ -61,8 +61,8 @@ span {
 的最小字体默认为`10px`。根元素的`10px`字体大小就会失效，但并非简单地重置为`12px`。
 Chrome OSX 55.0.2883.95 (64-bit) 中`font-size:10px`根元素的行为如下：
 
-* 以`rem`为单位设置的字体大小拥有`12px`的下限，如`font-size:1rem`将被显示为`12px`，`font-size:2rem`将被显示为`20px`。
-* 以`rem`为单位设置的宽高将以`12px`作为基，如`height:1rem`将被现实为`12px`，`height:2rem`将被显示为`24px`。
+* 以`rem`为单位设置的字体大小拥有`12px`的下限。比如 `font-size:2rem`将被渲染为`20px`，但 `font-size:1rem` 将被渲染为`12px`，因为 `10px` 低于下限。
+* 以`rem`为单位设置的宽高将以`12px`作为基。比如`height:1rem`将被渲染为`12px`，`height:2rem`将被渲染为`24px`。
 
 因此 MDN 的方案在国内并不合适，当然可以设置一个很大的`font-size`来绕过该问题，
 例如目前百度结果页的`font-size`设为`100px`，仍然保证了较容易的单位转换。
