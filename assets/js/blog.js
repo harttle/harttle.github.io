@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function getTOC ($content) {
-    var $toc = $('<ul class="nav level-0" >').addClass('nav sidenav')
+    var $toc = $('<ul class="nav level-0 list-unstyled">').addClass('nav sidenav')
 
     var baseLevel = 1
     while ($content.find('h' + baseLevel).length < 1 && baseLevel < 7) baseLevel += 1

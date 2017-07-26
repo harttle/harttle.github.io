@@ -16,7 +16,7 @@ tags: DOM HTML JavaScript jQuery 事件
 
 `addEventListener`是现代Web应用中绑定事件的终极方法，jQuery从版本2开始也是通过调用`addEventListener`来实现其事件绑定逻辑
 （源码分析参见：[DOM Level 2 Event与jQuery源码][js-event]）。
-jQuery的所有时间绑定最终调用的是`on`方法，参见：[jQuery事件：bind、delegate、on的行为与性能][jquery-event]。
+jQuery的所有事件绑定最终调用的是`on`方法，参见：[jQuery事件：bind、delegate、on的行为与性能][jquery-event]。
 
 <!--more-->
 

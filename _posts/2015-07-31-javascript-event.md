@@ -71,7 +71,7 @@ el.onclick = function(){
 }
 ```
 
-是因为`el.onclick`的本质是对DOM元素属性的赋值，后一次时间绑定会使得前一次事件绑定失效。
+是因为`el.onclick`的本质是对DOM元素属性的赋值，后一次事件绑定会使得前一次事件绑定失效。
 
 # addEventListener
 

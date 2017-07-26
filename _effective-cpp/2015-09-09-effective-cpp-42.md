@@ -113,7 +113,7 @@ void workWithIterator(typename container::iterator it){
 但traits提供了更加一致的使用方式以及容器实现的灵活性，模板代码也简洁了不少。
 尽管如此，程序员还是懒惰的。我们倾向于用`typedef`来给这些嵌套从属名称起一些别名：
 
-```
+```cpp
 template<typename IterT>
 void workWithIterator(IterT it){
     typedef typename std::iterator_traits<Iter>::value_type value_type;

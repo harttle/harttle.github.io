@@ -1,6 +1,7 @@
 ---
 title: HTTP 表单编码 enctype
 tags: HTML HTTP JSON XML 表单
+redirect_from: /2016/04/11/http-form-endoding.html
 ---
 
 在web开发中最常见的莫过于GET和POST，其中GET一般将参数编码在url中（HTTP header）来传递数据；
@@ -145,6 +146,3 @@ Content-Type: text/xml
     </params>
 </methodcall>
 ```
-
-> 2016.6.7: 我擦，这篇文章的URL居然有拼写错误 :(
-
