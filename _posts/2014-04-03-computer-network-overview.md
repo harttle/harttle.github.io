@@ -35,7 +35,7 @@ eg. 万维网(world wide web)
 ## 网络硬件
 * 广播网络：广播、多播
 * 点到点：单播
-* 个人区域网络->局域网->城域网->广域网->Internet
+* 个人区域网络-&gt;局域网-&gt;城域网-&gt;广域网-&gt;Internet
 
 ### 局域网 LAN（local area network）
 * 总线型网络：以太网 IEEE 802.3
@@ -92,7 +92,7 @@ eg. 万维网(world wide web)
 
 * ARPANET：advanced research project agency，比电话网络更好的命令和控制系统。
 * NSFNET：national science foundation，使用ARPANET的硬件；首次使用TCP/IP协议。
-* Internet：客户->POP（point of presence，汇接点）->区域ISP（internet service provider，服务提供商）->骨干网->NAP（network access point）->服务器
+* Internet：客户-&lt;POP（point of presence，汇接点）-&lt;区域ISP（internet service provider，服务提供商）-&lt;骨干网-&lt;NAP（network access point）-&lt;服务器
 
 ### 面向连接的网络：X.25、帧中继、ATM
 
@@ -118,8 +118,8 @@ eg. 万维网(world wide web)
 * 事实（de facto）、法定（de jure）
 * 电信领域：公共承运商、邮电部（PTT）、国际电信联盟（ITU或CCITT）
 * 国际标准领域：ISO，成员包括ANSI（美国）、BSI（英国）、AFNOR（法国）、DIN（德国）；电气和电子工程师协会（IEEE）
-* Internet 标准领域：IAB（internet activities board）包括IRTF（internet research task force）和IETF（internet engineering task force），通过RFC（request for comments 标准提案->标准草案）完成标准。
+* Internet 标准领域：IAB（internet activities board）包括IRTF（internet research task force）和IETF（internet engineering task force），通过RFC（request for comments 标准提案-&lt;标准草案）完成标准。
 
-[1]: http://static.oschina.net/uploads/space/2013/0519/012337_5jas_698768.gif
-[2]: http://static.oschina.net/uploads/space/2013/0519/015728_Kcl0_698768.jpg
+[1]: /assets/img/blog/computer-network/osivstcpip.png
+[2]: /assets/img/blog/computer-network/atm-model.jpg
 
