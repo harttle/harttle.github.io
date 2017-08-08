@@ -1,5 +1,47 @@
 <section class="module-author">
-  <img src="/assets/img/avatar.png">
-  <header>Harttle</header>
-  <p>{{site.description}}</p>
+  <div class="roll clearfix">
+    <img src="/assets/img/avatar.png">
+    <header>Harttle
+      <i class="fa rolls-toggle fa-angle-double-up"></i>
+    </header>
+    <p>{{site.description}}</p>
+  </div>
+  <div class="roll clearfix">
+    <img src="/assets/img/wechat.png">
+    <header>支持 · 微信
+      <i class="fa rolls-toggle fa-angle-double-up"></i>
+    </header>
+    <p>赏点零花钱，继续写博客</p>
+  </div>
+  <div class="roll clearfix">
+    <img src="/assets/img/alipay.png">
+    <header>支持 · 支付宝
+      <i class="fa rolls-toggle fa-angle-double-up"></i>
+    </header>
+    <p>已被老婆占领，赏给她</p>
+  </div>
+  <script>
+(function (){
+  var curr = 0;
+  var $parent = $('.module-author');
+  var $children = $parent.find('.roll')
+  $parent.find('.rolls-toggle').click(function () {
+    var $this = $(this)
+
+    $this.hide()
+    $children.css('transition', 'all .5s')
+    setTimeout(function(){
+      $children.css('transform', 'translateY(-64px)')
+      setTimeout(function(){
+        $children.css('transition', '')
+        setTimeout(function(){
+          $children.css('transform', '')
+          $parent.find('.roll:first').appendTo($parent)
+          $this.show()
+        })
+      }, 500)
+    })
+  })
+})();
+  </script>
 </section>

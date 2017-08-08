@@ -3,6 +3,13 @@
 &{
   overflow: hidden;
   min-width: 220px;
+  overflow: hidden;
+  height: 64px;
+}
+.rolls-toggle{
+  cursor: pointer;
+  float: right;
+  margin-right: 1px;
 }
 img{
   @include size(64px);
