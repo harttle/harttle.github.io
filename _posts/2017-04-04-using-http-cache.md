@@ -38,10 +38,13 @@ Web 服务器（比如 Tomcat、Apache、Virgo）或服务器端框架（比如 
 
 # Cache-Control
 
-`Cache-Control` 在 HTTP 响应头中，用于指示代理和 UA 使用何种缓存策略。
-比如`no-cache`为不可缓存、`private`为仅 UA 可缓存，`public`为大家都可以缓存。
+`Cache-Control` 在 HTTP 响应头中，用于指示代理和 UA 使用何种缓存策略（感谢 [Kingsley Chen](http://kingsamchen.github.io/) 指出此前对 no-cache 描述的错误）。比如：
 
-> The Cache-Control general-header field is used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain.  --14.9, [RFC 2616][2616]
+* [no-cache][no-cache] 为本次响应不可直接用于后续请求（在没有向服务器进行校验的情况下）
+* [no-store][no-store] 为禁止缓存（不得存储到非易失性介质，如果有的话尽量移除，用于敏感信息）
+* `private`为仅 UA 可缓存
+* `public`为大家都可以缓存。
+
 
 当`Cache-Control`为可缓存时，同时可指定缓存时间（比如`public, max-age:86400`）。
 这意味着在 1 天（60x60x24=86400）时间内，浏览器都可以直接使用该缓存（此时服务器收不到任何请求）。
@@ -162,3 +165,5 @@ Cache-Control:max-age=0
 [vary]: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/vary
 [cond]: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Conditional_requests
 [best-practice]: /2017/04/04/http-cache-best-practice.html
+[no-cache]: https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9.1
+[no-store]: https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9.2
