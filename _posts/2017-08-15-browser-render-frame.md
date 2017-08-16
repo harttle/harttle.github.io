@@ -53,6 +53,8 @@ JavaScript 在并发编程上一个重要特点是“Run To Completion”。在�
 执行很多 JS...（20ms）-> 空闲 -> 绘制（32ms）-> ...
 ```
 
+例如下面的脚本在保持 JavaScript 忙的状态（持续 5s）下每隔 1s 新增一行 DOM 内容。
+
 ```html
 <div id="message"></div>
 <script>
@@ -72,6 +74,10 @@ while (true) {
 }
 </script>
 ```
+
+可以观察到虽然每秒都会写一次 DOM，但在 5s 结束后才会全部渲染出来，明显耗时脚本阻塞了渲染。
+
+![js block render](/assets/img/blog/dom/js-block-render.gif)
 
 # 测量渲染帧间隔 
 
@@ -119,10 +125,10 @@ nextFrame()
 在编写涉及到布局的脚本时，常常会多次读写样式。比如：
 
 ```javascript
-# 触发一次 Layout
+// 触发一次 Layout
 var h = div.clientHeight
 div.style.height = h + 20
-# 再次触发 Layout
+// 再次触发 Layout
 var w = div.clientWidth
 div.style.width = w + 20
 ```
@@ -131,7 +137,7 @@ div.style.width = w + 20
 如果把交错的读写分隔开，就可以减少触发 Layout 的次数：
 
 ```javascript
-# 触发一次 Layout
+// 触发一次 Layout
 var h = div.clientHeight
 var w = div.clientWidth
 div.style.height = h + 20
