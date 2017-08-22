@@ -119,6 +119,13 @@ export PATH="$HOME/usr/bin/zsh"
 
 > 注意`PATH`两边不能有空格，且必须使用双引号来让Bash解析`$HOME`的值。
 
+# 多余字符问题
+
+语言和地区配置不正确可能会导致 Z Shell 中敲 Tab 时出现多余的字符。尝试修复 `locale` 设置即可解决。
+
+1. 首先检查 `LC_ALL`：`echo $LC_ALL`。如果它不没有指定 UTF-8 的话，可以在 `~/.zshrc` 中添加 `LC_ALL=en_US.UTF-8 UTF-8`
+2. 如果还不生效可能是没有生成对应 locale。检查 `/etc/locale.gen` 并执行 `locale-gen` 可能解决问题（ArchLinux）。
+
 [omz]: https://github.com/robbyrussell/oh-my-zsh
 [zsh-cli]: /assets/img/blog/shell/zsh-cli.png
 [zsh]: http://www.zsh.org/

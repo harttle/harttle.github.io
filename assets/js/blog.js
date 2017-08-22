@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       var li = new $('<li/>')
         .append('<a href="#' + i + '" class="animate">' + $this.text() + '</a>')
-        .append($('<ul class="nav level-' + (offset + 1) + '"/>'))
+        .append($('<ul class="nav list-unstyled level-' + (offset + 1) + '"/>'))
 
       $('<div>').append($toc).find('ul.level-' + offset + ':last').append(li)
     })

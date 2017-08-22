@@ -3,15 +3,16 @@ title: Web Components 可用性调研
 tags: ShadowDom CustomElement 兼容性 模块化 组件化
 ---
 
-Web 开放的本质在某种程度上导致其在面向对象、软件工程方面的改进进展缓慢，
-而 Web Component 正在尝试将**基于组件的软件开发方法**应用到 Web 前端的开发中。
-使我们可以创建可复用的 UI 组件，并以组件化的方式进行 Web 开发。
-Web Components 是一系列 Web 技术的集合，主要包括 Shadow DOM、
-CSS Scoping/Encapsulation、 HTML Import、 HTML Template。
+Web Components 是 WHATWG 和 W3C 正在尝试的 Web 组件化方案，为组件化的 Web 前端开发提供浏览器级别的支持。
+
+Web Components 是一系列 Web 技术的集合，主要包括
+Shadow DOM、Custom Elements、HTML Import、HTML Template。
 这些技术标准大多处于草案阶段，下文中会给出具体的兼容性现状，
 以及现有的一些替代方案。
 
-在 Github 等社区和绝大多数互联网公司，从未停止过对前端组件化的尝试。
+<!--more-->
+
+开源社区和互联网公司从未停止过对前端组件化的尝试。
 这些尝试产生了大量的各式各样的组件化技术，它们在解决的问题粒度、
 提倡的架构设计、编译和处理的时机等方面各有不同：
 
@@ -19,187 +20,240 @@ CSS Scoping/Encapsulation、 HTML Import、 HTML Template。
 * 从简单的 RoR 简单的服务器端 MVC 设计，到 AngularJS/Vue.js 的前端 MVVM；
 * 从 LESS 等单个语言的预编译工具，到 webpack 这样的全站打包工具。
 
-但基于这些技术的组件化仍然依赖于规范层面的约束，无法保证彻底的组件化。
-举例来说，即使是完全 AMD 化的前端组件，也无法保证它能够立即移植到其他环境中。
-Web 难以组件化的原因有很多，但最为重要的几个原因是：
-JavaScript 缺乏模块化标准、CSS 的全局作用域、缺乏组件解析/加载的基础设施等。
+但这些组件化方案多少都依赖于规范层面的约束，无法做到技术上完备的组件化。
+具体地，使用 AMD 规范我们只能约束模块化的代码组织形式，却无法保证它不造成全局副作用。Web 难以组件化的原因有很多，笔者认为最重要的几个原因是：
 
-顾名思义，Web Components 的主要特性便是提供具有良好封装的、良好互操作性的 Web 组件。
-除了标准统一之外，还提供了较为底层的组件化能力：组件可以有独立的 DOM、CSS 的作用域、组件引入机制。
+* 缺乏 JavaScript 模块化标准
+* CSS 的全局作用域
+* 全局 DOM 和 Window 的设计
 
-<!--more-->
+Web Components 系列技术就是意图原生地支持 Web 组件化。
+在开始介绍 Web Components 相关技术之前，先来观察一个 Web Components 组件的编写和使用过程。
 
 # 一个例子
 
-在开始介绍 Web Components 相关技术之前，先来观察一个 Web Components 组件的编写和使用过程。
 下面是一个 `x-message.html` 组件，其功能是显示一段红色的文字：
 
 ```html
 <template id="tpl">
-  <style> div{ color: red; } </style>
-  <div></div>
+  <style> div{ background: yellow; } </style>
+  <div><slot name="text">No Text</slot></div>
 </template>
 <script>
-var tpl = document.currentScript.ownerDocument.querySelector('#tpl');
-var proto = Object.create(HTMLElement.prototype, {
-  attachedCallback: {
-    value: function() {
-      var root = this.attachShadow({mode: 'open'});
-      var content = document.importNode(tpl.content, true)
-      content.querySelector('div').textContent = this.getAttribute('val');
-      root.appendChild(content);
-    }
+class XMessage extends HTMLElement {
+  constructor() {
+    super();
+    var root = this.attachShadow({mode: 'open'});
+    var tpl = document.currentScript.ownerDocument.querySelector('#tpl');
+    var content = document.importNode(tpl.content, true)
+    content.querySelector('div').style.color = this.getAttribute('color');
+    root.appendChild(content);
   }
-});
-document.registerElement('x-message', {
-  prototype: proto
-});
+}
+customElements.define('x-message', XMessage);
 </script>
 ```
 
-利用 HMTL Import 引入组件后，
-使用 `x-message` 组件（CustomElement）与使用标准 DOM 元素没有区别
-（通过attribute 控制行为，通过 addEventlistener 监听变化）：
+这段代码定义了一个名为 `x-message` 的 Web 组件，使用方引入该 HTML 即可使用：
 
 ```html
 <head>
   <link rel="import" href="x-message.html">
 </head>
 <body>
-  <x-message val="Hello World"></x-message>
+  <x-message color="red">
+    <span slot="text">Hello World</span>
+  </x-message>
 </body>
 ```
 
 上述例子中可以观察到 `x-message` 组件完全被封装起来，引入时不需要像 jQuery 组件那样引入对应的样式和脚本；
-组件内 CSS 只作用于 ShadowDOM 对使用者无副作用；CustomeElement 为组件提供了嵌入 DOM 的生命周期，随 DOM 一起解析和渲染。
+组件内 CSS 只作用于 ShadowDOM 对使用者无副作用；Custom Element API 为组件提供了嵌入 DOM 的生命周期，随 DOM 一起解析和渲染。
+上述例子的渲染结果如下图：
 
-# 相关标准状态
+![web-component-demo](/assets/img/blog/web-components/example.png)
+
+# 相关标准
+
+## Custom Elements
+
+[Custom Elements][custom-elements] 给了开发者创建自己的 HTML 元素的能力。
+相比于 jQuery 等工具创建的 DOM 元素，Custom Elements 的解析和渲染由浏览器原生支持。
+这些元素通过标准的 DOM API 提供接口，可以表达更清晰的语义（比如 customized built-in elements）。
+这使得 Web Components 有更好的可访问性和互操作性，对屏幕阅读器和搜索引擎更为友好。
+
+【标准】[WHATWG Living Standard][spec-custom-elements]
+
+创建一个继承自 `HTMLElement` 的类即可声明一个 Custom Element。
+通过 `CustomElements.define()` 来把这个元素类注册为 HTML 标签。
+回顾一下定义和使用 Custom Element 的方式，下面的代码定义了一个 `x-message` 标签，并使用了它：
+
+```html
+<html>
+  <body>
+    <x-message text="Hello World"></x-message>
+    <script>
+    class XMessage extends HTMLElement {
+      constructor() {
+        super();
+        var shadow = this.attachShadow({mode: 'open'});
+        this.text = document.createElement('span');
+        this.text.textContent = this.getAttribute('text');
+        shadow.appendChild(this.text);
+      }
+    }
+    customElements.define('x-message', XMessage);
+    </script>
+  </body>
+</html>
+```
+
+除了 `constructor()` 之外，Custom Elements 还可以定义生命周期方法，包括：
+
+* `connectedCallback()`：插入到 DOM 时回调。
+* `disconnectedCallback()`：移出 DOM 时回调。
+* `attributeChangedCallback(attributeName, oldValue, newValue, namespace)`：属性改变回调。
+* `adoptedCallback(oldDocument, newDocument)`：移动到新的 Document 时回调。
+
+下面我们利用 `attributeChangedCallback()` 来实现组件内容和属性的绑定，
+当 `<x-message>` 的 `text` 属性发生变化时，更新 `<x-message>` 的内容。
+
+```javascript
+class XMessage extends HTMLElement {
+  constructor() {
+    // ...
+  }
+  static get observedAttributes() {return ['text']; }
+  attributeChangedCallback(name, oldVal, newVal) {
+    if (name === 'text') {
+      this.text.textContent = newVal;
+    }
+  }
+}
+```
+
+其中 `observedAttributes()` 用于指定浏览器对哪些属性进行观察，返回一个属性名数组。
+在这些属性发生变化时，`attributeChangedCallback()` 就会被触发。
+这时我们去更新 `<x-message>` 的内容。效果如图：
+
+![observed-attributes](/assets/img/blog/web-components/observed-attribute.gif)
+
+以下是 [caniuse](http://caniuse.com/#feat=custom-elements)的兼容性数据：
+
+![caniuse-custom-elements](/assets/img/blog/web-components/caniuse-custom-elements.png)
+
+## HTML Templates
+
+[HTML Templates][html-template] 是指 HTML 的 `<template>` 标签，用来包含 HTML 模板。
+`<template>` 的内容在页面加载时浏览器会解析，但不会进行渲染。
+
+【标准】[WHATWG Living Standard][spec-template]
+
+在该标签可用之前一些单页异步框架就已经在使用 `<script>` 来包含动态渲染的 HTML 模板了，
+比如 `<script type="html/template">`，HTML5 为这些模板提供了标准的引入方式。
+
+HTML Template 通常与 Custom Elements 定义在同一 HTML 中，
+通过 HTML Import 机制引入到使用者的页面。
+在 Custom Element 中通过 `document.importNode()` 和 `document.cloneNode()`
+等 API 把模板的内容引入到使用方的 DOM：
+
+```javascript
+var tpl = document.currentScript.ownerDocument.querySelector('#tpl');
+// 第二个参数为是否深拷贝，DOM4 标准中为可选参数。
+var content = document.importNode(tpl.content, true)
+```
+
+它已经有不错的兼容性，以下是[caniuse](http://caniuse.com/#feat=template) 提供的兼容性数据：
+
+![caniuse html template](/assets/img/blog/web-components/caniuse-templates.png)
 
 ## Shadow DOM
 
-Shadow DOM提供了独立于主文档的DOM环境，为Web Component提供了JavaScript、CSS、HTML模板的封装。
+Shadow DOM 提供了独立于主文档的 DOM 环境，为 Web Components 提供了 CSS 和 HTML 的封装。
 
-【标准】W3C Working Draft: <https://www.w3.org/TR/shadow-dom/>
+【标准】[W3C Working Draft: Shadow DOM](https://www.w3.org/TR/shadow-dom/)
 
-【兼容性】要求Shadow DOM v1，[27.13%][caniuse-shadow]的浏览器支持，包括Chrome、Opera。
+Shadow DOM 为每个组件提供一个独立的 `#document` 节点，
+用来封装组件自身的 DOM 和 CSS。
+在前述 `x-message` 例子的构造函数中，就为组件创建了一个 Shadow DOM
+并使用预定义的模板进行了填充。Shadow DOM 特性也可以独立，比如下面的例子：
 
-## CSS Scoping/Encapsulation
+```html
+<html>
+  <body>
+    <div id="my-host"></div>
+    <script>
+      // 创建 shadow DOM
+      var dom = document.querySelector('#my-host').attachShadow({mode:'open'});
+      // 设置其 DOM 内容
+      dom.innerHTML = '<p>Hello World</p>';
+    </script>
+  </body>
+</html>
+```
 
-借由Shadow DOM封装的组件样式，仍未形成标准。
+![](/assets/img/blog/web-components/shadow-dom.png)
 
-* 外部CSS选择符不会选中组件内元素
-* 内部样式不会影响到组件外元素
-* `:host`选择根元素, `:slotted`选择嵌入元素
+除了独立的 DOM 外，Shadow DOM 还封装了组件 CSS。内外部的 CSS 不会相互影响。
+并给出 `:host` 和 `:slotted` 选择符来分别表示组件根元素和槽元素。
 
-【标准】W3C Editors' Draft: <https://drafts.csswg.org/css-scoping>
+以下是 [caniuse][caniuse-shadow] 提供的兼容性数据：
 
-【兼容性】只在Chrome中可用。
+![caniuse-shadow-dom](/assets/img/blog/web-components/caniuse-shadow-dom.png)
 
 ## HTML Import
 
-在相同的作用域引入HTML片段，可以打包CSS、JS和HTML模板。
+HTML Import 是 Web Components 的一种打包机制，组件打包为 HTML 后直接引入到使用方。
 
-* 相同的JavaScript作用域，包括DOM对象；相同的CSS作用域。
-* `document.currentScript.ownerDocument`：当前HTML的Document对象。
-* `document`：主Document对象。
-* 支持递归Import：树状的依赖关系可以封装底层依赖，最小化升级成本。
-* 资源管理：同一URL的HTML只被加载和执行一次，有效地解决了jQuery等插件的多次引入问题。
+【标准】[W3C Working Draft: HTML Import](http://w3c.github.io/webcomponents/spec/imports/)
 
-【标准】W3C Working Draft: <http://w3c.github.io/webcomponents/spec/imports/>
+值得一提的是，Import 进来的 JavaScript 与当前页面脚本有同样的作用域，
+CSS 也是一样。所以定义组件时要注意不可在当前作用域下产生副作用。
 
-【兼容性】[45.56%][caniuse-imoprt]的浏览器支持，包括Chrome、Opera，在Firefox中可以手动开启该特性。
+具体地，在被引入的组件 JavaScript 中 `document` 表示外部的 Document 对象；
+`document.currentScript.ownerDocument` 表示组件所在的 Document 对象。
 
-## HTML Template
+以下是 [caniuse][caniuse-import] 提供的兼容性数据：
 
-[HTML Template][html-template]用于封装一些HTML片段，
-用来取代类似`<script type="html/template">`这样的Hack。
-非常适合HTML Import的使用方式。
+![caniuse-import](/assets/img/blog/web-components/caniuse-html-imports.png)
 
-* 内部`<script>`在使用时才被解析和加载。
-* `document.importNode`：从另外一个DOM中克隆元素。
-* `document.cloneNode`：从当前DOM中克隆元素。
+# 相关 Polyfill
 
-【标准】WHATWG Living Standard: <https://html.spec.whatwg.org/multipage//scripting-1.html#the-template-element>
+到此为止我们介绍了 Web Components 技术涉及的主要浏览器 API 和相关标准，
+其中多数标准的浏览器兼容存在很大问题，甚至有些标准仍然在草案阶段。
+为此，如果现在需要在生产环境使用 Web Components 技术需要考虑引入 Polyfill。
 
-【兼容性】[61.68%][caniuse-template]的浏览器支持，包括Chrome、Firefox、Opera、Safari、MS Edge。
+## webcomponentsjs
 
-# 相关 Web Framework
+[webcomponentsjs](https://github.com/webcomponents/webcomponentsjs)
+项目为 Web Components 标准提供了一系列的 Polyfill。
+包括 Custom Elements, Shady DOM、HTML Import 等机制，`HTMLTemplateElement`, `Promise`, `CustomEvent` 等对象。
 
-目前业界通常不会直接使用 Web Component API，而是使用一个基于 Web Component 的 Web 框架来进行组件化。
-由于 Web Components 相关标准的实现还不可用：
+借助 webcomponentsjs，已经可以兼容 IE11+，Chrome，Firefox，Safari 9+ 等浏览器。
+足以支持轻量地使用 Web Components 相关技术。
+目前 Polyfill 文件（非 lite 版本）本身大小在 100k+，gzip 后可以缩小到 30k+。
 
-* 封装程度还不够易用：直接 HTML Import 一个 Custom Element 时脚本仍然是全局作用域。
-* 存在兼容性问题：Shadow DOM、HTML Import、CSS Scoping 尚未得到普遍支持。
-
-以下介绍几个基于Web Component的Web框架，并与非 Web Component 框架 Angular 和 React 的组件化方式进行比较。
-
-## webcomponents.org
-
-[webcomponents.org][webcomponents] 是一个对Web Component进行的Polyfill项目。
-下文所述的Polymer即使用该项目作为Polyfill。
-webcomponents.org主要提供了Opera、Firefox、IE/Edge、Safari等浏览器的兼容。
-
-> 其Polyfill文件大小为117k（minified），压缩后34k（gzipped）。
-
-直接使用Web Component + Polyfill创建Web组件尚不可行：
-
-* `currentScript`、`attachShadow`等API行为仍有差异，需要根据这些差异采用不同的策略。
-* 有不少的重复代码，包括：注册组件、克隆模板、创建Shadow DOM等过程。
-* Web Component标准尚不完备，需要一些workarround。例如公用样式、数据绑定等。
-
-需要一个开发框架来封装Web Component的创建过程，这样我们只关注上层逻辑。
+在 webcomponents.org 网站上维护着当前可用的 Web Components 库：<https://www.webcomponents.org>
 
 ## Polymer
 
-<https://github.com/Polymer/polymer>
-
-基于 Web Component API 的轻量级框架，定位于 Web Components Polyfill 和简单的封装。
-提供直观的工具库来方便创建Custom HTML Elements。
+[Polymer][polymer] 项目是基于 Web Components 机制的轻量级框架，定位于简单的 Polyfill 和易用性封装。
+这些封装包括数据绑定，模板声明，事件系统等，甚至包括手势事件的 API。
+准确地讲 Polymer 是不属于 Polyfill，但根据官方对 Polymer 1.0 的定位：
 
 > The library doesn't invent complex new abstractions and magic, but uses the best features of the web platform in straightforward ways to simply sugar the creation of custom elements.
 
-主要特性：
+Polymer 确实意图补充和完整 Web Components，而非做太多抽象。虽然 Polymer 的很多思想正在应用到标准草案中，我理解 Polymer 更像是 Web Components 的试验田。
 
-* 双向绑定：可以将DOM模板中节点的内容或属性绑定到Custom Element Property，也可以绑定到指定的方法。
-* [组件库][polymer-elements]: 包括布局组件、输入控件、Google产品、PUSH/蓝牙等。
-* [Polyfill][webcomponents]：Custom Elements, Shadow DOM, HTML Import, 能支持绝大多数浏览器。
+Polymer 项目已经开发了不少的 Web 组件（尤其是 core 和 bussiness 两部分非常丰富），这些组件现在也统一维护在 [webcomponents.org][polymer-elements] 上。
 
-使用方式：
+# Web Components Like 框架
 
-* 方法与属性：通过一个整体对象一起传递给Polymer，由Polymer来托管Custom Element的注册过程。
-* `fire`事件工具：帮助触发Custom Element的DOM事件，借由`Element.dispatchEvent()`实现。
+由于兼容性堪忧，业界大厂几乎都未能完整地使用 Web Components 方案，
+多数采用 Web Components Like 的框架：既保持对 Web Components 的兼容，
+又不完全使用 Web Components 机制。
 
-目前主要还是Google的一些周边产品在使用Polymer：<https://github.com/Polymer/polymer/wiki/Who's-using-Polymer%3F>。
-
-相关文件大小：
-
-```
--rw-r--r-- 1 harttle staff  34K 12  5  2015 CustomElements.js
--rw-r--r-- 1 harttle staff  17K 12  5  2015 CustomElements.min.js
--rw-r--r-- 1 harttle staff  38K 12  5  2015 HTMLImports.js
--rw-r--r-- 1 harttle staff  20K 12  5  2015 HTMLImports.min.js
--rw-r--r-- 1 harttle staff  13K 12  5  2015 MutationObserver.js
--rw-r--r-- 1 harttle staff 5.9K 12  5  2015 MutationObserver.min.js
--rw-r--r-- 1 harttle staff 156K 12  5  2015 ShadowDOM.js
--rw-r--r-- 1 harttle staff  71K 12  5  2015 ShadowDOM.min.js
--rw-r--r-- 1 harttle staff  76K 12  5  2015 webcomponents-lite.js
--rw-r--r-- 1 harttle staff  39K 12  5  2015 webcomponents-lite.min.js
--rw-r--r-- 1 harttle staff 254K 12  5  2015 webcomponents.js
--rw-r--r-- 1 harttle staff 116K 12  5  2015 webcomponents.min.js
--rw-r--r-- 1 harttle staff  17K 11 17  2015 polymer-micro.html
--rw-r--r-- 1 harttle staff  47K 11 17  2015 polymer-mini.html
--rw-r--r-- 1 harttle staff 116K 11 17  2015 polymer.html
-```
-
-`webcomponents.js` includes all of the polyfills.
-
-`webcomponents-lite.js` includes all polyfills except for shadow DOM.
-
-`polymer-micro.html`: Polymer micro features (bare-minimum Custom Element sugaring)
-
-`polymer-mini.html`: Polymer mini features (template stamped into "local DOM" and tree lifecycle)
-
-`polymer.html`: Polymer standard features (all other features: declarative data binding and event handlers, property nofication, computed properties, and experimental features)
+以下介绍几个 Web Components Like 的 Web 开发框架。
 
 ## Aurelia
 
@@ -283,22 +337,21 @@ AngularJS 2并不基于Web Component实现，但考虑到了对Web Component的�
 例如，可通过设置 `ViewEncapsulation.Emulated` 或 `ViewEncapsulation.Native` 来支持Shadow DOM封装。
 AngularJS 2 Component 也可以很容易地转换为 Web Component。
 
-## 支持Native的讨论
+## 支持 Native 的讨论
 
 Web Component 中组件注册为 CustomElement，与 DOM 一起解析和渲染。
 因此 Native 渲染 Web Component 只有一种方式：嵌入一个浏览器。
 另外一种途径是，利用浏览器提供的 Native API 开发更多的 Web Component，
 让 Web 拥有更多的 Native 能力。
 
-浏览器的改动涉及漫长的标准化过程，
-但 Chrome 已经在强力推进，Polymer 项目给出的 [一系列组件][polymer-elements] 中
-已经出现了不少 Native 组件。比如这个蓝牙组件： 
+无论是标准上还是实践上这条路已经有了很多的尝试，
+比如 Polymer 项目 [组件库][polymer-elements] 中的这个蓝牙组件： 
 <https://elements.polymer-project.org/elements/platinum-bluetooth>
-对应的 Web Bluetooth 标准也在快速开发中： <https://webbluetoothcg.github.io/web-bluetooth/>
+以及对应的 Web Bluetooth 标准草案： <https://webbluetoothcg.github.io/web-bluetooth/>
 
 # 扩展阅读
 
-## Web Component
+## Web Components
 
 * <https://github.com/webcomponents/webcomponentsjs>
 * <https://github.com/Polymer/polymer>
@@ -322,8 +375,11 @@ Web Component 中组件注册为 CustomElement，与 DOM 一起解析和渲染�
 [react-web-component]: https://facebook.github.io/react/docs/webcomponents.html
 [html-template]: https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/template
 [caniuse-shadow]: http://caniuse.com/#search=shadow
-[caniuse-imoprt]: http://caniuse.com/#search=import
+[caniuse-import]: http://caniuse.com/#search=import
 [caniuse-template]: http://caniuse.com/#search=template
 [webcomponents]: https://github.com/webcomponents/webcomponentsjs
-[polymer-elements]: https://elements.polymer-project.org/
+[polymer-elements]: https://www.webcomponents.org/collection/Polymer/elements
 [polymer]: https://github.com/Polymer/polymer
+[spec-custom-elements]: https://html.spec.whatwg.org/multipage/scripting.html#custom-elements
+[spec-template]: https://html.spec.whatwg.org/multipage/scripting-1.html#the-template-element
+[custom-elements]: https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements
