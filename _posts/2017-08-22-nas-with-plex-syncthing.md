@@ -5,7 +5,7 @@ tags: Plex Syncthing Archlinux SSH systemd
 
 因为软件都是[朋友][oott]介绍的，这篇文章本来是不打算写的。
 但由于在坑上浪费不少时间还是写出来或许对新接触 NAS 的人有所帮助。
-本文记录如何利用 [Plex][plex] 和 [Syncthing][syncthing] 搭建家用 NAS，具体地实现了这些功能：
+本文记录如何利用 [Plex][plex] 和 [Syncthing][syncthing] （可以用FTP替代）搭建家用 NAS，具体地实现了这些功能：
 
 * P2P 的文件备份。
 * DLNA 媒体服务。
@@ -97,7 +97,7 @@ systemctl restart plexmediaserver
 
 访问 `localhost:32400` 即可进行媒体内容和目录的管理。
 要借助 Syncthing 上传到 Plex，只需要把 Syncthing 和 Plex 目录设成一样的，
-上传 Syncthing 结点的对应文件夹的模式设为仅发送。
+上传 Syncthing 结点的对应文件夹的模式设为仅发送，接收侧勾选`ignoreDelete`（在右上角高级设置，对应的文件夹选项中）。
 
 # 客户端
 
