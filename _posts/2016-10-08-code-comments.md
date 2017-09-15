@@ -65,7 +65,7 @@ Linux内核使用低级的C语言编写，涉及到复杂的CPU调度、内存�
 ```javascript
 /**
  * @file /tmp/xxx.js
- * @author harttle(yangjvn@126.com)
+ * @author harttle(harttle@harttle.com)
  * @date 2016-08-30 22:33
  * @description A XXX Implementation for XXX.
  */

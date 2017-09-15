@@ -50,7 +50,7 @@ jQuery也采用了这种实现。**
 ## load
 
 ```javascript
-document.addEventListener("load", function(event) {
+window.addEventListener("load", function(event) {
     console.log("All resources finished loading!");
 });
 ```

@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }, {
     icon: 'fa-envelope',
     background: '#5484d6',
-    url: 'mailto:yangjvn@126.com?subject=来自HarttleLand'
+    url: 'mailto:harttle@harttle.com?subject=来自HarttleLand'
   }, {
     plugin: 'qrcode',
     title: '扫一扫！'

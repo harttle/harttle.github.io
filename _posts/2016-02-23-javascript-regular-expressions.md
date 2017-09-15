@@ -28,7 +28,7 @@ var url = "http://harttle.com:80/tags.html?simple=true#HTML",
     result = parse_url.exec(url);
     blanks = '       ';
     fields = ['url', 'scheme', 'slash', 'host', 'port', 'path', 'query', 'hash'];
-fields.forEach(function(filed, i){
+fields.forEach(function(field, i){
     console.log(field + ':' + blanks.substr(field.length) + result[i]);
 });
 ```
