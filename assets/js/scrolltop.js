@@ -4,9 +4,9 @@ $(function () {
 })
 
 function scrollTop () {
-  $('body').animate({
+  $('html, body').stop().animate({
     scrollTop: $($(this).attr('href')).offset().top
-  }, 500)
+  }, 500, 'swing')
   return false
 }
 

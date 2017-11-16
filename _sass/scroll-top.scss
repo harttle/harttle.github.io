@@ -23,8 +23,16 @@
   visibility: visible;
   @include opacity(1);
 }
+@media (hover:hover) {
+  #site-scroll-top:hover {
+    text-decoration: none;
+    color: #fff;
+    background: $grey;
+    border-color: $light-grey;
+  }
+}
 
-#site-scroll-top:hover {
+#site-scroll-top:active {
   text-decoration: none;
   color: #fff;
   background: $grey;
