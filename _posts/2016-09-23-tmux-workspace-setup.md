@@ -1,14 +1,18 @@
 ---
-title: 初始化TMUX工作区
+title: 恢复 TMUX 工作区
+subtitle: The Hard Way
 tags: Bash Session Tmux
 ---
 
-不就前Harttle在[优雅地使用命令行：Tmux 终端复用][tmux-startup]一文中介绍了
-TMUX的常用命令以及快捷键设置。然而因为电脑重启后这些Session会全部丢失，
-每次开机后都需要重新建立这些Session。TMUX并没有保存Session这样的神奇功能，
-一切行为都在于配置文件和脚本编写。
+我们知道使用 TMUX 后状态会保存在 Server 端，你的 Terminal 重启不会丢失任何东西。
+但 Server 重启后 Session 会全部丢失，如果你像 Harttle 一样在开发 PC 本地运行 Tmux Server 的话，
+每次开机后都需要重新建立各种会话和窗格。
 
-本文便来编写一个初始化工作区的TMUX脚本。
+但没有什么是不能自动化的，我们可以通过 Tmux 配置文件（即初始化脚本）来自动建立工作区。
+本文便来手动编写一个初始化工作区的 TMUX 脚本。
+
+* 如果你还不了解 Tmux，请先从 [优雅地使用命令行：Tmux 终端复用][tmux-startup] 一文开始阅读。
+* 如果你更偏向插件，可以参考 [恢复 TMUX 工作区 - The Easy Way](/2017/11/24/tmux-workspace-plugin.html)，虽有一些限制但配置更加方便。
 
 <!--more-->
 
@@ -37,7 +41,7 @@ bash ./init-workspace.sh
 
 > 在创建了一堆会话之后，如果希望把它们一起关掉可以直接`tmux kill-server`。
 
-# TMUX脚本
+# TMUX 脚本
 
 除了保存为Bash脚本，也可以将这些初始化命令放在`~/.tmux.conf`中。
 这样在每次启动tmux服务时，这些命令都会得到执行。

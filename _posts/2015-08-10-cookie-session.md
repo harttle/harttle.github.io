@@ -80,7 +80,7 @@ Cookie提供了一种手段使得HTTP请求可以附加当前状态，
 1. 在服务器中配置一个不为人知的字符串（我们叫它Secret），比如：`x$sfz32`。
 2. 当服务器需要设置Cookie时（比如`authed=false`），不仅设置`authed`的值为`false`，
     在值的后面进一步设置一个签名，最终设置的Cookie是`authed=false|6hTiBl7lVpd1P`。
-3. 签名`6hTiBl7lVpd1P`是这样生成的：`Hash('x$sfz32'+'true')`。
+3. 签名`6hTiBl7lVpd1P`是这样生成的：`Hash('x$sfz32'+'false')`。
     要设置的值与Secret相加再取哈希。
 4. 用户收到HTTP响应并发现头字段`Set-Cookie: authed=false|6hTiBl7lVpd1P`。
 5. 用户在发送HTTP请求时，篡改了`authed`值，设置头字段`Cookie: authed=true|???`。

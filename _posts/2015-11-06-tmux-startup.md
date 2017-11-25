@@ -3,17 +3,24 @@ title: 优雅地使用命令行：Tmux 终端复用
 tags: Bash GNU Linux Node.js Session Tmux Vim 快捷键
 ---
 
-你是否曾经开过一大堆的Terminal？有没有把它们都保存下来的冲动？Tmux 的Session就是做这件事情的！你可以随时退出或者进入任何一个Session。每个Session有若干个Window，每个Window又可以分成多个窗格（Pane）。
+你是否曾经开过一大堆的 Terminal？有没有把它们都保存下来的冲动？[Tmux][tmux] 的Session就是做这件事情的！
+你可以随时退出或者进入任何一个 Session。每个 Session 有若干个 Window，每个 Window 又可以分成多个窗格（Pane）。
+极大地满足 Terminal 用户的需求。
 
-> 即使iTerm/Terminal/Konsole意外关闭也没关系。Session可以完全恢复！但是关机就不可以了，不过你可以写脚本来恢复！
-
-Tmux是一个终端复用软件，BSD协议发布。一般用于在一个命令行窗口中访问多个命令行会话，或者在一个命令行终端中同时使用多个程序。Tmux用起来是怎样的呢？看图：
+此外即使 iTerm/Terminal/Konsole 意外关闭也没关系，因为 Session 完全保存在 Tmux Server 中。
+再次打开 Terminal 时只需 `tmux attach` 便可回到你的工作区，就像从未退出过一样。
+如果希望重启电脑后仍然生效，你可能需要 [动手写脚本](/2016/09/23/tmux-workspace-setup.html) 或者 [使用插件](/2017/11/24/tmux-workspace-plugin.html)。
 
 <!--more-->
 
+# 什么是 Tmux
+
+[Tmux][tmux] 是一个 BSD 协议发布的终端复用软件，用来在服务器端托管同时运行的 Shell。那么 Tmux 用起来是怎样的呢？看图：
+
 ![tmux screen shot][tmux-shot]
 
-> Tmux 最经典的使用场景便是用 Tmux+Vim 来做一个IDE，其中Vim部分的配置过程记录在了[这里][vim-ide]，本文介绍Tmux的配置和使用。
+Tmux 最经典的使用场景便是用 Tmux+Vim 来做一个IDE，其中Vim部分的配置过程记录在了[这里][vim-ide]。
+本文介绍Tmux的安装配置，以及常见问题的解决方式。
 
 ## iTerm 的窗格和 Tmux 有什么区别？
 
@@ -28,23 +35,16 @@ iTerm是一个GUI软件，它的窗格只是窗格而已！而Tmux是终端复�
 这两个都是做终端复用的，我在阿里云 ECS 上 [搭建Node.js API服务器][node-web] 时用过 `screen`，它是 GNU 软件，而 Tmux 是 BSD 的协议。
 它们最主要的区别是 Tmux 支持 Vi/Emacs 风格的键盘映射，更好的接口和文档，以及更好的脚本控制。所以建议使用 Tmux！
 
-# 安装Tmux
+# 安装使用
 
-## OSX
-
-```bash
-brew install tmux
-```
-
-## Linux
+首先进行安装：
 
 ```bash
+brew install tmux       # OSX
 pacman -S tmux          # archlinux
 apt-get install tmux    # Ubuntu
 yum install tmux        # Centos
 ```
-
-# 基本使用
 
 安装好后就可以启用一个Tmux Session了：（通过 `tmux new -s myname` 可以指定Session名）
 
@@ -67,11 +67,15 @@ yum install tmux        # Centos
     unbind ^b
     set -g prefix 'C-a'
 
+## 载入配置
+
 为了能让Tmux动态载入配置而不是重启，我们设一个快捷键`<prefix>r`来重新载入配置：
 
     bind r source-file ~/.tmux.conf \; display-message "Config reloaded"
 
 > 注意，通过`<prefix>r`重新载入配置并不等同于重启，只是增量地执行了配置文件中的所有命令而已。如果配置未生效，可以通过`tmux kill-server`来强行关闭Tmux。
+
+## 导出配置
 
 如果你想知道当前tmux的设置，可通过`tmux show -g`来查看（该命令需要tmux正在运行）。
 你可能会需要把这些设置导出为文件：
@@ -80,28 +84,7 @@ yum install tmux        # Centos
 tmux show -g >> current.tmux.conf
 ```
 
-# 窗格切换
-
-可以把`hjkl`设置为切换窗格的快捷键：
-
-    bind h select-pane -L
-    bind j select-pane -D
-    bind k select-pane -U
-    bind l select-pane -R
-
-再给调整窗格大小设置快捷键：
-
-    bind L resize-pane -L 10  # 向左扩展
-    bind R resize-pane -R 10  # 向右扩展
-    bind K resize-pane -U 5   # 向上扩展
-    bind J resize-pane -D 5   # 向下扩展
-
-我们发现当打开新窗格时Shell仍然在Home目录，可以设置为当前目录：
-
-    bind '"' split-window -c '#{pane_current_path}'
-    bind '%' split-window -h -c '#{pane_current_path}'
-
-# 拷贝
+# 拷贝粘贴
 
 在Tmux中通过`[`进入拷贝模式，按下`<space>`开始拷贝。然后用Vim/Emacs快捷键选择文本，按下`<Enter>`拷贝所选内容。然后通过`]`进行粘贴。
 
@@ -121,92 +104,40 @@ tmux show -g >> current.tmux.conf
 
 > 旧版本中开始选择和复制选中快捷键绑定方式不同，请参考 <https://github.com/tmux/tmux/issues/592>
 
-# 启用鼠标
-
-Tmux 和 Vim 风格非常像，也可以设置鼠标模式。下面的设置开启了所有鼠标功能：
-点击选择窗格/窗口，拖动窗格大小，以及拖动鼠标复制文字。
-
-    set -g mouse on
-
-> 2.1 之前的版本(发布于 2015.10.18) 需要设置 `mode-mouse`, `mouse-select-pane`, `mouse-resize-pane`, `mouse-select-window`
-> 等4 个选项来开启所有鼠标功能，现在只需要设置 `mouse` 选项了。
-> 使用 `tmux -V` 可以查看当前安装的 tmux 版本，版本更新日志见 [Tmux Changelog][changelog]。
-
-# 恢复用户空间
-
-Tmux 中的 Shell 没有运行在 Mac 的 GUI Session 中，因此需要访问 GUI Session 内容时就会出错。
-
-例如 `open`, `sudo` 等命令会有错误如下：
-
-```
-The window server could not be contacted. open must be run with a user logged in at the console, either as that user or as root.
-```
-
-Vim [匿名寄存器][vim-registers] 访问不到系统剪切板，粘贴时有错误如下：
-
-```
-Nothing in register *
-```
-
-为了解决这些问题，可以使用 ChrisJohnsen 提供的 [`reattach-to-user-namespace`][reattach] 工具，
-在 Tmux 中启动 Shell 时立即挂载到 GUI Session 中。首先安装这一工具：
-
-```bash
-brew update
-brew upgrade reattach-to-user-namespace
-```
-
-然后在`.tmux.conf`中添加启动命令：
-
-```
-set -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh"
-```
-
-> 这里的 `/usr/local/bin/zsh` 要对应于你的默认 Shell 的路径，如果你没做过手脚的话，应该在`/usr/bin/bash`。
-> 可以通过 `echo $SHELL` 查看当前 Shell 的路径。
-
 # 快捷键
 
-## Sessions
+下面列出了在 Tmux 中经常使用的快捷键，在下面给出的按键之前需要先按下 `<prefix>`，
+如果你没有设置过它，默认是 `Ctrl+b`。
 
-    :new<CR>  new session
-    s  list sessions
-    $  name session
+```
+:new<CR> # 创建新的 Session，其中 : 是进入 Tmux 命令行的快捷键
+s        # 列出所有 Session，可通过 j, k, 回车切换
+$        # 为当前 Session 命名
+c        # 创建 Window
+<n>      # 切换到第 n 个 Window
+,        # 为当前 Window 命名
+%        # 垂直切分 Pane
+"        # 水平切分 Pane
+<space>  # 切换 Pane 布局
+d        # detach，退出 Tmux Session，回到父级 Shell
+t        # 显示一个时钟，:)
+?        # 快捷键帮助列表
+```
 
-> `:new -s <session-name>`可以指定新 Session 的名字。
+在 Pane 之间切换，或者改变 Pane 大小，建议自己配置快捷键。比如把它配置成 Vim 风格：
 
-## Windows (tabs)
+```
+bind h select-pane -L       # 切换到左边的 Pane
+bind j select-pane -D       # 切换到下边的 Pane
+bind k select-pane -U       # 切换到上边的 Pane
+bind l select-pane -R       # 切换到右边的 Pane
+bind L resize-pane -L 10    # 向左扩展
+bind R resize-pane -R 10    # 向右扩展
+bind K resize-pane -U 5     # 向上扩展
+bind J resize-pane -D 5     # 向下扩展
+```
 
-    c  create window
-    w  list windows
-    n  next window
-    p  previous window
-    f  find window
-    ,  name window
-    &  kill window
-
-## Panes (splits) 
-
-    %  vertical split
-    "  horizontal split
-    
-    o  swap panes
-    q  show pane numbers
-    x  kill pane
-    +  break pane into window (e.g. to select text by mouse to copy)
-    -  restore pane from window
-    ⍽  space - toggle between layouts
-    <prefix> q (Show pane numbers, when the numbers show up type the key to goto that pane)
-    <prefix> { (Move the current pane left)
-    <prefix> } (Move the current pane right)
-    <prefix> z toggle pane zoom
-
-## Misc
-
-    d  detach
-    t  big clock
-    ?  list shortcuts
-    :  prompt
+> 完整的快捷键列表可以参考： <https://gist.github.com/MohamedAlaa/2961058>
 
 # Unicode 显示问题
 
@@ -220,12 +151,65 @@ Tmux 通过 `LC_ALL`, `LC_CTYPE`, `LANG` 环境变量来判断是否终端支持
     tmux -u
     ```
 
-# Session 丢失问题
+# 启用鼠标
+
+Tmux 和 Vim 风格非常像，也可以设置鼠标模式。下面的设置开启了所有鼠标功能：
+点击选择窗格/窗口，拖动窗格大小，以及拖动鼠标复制文字。
+
+    set -g mouse on
+
+> 2.1 之前的版本(发布于 2015.10.18) 需要设置 `mode-mouse`, `mouse-select-pane`, `mouse-resize-pane`, `mouse-select-window`
+> 等4 个选项来开启所有鼠标功能，现在只需要设置 `mouse` 选项了。
+> 使用 `tmux -V` 可以查看当前安装的 tmux 版本，版本更新日志见 [Tmux Changelog][changelog]。
+
+# Attach 到用户空间
+
+有写童鞋会发现在 Tmux 中执行 `open`, `sudo` 等命令会有错误如下：
+
+```
+The window server could not be contacted. open must be run with a user logged in at the console, either as that user or as root.
+```
+
+或者 Vim [匿名寄存器][vim-registers] 也访问不到系统剪切板，比如粘贴时报错：
+
+```
+Nothing in register *
+```
+
+这是因为 Tmux 中的 Shell 没有运行在 Mac 的 GUI Session 中，
+可以使用 [`reattach-to-user-namespace`][reattach] 工具来进行 Attach。
+首先安装这一工具：
+
+```bash
+brew update
+brew install reattach-to-user-namespace
+```
+
+然后在 `.tmux.conf` 中配置默认命令：
+
+```
+set -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh"
+```
+
+> 这里的 `/usr/local/bin/zsh` 要对应于你的默认 Shell 的路径，如果你没做过手脚的话，应该在`/usr/bin/bash`。
+> 可以通过 `echo $SHELL` 查看当前 Shell 的路径。
+
+# Session 偶尔丢失
 
 Tmux 中 Session 或 Window 丢失可能的原因有很多，需要仔细排查。检查 `tmux` 日志，以及检查 [Shell 的各级配置][shell]。
 
 * 比如 Shell 的 `TMOUT` 环境变量会让超时后的 Shell 自动退出，最终导致 Session 关闭。
 * 比如临时文件夹被清空导致 socket 丢失，参考：<https://community.webfaction.com/questions/9462/tmux-session-lost-in-unknown-pts-cause-and-possible-solution>
+
+## 新 Shell 的工作目录
+
+我们发现当打开新窗格时 Shell 仍然在Home目录。
+这是 Tmux 的默认行为，可以在配置文件中设置为当前 Shell 所在目录：
+
+```
+bind '"' split-window -c '#{pane_current_path}'
+bind '%' split-window -h -c '#{pane_current_path}'
+```
 
 # 扩展阅读
 
@@ -244,3 +228,4 @@ Tmux 中 Session 或 Window 丢失可能的原因有很多，需要仔细排查�
 [vim-registers]: /2016/07/25/vim-registers.html
 [reattach]: https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
 [shell]: /2016/06/08/shell-config-files.html
+[tmux]: https://wiki.archlinux.org/index.php/tmux
