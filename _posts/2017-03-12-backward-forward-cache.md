@@ -28,7 +28,7 @@ Desktop Firefox 暂停计时器的行为非常有趣，以下 HTML 中显示一�
 
 ```html
 <span id="timer-tick"></span>
-<a href="http://harttle.com">External Link</a>
+<a href="http://harttle.land">External Link</a>
 <script>
   var i = 0
   setInterval(() => document.querySelector('#timer-tick').innerHTML = i++, 1000)

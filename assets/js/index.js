@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
     target: '_blank'
   }, {
     plugin: 'rss',
-    url: 'http://harttle.com/feed.xml',
+    url: 'http://harttle.land/feed.xml',
     target: '_blank'
   }, {
     icon: 'fa-envelope',

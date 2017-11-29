@@ -152,7 +152,7 @@ text: function( value ) {
 
 [outerHTML]: https://w3c.github.io/DOM-Parsing/#dom-element-outerhtml
 [innerHTML]: https://w3c.github.io/DOM-Parsing/#dom-element-innerhtml
-[script-insert]: http://harttle.com/2017/01/16/dynamic-script-insertion.html
+[script-insert]: http://harttle.land/2017/01/16/dynamic-script-insertion.html
 [innerText]: https://html.spec.whatwg.org/multipage/dom.html#the-innertext-idl-attribute
 [textContent]: http://www.w3.org/TR/DOM-Level-3-Core/core.html#Node3-textContent
 [text]: https://www.w3.org/TR/html5/single-page.html#dom-a-text

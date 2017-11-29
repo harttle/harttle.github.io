@@ -1,7 +1,7 @@
 HarttleLand 博客主题
 =================
 
-本仓库是 **[Harttle Land](http://harttle.com)** 的源码，欢迎 Clone 和 Fork。
+本仓库是 **[Harttle Land](http://harttle.land)** 的源码，欢迎 Clone 和 Fork。
 
 ## 功能
 
@@ -19,7 +19,7 @@ HarttleLand 博客主题
 只要保留一份 [LICENSE][license] 文件，以及在合适的地方保留如下 HTML：
 
 ```
-Theme by <a href="http://harttle.com">Harttle</a>
+Theme by <a href="http://harttle.land">Harttle</a>
 ```
 
 ## 使用

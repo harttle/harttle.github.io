@@ -62,7 +62,7 @@ MDN 给出了很漂亮的生命周期图示：
 ```javascript
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('harttle.com-v1.0.0').then(function(cache) {
+    caches.open('harttle.land-v1.0.0').then(function(cache) {
       return cache.addAll([
         '/css/main.css',
         '/js/main.js',
@@ -80,7 +80,7 @@ self.addEventListener('install', function(event) {
 ```javascript
 self.addEventListener('fetch', function(event) {
   event.respondWith(
-    caches.open('harttle.com-v1.0.0').then(function(cache) {
+    caches.open('harttle.land-v1.0.0').then(function(cache) {
       caches.match(event.request).then(function(response) {
         return response || fetch(event.request).then(function(response) {
           cache.put(event.request, response.clone());
@@ -114,7 +114,7 @@ self.addEventListener('activate', function(event) {
   event.waitUntil(
     caches.keys().then(function(cacheNames) {
       return Promise.all(
-        // VERION === 'harttle.com-v1.0.1'
+        // VERION === 'harttle.land-v1.0.1'
         cacheNames.filter(function(cacheName) {
           return cacheName !== VERSION
         }).map(function(cacheName) {

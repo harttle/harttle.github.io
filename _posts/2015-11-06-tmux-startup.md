@@ -220,7 +220,7 @@ bind '%' split-window -h -c '#{pane_current_path}'
 
 [Harttle][harttle] 的 Mac 下 Tmux 配置在这里，供参考：<https://github.com/harttle/unix-home/blob/macos/.tmux.conf>
 
-[harttle]: http://harttle.com
+[harttle]: http://harttle.land
 [node-web]: /2015/02/24/node-web-api.html
 [tmux-shot]: /assets/img/blog/tmux-concept.png
 [vim-ide]: /2015/11/04/vim-ide.html

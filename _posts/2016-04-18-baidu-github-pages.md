@@ -7,8 +7,8 @@ tags: Git Github HTML HTTP 网络 搜索引擎
 利用Github Pages创建博客的国内作者一定有这样的麻烦：
 Github对Baidu Spider的用户代理都会返回403状态码，因而百度无法收录博客内容。
 为解决此问题，小编在2016年01月21日在Gitcafe Pages（今Coding.net）创建镜像，
-并设置域名解析百度线路来的harttle.com到该镜像。
-如今百度已经可以正常收录harttle.com的文章了，撰文在此希望能帮到别人。
+并设置域名解析百度线路来的harttle.land到该镜像。
+如今百度已经可以正常收录harttle.land的文章了，撰文在此希望能帮到别人。
 
 * *一个域名*：百度收录、Google收录、用户访问的域名是相同的。
 * *免费使用*：不需要购买VPS或者CDN服务。
@@ -46,16 +46,16 @@ git push coding.net coding-pages
 
 # 域名配置
 
-首先在Coding.net的Pages页面绑定一个自定义域名：harttle.com。
-然后在域名解析控制台中，将百度线路来的harttle.com解析到pages.coding.me：
+首先在Coding.net的Pages页面绑定一个自定义域名：harttle.land。
+然后在域名解析控制台中，将百度线路来的harttle.land解析到pages.coding.me：
 
 ```
 记录类型 	主机记录 	解析线路 	记录值	            TTL	
 CNAME	    @	        百度	    pages.coding.me	    10分钟
 ```
 
-这样从百度线路来的请求都会被解析到pages.coding.me，在HTTP请求头中仍然包含harttle.com主机的信息。
-因为在Coding.net中设置了绑定harttle.com，所以Coding.net会很配合地接受该HTTP请求。
+这样从百度线路来的请求都会被解析到pages.coding.me，在HTTP请求头中仍然包含harttle.land主机的信息。
+因为在Coding.net中设置了绑定harttle.land，所以Coding.net会很配合地接受该HTTP请求。
 
 这样百度便可以正确地收到Github Pages页面了，我们只需要保持同步即可。
 
@@ -81,12 +81,12 @@ git checkout master
 1. 从百度内部线路访问。
 2. 通过<http://harttle.coding.me>访问。
 
-通过上述渠道访问站点的用户应当重定向到harttle.com，同时百度Spider不应被重定向。
+通过上述渠道访问站点的用户应当重定向到harttle.land，同时百度Spider不应被重定向。
 解决这个问题很简单，在coding-pages分支中的HTML Head中添加脚本的重定向即可：
 
 ```html
 <script>
-  location.href='http://harttle.com' + location.pathname;
+  location.href='http://harttle.land' + location.pathname;
 </script>
 ```
 

@@ -160,7 +160,7 @@ git filter-branch -f --prune-empty --index-filter "git rm -rf --cached --ignore-
 需要克隆一份当前仓库来看效果：
 
 ```bash
-git clone --no-hardlinks file:///Users/harttle/harttle.com /tmp/harttle.com
+git clone --no-hardlinks file:///Users/harttle/harttle.land /tmp/harttle.land
 ```
 
 仓库大小变为25.76M了！从原来的142M！

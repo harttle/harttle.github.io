@@ -24,7 +24,7 @@ JavaScript的正则表达式基本符合最初贝尔实验室的规则，
 
 ```javascript
 var parse_url = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/;
-var url = "http://harttle.com:80/tags.html?simple=true#HTML",
+var url = "http://harttle.land:80/tags.html?simple=true#HTML",
     result = parse_url.exec(url);
     blanks = '       ';
     fields = ['url', 'scheme', 'slash', 'host', 'port', 'path', 'query', 'hash'];
@@ -38,10 +38,10 @@ fields.forEach(function(field, i){
 上述代码的输出：
 
 ```
-url:    http://harttle.com:80/tags.html?simple=true#HTML
+url:    http://harttle.land:80/tags.html?simple=true#HTML
 scheme: http
 slash:  //
-host:   harttle.com
+host:   harttle.land
 port:   80
 path:   tags.html
 query:  single=true
@@ -89,7 +89,7 @@ hash:   HTML
 # Host（主机名）
 
 `([0-9.\-A-Za-z]+)`匹配主机名，它可以是数字，字母，点或横线。
-匹配结果是`harttle.com`，被存放到`fields[3]`中。
+匹配结果是`harttle.land`，被存放到`fields[3]`中。
 
 # Port（端口）
 

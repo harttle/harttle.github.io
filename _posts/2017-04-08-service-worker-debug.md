@@ -101,12 +101,12 @@ self.addEventListener('install', function() {
 
 * Service Worker Spec.: <https://w3c.github.io/ServiceWorker>
 * Chromium Service Worker FAQ: <https://www.chromium.org/blink/serviceworker/service-worker-faq>
-* PWA 基本特性与标准现状：<http://harttle.com/2017/01/28/pwa-explore.html>
+* PWA 基本特性与标准现状：<http://harttle.land/2017/01/28/pwa-explore.html>
 
 [sw]: https://w3c.github.io/ServiceWorker/
 [register]: https://w3c.github.io/ServiceWorker/#navigator-service-worker-register
 [register-algo]: https://w3c.github.io/ServiceWorker/#register-algorithm
 [web-worker]: https://html.spec.whatwg.org/multipage/workers.html
 [install-algo]: https://www.w3.org/TR/service-workers/#installation-algorithm
-[chrome]: http://harttle.com/tags.html#Chrome
+[chrome]: http://harttle.land/tags.html#Chrome
 [http-cache]: /2017/04/04/using-http-cache.html

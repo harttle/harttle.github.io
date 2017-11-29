@@ -74,7 +74,7 @@ MD5 + 永不过期的 CDN 几乎已经成为业界常态：为每一个静态文
 * 把经常变化的业务逻辑抽离，单独缓存。
 * 基础工具库独立打包并缓存。
 
-[harttle]: http://harttle.com
+[harttle]: http://harttle.land
 [cr]: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Conditional_requests
 [cache]: /2017/04/04/using-http-cache.html
 [exp]: http://expressjs.com/zh-cn/api.html

@@ -100,7 +100,7 @@ Chrome 的同时下载限制是 6 个，因此 `external.html` 的 3 个外链�
 实践中可以通过合并外链脚本的方式来确保脚本太多不影响渲染性能。
 
 [flow-render]: /2016/11/26/static-dom-render-blocking.html
-[harttle]: http://harttle.com
+[harttle]: http://harttle.land
 [http-cache]: /2017/04/04/using-http-cache.html
 [async-defer]: /2016/03/14/non-blocking-javascript-loading.html
 [inline-perf]: /assets/img/blog/html/inline-perf@2x.png

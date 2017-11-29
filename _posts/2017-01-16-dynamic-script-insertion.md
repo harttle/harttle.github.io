@@ -33,10 +33,10 @@ script.innerHTML = 'console.log("foo")';
 
 需要注意的是内联脚本是否能够执行仍然受制于[CSP策略指令][csp]，
 该策略是由`Content-Security-Policy`响应头([rfc7762][rfc7762])控制的。
-例如下列设置将会禁止执行`harttle.com`以外的任何内联脚本。
+例如下列设置将会禁止执行`harttle.land`以外的任何内联脚本。
 
 ```
-Content-Security-Policy: script-src harttle.com;
+Content-Security-Policy: script-src harttle.land;
 ```
 
 # 执行外部脚本

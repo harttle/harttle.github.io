@@ -150,7 +150,7 @@ HR有着非常浓郁的华为气息，以及公司文化所提供的自豪感。
 本人本科在学习物理学专业，毕业论文在做Linux下的大型脉冲星数据处理（Parks 64m射电望远镜数据在2013年公开）。
 硕士开始学习计算机，研一啃了基本经典教材尽量补上本科的知识，
 包括Compilers，Modern OS，Computer Organization and Design, Introduction to Algorithms, DBMS
-同时开始了<http://harttle.com>博客项目。
+同时开始了<http://harttle.land>博客项目。
 
 研二开始做[Onboard](https://onboard.cn)，主持了前端重构，一体式AngularJS App的开发工作。
 2015年至今一直在做[天码营](http://tianmaying.com)，负责整个Web前端架构和开发。

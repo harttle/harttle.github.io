@@ -54,4 +54,4 @@ rdesktop <IP>:<PORT> -r disk:floppy=/mnt/floppy
 		
 3. 重启
 
-[harttle]: http://harttle.com
+[harttle]: http://harttle.land

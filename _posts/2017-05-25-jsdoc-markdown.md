@@ -154,7 +154,7 @@ define('my/jacket', function() {
 [sphinx]: http://zh-sphinx-doc.readthedocs.io/en/latest/index.html
 [jsdoc]: http://usejsdoc.org
 [yuidoc]: http://yui.github.io/yuidoc/
-[harttle]: http://harttle.com/about.html
+[harttle]: http://harttle.land/about.html
 [vim-eslint]: /2017/03/12/vim-eslint.html
 [valid-jsdoc]: http://eslint.org/docs/rules/valid-jsdoc
 [jsdoc-to-markdown]: https://www.npmjs.com/package/jsdoc-to-markdown

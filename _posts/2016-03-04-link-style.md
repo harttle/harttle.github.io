@@ -86,7 +86,7 @@ a {
     background: url(images/externalLink.gif) no-repeat right top;
     padding-right: 10px;
 }
-a[href^=/], a[href^=http://hartle.com], a[href^=http://blog.harttle.com]{
+a[href^=/], a[href^=http://hartle.com], a[href^=http://blog.harttle.land]{
     background-image: none;
     padding-right: 0;
 }

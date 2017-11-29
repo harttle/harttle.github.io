@@ -79,7 +79,7 @@ function getPosts() {
 ```javascript
 var Promise = require('bluebird')
 function getPosts() {
-    return Promise.resolve($.get('http://harttle.com'))
+    return Promise.resolve($.get('http://harttle.land'))
 }
 ```
 
