@@ -38,6 +38,10 @@ document.addEventListener('DOMContentLoaded', function () {
     url: 'https://github.com/harttle/harttle.github.io',
     target: '_blank'
   }, {
+    plugin: 'twitter',
+    url: 'https://twitter.com/harttleharttle',
+    target: '_blank'
+  }, {
     plugin: 'rss',
     url: 'http://harttle.land/feed.xml',
     target: '_blank'
@@ -48,10 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }, {
     plugin: 'qrcode',
     title: '扫一扫！'
-  }, {
-    plugin: 'linkedin',
-    url: 'https://linkedin.com/in/harttle',
-    target: '_blank'
   }]
   socialShare($('.follow').get(0), links, {size: 'sm'})
 })
