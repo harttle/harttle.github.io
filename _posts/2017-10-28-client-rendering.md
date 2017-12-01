@@ -61,14 +61,16 @@ tags: MVVM 异步渲染 路由 兼容性 pushState popstate
 **场景**：在用户点击链接时，需要操作 URL；在用户点击浏览器返回/前进时，需要渲染页面。
 
 HTML5 中定义了 pushState API，包括 [pushState 方法][pushState]，[replaceState 方法][replaceState] 和 [popstate 事件][popstate]。
-我们不谈这些 API 的设计，只看它们的奇怪行为：
+我们不谈这些 API 的接口设计如何，它们的奇怪行为和 Bug 就够你调试一整天：
 
 * [同步渲染的页面资源][static-render] 加载会延迟 `popstate` 事件。这使得页面未加载完时可以点出但无法返回。
 * `pushState` 调用不会触发 `popstate` 事件。通常需要一个路由工具来包装这些不一致。
 * [PopStateEvent.state][popstate-event] 总是等于 `history.state`。无法获取被 pop 出的 state。
 * `popstate` 事件处理函数中无法区分是前进还是后退。考虑刷新页面的场景不能只存储为变量，只能存储在 [`sessionStorage`][local-store] 中，但这无疑会增加路由的延迟。
 * 有些浏览器不支持 `history.state`，但支持 `pushState` 和 `popstate`。
+* iOS 下所有浏览器中，设置 [scrollRestoration][sr] 为 `manual` 会使得手势返回时页面卡 1s。
 
+[sr]: https://developers.google.com/web/updates/2015/09/history-api-scroll-restoration
 [static-render]: /2016/11/26/static-dom-render-blocking.html
 [sync]: /2016/11/26/static-dom-render-blocking.html
 [async]: /2016/11/26/dynamic-dom-render-blocking.html

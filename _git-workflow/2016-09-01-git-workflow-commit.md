@@ -8,10 +8,17 @@ Git已经成为当今版本控制工具的主流，而分布式的结构和日�
 
 <!--more-->
 
-`git add`命令将工作区内容添加到暂存区，
-`git commit`命令将暂存区内容提交到本地仓库。
+`git add`命令将工作区内容添加到暂存区，`git commit`命令将暂存区内容提交到本地仓库。
 添加`-m`参数可直接用指定的message提交本次commit。
-否则Vim会打开默认的文本编辑器提示你输入commit message。
+否则 Vim 会打开默认的文本编辑器提示你输入commit message。
+`git commit` 时你的 Git 没有为你打开 Vim？
+Git 打开哪个编辑器取决于 `GIT_EDITOR` 和 `EDITOR` 等环境变量，
+一般在 `~/.bashrc` 加入下面的设置即可：
+
+```bash
+# 当然你可以设为 nano
+export GIT_EDITOR="vim"
+```
 
 ## 添加到暂存区并提交
 
