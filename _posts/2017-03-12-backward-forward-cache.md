@@ -49,9 +49,11 @@ window.onpageshow = function(event) {
 };
 ```
 
-注意无论页面是否被缓存 `pageshow` 总会触发，因此需要检测器 `persisted` 属性。
+注意 `pageshow` 不仅在显示被缓存的页面时触发，在第一次加载页面时也会触发。
+因此需要检测事件的 `persisted` 属性，页面第一次加载时它的值是 `false`。
+
 另外 `pageshow` 的时机总是在 `load` 事件之后。
-这一点很容易检测，下面的`pageshow`日志总在`load`之前：
+这一点很容易检测，比如下面的代码中 `pageshow` 日志总在 `load` 之前打印：
 
 ```javascript
 window.addEventListener('pageshow', function () {
