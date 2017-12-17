@@ -117,7 +117,7 @@ void f(){}              // 注意：这里没有"模板实参"
 `std`是一个特殊的命名空间，用户可以特化其中的模板，但不允许添加模板（其实任何内容都是禁止添加的）。
 因此在`std`中添加重载函数是不允许的，在[Effective C++: Item 25][item25]中给出了一个更详细的案例。
 
-[meta]: /2015/08/25/2015-09-16-effective-cpp-48.html
+[meta]: /2015/09/16/effective-cpp-48.html
 [partial]: http://en.cppreference.com/w/cpp/language/partial_specialization
 [full]: http://en.cppreference.com/w/cpp/language/template_specialization
 [item25]: /2015/08/23/effective-cpp-25.html

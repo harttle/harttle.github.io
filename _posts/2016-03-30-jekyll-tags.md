@@ -59,7 +59,7 @@ tags: Bash Github Vim grep awk sed JSON Jekyll
 ]{% endraw %}
 ```
 
-它生成的页面就是一个JSON文件（也可以访问 http://harttle.land/tags.json 查看）：
+它生成的页面就是一个JSON文件（也可以访问 http://harttle.land/api/tags.json 查看）：
 
 ```json
 [
@@ -74,25 +74,25 @@ tags: Bash Github Vim grep awk sed JSON Jekyll
 ]
 ```
 
-这个文件位于`_site/tags.json`，这便是标签库。
+这个文件位于`_site/api/tags.json`，这便是标签库。
 
 # 生成标签的Bash脚本
 
 首先这个Bash脚本应当接受一个文件名参数，给出要为哪篇文章生成标签。
-然后去`_site/tags.json`读取标签列表，最后输出文章匹配的标签。
+然后去`_site/api/tags.json`读取标签列表，最后输出文章匹配的标签。
 
 ```bash
 #!/bin/bash
 # Usage: ./generate_tags.sh xxx.md
 
 # generate tag list 
-grep name ./_site/tags.json | awk -F : '{print $2}' | tr -d ',\" '  > /tmp/tags.txt
+grep name ./_site/api/tags.json | awk -F : '{print $2}' | tr -d ',\" '  > /tmp/tags.txt
 
 # match tag string
 grep $1 -oFf /tmp/tags.txt | sort | uniq | tr '\n' ' ' | sed 's/ $//'; echo ''
 ```
 
-保存上述脚本为`./scripts/generate_tags.sh`，该脚本分为两部分。首先读取`_site/tags.json`生成标签列表文件`/tmp/tags.txt`：
+保存上述脚本为`./scripts/generate_tags.sh`，该脚本分为两部分。首先读取`_site/api/tags.json`生成标签列表文件`/tmp/tags.txt`：
 
 > 其中`awk`用来输出冒号后的标签名，`tr`用来移除逗号引号。
 

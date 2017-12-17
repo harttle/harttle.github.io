@@ -1,5 +1,4 @@
 ---
-layout: blog 
 title: C++手稿：指针与引用
 tags: C++ STL 内存 引用 指针 数组 函数指针 智能指针 析构函数 栈空间
 ---
@@ -162,5 +161,5 @@ auto_ptr<Investment> invest(){
 > `shared_ptr`的引用计数很像垃圾回收，然而它并不能解决环状引用的问题。
 
 [item13]: /2015/08/02/effective-cpp-13.html
-[item41]: /2015/08/23/effective-cpp-41.html
+[item41]: /2015/09/08/effective-cpp-41.html
 
