@@ -1,6 +1,7 @@
 ---
 title: Deep Linking：从浏览器调起 APP
 subtitle: URI Scheme, Universal Links, Android App Links, 以及 Chrome Intent
+tags: URI-Scheme Universal-Links App-Links Intent iOS Android
 ---
 
 [Deep Linking][deep-linking] 只是一个概念，
@@ -9,6 +10,8 @@ Deep Linking 给用户带来的是非常顺滑的浏览体验，尤其在 Web �
 
 但如果要进入 App 并定位到对应的页面则较为困难，URI Scheme, Universal Links, Android App Links, 以及 Chrome Intent 都是为了解决从 Web 页面 Deep Linking 到 App 而做的尝试。
 本文从 Web 一侧的视角总结调起 App 的各种实现方式，能达到的效果，以及对应的兼容性问题。
+
+<!--more-->
 
 ## 实现方式概述
 
