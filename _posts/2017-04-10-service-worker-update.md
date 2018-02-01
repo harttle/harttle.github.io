@@ -6,7 +6,7 @@ tags: Chrome HTTP 缓存 进程 浏览器 Service-Worker PWA
 [Service Worker][sw] 用来控制页面资源缓存，那么`sw.js`文件本身如何进行更新呢？
 [立即使用 Service Worker！](/2017/04/09/service-worker-now.html) 中介绍了使用 Service Worker 搭建离线 App，
 以及这一 App 的版本更新方式。
-本文重点关注 Service Worker 本身的更新机制，相关标准，以及最佳实践。
+本文重点关注 Service Worker 本身的更新机制，如何设置 HTTP 缓存，当前浏览器的更新机制，以及调试时如何快速更新。
 
 # Service Worker 更新
 
@@ -39,7 +39,7 @@ Service Worker 的更新算法（这里是指 [Soft Update][soft-update]）只�
 
 到此为止这些行为都是标准的 HTTP 缓存。这里有个 Node.js Demo：
 
-* <https://github.com/service-worker/demos/tree/master/sw-updat://github.com/service-worker/demos/tree/master/sw-update>
+* <https://github.com/service-worker/demos/tree/master/sw-update>
 
 # SW 文件的 MD5
 

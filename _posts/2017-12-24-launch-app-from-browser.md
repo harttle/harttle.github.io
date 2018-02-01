@@ -29,7 +29,7 @@ iframe 触发 | 不支持 | 不支持 | Chrome<sup>1</sup> <= 18, iOS < 9 | 不�
 链接格式 <sup>2</sup> | 正常的 URL | 正常的 URL | 自定义协议的 URL | intent 协议的 URL
 
 1. 本文只针对移动端浏览器，其中 Chrome 表示 Chrome for Android，以及 Android Browser 的对应版本。
-2. 链接的作用方式有3中：用户点击这样的 `<a>` 标签；脚本中进行页面重定向；设置 `iframe` 的 `src`。
+2. 链接的作用方式有3种：用户点击这样的 `<a>` 标签；脚本中进行页面重定向；设置 `iframe` 的 `src`。
 
 ## URI Scheme
 
