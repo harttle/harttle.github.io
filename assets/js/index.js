@@ -33,25 +33,4 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     $('.tag-list').append(tagEls)
   })
-  var links = [{
-    icon: 'fa-code-fork',
-    url: 'https://github.com/harttle/harttle.github.io',
-    target: '_blank'
-  }, {
-    plugin: 'twitter',
-    url: 'https://twitter.com/harttleharttle',
-    target: '_blank'
-  }, {
-    plugin: 'rss',
-    url: 'http://harttle.land/feed.xml',
-    target: '_blank'
-  }, {
-    icon: 'fa-envelope',
-    background: '#5484d6',
-    url: 'mailto:harttle@harttle.com?subject=来自HarttleLand'
-  }, {
-    plugin: 'qrcode',
-    title: '扫一扫！'
-  }]
-  socialShare($('.follow').get(0), links, {size: 'sm'})
 })

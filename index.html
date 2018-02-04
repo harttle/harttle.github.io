@@ -40,7 +40,30 @@ layout: default
     </div>
     <aside class="hidden-xs col-sm-3 col-sm-offset-1">
       {% include author.html %}
-      <section class="follow"></section>
+      <section class="follow">
+        <ul class="social-share social-share-sm">
+          <li class="social-share-item">
+            <a href="https://github.com/harttle/harttle.github.io" target="_blank" style="background: rgb(181, 181, 181);">
+              <i class="fa fa-code-fork" style="color: rgb(255, 255, 255);"></i>
+            </a>
+          </li>
+          <li class="social-share-item">
+            <a href="https://twitter.com/harttleharttle" target="_blank" style="background: rgb(51, 204, 255);">
+              <i class="fa fa-twitter" style="color: rgb(255, 255, 255);"></i>
+            </a>
+          </li>
+          <li class="social-share-item">
+            <a href="http://harttle.land/feed.xml" target="_blank" style="background: rgb(250, 155, 57);">
+              <i class="fa fa-rss" style="color: rgb(255, 255, 255);"></i>
+            </a>
+          </li>
+          <li class="social-share-item">
+            <a href="mailto:harttle@harttle.com?subject=来自HarttleLand" target="" style="background: rgb(84, 132, 214);">
+              <i class="fa fa-envelope" style="color: rgb(255, 255, 255);"></i>
+            </a>
+          </li>
+        </ul>
+      </section>
       <section class="collection-list">
         <h4>系列</h4>
         <ul class="list-unstyled">
@@ -66,8 +89,7 @@ layout: default
       </section>
     </aside>
   </div>
-  <script src="/assets/lib/social-share/social-share.min.js"></script>
-  <script src="/assets/lib/jquery-ias.min.js"></script>
-  <script src="/assets/js/index.js"></script>
+  <script defer src="/assets/lib/jquery-ias.min.js"></script>
+  <script defer src="/assets/js/index.js"></script>
 </div>
 
