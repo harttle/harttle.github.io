@@ -35,6 +35,8 @@ git checkout -b test
 git checkout master
 # 删除`test`分支：
 git branch -D test
+# 从远程仓库删除
+git push --delete origin test
 ```
 
 ## 分支重命名
@@ -52,7 +54,7 @@ git push origin :old_branch
 git push --set-upstream origin new_branch
 ```
 
-> 如果要重命名的是当前分支，可以直接`git branch -m new_branch`。
+如果要重命名的是当前分支，可以直接`git branch -m new_branch`。
 
 ## 分支合并
 
