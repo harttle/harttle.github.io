@@ -76,7 +76,7 @@ Trident (MSIE)           |    | 是 | 是
 ![stylesheet links block rendering][css-block-rendering]
 
 1. 两个`<h2>`标签均为显示，说明样式表会阻塞和延迟整个DOM的渲染。
-2. 第一次输出只有一个`<h2>`，说明DOM解析会延迟脚本的执行。
+2. 第一次输出只有一个`<h2>`，说明脚本执行会阻塞 DOM 解析（感谢@huahua指正）。
 3. 第二次输出有两个`<h2>`，说明样式载入过程中DOM已解析完毕，即样式表不会阻塞DOM解析。
 4. `"second script"`未被打印出来，说明在Chrome中样式表之后的行内脚本被延迟了。
 
