@@ -7,6 +7,8 @@ tags: Git Github
 直接移除那以后的所有提交。但这更改了 Git 的历史，Git 服务通常会禁止这样做。
 这便需要一个更安全的方式将代码状态回到历史版本，同时不更改 Git 历史。
 
+如果直接回滚会影响到最近的提交，可以参考 [从 Git 历史移除某些 Commit](/2018/03/13/remove-certain-commits-from-history.html) 在回滚的同时保留最近的有效提交。
+
 > 所谓 **保护分支**，就是指不允许改写 Git 历史的分支。在 Github 中对应的选项是 **Force Pushes**，该选项默认处于 Disallow 状态。
 
 <!--more-->
