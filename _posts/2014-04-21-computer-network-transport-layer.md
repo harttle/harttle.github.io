@@ -1,5 +1,4 @@
 ---
-layout: blog
 title:  《计算机网络》笔记 - 传输层
 tags: ALOHA IP LAN MAC Socket TCP UDP WAN Wifi 网络 蓝牙 路由 多路复用 拥塞控制 操作系统 用户空间 过程调用
 ---
