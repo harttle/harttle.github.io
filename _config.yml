@@ -35,17 +35,6 @@ twitter:
 sass:
     style: compressed
 
-collections:
-  effective-cpp:
-    output: true
-    permalink: /:year/:month/:day/:title.html
-  git-workflow:
-    output: true
-    permalink: /:year/:month/:day/:title.html
-  vim-practice:
-    output: true
-    permalink: /:year/:month/:day/:title.html
-
 defaults:
   -
     scope:
