@@ -10,7 +10,6 @@
 @import 'hover-tag';
 @import 'jqcloud.scss';
 @import 'lib/monokai-syntax.scss';
-@import 'lib/social-share.scss';
 
 .module-about{
   @import 'module-about';
@@ -38,10 +37,6 @@
 
 .module-blog{
   @import 'module-blog';
-}
-
-.module-author{
-  @import 'module-author';
 }
 
 .module-collection{

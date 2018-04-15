@@ -1,58 +1,7 @@
 (function () {
-  var Highcharts = window.Highcharts
+  var postList = document.querySelector('.post-list')
 
-  // lib config
-  setHighchartsRadiationColors()
-
-  // post/tag parsing
-  var $btnPie = $('#tags-display-toggle .btn-pie')
-  var $btnCloud = $('#tags-display-toggle .btn-cloud')
-  var $btns = $('#tags-display-toggle .btn')
-  var $btnList = $('#tags-display-toggle .btn-list')
-  var $currentTag = $('#current-tag')
-  var $tagContainer = $('.tag-container')
-  var $tagPie = $('.tag-pie')
-  var $tagList = $('.tag-list')
-  var $tagCloud = $('.tag-cloud')
-  var $postList = $('.post-list')
-
-  $.when(getTags(), getPosts()).done(function (tags, posts) {
-    showCloud(tags)
-    initList()
-
-    $tagContainer.on('click', 'span', function (e) {
-      var tag = $(e.target).data('tag')
-      tag && onTagSelected(tag)
-    })
-
-    $btnCloud.click(function () {
-      hidePie()
-      hideList()
-      showCloud(tags)
-    })
-    $btnPie.click(function () {
-      hideCloud()
-      hideList()
-      showPie(tags, onTagSelected)
-    })
-    $btnList.click(function () {
-      hideCloud()
-      hidePie()
-      showList(tags)
-    })
-
-    function initList () {
-      var selectedTag = decodeURIComponent(location.hash.replace('#', ''))
-      if (selectedTag) setTag(posts, selectedTag)
-      else updateList(posts.slice(0, 30), true)
-    }
-
-    function onTagSelected (tag) {
-      setTag(posts, tag)
-      $('body').animate({
-        scrollTop: $('.right-panel').offset().top
-      }, 500)
-    }
+  Promise.all([getTags(), getPosts()]).then(function (tags, posts) {
   })
 
                     // functions
@@ -70,7 +19,7 @@
 
     function updateCurrentTag (tag, count) {
       $('head title').html('技术标签：' + tag + '（' + count + '）')
-      $currentTag.html(tag + '(' + count + ')')
+      currentTag.innerHTML = tag + '(' + count + ')'
     }
   }
 
@@ -86,13 +35,14 @@
       var $title = $('<div>').append($anchor)
       return $li.append($time).append($title)
     })
-    $postList.hide().html('').append($lis)
-    if (disableAnimation) $postList.show()
-    else $postList.fadeIn()
+    postList.style.display = 'none'
+    postList.innerHTML = ''
+    $lis.each(li => postList.appendChild(li));
+    postList.style.display = 'block'
   }
 
   function showList (tags) {
-    $btnList.addClass('active')
+    btnList.classList.add('active')
     $tagList.html('').append(tags.map(function (tag) {
       return $('<span>', {
         class: 'tag'
@@ -104,40 +54,25 @@
   }
 
   function hideList () {
-    $btnList.removeClass('active')
-    $tagList.fadeOut().html('')
+    btnList.classList.remove('active')
+    tagList.style.display = 'none'
+    tagList.innerHTML = ''
   }
 
   function showPie (tags, onTagSelected) {
-    $btnPie.addClass('active')
+    btnPie.classList.add('active')
     var options = getTagPieOptions(tags.slice(0, 20), function () {
       onTagSelected(this.name)
     })
-    $tagPie.html('').show().highcharts(options)
-  }
-
-  function hidePie () {
-    $btnPie.removeClass('active')
-    $tagPie.hide().html('')
-  }
-
-  function showCloud (tags) {
-    var displayTags = getTagCloudTags(tags)
-    var options = getTagCloudOptions(function () {
-      $btns.attr('disabled', false)
-    })
-    $btns.attr('disabled', true)
-    $tagCloud.html('').show().jQCloud(displayTags, options)
-    $btnCloud.addClass('active')
-  }
-
-  function hideCloud () {
-    $btnCloud.removeClass('active')
-    $tagCloud.html('').removeAttr('style').hide()
+    tagPie.innerHTML = ''
+    tagPie.style.display = 'block'
+    Highcharts.chart(tagPie, options)
   }
 
   function getPosts () {
-    return $.get('/api/posts.json').then(function (posts) {
+    return fetch('/api/posts.json')
+    .then(function (res) { return res.json() })
+    .then(function (posts) {
       posts.forEach(function (post) {
         post.tagstr = ',' + post.tags.join(',').toLowerCase() + ','
       })
@@ -146,7 +81,9 @@
   }
 
   function getTags () {
-    return $.get('/api/tags.json').then(function (tags) {
+    return fetch('/api/tags.json')
+    .then(function (res) { return res.json() })
+    .then(function (tags) {
       return tags.sort(function (lhs, rhs) {
         return rhs.count - lhs.count
       })
@@ -181,77 +118,5 @@
       return tag
     })
     return tags
-  }
-
-  function getTagCloudOptions (afterRender) {
-    return {
-      afterCloudRender: afterRender
-    }
-  }
-
-  function getTagPieOptions (tags, clickCallback) {
-    var chartOptions = {
-      title: {
-        text: ''
-      },
-      credits: {
-        enabled: false
-      },
-      chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
-      },
-      tooltip: {
-        enabled: false
-      },
-      plotOptions: {
-        pie: {
-          allowPointSelect: true,
-          cursor: 'pointer',
-          point: {
-            events: {
-              click: clickCallback
-            }
-          },
-          dataLabels: {
-            enabled: true,
-            format: '<b>{point.name}</b>: {point.y}',
-            style: {
-              color: Highcharts.theme ? Highcharts.theme.contrastTextColor : 'black'
-            },
-            connectorColor: 'silver'
-          }
-        }
-      },
-      series: [{
-        name: 'Tags',
-        data: tags.map(function (tag) {
-          return {
-            name: tag.name,
-            y: tag.count
-          }
-        })
-      }]
-    }
-    return chartOptions
-  }
-
-  function setHighchartsRadiationColors () {
-    // Radiation Configuration
-    Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function (color) {
-      return {
-        radialGradient: {
-          cx: 0.5,
-          cy: 0.3,
-          r: 0.7
-        },
-        stops: [
-          [0, color],
-          [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
-        ]
-      }
-    })
   }
 })()

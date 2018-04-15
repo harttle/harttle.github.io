@@ -1,41 +1,21 @@
 @import 'mixins';
 @import 'variables';
 
-#site-scroll-top {
+#btnScrolltop {
   position: fixed;
   right: 40px;
   bottom: 40px;
-  color: $grey;
-  @include size(41px);
-  line-height: 35px;
-  font-size: 1.231em;
-  background: lighten($light-grey,15%);
+  @include size(40px);
+  font-size: 32px;
   text-align: center;
-  z-index: 999;
   visibility: hidden;
   @include opacity(0);
   @include transition(all .25s ease-in-out);
-
-  border: 3px solid transparent;
-  border-radius: 4px;
 }
-#site-scroll-top.show{
+#btnScrolltop.show{
   visibility: visible;
+  @include opacity(0.3);
+}
+#btnScrolltop:hover{
   @include opacity(1);
 }
-@media (hover:hover) {
-  #site-scroll-top:hover {
-    text-decoration: none;
-    color: #fff;
-    background: $grey;
-    border-color: $light-grey;
-  }
-}
-
-#site-scroll-top:active {
-  text-decoration: none;
-  color: #fff;
-  background: $grey;
-  border-color: $light-grey;
-}
-

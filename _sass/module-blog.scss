@@ -90,46 +90,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .previous, .next{
+  .previous, .next, .recommend{
     display: block;
     border-left: 1px solid $blue;
   }
-}
-
-.recommend{
-  position: fixed;
-  z-index: 1;
-  right: 100%;
-  bottom: 40px;
-  border-right: 10px solid $blue;
-  border-top: 1px solid $blue;
-  border-bottom: 1px solid $blue;
-  padding: 10px 20px;
-  width: 270px;
-  background: white;
-  @include transition(transform .3s ease-in);
-}
-
-.recommend .fa{
-  margin-right: 10px;
-}
-
-.recommend.in{
-  @include transform(translate3d(100%, 0, 0));
-}
-
-@media(max-width:1199px){
-  .post-pager{
-    .next, .previous{
-      float: none;
-      display: block;
-    }
-    .next{
-      border-left: 1px solid $blue;
-      border-right: none;
-    }
-  }
-  #social-share-block{
-    text-align: right;
+  .recommend{
+    display: none;
   }
 }

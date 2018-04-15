@@ -5,31 +5,5 @@ simpleTitle: true
 ---
 
 <div class="module-tags">
-
-  <div class="left-panel">
-    <div class="tag-cloud tag-container"></div>
-    <div class="tag-pie tag-container"></div>
-    <div class="tag-list tag-container"></div>
-    <div id="tags-display-toggle" class="btn-group btn-group-sm">
-      <button class="btn btn-default btn-cloud">
-        <i class="fa fa-cloud"></i>
-      </button>
-      <button class="btn btn-default btn-pie">
-        <i class="fa fa-pie-chart"></i>
-      </button>
-      <button class="btn btn-default btn-list">
-        <i class="fa fa-th-list"></i>
-      </button>
-    </div>
-    <span id="current-tag">所有标签（{{ site.posts | size }}）</span>
-  </div>
-
-  <div class="right-panel">
-    <ul class="list-unstyled post-list"> </ul>
-  </div>
-
+        <span id="current-tag">所有标签（{{ site.posts | size }}）</span>
 </div>
-
-<script defer src="/assets/lib/jqcloud/jqcloud.min.js"></script>
-<script defer src="http://code.highcharts.com/highcharts.js"></script>
-<script defer src="/assets/js/tags.js"></script>

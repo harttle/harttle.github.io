@@ -1,70 +1,78 @@
 document.addEventListener('DOMContentLoaded', function () {
+  var md = document.querySelector('.md')
   recordPageView()
   initTOC()
   initRecommends()
 
   function initTOC () {
-    var toc = getTOC($('.md'))
-    var $toc = $('.toc')
-    if (toc) {
-      $toc.append(toc)
-
-      // toc affix, this offset is for toc position recognition
-      setTimeout(function () {
-        $toc.affix({
-          offset: {
-            top: function () {
-              var offsetTop = $toc.offset().top
-              return (this.top = offsetTop - 40)
-            },
-            bottom: function () {
-              return (this.bottom = $(document).height() - $('.md').offset().top - $('.md').height())
-            }
-          }
-        })
-      }, 100)
-
-      // toc scroll spy
-      $('body').scrollspy({
-        target: '.toc',
-        offset: 10 // make sure to spy the element when scrolled to
-      })
-    } else {
-      $('article').addClass('collapsed')
+    var toc = generateTOC(md)
+    var header = document.querySelector('.blog-header')
+    var article = document.querySelector('article')
+    if (!toc) {
+      article.classList.add('collapsed');
+      return
     }
+    asideTOC.appendChild(toc)
 
-    $(window).resize(function () {
-      $('body').scrollspy('refresh')
+    var topLimit
+    updateTopLimit()
+    window.addEventListener('resize', updateTopLimit)
+    window.addEventListener('scroll', function () {
+      var cls = window.pageYOffset < topLimit ? 'affix-top' : 'affix'
+      asideTOC.setAttribute('class', cls)
+
+      var lastPassedAnchor
+      Array.prototype.forEach.call(asideTOC.querySelectorAll('a'), function (anchor) {
+        var href = anchor.getAttribute('href')
+        var heading = document.querySelector(href)
+        if (window.pageYOffset > heading.offsetTop - 20) {
+          lastPassedAnchor = anchor
+        }
+        anchor.parentNode.removeAttribute('class')
+      })
+      while (lastPassedAnchor) {
+        lastPassedAnchor.parentNode.classList.add('active')
+        lastPassedAnchor = lastPassedAnchor.parentNode.parentNode.previousElementSibling
+      }
     })
+    function updateTopLimit() {
+      topLimit = header.offsetTop + header.offsetHeight - 70
+    }
   }
 
-  function getTOC ($content) {
-    var $toc = $('<ul class="nav level-0 list-unstyled">').addClass('nav sidenav')
+  function generateTOC (content) {
+    var toc = document.createElement('ul')
+    toc.setAttribute('class', 'nav level-0 list-unstyled sidenav')
 
     var baseLevel = 1
-    while ($content.find('h' + baseLevel).length < 1 && baseLevel < 7) baseLevel += 1
+    while (!content.querySelector('h' + baseLevel) && baseLevel < 7) baseLevel += 1
     if (baseLevel === 7) return null
 
-    $content.find(':header').each(function (i) {
-      var $this = $(this)
-      $this.attr('id', i)
+    Array.prototype.forEach.call(content.querySelectorAll('h1,h2,h3,h4,h5,h6'), function (header, i) {
+      var id = 'header-' + i
+      header.setAttribute('id', id)
 
-      var level = parseInt(this.nodeName.substr(1))
+      var level = parseInt(header.nodeName.substr(1))
       var offset = level - baseLevel
 
-      var li = new $('<li/>')
-        .append('<a href="#' + i + '" class="animate">' + $this.text() + '</a>')
-        .append($('<ul class="nav list-unstyled level-' + (offset + 1) + '"/>'))
+      var li = document.createElement('li')
+      li.innerHTML= '<a href="#' + id + '">' + header.textContent + '</a>' +
+        '<ul class="nav list-unstyled level-' + (offset + 1) + '"/>'
 
-      $('<div>').append($toc).find('ul.level-' + offset + ':last').append(li)
+      var container = document.createElement('div')
+      container.appendChild(toc)
+      var parents = container.querySelectorAll('ul.level-' + offset)
+      parents[parents.length - 1].appendChild(li)
     })
-    // remove empty ul
-    $toc.find('ul').not(':parent').remove()
-    return $toc
+    return toc
   }
 
   function initRecommends () {
-    $.get('/api/posts.json').done(function (posts) {
+    fetch('/api/posts.json')
+    .then(function (response) {
+      return response.json()
+    })
+    .then(function (posts) {
       if (typeof posts === 'string') {
         posts = JSON.parse(posts)
       }
@@ -88,8 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .forEach(function (post) {
           if (!current) return
-          post.sim = pv[post.url] ? 0
-              : cosine(post.tags, current.tags)
+          post.sim = pv[post.url] ? 0 : cosine(post.tags, current.tags)
           if (!thirdSim || thirdSim.sim < post.sim) {
             thirdSim = post
           }
@@ -106,29 +113,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
       console.log('similar posts:', mostSim, secondSim, thirdSim)
 
-      if (!mostSim) {
+      if (mostSim) {
+        var link = document.querySelector('.post-pager .recommend')
+        link.setAttribute('href', mostSim.url)
+        link.textContent = '推荐阅读：' + mostSim.title
+        link.style.display = 'block'
+      } else {
         console.info('no similar posts found, recommendation disabled')
-        return
       }
-      var $recommend = $('.recommend')
-      $(window).scroll(function () {
-        if ($recommend.hasClass('in')) return
-
-        var article = $('.md').get(0)
-        var total = article.clientHeight + article.offsetTop
-        var scroll = document.body.scrollTop + window.innerHeight
-        var icon = $('<i>').addClass('fa fa-hand-o-right')
-
-        if (total - scroll > 200) {
-          return
-        }
-        $recommend
-          .addClass('in')
-          .find('.post-link')
-          .attr('href', mostSim.url)
-          .append(icon)
-          .append(mostSim.title)
-      })
     })
   }
   function cosine (lhs, rhs) {
