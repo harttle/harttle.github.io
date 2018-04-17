@@ -1,7 +1,7 @@
 ---
 layout: blog
 title:  Modern Operating Systems 笔记 - Linux
-tags: 操作系统 MULTICS UNICS Unix MINIX inode EXT2 Linux GNU Socket
+tags: 操作系统 Unix Linux GNU Socket
 ---
 
 ## History of Unix and Linux
@@ -124,7 +124,7 @@ Linux allows directory and file locking(byte range) with semaphore, including **
 3. **dentry** represents a directory entry.
 4. **file** is an in-memory representation of an open file.
 
-![ext2 layout](/assets/img/blog/10-31.bmp)
+![ext2 layout](/assets/img/blog/os/10-31.jpg)
 
 * With 1kb block, this design limits a block group to 8192 blocks(in practice) and 8192 inodes(not real restriction).
 * Ext2 attempts to collocate ordinary files in the same block group as the parent directory, and data files in the same block as the original file i-node.

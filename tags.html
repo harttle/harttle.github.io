@@ -1,9 +1,45 @@
 ---
 layout: default
-title: 技术标签
-simpleTitle: true
+title: 标签
 ---
 
-<div class="module-tags">
-        <span id="current-tag">所有标签（{{ site.posts | size }}）</span>
+<div class="module-tags container-fluid">
+  <style id="tagBackgroundStyle"></style>
+  <section class="tags">
+    {% for tag in site.tags %}
+      <a class="tag" href="#{{tag|first}}">{{ tag | first }} ({{ tag | last | size }})</a>
+    {% endfor %}
+  </section>
+  <section class="posts">
+    <ul class="list-unstyled">
+      {% for post in site.posts %}
+        <li data-tags={{post.tags | join: ','}}>
+          <a href="{{post.url}}">{{ post.title }}</a>
+          <time>{{ post.date | date: '%Y-%m-%d %a.' }} </time>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+  <script>
+window.addEventListener('hashchange', filterByHash)
+filterByHash()
+function filterByHash() {
+  var match = location.hash.substr(1)
+  if (!match) {
+    return
+  }
+  var tag = decodeURIComponent(match)
+  tagBackgroundStyle.innerHTML = 'section.tags:before{content: "' + tag + '"}'
+  Array.prototype.forEach.call(document.querySelectorAll('.posts li'), function(post) {
+    var selected = post.dataset.tags.split(',').some(function (tagname) {
+      return tag === null || tagname === tag
+    })
+    if (selected) {
+      post.classList.remove('hidden')
+    } else {
+      post.classList.add('hidden')
+    }
+  })
+}
+  </script>
 </div>

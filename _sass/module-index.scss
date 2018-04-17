@@ -42,21 +42,20 @@ aside, .posts{
     overflow: hidden;
     padding: 0 0 40px 20px;
     margin-left: $timeline-left-width;
-    header{
-      margin-bottom: 20px;
-      overflow: hidden;
-      h1{
-        font-size: 1.5em;
-        margin-top: 0;
-        @include ellipsis;
-        a{
-          @include link-hover($grey, $blue);
-          font-weight: normal;
-        }
+    header h1{
+      font-size: 1.5em;
+      margin-top: 0;
+      @include ellipsis;
+      a{
+        @include link-hover($grey, $blue);
+        font-weight: normal;
       }
     }
     .md{
       @include flattened-md();
+      a {
+        @include link-hover(#777, $blue);
+      }
     }
     @include media-xs {
       padding-left: 0;
@@ -105,7 +104,7 @@ aside{
   }
   section.collection-list{
     li{
-      margin-bottom: 10px;
+      line-height: 40px;
       a{
         @include link-hover(#777, $blue);
       }

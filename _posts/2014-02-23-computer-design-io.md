@@ -1,7 +1,6 @@
 ---
-layout: blog
 title:  Computer Organization and Design 笔记 - Storage and Other I/O Topics
-tags: 操作系统 磁盘 RAID 磁道 柱面
+tags: 操作系统 硬盘 RAID
 ---
 
 ## Introduction

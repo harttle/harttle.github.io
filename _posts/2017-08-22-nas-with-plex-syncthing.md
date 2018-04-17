@@ -1,6 +1,6 @@
 ---
 title: 利用 Plex 和 Syncthing 搭建媒体中心
-tags: Plex Syncthing Archlinux SSH systemd
+tags: Archlinux SSH systemd 多媒体
 ---
 
 因为软件都是[朋友][oott]介绍的，这篇文章本来是不打算写的。

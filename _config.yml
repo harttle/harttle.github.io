@@ -46,21 +46,11 @@ defaults:
       path: "_posts"
     values:
       layout: "blog"
-  -
-    scope:
-      path: "_effective-cpp"
-    values:
-      layout: "blog"
-  -
-    scope:
-      path: "_git-workflow"
-    values:
-      layout: "blog"
-  -
-    scope:
-      path: "_vim-practice"
-    values:
-      layout: "blog"
+
+series:
+  'Effective-C++': '/effective-cpp.html'
+  'Vim-Practice': '/vim-practice.html'
+  'Git-Workflow': '/git-workflow.html'
 
 gems:
   - jekyll-sitemap

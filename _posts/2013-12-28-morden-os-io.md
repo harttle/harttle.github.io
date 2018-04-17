@@ -1,7 +1,7 @@
 ---
 layout: blog
 title:  Modern Operating Systems 笔记 - Input/Output
-tags: 操作系统 DMA 内存映射 精确中断 Unix
+tags: 操作系统 DMA 内存映射 中断 Unix
 ---
 
 ## Principles of I/O Hardware

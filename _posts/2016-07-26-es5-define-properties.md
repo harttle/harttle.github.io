@@ -1,6 +1,6 @@
 ---
 title: ES5 属性管理：defineProperty, preventExtensions, seal, freeze
-tags: JavaScript 封装 defineProperty seal
+tags: JavaScript 封装 defineProperty
 ---
 
 ES5定义的[Object.defineProperty()][mdn-defineproperty]方法提供了面向对象实现中

@@ -1,5 +1,4 @@
 ---
-layout: blog
 title:  Modern Operating Systems 笔记 - Interprocess Communication
 tags: 操作系统 IPC 中断 互斥量 信号量
 ---

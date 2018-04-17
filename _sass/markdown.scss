@@ -2,25 +2,14 @@
 
 .md {
   line-height: 1.8em;
-}
-
-.md > *:first-child {
-  margin-top: 0;
-}
-
-.md {
   overflow-wrap: break-word;
-}
-
-.md {
   a, code, strong, em {
     word-wrap: break-word;
   }
 }
 
-.md pre code {
-  margin-left: 0;
-  margin-right: 0;
+.md > *:first-child {
+  margin-top: 0;
 }
 
 .md > * {
@@ -112,6 +101,8 @@
 }
 
 .md pre code {
+  margin-left: 0;
+  margin-right: 0;
   word-wrap: normal;
   white-space: pre;
   overflow-wrap: normal;
@@ -119,26 +110,10 @@
 
 .md *:not(pre) > code {
   border: 1px solid #ddd;
-  /*color: #777;*/
   color: $red;
-
-  /*#c03;*/
   background-color: #f8f8f8;
   border-radius: 3px;
   white-space: normal;
-
-  /*overcome bootstrap nowrap*/
-  padding: 3px 4px 0 4px;
-
-  /*overcome bootstrap padding*/
-}
-
-.md a, .md a code {
-  text-decoration: underline;
-}
-
-.md a:hover, .md a code:hover {
-  text-decoration: underline;
 }
 
 .md table {

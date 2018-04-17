@@ -8,9 +8,12 @@ layout: default
       <time class="pull-right">{{ page.date | date: "%Y/%m/%d" }}</time>
       <h1>
         {{page.title}}
-        {% if page.collection != "posts" %}
-        <a class="collection" href="/{{page.collection}}.html">{{page.collection}}</a>
-        {% endif %}
+        {% for tag in page.tags %}
+          {% if site.series[tag] %}
+            <a class="collection" href="{{site.series[tag]}}">{{tag}}</a>
+            {% break %}
+          {% endif %}
+        {% endfor %}
       </h1>
       <aside id="asideTOC" class="affix-top"></aside>
       <p class="tag-list">
@@ -43,6 +46,6 @@ layout: default
       {% include comments.html %}
     </div>
   </div>
-  <script src="/assets/js/blog.js"></script>
+  <script>{% include blog.js %}</script>
   {% include latex.html %}
 </article>

@@ -1,8 +1,6 @@
 ---
-layout: blog
-categories: reading
 title:  Modern Operating Systems 笔记 - Introduction
-tags: Dijkstra Hypervisor Java MINIX MULTICS SPOOLING Unix Windows X11 操作系统
+tags: Unix Windows 操作系统
 ---
 
 ## What is OS

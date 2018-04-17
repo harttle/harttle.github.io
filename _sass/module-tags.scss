@@ -1,1 +1,50 @@
+@import 'mixins';
+@import 'variables';
 
+section.tags {
+  height: 200px;
+  overflow: auto;
+  margin: 25px 0;
+  position: relative;
+  &:before {
+    position: absolute;
+    color: #00bf00;
+    font-size: 190px;
+    z-index: -1;
+    line-height: 200px;
+    text-align: center;
+    width: 100%;
+    opacity: 0.15;
+  }
+  .tag {
+    background: transparent;
+  }
+  .tag:hover, .tag:focus, .tag:active {
+    color: white;
+    background: #5ABA59;
+  }
+}
+
+section.posts li{
+  line-height: 2;
+  time{
+    font-family: monospace;
+    color: $light-grey;
+    width: 150px;
+    float: left;
+  }
+  div{
+    margin-left: 160px;
+  }
+  .title{
+    margin-right: 10px;
+  }
+  @include media-xs{
+    div{
+      margin-left: 0;
+    }
+    time, .tag{
+      display:none;
+    }
+  }
+}

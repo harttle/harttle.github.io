@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="module-default {%if page.fullSize %}full-size{%endif%}">
   <head> {% include head.html %} </head>
-  <body id="body" >
+  <body>
 
     <div class="banner {% if page.bannerTransparent %}transparent{% endif %}">
       <div class="container-fluid">
@@ -20,7 +20,7 @@
 
     <div class="site-content"> {{ content }} </div>
 
-    <a href="#body" id="btnScrolltop">&#x1f51d;</a>
+    <a href="#" id="btnScrolltop">&#x1f51d;</a>
     <script>
 window.addEventListener('scroll', function () {
   window.pageYOffset > 300
