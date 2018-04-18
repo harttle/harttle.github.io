@@ -1,12 +1,12 @@
 ---
 title: 使用 Supertest 测试 Express.js 应用
-tags: NPM Node.js 缓存 工厂方法 Mocha Express 异步 测试
+tags: Node.js 缓存 工厂方法 Mocha Express.js 测试
 ---
 
 [supertest][st]提供了简单易用的客户代理，可以方便地用来测试Express.js应用。
 本文介绍如何在[Mocha][mocha]中使用[supertest][st]，
-以及测试Express应用涉及到的一些问题：
-包括如何在每个测试项之前正确地关闭上一个Express Server，
+以及测试 Express.js 应用涉及到的一些问题：
+包括如何在每个测试项之前正确地关闭上一个Express.js Server，
 以及如何避免`require`缓存造成的环境差异。
 
 <!--more-->

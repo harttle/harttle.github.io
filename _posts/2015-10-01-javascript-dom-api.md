@@ -1,13 +1,11 @@
 ---
-layout: blog
-title: 原生JavaScript的DOM操作汇总
-tags: JavaScript DOM HTML XML 数组 集合 jQuery IE
-excerpt: 程序员经常讲在IDE中写C#、Java会越来越手残，那么经常用jQuery也会让我们忘记JavaScript是如何作用于DOM的。 JavaScript的DOM操作也是面试中的常见问题，尤其是当你需要回答jQuery的性能问题时，便需要再次回到JavaScript DOM API。本文便总结一下常见的JavaScript DOM操作方法
+title: 原生 JavaScript 的 DOM 操作汇总
+tags: JavaScript DOM HTML jQuery innerHTML
 ---
 
-程序员经常讲在IDE中写C#、Java会越来越手残，那么经常用jQuery也会让我们忘记JavaScript是如何作用于DOM的。
+经常有人讲在 IDE 中写 C#、Java 会越来越手残，那么经常用 jQuery 也会让我们忘记 JavaScript 是如何操作 DOM 的。
 JavaScript的DOM操作也是面试中的常见问题，尤其是当你需要回答jQuery的性能问题时，便需要再次回到JavaScript DOM API。
-本文便总结一下常见的JavaScript DOM操作方法，关于JavaScript DOM事件可以参考另一篇文章：[DOM Level 2 Event与jQuery源码：捕获与冒泡][js-event]
+本文便总结一下常见的 JavaScript DOM 操作方法，关于 JavaScript DOM 事件可以参考另一篇文章：[DOM Level 2 Event 与 jQuery 源码：捕获与冒泡][js-event]
 
 <!--more-->
 

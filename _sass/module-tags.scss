@@ -7,13 +7,11 @@ section.tags {
   margin: 25px 0;
   position: relative;
   &:before {
-    position: absolute;
+    position: fixed;
+    white-space: nowrap;
     color: #00bf00;
-    font-size: 190px;
     z-index: -1;
-    line-height: 200px;
     text-align: center;
-    width: 100%;
     opacity: 0.15;
   }
   .tag {

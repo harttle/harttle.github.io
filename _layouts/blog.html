@@ -32,12 +32,12 @@ layout: default
       <div class="hidden-xs"> {% include author.html %} </div>
       <div class="post-pager clearfix">
         {% if page.previous %}
-          <a href="{{page.previous.url}}" class="previous btn-hover">
+          <a rel="prev" href="{{page.previous.url}}" class="previous btn-hover">
             上一篇：{{page.previous.title}}
           </a>
         {% endif %}
         {% if page.next %}
-          <a href="{{page.next.url}}" class="next btn-hover">
+          <a rel="next" href="{{page.next.url}}" class="next btn-hover">
             下一篇：{{page.next.title}}
           </a>
         {% endif %}

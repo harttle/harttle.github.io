@@ -1,6 +1,6 @@
 ---
 title: 从 Git 中移除某些历史 Commit
-tags: Git
+tags: Git Git-Workflow
 ---
 
 在 Git 开发中通常会控制主干分支的质量，但有时还是会把错误的代码合入到远程主干。

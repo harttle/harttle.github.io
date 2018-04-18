@@ -19,3 +19,6 @@
 #btnScrolltop:hover{
   @include opacity(1);
 }
+#btnScrolltop:hover, #btnScrolltop:focus, #btnScrolltop:active {
+  text-decoration: none;
+}

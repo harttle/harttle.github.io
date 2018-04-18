@@ -1,7 +1,7 @@
 ---
 title: Deep Linking：从浏览器调起 APP
 subtitle: URI Scheme, Universal Links, Android App Links, 以及 Chrome Intent
-tags: URI-Scheme Universal-Links App-Links Intent iOS Android
+tags: URI-Scheme Universal-Links Intent iOS Android
 ---
 
 [Deep Linking][deep-linking] 只是一个概念，

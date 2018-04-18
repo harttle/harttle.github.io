@@ -1,6 +1,6 @@
 ---
 title: 在 DOM 中动态插入并执行脚本
-tags: DOM HTML JavaScript jQuery
+tags: DOM HTML JavaScript jQuery innerHTML
 ---
 
 在 HTML 中脚本以 `<script>` 来标记，通过设置其内容或`src`属性执行内联脚本或外部脚本。

@@ -1,5 +1,4 @@
 ---
-layout: blog
 title:  Computer Organization and Design 笔记 - Abstractions
 tags: 操作系统 编译 汇编
 ---

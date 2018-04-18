@@ -1,6 +1,6 @@
 ---
 title: 安全地回滚远程分支
-tags: Git Github
+tags: Git Github Git-Workflow
 ---
 
 在 Git 中使用 [reset][branch] 可以让当前分支回滚（[reset][branch]）到任何一个历史版本，

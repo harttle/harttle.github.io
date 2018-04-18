@@ -1,6 +1,6 @@
 ---
 title: 获取 DOM 内容的 API 接口
-tags: DOM HTML jQuery innerHTML textContent
+tags: DOM HTML jQuery innerHTML textContent 重排
 ---
 
 Web 开发者可能会使用 jQuery [`.html()`][jq-html] 和 [`.text()`][jq-text]

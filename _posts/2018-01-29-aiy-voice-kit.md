@@ -30,7 +30,7 @@ Voice HAT（Hardware Attached on Top）是插在树莓派板子上的扩展板�
 
 下面仔细介绍一下这个板子，这张图来自 aiyprojects.withgoogle.com 官方：
 
-![hat](https://aiyprojects.withgoogle.com/static/images/aiy-projects-voice/makers/sensors.png)
+![hat](/assets/img/blog/iot/sensors.jpg)
 
 Voice Kit 设备本身占用了 6 个 GPIO：
 

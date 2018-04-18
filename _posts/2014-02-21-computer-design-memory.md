@@ -1,7 +1,6 @@
 ---
-layout: blog
 title:  Computer Organization and Design 笔记 - Exploiting Memory Hierarchy
-tags: 操作系统 空间局部性 时间局部性 多级缓存 虚拟内存 页表 TLB 内存震荡
+tags: 操作系统 空间局部性 时间局部性 缓存 虚拟内存 页表
 ---
 
 ## Introduction

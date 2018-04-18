@@ -1,6 +1,6 @@
 ---
 title: Liquid 是世界上最好的模板引擎
-tags: AngularJS Django Github HTML NPM Node.js Ruby 模板 Liquid
+tags: NPM Node.js 模板 Liquid Express.js
 ---
 
 [模板引擎][ts]是Web应用中用来生成动态HTML的工具，
@@ -125,7 +125,7 @@ AngularJS Template的强大之处在于完全的声明式语法、数据双向�
 
 ## Jade
 
-[Jade][jade]一度成为ExpressJS的默认模板引擎，致力于生成良构的HTML。提供了极其简洁的Emmet风格的模板语法，不兼容HTML，于是上手也有一些困难。
+[Jade][jade]一度成为Express.js的默认模板引擎，致力于生成良构的HTML。提供了极其简洁的Emmet风格的模板语法，不兼容HTML，于是上手也有一些困难。
 
 ```jade
 doctype html

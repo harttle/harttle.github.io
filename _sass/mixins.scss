@@ -92,7 +92,7 @@
 
 @mixin link-hover($normal, $hover){
   color: $normal;
-  transition: all 0.15s;
+  transition: all 0.1s;
   &:hover, &:active{
     color: $hover;
   }

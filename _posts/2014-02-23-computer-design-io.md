@@ -1,6 +1,6 @@
 ---
 title:  Computer Organization and Design 笔记 - Storage and Other I/O Topics
-tags: 操作系统 硬盘 RAID
+tags: 操作系统 RAID
 ---
 
 ## Introduction
