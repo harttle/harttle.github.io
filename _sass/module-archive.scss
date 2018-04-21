@@ -17,13 +17,12 @@ h4 .year{
   float: right;
   color: $light-grey;
   font-family: cursive;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-style: italic;
 }
 
 li{
-  font-size: 14px;
-  line-height: 28px;
+  line-height: 2rem;
   time{
     font-family: monospace;
     color: $light-grey;
@@ -36,12 +35,12 @@ li{
   .title{
     margin-right: 10px;
   }
+  .tag{
+    line-height: 1rem;
+  }
   @include media-xs{
     div{
       margin-left: 0;
-    }
-    time, .tag{
-      display:none;
     }
   }
 }

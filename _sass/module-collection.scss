@@ -6,7 +6,7 @@
 }
 
 .jumbotron{
-  @include random-bg();
+  @include jumbotron();
   text-align: center;
   margin-bottom: 50px;
   h1{

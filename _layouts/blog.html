@@ -4,8 +4,8 @@ layout: default
 
 <article class="module-blog">
   <header class="blog-header">
-    <div class="container-fluid overlay">
-      <time class="pull-right">{{ page.date | date: "%Y/%m/%d" }}</time>
+    <canvas id="universe" data-container=".blog-header"></canvas>
+    <div class="container-fluid">
       <h1>
         {{page.title}}
         {% for tag in page.tags %}
@@ -24,6 +24,7 @@ layout: default
     </div>
   </header>
   <div class="container-fluid">
+    <time class="hidden-xs pull-right">{{ page.date | date: "%Y/%m/%d" }}</time>
     <div class="content">
       <div class="md">
         {{ content }}
@@ -46,6 +47,6 @@ layout: default
       {% include comments.html %}
     </div>
   </div>
-  <script>{% include blog.js %}</script>
+  <script>{% include blog.min.js %}</script>
   {% include latex.html %}
 </article>

@@ -43,13 +43,15 @@ aside, .posts{
     padding: 0 0 40px 20px;
     margin-left: $timeline-left-width;
     header h1{
-      font-size: 1.5em;
       margin-top: 0;
       @include ellipsis;
       a{
         @include link-hover($grey, $blue);
         font-weight: normal;
       }
+    }
+    .tags .tag {
+      margin-bottom: 0.3rem;
     }
     .md{
       @include flattened-md();

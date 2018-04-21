@@ -4,17 +4,7 @@
 html, body {
   margin: 0;
   padding: 0;
-}
-
-html {
   scroll-behavior: smooth;
-}
-
-body {
-  color: #333;
-  font-size: 15px;
-  @include sans;
-  -webkit-font-smoothing: antialiased;
 }
 
 @media (min-width: 768px) {
@@ -101,3 +91,17 @@ a:hover, a:active, a:focus{
   text-align: center;
 }
 
+.tag{
+  color: $green;
+  padding: 0.1em 0.6em;
+  font-size: 0.9em; 
+  line-height: 1.4em;
+  border: 1px solid $green;
+  display: inline-block;
+  @include transition(color 0.3s);
+}
+.tag:hover, .tag:focus, .tag:active{
+  color: white;
+  background: $green;
+  text-decoration: none;
+}

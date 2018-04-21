@@ -1,13 +1,5 @@
 @import 'variables';
 
-@mixin sans{
-  font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
-}
-
-@mixin serif{
-  font-family: Georgia, '宋体', serif;
-}
-
 @mixin size($value){ 
   width: $value;
   height: $value;
@@ -138,29 +130,21 @@
   transform-origin: $v;
 }
 
-@mixin random-bg(){
-  background-color: #545da9;
-  background-image: url(https://unsplash.it/1500/600?random), linear-gradient(to bottom left, rgba(100,255,250,0) 0%, rgba(100,255,250,.5) 75%, rgba(100,255,250,.5) 100%);
-  background-size: cover;
-  background-attachment: fixed;
+@mixin jumbotron(){
   color: white;
-  @include media-xs(){
-    background-image: linear-gradient(to bottom left, rgba(100,255,250,0) 0%, rgba(100,255,250,.5) 75%, rgba(100,255,250,.5) 100%);
-  }
-  .overlay{
-    background: rgba(0,0,0,0.3);
+  canvas#universe {
+    background: $grey;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
   h1{
     font-size: 2.5em;
     text-shadow: 0px 2px 5px black;
     text-align: center;
-  }
-  time{
-    color: white;
-    text-shadow: 0 0 1px black;
-    font-size: 14px;
-    font-style: italic;
-    margin-top: 10px;
   }
 }
 

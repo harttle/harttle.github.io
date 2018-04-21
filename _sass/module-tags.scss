@@ -3,7 +3,8 @@
 
 section.tags {
   height: 200px;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   margin: 25px 0;
   position: relative;
   &:before {
@@ -15,7 +16,8 @@ section.tags {
     opacity: 0.15;
   }
   .tag {
-    background: transparent;
+    margin-bottom: .5em;
+    margin-right: -1px;
   }
   .tag:hover, .tag:focus, .tag:active {
     color: white;
@@ -24,7 +26,7 @@ section.tags {
 }
 
 section.posts li{
-  line-height: 2;
+  line-height: 2rem;
   time{
     font-family: monospace;
     color: $light-grey;

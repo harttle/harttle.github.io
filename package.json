@@ -9,11 +9,14 @@
     "eslint-plugin-mocha": "^4.9.0",
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint-plugin-standard": "^3.0.1",
+    "uglifyjs": "^2.4.11"
   },
   "scripts": {
     "lint": "eslint assets/js",
     "start": "bundle exec jekyll serve -w --drafts --host 0.0.0.0 --incremental",
+    "concat": "cat assets/js/blog-*.js > _includes/blog.min.js",
+    "uglify": "cat assets/js/blog-*.js | uglifyjs -mc > _includes/blog.min.js",
     "build": "bundle exec jekyll build --incremental",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

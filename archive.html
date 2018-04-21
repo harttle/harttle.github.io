@@ -19,11 +19,11 @@ title: 所有文章
         {% endif %}
       {% endunless %}
       <li>
-        <time>{{ post.date | date: '%Y-%m-%d %a.' }} </time>
+        <time class="hidden-xs">{{ post.date | date: '%Y-%m-%d %a.' }} </time>
         <div>
           <a class="title" href="{{ post.url }}">{{ post.title }}</a>
           {% for tag in post.tags %}
-            <a class="tag" href="/tags.html#{{tag}}">{{tag}}</a>
+            <a class="tag hidden-xs" href="/tags.html#{{tag}}">{{tag}}</a>
           {% endfor %}
         </div>
       </li>

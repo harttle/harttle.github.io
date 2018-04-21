@@ -16,7 +16,8 @@
 }
 
 .blog-header{
-  @include random-bg();
+  position: relative;
+  @include jumbotron();
   h1{
     margin: 170px 0 150px;
     a.collection{
@@ -25,13 +26,11 @@
     }
   }
   .tag-list{
-    margin-bottom: 10px;
     margin-left: $toc-width + 30px;  
-    min-height: 28px;
+    margin-bottom: 0.5rem;
     .tag{
+      margin-bottom: .3rem;
       border-color: white;
-      margin-bottom: .5em;
-      background-color: transparent;
       color: white;
     }
   }
@@ -46,21 +45,21 @@
   }
 }
 
+time{
+  margin-top: 10px;
+  font-style: italic;
+}
+
 &.collapsed{
   @include collapsed();
 }
 
 @include media-xs{
   @include collapsed();
-  .blog-header{
-    time{
-      display: none;
-    }
-    h1{
-      margin: 20px 0 20px;
-      font-size: 1.8em;
-      text-align: left;
-    }
+  .blog-header h1{
+    margin: 20px 0 20px;
+    font-size: 1.8em;
+    text-align: left;
   }
 }
 
