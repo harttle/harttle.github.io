@@ -3,25 +3,28 @@ title: overflow 与布局上下文（BFC）
 tags: CSS HTML float overflow BFC
 ---
 
-HTML采用流式布局方式，CSS的`float`在这种环境下非常重要。
-`float`常与`overflow`配合使用都是因为`overflow`会创建新的BFC，进而影响布局。
-本文从三个方面介绍`overflow`对浮动的影响：清除环绕，包裹浮动元素，以及独立布局环境。在此之前先来了解一下什么是BFC：
+HTML 采用流式布局方式，CSS 的`float`在这种环境下非常重要。
+`float` 常与 `overflow` 配合使用都是因为 `overflow` 会创建新的 BFC，进而影响布局。
+本文从三个方面介绍 `overflow` 对浮动的影响：清除环绕，包裹浮动元素，以及独立布局环境。
+在此之前先来了解一下什么是 BFC：
 
 **BFC**（Block Formatting Context，布局上下文）
-是CSS渲染过程中进行布局的盒子，所有浮动子元素都在盒子内进行布局。
-也就是说BFC内的浮动元素不会影响到BFC外部，BFC外部的环境也不会影响BFC内的布局。
-[MDN][mdn]共列出8类元素可以生成一个BFC，包括浮动和绝对定位元素、行内块，以及`overflow`不为`visible`的元素。
-可见，**设置`overflow:hidden`可以开启一个BFC**。
+是 CSS 渲染过程中进行布局的盒子，所有浮动子元素都在盒子内进行布局。
+也就是说 BFC 内的浮动元素不会影响到 BFC 外部，BFC 外部的环境也不会影响 BFC 内的布局。
+[MDN][mdn] 共列出 8 类可以生成 BFC 的元素，包括浮动和绝对定位元素、行内块，以及 `overflow` 不为 `visible` 的元素。
+可见，**设置 `overflow:hidden` 可以开启一个 BFC**。
 
-> BFC很多时候翻译为块级格式化上下文，其实笔者认为布局上下文更为贴切。
-> 本质上讲一个BFC就是一个矩形块的独立布局环境。
+> BFC 很多时候翻译为块级格式化上下文，其实笔者认为布局上下文更为贴切。
+> 本质上讲一个 BFC 就是一个矩形块的独立布局环境。
+
+<!--more-->
 
 参考：<https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context>
 
 # 清除环绕效果
 
 和其他的流式文档（包括Microsoft Word文档）一样，
-为了支持环绕布局CSS引入了浮动的概念。
+为了支持环绕布局 CSS 引入了浮动的概念。
 使得后续的文档流能够环绕在浮动元素的周围。例如：
 
 ```html
@@ -30,8 +33,6 @@ HTML采用流式布局方式，CSS的`float`在这种环境下非常重要。
   <div> Eros. Nunc ac tellus in sapien molestie rhoncus. Pellentesque nisl. Praesent venenatis blandit velit. Fusce rutrum.  Leo diam interdum ligula, eu scelerisque sem purus in tellus.</div>
 </div>
 ```
-
-<!--more-->
 
 左侧`<div>`浮动，右侧`<div>`会环绕左侧的浮动元素。
 

@@ -1,6 +1,5 @@
 ---
-layout: blog 
-title: CSS Display属性与盒模型
+title: CSS Display 属性与盒模型
 tags: CSS Chrome HTML inline inline-block 盒模型 IE
 ---
 
