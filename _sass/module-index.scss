@@ -53,12 +53,6 @@ aside, .posts{
     .tags .tag {
       margin-bottom: 0.3rem;
     }
-    .md{
-      @include flattened-md();
-      a {
-        @include link-hover(#777, $blue);
-      }
-    }
     @include media-xs {
       padding-left: 0;
       margin-left: 0;

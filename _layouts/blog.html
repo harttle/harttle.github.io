@@ -3,8 +3,8 @@ layout: default
 ---
 
 <article class="module-blog">
-  <header class="blog-header">
-    <canvas id="universe" data-container=".blog-header"></canvas>
+  <header class="blog-header jumbotron">
+    <canvas id="universe"></canvas>
     <div class="container-fluid">
       <h1>
         {{page.title}}
@@ -48,5 +48,6 @@ layout: default
     </div>
   </div>
   <script>{% include blog.min.js %}</script>
+  <script>{% include canvas.min.js %}</script>
   {% include latex.html %}
 </article>

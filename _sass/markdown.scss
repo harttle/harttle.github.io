@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 
 .md {
   line-height: 1.8em;
@@ -155,7 +156,29 @@
   zoom: 66.67%;
 }
 
-.MathJax {
+.md .MathJax {
   padding: 0 0.2em !important;
 }
 
+.md.excerpt {
+  color: #777;
+  p, h1, h2, h3, h4, h5, h6, b, strong, ul, ol, li{
+    font-size: 1rem;
+    margin: 0;
+    color: #777;
+    font-weight: normal;
+    border-bottom: none;
+  }
+  blockquote{
+    border-left: none;
+    padding: 0;
+    p, h1, h2, h3, h4, h5, h6, b, strong{
+      color: #999;
+    }
+  }
+  @include media-xs{
+    img, pre, table{
+      display: none;
+    }
+  }
+}

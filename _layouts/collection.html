@@ -4,6 +4,7 @@ layout: default
 
 <div class="module-collection">
   <div class="jumbotron">
+    <canvas id="universe"></canvas>
     <div class="container-fluid overlay">
       <h1>{{page.title}}</h1>
       <p>{{page.description}}</p>
@@ -21,9 +22,10 @@ layout: default
           <a class="tag" href="/tags.html#{{tag}}">{{tag}}</a>
           {% endfor %}
         </p>
-        <div class="md">{{ post.excerpt }}</div>
+        <div class="md excerpt">{{ post.excerpt }}</div>
       </article>
     {% endfor %}
     </div>
   </div>
+  <script>{% include canvas.min.js %}</script>
 </div>

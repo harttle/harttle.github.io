@@ -52,12 +52,10 @@ series:
   'Vim-Practice': '/vim-practice.html'
   'Git-Workflow': '/git-workflow.html'
 
-gems:
+plugins:
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-paginate
   - jekyll-seo-tag
   - jekyll-redirect-from
-
-whitelist:
-  - jekyll-redirect-from
+  - jekyll-include-cache

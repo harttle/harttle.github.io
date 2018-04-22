@@ -6,7 +6,8 @@
     var mouseY = 0;
     var FMOUSE = 100;
     var canvas = document.querySelector('canvas#universe');
-    var container = document.querySelector(canvas.dataset.container);
+    var container = document.querySelector('.jumbotron');
+    container.style.background = 'none';
     canvas.width = container.clientWidth;
     canvas.height = container.clientHeight;
 
@@ -49,14 +50,14 @@
     container.addEventListener('click', function (e) {
         var scrolling = (document.scrollingElement || document.documentElement);
         var y = e.clientY + scrolling.scrollTop - container.offsetTop;
-        var r = range(2, 25);
+        var r = range(5, 25);
         stars.push({
             r: r,
             m: range(10, 1000),
             color: getRandomColor(),
             l: [e.clientX, y],
             sign: Math.sign(Math.random() - 0.5),
-            v: [range(0, 2), range(0, 2)]
+            v: [range(-0.5, 0.5), range(-0.5, 0.5)]
         });
     });
     window.addEventListener('resize', function () {

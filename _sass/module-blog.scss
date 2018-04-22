@@ -17,7 +17,6 @@
 
 .blog-header{
   position: relative;
-  @include jumbotron();
   h1{
     margin: 170px 0 150px;
     a.collection{
