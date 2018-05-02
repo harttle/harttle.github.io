@@ -22,7 +22,7 @@ HTML非常简单：
 
 ```html
 <div class="wrapper">
-  <img src="http://harttle.land/assets/img/favicon.png">
+  <img src="https://harttle.land/assets/img/favicon.png">
 </div>
 ```
 
@@ -59,7 +59,7 @@ Harttle有洁癖，完成此任务不可使用任何JavaScript，以及硬编码
 ```html
 <table>
   <td>
-    <img src="http://harttle.land/assets/img/favicon.png">
+    <img src="https://harttle.land/assets/img/favicon.png">
   </td>
 </table>
 ```
@@ -157,7 +157,7 @@ setTimeout(function(){
 .wrapper{
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url('http://harttle.land/assets/img/favicon.png');
+    background-image: url('https://harttle.land/assets/img/favicon.png');
     background-size: contain;
 }
 ```
@@ -188,5 +188,5 @@ $(window).on('orientationchange', function(){
 因为图片是自适应布局的，我们在横屏情况下图片会自动旋转过来，
 而不需要重新为之计算宽高和位置。
 
-[jqe]: http://harttle.land/2015/06/26/jquery-event.html
+[jqe]: https://harttle.land/2015/06/26/jquery-event.html
 [xuexb]: https://xuexb.com/

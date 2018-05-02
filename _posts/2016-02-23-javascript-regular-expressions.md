@@ -24,7 +24,7 @@ JavaScript的正则表达式基本符合最初贝尔实验室的规则，
 
 ```javascript
 var parse_url = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/;
-var url = "http://harttle.land:80/tags.html?simple=true#HTML",
+var url = "https://harttle.land:80/tags.html?simple=true#HTML",
     result = parse_url.exec(url);
     blanks = '       ';
     fields = ['url', 'scheme', 'slash', 'host', 'port', 'path', 'query', 'hash'];
@@ -38,7 +38,7 @@ fields.forEach(function(field, i){
 上述代码的输出：
 
 ```
-url:    http://harttle.land:80/tags.html?simple=true#HTML
+url:    https://harttle.land:80/tags.html?simple=true#HTML
 scheme: http
 slash:  //
 host:   harttle.land

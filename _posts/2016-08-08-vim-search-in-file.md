@@ -203,6 +203,6 @@ endfunc
 
 * XTERM 256色：<http://vim.wikia.com/wiki/Xterm256_color_names_for_console_Vim>
 * Vim Wikia - 查找与替换：<http://vim.wikia.com/wiki/Search_and_replace>
-* 用 Vim 打造 IDE 环境：<http://harttle.land/2015/11/04/vim-ide.html>
+* 用 Vim 打造 IDE 环境：<https://harttle.land/2015/11/04/vim-ide.html>
 
 [cursor]: /2015/11/07/vim-cursor.html

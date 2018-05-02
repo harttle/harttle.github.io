@@ -86,7 +86,7 @@ git checkout master
 
 ```html
 <script>
-  location.href='http://harttle.land' + location.pathname;
+  location.href='https://harttle.land' + location.pathname;
 </script>
 ```
 

@@ -67,7 +67,7 @@ URI Scheme 较为简单容易理解，但它的缺点也比较明显：
 例如：
 
 ```html
-<a href="http://harttle.land/about.html"></a>
+<a href="https://harttle.land/about.html"></a>
 ```
 
 Universal Link 通过 Web 服务器验证的方式避免了 URI Scheme 的命名冲突。
@@ -107,7 +107,7 @@ Universal Link 通过 Web 服务器验证的方式避免了 URI Scheme 的命名
 例如下面的 URL：
 
 ```html
-<a href="http://harttle.land/about.html"></a>
+<a href="https://harttle.land/about.html"></a>
 ```
 
 需要服务器端给出 `assetlinks.json` 以验证 App 的 URL 绑定。

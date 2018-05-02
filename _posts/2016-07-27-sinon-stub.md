@@ -99,7 +99,7 @@ it('should calculate multiply', function () {
 ```javascript
 sinon.stub(jQuery, 'ajax').yieldsTo('success', 1, 2);
 jQuery.ajax({
-    url: 'http://harttle.land',
+    url: 'https://harttle.land',
     success: function(arg1, arg2){
         assert(arg1 === 1);
         assert(arg2 === 2);

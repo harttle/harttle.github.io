@@ -43,8 +43,11 @@
 
                 console.log('similar posts:', mostSimPosts);
 
-                var prevUrl = document.querySelector('.post-pager .previous').getAttribute('href');
-                var nextUrl = document.querySelector('.post-pager .next').getAttribute('href');
+                var prevEl = document.querySelector('.post-pager .previous');
+                var nextEl = document.querySelector('.post-pager .next');
+
+                var prevUrl = prevEl && prevEl.getAttribute('href');
+                var nextUrl = nextEl && nextEl.getAttribute('href');
                 if (mostSimPosts.length && prevUrl === mostSimPosts[0].url) {
                     mostSimPosts.shift();
                 }
