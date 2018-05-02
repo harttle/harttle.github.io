@@ -28,7 +28,6 @@ kramdown:
   hard_wrap: false
 
 ga: 'UA-65795020-1'
-disqus: 'harttleland'
 twitter:
   username: harttleharttle
 
