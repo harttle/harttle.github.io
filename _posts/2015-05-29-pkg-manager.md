@@ -1,7 +1,6 @@
 ---
-layout: blog 
 title: 常见包管理与构建工具列表
-tags: NPM Bower Grunt Maven Makefile Gem Bundle
+tags: NPM Bower Grunt Makefile Gem Bundle
 ---
 
 包管理和构建系统是现代的软件开发团队中必不可少的工具，也是Linux软件系统的常见组织方式。

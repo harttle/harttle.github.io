@@ -1,7 +1,7 @@
 ---
 layout: blog
 title:  Computer Organization and Design 笔记 - Arithmetic for Computers
-tags: 操作系统 算术运算 浮点数 溢出
+tags: 操作系统 加法器 乘法器 中断 异常
 ---
 
 ## Addition and Subtraction

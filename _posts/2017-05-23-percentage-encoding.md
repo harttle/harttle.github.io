@@ -1,6 +1,6 @@
 ---
 title: 百分号编码与 encodeURIComponent
-tags: encodeURIComponent UTF-8 URI URL GB2312
+tags: encodeURIComponent UTF-8 URL GB2312
 ---
 
 百分号编码、`encodeURIComponent`、URL encode 其实都是指在 URL 参数中转义任意字符。

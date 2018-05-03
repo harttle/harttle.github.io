@@ -1,6 +1,6 @@
 ---
 title: CORS 跨域中的 preflight 请求
-tags: 跨域 CORS preflight AJAX HTTP XHR
+tags: 跨域 CORS AJAX HTTP XHR
 ---
 
 我们知道借助[`Access-Control-Allow-Origin`][acao]响应头字段可以允许跨域 AJAX，

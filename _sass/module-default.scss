@@ -10,45 +10,26 @@
     height: 38px;
     line-height: 38px;
     display: inline-block;
-    letter-spacing: 0.03em;
     @include link-hover($light-grey, white);
-    @include serif;
-    > * {
-      vertical-align: middle;
-      font-size: 24px;
-    }
-    .logo-h{
-      color: $green;
-      font-size: 32px;
-      transition: color .15s;
-    }
-    &:hover .logo-h{
-      color: white;
-    }
-    .logo-land{
-      margin-left: 5px;
+    .logo-h {
+      position: relative;
+      right: -3px;
+      top: -1px;
     }
   }
-  .desc{
-    color: darken($light-grey, 10%);
-    margin: 0;
-    font-size: 13px;
-    @include media-xs{
-      display: none;
-    }
+  .logo:hover{
+    color: white;
+  }
+  .logo > * {
+    vertical-align: middle;
+    font-size: 1.5rem;
   }
   nav a{
     line-height: 38px;
-    margin-left: 30px;
+    margin-left: 1rem;
     @include link-hover($light-grey, white);
     @include media-xs{
-      line-height: 38px;
-      margin-left: 10px;
-    }
-  }
-  @media(max-width:370px){
-    nav{
-      display: none;
+      margin-left: 0.5rem;
     }
   }
 }

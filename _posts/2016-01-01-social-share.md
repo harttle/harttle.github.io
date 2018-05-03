@@ -8,7 +8,7 @@ tags: CSS Github HTML JavaScript jQuery 微信 二维码
 支持微信（二维码）、微博、Github、Google+、LinkedIn、Twitter、Facebook、RSS...，
 支持四种大小设置。
 
-* 在线Demo： http://harttle.land/social-share/
+* 在线Demo： https://harttle.land/social-share/
 
 * 文档： https://github.com/harttle/social-share
 

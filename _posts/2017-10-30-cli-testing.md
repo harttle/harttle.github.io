@@ -24,7 +24,7 @@ import {exec} from 'child_process'
 
 it('should print author', function (done) {
   exec('./bin/cli --author',
-    (err, stdout, stderr) => err ? done(err) : expect(stdout).to.equal('http://harttle.land')
+    (err, stdout, stderr) => err ? done(err) : expect(stdout).to.equal('https://harttle.land')
   )
 })
 ```
@@ -42,7 +42,7 @@ import Promise from 'bluebird'
 
 it('should print author', function () {
   var p = Promise.fromCallback(cb => exec('./bin/cli --author', cb))
-  return expect(p).to.eventually.equal('http://harttle.land')
+  return expect(p).to.eventually.equal('https://harttle.land')
 })
 ```
 
@@ -55,7 +55,7 @@ it('should print author', function () {
 但 e2e 测试中命令行程序在不同的进程启动，无法修改其中的 `fs` 模块。
 当然你可以 `require` 进来去执行，但那就不是 e2e 测试了。
 
-在此 [Harttle](http://harttle.land) 介绍两种方式来初始化用于测试的工作区。
+在此 [Harttle](https://harttle.land) 介绍两种方式来初始化用于测试的工作区。
 
 ## 临时目录
 

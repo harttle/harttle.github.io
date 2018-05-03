@@ -1,2 +1,2 @@
-Sitemap: http://harttle.land/sitemap.xml
+Sitemap: https://harttle.land/sitemap.xml
 User-agent: *

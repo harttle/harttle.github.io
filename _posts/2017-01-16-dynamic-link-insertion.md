@@ -1,6 +1,6 @@
 ---
 title: 动态插入外部样式表
-tags: DOM HTML 事件 异步 CSS
+tags: DOM HTML 事件 异步 CSS innerHTML
 ---
 
 相比于[动态插入外部脚本](/2017/01/16/dynamic-script-insertion.html)，

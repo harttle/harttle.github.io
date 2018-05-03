@@ -1,7 +1,6 @@
 ---
-layout: blog
 title:  Computer Organization and Design 笔记 - Multicores, Multiprocessors, and Clusters
-tags: 操作系统 多处理器 指令级并行 任务级并行 硬件多线程 线程
+tags: 操作系统 多处理器 并行 线程
 ---
 
 ## Introduction

@@ -1,6 +1,6 @@
 ---
-title: Raspbian Jessie 的 GPIO 串口配置
-tags: Raspbian GPIO UART
+title: Raspberry Pi 3 的 GPIO 串口配置
+tags: Raspberry GPIO UART
 ---
 
 [Raspberry Pi][rasp] 开源硬件提供了 [GPIO][gpio] (General Purpose Input/Output) 接口，

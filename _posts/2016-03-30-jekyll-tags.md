@@ -59,7 +59,7 @@ tags: Bash Github Vim grep awk sed JSON Jekyll
 ]{% endraw %}
 ```
 
-它生成的页面就是一个JSON文件（也可以访问 http://harttle.land/api/tags.json 查看）：
+它生成的页面就是一个JSON文件（也可以访问 https://harttle.land/api/tags.json 查看）：
 
 ```json
 [
@@ -160,4 +160,4 @@ OK，至此我们在Jekyll站点中用Vim打开一篇文章（xxx.md），输入
 
 <https://andrew.stwrt.ca/posts/project-specific-vimrc/>
 
-[harttle.land]: http://harttle.land
+[harttle.land]: https://harttle.land

@@ -1,6 +1,6 @@
 title: Harttle Land
 description: 分享技术，共建开放平台
-url: http://harttle.land
+url: https://harttle.land
 author: Harttle
 email: harttle@harttle.com
 logo: assets/img/favicon.png
@@ -28,23 +28,11 @@ kramdown:
   hard_wrap: false
 
 ga: 'UA-65795020-1'
-disqus: 'harttleland'
 twitter:
   username: harttleharttle
 
 sass:
     style: compressed
-
-collections:
-  effective-cpp:
-    output: true
-    permalink: /:year/:month/:day/:title.html
-  git-workflow:
-    output: true
-    permalink: /:year/:month/:day/:title.html
-  vim-practice:
-    output: true
-    permalink: /:year/:month/:day/:title.html
 
 defaults:
   -
@@ -57,28 +45,16 @@ defaults:
       path: "_posts"
     values:
       layout: "blog"
-  -
-    scope:
-      path: "_effective-cpp"
-    values:
-      layout: "blog"
-  -
-    scope:
-      path: "_git-workflow"
-    values:
-      layout: "blog"
-  -
-    scope:
-      path: "_vim-practice"
-    values:
-      layout: "blog"
 
-gems:
+series:
+  'Effective-C++': '/effective-cpp.html'
+  'Vim-Practice': '/vim-practice.html'
+  'Git-Workflow': '/git-workflow.html'
+
+plugins:
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-paginate
   - jekyll-seo-tag
   - jekyll-redirect-from
-
-whitelist:
-  - jekyll-redirect-from
+  - jekyll-include-cache

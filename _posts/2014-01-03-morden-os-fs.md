@@ -1,6 +1,6 @@
 ---
 title:  Modern Operating Systems 笔记 - File System
-tags: 操作系统 Log-Structured-File-Systems Journaling-File-System VFS
+tags: 操作系统 文件系统
 ---
 
 ## Files

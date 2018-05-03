@@ -6,7 +6,7 @@
 }
 
 .jumbotron{
-  @include random-bg();
+  background: #333;
   text-align: center;
   margin-bottom: 50px;
   h1{
@@ -28,11 +28,11 @@ article{
       @include link-hover($grey, $blue);
     }
   }
-  .md{
-    @include flattened-md();
-  }
   .tag-list{
     margin-top: 0;
+    .tag {
+      margin-bottom: 0.3rem;
+    }
   }
 }
 

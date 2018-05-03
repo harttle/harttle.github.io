@@ -19,7 +19,7 @@ Shell 中的变量只作用于当前进程。如需在子进程中创建副本�
 例如：
 
 ```bash
-url=http://harttle.land
+url=https://harttle.land
 echo $url
 ```
 
@@ -37,7 +37,7 @@ curl $url > $TMPDIR/$RANDOM.html
 我们需要将当前脚本中的 `url` 传递给`spider.sh`：
 
 ```bash
-export url=http://harttle.land
+export url=https://harttle.land
 bash ./spider.sh
 # 等价于（如果该文件有可执行权限的话）
 ./spider.sh
@@ -50,7 +50,7 @@ bash ./spider.sh
 使用 [`source`][source] 或 `.` 内建命令可以在当前进程执行另一个脚本，因此当前上下文的变量对该脚本是可见的。
 
 ```bash
-url=http://harttle.land
+url=https://harttle.land
 
 source ./spider.sh
 # 等价于
@@ -66,21 +66,21 @@ source ./spider.sh
 例如下面命令可以把`url`变量传递给`spider.sh`：
 
 ```bash
-url=http://harttle.land bash ./spider.sh
+url=https://harttle.land bash ./spider.sh
 ```
 
 这是一条 [简单命令][sc]，下面的多条命令或 [组合命令][cc]：
 
 ```bash
-url=http://harttle.land; bash ./spider.sh         # 两条命令，只作用于当前进程
-url=http://harttle.land && bash ./spider.sh       # 组合命令，只作用于当前进程
-export url=http://harttle.land; bash ./spider.sh  # 两条命令，作用于父子进程
+url=https://harttle.land; bash ./spider.sh         # 两条命令，只作用于当前进程
+url=https://harttle.land && bash ./spider.sh       # 组合命令，只作用于当前进程
+export url=https://harttle.land; bash ./spider.sh  # 两条命令，作用于父子进程
 ```
 
 简单命令中的变量赋值也不作用于当前进程。例如下面的代码将会输出空行：
 
 ```bash
-url=http://harttle.land echo $url
+url=https://harttle.land echo $url
 ```
 
 [sc]: http://pubs.opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html#tag_02_09_01

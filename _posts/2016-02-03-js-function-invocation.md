@@ -1,7 +1,6 @@
 ---
-layout: blog
-title: JavaScript 方法的4种调用模式
-tags: JavaScript 原型链 闭包 构造函数 调用模式 JSON
+title: JavaScript 方法的 4 种调用方式
+tags: JavaScript 原型链 闭包 构造函数 JSON
 ---
 
 **函数**（Function）是JavaScript的基本模块单元，JavaScript的代码重用，

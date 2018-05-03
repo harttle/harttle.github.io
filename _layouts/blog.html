@@ -3,18 +3,19 @@ layout: default
 ---
 
 <article class="module-blog">
-  <header class="blog-header">
-    <div class="container-fluid overlay">
-      <time class="pull-right">{{ page.date | date: "%Y/%m/%d" }}</time>
+  <header class="blog-header jumbotron">
+    <canvas id="universe"></canvas>
+    <div class="container-fluid">
       <h1>
         {{page.title}}
-        {% if page.collection != "posts" %}
-        <a class="collection" href="/{{page.collection}}.html">{{page.collection}}</a>
-        {% endif %}
+        {% for tag in page.tags %}
+          {% if site.series[tag] %}
+            <a class="collection" href="{{site.series[tag]}}">{{tag}}</a>
+            {% break %}
+          {% endif %}
+        {% endfor %}
       </h1>
-
-      <aside class="toc"></aside>
-
+      <aside id="asideTOC" class="affix-top"></aside>
       <p class="tag-list">
         {% for tag in page.tags %}
           <a class="tag" href="/tags.html#{{tag}}">{{tag}}</a>
@@ -22,27 +23,31 @@ layout: default
       </p>
     </div>
   </header>
-
   <div class="container-fluid">
+    <time class="hidden-xs pull-right">{{ page.date | date: "%Y/%m/%d" }}</time>
     <div class="content">
       <div class="md">
         {{ content }}
-        <p>转载请注明来源： <a href="http://harttle.land{{page.url}}">http://harttle.land{{page.url}}</a> 欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论（可能需要在能访问 disqus 服务的网络），也可以邮件至 <a href="mailto:{{site.email}}">{{site.email}}</a>。</p>
+        <p>转载请注明来源： <a href="{{page.url}}">{{site.url}}{{page.url}}</a> 欢迎对文中引用进行考证，欢迎指出任何不准确和模糊之处。可以在下面评论区评论，也可以邮件至 <a href="mailto:{{site.email}}">{{site.email}}</a>。</p>
       </div>
-
-      <div class="hidden-xs">
-        {% include author.html %}
+      <div class="hidden-xs"> {% include author.html %} </div>
+      <div class="post-pager clearfix">
+        {% if page.previous %}
+          <a rel="prev" href="{{page.previous.url}}" class="previous btn-hover">
+            上一篇：{{page.previous.title}}
+          </a>
+        {% endif %}
+        {% if page.next %}
+          <a rel="next" href="{{page.next.url}}" class="next btn-hover">
+            下一篇：{{page.next.title}}
+          </a>
+        {% endif %}
+        <a href="{{page.next.url}}" class="recommend btn-hover"></a>
       </div>
-      {% include post-pager.html %}
-      {% include comments.html %}
     </div>
   </div>
-
-  <div class="recommend">
-    <h4>看看这个？</h4>
-    <p><a class="post-link" href=""></a></p>
-  </div>
-
-  <script src="/assets/js/blog.js"></script>
+  <script>{% include blog.min.js %}</script>
+  <script src="https://utteranc.es/client.js" repo="harttle/harttle.github.io" issue-term="pathname" async></script>
+  <script>{% include canvas.min.js %}</script>
   {% include latex.html %}
 </article>

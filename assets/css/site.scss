@@ -7,43 +7,13 @@
 @import 'scroll-top';
 @import 'markdown';
 @import 'global';
-@import 'hover-tag';
-@import 'jqcloud.scss';
 @import 'lib/monokai-syntax.scss';
-@import 'lib/social-share.scss';
 
-.module-about{
-  @import 'module-about';
-}
-
-.module-404{
-  @import 'module-404';
-}
-
-.module-default{
-  @import 'module-default';
-}
-
-.module-index{
-  @import 'module-index';
-}
-
-.module-tags{
-  @import 'module-tags';
-}
-
-.module-archive{
-  @import 'module-archive';
-}
-
-.module-blog{
-  @import 'module-blog';
-}
-
-.module-author{
-  @import 'module-author';
-}
-
-.module-collection{
-  @import 'module-collection';
-}
+.module-about{ @import 'module-about'; }
+.module-404{ @import 'module-404'; }
+.module-default{ @import 'module-default'; }
+.module-index{ @import 'module-index'; }
+.module-tags{ @import 'module-tags'; }
+.module-archive{ @import 'module-archive'; }
+.module-blog{ @import 'module-blog'; }
+.module-collection{ @import 'module-collection'; }

@@ -1,14 +1,23 @@
 {
   "name": "harttle.land",
   "version": "1.0.0",
-  "description": "source code for http://harttle.land",
+  "description": "source code for https://harttle.land",
   "devDependencies": {
     "eslint": "^4.2.0",
-    "eslint-config-es5": "^0.5.0"
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-mocha": "^4.9.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "uglifyjs": "^2.4.11"
   },
   "scripts": {
     "lint": "eslint assets/js",
     "start": "bundle exec jekyll serve -w --drafts --host 0.0.0.0 --incremental",
+    "uglify": "npm run uglify:blog && npm run uglify:canvas",
+    "uglify:blog": "cat assets/js/blog-*.js | uglifyjs -mc > _includes/blog.min.js",
+    "uglify:canvas": "cat assets/js/canvas.js | uglifyjs -mc > _includes/canvas.min.js",
     "build": "bundle exec jekyll build --incremental",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

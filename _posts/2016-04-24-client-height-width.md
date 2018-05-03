@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: 视口的宽高与滚动高度
 tags: DOM scrollHeight scrollTop clientHeight innerHeight outerHeight offsetHeight
 ---

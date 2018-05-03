@@ -1,117 +1,50 @@
-$left-width: 50%;
-@mixin absolute($t, $r, $b, $l){
-  position: absolute;
-  top: $t;
-  bottom: $b;
-  left: $l;
-  right:$r;
-}
+@import 'mixins';
+@import 'variables';
 
-&{
-  @include absolute(62px, 0, 0, 0);
-  position: fixed;
-  @include media-xs{
-    position: static;
-  }
-}
-
-.left-panel, .right-panel{
-  @include absolute(0, 0, 0, 0);
-}
-
-.left-panel{
-  width: $left-width;
-  .tag-container{
-    display: none;
-    @include absolute(55px, 30px, 30px, 30px);
-  }
-  .tag-list{
-    padding-bottom: 50px;
-    overflow: auto;
-    span{
-      cursor: pointer;
-    }
-  }
-  #tags-display-toggle{
-    position: absolute;
-    bottom: 30px;
-    left: 30px;
-    margin: 0;
-    button{
-      opacity: 0.5;
-      &:hover{
-        opacity: 1;
-      }
-    }
-    @include media-md{
-      &.shown{
-        display: inline;
-      }
-    }
-  }
-  #current-tag{
-    position: absolute;
-    top: 30px;
-    left: 30px;
-    font-size: 14px;
-    color: $grey;
-  }
-  @include media-xs{
-    position: relative;
-    height: 400px;
-    width: auto;
-  }
-}
-
-.right-panel{
-  left:$left-width;
-  .post-list{
-    @include absolute(0, 0, 0, 0);
-    overflow: auto;
-    margin: 0;
-    padding: 30px 30px 30px 20px;
-    @include media-xs{
-      padding: 0px 30px 30px;
-    }
-  }
-  .post-list:empty::before {
-    content: '未找到相应的文章';
-    font-size: 32px;
-    line-height: 32px;
-    color: #e5e5e5;
-    font-weight: bold;
-    position: absolute;
-    display: block;
-    top: 50%;
-    left: 50%;
-    margin: -16px 0 0 -128px;
-  }
-  @include media-xs{
-    position: static;
-    padding-left: 0;
-    .post-list{
-      position: static;
-    }
-  }
-}
-
-li{
-  line-height: 28px;
-  font-size: 14px;
-  div{
+section.tags {
+  height: 200px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 25px 0;
+  position: relative;
+  &:before {
+    position: fixed;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    color: #00bf00;
+    z-index: -1;
+    text-align: center;
+    opacity: 0.15;
   }
-  time{
-    float: right;
-    color: $light-grey;
-    width: 100px;
-    margin-left: 20px;
-    display: none;
-    @include media-md{
-      display: inline-block;
-    }
+  .tag {
+    margin-bottom: .5em;
+    margin-right: -1px;
+  }
+  .tag:hover, .tag:focus, .tag:active {
+    color: white;
+    background: #5ABA59;
   }
 }
 
+section.posts li{
+  line-height: 2rem;
+  time{
+    font-family: monospace;
+    color: $light-grey;
+    width: 150px;
+    float: left;
+  }
+  div{
+    margin-left: 160px;
+  }
+  .title{
+    margin-right: 10px;
+  }
+  @include media-xs{
+    div{
+      margin-left: 0;
+    }
+    time, .tag{
+      display:none;
+    }
+  }
+}

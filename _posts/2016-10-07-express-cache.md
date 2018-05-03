@@ -1,6 +1,6 @@
 ---
 title: Express.js 性能优化
-tags: Express Chrome HTTP 异步 线程 缓存
+tags: Express.js Chrome HTTP 缓存 性能
 ---
 
 本文讨论如何提高Express在生产环境的性能，包括HTTP响应的压缩与缓存，

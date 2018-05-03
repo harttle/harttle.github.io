@@ -19,7 +19,7 @@ aside, .posts{
     float: left;
     text-align: right;
     width: $timeline-left-width;
-    padding: 2px 18px 10px 0;
+    padding: 4px 18px 10px 0;
     border-bottom: 1px solid $light-grey;
     color: $grey;
     .day{
@@ -42,41 +42,18 @@ aside, .posts{
     overflow: hidden;
     padding: 0 0 40px 20px;
     margin-left: $timeline-left-width;
-    header{
-      margin-bottom: 20px;
-      overflow: hidden;
-      h1{
-        font-size: 1.5em;
-        margin-top: 0;
-        @include ellipsis;
-        a{
-          @include link-hover($grey, $blue);
-          font-weight: normal;
-        }
+    header h1{
+      margin-top: 0;
+      @include ellipsis;
+      a{
+        @include link-hover($grey, $blue);
+        font-weight: normal;
       }
     }
-    .md{
-      @include flattened-md();
+    .tags .tag {
+      margin-bottom: 0.3rem;
     }
-    .more{
-      margin-top: 10px;
-      border-right: 1px solid $blue;
-      position: relative;
-      &::after {
-        content: ' ';
-        background: #3d85d1;
-        height: 1px;
-        width: 15%;
-        display: block;
-        position: absolute;
-        right: 0;
-        bottom: 0;
-      }
-      @include media-xs{
-        display: none;
-      }
-    }
-    @include media-xs{
+    @include media-xs {
       padding-left: 0;
       margin-left: 0;
       border-left: none;
@@ -97,7 +74,7 @@ aside, .posts{
 // layout
 aside{
   section{
-    margin-bottom: 40px;
+    margin-bottom: 60px;
   }
   .follow{
     margin-top: 15px;
@@ -123,7 +100,7 @@ aside{
   }
   section.collection-list{
     li{
-      margin-bottom: 10px;
+      line-height: 40px;
       a{
         @include link-hover(#777, $blue);
       }
@@ -149,4 +126,29 @@ aside{
 @include keyframes(width-percentage){
   from{margin-left: -100%;}
   to{margin-left: 100%;}
+}
+
+.social-share{
+  padding-left:0;
+}
+.social-share li{
+  display:inline-block;
+  margin-right:5px;
+  vertical-align: top;
+}
+.social-share li a{
+  display:inline-block;
+  transition:transform .5s;
+  height:36px;
+  width:36px;
+  display: block;
+  overflow: hidden;
+  border-radius:18px;
+}
+.social-share li a:hover{
+  transform:rotate(360deg);
+}
+
+.pager{
+  margin: 15px 0 20px 0px;
 }

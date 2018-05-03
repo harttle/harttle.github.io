@@ -1,26 +1,16 @@
 @import "variables";
+@import "mixins";
 
 .md {
   line-height: 1.8em;
-}
-
-.md > *:first-child {
-  margin-top: 0;
-}
-
-.md {
   overflow-wrap: break-word;
-}
-
-.md {
   a, code, strong, em {
     word-wrap: break-word;
   }
 }
 
-.md pre code {
-  margin-left: 0;
-  margin-right: 0;
+.md > *:first-child {
+  margin-top: 0;
 }
 
 .md > * {
@@ -107,11 +97,13 @@
 
 .md code, .md pre {
   font-family: Consolas, "Liberation Mono", Courier, monospace;
-  font-size: 12px;
+  font-size: 0.9rem;
   line-height: 1.5em;
 }
 
 .md pre code {
+  margin-left: 0;
+  margin-right: 0;
   word-wrap: normal;
   white-space: pre;
   overflow-wrap: normal;
@@ -119,26 +111,10 @@
 
 .md *:not(pre) > code {
   border: 1px solid #ddd;
-  /*color: #777;*/
   color: $red;
-
-  /*#c03;*/
   background-color: #f8f8f8;
   border-radius: 3px;
   white-space: normal;
-
-  /*overcome bootstrap nowrap*/
-  padding: 3px 4px 0 4px;
-
-  /*overcome bootstrap padding*/
-}
-
-.md a, .md a code {
-  text-decoration: underline;
-}
-
-.md a:hover, .md a code:hover {
-  text-decoration: underline;
 }
 
 .md table {
@@ -180,7 +156,29 @@
   zoom: 66.67%;
 }
 
-.MathJax {
+.md .MathJax {
   padding: 0 0.2em !important;
 }
 
+.md.excerpt {
+  color: #777;
+  p, h1, h2, h3, h4, h5, h6, b, strong, ul, ol, li{
+    font-size: 1rem;
+    margin: 0;
+    color: #777;
+    font-weight: normal;
+    border-bottom: none;
+  }
+  blockquote{
+    border-left: none;
+    padding: 0;
+    p, h1, h2, h3, h4, h5, h6, b, strong{
+      color: #999;
+    }
+  }
+  @include media-xs{
+    img, pre, table{
+      display: none;
+    }
+  }
+}

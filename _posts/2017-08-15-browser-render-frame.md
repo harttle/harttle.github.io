@@ -153,7 +153,7 @@ div.style.width = w + 20
 ```javascript
 var xhr = new XMLHttpRequest(),
   method = 'GET',
-  url = 'http://harttle.land'
+  url = 'https://harttle.land'
 
 xhr.open(method, url, true)
 xhr.onprogress = function () {
@@ -163,11 +163,11 @@ xhr.send()
 ```
 
 上述渲染算法在网络情况较差时是起作用的，但不代表它是正确的。
-比如当 <http://harttle.land> 对应的 HTML 非常大而且网络很好时，
+比如当 <https://harttle.land> 对应的 HTML 非常大而且网络很好时，
 `onprogress` 事件处理器可能碰撞在同一个渲染帧中，或者干脆在同一个 Tick。
 这样页面会长时间空白，即使 `onprogress` 早已被调用过。
 
-> 关于异步渲染的阻塞行为，可参考 <http://harttle.land/2016/11/26/dynamic-dom-render-blocking.html>
+> 关于异步渲染的阻塞行为，可参考 <https://harttle.land/2016/11/26/dynamic-dom-render-blocking.html>
 
 # 参考链接
 
@@ -178,8 +178,8 @@ xhr.send()
 [remove-timer]: https://bugs.chromium.org/p/chromium/issues/detail?id=337617
 [blink]: https://chromium.googlesource.com/chromium/blink/
 [thinking-60]: https://groups.google.com/a/chromium.org/forum/#!topic/blink-dev/bxIPxpzLprQ
-[async-render]: http://harttle.land/2016/11/26/dynamic-dom-render-blocking.html
-[css-js-render]: http://harttle.land/2016/11/26/static-dom-render-blocking.html
+[async-render]: https://harttle.land/2016/11/26/dynamic-dom-render-blocking.html
+[css-js-render]: https://harttle.land/2016/11/26/static-dom-render-blocking.html
 [client-size]: /2016/04/24/client-height-width.html
 [requestAnimationFrame]: https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame
 [dispatchEvent]: https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/dispatchEvent

@@ -68,7 +68,7 @@ $el.click(onClick)
 
 # 柯里化
 
-柯里化（curry）是函数式编程中的概念，指的是将一个多参数函数变成但参数函数的过程。
+柯里化（curry）是函数式编程中的概念，指的是将一个多参数函数变成单参数函数的过程。
 [lodash][lodash]工具库中的`curry`, `partial`, `partialRight`等方法都属于柯里化工具。
 来个例子吧：
 

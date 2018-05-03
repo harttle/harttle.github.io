@@ -1,6 +1,6 @@
 ---
 title: 为Express.js编写一个Logger
-tags: Express JSON JavaScript Node.js
+tags: Express.js JSON JavaScript Node.js
 ---
 
 [Express.js][express]是Node.js下最基础最灵活的Web服务器。

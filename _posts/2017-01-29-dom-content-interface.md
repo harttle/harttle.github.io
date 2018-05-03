@@ -1,6 +1,6 @@
 ---
 title: 获取 DOM 内容的 API 接口
-tags: DOM HTML jQuery innerHTML textContent
+tags: DOM HTML jQuery innerHTML textContent 重排
 ---
 
 Web 开发者可能会使用 jQuery [`.html()`][jq-html] 和 [`.text()`][jq-text]
@@ -152,7 +152,7 @@ text: function( value ) {
 
 [outerHTML]: https://w3c.github.io/DOM-Parsing/#dom-element-outerhtml
 [innerHTML]: https://w3c.github.io/DOM-Parsing/#dom-element-innerhtml
-[script-insert]: http://harttle.land/2017/01/16/dynamic-script-insertion.html
+[script-insert]: https://harttle.land/2017/01/16/dynamic-script-insertion.html
 [innerText]: https://html.spec.whatwg.org/multipage/dom.html#the-innertext-idl-attribute
 [textContent]: http://www.w3.org/TR/DOM-Level-3-Core/core.html#Node3-textContent
 [text]: https://www.w3.org/TR/html5/single-page.html#dom-a-text

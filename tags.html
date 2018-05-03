@@ -1,35 +1,47 @@
 ---
 layout: default
-title: 技术标签
-simpleTitle: true
+title: 标签
 ---
 
-<div class="module-tags">
-
-  <div class="left-panel">
-    <div class="tag-cloud tag-container"></div>
-    <div class="tag-pie tag-container"></div>
-    <div class="tag-list tag-container"></div>
-    <div id="tags-display-toggle" class="btn-group btn-group-sm">
-      <button class="btn btn-default btn-cloud">
-        <i class="fa fa-cloud"></i>
-      </button>
-      <button class="btn btn-default btn-pie">
-        <i class="fa fa-pie-chart"></i>
-      </button>
-      <button class="btn btn-default btn-list">
-        <i class="fa fa-th-list"></i>
-      </button>
-    </div>
-    <span id="current-tag">所有标签（{{ site.posts | size }}）</span>
-  </div>
-
-  <div class="right-panel">
-    <ul class="list-unstyled post-list"> </ul>
-  </div>
-
+<div class="module-tags container-fluid">
+  <style id="dynamicStyle"></style>
+  <section class="tags">
+    {% for tag in site.tags %}<a class="tag" href="#{{tag|first}}">{{ tag | first }} ({{ tag | last | size }})</a>{% endfor %}
+  </section>
+  <section class="posts">
+    <ul class="list-unstyled">
+      {% for post in site.posts %}
+      <li data-tags={{post.tags | join: ','}}>
+        <a href="{{post.url}}">{{ post.title }}</a>
+        <time>{{ post.date | date: '%Y-%m-%d %a.' }} </time>
+      </li>{% endfor %}
+    </ul>
+  </section>
+  <script>
+window.addEventListener('hashchange', filterByHash)
+filterByHash()
+function filterByHash() {
+  var match = location.hash.substr(1)
+  if (!match) {
+    return
+  }
+  var tag = decodeURIComponent(match)
+  var tagsElement = document.querySelector('section.tags')
+  dynamicStyle.innerHTML = 'section.tags:before{content: "' + tag + '";font-size:100px}'
+  var bgRect = window.getComputedStyle(tagsElement, ':before')
+  var fsH = 100 * tagsElement.clientWidth / bgRect.width.slice(0, -2)
+  var fsV = 100 * tagsElement.clientHeight / bgRect.height.slice(0, -2)
+  var fs = Math.min(fsV, fsH)
+  var w = tagsElement.clientWidth
+  var l = tagsElement.offsetLeft
+  dynamicStyle.innerHTML = 'section.tags:before{left: ' + l + 'px;width:' + w + 'px;line-height:200px;content: "' + tag + '";font-size:' + fs + 'px}'
+    
+  Array.prototype.forEach.call(document.querySelectorAll('.posts li'), function(post) {
+    var selected = post.dataset.tags.split(',').some(function (tagname) {
+      return tag === null || tagname === tag
+    })
+    selected ? post.classList.remove('hidden') : post.classList.add('hidden')
+  })
+}
+  </script>
 </div>
-
-<script src="/assets/lib/jqcloud/jqcloud.min.js"></script>
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="/assets/js/tags.js"></script>
