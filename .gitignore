@@ -1,5 +1,7 @@
 _site
 .DS_Store
+node_modules
+.vscode
 Gemfile.lock
 *.swp
 *.log
