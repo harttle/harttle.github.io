@@ -20,18 +20,20 @@
 .module-author img{
   width: 64px;
   height: 64px;
-  border-radius: 5px;
   float: left;
   margin-right: 10px;
 }
+.module-author img[alt=avatar]{
+  border-radius: 5px;
+}
 .module-author header{
   overflow: hidden;
-  font-size: 18px;
+  font-size: 23px;
   margin-top: 5px;
 }
 .module-author p{
-  font-size: 13px;
-  margin-top: 8px;
+  font-size: 15px;
+  margin: 8px 0 0;
   color: #aaa;
   font-style: italic;
 }
@@ -39,7 +41,7 @@
   <span class="rolls-toggle">&#x21ba;</span>
   <div class="roll-container">
     <div class="roll clearfix">
-      <img src="/assets/img/avatar.jpg" alt="harttle's avatar">
+      <img src="/assets/img/avatar.jpg" alt="avatar">
       <header>Harttle</header>
       <p>{{site.description}}</p>
     </div>
