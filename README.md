@@ -6,10 +6,9 @@ HarttleLand 博客主题
 ## 功能
 
 * 代码高亮
-* laTex 公式
-* 社交分享
-* 标签云
-* 文章目录
+* Markdown 支持 LaTex 公式
+* 基于 Github Issue 的评论
+* 自动生成页内导航
 
 ## 授权
 
