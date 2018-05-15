@@ -1,6 +1,6 @@
 ---
 title: 用正则表达式分析 URL
-tags: JavaScript 表单 字符串 正则表达式
+tags: JavaScript 字符串 正则表达式 转义
 ---
 
 [正则表达式][regex]是编程语言中非常重要的一部分，
