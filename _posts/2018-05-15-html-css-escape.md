@@ -14,6 +14,8 @@ JavaScript 是一种 [通用编程语言][gppl]，这类语言的转义相对比
 本文介绍的是 HTML 和 CSS 中的转义，不是 JavaScript 中的 [escape][js-escape] 方法（它可以产生一个类似 URL 编码的结果）。
 此外关于百分号编码请参考 [百分号编码与 encodeURIComponent](/2017/05/23/percentage-encoding.html)，关于表单编码请参考 [HTTP 表单编码 enctype](/2016/04/11/http-form-encoding.html)
 
+<!--more->
+
 # HTML 转义机制
 
 [html][html] 是一种标记语言，标记的语法非常简单 `<xx>` 表示开始标签，`</xx>` 表示结束标签，
