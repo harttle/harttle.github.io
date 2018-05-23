@@ -1,7 +1,5 @@
 ---
-layout: blog
 title: Item 42：typename的两种用法
-
 tags: Effective-C++ C++ 模板 C++ 模板 继承 编译 模板方法 traits
 excerpt: 模板参数前的typename和class没有任何区别；但 typename还可以用来帮编译器识别嵌套从属类型名称，基类列表和成员初始化列表除外。
 ---
@@ -16,9 +14,8 @@ template<class T> class Widget;
 ```
 
 答案是没有区别！有人觉得`class`写起来方便就用`class`，有人觉得`typename`语义更正确就用`typename`。
-然而`typename`和`class`对编译器而言却是不同的东西，这是本节的重点所在。
-
-`typename`可以用来帮编译器识别嵌套从属类型名称，基类列表和成员初始化列表除外。
+但是在这个场景之外，`typename` 和 `class` 却是完全不同的东西，下文提供了 `typename` 的其他用法。
+比如帮助编译器识别嵌套从属类型名称。
 
 <!--more-->
 

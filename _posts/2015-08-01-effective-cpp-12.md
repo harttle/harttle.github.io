@@ -1,7 +1,5 @@
 ---
-layout: blog
 title: Item 12：完整地拷贝对象
-
 tags: Effective-C++ C++ 继承 拷贝构造函数 构造函数 赋值运算符 运算符重载
 excerpt: 在一个成熟的面向对象的C++系统中，只有两种拷贝对象的方式：复制构造函数和赋值运算符。当重载拷贝函数时，首先要完整复制当前对象的数据（local data）；然后调用所有父类中对应的拷贝函数。
 ---
@@ -19,8 +17,8 @@ excerpt: 在一个成熟的面向对象的C++系统中，只有两种拷贝对�
 class Customer{
   string name;
 public:
-  Customer::Customer(const Customer& rhs): name(rhs.name){}
-  Customer& Customer::operator=(const Customer& rhs){
+  Customer(const Customer& rhs): name(rhs.name){}
+  Customer& operator=(const Customer& rhs){
     name = rhs.name;                     // copy rhs's data
     return *this;                        // see Item 10
   }  
@@ -34,8 +32,8 @@ class Customer{
   string name;
   Date lastTransaction;
 public:
-  Customer::Customer(const Customer& rhs): name(rhs.name){}
-  Customer& Customer::operator=(const Customer& rhs){
+  Customer(const Customer& rhs): name(rhs.name){}
+  Customer& operator=(const Customer& rhs){
     name = rhs.name;                     // copy rhs's data
     return *this;                        // see Item 10
   }  
@@ -51,11 +49,11 @@ public:
 class PriorityCustomer: public Customer {
 int priority;
 public:
-  PriorityCustomer::PriorityCustomer(const PriorityCustomer& rhs)
+  PriorityCustomer(const PriorityCustomer& rhs)
   : priority(rhs.priority){}
   
   PriorityCustomer& 
-  PriorityCustomer::operator=(const PriorityCustomer& rhs){
+  operator=(const PriorityCustomer& rhs){
     priority = rhs.priority;
   }  
 };
@@ -67,11 +65,11 @@ public:
 class PriorityCustomer: public Customer {
 int priority;
 public:
-  PriorityCustomer::PriorityCustomer(const PriorityCustomer& rhs)
+  PriorityCustomer(const PriorityCustomer& rhs)
   : Customer(rhs), priority(rhs.priority){}
   
   PriorityCustomer& 
-  PriorityCustomer::operator=(const PriorityCustomer& rhs){
+  operator=(const PriorityCustomer& rhs){
     Customer::operator=(rhs);
     priority = rhs.priority;
   }  
