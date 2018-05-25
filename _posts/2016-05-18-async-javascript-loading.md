@@ -1,18 +1,24 @@
 ---
-title: 异步脚本载入提高页面性能
+title: Web 性能优化：异步加载脚本
 tags: DOM async defer JavaScript 异步 性能
+redirect_from: /2016/03/14/non-blocking-javascript-loading.html
 ---
 
-可能很多人都知道JavaScript的载入和渲染会暂停DOM解析，但可能仍缺乏直观的体验。
-本文通过几个例子详述脚本对页面渲染的影响，以及如何使用异步脚本载入策略提供页面性能和用户体验。
-包括在脚本载入缓慢或错误时尽早显示整个页面内容，以及早点结束浏览器忙提示（进度条、旋转图标、状态栏等）。
+本文通过几个例子详述脚本对页面渲染的影响，以及浏览器正在加载提示
+（标签页旋转按钮、页面停止渲染、光标停止响应）的行为。
+介绍如何使用异步脚本载入策略提前 `load` 事件，提前结束浏览器的正在加载提示。**TL;DR**：
+
+* 脚本会阻塞 DOM 渲染，因此可以把不必要首屏载入的脚本异步载入。
+* 载入方式一：使用类似 requirejs 的方案，或在 `load` 事件后再插入外链脚本。
+* 载入方式二：XHR 获取内容后 Eval（不安全，且跨域不可用）。
+* 载入方式三：使用 `<script>` 的 `async` 和 `defer` 属性。
+
+<!--more-->
 
 # DOM 渲染流程
 
 要理解异步脚本载入的用处首先要了解浏览器渲染DOM的流程，以及各阶段用户体验的差别。
 一般地，一个包含外部样式表文件和外部脚本文件的HTML载入和渲染过程是这样的：
-
-<!--more-->
 
 1. 浏览器下载HTML文件并开始解析DOM。
 3. 遇到样式表文件`link[rel=stylesheet]`时，将其加入资源文件下载队列，继续解析DOM。
@@ -21,12 +27,10 @@ tags: DOM async defer JavaScript 异步 性能
 5. 脚本执行结束，继续解析DOM。
 6. 整个DOM解析完成，触发`DOMContentLoaded`事件。
 
-上述步骤只是大致的描述，你可能还会关心下面两个问题：
+此外，虽然浏览器会并行地下载资源文件（样式表、图片），但通常会限制并发下载数，一般为3-5个。
+资源文件的下载也可以进行优化，请参考：[Web 性能优化：prefetch, prerender][network]。
 
-* 资源文件下载队列。样式表、图片等资源文件的下载不会暂停DOM解析。浏览器会并行地下载这些文件，但通常会限制并发下载数，一般为3-5个。可以在开发者工具的Network标签页中看到。
-* 执行脚本文件前，浏览器可能会等待该`<script>`之前的样式下载完成并渲染结束。详见[外部样式表与DOMContentLoaded事件延迟][stylesheet-dom-ready]一文。
-
-# 脚本载入暂停DOM渲染
+# 脚本加载阻塞 DOM 渲染
 
 脚本载入真的会暂停DOM渲染吗？非常真切。
 比如下面的HTML中，在脚本后面还有一个`<h1>`标签。
@@ -54,148 +58,67 @@ tags: DOM async defer JavaScript 异步 性能
 
 > 很多被墙的网站加载及其缓慢就是因为DOM主体前有脚本被挡在墙外了。
 
-# DOMContentLoaded 延迟
+# 异步加载脚本：插入外链脚本标签
 
-既然脚本载入会暂停DOM渲染，OK我们把脚本都放在`<body>`尾部。
-这时页面可以被显示出来了，**但是在脚本载入前，`DOMContentLoaded`事件仍然不会触发。**
-请看：
+浏览器“载入中”的提示会让用户感觉网页慢！事实上我们应该关心的网页性能就是用户感受的性能。
+这个“载入中”的提示消失的时机基本就是 `load` 事件发生的时机。所以问题就变成了如何提前 `load` 事件。
 
-```html
-<!DOCTYPE html>
-<html>
-<body>
-  <h1>Hello</h1>
-  <h1>World!</h1>
-  <script>
-    document.addEventListener('DOMContentLoaded', function(){
-      alert('DOM loaded!');
-    });
-  </script>
-  <script src="/will-not-stop-loading.js"></script> 
-</body>
-</html>
-```
-
-这时`Wrold!`会显示，但浏览器忙指示器仍在旋转。
-这是因为 DOM 仍然没有解析完成，毕竟最后一个`<script>`标签还未获取到嘛！
-当然`DOMContentLoaded`事件也就不会触发。`DOM loaded!`对话框也不会弹出来。
-
-![dom not loaded with script pending](/assets/img/blog/dom/dom-not-loaded-with-script-pending@2x.png)
-
-直到超时错误发生，`DOMContentLoaded`才会触发（在我的Chrome里超时用了好几分钟！），
-此时对话框也会弹出：
-
-![dom-loaded-as-script-timeout](/assets/img/blog/dom/dom-loaded-as-script-timeout@2x.png)
-
-# 浏览器忙提示
-
-本文关心的核心问题是页面性能和用户体验，现在来考虑一个问题：
-
-> 对于非必须的页面脚本，在它的载入过程中如何取消浏览器的忙提示。
-
-首先想到的办法一定是从HTML中干掉那些`<script>`，然后在JavaScript中动态插入`<script>`标签。
-比如：
+除了懒加载图片、视频（Web 上已经有大量教程）之外，延迟加载非必须的页面脚本也很有效。
+[Harttle](/) 建议的上策是采用类似 [AMD](http://requirejs.org/) 的模块加载器。
+如果你的脚本很简单要手动实现，可以参考下面的代码：
 
 ```javascript
-var s = document.createElement('script');
-s.src = "/will-not-stop-loading.js";
-document.body.appendChild(s);
-```
-
-不贴图了，标签页上的图标确实在旋转，和上一小节中的图一样 :(
-
-那么等`DOMContentLoaded`会后再来插入呢？
-
-```javascript
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('load', function(){
     var s = document.createElement('script');
     s.src = "/will-not-stop-loading.js";
     document.body.appendChild(s);
 });
 ```
 
-上述代码仍然无法阻止浏览器忙提示。这充分说明浏览器JavaScript执行是单线程的，DOM事件机制也不例外。
-
-# 异步加载脚本
-
-为了阻止浏览器忙提示，应当可以使用异步加载脚本的策略。先看一个简单的示例：
-
-```javascript
-setTimeout(function(){
-    var s = document.createElement('script');
-    s.src = "/will-not-stop-loading.js";
-    document.body.appendChild(s);
-});
-```
-
-`setTimeout`未指定第二个参数（延迟时间），会立即执行第一个参数传入的函数。
-但是JavaScript引擎会将该函数插入到执行队列的末尾。
 这意味着正在进行的DOM渲染过程完全结束后（此时浏览器忙提示当然会消失），才会调用上述函数。
-看图：
+其中`/will-not-stop-loading.js`仍处于`pending`状态，但浏览器忙提示已经消失。如图：
 
 ![async script loading](/assets/img/blog/dom/async-script-loading@2x.png)
 
-其中`/will-not-stop-loading.js`仍处于`pending`状态，但浏览器忙提示已经消失。
-然而在Chrome中，如果插入`<script>`时仍有其他资源正在载入，那么上述做法仍然达不到效果
-（浏览器会判别为页面仍未完全载入）。
-总之：**异步加载脚本来禁止浏览器忙提示的关键在于让DOM先加载完毕**。
+注意直接在页面脚本中 `append` 一个 `<script>` 不起作用，新插入的脚本仍然会阻塞 DOM 渲染。
+即使在 `DOMContentLoaded` 事件时插入 `<script>` 也不起作用，
+因为 `DOMContentLoaded` 事件发生在 `load` 事件之前。
 
-# 最佳实践
+# 异步加载脚本：XHR+Eval
 
-不要沮丧，在实际的项目中有两种成熟的办法可以禁止浏览器忙提示。
-
-## AJAX + Eval
-
-使用AJAX获取脚本内容，并用Eval来运行它。
-因为AJAX一般不会触发浏览器忙提示，脚本执行只可能让浏览器暂停响应也不会触发忙提示。
-
-首先在需要异步加载的脚本设置`type="text/defered-script"`，并用`data-src`代替`src`防止浏览器直接去获取：
-
-```html
-<script type="text/async-script" data-src="http://foo.com/bar.js">
-```
-
-然后在站点的公共代码中加入『异步脚本加载器』：
+我们知道[XHR][xhr]可以用来执行异步的网络请求，XHR Eval方法的原理便是通过XHR下载整个脚本，通过`eval()`函数来执行这个脚本。
 
 ```javascript
-$('[type="text/defered-script"]').each(function(idx, el){
-    $.get(el.dataset.src, eval);
-});
+$.get('/path/to/sth.js').done(eval);
 ```
 
-> 注意：使用AJAX GET脚本文件时不要设置`Content-Type: "application/javascript"`
-> （包括`jQuery.getScript`）。
-> 这会使浏览器发现你是在加载脚本，进而触发忙提示指示器。
-> 当然，如果此时页面已然载入完毕，任何AJAX都不会触发忙提示了。
+因为[XHR][xhr]的下载过程是异步的，所以这个过程中浏览器图标不会显示『忙提示』。
+JS的执行时间很短暂，可以认为页面始终不会停止响应。
+[XHR][xhr]有跨域问题，因此该方法只适用于资源位于同一域名的情况（或者开启[CORS响应头字段][cors]）。
 
-上述方法的缺点在于，一旦被引入的JavaScript中需要以相对路径的方式载入其他JavaScript就会引发错误。
-因为被Eval的脚本中，当前路径变成了页面所在路径，不再是原来的`<script>`中`src`所指的路径。
-这在使用第三方库时非常常见。
+因为`eval()`方法是不安全的，可以创建一个`<script>`标签，并把XHR获取的脚本注入进去。
+再把 `<script>` 标签插入 DOM 它的内容就会执行。
 
-## Load 事件
+# 异步加载脚本：Defer/Async
 
-既然禁止浏览器忙指示器的关键在于让DOM加载完毕，那就绑定页面载入完毕的事件：`load`。
+这是 HTML5 中标准的属性，用来在 HTML 标记中声名式地指定异步加载脚本。
+除了 Opera 之外的浏览器基本都有支持。这个机制包括两个属性：[defer][script]和[async][script]。
 例如：
 
-```javascript
-$(window).load(function(){
-    $('script[type="text/async-script"]').each(function(idx, el){
-        var $script = $('<script>');
-        if(el.dataset.src) $script.attr('src', el.dataset.src);
-        else $script.html(el.text);
-        $script.appendTo('body');
-        el.remove();
-    });
-});
+```html
+<script src="one.js" async></script>     <!--异步执行-->
+<script src="one.js" defer></script>     <!--延迟执行--> 
 ```
 
-* 对于外部`<script>`，生成一个新的包含正确`src`的`<script>`。
-* 对于行内`<script>`，生成一个新的包含正确内容的`<script>`，`type`默认即为`"application/javascript"`。
+这两者有什么区别呢？请看下图（图片来自[peter.sh][peter]）：
 
-该方法采用DOM中`<script>`加载的方式，没有AJAX+Eval改变脚本中当前路径的缺点。
-<http://harttleland.com>中的Google Analytics、MathJax等脚本都采用这种处理方式。
+![defer vs async][defer-vs-async]
 
-# 服务器工具
+* 正常执行（无任何属性）：在下载和执行脚本时HTML停止解析
+* 设置 `defer`：在下载脚本时HTML仍然在解析，HTML解析完成后再执行脚本。延迟执行不会阻塞渲染，额外的好处是脚本执行时页面已经渲染结束。
+* 设置 `async`：在下载脚本时 HTML 仍然在解析，下载完成后暂停HTML解析立即执行脚本。
+
+# 参考代码
 
 本文所做实验服务器端都使用Node.js写成：
 
@@ -216,14 +139,17 @@ var server = http.createServer(function(req, res) {
     }
 });
 
-server.listen(port, e =>
-    console.log(`listening to port: ${port}`));
+server.listen(port, e => console.log(`listening to port: ${port}`));
 ```
-
-# 参考阅读
 
 * MDN Element.dataset: <https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset>
 * jQuery.getScript <http://api.jquery.com/jQuery.getScript/>
 
+[network]: /2015/10/06/html-cache.html
+[xhr]: https://en.wikipedia.org/wiki/XMLHttpRequest
+[cors]: /2015/10/10/cross-origin.html
+[script]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/scrip://developer.mozilla.org/en-US/docs/Web/HTML/Element/script 
+[peter]: http://peter.sh/experiments/asynchronous-and-deferred-javascript-execution-explained/
+[defer-vs-async]: /assets/img/blog/acyn-vs-defer.jpg
 [dom-ready]: /2016/04/27/document-ready-event.html
 [stylesheet-dom-ready]: /2016/05/15/stylesheet-delay-domcontentloaded.html

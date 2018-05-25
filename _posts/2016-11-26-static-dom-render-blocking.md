@@ -16,7 +16,7 @@ tags: CSS DOM HTML JavaScript DOM渲染
 
 * CSS（外链或内联）会阻塞**整个**DOM的渲染（Rendering），然而DOM解析（Parsing）会正常进行
 * 很多浏览器中，CSS会延迟脚本执行和`DOMContentLoaded`事件
-* JS（外链或内联）会阻塞**后续**DOM的解析（Parsing），后续DOM的渲染（Rendering）也将被阻塞
+* JS（外链或内联）会阻塞**后续**DOM的解析（Parsing），延迟 `DOMContentLoaded`，后续DOM的渲染（Rendering）也将被阻塞
 * JS前的DOM可以正常解析（Parsing）和渲染（Rendering）
 
 <!--more-->
@@ -80,49 +80,18 @@ Trident (MSIE)           |    | 是 | 是
 3. 第二次输出有两个`<h2>`，说明样式载入过程中DOM已解析完毕，即样式表不会阻塞DOM解析。
 4. `"second script"`未被打印出来，说明在Chrome中样式表之后的行内脚本被延迟了。
 
-# JS阻塞DOM解析
+# JS 阻塞 DOM 解析
 
-**不论是内联还是外链JavaScript都会阻塞后续DOM解析（Parsing），当然后续DOM的渲染（Rendering）也被阻塞了。**
-之所以DOM解析（Parsing）需要暂停，
-是因为脚本中可能会包含类似`document.write`的语句，即脚本有可能改变当前DOM树。
-
-> 当然现代浏览器不会这么傻，可以推测式地继续解析以提高性能。当然这些优化不应改变DOM应有的行为。
-
-值得注意的是JavaScript只会阻塞后续的DOM而非整个DOM，这意味着前面的DOM可以被正确地解析以及渲染。
+**不论是内联还是外链JavaScript都会阻塞后续DOM解析（Parsing），`DOMContentLoaded` 事件会被延迟，后续的 DOM =渲染（Rendering）也会被阻塞。**
+这意味着脚本执行过程中插入的元素会先于后续的 HTML 展现，即使脚本是外链资源也是如此。
+由于 JavaScript 只会阻塞后续的 DOM，前面的 DOM 在解析完成后会被立即渲染给用户。
 这也是为什么我们把脚本放在页面底部：脚本仍在下载时页面已经可以正常地显示了。
+
 但浏览器的载入标识仍然会提示页面正在载入，这件事情其实可以Hack，
 见[异步脚本载入提高页面性能](/2016/05/18/async-javascript-loading.html)一文。
 
-# JS阻塞DOM解析：案例
-
-为了验证JS阻塞DOM解析，设计下列HTML。
-仍然是同步和异步地打印当前DOM内容，以及在外部脚本后添加测试脚本。
-
-```html
-<html>
-<body>
-  <h2>Hello</h2>
-  <script>
-    function printH2(){
-        console.log('first inline script', document.querySelectorAll('h2')); 
-    }
-    printH2();
-    setTimeout(printH2);
-  </script>
-  <script src="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.4/js/bootstrap.js"></script>
-  <h2>World</h2>
-  <script> console.log('second inline script'); </script>
-</body>
-</html>
-```
-
-同样打开Chrome的`Disable Cache`和`Throttling`选项，这次看到`Hello`已经显示了：
-
-![scripts block parsing][js-block-parsing]
-
-1. `Hello`已经显示且第一次输出已有一个`<h2>`，说明脚本下载不影响之前的DOM解析和渲染。
-2. 第二次输出仍然只有一个`<h2>`说明DOM解析被阻塞。
-3. `"second inline script"`未被输出，说明脚本执行依赖于DOM解析（很显然）。
+其实除了脚本之外，现代浏览器上外部样式表的加载也会延迟 `DOMContentLoaded`，
+虽然不可思议但这是正在发生的事实，请参考：[外部样式表与DOMContentLoaded事件延迟][stylesheet-dom-ready]一文。
 
 [async]: /2016/11/26/dynamic-dom-render-blocking.html
 [css-block-rendering]: /assets/img/blog/dom/css-block-rendering@2x.png
