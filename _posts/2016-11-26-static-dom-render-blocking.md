@@ -1,6 +1,6 @@
 ---
-title: CSS/JS对DOM渲染的影响
-tags: CSS DOM HTML JavaScript DOM渲染
+title: CSS/JS 阻塞 DOM 解析和渲染
+tags: CSS DOM JavaScript 性能
 ---
 
 我们知道页面样式一般写在HTML头部，而页面脚本放在HTML尾部。
@@ -82,7 +82,9 @@ Trident (MSIE)           |    | 是 | 是
 
 # JS 阻塞 DOM 解析
 
-**不论是内联还是外链JavaScript都会阻塞后续DOM解析（Parsing），`DOMContentLoaded` 事件会被延迟，后续的 DOM =渲染（Rendering）也会被阻塞。**
+> 上文都在讲渲染，这里讲解析。解析是指浏览器生成 DOM 树结构（此时用户不一定能看到，但脚本比如 `querySelectorAll` 可以访问到）；渲染是指浏览器把 DOM 树与 CSS 结合进行布局并绘制到屏幕（此时用户是可以看到的）。
+
+**不论是内联还是外链JavaScript都会阻塞后续DOM解析（Parsing），`DOMContentLoaded` 事件会被延迟，后续的 DOM 渲染（Rendering）也会被阻塞。**
 这意味着脚本执行过程中插入的元素会先于后续的 HTML 展现，即使脚本是外链资源也是如此。
 由于 JavaScript 只会阻塞后续的 DOM，前面的 DOM 在解析完成后会被立即渲染给用户。
 这也是为什么我们把脚本放在页面底部：脚本仍在下载时页面已经可以正常地显示了。
@@ -96,3 +98,4 @@ Trident (MSIE)           |    | 是 | 是
 [async]: /2016/11/26/dynamic-dom-render-blocking.html
 [css-block-rendering]: /assets/img/blog/dom/css-block-rendering@2x.png
 [js-block-parsing]: /assets/img/blog/dom/js-block-parsing@2x.png
+[stylesheet-dom-ready]: /2016/05/15/stylesheet-delay-domcontentloaded.html

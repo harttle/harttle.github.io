@@ -152,4 +152,3 @@ server.listen(port, e => console.log(`listening to port: ${port}`));
 [peter]: http://peter.sh/experiments/asynchronous-and-deferred-javascript-execution-explained/
 [defer-vs-async]: /assets/img/blog/acyn-vs-defer.jpg
 [dom-ready]: /2016/04/27/document-ready-event.html
-[stylesheet-dom-ready]: /2016/05/15/stylesheet-delay-domcontentloaded.html
