@@ -1,6 +1,6 @@
 ---
-title: CSS载入与DOMContentLoaded事件延迟
-tags: CSS DOM JavaScript 事件 DOM渲染
+title: 外链 CSS 延迟 DOM 解析和 DOMContentLoaded
+tags: CSS DOM JavaScript 事件 DOM解析
 ---
 
 绝大多数情况下我们总是让JavaScript在DOM载入后再开始执行。

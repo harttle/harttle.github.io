@@ -1,6 +1,6 @@
 ---
 title: Web Components 可用性调研
-tags: ShadowDom CustomElement 兼容性 模块化 组件化
+tags: ShadowDOM CustomElement 组件化 HTML5
 ---
 
 Web Components 是 WHATWG 和 W3C 正在尝试的 Web 组件化方案，为组件化的 Web 前端开发提供浏览器级别的支持。

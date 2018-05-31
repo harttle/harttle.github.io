@@ -1,6 +1,6 @@
 ---
 title: 国内主要视频网站的嵌入方式
-tags: Flash iframe 视频
+tags: Flash iframe 视频 HTML5
 ---
 
 来一篇水文，整理一下国内各大视频网站的视频嵌入方式，或许有一点用处。
