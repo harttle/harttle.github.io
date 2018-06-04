@@ -1,29 +1,24 @@
 @import 'mixins';
 @import 'variables';
 
+svg.logo {
+  position: relative;
+  top: 2px;
+  height: 32px;
+  .h {
+    fill: #5ABA59;
+  }
+  .rest {
+    fill: #b6c0ce;
+    font: normal 350px sans-serif;
+  }
+}
+
 .banner{
   padding: 15px 0 15px;
   position: relative;
   z-index: 1000;
   background: $grey;
-  .logo{
-    height: 38px;
-    line-height: 38px;
-    display: inline-block;
-    @include link-hover($light-grey, white);
-    .logo-h {
-      position: relative;
-      right: -3px;
-      top: -1px;
-    }
-  }
-  .logo:hover{
-    color: white;
-  }
-  .logo > * {
-    vertical-align: middle;
-    font-size: 1.5rem;
-  }
   nav a{
     line-height: 38px;
     margin-left: 1rem;
@@ -36,12 +31,6 @@
 
 .banner.transparent{
   background: rgba(0, 0, 0, 0.3);
-  .logo .logo-arttle{
-    color: #999;
-  }
-  .logo:hover .logo-arttle{
-    color: white;
-  }
   nav a{
     color: #ddd;
   }

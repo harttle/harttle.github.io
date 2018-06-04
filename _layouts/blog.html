@@ -1,25 +1,14 @@
 ---
 layout: default
 ---
-
 <article class="module-blog">
   <header class="blog-header jumbotron">
     <canvas id="universe"></canvas>
     <div class="container-fluid">
-      <h1>
-        {{page.title}}
-        {% for tag in page.tags %}
-          {% if site.series[tag] %}
-            <a class="collection" href="{{site.series[tag]}}">{{tag}}</a>
-            {% break %}
-          {% endif %}
-        {% endfor %}
-      </h1>
+      <h1>{{page.title}} {% for tag in page.tags %}{% if site.series[tag] %}<a class="collection" href="{{site.series[tag]}}">{{tag}}</a>{% break %}{% endif %}{% endfor %}</h1>
       <aside id="asideTOC" class="affix-top"></aside>
       <p class="tag-list">
-        {% for tag in page.tags %}
-          <a class="tag" href="/tags.html#{{tag}}">{{tag}}</a>
-        {% endfor %}
+        {% for tag in page.tags %}<a class="tag" href="/tags.html#{{tag}}">{{tag}}</a>{% endfor %}
       </p>
     </div>
   </header>
@@ -32,22 +21,24 @@ layout: default
       </div>
       <div class="hidden-xs"> {% include author.html %} </div>
       <div class="post-pager clearfix">
-        {% if page.previous %}
-          <a rel="prev" href="{{page.previous.url}}" class="previous btn-hover">
-            上一篇：{{page.previous.title}}
-          </a>
-        {% endif %}
-        {% if page.next %}
-          <a rel="next" href="{{page.next.url}}" class="next btn-hover">
-            下一篇：{{page.next.title}}
-          </a>
-        {% endif %}
+        {% if page.previous %}<a rel="prev" href="{{page.previous.url}}" class="previous btn-hover">
+          上一篇：{{page.previous.title}}
+        </a>{% endif %}
+        {% if page.next %}<a rel="next" href="{{page.next.url}}" class="next btn-hover">
+          下一篇：{{page.next.title}}
+        </a>{% endif %}
         <a href="{{page.next.url}}" class="recommend btn-hover"></a>
       </div>
     </div>
   </div>
   <script>{% include blog.min.js %}</script>
-  <script src="https://utteranc.es/client.js" repo="harttle/harttle.github.io" issue-term="pathname" async></script>
-  <script>{% include canvas.min.js %}</script>
+  <script>
+{% include universe.min.js %}
+var univ = universe(document.querySelector('canvas#universe'));
+univ.bind(document.querySelector('.jumbotron'));
+univ.start();
+document.querySelector('.jumbotron').addEventListener('click', univ.createStarHere);
+  </script>
   {% include latex.html %}
+  <script src="https://utteranc.es/client.js" repo="harttle/harttle.github.io" issue-term="pathname" async></script>
 </article>

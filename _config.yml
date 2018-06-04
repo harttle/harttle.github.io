@@ -6,19 +6,15 @@ email: harttle@harttle.com
 logo: assets/img/favicon.png
 keywords: 
   - Web
-  - HTML
-  - CSS
-  - JavaScript
   - C++
   - Linux
-  - Bash
   - Vim
 
 permalink: /:year/:month/:day/:title.html
 paginate: 7
 paginate_path: "page:num"
 markdown: kramdown
-markdown_ext:  md
+markdown_ext: md
 excerpt_separator: "<!--more-->"
 highlighter: rouge
 lsi: false
@@ -28,8 +24,6 @@ kramdown:
   hard_wrap: false
 
 ga: 'UA-65795020-1'
-twitter:
-  username: harttleharttle
 
 sass:
     style: compressed
@@ -55,6 +49,5 @@ plugins:
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-paginate
-  - jekyll-seo-tag
   - jekyll-redirect-from
   - jekyll-include-cache

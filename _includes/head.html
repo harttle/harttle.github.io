@@ -1,17 +1,11 @@
-{% if page.tags %}
-  {% assign tags=page.tags%}
-{% else %}
-  {% assign tags=site.keywords%}
-{% endif %}
-
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="keywords" content="{{ tags | join: ',' }}">
-
-{% seo %}
+<meta name="keywords" content="{{ page.tags | default: site.keywords | join: ',' }}">
+<meta name="author" content="Jun Yang (harttle)">
+<meta name="description" content="{{page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 128}}">
+<title>{%if page.title%}{{page.title}} | {{site.title}}{%else%}{{site.title}}{%endif%}</title>
 {% feed_meta %}
-
 <link rel="shortcut icon" href="/assets/img/favicon.png">
 <link rel="apple-touch-icon-precomposed" href="/assets/img/apple-touch-icon-precomposed.png">
 <link rel="stylesheet" href="/assets/css/site.css">

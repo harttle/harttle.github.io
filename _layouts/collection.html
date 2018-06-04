@@ -27,5 +27,11 @@ layout: default
     {% endfor %}
     </div>
   </div>
-  <script>{% include canvas.min.js %}</script>
+  <script>
+{% include universe.min.js %}
+var univ = universe(document.querySelector('canvas#universe'));
+univ.bind(document.querySelector('.jumbotron'));
+univ.start();
+document.querySelector('.jumbotron').addEventListener('click', univ.createStarHere);
+  </script>
 </div>
