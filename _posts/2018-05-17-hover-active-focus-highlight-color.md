@@ -46,7 +46,7 @@ tags: focus hover active CSS
 * 在移动浏览器中，手指按下就会激活 `:active` 状态，手指松开就会取消激活状态 `:active` 失效。
 
 但是：在 Safari 下如果你的元素没有绑定 `touchstart`, `touchmove`, 或 `touchend`，元素就不会进入 `:active` 状态。
-可以通过 `addEventListener` 或 `ontouchstart=""` 的方式给它添加这个事件，或者使用这个 npm 包：<https://www.npmjs.com/package/active-touch>。
+可以通过 `addEventListener` 或 `ontouchstart=""` 的方式给它（或者它的祖先元素）添加这个事件，或者使用这个 npm 包：<https://www.npmjs.com/package/active-touch>。
 
 尽管如此，`:active` 是上述几种伪类中唯一的可以在移动浏览器中匹配按下状态的伪类。兼容性还不错，可以用你的手机浏览 [这个例子][demo]。
 
