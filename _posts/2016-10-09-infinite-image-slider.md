@@ -88,7 +88,7 @@ tags: Android jQuery 事件 滑动窗口 全屏
 $(window)
     .on('mouseup.lightbox touchend.lightbox', onTouchEnd)
     .on('mousemove.lightbox touchmove.lightbox', onTouchMove)
-    .on('mousedown.lightbox touchstart.lightbox', onTouchBegin)
+    .on('mousedown.lightbox touchstart.lightbox', onTouchStart)
 $(window)
     .off('mouseup.lightbox touchend.lightbox')
     .off('mousemove.lightbox touchmove.lightbox')
@@ -98,7 +98,7 @@ $(window)
 这里面有6个重点的事件，分别是：
 
 * `mousedown`, `mousemove`, `mouseup`: 鼠标按下，移动和放松；
-* `touchbegin`, `touchmove`, `touchend`: 触摸按下，移动和离开。
+* `touchstart`, `touchmove`, `touchend`: 触摸按下，移动和离开。
 
 
 # 图片滑动动画
@@ -108,7 +108,7 @@ $(window)
 ```javascript
 // 起始位置，划动距离
 var beginX, translateX;
-function onTouchBegin(e){
+function onTouchStart(e){
     beginX = getCursorX(e);
 }
 function getCursorX(e) {
@@ -141,11 +141,11 @@ function onTouchMove(e){
 
 > 我们平时划动图片时是否从未考虑过这里的细节？
 
-在`onTouchBegin`中记录开始时间，在`onTouchEnd`中即可计算速度。
+在`onTouchStart`中记录开始时间，在`onTouchEnd`中即可计算速度。
 
 ```javascript
 var beginTime, endTime;
-function onTouchBegin(e){
+function onTouchStart(e){
     beginTime = Date.now();
 }
 function onTouchEnd(e){
@@ -222,16 +222,16 @@ $('.container').animate({
 > 如果重置为`translate3d(0,0,0)`则动画仍会继续，页面就会跳一下。
 > 如果重置为`none`则会非常平滑，同时别忘了`-webkit-transform`来兼容更多浏览器。
 
-# TouchBegin 的兼容性
+# touchstart 的兼容性
 
-在Android ICS下如果`touchbegin`和第一个`touchmove`中都未调用
+在 Android ICS 下如果`touchstart`和第一个`touchmove`中都未调用
 [`preventDefault`][jqevent]，
 后续的`touchmove`和`touchend`就不会被触发。
-解决办法当然是在`onTouchBegin`中进行`preventDefault()`，
+解决办法当然是在`onTouchStart`中进行`preventDefault()`，
 然而这样`click`事件（点击关闭全屏啊！）就不会被触发了：
 
 ```javascript
-function onTouchBegin(e) {
+function onTouchStart(e) {
     e.preventDefault();
 }
 ```

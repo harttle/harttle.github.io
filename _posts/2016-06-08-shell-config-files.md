@@ -1,5 +1,5 @@
 ---
-title: Shell的相关概念和配置方法
+title: Shell 的相关概念和配置方法
 tags: Shell Bash GNU Linux SSH Unix crontab 操作系统
 ---
 
@@ -7,9 +7,7 @@ tags: Shell Bash GNU Linux SSH Unix crontab 操作系统
 而根据启动环境的不同，Shell会读取不同的配置文件。
 本文便来详细介绍这些不同名字的配置文件在何时会被Shell读取。
 
-# 相关概念
-
-## Shell（壳）
+# 什么是 Shell
 
 **Shell**(Unix Shell)是一种命令行解释器，是Unix操作系统下最传统的人机接口。
 在Shell中，用户可以通过输入程序名称来执行某个程序，
@@ -21,10 +19,9 @@ Ubuntu、RedHat等Linux发行版中默认的Shell是Bash（Bourne Shell），
 作者是贝尔实验室的Stephen Bourne，因此得名。
 Harttle在使用的是Z shell，这是一个非常现代的Shell，兼容于Bash。
 
-
 <!--more-->
 
-## Shell命令
+# 什么是 Shell 命令
 
 Shell命令就是我们常说的Linux命令，这些命令可以分为两类：
 
@@ -38,7 +35,7 @@ Shell命令就是我们常说的Linux命令，这些命令可以分为两类：
 Shell脚本第一行通常会包含当前脚本文件的解释器，比如`#!/usr/bin/bash`
 是指用户执行该脚本时，用Bash来解释执行。
 
-## Terminal（终端）
+# 什么是 Terminal
 
 **Terminal**（终端）是指计算机的一台设备或一个软件，
 它可以接受键盘输入传送给计算机，
@@ -56,16 +53,16 @@ Shell脚本第一行通常会包含当前脚本文件的解释器，比如`#!/us
 比如X Windows系统中常用的[Xterm][xterm]，[GNU Screen][screen]，[SSH][ssh]，
 GNome中的Terminal，KDE中的Konsole，Mac下常用的iTerm2等。这些软件都属于Terminal Emulator。
 
-## Console（控制台）
+# 什么是 Console
 
 **Console**（控制台）通常是指一台设备、一个软件或一个操作系统的Primary Terminal。
 Console的叫法是从物理意义上来的，直接连在设备上的那个终端就叫Console。
 比如Linux的TTY，Chrome的控制台，交换机的管理终端。
 
-## Interactive Shell（交互式Shell）
+# 什么是交互式 Shell
 
-交互式Shell与登录Shell是指某个Shell的运行状态，
-每个操作系统中可能会运行多个Shell，这些Shell可能会处于下面的任何一种运行状态。
+Interactive Shell（交互式 Shell）与登录 Shell 都是指 Shell 所处的运行状态，
+每个操作系统中可能会运行多个 Shell，这些 Shell 可能会处于下面的任何一种运行状态。
 
 **Interactive Shell**（交互式Shell）是指可以让用户通过键盘进行交互的Shell。
 我们在使用的CLI都是交互式Shell。
@@ -74,31 +71,29 @@ Console的叫法是从物理意义上来的，直接连在设备上的那个终�
 通常不会请求用户输入，输出也一般会存储在日志文件中。
 比如[用 Cron 定时任务更新壁纸][cron]一文中被`crontab`定时执行的脚本就运行在非交互式Shell中。
 
-## Login Shell（登录Shell）
+# 什么是登录 Shell
 
 **Login Shell**（登录Shell）是指该Shell被运行时用于用户登录，比如TTY中的Shell就是以登录Shell的状态在运行。
 
 **Non-login Shell**（非登录Shell）是指在用户已登录情况下启动的那些Shell。
 被自动执行的Shell也属于非登录Shell，它们的执行通常与用户登录无关。
 
-# 配置文件
+# Shell 配置文件
 
 Shell**配置文件**其实是一种特殊的Shell脚本，只不过没有用`.sh`来命名。
 在Shell被启动时会选择性地执行配置文件中的Shell命令，
 这些命令一般用于配置当前Shell下的工作环境，
 通常包含一些别名（`alias`），`PATH`，编辑器（`EDITOR`）等配置。
 
-## 读取顺序
-
-Shell配置文件可以分为系统级别的配置文件和用户级别的配置文件。
-任何一种Shell都有用户级别的配置文件，以及对应的系统级别的配置文件。
+Shell 配置文件可以分为系统级别的配置文件和用户级别的配置文件。
+任何一种 Shell 都有用户级别的配置文件，以及对应的系统级别的配置文件。
 
 * 系统级别的配置文件位于`/etc`下，这些配置会应用于所有用户。例如`/etc/profile`，`/etc/bashrc`。
 * 用户级别的配置文件位于用户目录`~`下，通常会加一个`.`来隐藏。例如`~/.profile`，`~/.bashrc`。
 
 在Shell启动时，会首先执行系统级别的配置文件（如果存在的话），再执行用户级别的配置文件。也就是说`~/.bashrc`中的配置会覆盖`/etc/bashrc`中的配置。
 
-## 登录Shell
+# 登录 Shell 的配置文件
 
 登录 Shell 会读取登录相关的配置文件，一般可分为三类：
 
@@ -118,7 +113,7 @@ Shell配置文件可以分为系统级别的配置文件和用户级别的配置
 
 比如 Zsh 的 `.zprofile`, `.zlogout`, `.zlogin` 等等，详见 <https://wiki.archlinux.org/index.php/zsh>
 
-## 交互式Shell
+# 交互式 Shell 的配置文件
 
 有一些配置文件是只会被交互式Shell读取的，包括：`.zshrc`，`.bashrc`等。
 
@@ -130,18 +125,7 @@ Shell配置文件可以分为系统级别的配置文件和用户级别的配置
 ```
 
 `.zshrc`会被任何交互式Z Shell读取，除非设置了`-f`参数。
-
 C Shell, TCShell启动时却总是会去读取 `cshrc`, `.tcshrc`，无论当前Shell是否为交互式的、或者登录Shell。
-
-## 相关软件配置文件
-
-有一些软件是和 Shell 一同启动的，比如 terminal、readline 等。
-它们的配置文件也会在 Shell 启动时被读取。
-
-比如 `.inputrc` 是Readline的启动配置文件，该文件通常会定义键盘映射相关设置。
-Bash等众多Shell都用使用Readline来读取用户输入，包括各种桌面系统给出的文本框、编辑区域。
-因此在 [熟悉 Bash 快捷键来提高效率](/2015/11/09/bash-shortcuts.html) 一文中提到的
-快捷键在普通的 GUI 编辑组件中都可以用，比如浏览器地址栏、HTML 输入表单控件、邮件客户端的输入区域等等。
 
 # 参考阅读
 
