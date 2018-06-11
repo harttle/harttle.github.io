@@ -33,13 +33,7 @@ layout: default
     </div>
   </div>
   <script>{% include blog.min.js %}</script>
-  <script src="https://harttle.land/universe/universe.min.js"></script>
-  <script>
-  var univ = universe(document.querySelector('canvas#universe'));
-  univ.bind(document.querySelector('.jumbotron'));
-  univ.start();
-  document.querySelector('.jumbotron').addEventListener('click', univ.createStarHere);
-  </script>
+  {% include jumbotron.html %}
   {% include latex.html %}
   <script src="https://utteranc.es/client.js" repo="harttle/harttle.github.io" issue-term="pathname" async></script>
 </article>

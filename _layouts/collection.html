@@ -28,11 +28,5 @@ layout: default
     {% endfor %}
     </div>
   </div>
-  <script src="https://harttle.land/universe/universe.min.js"></script>
-  <script>
-  var univ = universe(document.querySelector('canvas#universe'));
-  univ.bind(document.querySelector('.jumbotron'));
-  univ.start();
-  document.querySelector('.jumbotron').addEventListener('click', univ.createStarHere);
-  </script>
+  {% include jumbotron.html %}
 </div>

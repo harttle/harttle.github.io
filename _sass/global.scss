@@ -105,31 +105,3 @@ a:hover, a:active, a:focus{
   background: $green;
   text-decoration: none;
 }
-
-.jumbotron{
-  color: white;
-  position: relative;
-  .universe-link {
-    position: absolute;
-    display: none;
-    top: 10px;
-    right: 10px;
-  }
-  &:hover .universe-link {
-    display: inline-block;
-  }
-  canvas#universe {
-    background: #000;
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-  h1{
-    font-size: 2.5em;
-    text-shadow: 0px 2px 5px black;
-    text-align: center;
-  }
-}
