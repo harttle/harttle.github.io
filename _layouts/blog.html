@@ -5,6 +5,7 @@ layout: default
   <header class="blog-header jumbotron">
     <canvas id="universe"></canvas>
     <div class="container-fluid">
+      <a class="universe-link" href="https://harttle.land/universe/">&#x1F517;</a>
       <h1>{{page.title}} {% for tag in page.tags %}{% if site.series[tag] %}<a class="collection" href="{{site.series[tag]}}">{{tag}}</a>{% break %}{% endif %}{% endfor %}</h1>
       <aside id="asideTOC" class="affix-top"></aside>
       <p class="tag-list">
@@ -32,12 +33,12 @@ layout: default
     </div>
   </div>
   <script>{% include blog.min.js %}</script>
+  <script src="https://harttle.land/universe/universe.min.js"></script>
   <script>
-{% include universe.min.js %}
-var univ = universe(document.querySelector('canvas#universe'));
-univ.bind(document.querySelector('.jumbotron'));
-univ.start();
-document.querySelector('.jumbotron').addEventListener('click', univ.createStarHere);
+  var univ = universe(document.querySelector('canvas#universe'));
+  univ.bind(document.querySelector('.jumbotron'));
+  univ.start();
+  document.querySelector('.jumbotron').addEventListener('click', univ.createStarHere);
   </script>
   {% include latex.html %}
   <script src="https://utteranc.es/client.js" repo="harttle/harttle.github.io" issue-term="pathname" async></script>

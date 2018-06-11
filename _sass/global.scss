@@ -109,6 +109,15 @@ a:hover, a:active, a:focus{
 .jumbotron{
   color: white;
   position: relative;
+  .universe-link {
+    position: absolute;
+    display: none;
+    top: 10px;
+    right: 10px;
+  }
+  &:hover .universe-link {
+    display: inline-block;
+  }
   canvas#universe {
     background: #000;
     position: absolute;
@@ -124,4 +133,3 @@ a:hover, a:active, a:focus{
     text-align: center;
   }
 }
-

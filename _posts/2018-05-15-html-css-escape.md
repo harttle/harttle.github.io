@@ -16,26 +16,31 @@ JavaScript 是一种 [通用编程语言][gppl]，这类语言的转义相对比
 
 <!--more-->
 
-# HTML 转义机制
+# HTML 中的转义字符
 
-[html][html] 是一种标记语言，标记的语法非常简单 `<xx>` 表示开始标签，`</xx>` 表示结束标签，
-标签还可以有属性 `<xx key="val">`，其他还有注释、文本的语法。但 HTML 中反斜线不是转义字符，是正常的文本。
+[html][html] 是一种标记语言，就像其他编程语言一样，它可以表示包括它的语法在内的所有字符。但 HTML 中反斜线不是转义字符，而是以 `&` 起始的字符串。
+[这里有一个 HTML 特殊字符码表](https://www.freeformatter.com/html-entities.html#iso88591-characters)，
+[HarttleLand](https://harttle.land) 站的主题中就使用了很多的这些字符。
 
-HTML 中转义有两种方式：
+## HTML 转义语法
 
 * `&` + ASCII 字母（ASCII Alphanumeric）。表示命名的字符引用，例如 `&amp;` 表示 `&`，`&lt;` 表示 `<`。HTML5 发布了非常多 [新的命名字符](https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references)。
-* `&` + `#`（NUMBER SIGN）+ 数字。可以表示的字符包括 ASCII 字符、数学符号、希腊字母等。例如 `&#38;` 表示 `&`，`&#60;` 表示 `<`。[这里有一个码表](https://www.freeformatter.com/html-entities.html#iso88591-characters)，[HarttleLand](https://harttle.land) 站的主题中就使用了很多的这些字符。
+* `&#` + 数字。可以表示的字符包括 ASCII 字符、数学符号、希腊字母等。例如 `&#38;` 表示 `&`，`&#60;` 表示 `<`。
+    * `&#x` + 16 进制数字。例如 `&#x41;` 表示大写字母 `A`；
+    * `&#` + 10 进制数字。例如 `&#65;` 也表示大写字母 `A`。
+
+## 哪些字符需要转义？
 
 与通用编程语言中的转义一样，有许多字符都有转义的表示方式，但并不是所有字符都需要转义。
 比如 C 语言中 `\a` 是 `a` 的转义表示，但多数情况都不需要写成转义的形式。
 HTML 也一样，
 
-* 标签所在的上下文中需要转义（**标签转义**）的字符只有 `&`, `<`, `>`，
-* 属性上下文中还需要转义（**属性转义**）`"` 和 `'`。
+* 标签所在的上下文（标签的内容）中需要转义（**标签转义**）的字符只有 `&`, `<`, `>`，
+* 属性上下文（属性值的内容）中还需要转义（**属性转义**）`"` 和 `'`。
 
 > 参考 <https://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html>
 
-# JavaScript 中转义 HTML
+# JavaScript 中转义 HTML (消毒)
 
 明确 HTML 转义机制后事情就好办了，下面的实现来自 [StackOverflow](https://stackoverflow.com/questions/6234773/can-i-escape-html-special-chars-in-javascript)，
 其中单引号转义使用 `&#039;` 而非 `&apos;` 是由于 [HTML4 的兼容性原因](https://stackoverflow.com/questions/2083754/why-shouldnt-apos-be-used-to-escape-single-quotes)。
@@ -65,7 +70,7 @@ function escapeHtml(str) {
 
 上述实现运行在标签的上线文中，因此不会转义 `"` 和 `'`。转义后的属性不可直接拼接到属性上下文中。
 
-# CSS 转义机制
+# CSS 中的转义字符
 
 有时我们需要 CSS 字符串，而字符串中可能包含 CSS 特殊字符。
 比如 [伪元素](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements) 的 `content` 属性值，

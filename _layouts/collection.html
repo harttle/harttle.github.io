@@ -6,6 +6,7 @@ layout: default
   <div class="jumbotron">
     <canvas id="universe"></canvas>
     <div class="container-fluid overlay">
+      <a class="universe-link" href="https://harttle.land/universe/">&#x1F517;</a>
       <h1>{{page.title}}</h1>
       <p>{{page.description}}</p>
     </div>
@@ -27,11 +28,11 @@ layout: default
     {% endfor %}
     </div>
   </div>
+  <script src="https://harttle.land/universe/universe.min.js"></script>
   <script>
-{% include universe.min.js %}
-var univ = universe(document.querySelector('canvas#universe'));
-univ.bind(document.querySelector('.jumbotron'));
-univ.start();
-document.querySelector('.jumbotron').addEventListener('click', univ.createStarHere);
+  var univ = universe(document.querySelector('canvas#universe'));
+  univ.bind(document.querySelector('.jumbotron'));
+  univ.start();
+  document.querySelector('.jumbotron').addEventListener('click', univ.createStarHere);
   </script>
 </div>
