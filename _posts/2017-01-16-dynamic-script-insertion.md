@@ -1,5 +1,5 @@
 ---
-title: 在 DOM 中动态插入并执行脚本
+title: 在 DOM 中动态执行脚本
 tags: DOM HTML JavaScript jQuery innerHTML
 ---
 
@@ -14,24 +14,27 @@ tags: DOM HTML JavaScript jQuery innerHTML
 
 # 执行内联脚本
 
-为了插入内联脚本，可以创建一个`script`元素并设置其内容，插入到 DOM 即可立即执行。
-例如：
+为了插入内联脚本，可以创建一个`script`元素并设置其内容，插入到 DOM 即可 **立即执行**。例如：
 
 ```javascript
 var script = document.createElement('script');
 script.text = 'console.log("foo")';
+// 等价于
+// script.text = 'console.log("foo")';
+// script.innerText = 'console.log("foo")';
+// script.innerHTML = 'console.log("foo")';
 document.body.appendChild(script);
+console.log("bar");
 ```
 
-以下写法是等价的
+**立即执行** 是指 `.appendChild` 方法是阻塞的，脚本运行结束才返回。因此上述脚本的输出是：
 
-```javascript
-script.text = 'console.log("foo")';
-script.innerText = 'console.log("foo")';
-script.innerHTML = 'console.log("foo")';
+```
+foo
+bar
 ```
 
-需要注意的是内联脚本是否能够执行仍然受制于[CSP策略指令][csp]，
+此外，内联脚本是否能够被浏览器执行还取决于 [CSP策略指令][csp] 设置，
 该策略是由`Content-Security-Policy`响应头([rfc7762][rfc7762])控制的。
 例如下列设置将会禁止执行`harttle.land`以外的任何内联脚本。
 
