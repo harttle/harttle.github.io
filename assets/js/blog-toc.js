@@ -51,13 +51,17 @@
             var offset = level - baseLevel;
 
             var li = document.createElement('li');
-            li.innerHTML = '<a href="#' + id + '">' + header.textContent + '</a>' +
-        '<ul class="nav list-unstyled level-' + (offset + 1) + '"/>';
+            li.innerHTML =
+                '<a href="#' + id + '">' + header.textContent + '</a>' +
+                '<ul class="nav list-unstyled level-' + (offset + 1) + '"/>';
 
             var container = document.createElement('div');
             container.appendChild(toc);
-            var parents = container.querySelectorAll('ul.level-' + offset);
-            parents[parents.length - 1].appendChild(li);
+            var ascendingLevelNodes = container.querySelectorAll('ul.level-' + offset);
+            if (ascendingLevelNodes.length) {
+                var parent = ascendingLevelNodes[ascendingLevelNodes.length - 1];
+                parent.appendChild(li);
+            }
         });
         return toc;
     }
