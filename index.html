@@ -28,15 +28,16 @@ layout: default
         {% endfor %}
       </div>
 
-      {% if paginator.next_page %}
-        <p class="pager">
-          导航：
-          {% if paginator.previous_page %}
-          <a class="btn-hover" href="/page{{ paginator.previous_page  }}/">上一页</a>
-          {% endif %}
-          <a class="btn-hover pager-next-url" href="/page{{ paginator.next_page }}/">下一页</a>
-        </p>
-      {% endif %}
+      <p class="pager">
+        导航：
+        {% if paginator.previous_page %}
+        <a class="btn-hover" href="/page{{ paginator.previous_page }}/">上一页</a>
+        {% endif %}
+        {% if paginator.next_page %}
+        <a class="btn-hover pager-next-url" href="/page{{ paginator.next_page }}/">下一页</a>
+        {% endif %}
+      </p>
+      <p class="loading"><i class="icon">◑</i> 加载中...</p>
 
       {% include latex.html %}
     </div>
@@ -88,10 +89,16 @@ layout: default
   <script>
 !function (){
   if (!window.fetch) return;
+
   var postContainer = document.querySelector('.posts')
   var href = document.querySelector('.pager-next-url').href
   var pager = document.querySelector('.pager')
+  var loading = document.querySelector('.loading')
   var pending = false
+
+  loading.style.display = 'block';
+  pager.style.display = 'none';
+
   document.addEventListener('scroll', function () {
     if (!pending && margin() < 300) {
       pending = true

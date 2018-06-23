@@ -152,3 +152,15 @@ aside{
 .pager{
   margin: 15px 0 20px 0px;
 }
+
+.loading{
+  .icon{
+    animation: rotating 1s infinite linear;
+    display: inline-block;
+    font-style: normal;
+  }
+  @keyframes rotating{
+    from {transform: rotate(0deg)}
+    to {transform: rotate(360deg)}
+  }
+}
