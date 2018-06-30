@@ -1,11 +1,9 @@
 ---
-layout: blog
-title: 如何检查JavaScript变量类型？
+title: 如何检查 JavaScript 变量类型？
 tags: JavaScript 构造函数 继承 原型链 类型检查 类型转换 iframe
-excerpt: 如果你要判断的是基本数据类型或JavaScript内置对象，使用toString；如果要判断的时自定义类型，请使用instanceof。
 ---
 
-JavaScript基本数据类型有5种：字符串、数字、布尔、null、undefined。
+JavaScript [基本数据类型有 6 种][types]：字符串、数字、布尔、null、undefined、Symbol。
 用户定义的类型（object）并没有类的声明，因此继承关系只能通过构造函数和原型链来检查。
 本文要解决的问题，如何检查一个变量的类型？先给结论：
 
@@ -246,3 +244,4 @@ DOM Element的类型检测可以参见这篇文章： http://tobyho.com/2011/01/
 [typeof]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof
 [instanceof]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/instanceof
 [constructor]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor
+[types]: https://tc39.github.io/ecma262/#sec-ecmascript-language-types

@@ -21,6 +21,8 @@ Apple 在  [App Store Review Guidelines](https://developer.apple.com/app-store/r
 * [UC 浏览器][uc-browser]。目前（版本 12.0.3.1077）仍然是 UIWebView。
 * [百度（手机百度）][baidu-browser]。目前（版本 10.8.6）仍然是 UIWebView。
 
+本文描述的是 UIWebview 下的 Bug，Safari 和基于 WKWebview 的浏览器比如 Chrome 不受影响。
+
 <!--more-->
 
 # touch 交互暂停动画
@@ -52,15 +54,16 @@ Apple 在  [App Store Review Guidelines](https://developer.apple.com/app-store/r
 
 几乎所有前端都听说过 scroll 事件节流，因为 Webkit 下 `scroll` 事件会非常频繁地触发。
 但 UIWebView 下却是每次开始滚动到结束滚动只触发一次 `scroll`。
-这意味着滚动期间无法做到任何跟随效果，由于动画、事件都被挂起，UIWebView 滚动完全等效于：
+这意味着滚动期间无法做到任何跟随效果，由于动画、事件都被挂起，根据 [MDN 的描述][mdn-scroll]：
 
-截图覆盖页面 + 滚动截图 + 移动页面并移除截图 + 触发一次 `scroll`
+> In iOS UIWebViews, scroll events are not fired while scrolling is taking place; they are only fired after the scrolling has completed. See Bootstrap issue #16202.
 
 同样访问这个示例页面 <https://harttle.github.io/scroll-restoration-demos/scroll-event.html>，
-每次滚动都有日志，可以直接感受到 `scroll` 事件的触发频率。
+每次滚动都有日志，可以查看 `scroll` 事件的触发频率。
 
 [apple-dev]: https://developer.apple.com/documentation/uikit/uiwebview?changes=_6
 [WKURLSchemeHandler]: https://developer.apple.com/documentation/webkit/wkurlschemehandler
 [NSURLProtocol]: https://developer.apple.com/documentation/foundation/nsurlprotocol
 [uc-browser]: https://itunes.apple.com/cn/app/uc%E6%B5%8F%E8%A7%88%E5%99%A8-%E6%96%B0%E9%97%BB%E5%A4%B4%E6%9D%A1%E6%99%BA%E8%83%BD%E6%B5%8F%E8%A7%88%E5%99%A8/id586871187?mt=8
 [baidu-browser]: https://itunes.apple.com/cn/app/%E7%99%BE%E5%BA%A6/id382201985?mt=8
+[mdn-scroll]: https://developer.mozilla.org/en-US/docs/Web/Events/scroll

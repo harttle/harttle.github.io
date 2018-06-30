@@ -1,15 +1,14 @@
 ---
-layout: blog
 title: JavaScript显式类型转换与隐式类型转换
 tags: JavaScript 接口 弱类型 构造函数 类型转换
 ---
 
-本文谈谈JavaScript的类型转换，我们知道在JavaScript中声明变量不需指定类型，
-对变量赋值也没有类型检查，同时JavaScript允许隐式类型转换。这些特征说明JavaScript属于弱类型的语言。
+在 JavaScript 中声明变量不需指定类型，对变量赋值也没有类型检查，同时还允许隐式类型转换。
+这些特征说明 JavaScript 属于弱类型的语言。
 
-在强类型的C++中，多数情况下构造函数需要声明为`explicit`来避免隐式类型转换引起的误用
-（见[Item 15：资源管理类需要提供对原始资源的访问][item15]）。
-弱类型的语言中类型的误用会更加隐蔽，比如：
+在强类型的 C++ 中，多数情况下构造函数需要声明为 `explicit` 来禁止隐式类型转换，
+避免误用（见[Item 15：资源管理类需要提供对原始资源的访问][item15]）。
+弱类型的 JavaScript 中没有这一机制，比如下面的代码：
 
 ```javascript
 // 弹出对话框中输入1
@@ -20,7 +19,8 @@ var b = a + 1;
 console.log(b);   // 控制台输出 11   
 ```
 
-本文便来总结一下如何使用JavaScript进行类型转换，以及JavaScript中隐式类型转换的规则。
+目前 JavaScript 还无法阻止 `a` 被隐式转换为字符串。
+本文便来总结一下 JavaScript 的类型转换行为，以及隐式类型转换的规则。
 
 <!--more-->
 
@@ -132,13 +132,15 @@ if(obj){
 }
 ```
 
-## Native代码调用
+## toString
 
-JavaScript宿主环境都会提供大量的对象，它们往往不少通过JavaScript来实现的。
-JavaScript给这些函数传入的参数也会进行隐式转换。例如BOM提供的`alert`方法接受`String`类型的参数：
+有些接口只支持字符串参数，会对传入值进行 `toString`。
+比如 JavaScript 宿主环境提供的接口：
 
 ```javascript
 alert({a: 1});    // => [object Object]
 ```
+
+这里传入任何对象都会被 `toString` 转为字符串。
 
 [item15]: /2015/08/05/effective-cpp-15.html
