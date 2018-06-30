@@ -1,6 +1,6 @@
 ---
 title: JavaScript 中数字的底层表示
-tags: JavaScript float 二进制 运算符
+tags: JavaScript Number 浮点数 二进制 运算符
 ---
 
 至今 JavaScript 已经有 [6 种基本类型][types] 了，其中数字类型（Number）是表示数字的唯一方法。
@@ -49,8 +49,6 @@ $$
 指数部分的最大值为 2046，因此 **normal number 的最大值**
 （也是 **Number 的最大值**，[Number.MAX_VALUE][MAX_VALUE] 的值）为：
 
-## 最大最小值
-
 $$
 1.1111111...\times 2^{2046-1023} = (2-2^{-52}) \times 2^{1023} \approx 1.7976931348623157 \times 10^{308}
 $$
@@ -80,50 +78,6 @@ $$
 $$
 
 注意后四位小数是 2014 哈哈，normal number 能够表达的最大负数也是上面的大小，符号位变负。
-
-## 整数的表示
-
-此外，所有非零整数都属于 normal number，它们的指数部分刚好能够把所有分数移出到小数点左侧，数学地表示为：
-
-$$
-2^{e-1023} \times 2^{-l} \geq 1, e \geq 1023 + l
-$$
-
-其中 $l$ 为最后一个非零的分数下标，第一位分数 $l = 1$。
-**最大的安全整数**（即 [Number.MAX_SAFE_INTEGER][MAX_SAFE_INTEGER] 的值）为：
-
-$$
-2^{53} - 1 = 9007199254740991
-$$
-
-反之，**最小的安全整数**（即 [Number.MIN_SAFE_INTEGER][MIN_SAFE_INTEGER] 的值）为：
-
-$$
--2^{53} + 1 = -9007199254740991
-$$
-
-之所以称为最大安全整数，是因为它的每一位都未被四舍五入
-（JavaScript Number 实现的浮点数 Rounding 策略是 [Round to nearest, ties to even][ties-to-even]）。
-这意味着这个整数是准确的，再大就不准了，例如：
-
-```javascript
-console.log(Number.MAX_SAFE_INTEGER);
-// sign=0, fraction=9007199254740991（52个1）, e=1023+52
-// 输出 9007199254740991
-
-console.log(Number.MAX_SAFE_INTEGER+1);
-// sign=0, fraction=0（全0）, e=1023+53
-// 输出 9007199254740992，这个值是准确的，但它对应两个整数：2^53, 2^53+1，见下一个例子
-
-console.log(Number.MAX_SAFE_INTEGER+2);
-// sign=0, fraction=0（全0），e=1023+53
-// 输出 9007199254740992
-```
-
-`Number.MAX_SAFE_INTEGER+2` 是一个奇数，因为缺少一个二进制位不存在精确表示。
-可选 fraction=1（最低位为1），或 fraction=0（全0），根据 ties to even 策略，选择 0 让值变成偶数。
-与 ties to even 对应的还有 ties to odd 策略，为什么不用四舍五入呢？
-因为这样 5 总是“入”的，在累加时会放大误差；绑定到最近的奇数或偶数则会两两抵消，避免误差放大。
 
 # subnormal number
 
@@ -177,6 +131,69 @@ $$
 
 符号位可以取任意值（$2$ 种），分数只是不可取零（$2^{52} - 1$），
 因此共有 $(2^{52}-1)\times 2 = 2^{53} - 2$ 种。
+
+# 整数的表示
+
+所有的非零整数都属于 normal number（0 属于特殊值，见下文），
+它们的指数部分刚好能够把所有分数移出到小数点左侧，数学地表示为：
+
+$$
+2^{e-1023} \times 2^{-l} \geq 1 \Rightarrow e \geq 1023 + l
+$$
+
+其中 $l$ 为最后一个非零的分数下标，起始 $l = 1$。例如，
+1 的 $l = 0, e = 1023, fraction = 0$，
+3 的 $l = 1, e = 1024, fraction = 1000..._2$，
+5 的 $l = 2, e = 1025, fraction = 0100..._2$。
+这些整数中可以连续、准确地表示的那些整数称为 **安全的整数**，
+例如 $2^{100}$ 是不安全的，因为它和 $2^{100} + 1$ 具有完全相同的表示：$e = 1123, fraction = 0$，
+这导致在 JavaScript 中，
+
+```javascript
+Math.pow(2, 100) === (Math.pow(2, 100) + 1)
+```
+
+**最大的安全整数**（即 [Number.MAX_SAFE_INTEGER][MAX_SAFE_INTEGER] 的值）
+是 52 位分数都刚好用到的情况，此时 $l = 52 \Rightarrow e = 1023 + l = 1075$，
+加省略的前导 1 共有 53 个 1，它的值为：
+
+$$
+111...(共 53 个)...111_2 = 2^{53} - 1 = 9007199254740991
+$$
+
+同样地，符号位取 1 即可得到 **最小的安全整数**，也就是 [Number.MIN_SAFE_INTEGER][MIN_SAFE_INTEGER] 的值：
+
+$$
+-2^{53} + 1 = -9007199254740991
+$$
+
+对于不安全的整数或其他未能精确表示的浮点数，会选择最接近的一个可以精确表示的值，
+如果存在两个同样接近的值，[IEEE 754 binary64][IEEE 754] 提供了 ties to even 和 ties to odd 两种 Rounding 方式。
+JavaScript Number 实现的浮点数 Rounding 方式是 [Round to nearest, ties to even][ties-to-even]。
+我们来观察一下最大安全整数附近的 Rounding 方式：
+
+```javascript
+console.log(Number.MAX_SAFE_INTEGER);
+// sign=0, fraction=9007199254740991（52个1）, e=1023+52
+// 输出 9007199254740991，这个值就是 MAX_SAFE_INTEGER = 2^53 - 1
+
+console.log(Number.MAX_SAFE_INTEGER+1);
+// sign=0, fraction=0（全0）, e=1023+53
+// 输出 9007199254740992，这个值是精确的 2^53
+
+console.log(Number.MAX_SAFE_INTEGER+2);
+// sign=0, fraction=0（全0），e=1023+53
+// 输出 9007199254740992，这个值仍然等于 2^53，不等于 2^53 + 1
+```
+
+我们来考虑 `Number.MAX_SAFE_INTEGER + 2` 的表示方式。它是一个奇数，它的二进制值共 54 位：$1000...(共52个0)...0001$，
+分数加省略的前导 1 共 53 位，因此最后一个 1 无法表示出来。
+这时可以选 $1000...000...0010$（最后一个零不存）和 $1000...000...0000$（最后一个零不存）两个同样接近的值，
+根据 ties to even 策略，选择后者让 fraction 部分变成偶数。
+就得到了与 `Number.MAX_SAFE_INTEGER + 1` 同样的值：$2^{53}$。
+
+所以为什么不用四舍五入呢？因为四舍五入中每次遇到中间值时总是“入”的，在累加时会放大误差；
+选择绑定到最近的奇数/偶数则会两两抵消，避免误差放大。
 
 # 一些讨论
 
