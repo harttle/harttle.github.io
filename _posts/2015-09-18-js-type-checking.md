@@ -10,8 +10,8 @@ JavaScript [基本数据类型有 6 种][types]：字符串、数字、布尔、
 **如果你要判断的是基本数据类型或JavaScript内置对象，使用`toString`；
 如果要判断的时自定义类型，请使用`instanceof`**。
 
-不同的编程语言都有自己的方式来提供类型信息，例如C#的反射、[C++的Traits][traits]，
-JavaScript提供类型信息的方式更加灵活，因而也容易产生很多误用。
+不同的编程语言都有自己的方式来提供类型信息，例如 C# 的反射、[C++的Traits][traits]，
+JavaScript 提供类型信息的方式更加灵活（杂），因而也容易误用。
 下面来分析常见类型检查手段的区别：typeof, instanceof, constructor, toString。
 
 > 如果你在寻找类型转换的解决方案，而非类型检查，请移步[JavaScript类型转换][type-conv]。

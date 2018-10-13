@@ -1,7 +1,5 @@
 ---
-layout: blog
 title: Item 47：使用Traits类提供类型信息
-
 tags: Effective-C++ C++ 容器 迭代器 STL traits 指针 模板 特化 编译 
 excerpt: C++中的 Traits 类可以在编译期提供类型信息，它是用Traits模板及其特化来实现的。通过方法的重载，可以在编译期对类型进行"if...else"判断。我们通过STL中的一个例子来介绍Traits的实现和使用。
 ---
@@ -10,9 +8,11 @@ excerpt: C++中的 Traits 类可以在编译期提供类型信息，它是用Tra
 
 C++中的 Traits 类可以在编译期提供类型信息，它是用Traits模板及其特化来实现的。
 通过方法的重载，可以在编译期对类型进行"if...else"判断。我们通过STL中的一个例子来介绍Traits的实现和使用。
+这里贴一个 ACCU 提供的更容易理解的例子（英文）：<https://accu.org/index.php/journals/442>。
 
-> 本文以`iterator_traits`为例介绍了如何实现traits类，以及如何使用traits类（在[Item 42][item42]中提到过`iterator_traits`）。
-> 其实C++标准库中还提供了很多其他的traits，比如`char_traits`, `numeric_limits`等。
+本文以 `iterator_traits` 为例介绍了如何实现traits类，以及如何使用traits类
+（在[Item 42][item42]中提到过`iterator_traits`）。
+其实C++标准库中还提供了很多其他的traits，比如`char_traits`, `numeric_limits`等。
 
 STL提供了很多的容器、迭代器和算法，其中的`advance`便是一个通用的算法，可以让一个迭代器移动n步：
 
@@ -66,7 +66,9 @@ void advance(IterT& iter, DistT d){
 
 # Traits
 
-traits允许我们在编译期得到类型的信息。traits并非一个关键字，而是一个编程惯例。
+Traits 不是关键字，也不是 std 类型或模板，它只是 C++ 中的一种编程惯例，允许我们在编译期得到类型的信息。
+用 Bjarne 的话讲，Traits 是一个用来携带信息的很小的对象（或结构），
+在其他对象或算法中用这一信息来确定策略或实现细节。
 
 traits的另一个需求在于`advance`对与基本数据类型也能正常工作，比如`char*`。所以traits不能借助类来实现，
 于是我们把traits放到模板中。比如：

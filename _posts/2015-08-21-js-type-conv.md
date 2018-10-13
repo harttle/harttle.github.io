@@ -110,7 +110,8 @@ JavaScript会自动转换表达式中对象的类型以完成表达式求值。
 
 ## 四则运算
 
-加法运算符`+`是双目运算符，只要其中一个是`String`类型，表达式的值便是一个`String`。
+加法运算符`+`是双目运算符，只要其中一个是`String`类型，表达式的值就是一个`String`，
+会隐式调用每个元的 `.toString()` 方法。
 
 对于其他的四则运算，只有其中一个是`Number`类型，表达式的值便是一个`Number`。
 
@@ -119,6 +120,9 @@ JavaScript会自动转换表达式中对象的类型以完成表达式求值。
 ```javascript
 '1' * 'a'     // => NaN，这是因为parseInt(a)值为NaN，1 * NaN 还是 NaN
 ```
+
+不同类型的相加的行为比较复杂，也不一致，可以参考这里：
+<https://www.andronio.me/2017/10/22/js-operators-incensistency/>
 
 ## 判断语句
 
