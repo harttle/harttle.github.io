@@ -112,7 +112,7 @@ git tag -a v1.4 -m 'my version 1.4'
 git push --tags
 ```
 
-## 删除
+## 删除 Tag
 
 **场景**：有一个错误的Tag。
 
@@ -123,7 +123,7 @@ git tag -d old
 git push origin :refs/tags/old
 ```
 
-## 重命名Tag
+## 重命名 Tag
 
 **场景**：当然是Tag名字起错了。
 
@@ -136,7 +136,7 @@ git push origin :refs/tags/old
 git push --tags
 ```
 
-## 列出所有Tag
+## 列出所有 Tag
 
 **场景**：需要列出所有Tag。
 
