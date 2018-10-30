@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: Item 14：资源管理类要特别注意拷贝行为
+title: Effective C++ 14：资源管理类要特别注意拷贝行为
 
 tags: Effective-C++ C++ RAII 内存 引用 作用域 智能指针 构造函数 运算符重载
 excerpt: 资源管理对象的拷贝行为取决于资源本身的拷贝行为，同时资源管理对象也可以根据业务需要来决定自己的拷贝行为

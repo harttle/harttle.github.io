@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: Item 50：为什么需要自定义new和delete？
+title: Effective C++ 50：为什么需要自定义new和delete？
 
 tags: Effective-C++ C++ 动态内存 内存 字节对齐
 excerpt: 实现一个operator new很容易，但实现一个好的operator new却很难。

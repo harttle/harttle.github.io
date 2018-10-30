@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: Item 36：不要重写继承来的非虚函数
+title: Effective C++ 36：不要重写继承来的非虚函数
 
 tags: Effective-C++ C++ 虚函数 继承 名称隐藏 动态绑定
 excerpt: Never redefine an inherited non-virtual function.

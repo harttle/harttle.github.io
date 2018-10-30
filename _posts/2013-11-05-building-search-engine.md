@@ -1,16 +1,15 @@
 ---
 layout: blog
-title: 搜索引擎搭建：heritrix+lucene
-tags: Apache Bash C++ CentOS Git HTML HTTP Java awk sed 内存 算法 网络 搜索引擎
+redirect_from: /2013/11/05/se-project.html
+title: 搜索引擎搭建：Heritrix + Lucene
+tags: 搜索引擎 倒排索引 PageRank Web
 ---
 
-采用 heritix+pagerank+lucene 方式搭建搜索引擎原型，并评估其性能。
-
+采用 Heritix + Lucene 搭建搜索引擎原型，支持网站排名（PageRank）和倒排索引（Inverted Index），并评估其性能。
 
 # 爬虫（Heritrix）
 
-heritrix 是用作web归档的爬虫框架，java语言实现，具有 Apache License 自由软件许可。我们采用heritrix抓取网页数据。
-
+Heritrix 是用作 Web 归档的爬虫框架，java语言实现，具有 Apache License 自由软件许可。我们采用heritrix抓取网页数据。
 可参照官方 Guide：https://webarchive.jira.com/wiki/display/Heritrix/Heritrix+3.0+and+3.1+User+Guide
 
 <!--more-->

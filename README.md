@@ -12,13 +12,19 @@ HarttleLand 博客主题
 
 ## 授权
 
-本仓库提供的**主题**使用 [MIT][license] 协议授权。这一主题包括除文章（`*.md`）之外的任何样式、模板，以及脚本。
+本仓库提供的主题和内容使用 [CC-BY 4.0](http://creativecommons.org/licenses/by/4.0/) 进行许可，
+你可以自由地使用（包括商业用途）、修改、重新发布本仓库的代码和文章，只要在合适的地方保留来源或作者。
 
-你可以自由地使用（包括商业用途）、修改、发布本仓库提供的主题，
-只要保留一份 [LICENSE][license] 文件，以及在合适的地方保留如下 HTML：
+对于套用主题的情况，需要标明 Harttle Land 网站地址或本仓库地址，例如：
 
 ```
-Theme by <a href="https://harttle.land">Harttle</a>
+Theme by <a href="https://harttle.land">Harttle Land</a>.
+```
+
+对于转载文章的情况，需要给出原文链接，例如：
+
+```
+原文链接：<a href="https://harttle.land/2016/08/08/vim-search-in-file.html">Vim 中搜索和替换</a>
 ```
 
 ## 使用

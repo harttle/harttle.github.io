@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: Item 49：new handler的行为
+title: Effective C++ 49：new handler的行为
 
 tags: Effective-C++ C++ RAII 内存 异常 模板 动态内存
 excerpt: new申请内存失败时会抛出"bad alloc"异常，此前会调用一个由set_new_handler()指定的错误处理函数（"new-handler"）。

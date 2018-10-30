@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: Item 2：避免使用define
+title: Effective C++ 2：避免使用define
 
 tags: Effective-C++ C++ 宏 封装 常量 编译 模块化
 excerpt: 尽量使用常量、枚举和内联函数，代替`#define`。

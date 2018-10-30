@@ -1,5 +1,5 @@
 ---
-title: Item 54：熟悉一下标准库，比如TR1
+title: Effective C++ 54：熟悉一下标准库，比如TR1
 
 tags: Effective-C++ C++ STL Boost traits 智能指针 正则表达式
 excerpt: 标准C++库是由STL, iostream, 本地化，C99组成的。TR1添加了智能指针、通用函数指针、哈希容器、正则表达式以及其他10个组件。 TR1在是一个标准(standard)，为了使用TR1你需要一个TR1的实现(implementation)，Boost就是一个很好的TR1实现。

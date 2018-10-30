@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: Item 22：数据成员应声明为私有
+title: Effective C++ 22：数据成员应声明为私有
 
 tags: Effective-C++ C++ 内存 封装 接口 继承 
 excerpt: 数据成员声明为私有可以提供一致的接口语法，提供细粒度的访问控制，易于维护类的不变式，同时可以让作者的实现更加灵活。而且我们会看到，`protected`并不比`public`更加利于封装。

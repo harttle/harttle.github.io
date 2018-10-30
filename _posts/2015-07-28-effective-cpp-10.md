@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: Item 10：赋值运算符要返回自己的引用
+title: Effective C++ 10：赋值运算符要返回自己的引用
 
 tags: Effective-C++ C++ 引用 运算符 链式调用 赋值运算符 运算符重载
 excerpt: 这是关于赋值运算符的编程惯例，用来支持链式的赋值语句。

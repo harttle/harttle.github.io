@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: Item 20：传递常量引用比传值更好
+title: Effective C++ 20：传递常量引用比传值更好
 
 tags: Effective-C++ C++ 引用 常量
 excerpt: 通常来讲，传递常量引用比传值更好，同时避免了截断问题。但是内置类型和STL容器、迭代器，还是传值更加合适。
