@@ -1,91 +1,62 @@
 ---
 title: 关于
+layout: default
 ---
 
-<!DOCTYPE html>
-<html class="module-default module-about">
-  <head> {% include head.html %} </head>
-  <body id="body" >
-
-    <div class="page-wrapper">
-
-      <div class="banner transparent">
-        <div class="container-fluid">
-          <nav class="pull-right">
-            <a class="glow no-decoration" href="/tags.html">标签</a>
-            <a class="glow no-decoration" href="/archive.html">归档</a>
-            <a class="glow no-decoration" href="/about.html">关于</a>
-          </nav>
-          <a class="logo no-decoration" href="/">{% include logo.html %}</a>
-        </div>
-      </div>
-
-      <section class="avatar-wrapper">
-        <div class="container-fluid">
-          <img class="avatar" src="/assets/img/avatar-320x320.jpg" alt="avatar">
-          <p class="lead">{{site.description}}</p>
-        </div>
-      </section>
-
-      <div class="links">
-        <div class="container-fluid">
-          <div class="row">
-
-            <div class="col-sm-4">
-              <section class="interests">
-                <header>项目</header>
-                <ul class="list-unstyled">
-                  <li>
-                    <a href="https://github.com/harttle/liquidjs">liquidjs</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/whatwg-cn/html">HTML 标准翻译</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/harttle/highlight.js">Hightlight.js</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/harttle/social-share">Social Share</a>
-                  </li>
-                </ul>
-              </section>
-
-            </div>
-            <div class="col-sm-4">
-              <section class="thanks">
-                <header>致谢</header>
-                <ul class="list-unstyled">
-                  <li><a href="//pages.github.com/" target="_blank"> Github Pages</a></li>
-                  <li><a href="//github.com/utterance/utterances/" target="_blank"> utterance </a></li>
-                  <li><a href="//jekyllrb.com/" target="_blank"> Jekyll </a></li>
-                </ul>
-              </section>
-
-            </div>
-            <div class="col-sm-4">
-              <section class="thanks">
-                <header>链接</header>
-                <ul class="list-unstyled">
-                  <li><a href="https://xuexb.com/" target="_blank">前端小武的博客</a></li>
-                  <li><a href="http://merrier.wang/" target="_blank">merrier 说</a></li>
-                  <li><a href="https://best33.com/" target="_blank">做最好的三三</a></li>
-                </ul>
-              </section>
-            </div>
-          </div>
-        </div>
-      </div>
-
+<div class="page-about">
+  <section class="avatar-wrapper">
+    <div class="container-fluid">
+      <img class="avatar" src="/assets/img/avatar-320x320.jpg" alt="avatar">
+      <p class="lead">{{site.description}}</p>
     </div>
+  </section>
 
-    <footer class="page-footer">
-      <div class="container-fluid">
-				Hosted by <a href="//github.com">Github</a>,
-				Theme by <a href="//github.com/harttle">Harttle</a>.
+  <div class="links">
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-sm-4">
+          <section class="interests">
+            <h2>项目</h2>
+            <ul class="list-unstyled">
+              <li>
+                <a href="https://github.com/harttle/liquidjs">liquidjs</a>
+              </li>
+              <li>
+                <a href="https://github.com/whatwg-cn/html">HTML 标准翻译</a>
+              </li>
+              <li>
+                <a href="https://github.com/harttle/highlight.js">Hightlight.js</a>
+              </li>
+              <li>
+                <a href="https://github.com/harttle/social-share">Social Share</a>
+              </li>
+            </ul>
+          </section>
+
+        </div>
+        <div class="col-sm-4">
+          <section class="thanks">
+            <h2>致谢</h2>
+            <ul class="list-unstyled">
+              <li><a href="//pages.github.com/" target="_blank"> Github Pages</a></li>
+              <li><a href="//github.com/utterance/utterances/" target="_blank"> utterance </a></li>
+              <li><a href="//jekyllrb.com/" target="_blank"> Jekyll </a></li>
+            </ul>
+          </section>
+
+        </div>
+        <div class="col-sm-4">
+          <section class="thanks">
+            <h2>链接</h2>
+            <ul class="list-unstyled">
+              <li><a href="https://xuexb.com/" target="_blank">前端小武的博客</a></li>
+              <li><a href="http://merrier.wang/" target="_blank">merrier 说</a></li>
+              <li><a href="https://best33.com/" target="_blank">做最好的三三</a></li>
+            </ul>
+          </section>
+        </div>
       </div>
-    </footer>
-
-    {% include footer.html %}
-
-  </body>
-</html>
+    </div>
+  </div>
+</div>

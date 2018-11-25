@@ -6,6 +6,12 @@ html, body {
   padding: 0;
   scroll-behavior: smooth;
 }
+html {
+    background: #333;
+}
+body {
+    background: white;
+}
 
 @media (min-width: 768px) {
   .col-sm-offset-1, .col-sm-3, .col-sm-4, .col-sm-6, .col-sm-8 {
@@ -104,4 +110,9 @@ a:hover, a:active, a:focus{
   color: white;
   background: $green;
   text-decoration: none;
+}
+.ellipsis{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

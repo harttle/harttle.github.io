@@ -18,30 +18,19 @@ title: 标签
     </ul>
   </section>
   <script>
-window.addEventListener('hashchange', filterByHash)
-filterByHash()
+window.addEventListener('hashchange', filterByHash);
+filterByHash();
+
 function filterByHash() {
-  var match = location.hash.substr(1)
-  if (!match) {
-    return
-  }
-  var tag = decodeURIComponent(match)
-  var tagsElement = document.querySelector('section.tags')
-  dynamicStyle.innerHTML = 'section.tags:before{content: "' + tag + '";font-size:100px}'
-  var bgRect = window.getComputedStyle(tagsElement, ':before')
-  var fsH = 100 * tagsElement.clientWidth / bgRect.width.slice(0, -2)
-  var fsV = 100 * tagsElement.clientHeight / bgRect.height.slice(0, -2)
-  var fs = Math.min(fsV, fsH)
-  var w = tagsElement.clientWidth
-  var l = tagsElement.offsetLeft
-  dynamicStyle.innerHTML = 'section.tags:before{left: ' + l + 'px;width:' + w + 'px;line-height:200px;content: "' + tag + '";font-size:' + fs + 'px}'
-    
+  var match = location.hash.substr(1);
+  if (!match) return;
+  var tag = decodeURIComponent(match);
   Array.prototype.forEach.call(document.querySelectorAll('.posts li'), function(post) {
     var selected = post.dataset.tags.split(',').some(function (tagname) {
-      return tag === null || tagname === tag
-    })
-    selected ? post.classList.remove('hidden') : post.classList.add('hidden')
-  })
+      return tag === null || tagname === tag;
+    });
+    selected ? post.classList.remove('hidden') : post.classList.add('hidden');
+  });
 }
   </script>
 </div>

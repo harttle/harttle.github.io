@@ -1,6 +1,6 @@
 ---
 title: 适当地引入防卫性编程
-tags: JavaScript 封装 接口 重构 弱类型
+tags: JavaScript 封装 接口 重构
 ---
 
 > Anything that can go wrong will go wrong. -- Edward Murphy

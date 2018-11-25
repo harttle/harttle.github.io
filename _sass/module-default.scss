@@ -14,7 +14,7 @@ svg.logo {
   }
 }
 
-.banner{
+header{
   padding: 15px 0 15px;
   position: relative;
   z-index: 1000;
@@ -28,21 +28,3 @@ svg.logo {
     }
   }
 }
-
-.banner.transparent{
-  background: rgba(0, 0, 0, 0.3);
-  nav a{
-    color: #ddd;
-  }
-  nav a:hover{
-    color: white;
-  }
-  .desc{
-    color: #777;
-  }
-}
-
-.site-content{
-  z-index: 10;
-}
-

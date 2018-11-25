@@ -3,14 +3,17 @@
 
 @import 'mixins';
 @import 'variables';
-@import 'paper';
 @import 'scroll-top';
 @import 'markdown';
 @import 'global';
-@import 'lib/monokai-syntax.scss';
+@import 'footer';
+@import 'author-block';
+@import 'jumbotron';
+@import 'monokai-syntax.scss';
 
-.module-about{ @import 'module-about'; }
-.module-404{ @import 'module-404'; }
+@import 'page-about';
+@import 'page-404';
+
 .module-default{ @import 'module-default'; }
 .module-index{ @import 'module-index'; }
 .module-tags{ @import 'module-tags'; }

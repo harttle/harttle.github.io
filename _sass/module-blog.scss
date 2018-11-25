@@ -8,20 +8,24 @@
   aside{
     display: none;
   }
-  .blog-header{
+  .jumbotron{
     .tag-list{
       margin-left: 0;
     }
   }
 }
 
-.blog-header{
+.jumbotron{
   position: relative;
   h1{
     margin: 170px 0 150px;
     a.collection{
+      color: white;
       font-size: 17px;
       text-shadow: none;
+    }
+    a.collection:hover{
+      color: white;
     }
   }
   .tag-list{
@@ -56,7 +60,7 @@ time{
 
 @include media-xs{
   @include collapsed();
-  .blog-header h1{
+  .jumbotron h1{
     margin: 20px 0 20px;
     font-size: 1.8em;
     text-align: left;

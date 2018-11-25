@@ -2,19 +2,22 @@
 layout: default
 title: "404"
 excerpt: 链接过时了？搜索一下！
-bannerTransparent: true
 ---
 
-<div class="module-404">
+<div class="page-404">
   <div class="center">
-    <header>404</header>
-
-    <p class="lead">{{page.excerpt}}<p>
+    <h1>404</h1>
+    <p class="lead">{{page.excerpt}}</p>
 
     <form action="http://google.com/search" method="get">
       <input type="hidden" name="q" value="site:harttle.land">
-      <input class="form-control" placeholder="关键字..." name="q" autofocus>
+      <input id="query" placeholder="关键字..." name="q" autofocus>
     </form>
+    <script>
+var url = location.pathname + decodeURIComponent(location.query || '');
+var query = url.replace(/^[/-\d]+/, '').replace(/\.\S{1,4}$/, '') || url;
+document.querySelector('#query').value = query;
+    </script>
   
   </div>
 </div>

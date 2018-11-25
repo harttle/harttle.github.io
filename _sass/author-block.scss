@@ -1,0 +1,36 @@
+.author-block {
+  overflow: hidden;
+  height: 64px;
+  position: relative;
+  .roll-container {
+    transition: all .5s;
+  }
+  .rolls-toggle{
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+  }
+  img{
+    width: 64px;
+    height: 64px;
+    float: left;
+    margin-right: 10px;
+  }
+  img[alt=avatar]{
+    border-radius: 5px;
+  }
+  h2{
+    overflow: hidden;
+    font-size: 18px;
+    font-weight: normal;
+    margin-top: 5px;
+  }
+  p{
+    font-size: 13px;
+    margin: 8px 0 0;
+    color: #aaa;
+    font-style: italic;
+  }
+}

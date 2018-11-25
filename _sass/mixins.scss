@@ -30,32 +30,10 @@
   -ms-transition: $value;
 }
 
-@mixin transform($value){
-  transform: $value;
-  -webkit-transform: $value;
-}
-
-@mixin filter-blur($v){
-  filter: blur($v);
-  -webkit-filter: blur($v);
-  -moz-filter: blur($v);
-  -o-filter: blur($v);
-  -ms-filter: blur($v);
-}
-
 @mixin ellipsis{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-@mixin ellipsis-v($height){
-  max-height: $height;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
 }
 
 @mixin animation($v...){
@@ -64,22 +42,6 @@
   -moz-animation: $v; 
   -o-animation: $v; 
   -ms-animation: $v; 
-}
-
-@mixin box-shadow($shadows...) {
-  box-shadow: $shadows;
-  -moz-box-shadow: $shadows;
-  -webkit-box-shadow: $shadows;
-  -ms-box-shadow: $shadows;
-  -o-box-shadow: $shadows;
-}
-
-@mixin linear-gradient($v...){
-  background: linear-gradient($v);
-  background: -moz-linear-gradient($v);
-  background: -webkit-linear-gradient($v);
-  background: -ms-linear-gradient($v);
-  background: -o-linear-gradient($v);
 }
 
 @mixin link-hover($normal, $hover){
@@ -118,14 +80,4 @@
   @media(min-width: 1200px){
     @content;
   }
-}
-
-@mixin transform($v...){
-  -webkit-transform: $v;
-  transform: $v;
-}
-
-@mixin transform-origin($v...){
-  -webkit-transform-origin: $v;
-  transform-origin: $v;
 }

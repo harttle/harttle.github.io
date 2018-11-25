@@ -1,6 +1,8 @@
 ---
 title: 所以 JS 是怎样一门语言？
 tags: JavaScript Node.js 浏览器
+background: 'linear-gradient(to right, #24C6DC,#514A9D)'
+redirect_from: /2016/01/18/elegant-javascript.html
 ---
 
 [JavaScript][wiki] 俗称 JS，又称借S。起源于 Netscape 浏览器支持的页面脚本，目前已经被 TC39 标准化为 ECMAScript。

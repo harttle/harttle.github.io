@@ -14,7 +14,7 @@ aside, .posts{
   }
 }
 
-.post {
+article {
   time{
     float: left;
     text-align: right;
@@ -37,18 +37,21 @@ aside, .posts{
       display: none;
     }
   }
-  article{
+  details{
     border-left: 6px solid $light-grey;
     overflow: hidden;
     padding: 0 0 40px 20px;
     margin-left: $timeline-left-width;
-    header h1{
+    h1 {
       margin-top: 0;
       @include ellipsis;
       a{
         @include link-hover($grey, $blue);
         font-weight: normal;
       }
+    }
+    summary::-webkit-details-marker {
+      display: none;
     }
     .tags .tag {
       margin-bottom: 0.3rem;
@@ -60,8 +63,8 @@ aside, .posts{
     }
   }
 }
-.post:first-child{
-  article{
+article:first-child{
+  details{
     padding-top: $spliter-top-offset;
     margin-top: -$spliter-top-offset;
   }

@@ -1,5 +1,6 @@
 ---
 title: 设置和获取 radio input 的状态：checked, prop, attr, val
+tags: DOM JavaScript jQuery
 ---
 
 [Web 表单][form-tutorial] 是 HTML 文档与用户交互的重要部分，

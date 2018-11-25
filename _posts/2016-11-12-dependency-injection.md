@@ -108,8 +108,7 @@ Car.prototype.start  = function(){
 如果`Car`不依赖于`TrackTire`具体的实现而是依赖于`Car`接口，
 那么借助DI框架给它注入一个`OffroadTire`即可生成一辆越野车。
 
-> 当然JavaScript没有接口的概念。但Harttle相信优雅的设计来自灵魂而不是语法。
-> 比如[弱类型只是一种信仰](/2016/05/05/javascript-weak-type.html)
+> 目前 JavaScript 还没有接口的概念，但这并不妨碍面向接口的设计方式。
 
 如果一个模块的行为依赖与其他模块的实现（而非接口），那么该模块势必会难以理解和维护。
 所以说依赖注入有助于提高模块的复用性，可测试性与可维护性。
