@@ -11,6 +11,7 @@ $timeline-left-width: 95px;
     flex: 75%;
     flex-grow: 3;
     padding-right: 30px;
+    overflow: hidden;
   }
   > aside {
     flex: 25%;
@@ -22,6 +23,9 @@ $timeline-left-width: 95px;
 
   @include media-xs{
     display: block;
+    > .content {
+      padding-right: 0;
+    }
     > aside {
       display: none;
     }
