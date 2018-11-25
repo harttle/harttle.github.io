@@ -1,0 +1,45 @@
+@import 'mixins';
+@import 'variables';
+
+.page-archive {
+  margin-bottom: 50px;
+  h4{
+    color: $grey;
+    font-weight: normal;
+    margin-top: 40px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid $light-grey;
+  }
+
+  h4 .year{
+    float: right;
+    color: $light-grey;
+    font-family: cursive;
+    font-size: 1.5rem;
+    font-style: italic;
+  }
+
+  li{
+    line-height: 2rem;
+    time{
+      font-family: monospace;
+      color: $light-grey;
+      width: 150px;
+      float: left;
+    }
+    div{
+      margin-left: 160px;
+    }
+    .title{
+      margin-right: 10px;
+    }
+    .tag{
+      line-height: 1rem;
+    }
+    @include media-xs{
+      div{
+        margin-left: 0;
+      }
+    }
+  }
+}

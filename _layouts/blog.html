@@ -1,17 +1,16 @@
 ---
 layout: default
 ---
-<article class="module-blog">
-  <div class="jumbotron"{%if page.background%} style="background:{{page.background}}"{%endif%}>
-    <div class="container-fluid">
-      <h1>{{page.title}} {% for tag in page.tags %}{% if site.series[tag] %}<a class="collection" href="{{site.series[tag]}}">{{tag}}</a>{% break %}{% endif %}{% endfor %}</h1>
-      <aside id="asideTOC" class="affix-top"></aside>
-      <p class="tag-list">
-        {% for tag in page.tags %}<a class="tag" href="/tags.html#{{tag}}">{{tag}}</a>{% endfor %}
-      </p>
-    </div>
+
+<article class="page-blog">
+  <div class="jumbotron container"{%if page.background%} style="background:{{page.background}}"{%endif%}>
+    <h1>{{page.title}} {% for tag in page.tags %}{% if site.series[tag] %}<a class="collection" href="{{site.series[tag]}}">{{tag}}</a>{% break %}{% endif %}{% endfor %}</h1>
+    <aside id="asideTOC" class="affix-top"></aside>
+    <p class="tag-list">
+      {% for tag in page.tags %}<a class="tag" href="/tags.html#{{tag}}">{{tag}}</a>{% endfor %}
+    </p>
   </div>
-  <div class="container-fluid">
+  <div class="container">
     <time class="hidden-xs pull-right">{{ page.date | date: "%Y/%m/%d" }}</time>
     <div class="content">
       <div class="md">
@@ -20,13 +19,13 @@ layout: default
       </div>
       <div class="hidden-xs"> {% include author-block.html %} </div>
       <div class="post-pager clearfix">
-        {% if page.previous %}<a rel="prev" href="{{page.previous.url}}" class="previous btn-hover">
+        {% if page.previous %}<a rel="prev" href="{{page.previous.url}}" class="previous btn-hover ellipsis">
           上一篇：{{page.previous.title}}
         </a>{% endif %}
-        {% if page.next %}<a rel="next" href="{{page.next.url}}" class="next btn-hover">
+        {% if page.next %}<a rel="next" href="{{page.next.url}}" class="next btn-hover ellipsis">
           下一篇：{{page.next.title}}
         </a>{% endif %}
-        <a href="{{page.next.url}}" class="recommend btn-hover"></a>
+        <a href="{{page.next.url}}" class="recommend btn-hover ellipsis"></a>
       </div>
     </div>
   </div>

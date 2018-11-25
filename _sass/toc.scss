@@ -23,9 +23,6 @@ $padding-horizontal: 25px;
       padding: 8px $padding-horizontal;
       color: $light-grey;
       text-decoration: none;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
       &:focus {
         background-color: white; // override bootstrap #eee
       }

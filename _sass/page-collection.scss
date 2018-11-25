@@ -1,0 +1,41 @@
+@import 'mixins';
+@import 'variables';
+
+.page-collection{
+  margin-bottom: 50px;
+
+  .jumbotron{
+    margin-bottom: 50px;
+    h1{
+      font-size: 2.5em;
+      padding-bottom: 40px;
+    }
+    p{
+      font-size: 1.5em;
+      color: #ddd;
+      padding-bottom: 100px;
+    }
+  }
+  .article-list {
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+  }
+  article{
+    flex: 48%;
+    flex-grow: 0;
+    margin: 10px 0;
+    h3{
+      margin-bottom: 10px;
+      a{
+        @include link-hover($grey, $blue);
+      }
+    }
+    .tag-list{
+      margin-top: 0;
+      .tag {
+        margin-bottom: 0.3rem;
+      }
+    }
+  }
+}

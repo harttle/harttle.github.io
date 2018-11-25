@@ -1,0 +1,44 @@
+@import 'mixins';
+@import 'variables';
+
+.page-tags {
+  section.tags {
+    height: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 25px 0;
+    position: relative;
+    .tag {
+      margin-bottom: .5em;
+      margin-right: -1px;
+    }
+    .tag:hover, .tag:focus, .tag:active {
+      color: white;
+      background: #5ABA59;
+    }
+  }
+
+  section.posts li{
+    line-height: 2rem;
+    time{
+      font-family: monospace;
+      color: $light-grey;
+      width: 150px;
+      float: left;
+    }
+    div{
+      margin-left: 160px;
+    }
+    .title{
+      margin-right: 10px;
+    }
+    @include media-xs{
+      div{
+        margin-left: 0;
+      }
+      time, .tag{
+        display:none;
+      }
+    }
+  }
+}

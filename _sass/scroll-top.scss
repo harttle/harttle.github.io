@@ -7,7 +7,6 @@
   bottom: 50px;
   @include size(40px);
   font-size: 32px;
-  text-align: center;
   visibility: hidden;
   @include opacity(0);
   @include transition(all .25s ease-in-out);

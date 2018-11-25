@@ -3,7 +3,7 @@ layout: default
 title: 标签
 ---
 
-<div class="module-tags container-fluid">
+<div class="page-tags container">
   <style id="dynamicStyle"></style>
   <section class="tags">
     {% for tag in site.tags %}<a class="tag" href="#{{tag|first}}">{{ tag | first }} ({{ tag | last | size }})</a>{% endfor %}

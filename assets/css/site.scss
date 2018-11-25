@@ -6,17 +6,15 @@
 @import 'scroll-top';
 @import 'markdown';
 @import 'global';
-@import 'footer';
 @import 'author-block';
 @import 'jumbotron';
 @import 'monokai-syntax.scss';
 
 @import 'page-about';
 @import 'page-404';
-
-.module-default{ @import 'module-default'; }
-.module-index{ @import 'module-index'; }
-.module-tags{ @import 'module-tags'; }
-.module-archive{ @import 'module-archive'; }
-.module-blog{ @import 'module-blog'; }
-.module-collection{ @import 'module-collection'; }
+@import 'page-collection';
+@import 'page-blog';
+@import 'page-index';
+@import 'page-archive';
+@import 'page-default';
+@import 'page-tags';

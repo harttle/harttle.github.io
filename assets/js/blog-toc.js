@@ -52,7 +52,7 @@
 
             var li = document.createElement('li');
             li.innerHTML =
-                '<a href="#' + id + '">' + header.textContent + '</a>' +
+                '<a class="ellipsis" href="#' + id + '">' + header.textContent + '</a>' +
                 '<ul class="nav list-unstyled level-' + (offset + 1) + '"/>';
 
             var container = document.createElement('div');
