@@ -95,11 +95,11 @@ $timeline-left-width: 95px;
       margin-left: -100%;
       margin-top: 5px;
     }
-    section{
-      margin-bottom: 60px;
+    section.author-block{
+      margin-bottom: 20px;
     }
     section.follow{
-      margin-top: 15px;
+      margin-bottom: 60px;
       .social-share{
         padding-left:0;
       }
