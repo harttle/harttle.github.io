@@ -1,8 +1,6 @@
 ---
-layout: blog
 title: Effective C++ 41：隐式接口与编译期多态
-
-tags: Effective-C++ C++ 多态 虚函数 函数重载 模板 继承 编译 运算符重载
+tags: Effective-C++ C++ 多态 函数重载 模板 编译
 excerpt: 面向对象设计中的类（class）考虑的是显式接口（explicit interface）和运行时多态，而模板编程中的模板（template）考虑的是隐式接口（implicit interface）和编译期多态。
 ---
 

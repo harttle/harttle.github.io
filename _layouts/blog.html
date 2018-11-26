@@ -5,13 +5,13 @@ layout: default
 <article class="page-blog">
   <div class="jumbotron container"{%if page.background%} style="background:{{page.background}}"{%endif%}>
     <h1>{{page.title}} {% for tag in page.tags %}{% if site.series[tag] %}<a class="collection" href="{{site.series[tag]}}">{{tag}}</a>{% break %}{% endif %}{% endfor %}</h1>
-    <aside id="asideTOC" class="affix-top"></aside>
+    <time class="pull-right">{{ page.date | date: "%Y/%m/%d" }}</time>
     <p class="tag-list">
       {% for tag in page.tags %}<a class="tag" href="/tags.html#{{tag}}">{{tag}}</a>{% endfor %}
     </p>
   </div>
-  <div class="container">
-    <time class="hidden-xs pull-right">{{ page.date | date: "%Y/%m/%d" }}</time>
+  <div class="main-content container">
+    <aside class="toc"></aside>
     <div class="content">
       <div class="md">
         {{ content }}

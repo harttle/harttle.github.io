@@ -1,8 +1,6 @@
 ---
-layout: blog
-title: Effective C++ 30：理解inline函数的里里外外
-
-tags: Effective-C++ C++ inline 宏 模板 虚函数 成员函数 构造函数 析构函数
+title: Effective C++ 30：理解 inline 函数的里里外外
+tags: Effective-C++ C++ inline 宏 模板
 excerpt: inline(内联函数)避免了宏的缺点，也不需要付出函数调用的代价。也方便了编译器基于上下文的优化。但inline函数可能会造成目标代码膨胀和指令缓存的Miss。
 ---
 

@@ -8,9 +8,9 @@ tags: CSS Github HTML JavaScript jQuery 微信 二维码
 支持微信（二维码）、微博、Github、Google+、LinkedIn、Twitter、Facebook、RSS...，
 支持四种大小设置。
 
-* 在线Demo： https://harttle.land/social-share/
+* 在线Demo： <https://harttle.land/social-share/>
 
-* 文档： https://github.com/harttle/social-share
+* 文档： <https://github.com/harttle/social-share>
 
 > 最近在[天码营][tmy]和本博客中添加社会化分享，调研和尝试了不少第三方工具。
 > 国内最方便的应当是[jiathis][jiathis]，然而并不美观。国外的工具基本都没有微信（二维码）的支持。

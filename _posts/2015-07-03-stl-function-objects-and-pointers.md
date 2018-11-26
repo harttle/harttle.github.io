@@ -118,7 +118,7 @@ int main () {
 280
 ```
 
-摘自cplusplus.com： http://www.cplusplus.com/reference/numeric/accumulate
+摘自cplusplus.com： <http://www.cplusplus.com/reference/numeric/accumulate>
 
 # 比较器：std::sort
 

@@ -84,7 +84,7 @@ var retrievedObject = localStorage.getItem('testObject');
 console.log('retrievedObject: ', JSON.parse(retrievedObject));
 ```
 
-> 这段代码来自StackOverflow： http://stackoverflow.com/questions/2010892/storing-objects-in-html5-localstorage
+> 这段代码来自StackOverflow： <http://stackoverflow.com/questions/2010892/storing-objects-in-html5-localstorage>
 
 [s-c]: /2015/08/10/cookie-session.html
 [http]: /2014/10/01/http.html

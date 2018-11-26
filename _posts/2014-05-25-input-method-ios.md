@@ -56,7 +56,7 @@ IOS的软键盘在输入结束后不会自动关闭，而需要编程方式来�
 
 考虑一个聊天页面，在软键盘出现时，会遮挡输入框。此时需要减小页面其他部分的高度，使得输入框上移。然而，在输入中文的过程中软键盘的高度还会发生变化。于是我们需要监听软键盘的大小变化。
 
-重布局有两种做法，一种是改变`View`的大小；一种是改变约束。不过都得用编程方式，因为键盘高度是动态的（可能有多重键盘）。本文采取后一种，参考文章： http://www.think-in-g.net/ghawk/blog/2012/09/practicing-auto-layout-an-example-of-keyboard-sensitive-layout/
+重布局有两种做法，一种是改变`View`的大小；一种是改变约束。不过都得用编程方式，因为键盘高度是动态的（可能有多重键盘）。本文采取后一种，参考文章： <http://www.think-in-g.net/ghawk/blog/2012/09/practicing-auto-layout-an-example-of-keyboard-sensitive-layout/>
 
 1. 设置`Constants`，并包含页面最下方元素与父元素底的间隔，将该间隔约束以`Outlet`方式引入到工程中，命名为`vsHeight`。
 

@@ -10,7 +10,7 @@ tags: 搜索引擎 倒排索引 PageRank Web
 # 爬虫（Heritrix）
 
 Heritrix 是用作 Web 归档的爬虫框架，java语言实现，具有 Apache License 自由软件许可。我们采用heritrix抓取网页数据。
-可参照官方 Guide：https://webarchive.jira.com/wiki/display/Heritrix/Heritrix+3.0+and+3.1+User+Guide
+可参照官方 Guide：<https://webarchive.jira.com/wiki/display/Heritrix/Heritrix+3.0+and+3.1+User+Guide>
 
 <!--more-->
 
@@ -25,13 +25,13 @@ sudo pacman -S open-jdk-7       # arch linux
 sudo rpm -ivh open-jdk-7        # centos
 ```
 
-oracle jre 安装可参考 http://www.liberiangeek.net/2012/04/install-oracle-java-runtime-jre-7-in-ubuntu-12-04-precise-pangolin/
+oracle jre 安装可参考 <http://www.liberiangeek.net/2012/04/install-oracle-java-runtime-jre-7-in-ubuntu-12-04-precise-pangolin/>
 
 ## 安装
 
 1. 下载并解压
 
-    在 https://webarchive.jira.com/wiki/display/Heritrix/Heritrix 可以得到最新的版本。下载后解压。
+    在 <https://webarchive.jira.com/wiki/display/Heritrix/Heritrix> 可以得到最新的版本。下载后解压。
 
     ```bash
     tar -xzvf heritrix-xxx.tar.gz
@@ -48,7 +48,7 @@ oracle jre 安装可参考 http://www.liberiangeek.net/2012/04/install-oracle-ja
 
 4. 启动 UI
 
-    参照：https://webarchive.jira.com/wiki/display/Heritrix/A+Quick+Guide+to+Running+Your+First+Crawl+Job
+    参照：<https://webarchive.jira.com/wiki/display/Heritrix/A+Quick+Guide+to+Running+Your+First+Crawl+Job>
 
     ```bash
     cd $HERITRIX_HOME
@@ -56,7 +56,7 @@ oracle jre 安装可参考 http://www.liberiangeek.net/2012/04/install-oracle-ja
     bin/heritrix -a harttle:123456 -j /home/harttle/search-engine/pages/
     ```
     
-    然后在浏览器打开 https://localhost:8843 ，登录后根据提示新建一个job。
+    然后在浏览器打开 <https://localhost:8843> ，登录后根据提示新建一个job。
 
 ## 配置
 
@@ -133,7 +133,7 @@ oracle jre 安装可参考 http://www.liberiangeek.net/2012/04/install-oracle-ja
 
 我们现在要进行 Page-Rank，需要获得网页之间的链接关系。可以通过heritrix生成的日志文件（`crawl.log`）来提取。
 
-参见：https://webarchive.jira.com/wiki/display/Heritrix/Logs
+参见：<https://webarchive.jira.com/wiki/display/Heritrix/Logs>
 
 ```bash
 cat crawl.log | awk '$7=="text/html"{print $6 " => " $4}' > links
@@ -191,13 +191,13 @@ M = [0 0 0 0 1 ; 0.5 0 0 0 0 ; 0.5 0 0 0 0 ; 0 1 0.5 0 0 ; 0 0 0.5 1 0];
 rank(M, 0.80, 0.001)
 ```
 
-> Page Rank 的其他语言实现可以从 GitHub 获得：https://github.com/louridas/pagerank
+> Page Rank 的其他语言实现可以从 GitHub 获得：<https://github.com/louridas/pagerank>
 
 # 倒排索引（Lucene）
 
 倒排索引（Inverted index）被广泛应用在搜索引擎中，它存储着在全文搜索下某个单词在一个文档或者一组文档中的存储位置的映射。以下通过 Lucene 框架实现索引以及查询。
 
-官方 Guide：http://lucene.apache.org/core/4_5_1/demo/overview-summary.html
+官方 Guide：<http://lucene.apache.org/core/4_5_1/demo/overview-summary.html>
 
 ## 获取页面文件
 

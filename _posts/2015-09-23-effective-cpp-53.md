@@ -1,8 +1,6 @@
 ---
-layout: blog
 title: Effective C++ 53：注意编译警告
-
-tags: Effective-C++ C++ 编译 虚函数 名称隐藏
+tags: Effective-C++ C++ 编译警告 虚函数 名称隐藏
 excerpt: 请严肃对待所有warning，要追求最高warning级别的warning-free代码；但不要依赖于warning，可能换个编译器有些warning就不在了。
 ---
 

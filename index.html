@@ -27,7 +27,6 @@ layout: default
     </div>
 
     <p class="pager">
-      导航：
       {% if paginator.previous_page %}
       <a class="btn-hover" href="{{paginator.previous_page_path}}">上一页</a>
       {% endif %}
@@ -35,8 +34,6 @@ layout: default
       <a class="btn-hover pager-next-url" href="{{paginator.next_page_path}}">下一页</a>
       {% endif %}
     </p>
-    <p class="loading hidden"><i class="icon">◑</i> 加载中...</p>
-
     {% include latex.html %}
   </div>
   <aside>
@@ -83,50 +80,5 @@ layout: default
       </ul>
     </section>
   </aside>
-  <script>
-!function (){
-  if (!window.fetch) return;
-
-  var postContainer = document.querySelector('.posts')
-  var href = document.querySelector('.pager-next-url').href
-  var pager = document.querySelector('.pager')
-  var loading = document.querySelector('.loading')
-  var pending = false
-
-  loading.classList.remove('hidden');
-  pager.classList.add('hidden');
-
-  document.addEventListener('scroll', function () {
-    if (!pending && margin() < 300) {
-      pending = true
-      if (href[href.length - 1] !== '/') href += '/';
-      fetch(href)
-      .then(function (res) { return res.text() })
-      .then(function (html) {
-        var div = document.createElement('div')
-        div.innerHTML = html.replace(/<section class="author-block">[\s\S]*?<\/section>/, '')
-
-        div.querySelectorAll('article').forEach(function (post) {
-          postContainer.appendChild(post)
-        })
-
-        href = div.querySelector('.pager-next-url').href
-        window.MathJax && window.MathJax.Hub.Queue(['Typeset', MathJax.Hub])
-        pager.parentNode && pager.parentNode.removeChild(pager)
-        pending = false
-      })
-      .catch(err => console.error(err))
-    }
-  })
-  function margin(){
-      var d= document.documentElement
-      var b= document.body
-      var who= d.offsetHeight ? d : b
-      var scrollingHeight = Math.max(who.scrollHeight,who.offsetHeight);
-      var arrivedHeight = window.pageYOffset + window.innerHeight
-      return scrollingHeight - arrivedHeight
-  }
-}()
-  </script>
 </div>
 

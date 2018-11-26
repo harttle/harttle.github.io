@@ -207,7 +207,7 @@ $( "#root" ).on( "click", "a", function( e ) {} );
 
 > 我们看到上面还有一个`.live()`方法，它与`delegate`是类似的，
 > 不过它强制指定了`root`是`document`（即`this.context`），因而性能略差。
-> 自jQuery1.7起已经不推荐使用了。参见： https://api.jquery.com/category/deprecated/deprecated-1.7/
+> 自jQuery1.7起已经不推荐使用了。参见： <https://api.jquery.com/category/deprecated/deprecated-1.7/>
 
 [je]: https://api.jquery.com/category/events/
 [ai]: /2015/05/31/angular-scope-initialize.html

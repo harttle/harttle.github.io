@@ -1,7 +1,5 @@
 ---
-layout: blog
-categories: web
-title: CSS选择符总结
+title: CSS 选择符总结
 tags: CSS DOM HTML 伪类 选择符
 ---
 
@@ -89,8 +87,8 @@ table tr td:first-child{
 
 参考：
 
-* http://www.w3school.com.cn/css/css_pseudo_classes.asp
-* https://developer.mozilla.org/zh-CN/docs/Web/CSS/%3Anth-child
+* <http://www.w3school.com.cn/css/css_pseudo_classes.asp>
+* <https://developer.mozilla.org/zh-CN/docs/Web/CSS/%3Anth-child>
 
 # 属性
 
@@ -117,7 +115,7 @@ table tr td:first-child{
 
 参考：
 
-* http://www.w3school.com.cn/css/css_selector_type.asp
+* <http://www.w3school.com.cn/css/css_selector_type.asp>
 
 [pseudo-ele]: http://www.w3school.com.cn/css/css_pseudo_elements.asp
 [css-pri]: /2015/07/16/css-priority.html

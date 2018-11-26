@@ -30,7 +30,7 @@ void function(int& x) {
  
  其中`j`并不占用当前的栈空间，而`function`被调用前会将`j`的地址放入它的参数栈中。
  
- 关于引用的内存占用： http://stackoverflow.com/questions/1179937/how-does-a-c-reference-look-memory-wise
+ 关于引用的内存占用： <http://stackoverflow.com/questions/1179937/how-does-a-c-reference-look-memory-wise>
  
 # 引用参数
 

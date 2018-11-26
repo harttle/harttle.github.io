@@ -15,7 +15,7 @@ excerpt: DOM选择，可以指定上下文；DOM创建，可以指定所属的do
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 ```
 
-jQuery的`$()`函数文档在这里： http://api.jquery.com/jQuery/
+jQuery的`$()`函数文档在这里： <http://api.jquery.com/jQuery/>
 jQuery的`$()`函数的用法包括：
 
 * DOM选择，可以指定上下文；

@@ -164,14 +164,14 @@ new Set(Object.keys(mapping))    // {"foo"}
 
 # 参考链接
 
-* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
-* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
-* https://www.ecma-international.org/ecma-262/6.0/#sec-iteration
-* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators
-* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols
-* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator
-* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*
-* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+* <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map>
+* <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set>
+* <https://www.ecma-international.org/ecma-262/6.0/#sec-iteration>
+* <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators>
+* <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols>
+* <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator>
+* <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*>
+* <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax>
 
 [spread-syntax]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 [generator-obj]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator

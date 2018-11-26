@@ -12,7 +12,7 @@ tags: AngularJS HTML HTTP JavaScript 数组
 
 [AngularJS][angularjs]提供了`$resource`Service来更方便地与RESTful服务器API进行交互，可以方便地定义一个REST资源，而不必手动所有的声明CRUD方法。
 
-参考文档： https://docs.angularjs.org/api/ngResource/service/$resource
+参考文档： <https://docs.angularjs.org/api/ngResource/service/$resource>
 
 # Resource Factory
 

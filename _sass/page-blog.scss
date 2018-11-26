@@ -1,23 +1,9 @@
 @import 'variables';
 @import 'mixins';
+@import 'toc';
 
 .page-blog {
-  @mixin collapsed(){
-    .content{
-      margin-left: 0px;  
-    }
-    aside{
-      display: none;
-    }
-    .jumbotron{
-      .tag-list{
-        margin-left: 0;
-      }
-    }
-  }
-
   .jumbotron{
-    position: relative;
     h1{
       a.collection{
         color: white;
@@ -38,18 +24,70 @@
         color: white;
       }
     }
-    aside{
-      float: left;
-      @import 'toc';
-    }
     &::after{
       clear: none;
     }
   }
 
   time{
-    margin-top: 10px;
     font-style: italic;
+    line-height: 1.6rem;
+  }
+
+  .main-content {
+    display: flex;
+    .content{
+      flex: 1;
+      margin-top: 50px;
+      width: 100%;
+      @include media-xs{
+        margin-top: 30px;
+        margin-left: 0;  
+      }
+      .md {
+        margin-bottom: 50px;
+        color: #333;
+      }
+    }
+    .toc{
+      flex: 0 0 $toc-width;
+      margin-right: 30px;
+    }
+  }
+
+  .author-block{
+    float: right;
+    width: 250px;
+  }
+
+  .post-pager{
+    margin-top: 10px;
+    margin-bottom: 50px;
+    .btn-hover{
+      max-width: 380px;
+      min-width: 200px;
+    }
+    .previous, .next, .recommend{
+      display: block;
+      border-left: 1px solid $blue;
+    }
+    .recommend{
+      display: none;
+    }
+  }
+
+  @mixin collapsed(){
+    .content{
+      margin-left: 0px;  
+    }
+    aside{
+      display: none;
+    }
+    .jumbotron{
+      .tag-list{
+        margin-left: 0;
+      }
+    }
   }
 
   &.collapsed{
@@ -62,40 +100,6 @@
       padding: 70px 0 30px;
       font-size: 1.8em;
       text-align: left;
-    }
-  }
-
-  .content{
-    margin-left: $toc-width + 30px;  
-    margin-top: 50px;
-    @include media-xs{
-      margin-top: 30px;
-      margin-left: 0;  
-    }
-    .md {
-      margin-bottom: 50px;
-      color: #333;
-    }
-  }
-
-  .author-block{
-    float: right;
-    width: 250px;
-  }
-
-  .post-pager{
-    margin-top: 10px;
-    margin-bottom: 80px;
-    .btn-hover{
-      max-width: 380px;
-      min-width: 200px;
-    }
-    .previous, .next, .recommend{
-      display: block;
-      border-left: 1px solid $blue;
-    }
-    .recommend{
-      display: none;
     }
   }
 }

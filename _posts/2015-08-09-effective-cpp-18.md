@@ -1,8 +1,6 @@
 ---
-layout: blog
 title: Effective C++ 18：让接口容易被正确使用，不易被误用
-
-tags: Effective-C++ .NET C++ DLL STL Windows 封装 接口 智能指针 构造函数 类型检查 
+tags: Effective-C++ C++ 封装 接口 类型检查 
 excerpt: 总之，好的接口容易被正确使用，不易被误用。可以为内置类型提供一致的接口来方便正确的使用。识别误用的手段包括：创建新的类型、限制类型的操作、限制对象的值、移除客户的资源管理责任。
 ---
 

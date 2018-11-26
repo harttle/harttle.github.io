@@ -8,7 +8,7 @@ tags: AngularJS CSS DOM HTML JavaScript MVC 模板 表单 模块化 数据绑定
 
 [AngularJS][angularjs]最大的特点便是数据绑定。利用Angular在客户端脚本中构建MVC框架，Model和View之间可以实现双向绑定。因此**AngularJS的表单验证可以做到实时的用户反馈**。
 
-> 事实上，正是因为**实时的用户反馈**这个神奇的特性，我们团队在 http://tianmaying.com 中也继续引入了AngularJS，尽管此时我们对单页应用已经不感兴趣。
+> 事实上，正是因为**实时的用户反馈**这个神奇的特性，我们团队在 <http://tianmaying.com> 中也继续引入了AngularJS，尽管此时我们对单页应用已经不感兴趣。
 
 # 一个简单的表单
 

@@ -24,7 +24,7 @@ Angular会自动添加DOM事件，并在`$scope`发生改变时自动进行DOM�
 
 ![](/assets/img/blog/angular/Two_Way_Data_Binding.png)
 
-图片来源： https://docs.angularjs.org/guide/databinding
+图片来源： <https://docs.angularjs.org/guide/databinding>
 
 <!--more-->
 
@@ -55,7 +55,7 @@ app.controller('worldCtrl', ['$scope', '$http', function($scope, $http) {
 
 更多`$scope`的信息请参考： [AngularJS 初始化过程][ai]
 
-官方文档： https://docs.angularjs.org/api/ng/type/$rootScope.Scope
+官方文档： <https://docs.angularjs.org/api/ng/type/$rootScope.Scope>
 
 # Scope通信
 
@@ -95,7 +95,7 @@ $scope.$watch('username', function(newValue, oldValue){
 
 ![](/assets/img/blog/angular/concepts-scope-watch-strategies.png)
 
-图片来源： https://docs.angularjs.org/guide/scope
+图片来源： <https://docs.angularjs.org/guide/scope>
 
 # $digest循环
 

@@ -1,6 +1,6 @@
 ---
-title: Effective C++ 42：typename的两种用法
-tags: Effective-C++ C++ 模板 C++ 模板 继承 编译 模板方法 traits
+title: Effective C++ 42：typename 的两种用法
+tags: Effective-C++ C++ 模板 编译 模板方法 traits
 excerpt: 模板参数前的typename和class没有任何区别；但 typename还可以用来帮编译器识别嵌套从属类型名称，基类列表和成员初始化列表除外。
 ---
 

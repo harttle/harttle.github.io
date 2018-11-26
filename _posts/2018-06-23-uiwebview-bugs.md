@@ -32,7 +32,7 @@ Apple 在  [App Store Review Guidelines](https://developer.apple.com/app-store/r
 可能是因为早期 iOS 手势操作优先的性能策略，UIWebView 的主要问题都集中在手势操作的场景下。
 这是一个例子：
 
-1. 用 iOS UC 浏览器访问：https://harttle.land/animation-bugs/a-normal-animation.html ，你会看到一个旋转的动画。
+1. 用 iOS UC 浏览器访问：<https://harttle.land/animation-bugs/a-normal-animation.html> ，你会看到一个旋转的动画。
 2. 手势触发一下页面滚动，在手指未离开屏幕期间动画会被暂停。
 
 这里有一个录屏： <https://harttle.land/animation-bugs/a-normal-animation-uiwebview.mp4>

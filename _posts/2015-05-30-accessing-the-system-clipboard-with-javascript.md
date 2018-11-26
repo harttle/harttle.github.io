@@ -4,7 +4,7 @@ title: Accessing the System Clipboard with JavaScript
 tags: Chrome DOM Flash HTML Java JavaScript Linux float inline 剪切板
 ---
 
-Origin Post: https://brooknovak.wordpress.com/2009/07/28/accessing-the-system-clipboard-with-javascript/
+Origin Post: <https://brooknovak.wordpress.com/2009/07/28/accessing-the-system-clipboard-with-javascript/>
 
 > I am developing an API written in JavaScript for a project which requires the ability to copy data to, and retrieve data from, a clipboard within a web browser. A simple/common problem definition – but due to tight browser security, finding a solution is a bit of a nightmare. This article outlines and discusses a number of approaches for implementing a clipboard feature into your JavaScript applications.
 
@@ -82,7 +82,7 @@ Jeffrey Larson’s Flash copy hack got me thinking: what about taking a similar 
 
 ## Liveconnect
 
-Netscape developed an API called NP API (Netscape Plugin API) which is a cross browser plugin architecture supported by all major browsers except IE today (although some IE browsers do support it – IE’s equivalent is ActiveX). Liveconnect is one way to implement NP API-based plugins using JavaScript and Java. It was first supported in Netscape 4. A plugin could implement and return an instance to a Java class. The public methods exposed by this class was the scriptable interface for the plugin. The class could be called from JavaScript and even from other Java applets running within the page with the browser marshalling the calls between the various contexts. (see http://en.wikipedia.org/wiki/NPAPI#LiveConnect). The technology has matured since then and is still supported by Mozilla browsers, and Opera. Webkit does not seem to support it anymore.
+Netscape developed an API called NP API (Netscape Plugin API) which is a cross browser plugin architecture supported by all major browsers except IE today (although some IE browsers do support it – IE’s equivalent is ActiveX). Liveconnect is one way to implement NP API-based plugins using JavaScript and Java. It was first supported in Netscape 4. A plugin could implement and return an instance to a Java class. The public methods exposed by this class was the scriptable interface for the plugin. The class could be called from JavaScript and even from other Java applets running within the page with the browser marshalling the calls between the various contexts. (see <http://en.wikipedia.org/wiki/NPAPI#LiveConnect>). The technology has matured since then and is still supported by Mozilla browsers, and Opera. Webkit does not seem to support it anymore.
 
 Some browsers, such as Firefox, do not ship with a Java Virtual Machine plugin, since it “bloats” the browsers download size. So like the Flash hack, it depends on a plugin, which is a bit of a concern since the JVM plugins are relatively large to download.
 

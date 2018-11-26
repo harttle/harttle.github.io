@@ -1,8 +1,6 @@
 ---
-layout: blog
 title: Effective C++ 1：将C++视作一系列的语言
-
-tags: Effective-C++ C++ Objective-C STL 多态 封装 模板 继承 虚函数 动态绑定
+tags: Effective-C++ C++
 excerpt: C++程序设计的惯例并非一成不变，而是取决于你使用C++语言的哪一部分。
 ---
 

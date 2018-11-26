@@ -55,7 +55,7 @@ excerpt: 本文从预加载的角度介绍如何优化页面载入和渲染的�
 
 `subresource`的语义是当前页面的子资源，浏览器会立即下载它们。
 **`subresource`的优先级高于`prefetch`**。
-参见： http://stackoverflow.com/questions/29475854/what-is-link-rel-subresource-used-for
+参见： <http://stackoverflow.com/questions/29475854/what-is-link-rel-subresource-used-for>
 
 # prerender
 

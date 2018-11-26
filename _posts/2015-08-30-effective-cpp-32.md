@@ -1,8 +1,6 @@
 ---
-layout: blog
 title: Effective C++ 32：确保public继承是"is a"的关系
-
-tags: Effective-C++ C++ 封装 异常 接口 继承
+tags: Effective-C++ C++ 封装 继承
 excerpt: C++类的继承比现实世界中的继承关系更加严格：任何适用于父类的性质都要适用于子类！
 ---
 

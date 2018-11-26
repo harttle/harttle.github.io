@@ -1,6 +1,6 @@
 (function () {
     var md = document.querySelector('.md');
-    var asideTOC = window.asideTOC;
+    var asideTOC = document.querySelector('aside.toc');
     initTOC();
 
     function initTOC () {
@@ -12,32 +12,28 @@
         }
         asideTOC.appendChild(toc);
 
-        var topLimit = 406;
         window.addEventListener('scroll', scrollSpy);
+    }
 
-        function scrollSpy () {
-            var cls = window.pageYOffset < topLimit ? 'affix-top' : 'affix';
-            asideTOC.setAttribute('class', cls);
-
-            var lastPassedAnchor;
-            Array.prototype.forEach.call(asideTOC.querySelectorAll('a'), function (anchor) {
-                var href = anchor.getAttribute('href');
-                var heading = document.querySelector(href);
-                if (window.pageYOffset > heading.offsetTop - 20) {
-                    lastPassedAnchor = anchor;
-                }
-                anchor.parentNode.removeAttribute('class');
-            });
-            while (lastPassedAnchor) {
-                lastPassedAnchor.parentNode.classList.add('active');
-                lastPassedAnchor = lastPassedAnchor.parentNode.parentNode.previousElementSibling;
+    function scrollSpy () {
+        var lastPassedAnchor;
+        Array.prototype.forEach.call(asideTOC.querySelectorAll('a'), function (anchor) {
+            var href = anchor.getAttribute('href');
+            var heading = document.querySelector(href);
+            if (window.pageYOffset > heading.offsetTop - 20) {
+                lastPassedAnchor = anchor;
             }
+            anchor.parentNode.removeAttribute('class');
+        });
+        while (lastPassedAnchor) {
+            lastPassedAnchor.parentNode.classList.add('active');
+            lastPassedAnchor = lastPassedAnchor.parentNode.parentNode.previousElementSibling;
         }
     }
 
     function generateTOC (content) {
         var toc = document.createElement('ul');
-        toc.setAttribute('class', 'nav level-0 list-unstyled sidenav');
+        toc.setAttribute('class', 'level-0 list-unstyled');
 
         var baseLevel = 1;
         while (!content.querySelector('h' + baseLevel) && baseLevel < 7) baseLevel += 1;
@@ -53,7 +49,7 @@
             var li = document.createElement('li');
             li.innerHTML =
                 '<a class="ellipsis" href="#' + id + '">' + header.textContent + '</a>' +
-                '<ul class="nav list-unstyled level-' + (offset + 1) + '"/>';
+                '<ul class="list-unstyled level-' + (offset + 1) + '"/>';
 
             var container = document.createElement('div');
             container.appendChild(toc);

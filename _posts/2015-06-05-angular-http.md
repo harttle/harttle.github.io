@@ -9,7 +9,7 @@ tags: AJAX AngularJS HTTP JavaScript Promise 链式调用
 > 在Angular应用中尽量使用`$http`而不是jQuery函数来进行AJAX请求，因为`$http`会在响应到达时触发Angular更新视图（`$digest`循环）。
 > 与此同时，`$http`还可以通过`$httpBackend`来Mock和单元测试。
 
-`$http`文档参见： https://docs.angularjs.org/api/ng/service/$http
+`$http`文档参见： <https://docs.angularjs.org/api/ng/service/$http>
 
 # 基本使用
 
@@ -59,7 +59,7 @@ someModule.config(['$httpProvider', function($httpProvider){
 
 还可以通过设置`$httpProvider`的`defaults`属性来进行请求/响应的转换（`transformRequest`, `transformResponse`）、设置请求的HTTP头字段（`headers`）。
 
-更多信息，请参考`$httpProvider`文档： https://docs.angularjs.org/api/ng/provider/$httpProvider
+更多信息，请参考`$httpProvider`文档： <https://docs.angularjs.org/api/ng/provider/$httpProvider>
 
 <!--more-->
 

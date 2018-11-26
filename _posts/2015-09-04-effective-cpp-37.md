@@ -1,8 +1,6 @@
 ---
-layout: blog
 title: Effective C++ 37：不要重写父类函数的默认参数
-
-tags: Effective-C++ C++ 动态绑定 虚函数 默认参数 继承
+tags: Effective-C++ C++ 动态绑定 虚函数 默认参数
 excerpt: 因为虽然虚函数的是动态绑定的，但默认参数是静态绑定的。只有动态绑定的东西才应该被重写。
 ---
 

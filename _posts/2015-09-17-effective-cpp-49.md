@@ -1,8 +1,6 @@
 ---
-layout: blog
-title: Effective C++ 49：new handler的行为
-
-tags: Effective-C++ C++ RAII 内存 异常 模板 动态内存
+title: Effective C++ 49：new handler 的行为
+tags: Effective-C++ C++ RAII 异常 动态内存
 excerpt: new申请内存失败时会抛出"bad alloc"异常，此前会调用一个由set_new_handler()指定的错误处理函数（"new-handler"）。
 ---
 
@@ -152,7 +150,7 @@ void * NewHandlerSupport<T>::operator new(std::size_t size) throw(std::bad_alloc
 }
 ```
 
-有了这个模板基类后，给`Widget`添加"new-handler"支持只需要public继承即可：
+有了这个模板基类后，给`Widget`添加"new-handler"支持只需要 public 继承即可：
 
 ```cpp
 class Widget: public NewHandlerSupport<Widget>{ ... };

@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: 博客迁移：Shell脚本批量文件处理
 tags: Bash Github HTML HTTP Linux Makefile UTF-8 awk sed 搜索引擎
 ---
@@ -17,7 +16,7 @@ HTML提供了一种301重定向的方式：
 ```
 
 > 第一行是指示浏览器立即重定向，到URL：xxx，`content`指定了重定向之前显示当前页面的秒数。第二行是给主流的搜索引擎看的，
-> 详情请见： https://www.mattcutts.com/blog/canonical-link-tag/
+> 详情请见： <https://www.mattcutts.com/blog/canonical-link-tag/>
 
 例如文章`2015-05-02-tex-note.md`，其文件开头指定了分类信息：
 

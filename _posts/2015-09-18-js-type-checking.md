@@ -237,7 +237,7 @@ isWindow: function(obj){
 ```
 
 另外DOM Element的类型检测也可以通过上述的方法来完成，但没有一种方法在任何浏览器上都可行。
-DOM Element的类型检测可以参见这篇文章： http://tobyho.com/2011/01/28/checking-types-in-javascript/
+DOM Element的类型检测可以参见这篇文章： <http://tobyho.com/2011/01/28/checking-types-in-javascript/>
 
 [type-conv]: /2015/08/21/js-type-conv.html
 [traits]: /2015/09/15/effective-cpp-47.html

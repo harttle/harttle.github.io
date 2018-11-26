@@ -15,7 +15,7 @@ tags: Bash GNU Grub Linux Ubuntu Windows 操作系统
 这时我们通常会用一个启动盘来重置MBR，并重新配置硬盘上的Grub。但很多情况下我们并不需要这样一个启动盘，Grub无法启动内核时会提供Grub Rescue终端。
 在这里可以手动引导来启动内核，然后重新安装和配置Grub。本文便来记录这一过程。
 
-Grub的手册在这里： https://www.gnu.org/software/grub/manual/
+Grub的手册在这里： <https://www.gnu.org/software/grub/manual/>
 
 <!--more-->
 

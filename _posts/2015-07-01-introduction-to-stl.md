@@ -137,7 +137,7 @@ itlow=mymap.lower_bound ('b');  // itlow points to b
 itup=mymap.upper_bound ('d');   // itup points to e (not d!)
 ```
 
-参见： http://www.cplusplus.com/reference/map/map/upper_bound/
+参见： <http://www.cplusplus.com/reference/map/map/upper_bound/>
 
 # 实现一个Iterator
 

@@ -48,7 +48,7 @@ angular.bootstrap(element, ['helloApp']);
 
 AngularJS通过依赖注入的方式来实现模块化与封装。在启动APP之前，往往需要注入一些APP所在环境的信息：
 
-> 这是常见的需求。因为在AngularJS中，尽量不要去操作DOM（除非你在写`directive`），否则可测试性会严重下降。参见 http://docs.angularjs.cn/guide/controller
+> 这是常见的需求。因为在AngularJS中，尽量不要去操作DOM（除非你在写`directive`），否则可测试性会严重下降。参见 <http://docs.angularjs.cn/guide/controller>
 
 ```javascript
 var app = angular.module('helloApp'); // 获得之前声明的那个叫helloApp的模块
@@ -100,7 +100,7 @@ $(function(){
 
 将HTML插入到Angular包括两个过程：
 
-* Compile：处理HTML，生成Linking函数，参见： http://docs.angularjs.cn/guide/compiler
+* Compile：处理HTML，生成Linking函数，参见： <http://docs.angularjs.cn/guide/compiler>
 * Link：将Compile结果与Scope结合，产生动态视图。
 
 例如：

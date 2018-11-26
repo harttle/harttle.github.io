@@ -1,8 +1,6 @@
 ---
-layout: blog
-title: Effective C++ 52：写了placement new就要写placement delete
-
-tags: Effective-C++ C++ 内存 异常 指针 动态内存 名称隐藏 构造函数
+title: Effective C++ 52：写了 placement new 就要写 placement delete
+tags: Effective-C++ C++ 异常 指针 动态内存 名称隐藏 构造函数
 excerpt: new和delete是要成对的，因为当构造函数抛出异常时用户无法得到对象指针，因而delete的责任在于C++运行时。 运行时需要找到匹配的delete并进行调用。因此当我们编写了"placement new"时，也应当编写对应的"placement delete"， 否则会引起内存泄露。在编写自定义new和delete时，还要避免不小心隐藏它们的正常版本。
 ---
 

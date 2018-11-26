@@ -2,14 +2,18 @@
 @import 'variables';
 $padding-horizontal: 25px;
 
-& {
+aside.toc{
   width: $toc-width;
-  ul {
+  margin-top: -38px;
+  > ul {
+    position: sticky;
+    top: 40px;
+    background: white;
+  }
+  ul{
     margin-top: 0;
     margin-bottom: 0;
     padding-left: 0;
-  }
-  .nav{
     > .active > a{
       color: $grey;
       text-decoration: none;
@@ -23,32 +27,29 @@ $padding-horizontal: 25px;
       padding: 8px $padding-horizontal;
       color: $light-grey;
       text-decoration: none;
-      &:focus {
-        background-color: white; // override bootstrap #eee
-      }
       &:hover {
         background-color: lighten($light-grey,20%);
       }
     }
-    .nav {
+    ul{
       display: none;
       > li > a {
         padding-left: 10px + $padding-horizontal;
         font-size: 90%;
       }
-      .nav{
+      ul{
         > li > a {
           padding-left: 20px + $padding-horizontal;
         }
-        .nav{
+        ul{
           > li > a {
             padding-left: 30px + $padding-horizontal;
           }
-          .nav{
+          ul{
             > li > a {
               padding-left: 40px + $padding-horizontal;
             }
-            .nav > li > a {
+            ul{
               padding-left: 50px + $padding-horizontal;
             }
           } 
@@ -56,18 +57,4 @@ $padding-horizontal: 25px;
       }
     }
   }
-}
-
-.sidenav {
-  margin-bottom: 20px;
-  background: #fff;
-}
-
-&.affix {
-  position: fixed;
-  top: 40px;
-}
-
-&.affix-bottom {
-  position: absolute;
 }

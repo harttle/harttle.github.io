@@ -1,6 +1,4 @@
 ---
-layout: blog
-categories: reading
 title: 算法导论笔记 - 高级数据结构
 tags: B树 指针 磁盘 算法 红黑树
 ---

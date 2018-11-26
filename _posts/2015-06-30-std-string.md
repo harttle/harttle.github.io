@@ -1,6 +1,4 @@
 ---
-layout: blog 
-categories: reading
 title: C++手稿：std::string
 tags: C++ 字符串
 ---

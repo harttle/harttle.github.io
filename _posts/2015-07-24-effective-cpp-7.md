@@ -1,8 +1,6 @@
 ---
-layout: blog
 title: Effective C++ 7：将多态基类的析构函数声明为虚函数
-
-tags: Effective-C++ C++ 内存 多态 指针 编译 虚函数 字节对齐 析构函数
+tags: Effective-C++ C++ 多态 虚函数 字节对齐 析构函数
 excerpt: 析构函数声明为虚函数恐怕是面试中最常见的问题之一。目的在于以基类指针调用析构函数时能够正确地析构子类部分的内存。
 ---
 
@@ -89,7 +87,7 @@ struct C
 #pragma pack ()   /*取消指定对齐，恢复缺省对齐*/
 ```
 
-上述例子来自： http://www.linuxsong.org/2010/09/c-byte-alignment/
+上述例子来自： <http://www.linuxsong.org/2010/09/c-byte-alignment/>
 
 # 虚函数表指针
 

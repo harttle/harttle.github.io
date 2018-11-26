@@ -1,6 +1,6 @@
 ---
-title: Effective C++ 47：使用Traits类提供类型信息
-tags: Effective-C++ C++ 容器 迭代器 STL traits 指针 模板 特化 编译 
+title: Effective C++ 47：使用 Traits 类提供类型信息
+tags: Effective-C++ C++ 容器 迭代器 traits 模板 特化
 excerpt: C++中的 Traits 类可以在编译期提供类型信息，它是用Traits模板及其特化来实现的。通过方法的重载，可以在编译期对类型进行"if...else"判断。我们通过STL中的一个例子来介绍Traits的实现和使用。
 ---
 

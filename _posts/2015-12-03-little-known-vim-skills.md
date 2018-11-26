@@ -102,7 +102,7 @@ set omnifunc=syntaxcomplete#Complete
 
 在任何时候，按下`<c-x><c-o>`将会触发自动补全。
 
-参考： http://vim.wikia.com/wiki/Omni_completion
+参考： <http://vim.wikia.com/wiki/Omni_completion>
 
 # 用搜索来选区
 

@@ -1,8 +1,5 @@
 ---
-layout: blog
-categories: reading
 title: Effective C++ 24：用非成员函数来支持所有元的类型转换
-
 tags: Effective-C++ C++ 运算符 类型转换 运算符重载
 excerpt: 如果运算符的所有“元”都需要隐式转换时，请重载该运算符为友函数。
 ---
