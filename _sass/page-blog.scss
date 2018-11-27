@@ -38,8 +38,8 @@
     display: flex;
     .content{
       flex: 1;
+      overflow: auto;
       margin-top: 50px;
-      width: 100%;
       @include media-xs{
         margin-top: 30px;
         margin-left: 0;  
