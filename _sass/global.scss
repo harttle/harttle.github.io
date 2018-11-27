@@ -5,12 +5,13 @@ html, body {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+  font-family: sans-serif;
 }
 html {
-    background: #333;
+  background: #333;
 }
 body {
-    background: white;
+  background: white;
 }
 
 @media (max-width: 767px) {
