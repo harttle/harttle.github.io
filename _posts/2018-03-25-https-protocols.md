@@ -1,11 +1,13 @@
 ---
-title: HTTPS 那些协议：TLS, SSL, SNI, ALPN, NPN
+title: HTTPS 交互过程分析
+subtitle: TLS 协议内容及其扩展协议
 tags: HTTPS TCP TLS ALPN SNI
 ---
 
 如今 [HTTPS][https] 已经普遍应用了，在带来安全性的同时也确实给 Web 引入了更多复杂的概念。
-这其中就包括一系列从没见过的网络协议。现在 [Harttle](/) 从 HTTPS 的原理出发，
-尝试以最通俗的方式来解读 HTTPS 涉及的这些协议。
+这其中就包括一系列从没见过的网络协议。现在 [Harttle](/) 从一个发往 github.com 的请求谈起，
+逐字节分析 HTTPS 的协议内容和相关概念，从 TCP 握手到 TLS 协议，
+并稍微介绍一些这个请求涉及的 TLS 扩展协议：SNI 和 ALPN。
 
 <!--more-->
 
@@ -38,7 +40,7 @@ TLS/SSL 是在传输层之上应用层之下的协议，因此 HTTP 协议的内
 
 ![tcp dump](/assets/img/blog/http/wireshark@2x.png)
 
-> TCP 协议不在本文的讨论范围内，不清楚的可以翻阅《计算机网络》或查看 [这篇传输层笔记](/2014/04/21/computer-network-transport-layer.html)
+> TCP 协议不在本文的讨论范围内，不清楚的可以翻阅《计算机网络》或查看 [这篇传输层笔记](/2014/04/21/computer-network-transport-layer.html) 上图来自 Wireshark 软件，开始录制后用 curl 请求 github.com 会得到与上图类似的结果。
 
 # TLS/SSL
 
@@ -90,11 +92,14 @@ struct {
 指定了 TLS 握手时要连接的 [主机名](https://en.wikipedia.org/wiki/Hostname)。
 SNI 协议是为了支持同一个 IP（和端口）支持多个域名。
 
-因为在 TLS 握手期间服务器需要发送证书（Certificate）给客户端，
-为此需要知道客户请求的域名（因为不同域名的证书可能是不一样的）。
-这时有同学要问了，要连接的主机名不就是发起 HTTP 时的 Host 么！
-这是对 HTTPS 机制的误解，TLS Handshake 发生时 HTTP 交互还没开始，
-自然 HTTP 头部还没到达服务器。SNI 协议就定义在 [RFC 6066][rfc6066] 中：
+HTTPS 的关键就在于在发送真正的 HTTP 请求前，客户端验证服务器提供的证书来鉴别真伪。
+于是客户端会在 TLS 协议中请求服务器的证书（Certificate），此时客户端需要指定要请求哪个域名的证书。
+这里有两个协议细节：
+
+1. 服务器自己不知道域名是啥么？可能确实不知道，因为一个服务器可能正在提供多个域名多个网站，因此可能有多个证书，不知道该发送哪个。
+2. 域名不就在 HTTP 的请求头 Host 字段中吗？TLS 握手时还在验证服务器身份因此 HTTP 交互还没开始，客户端还没发送 HTTP 请求头。
+
+SNI 协议的内容定义在 [RFC 6066][rfc6066] 中，下面是它的结构描述：
 
 ```cpp
 struct {
@@ -127,18 +132,15 @@ sni(0)        15     || 13            host_name 10           github.com
 
 # ALPN/NPN
 
-[ALPN][alpn]（Application-Layer Protocol Negotiation）也是 TLS 层的扩展，
-用于协商应用层使用的协议。它的前身是 [NPN][npn]，最初用于支持 Google SPDY 协议（现已标准化为 HTTP/2）。
-TLS 客户端和服务器版本的问题，导致 SPDY->HTTP/2 和 NPN -> ALPN 的切换过程引发了不少阵痛：
+[ALPN][alpn]（Application-Layer Protocol Negotiation）也是 TLS 层的扩展，用于协商应用层使用的协议。
+用来确定建立 TLS 连接后接下来要使用的协议，比如是 HTTP1.1 还是 HTTP/2？
+ALPN 的前身是 [NPN][npn]，最初用于协商和切换 HTTP 协议和 Google SPDY 协议，后者现在已经标准化为 HTTP/2。
+由于 TLS 客户端和服务器版本不一致的问题，导致 SPDY->HTTP/2 的切换和 NPN -> ALPN 的切换过程中引发了不少问题：
 
 * [The day Google Chrome disables HTTP/2](https://ma.ttias.be/day-google-chrome-disables-http2-nearly-everyone-may-31st-2016/)
 * [从启用 HTTP/2 导致网站无法访问说起](https://imququ.com/post/why-tls-handshake-failed-with-http2-enabled.html)
 
-> 因此 **以标准先行的方式来推进 Web 基础设施** 已成为今日 Web 平台的共识。
-> 这里我们不提那些仍然在进行作坊式生产的（类）浏览器厂商，
-> 任何阻挡 Web 平台发展的实现（甚至标准，试看 XHTML, OSI...）迟早会被淘汰。
-
-言归正传，ALPN 定义在
+因此 **以标准先行的方式来推进 Web 基础设施** 已成为今日 Web 平台的共识。言归正传，ALPN 定义在
 [RFC 7301 - Transport Layer Security (TLS) Application-Layer Protocol Negotiation Extension][rfc7301]，
 
 ```

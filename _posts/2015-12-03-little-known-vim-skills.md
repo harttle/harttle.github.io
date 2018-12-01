@@ -11,20 +11,20 @@ tags: Vim-Practice Bash GNU HTML Markdown Vim 寄存器 快捷键
 
 当发生拼写错误或者想要重命名标识符时，就需要用拷贝的内容来替换当前的名字。比如调用函数时写错了：
 
-```cpp
-void letus_fuckit_with_vim(){
-    cout<<"great!";
+```javascript
+function getMillisecond(){  // 定义处是正确的
+    return Date.now();
 }
-let_fuckat_with_vom();
+getMiliscnd();          // 这里拼写错误
 ```
 
 只需要先复制上面的函数名，再把光标切换到拼错的词首。然后按下`viwp`，就替换过来了：
 
-```cpp
-void letus_fuckit_with_vim(){
-    cout<<"great!";
+```javascript
+function getMillisecond(){
+    return Date.now();
 }
-letus_fuckit_with_vim();
+getMillisecond();
 ```
 
 > `v`进入可视模式，然后`iw`来选择光标所在单词，最后按下`p`来粘贴。`iw`表示inner word，有用的搭配还有`yiw`, `ciw`等。

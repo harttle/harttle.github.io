@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: Github Pages (Jekyll) 自动生成文章标签
 tags: Bash Github Vim grep awk sed JSON Jekyll
 ---

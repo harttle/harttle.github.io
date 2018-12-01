@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: 通过设定解析线路让百度收录Github Pages
 tags: Git Github HTML HTTP 网络 搜索引擎
 ---

@@ -99,10 +99,10 @@ Socket.IO listen to port 3001
 
 ```
 $ redis-cli
-127.0.0.1:6379> publish notification "fuck you!"
+127.0.0.1:6379> publish notification "love you!"
 ```
 
-然后Socket.IO便会输出`notification received: fuck you!`，同时所有连接到`/message`命名空间的浏览器端也会收到消息并输出到控制台。
+然后Socket.IO便会输出`notification received: love you!`，同时所有连接到`/message`命名空间的浏览器端也会收到消息并输出到控制台。
 
 [npm-redis]: https://www.npmjs.com/package/redis
 [Socket.IO]: http://Socket.IO/

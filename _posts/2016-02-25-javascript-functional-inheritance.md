@@ -72,7 +72,7 @@ var make_man = function(args){
     // 创建一个父级对象
     var man = make_person(args);
     // 自定义
-    man.fuck = function(){}
+    man.talk = function(){}
     return man;
 }
 ```

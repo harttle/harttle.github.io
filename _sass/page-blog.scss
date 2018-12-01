@@ -15,7 +15,9 @@
       }
     }
     .tag-list{
-      margin: 0 0 0 $toc-width + 30px;
+      white-space: nowrap;
+      overflow: hidden;
+      margin: 0 100px 0 $toc-width + 30px;
       padding-bottom: 0.5rem;
       .tag{
         margin-bottom: .3rem;

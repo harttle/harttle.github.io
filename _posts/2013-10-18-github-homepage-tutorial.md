@@ -1,210 +1,110 @@
 ---
 title:  部署自己的博客：Github+Jekyll
-tags: Git Github LaTeX Markdown 搜索引擎 Liquid Jekyll
+tags: Github LaTeX Markdown Jekyll
 ---
 
-最近终于完成了个人博客的开发和部署，就把整个过程记录在这里。利用 GitHub 提供的文件服务部署，采用 github+GFM+jekyll 方式构建静态博客站点。
+最近终于完成了个人博客的开发和部署，就把整个过程记录在这里。利用 GitHub 提供的文件服务部署，采用 github + jekyll 方式构建静态博客站点。目前支持功能如下：
 
-之后还可以采用highlight.js进行代码高亮，MathJax提供LaTex公式支持。完成部署后，可以在在线撰写博客，也可以本地离线撰写，然后同步到GitHub。
+* 代码片段高亮。由 [rouge](https://github.com/jneen/rouge) 提供，配置在 [_conf](https://github.com/harttle/harttle.github.io/blob/master/_config.yml) 文件中。从 [这篇文章](https://harttle.land/2018/09/29/es6-iterators.html) 可以看到显示效果。
+* LaTex 公式渲染。由 [MathJax](http://www.mathjax.org/) 把 LaTex 渲染为 SVG，HTML 或 MathML。从 [这篇文章](https://harttle.land/2018/06/29/javascript-numbers.html) 可以看到显示效果。
+* 静态服务。这是一个静态博客，由 [Github Pages](https://pages.github.com/) 提供服务。
+* Google 统计。配置在 [_conf](https://github.com/harttle/harttle.github.io/blob/master/_config.yml) 文件中。
 
-## 一些背景
-
-* **Git** 是一个分布式版本控制/软件配置管理软件，最初用户linux内核开发，至今已广泛用于项目源码管理。
-* **[GitHub](http://github.com/)** 是一个用于使用Git版本控制系统项目的共享虚拟主机服务，提供了无限的存储空间以及网络流量。
-* **markdown** 是一种轻量级标记语言，可用少量的编辑工作生成美观的 HTML 文件。已经成为 GitHub 托管的项目中默认的文档格式，当然 GitHub 也扩展了该语言（GFM）并提供渲染支持。
-* **[Jekyll](http://jekyllrb.com/)** 是基于 Ruby 的 package，用于编译生成静态站点。GitHub 提供了静态站点支持，并采用 Jekyll 作为其编译引擎。于是，在 GitHub 提交文件后，在10分钟内 GitHub 将编译生成静态站点并开始提供服务。
-* **[highlight.js](http://highlightjs.org)** 是用于web页面的代码高亮，在前端博客中想必是不可或缺的。这个开源项目托管在 github 且开发很活跃，因此我放弃了使用 Google 的 prettify，选择去增强 highlight.js 为 vim script 添加高亮规则。
-* **[MathJax](http://www.mathjax.org/)** 用于将latex公式转换为html、矢量图的js框架。不必说，理工背景的一定会用得到。能转换为html实在是太NB了！与图片不同，可以实现与上下文的完美拼接。
+下文介绍具体的搭建步骤：
 
 <!--more-->
 
-## 环境配置
+## 准备工作
 
-### 准备工作
+1. 注册 GitHub 账号：<https://github.com/join>
+2. 下载 Github Desktop 或者 Git 命令行工具。
+3. 安装 Ruby。 Ubuntu 中可以 `sudo apt-get install ruby`，ArchLinux 中可以 `yaourt -S ruby`。
+3. 安装 Jekyll。这是一个 Ruby 库，使用 gem 安装：`gem install jekyll`。
 
-1. GitHub 账号
-2. Linux 操作系统（在windows也可完成，但为了方便强烈推荐采用Linux系统）：Ubuntu、OpenSuse、CentOS、Arch...均可。
-
-### 应用程序安装
-
-1. Ruby
-	* 如果已经安装过ruby，请确认版本为 1.9.3 或 2.0.0（通过运行 `ruby --version` 得到ruby版本）
-	* 否则，安装Ruby
-
-		```bash
-		#ubuntu
-		sudo apt-get install ruby
-		#centos
-		yum install ruby
-		#arch
-		yaourt -S ruby  
-		```
-2. Jekyll
-	安装 Jekyll
-		
-	```bash
-	gem install jekyll
-	```
-
-
-## 建立站点
-
-### 创建 GitHub 仓库
+## 创建 GitHub 仓库
 
 1. 运行 `ssh-keygen -t rsa` 得到 SSH 公钥文件：id_rsa.pub
 1. 登录 GitHub，添加你的 SSH key（account settings -> SSH Keys -> Add SSH Key）
-3. 在 GitHub，创建名为 username.github.io 的仓库（其中username为你的用户名），并拷贝其URL（类似：git@github.com:harttle/harttle.github.io.git）
-4. 在linux下运行 `git clone URL_YOU_COPIED`，得到文件夹 username.github.io
-5. 运行 `git remote set-url origin URL_YOU_COPIED`，让git使用密钥验证，省去了每次push时输入密码。
+3. 在 GitHub，创建名为 username.github.io 的仓库（其中 username 为你的用户名），并拷贝其 Git URL（下文会用到）。
 
-### 生成站点文件
+## 生成网站目录
 
-1. 生成站点文件
+使用 `jekyll` 命令可以生成站点的目录结构：
+
+```bash
+jekyll new harttle.github.io
+cd harttle.github.io    # 进入生成的目录
+```
+
+Jekyll 生成的目录结构如下：
+
+```
+.
+├── _config.yml		//站点的配置文件
+├── _drafts		//博客草稿
+|   ├── begin-with-the-crazy-ideas.textile
+|   └── on-simplicity-in-technology.markdown
+├── _includes		//供引入的html模块
+|   ├── footer.html
+|   └── header.html
+├── _layouts		//视图模板
+|   ├── default.html
+|   └── post.html
+├── _posts		//博客文章
+|   ├── 2007-10-29-why-every-programmer-should-play-nethack.textile
+|   └── 2009-04-26-barcamp-boston-4-roundup.textile
+├── _site		//jekyll 编译生成的站点
+└── index.html
+```
+
+## 本地预览
+
+1. 启动 Jekyll 本地服务，Jekyll 会自动进行编译：
 
 	```bash
-	# 建立站点
-	jekyll new my-site
-	# 拷贝至 GitHub 仓库
-	cp -r my-site/. username.github.io
-	rm -r my-site
-	# 添加编译生成的文件至 gitignore
-	echo '_site' >> .gitignore
-	```
-2. 编译站点，并运行本地服务
-
-	```bash
-	# 编译生成静态站点，-w 选项可以监测文件变化并自动重新生成
-	jekyll build -w
-	# 运行服务
 	jekyll serve
 	```
-3. 打开浏览器，访问 localhost:4000，将看到 jekyll 生成的默认站点。
+3. 打开浏览器，访问 <http://localhost:4000>，你机会看到 Jekyll 默认生成的网站。
 
-### 自定义开发
 
-* 文档
-	* 了解 jekyll 静态站点框架：http://jekyllrb.com/docs/home/
-	* 视图模板使用 Liquid 模板语言：http://docs.shopify.com/themes/liquid-basics
-	* 博文采用 Markdown 语言：http://daringfireball.net/projects/markdown/
+## 发布到 GitHub
 
-* jekyll 站点文件结构
-	
-	```
-	.
-	├── _config.yml		//站点的配置文件
-	├── _drafts		//博客草稿
-	|   ├── begin-with-the-crazy-ideas.textile
-	|   └── on-simplicity-in-technology.markdown
-	├── _includes		//供引入的html模块
-	|   ├── footer.html
-	|   └── header.html
-	├── _layouts		//视图模板
-	|   ├── default.html
-	|   └── post.html
-	├── _posts		//博客文章
-	|   ├── 2007-10-29-why-every-programmer-should-play-nethack.textile
-	|   └── 2009-04-26-barcamp-boston-4-roundup.textile
-	├── _site		//jekyll 编译生成的站点
-	└── index.html
-	```
-* 站点配置文件：_config.yml
-    该文件采用 **[YAML](http://www.yaml.org/spec/1.2/spec.html)** 标记语言组织内容，在该文件修改站点保留变量，或者添加自定义变量。这里定义的变量在模板中可通过 `site.VARIABLE_NAME` 访问（记住重启jekyll服务）。
+1. 在你的项目目录中添加一个远程仓库，地址是上述拷贝的 Git URL（类似：git@github.com:harttle/harttle.github.io.git）：
     
-    ```yaml
-    # GitHUb Pages 默认的 Markdown 引擎（即 GFM）    
-    markdown: redcarpet
-    # Latex 支持
-    markdown: maruku
+    ```bash
+    git remote add origin <Git URL>
     ```
-
-### 同步至 GitHub
-
-1. 运行 git 提交至GitHub
+2. 提交并 Push 到 GitHub
 
 	```bash
+	# 把 _site 目录添加到 .gitignore，这些内容会自动生成不需提交
+	echo '_site' >> .gitignore
 	# 提交改动至HEAD版本
 	git commit -a
 	# 同步HEAD至服务器
-	git push
+	git push -u origin master
 	```
-2. GitHub将会在10分钟内编译你的文件生成静态站点，访问 username.github.io 即可查看博客。
+3. GitHub 将会在10分钟内编译你的文件生成静态站点，访问 用户名.github.io（例如 <http://harttle.github.io>）即可查看博客。
 
+现在你可以去改那些模板代码，或者写新的文章了。本文下面的部分会介绍一些功能的实现方式。
 
-## Tips
+## 使用 Jekyll 变量
 
-### Jekyll的使用
+* 在 `_config.yml` 中定义的变量，在模板中可以通过 `site.xxx` 来访问。
+* 页面的 [Front Matter](https://jekyllrb.com/docs/front-matter/) 中定义的变量，或者文章页的变量，可通过 `page.xxx` 访问。
+* 在 `_layout` 模板中，`content` 变量为子模板的内容。
 
-* 变量定义与访问
-    * 在 `_config.yml` 中定义的变量，可通过 `site.VAL` 访问；
-    * 在子模板（通过 `layout` 继承的页面）中定义的变量，可通过 `page.VAL` 访问；
-    * `content` 为子模板的内容
-    * `page.content` 为经过markdown转换的末级子模板的内容
+更多变量的使用方式，请参考：<https://jekyllrb.com/docs/variables/>
 
-* Jekyll 插件在 GitHub Pages 中不能使用，因为 GitHub Pages 的编译使用 `--safe` 参数；但可以在本地编译后同步至 GitHub 来取代 GitHub 的自动编译。
-* `{% raw  %} {% include %} {% endraw %}` 标签参数只能为常量，被包含文件中的 liquid 语句以文件为单元解析。
+## 使用 Jekyll 插件
 
-### Jekyll plugin
+GitHub 出于安全性的考虑，Jekyll 引擎默认采用 `--safe` 参数，这会禁用[白名单](https://pages.github.com/versions/)之外的 Jekyll 的插件。
+如果希望使用自定义的 Jekyll 插件，只能关闭 GitHub 的 Jekyll 引擎，在本地编译好之后再 Push 到 Github。
+可以在单独的分支维护源码，把编译好的 `_site` 目录推送到 Github。
 
-GitHub 出于安全性的考虑，jekyll 引擎默认采用 `--safe` 参数，这会禁用 Jekyll 的插件。如果希望开启 Jekyll 插件来获得更多的支持，只能关闭 GitHub 的 Jekyll 引擎。
+## 支持 LaTex
 
-我们选择在 username.github.io repo 中新建一个叫 `dev` 的 branch 来做开发，把生成的静态站点 `_site` push 到 master 分支。当然，我们需要把master上的jekyll文件复制过来。
-
-1. 新建 branch
-
-    ```bash
-    # 建立dev目录
-    mkdir dev   
-    cd dev
-
-    # 建立git仓库，并连接到github
-    git init    
-    git remote add origin git@github.com:harttle/harttle.github.io.git 
-
-    # 新建分支
-    git checkout -b dev 
-    git push --set-upstream origin dev
-
-    # 现在可以开始工作了
-    git push
-    git pull
-    ```
-
-2. 迁移 Jekyll 站点
-
-    ```bash
-    # 拷贝文件
-    cp -r harttle.github.io/. dev/
-
-    # 编译站点
-    cd dev/
-    jekyll build -d ../harttle.github.io/
-
-    # 运行站点
-    jekyll serve -d ../harttle.github.io/
-    ```
-    
-### 代码高亮
-
-这里有完美的文档：http://highlightjs.org/
-如果希望在后台实现转换，可以这样使用：
-
-```html
-<!-- 首先，引入它的样式 -->
-<link rel="stylesheet" href="/assets/css/highlight/tomorrow-night-eighties.css">
-
-<!-- 然后，对于每一个要高亮的代码块，调用如下函数 -->
-<script>
-function(code, lang){
-      if(lang)
-        return '<code class="hljs">'+hljs.highlight(lang,code).value+'</code>';
-      else
-        return '<code class="hljs">'+hljs.highlightAuto(code).value+'</code>';
-</script>
-```
-
-### Tex支持
-
-文档同样完美：http://docs.mathjax.org/en/latest/
+文档同样完美：<http://docs.mathjax.org/en/latest/>
 如下的使用将会直接将当前页面的`\(`与`\)`中内容转换为行内公式（inline），将`\[`与`\]`中内容转换为独立的公式行（block）。当然，这都是可以配置的。
 
 ```html
@@ -212,79 +112,10 @@ function(code, lang){
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 ```
 
-## 开发时间线
+## 相关链接
 
-### 2013-10-12
+* Jekyll 框架：<http://jekyllrb.com/docs/home/>
+* Liquid 模板语言：<http://docs.shopify.com/themes/liquid-basics>
+* Markdown 语法：<http://daringfireball.net/projects/markdown/>
+* `_config.yml` 语法：<http://www.yaml.org/spec/1.2/spec.html>
 
-* 站点框架
-* github 部署
-
-### 2013-10-16
-
-* 社会化评论
-
-### 2013-10-17
-
-* 相册模块
-    * 延迟载入
-    * gallery浏览
-
-### 2013-10-25
-
-* 自动导航(affix)
-* 相册载入速度优化
-
-    加入缩略图机制（make+imageMagick）
-
-### 2013-10-28
-
-* 404页面
-
-### 2013-10-29
-
-* latex显示
-
-    采用mathJax
-* CDN
-
-### 2013-10-30
-
-* 解决 affix-bottom 失效
-
-    > 问题出自 sticky footer 中的 `body{height:100%}`，解决：
-    > Replace `document.body.offsetHeight` with `document.body.scrollHeight` in bootstrap.min.js
-
-### 2013-10-31
-
-* 载入优化
-
-    script 后置
-
-### 2013-11-1
-
-* 社会化链接
-
-    添加 linkedIn facebook google+ follow
-* SEO优化
-
-    添加 meta、添加sitemap.xml和robots.txt、导入搜索引擎、创建RSS 
-
-### 2013-11-06
-
-* google analysis
-
-### 2015-07-12
-
-* 响应式优化
-* 背景色更改为浅色
-
-### 2015-07-25
-
-* URL迁移：去掉了URL中的category
-
-### 2015-08-01
-
-* 域名：harttle.land
-* CNZZ 统计
-* 百度统计
-* Tag云

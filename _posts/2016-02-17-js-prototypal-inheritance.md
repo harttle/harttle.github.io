@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: JavaScript 实现原型继承
 tags: 原型继承 JavaScript 作用域 继承
 ---
@@ -35,7 +34,7 @@ var person = {
 ```javascript
 var man = Object.create(person);
 man.name = 'bob';
-man.fuck = function(){};
+man.talk = function(){};
 ```
 
 这里的`Man`拥有`Person`的所有属性，并且经过了特化。

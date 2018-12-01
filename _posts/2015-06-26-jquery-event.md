@@ -121,20 +121,20 @@ jQuery事件是基于DOM事件的，但jQuery提供了更加普遍的事件机�
 ```html
 <div id='foo'></div>
 <script>
-$('#foo').bind('fucked', function(){
-    console.log("I'm fucked.");
+$('#foo').bind('update', function(){
+    console.log("I'm updated.");
 });
-$('#foo').trigger('fucked');
+$('#foo').trigger('update');
 </script>
 ```
 
-这里定义了一个叫`fucked`的事件并绑定了处理函数，然后使用`trigger`来触发该事件。
+这里定义了一个叫`update`的事件并绑定了处理函数，然后使用`trigger`来触发该事件。
 在真实的场景中，通常用其他的事件来触发自定义事件：
 
 ```javascript
 var he = 'man';
 $('#foo').click(function(){
-    if(he === 'man') $(this).trigger('fucked');
+    if(he === 'man') $(this).trigger('update');
 });
 ```
 

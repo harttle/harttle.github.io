@@ -82,7 +82,7 @@ function Man(girl){
 };
 Man.prototype = new Person();
 Man.prototype.sex = 'male';
-Man.prototype.fuck = function(){};
+Man.prototype.talk = function(){};
 ```
 
 至此我们用JavaScript模拟了对象创建和类的继承，虽然写法上看起来还是很怪异。
@@ -106,7 +106,7 @@ var Man = function(girl){
     this.girl = girl;
 }
     .inherits(Person)
-    .method('fuck', function(){})
+    .method('talk', function(){})
     .method('sex', 'male');
 ```
 
