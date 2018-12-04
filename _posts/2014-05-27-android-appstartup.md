@@ -1,7 +1,6 @@
 ---
-layout: blog
 title: Android App 启动过程分析
-tags: Android Bash GNU Java Linux PKU Python sed 事件 并行 编译 进程 操作系统 移动开发 过程调用
+tags: Android Linux 事件 进程 操作系统
 ---
 
 通过分析和修改Android 源码,分析 Android App 启动过程的时间消耗及性能瓶颈。

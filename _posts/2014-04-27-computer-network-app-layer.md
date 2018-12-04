@@ -1,6 +1,6 @@
 ---
 title:  《计算机网络》笔记 - 应用层
-tags: ADSL DNS HTML HTTP IP Java LAN PHP POP3 RAID SMTP TCP UDP XML 磁盘 网络 表单 路由 操作系统 电路交换 过程调用 IMAP
+tags: DNS Web POP3 RAID SMTP UDP XML 网络 IMAP
 ---
 
 ## DNS-域名系统
@@ -69,7 +69,7 @@ tags: ADSL DNS HTML HTTP IP Java LAN PHP POP3 RAID SMTP TCP UDP XML 磁盘 网�
 
 ### 结构概述
 
-* URL（unform resource locator，统一资源定位符）：命名web页面
+* URL（unform resource locator，统一资源定位符）：命名 Web 页面
 + 组成：协议（也称方案，scheme）+页面所在机器的DNS名字，唯一指定特定页面的本地名字
 + 协议类型：http（hypertext transfer protocol，超文本传输协议）、ftp、file、news（NNTP，network news transfer protocol，网络新闻传输协议）、gopher、mailto、telnet
 + URN（universal resource name，通用资源名）：RFC 2141，不指定页面所在位置就能够引用页面，可减轻服务器负载
@@ -95,12 +95,12 @@ tags: ADSL DNS HTML HTTP IP Java LAN PHP POP3 RAID SMTP TCP UDP XML 磁盘 网�
 * 组织：前端连接到一个LAN中，LAN中有一个路由器和若干处理节点（独立的计算机）
 * TCP移交（TCP handoff）：避免所有请求与回复都通过前端
 * 无状态特性与cookie
-+ RFC 2109：当用户请求web页面时，可以提供附加信息cookie（最大4k）
++ RFC 2109：当用户请求 web 页面时，可以提供附加信息cookie（最大4k）
 + cookie域：域名、路径、内容、过期时间、安全
 + 非持久的cookie：没有包含过期时间域，浏览器退出时丢弃
 + 持久的cookie：包含过期时间域
 
-### 静态web文档
+### 静态 Web 文档
 
 * HTML（hypertext markup language，超文本标记语言）
 * 表单
@@ -109,9 +109,9 @@ tags: ADSL DNS HTML HTTP IP Java LAN PHP POP3 RAID SMTP TCP UDP XML 磁盘 网�
 * SOAP（simple object access protocol，简单对象访问协议）：应用之间执行RPC（远过程调用）的方法，以XML构造请求，以HTTP发送
 * XHTML（extended hypertext markup language，扩展的超文本标记语言）：用于小型移动设备，语法更挑剔
 
-### 动态web文档
+### 动态 Web 文档
 
-* 服务器端动态web页面生成（动态html）：CGI（common gateway interface，公共网关接口）、PHP（hypertext preprocessor，超文本预处理器）、JSP（javaserver pages，java服务器页面）、ASP（active server page，活动的服务器页面，ms版的php和jsp）
+* 服务器端动态 Web 页面生成（动态html）：CGI（common gateway interface，公共网关接口）、PHP（hypertext preprocessor，超文本预处理器）、JSP（javaserver pages，java服务器页面）、ASP（active server page，活动的服务器页面，ms版的php和jsp）
 
 * 客户端动态网页生成：JavaScript、applet（jvm上运行的java小程序）、activeX控件（ms）
 
@@ -127,7 +127,7 @@ tags: ADSL DNS HTML HTTP IP Java LAN PHP POP3 RAID SMTP TCP UDP XML 磁盘 网�
 * 服务器复制：镜像、瞬间拥挤
 * 内容分发网络：CDN（content delivery network），图像、音频等大文件存储在CDN上
 
-### 无线web
+### 无线 Web
 
 * WAP（wireless application protocol，无线应用协议）使用新的HTML标准，9600bps，协议层
 + 无线应用环境（WAE)
@@ -145,7 +145,7 @@ tags: ADSL DNS HTML HTTP IP Java LAN PHP POP3 RAID SMTP TCP UDP XML 磁盘 网�
 * 简单的窗口管理器
 * 网络通信
 * 实时操作系统
-* 第二代无线web
+* 第二代无线 Web
 + 新特新
 * 推模型和拉模型
 * 运行将电话集成到应用中

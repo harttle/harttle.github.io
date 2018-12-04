@@ -1,9 +1,9 @@
 ---
 title: 函数式JavaScript编程
-tags: JavaScript 函数式编程 级联调用 回调函数 ES6 闭包 柯里化 Lambda Express.js 异步
+tags: JavaScript 函数式编程 级联调用 回调函数 柯里化 Lambda
 ---
 
-也许你还觉得函数式编程很陌生，但许多的函数式编程风格已经渐渐开始流行。
+也许你还觉得函数式编程很陌生，但函数式的编程风格已经渗透在 JavaScript 当中。
 比如[DOM][dom]中常见的回调函数、[jQuery][jquery]的级联写法、
 [lodash][lodash]的partial函数、Java的[Guava][guava]库...
 到处都是函数式的编程风格。

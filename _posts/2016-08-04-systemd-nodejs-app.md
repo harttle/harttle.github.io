@@ -1,6 +1,6 @@
 ---
-title: 使用systemd管理Node.js应用
-tags: Linux MongoDB Node.js Redis systemd
+title: 使用 systemd 管理 Node.js应用
+tags: MongoDB Node.js Redis systemd
 ---
 
 [systemd][systemd-wiki] 是 Linux 下的一款系统和服务管理器，

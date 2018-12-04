@@ -1,22 +1,15 @@
 ---
-layout: blog
 title: 进程的地址空间：TEXT，DATA，BSS，HEAP，STACK
-tags: C++ 栈空间 堆空间 内存 常量 编译 进程 字节序 全局变量 动态内存 操作系统 虚拟内存 静态变量
+tags: 栈空间 堆空间 内存 全局变量 动态内存 虚拟内存 静态变量
 ---
 
 现代操作系统对每个进程都分配了完整的虚拟内存地址空间。进程会把整个地址空间分成多个区间来使用。
 程序员最为熟悉的两个区间莫过于**堆**和**栈**。然而还有其他的内存区间来存储代码、静态、全局变量等等。
 本文来总结一下这些内存区间到底存的是哪些东西。先看图：
 
-<div class="float: left; max-width: 350px;">
+![memory segments@2x](/assets/img/blog/memory.png)
 
-<img src="/assets/img/blog/memory.png" alt="@2x">
-
-<small>图片来源：
-  <a href="http://www.sw-at.com/blog/2011/03/23/where-does-code-execute-process-address-space-code-gvar-bss-heap-stack/">SWAT Blog</a>
-</small>
-
-</div>
+> 图片来源： <http://www.sw-at.com/blog/2011/03/23/where-does-code-execute-process-address-space-code-gvar-bss-heap-stack/>
 
 <!--more-->
 

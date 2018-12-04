@@ -1,6 +1,6 @@
 ---
-title: Linux路由表配置
-tags: ArchLinux Bash DHCP DNS HTTP IP Linux MAC Socket TCP 网络 路由 systemd
+title: Linux 路由表配置
+tags: ArchLinux DHCP DNS IP MAC TCP 网络 路由 systemd
 ---
 
 局域网基本都是通过路由器来接入Internet，其中的路由器提供了众多的功能与服务。不妨用linux做局域网的路由，开启DHCP服务、IP转发、HTTP代理。这样不仅可以高度定制局域网的网络结构，而且可以实时监测局域网流量。
@@ -45,9 +45,8 @@ subnet 192.168.3.0 netmask 255.255.255.0 {
 
 ## 服务器启动
 
-为了使用方便，我们为DHCP制作一个`systemd`服务（类似于其他发行版的`init.d`服务）：
-
-> 当然也可以直接调用`/usr/bin/dhcpd -4 wlp13s0`来启动。
+现在可以调用 `/usr/bin/dhcpd -4 wlp13s0` 来启动 dhcpd 服务了。
+为了使用方便我们为它制作一个`systemd`服务（类似于 Debian 的 `init.d`）。
 
 ```
  file: /etc/systemd/system/dhcpd4@.service
@@ -66,7 +65,7 @@ KillSignal=SIGINT
 WantedBy=multi-user.target
 ```
 
-然后，在`wlp13s0`上启动它！
+然后在 `wlp13s0` 上启动它！
 
 ```bash
 systemctl start dhcpd4@wlp13s0.service
@@ -83,8 +82,7 @@ $ tcpdump -i wlp13s0 -n port 67
 > 第一行中，不知到自己IP（全0地址）的客户端发送DHCP广播（全1地址），DHCP客户端端口为68，服务器端口为67。
 > 第二行中，服务器（我们的linux主机）回复DHCP报文，客户端得到`192.168.3.128`的IP。此时客户端采用了`dhcpd.conf`中提供的配置。
 
-参见：[dhcpd-archwiki](https://wiki.archlinux.org/index.php/Dhcpd)
-
+参见 [dhcpd-archwiki](https://wiki.archlinux.org/index.php/Dhcpd)
 
 # IP转发
 
