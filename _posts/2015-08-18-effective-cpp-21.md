@@ -6,7 +6,7 @@ excerpt: 永远不要返回局部对象的引用或指针或堆空间的指针�
 
 > Item 21: Don't try to return a reference when you must return an object
 
-Item 20中提到，多数情况下传引用比传值更好。追求这一点是好的，但千万别返回空的引用或指针。
+Item 20 中提到，多数情况下传引用比传值更好。追求这一点是好的，但千万别返回空的引用或指针。
 一个典型的场景如下：
 
 ```cpp
@@ -22,6 +22,8 @@ friend const Rational operator*(const Rational& lhs, const Rational& rhs);
 Rational a, b;
 Rational c = a*b;
 ```
+
+> Update：C11 move 语义为这种情况提供了更好的支持，参考 <https://harttle.land/2015/10/11/cpp11-rvalue.html> 感谢 [Enyala][Enyala] 的评论。
 
 <!--more-->
 
@@ -83,3 +85,4 @@ inline const Rational operator*(const Rational& lhs, const Rational& rhs){
 [Item 4：确保变量的初始化][4]指出，对于单例模式，返回局部静态对象的引用也是合理的。
 
 [4]: /2015/07/22/effective-cpp-4.html
+[Enyala]: https://github.com/BearJean

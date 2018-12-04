@@ -23,8 +23,8 @@ delete pInv;
 也可能由于流控制语句或者异常的出现而使得资源未被及时释放。
 
 幸运的是，我们可以用对象来包装资源，并在析构函数中释放它。这样客户便不需要维护资源的内存了。
-`std::auto_ptr`便是这样一个对象，它被称为**智能指针**（smart pointer）。
-典型的使用场景是，资源在堆空间中存储但只在局部被使用。
+`std::auto_ptr` 便是这样一个对象（`auto_ptr` 已在 C11 废弃，请使用 [unique_ptr](http://www.cplusplus.com/unique_ptr)，感谢 [Enyala][Enyala] 的评论），它被称为**智能指针**（smart pointer）。
+典型的使用场景是资源在堆空间中存储但只在局部被使用：
 
 ```cpp
 void f(){
@@ -83,3 +83,4 @@ std::tr1::shared_ptr<int> spi(new int[1024]);
 如果你真的需要，可以求助与Boost社区的`boost::scoped_array`和`boost::shared_array`。
 
 [mem]: /2015/07/22/memory-segment.html
+[Enyala]: https://github.com/BearJean
