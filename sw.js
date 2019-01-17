@@ -22,17 +22,29 @@ self.addEventListener('activate', function (event) {
 });
 
 self.addEventListener('fetch', function (event) {
-    event.respondWith(
-        fetch(event.request.clone()).then(validate).then(function (response) {
-            save(event.request, response.clone());
-            return response;
-        }).catch(function () {
-            return caches.match(event.request).then(function (cached) {
-                if (!cached) throw new Error('cache miss:' + event.request.url);
-                return cached;
-            });
-        }));
+    if (event.request.method !== 'GET') return network(event.request);
+    var pn = networkAndSave(event.request);
+    event.respondWith(cache(event.request).then(function (res) {
+        return res || pn;
+    }).catch(function () {
+        return pn;
+    }));
 });
+
+function cache (req) {
+    return caches.open(CACHE_NAME).then(cache => cache.match(req.clone()));
+}
+
+function networkAndSave (req) {
+    return network(req).then(function (res) {
+        save(req.clone(), res.clone());
+        return res;
+    });
+}
+
+function network (req) {
+    return fetch(req.clone()).then(validate);
+}
 
 function save (key, val) {
     return caches.open(CACHE_NAME).then(function (cache) {
