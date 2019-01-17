@@ -1,0 +1,25 @@
+{
+  "short_name": "Harttle Land",
+  "name": "Harttle Land",
+  "icons": [
+    {
+      "src": "/assets/img/favicon-48x48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "/assets/img/favicon-96x96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "/assets/img/favicon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#5ABA59",
+  "background_color": "#5ABA59"
+}

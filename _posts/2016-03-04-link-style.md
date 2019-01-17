@@ -155,4 +155,3 @@ a[href^=/], a[href^=http://hartle.com], a[href^=http://blog.harttle.land]{
 [bg]: /2016/02/27/background-image.html
 [ext-link]: /assets/img/blog/css/ext-link@2x.png
 [display]: /2015/05/28/css-display.html
-[bs]: http://www.bootcss.com

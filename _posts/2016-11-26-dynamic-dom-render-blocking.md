@@ -24,7 +24,7 @@ tags: CSS Chrome DOM DOM解析 异步 Firefox
 ```javascript
 var link = document.createElement('link');
 link.rel = 'stylesheet';
-link.href = 'http://cdn.bootcss.com/animate.css/3.5.2/animate.css';
+link.href = 'https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.css';
 
 var script = document.createElement('script');
 script.text = 'console.log("after link[rel=stylesheet]")';
@@ -76,7 +76,7 @@ console.log(document.styleSheets[0].rules[0].cssText);
 
 ```javascript
 var script = document.createElement('script');
-script.src = 'http://cdn.bootcss.com/react/15.4.0/react.js';
+script.src = 'https://cdn.jsdelivr.net/npm/react@15.4.0/dist/react.js';
 document.body.appendChild(script);
 console.log('after script', window.React);
 ```
@@ -121,9 +121,9 @@ console.log('after script');
 ```javascript
 var link = document.createElement('link');
 link.rel = 'stylesheet';
-link.href = 'http://cdn.bootcss.com/animate.css/3.5.2/animate.css';
+link.href = 'https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.css';
 var script = document.createElement('script');
-script.src = 'http://cdn.bootcss.com/react/15.4.0/react.js';
+script.src = 'https://cdn.jsdelivr.net/npm/react@15.4.0/dist/react.js';
 ```
 
 很显然，未连接到DOM树的`<link rel="stylesheet">`（或`<script>`）根本没有被下载：
@@ -147,7 +147,7 @@ document.body.append(script);
 为了支持IE浏览器，可以监听`onreadystatechange`事件：
 
 ```javascript
-createScript('http://cdn.bootcss.com/react/15.4.0/react.js');
+createScript('https://cdn.jsdelivr.net/npm/react@15.4.0/dist/react.js');
 createScript('https://harttle.land/this/will/404.js');
 function createScript(src){
     var el = document.createElement('script');

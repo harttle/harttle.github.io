@@ -63,7 +63,7 @@ Trident (MSIE)           |    | 是 | 是
     printH2();
     setTimeout(printH2);
   </script>
-  <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.4/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-alpha.4/dist/css/bootstrap.css">
   <h2>World</h2>
   <script> console.log('second script'); </script>
 </body>
