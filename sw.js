@@ -1,8 +1,11 @@
-var CACHE_NAME = 'v1';
+var CACHE_NAME = 'v2';
 var urlsToCache = [
     '/',
     '/assets/css/site.css',
     '/assets/js/blog.min.js'
+];
+var blackList = [
+    /google-analytics.com.*collect/
 ];
 
 self.addEventListener('install', function (event) {
@@ -22,7 +25,12 @@ self.addEventListener('activate', function (event) {
 });
 
 self.addEventListener('fetch', function (event) {
-    if (event.request.method !== 'GET') return network(event.request);
+    if (
+        event.request.method !== 'GET' ||
+        blackList.some(function (regex) {
+            return regex.exec(event.request.url);
+        })
+    ) return network(event.request);
     var pn = networkAndSave(event.request);
     event.respondWith(cache(event.request).then(function (res) {
         return res || pn;
