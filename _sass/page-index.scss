@@ -33,6 +33,7 @@ $timeline-left-width: 95px;
         }
       }
       details{
+        display: block;
         border-left: 6px solid $light-grey;
         overflow: hidden;
         padding: 0 0 40px 20px;
