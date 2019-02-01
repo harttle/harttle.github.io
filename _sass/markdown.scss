@@ -81,7 +81,7 @@
   margin: 10px 0;
   border-left: 4px solid #DDD;
   padding: 0 0 0 11px;
-  color: #777;
+  color: #555;
   font-size: 14px;
   p {
     margin-top: 5px;
@@ -162,11 +162,11 @@
 }
 
 .md.excerpt {
-  color: #777;
+  color: #555;
   p, h1, h2, h3, h4, h5, h6, b, strong, ul, ol, li{
     font-size: 1rem;
     margin: 0;
-    color: #777;
+    color: #555;
     font-weight: normal;
     border-bottom: none;
   }
@@ -174,7 +174,7 @@
     border-left: none;
     padding: 0;
     p, h1, h2, h3, h4, h5, h6, b, strong{
-      color: #999;
+      color: #555;
     }
   }
   @include media-xs{

@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html class="page-default">
+<html class="page-default" lang="zh-Hans">
   <head>
     <meta charset="utf-8">
+    <title>{%if page.title%}{{page.title}} | {{site.title}}{%else%}{{site.title}}{%endif%}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="{{ page.tags | default: site.keywords | join: ',' }}">
     <meta name="author" content="Jun Yang (harttle)">
     <meta name="description" content="{{page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 128}}">
-    <title>{%if page.title%}{{page.title}} | {{site.title}}{%else%}{{site.title}}{%endif%}</title>
+    <meta name="theme-color" content="#5ABA59">
     {% feed_meta %}
-    <link rel="shortcut icon" href="/assets/img/favicon-32x32.png">
-    <link rel="apple-touch-icon-precomposed" href="/assets/img/favicon-256x256.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="/assets/img/favicon.svg">
     <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="/assets/css/site.css">
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="//utteranc.es">
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+    <link rel="dns-prefetch" href="//www.google.com">
   </head>
   <body>
     <header class="container">
@@ -21,7 +26,7 @@
         <a class="glow no-decoration" href="/archive.html">归档</a>
         <a class="glow no-decoration" href="/about.html">关于</a>
       </nav>
-      <a class="logo no-decoration" href="/">{% include logo.html %}</a>
+      <a class="logo no-decoration" href="/" aria-label="Harttle Land">{% include logo.html %}</a>
     </header>
     {{ content }}
     <footer>
