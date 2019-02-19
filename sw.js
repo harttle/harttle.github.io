@@ -26,6 +26,9 @@ self.addEventListener('activate', function (event) {
 
 self.addEventListener('fetch', function (event) {
     if (
+        event.request.cache === 'only-if-cached' && event.request.mode !== 'same-origin'
+    ) return cache(event.request);
+    if (
         event.request.method !== 'GET' ||
         blackList.some(function (regex) {
             return regex.exec(event.request.url);
@@ -45,13 +48,13 @@ function cache (req) {
 
 function networkAndSave (req) {
     return network(req).then(function (res) {
-        save(req.clone(), res.clone());
+        if (validate(res)) save(req.clone(), res.clone());
         return res;
     });
 }
 
 function network (req) {
-    return fetch(req.clone()).then(validate);
+    return fetch(req.clone());
 }
 
 function save (key, val) {
@@ -61,6 +64,6 @@ function save (key, val) {
 }
 
 function validate (res) {
-    if (res && res.type === 'basic' && res.status !== 200) throw new Error(res);
-    return res;
+    if (res && res.type === 'basic' && res.status !== 200) return false;
+    return true;
 }
