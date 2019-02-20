@@ -107,6 +107,14 @@ tmux save-buffer - | ssh -p 8234 localhost
 set clipboard=unnamed
 ```
 
+注意：如果没有生效，可能是你的 vim 编译时没有加入剪切板支持。
+MacOS 下可以直接用 [brew](https://brew.sh/) 安装 macvim 是支持剪切板的。
+可以通过下面的命令来检测，如果输出 `+clipboard` 就是支持，如果输出 `-clipboard` 就是不支持：
+
+```bash
+vim --version | grep clipboard
+```
+
 [vim-tmux-focus-events]: https://github.com/tmux-plugins/vim-tmux-focus-events
 [vim-tmux-clipboard]: https://github.com/roxma/vim-tmux-clipboard
 [vundle]: https://github.com/VundleVim/Vundle.vim
