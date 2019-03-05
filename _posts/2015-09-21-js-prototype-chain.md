@@ -1,13 +1,11 @@
 ---
-layout: blog
 title: JavaScript 内置对象与原型链结构
 tags: Chrome JavaScript 原型继承 原型链
-excerpt: 本文便来介绍使用JavaScript进行面向对象编程的核心概念：原型链。 不同于Java、C#等面向对象语言，JavaScript采用基于原型的继承方式。
 ---
 
 JavaScript是一门直译式脚本语言，是一种动态类型、基于原型的语言。
 JavaScript的灵活性不亚于C++，你可以使用JavaScript尝试不同的程序设计范型。
-比如类jQuery风格的函数式编程、基于过程的指令式编程、以及基于原型的面向对象编程。
+比如函数式编程、指令式或过程式编程、以及基于原型的面向对象编程。
 
 **不同于Java、C#等面向对象语言，JavaScript采用基于原型的继承方式。
 本文便来介绍使用JavaScript进行面向对象编程的核心概念：原型链。**
@@ -81,7 +79,7 @@ Function instanceof Function    // true, why??
 
 除了这两个特殊的对象，其他对象和用户定义类型拥有一样的原型链结构。
 
-# JavaScript原型链
+# JavaScript 原型链
 
 我用下图给出JavaScript的原型链结构。悄悄告诉你理解原型链的小技巧：
 将`__proto__`箭头视作泛化（子类到父类）关系！那么图中所有的虚线将构成一个继承层级，而实线表示属性引用。
