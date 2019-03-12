@@ -78,8 +78,9 @@
       display: none;
     }
   }
-  .utterance{
+  .utterances{
     margin-bottom: 50px;
+    max-width: none;
   }
 
   @mixin collapsed(){
