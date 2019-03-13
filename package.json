@@ -10,10 +10,10 @@
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
-    "uglifyjs": "^2.4.11"
+    "uglify-js": "^3.4.9"
   },
   "scripts": {
-    "lint": "eslint assets/js",
+    "lint": "eslint --ignore-pattern *.min.js assets/js",
     "start": "bundle exec jekyll serve -w --drafts --host 0.0.0.0 --incremental",
     "uglify": "cat assets/js/blog-*.js | uglifyjs -mc > assets/js/blog.min.js",
     "build": "bundle exec jekyll build",

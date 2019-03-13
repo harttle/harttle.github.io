@@ -5,10 +5,13 @@ $padding-horizontal: 25px;
 aside.toc{
   width: $toc-width;
   margin-top: -38px;
-  > ul {
+  .toc-wrapper{
     position: sticky;
     top: 40px;
     background: white;
+  }
+  .toc-slot{
+    margin-bottom: 30px;
   }
   ul{
     margin-top: 0;

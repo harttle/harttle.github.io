@@ -24,7 +24,6 @@ kramdown:
   hard_wrap: false
 
 ga: 'UA-65795020-1'
-adsense: 'ca-pub-1726987624166668'
 
 sass:
     style: compressed

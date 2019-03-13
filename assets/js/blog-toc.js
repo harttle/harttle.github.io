@@ -1,6 +1,6 @@
 (function () {
     var md = document.querySelector('.md');
-    var asideTOC = document.querySelector('aside.toc');
+    var asideTOC = document.querySelector('aside .toc-slot');
     initTOC();
 
     function initTOC () {
@@ -11,7 +11,6 @@
             return;
         }
         asideTOC.appendChild(toc);
-
         window.addEventListener('scroll', scrollSpy);
     }
 
