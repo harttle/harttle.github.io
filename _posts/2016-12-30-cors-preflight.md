@@ -4,7 +4,7 @@ tags: 跨域 CORS AJAX HTTP XHR
 ---
 
 我们知道借助[`Access-Control-Allow-Origin`][acao]响应头字段可以允许跨域 AJAX，
-对于非**简单请求**，CORS 机制跨域会首先进行 preflight（一个 OPTIONS 请求），
+对于非**简单请求**，[CORS][cors] 机制跨域会首先进行 preflight（一个 OPTIONS 请求），
 该请求成功后才会发送真正的请求。
 这一设计旨在确保服务器对 CORS 标准知情，以保护不支持 CORS 的旧服务器。
 
@@ -66,8 +66,10 @@ Request header field x-foo is not allowed by Access-Control-Allow-Headers in pre
 > For request method there either is a method cache match or it is a simple method and the force preflight flag is unset.
 > For every header of author request headers there either is a header cache match for the field name or it is a simple header.
 
-注意只要所有`Author Header`是简单头即可跳过，这里的`DNT`虽然不是简单头但它属于 `User-Agent Header`。
-注意在 [CORS][cors] 被重定向之后这一状况会变得复杂，在[重定向 CORS 跨域请求][redirect-cors]一文有较详细的讨论。
+只要所有 "Author Header" 都是简单头即可跳过 preflight，
+这里虽然 "DNT" 头不属于简单头，但它也不属于 "Author Header"，它是 "User-Agent Header"。
+因此它不会导致触发 preflight。但是这一简单请求如果被重定向情况会变得相当复杂，
+请参考 [重定向 CORS 跨域请求][redirect-cors]一文中的讨论。
 
 [acao]: https://www.w3.org/TR/cors/#access-control-allow-origin-response-header
 [acrh]: https://www.w3.org/TR/cors/#access-control-request-headers-request-header
