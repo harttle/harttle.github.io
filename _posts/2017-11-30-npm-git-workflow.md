@@ -132,7 +132,7 @@ git log v2.0.1..v2.0.2
 ```json
 {
   "name": "hello-world",
-  "author": "harttle<harttle@harttle.com>"
+  "author": "harttle<yangjvn@126.com>"
   "scripts": {
     "test": "mocha",
     "dist": "gulp dist",

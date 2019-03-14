@@ -54,7 +54,7 @@ $ vim --version | head
 vim --version |head                                                  [21:04:57]
 VIM - Vi IMproved 8.0 (2016 Sep 12, compiled Jun  1 2017 21:04:21)
 Included patches: 1-606
-Compiled by harttle@harttle.com
+Compiled by yangjvn@126.com
 Huge version without GUI.  Features included (+) or not (-):
 +acl             +file_in_path    +mouse_sgr       +tag_old_static
 +arabic          +find_in_path    -mouse_sysmouse  -tag_any_white

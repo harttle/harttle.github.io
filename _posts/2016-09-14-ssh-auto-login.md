@@ -113,13 +113,13 @@ chmod 600 ~/.ssh/authorized_keys
 切换回客户端，拷贝客户端公钥到服务器的`authorized_keys`文件：
 
 ```bash
-cat ~/.ssh/id_rsa.pub | ssh harttle@harttle.com 'cat >> .ssh/authorized_keys'
+cat ~/.ssh/id_rsa.pub | ssh yangjvn@126.com 'cat >> .ssh/authorized_keys'
 ```
 
 现在服务器拥有你的公钥了，再次登录服务器时服务器不会再询问你的密码了：
 
 ```bash
-ssh harttle@harttle.com
+ssh yangjvn@126.com
 ```
 
 ## 客户端配置
@@ -129,7 +129,7 @@ ssh harttle@harttle.com
 这个连接命令就复杂了：
 
 ```bash
-ssh -i /home/harttle/.ssh/id_rsa_another -p 2222 -X harttle@harttle.com
+ssh -i /home/harttle/.ssh/id_rsa_another -p 2222 -X yangjvn@126.com
 ```
 
 ```

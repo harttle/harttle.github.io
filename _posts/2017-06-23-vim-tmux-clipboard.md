@@ -42,12 +42,12 @@ vim +PluginInstall
 首先，在连接 SSH 时指定反向隧道（需要在 Mac 设置中允许远程访问）：
 
 ```bash
-ssh -R 8234:localhost:22 harttle@harttle.com
+ssh -R 8234:localhost:22 yangjvn@126.com
 ```
 
 > 上述 Reverse Tunnel 在配置文件中对应 RemoteForward 参数：`RemoteForward 8234 localhost:22`。
 
-其中 `harttle@harttle.com` 是目标服务器的用户名和主机名，远端的 8234
+其中 `yangjvn@126.com` 是目标服务器的用户名和主机名，远端的 8234
 连接到本地的 localhost:22 端口。
 
 然后，在远程执行如下命令将当前 Tmux Buffer 发给本地的 `pbcopy`（系统剪切板）：
