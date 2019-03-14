@@ -1,32 +1,5 @@
 <section class="author-block">
-  <span class="rolls-toggle">&#x21ba;</span>
-  <div class="roll-container">
-    <div class="roll clearfix">
-      <img src="/assets/img/avatar.jpg" alt="avatar">
-      <h2>Harttle</h2>
-      <p class="ellipsis">{{site.description}}</p>
-    </div>
-    <div class="roll clearfix">
-      <img src="/assets/img/wechat.png" alt="wechat qrcode">
-      <h2>支持 · 微信</h2>
-      <p class="ellipsis">赏点零花钱，继续写博客</p>
-    </div>
-    <div class="roll clearfix">
-      <img src="/assets/img/alipay.png" alt="alipay qrcode">
-      <h2>支持 · 支付宝</h2>
-      <p class="ellipsis">已被老婆占领，赏给她</p>
-    </div>
-  </div>
-  <script>
-(function (){
-  var container = document.querySelector('.author-block .roll-container')
-  var toggle = document.querySelector('.author-block .rolls-toggle')
-  var idx = 0
-
-  toggle.addEventListener('click', function () {
-    idx = (idx + 1) % 3
-    container.style.transform = 'translateY(-' + idx * 64 + 'px)'
-  })
-})();
-  </script>
+  <img src="/assets/img/avatar.jpg" alt="avatar">
+  <h2>Harttle</h2>
+  <p class="ellipsis">{{site.description}}</p>
 </section>
