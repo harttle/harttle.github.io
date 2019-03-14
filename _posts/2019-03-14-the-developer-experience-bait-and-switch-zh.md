@@ -60,7 +60,7 @@ Just wanted to send my 💌 and 🙏 to the lovely souls at @gdsteam. -- Alex Ru
 
 相反，我希望通过展示具体的结果和大量的例子，使用广泛引用的数据来更具体地讨论哪里出了问题。我希望通过讨论如何构建服务于每一个人的产品，来告诉企业他们现在做得有多差，以及为什么以 JS 为中心的开发背后的那些根本原因如此有毒。如果这些分析能够用来清理一些公共部门的服务，那就更好了；反正我们都得交税。
 
-这是 Code.gov 在 iPhone8 和 Android Go 设备上加载速度对比：https://www.webpagetest.org/video/compare.php?tests=180831_25_3a7e0326e5deb329b760f6241b3a87f5-r%3A1-c%3A0%2C180831_Q2_36cc2c3f96e11252eb47d7ce521891bf-r%3A1-c%3A0&thumbSize=200&ival=500&end=full。
+这是 Code.gov 在 iPhone8 和 Android Go 设备上加载速度对比：<https://www.webpagetest.org/video/compare.php?tests=180831_25_3a7e0326e5deb329b760f6241b3a87f5-r%3A1-c%3A0%2C180831_Q2_36cc2c3f96e11252eb47d7ce521891bf-r%3A1-c%3A0&thumbSize=200&ival=500&end=full>。
 
 这不是最优方案（Plan A），但也不是 16 年 CDS 演讲 那样让每个人都很沮丧。我不喜欢在这里我们既是一个社区也是一个平台。我也很无奈这让我与 JS 社区逐渐疏远。我们需要工具也需要框架，但是判断它们是否提供了更好的开发者体验的前提是，它没有从根本上损害用户体验。我们必须使用 JS 中立（JS Neutral）的工具（或者我更喜欢的，TTI 中立或负 TTI 的工具）。框架和工具需要用简单的语言解释清楚它们是如何在预算内交付体验的，在减去它们的成本之后还剩多少预算空间，以及他们的工具适用于哪些设备和网络。这将意味着许多现在流行的工具还处于原型阶段，但这没关系。
 
