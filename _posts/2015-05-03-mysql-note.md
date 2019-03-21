@@ -12,7 +12,7 @@ MySQL官方文档在这里：
 
 http://dev.mysql.com/doc/refman/5.1/zh/sql-syntax.html
 
-# database
+## database
 
 查看所有
 
@@ -32,7 +32,7 @@ use db_name;
 drop database db_name;
 ```
 
-# table
+## table
 
 查看所有
 
@@ -80,7 +80,7 @@ alter table tb_name modify col_name varchar(22);
 
 <!--more-->
 
-# row
+## row
 
 查找
 
@@ -100,7 +100,7 @@ UPDATE tb_name SET col1 = val1, col2 = val2 WHERE col3 = val3
 DELETE FROM tb_name WHERE col1 = val1
 ```
 
-# 用户管理
+## 用户管理
 
 修改root密码
 
@@ -114,7 +114,7 @@ mysqladmin -u root password 'somepassword'
 mysql [-h hostname] -u username|root -p
 ```
 
-# 数据备份
+## 数据备份
 
 导入
 

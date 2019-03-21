@@ -30,7 +30,7 @@ Shadow DOM、Custom Elements、HTML Import、HTML Template。
 Web Components 系列技术就是意图原生地支持 Web 组件化。
 在开始介绍 Web Components 相关技术之前，先来观察一个 Web Components 组件的编写和使用过程。
 
-# 一个例子
+## 一个例子
 
 下面是一个 `x-message.html` 组件，其功能是显示一段红色的文字：
 
@@ -73,9 +73,9 @@ customElements.define('x-message', XMessage);
 
 ![web-component-demo](/assets/img/blog/web-components/example.png)
 
-# 相关标准
+## 相关标准
 
-## Custom Elements
+### Custom Elements
 
 [Custom Elements][custom-elements] 给了开发者创建自己的 HTML 元素的能力。
 相比于 jQuery 等工具创建的 DOM 元素，Custom Elements 的解析和渲染由浏览器原生支持。
@@ -142,7 +142,7 @@ class XMessage extends HTMLElement {
 
 ![caniuse-custom-elements](/assets/img/blog/web-components/caniuse-custom-elements.png)
 
-## HTML Templates
+### HTML Templates
 
 [HTML Templates][html-template] 是指 HTML 的 `<template>` 标签，用来包含 HTML 模板。
 `<template>` 的内容在页面加载时浏览器会解析，但不会进行渲染。
@@ -167,7 +167,7 @@ var content = document.importNode(tpl.content, true)
 
 ![caniuse html template](/assets/img/blog/web-components/caniuse-templates.png)
 
-## Shadow DOM
+### Shadow DOM
 
 Shadow DOM 提供了独立于主文档的 DOM 环境，为 Web Components 提供了 CSS 和 HTML 的封装。
 
@@ -201,7 +201,7 @@ Shadow DOM 为每个组件提供一个独立的 `#document` 节点，
 
 ![caniuse-shadow-dom](/assets/img/blog/web-components/caniuse-shadow-dom.png)
 
-## HTML Import
+### HTML Import
 
 HTML Import 是 Web Components 的一种打包机制，组件打包为 HTML 后直接引入到使用方。
 
@@ -217,13 +217,13 @@ CSS 也是一样。所以定义组件时要注意不可在当前作用域下产�
 
 ![caniuse-import](/assets/img/blog/web-components/caniuse-html-imports.png)
 
-# 相关 Polyfill
+## 相关 Polyfill
 
 到此为止我们介绍了 Web Components 技术涉及的主要浏览器 API 和相关标准，
 其中多数标准的浏览器兼容存在很大问题，甚至有些标准仍然在草案阶段。
 为此，如果现在需要在生产环境使用 Web Components 技术需要考虑引入 Polyfill。
 
-## webcomponentsjs
+### webcomponentsjs
 
 [webcomponentsjs](https://github.com/webcomponents/webcomponentsjs)
 项目为 Web Components 标准提供了一系列的 Polyfill。
@@ -235,7 +235,7 @@ CSS 也是一样。所以定义组件时要注意不可在当前作用域下产�
 
 在 webcomponents.org 网站上维护着当前可用的 Web Components 库：<https://www.webcomponents.org>
 
-## Polymer
+### Polymer
 
 [Polymer][polymer] 项目是基于 Web Components 机制的轻量级框架，定位于简单的 Polyfill 和易用性封装。
 这些封装包括数据绑定，模板声明，事件系统等，甚至包括手势事件的 API。
@@ -247,7 +247,7 @@ Polymer 确实意图补充和完整 Web Components，而非做太多抽象。虽
 
 Polymer 项目已经开发了不少的 Web 组件（尤其是 core 和 bussiness 两部分非常丰富），这些组件现在也统一维护在 [webcomponents.org][polymer-elements] 上。
 
-# Web Components Like 框架
+## Web Components Like 框架
 
 由于兼容性堪忧，业界大厂几乎都未能完整地使用 Web Components 方案，
 多数采用 Web Components Like 的框架：既保持对 Web Components 的兼容，
@@ -255,7 +255,7 @@ Polymer 项目已经开发了不少的 Web 组件（尤其是 core 和 bussiness
 
 以下介绍几个 Web Components Like 的 Web 开发框架。
 
-## Aurelia
+### Aurelia
 
 <http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/technical-benefits/5>
 
@@ -268,7 +268,7 @@ Aurelia是基于Web Component的Web组件化开发框架。同样适用HTML Temp
 * 多语言支持，Aurelia在ES7的基础上构建，支持包括ES5, ES6, TypeScript。
 * 双向数据绑定。
 
-## React
+### React
 
 React组件化方案中，仍然使用自定义的HTML标签。与Web Component不同的是React中的HTML标签运行在Virtual DOM中，而非标准的浏览器环境。
 包括其属性的解析、事件的分发均由React托管。React能够兼容Web Component并互相包装，但二者机制不同并未直接融合。
@@ -277,7 +277,7 @@ Note: 双向绑定在React中是不推荐的：
 
 > LinkedStateMixin is deprecated as of React v15. The recommendation is to explicitly set the value and change handler, instead of using LinkedStateMixin.
 
-### React与Web Component互相调用
+#### React与Web Component互相调用
 
 **Web Component可以在React中使用。**但因为React有自己的模块化机制（Component），以及自己的事件系统（SyntheticEvent），
 考虑到**调用方式**和**事件系统**的统一，[官方推荐][react-web-component]将web component包装为react component。
@@ -292,7 +292,7 @@ class HelloMessage extends React.Component{
 
 **React模块也可作为Web Component使用。**只需在`attachedCallback`中调用`ReactDOM.render`。
 
-### React Component与Web Component比较
+#### React Component与Web Component比较
 
 二者都是UI组件化的方式，使得开发者可以独立地开发UI组件。这些组件共同构成整个App。
 都有声明周期控制：
@@ -309,7 +309,7 @@ class HelloMessage extends React.Component{
 * 托管的生命周期意味着运行时进行Component的创建、加载和移除，也为性能优化提供了余地。
 * Web Component依赖于标准浏览器运行时环境，而React中的虚拟DOM则提供了跨平台的可能。
 
-## AngularJS
+### AngularJS
 
 AngularJS 与 Polymer 都有组件化的支持，但二者的技术定位不同，
 AngularJS **用于构建 Web App**，而 Polymer **用于构建 Web Component**：
@@ -317,7 +317,7 @@ AngularJS **用于构建 Web App**，而 Polymer **用于构建 Web Component**�
 * Web Component 提供的是一个UI组件，AngularJS Module 则更加上层，例如通用服务、资源同步、页面路由等；
 * Web Component 提供了 UI 样式的封装，AngularJS Module 对应于一个业务模块因此不提供 CSS 托管。
 
-### AngularJS 1.x
+#### AngularJS 1.x
 
 AngularJS与Web Component最相似的地方应该在于Directive，用来提供一个增强的HTML标签来处理更复杂的交互。
 Angular Directive, React View, Polymer Component的编写方式非常相似：提供Template和Scope，由框架完成渲染。
@@ -327,7 +327,7 @@ Angular Directive, React View, Polymer Component的编写方式非常相似：�
 框架上只要将DOM渲染置换为Native渲染即可支持Native，
 开源社区有很多Native的JS SDK，例如NativeScript: <https://www.nativescript.org/>
 
-### AngularJS 2
+#### AngularJS 2
 
 AngularJS 2更像React了...移除了Controller的概念，由Component直接渲染视图。
 AngularJS 1.x中的Directive在AngularJS 2中被拆分为Component（标签）、Attribute Directive（应用在元素上的Filter）、
@@ -337,7 +337,7 @@ AngularJS 2并不基于Web Component实现，但考虑到了对Web Component的�
 例如，可通过设置 `ViewEncapsulation.Emulated` 或 `ViewEncapsulation.Native` 来支持Shadow DOM封装。
 AngularJS 2 Component 也可以很容易地转换为 Web Component。
 
-## 支持 Native 的讨论
+### 支持 Native 的讨论
 
 Web Component 中组件注册为 CustomElement，与 DOM 一起解析和渲染。
 因此 Native 渲染 Web Component 只有一种方式：嵌入一个浏览器。
@@ -349,9 +349,9 @@ Web Component 中组件注册为 CustomElement，与 DOM 一起解析和渲染�
 <https://elements.polymer-project.org/elements/platinum-bluetooth>
 以及对应的 Web Bluetooth 标准草案： <https://webbluetoothcg.github.io/web-bluetooth/>
 
-# 扩展阅读
+## 扩展阅读
 
-## Web Components
+### Web Components
 
 * <https://github.com/webcomponents/webcomponentsjs>
 * <https://github.com/Polymer/polymer>
@@ -360,7 +360,7 @@ Web Component 中组件注册为 CustomElement，与 DOM 一起解析和渲染�
 * <https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements>
 * <https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/template>
 
-## Frameworks
+### Frameworks
 
 * <https://blog.nodejitsu.com/scaling-isomorphic-javascript-code/>
 * <https://github.com/xufei/blog/issues/3>

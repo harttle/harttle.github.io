@@ -8,7 +8,7 @@ tags: JavaScript Promise 异步
 本文参考了 [Promises/A+][promise-aplus]、[ECMA 2015][promise-es6] 等文档，
 测试了 [Bluebird][bb], Chrome 58.0.3029.110，Node.js 6.9.2 等环境，给出 Promise 异步行为。
 
-## TL; DR
+### TL; DR
 
 * `Promise.prototype.then` 传入的回调会在 NextTick（异步）执行
 * 构造 Promise 时传入的 `executor` 会立即执行
@@ -16,7 +16,7 @@ tags: JavaScript Promise 异步
 
 <!--more-->
 
-# onFulfilled 是异步的
+## onFulfilled 是异步的
 
 根据 [PerformPromiseThen][PerformPromiseThen] 算法，调用 `.then()` 时会将 `onFulfilled`, `onRejected` 两个回调作为新的 Job 传入 `EnqueueJob (queueName, job, arguments)`。
 即通过 `.then()` 传入的回调是异步执行的。
@@ -35,7 +35,7 @@ after .then call
 onFulfilled called
 ```
 
-# 构造 executor 是同步的
+## 构造 executor 是同步的
 
 传入 `new Promise(<executor>)` 的回调会立即执行，是同步的。例如：
 

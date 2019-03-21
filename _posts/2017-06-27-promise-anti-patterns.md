@@ -12,7 +12,7 @@ JavaScript 作为天生的客户端脚本，编写异步逻辑有着天然的优
 
 <!--more-->
 
-# 莫须有的嵌套
+## 莫须有的嵌套
 
 Promise 模式意在 Flatten 异步代码（参考 [Callback Hell][callbackhell]），
 所以在你嵌套很深时就要反思了。
@@ -52,7 +52,7 @@ Promise
 })
 ```
 
-# Promisify 一个 Promise
+## Promisify 一个 Promise
 
 用 Promise 封装一个已经是 Promise 的异步接口。比如：
 
@@ -83,7 +83,7 @@ function getPosts() {
 }
 ```
 
-# 随意吞掉错误
+## 随意吞掉错误
 
 Promise 托管异步代码返回的同时也托管了异步错误。
 不添加错误处理会吞掉错误，丢掉一个 Promise 的返回值也会直接吞掉错误。
@@ -116,7 +116,7 @@ function commentToPost(postId) {
 幸好像 Eslint 这样的工具已经可以在你编写代码的同时检查出丢掉的 Promise 返回值。
 对于 Eslint，Harttle 有 [一份很好的 Vim 配置][eslint-vim]。
 
-# Promise 数组
+## Promise 数组
 
 在 for 循环中创建 Promise 会非常难以理解，许多 Promise 实现都为此提供了
 `.map()`, `.reduce()` 等 API，好好利用它们！

@@ -10,7 +10,7 @@ tags: Vim-Practice CentOS Vim 编译
 
 <!--more-->
 
-# 安装依赖
+## 安装依赖
 
 安装各种依赖，比如 Vim 编译需要的 Python/Ruby 等支持。
 
@@ -19,13 +19,13 @@ yum -y groupinstall 'Development Tools'
 yum -y install ruby perl-devel python-devel ruby-devel perl-ExtUtils-Embed ncurses-devel
 ```
 
-# 克隆源码
+## 克隆源码
 
 ```bash
 git clone https://github.com/vim/vim.git --depth=1 && cd vim/
 ```
 
-# 编译
+## 编译
 
 为了 [使用 YouCompleteMe][vim-ide]，`configure` 时添加 Python 支持的参数。
 
@@ -37,7 +37,7 @@ sudo make install
 
 > 注意在 CentOS 6 中 `--with-tlib` 参数要填写 `tinfo`，参考 [这篇文章][tlib]。
 
-# 使用
+## 使用
 
 `make install` 后 Vim 就在 `/usr/loca/bin` 中了，为了在命令行直接使用，确保该路径在 `PATH` 中：
 

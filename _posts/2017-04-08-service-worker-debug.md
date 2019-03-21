@@ -9,7 +9,7 @@ tags: Chrome PWA 事件 测试 缓存 Service-Worker
 
 <!--more-->
 
-# Trusted Origin
+## Trusted Origin
 
 由于 Service Worker 可以任意操作缓存和截获所有页面 fetch 请求，
 Web 标准要求 Service Worker 文件本身的 URL 必须是 HTTPS 或 localhost 等受信域名（Trusted Origin）。
@@ -31,7 +31,7 @@ Web 标准要求 Service Worker 文件本身的 URL 必须是 HTTPS 或 localhos
 对于移动端测试可以做 https 的反向代理。自签证书是不行的，详见这个 Issue：
 <https://github.com/w3c/ServiceWorker/issues/691>
 
-# 跳过 waiting
+## 跳过 waiting
 
 我们知道 [Web Workers][web-worker] 分为 **专用 Worker**（dedicated worker）和 **共享 Worker**（shared worker）。
 Service Worker 属于后者，这意味着在一个标签页可以打印另一个标签页的访问日志哈哈。
@@ -63,7 +63,7 @@ self.addEventListener('install', function() {
 
 ![update on reload](/assets/img/blog/pwa/update-on-reload@2x.png)
 
-# 刷新的行为
+## 刷新的行为
 
 在 [使用 HTTP 缓存][http-cache] 一文提到了浏览器刷新按钮的行为，
 但是有 Service Worker 时情况会稍微复杂一些：
@@ -74,14 +74,14 @@ self.addEventListener('install', function() {
 * 勾选了 Application/SW 的 Bypass for network 时，所有网络请求不经过 Service Worker，无其他副作用。
 * 勾选了 Network 的 Disable cache 时，浏览器禁用 [HTTP 缓存][http-cache]，但 Service Worker 正常工作。**这是最常用的调试方式，无论是否启用了 Service Worker**。
 
-# 清空缓存
+## 清空缓存
 
 除了上述跳过缓存的方法之外，我们还可以直接清空 Chrome 的各种缓存。
 见 Application 标签页的 Clear Storage 选项卡。
 
 ![clear cache](/assets/img/blog/pwa/clear-cache@2x.png)
 
-# 网络跟踪
+## 网络跟踪
 
 此外经过 Service Worker 的 fetch 请求 Chrome 都会在 Network 标签页里标注出来，其中：
 
@@ -97,7 +97,7 @@ self.addEventListener('install', function() {
 
 ![service worker network](/assets/img/blog/pwa/service-worker-network@2x.png)
 
-# 参考阅读
+## 参考阅读
 
 * Service Worker Spec.: <https://w3c.github.io/ServiceWorker>
 * Chromium Service Worker FAQ: <https://www.chromium.org/blink/serviceworker/service-worker-faq>

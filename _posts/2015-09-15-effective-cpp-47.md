@@ -23,7 +23,7 @@ void advance(IterT& iter, DistT d);     // 如果d小于0，就逆向移动
 
 <!--more-->
 
-# STL迭代器回顾
+## STL迭代器回顾
 
 * 最简单的迭代器是**输入迭代器**（input iterator）和**输出迭代器**（output iterator），
 它们只能向前移动，可以读取/写入它的当前位置，但只能读写一次。比如`ostream_iterator`就是一个输出迭代器。
@@ -35,7 +35,7 @@ void advance(IterT& iter, DistT d);     // 如果d小于0，就逆向移动
 
 * **随机访问迭代器**（random access iterator）是最强的一类迭代器，可以支持`+=`, `-=`等移动操作，支持它的容器包括`vector`, `deque`, `string`等。
 
-# Tag 结构体
+## Tag 结构体
 
 对于上述五种迭代器，C++提供了五种Tag来标识迭代器的类型，它们之间是"is-a"的关系：
 
@@ -64,7 +64,7 @@ void advance(IterT& iter, DistT d){
 
 怎么得到`Iter`的类型呢？这正是traits的作用。
 
-# Traits
+## Traits
 
 Traits 不是关键字，也不是 std 类型或模板，它只是 C++ 中的一种编程惯例，允许我们在编译期得到类型的信息。
 用 Bjarne 的话讲，Traits 是一个用来携带信息的很小的对象（或结构），
@@ -83,7 +83,7 @@ struct iterator_traits;           // iterator types
 * 用户定义类型的迭代器
 * 基本数据类型的指针
 
-# 用户类型的迭代器
+## 用户类型的迭代器
 
 在用户定义的类型中，typedef该类型支持迭代器的Tag，例如`deque`支持随机迭代器：
 
@@ -107,7 +107,7 @@ struct iterator_traits {
 };
 ```
 
-# 基本数据类型的指针
+## 基本数据类型的指针
 
 上述办法对基本数据类型的指针是不起作用的，我们总不能在指针里面`typedef`一个Tag吧？
 其实这时只需要偏特化`iterator_traits`，因为内置类型指针都是可以随机访问的：
@@ -125,7 +125,7 @@ struct iterator_traits<IterT*>{
 2. 为那个信息起一个名字。比如`iterator_catetory`；
 3. 提供一个模板以及必要的特化，来包含你希望提供的类型信息。比如`iterator_traits`。
 
-# advance的实现
+## advance的实现
 
 我们已经用`iterator_traits`提供了迭代器的类型信息，是时候给出`advance`的实现了。
 

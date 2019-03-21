@@ -16,7 +16,7 @@ tags: Linux RSA SSH Shell TCP Unix X11
 
 <!--more-->
 
-# 自动登录安全吗？
+## 自动登录安全吗？
 
 在开始这些配置之前， 先概要地介绍一下SSH。
 以及打消一些不熟悉Linux的朋友对于自动登录安全性的无解。
@@ -44,14 +44,14 @@ SSH 协议包括三部分：传输协议，连接协议和认证协议。其中�
 公私钥是只有创建者可访问的，配置文件和对方公钥则是所有人可读创建者可写。
 （这也是为什么配置文件语法中不提供密码字段）
 
-# 配置过程
+## 配置过程
 
 客户端需要有一对密钥，公钥发送给服务器保存（在`authorized_keys`文件中）用来验证身份，
 私钥用来解密服务器发来的信息。
 熟悉RSA算法的朋友一定知道解密还需要对方公钥，服务器公钥是在初次建立连接时接收的，
 被保存在`authorized_keys`下。在此可以看到 SSH 协议中，服务器和客户端的角色是对称的。
 
-## 客户端生成密钥
+### 客户端生成密钥
 
 在建立连接前先要有一对公私密钥。可以查看 `~/.ssh` 目录，如果没有可使用 `ssh-keygen` 生成。
 
@@ -66,7 +66,7 @@ ssh-keygen
 比如Github是 SSH Key就是这个。
 `id_rsa`是私钥，可理解为解密用的密码，不可发送给任何人。
 
-## SSH 安装
+### SSH 安装
 
 首先服务器应当安装有`openssh`，如果没有请自行安装：
 
@@ -91,7 +91,7 @@ systemctl enable sshd
 
 > 关于systemd的使用可参考：[使用systemd管理Node.js应用][systemd-node]
 
-## 服务器配置
+### 服务器配置
 
 为你要登录的用户（比如harttle）创建`~/.ssh`目录以及`~/.ssh/authorized_keys`文件。
 并设置正确的权限（否则SSH会拒绝连接）：
@@ -108,7 +108,7 @@ touch ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/authorized_keys
 ```
 
-## 添加公钥到服务器
+### 添加公钥到服务器
 
 切换回客户端，拷贝客户端公钥到服务器的`authorized_keys`文件：
 
@@ -122,7 +122,7 @@ cat ~/.ssh/id_rsa.pub | ssh yangjvn@126.com 'cat >> .ssh/authorized_keys'
 ssh yangjvn@126.com
 ```
 
-## 客户端配置
+### 客户端配置
 
 客户端配置可以方便SSH连接过程。上述代码中连接到`harttle.land`并不困难，
 但是如果你的服务器自定义的端口，或者需要自定义私钥路径，或者要X Forward，

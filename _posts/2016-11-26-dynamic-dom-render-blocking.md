@@ -7,7 +7,7 @@ tags: CSS Chrome DOM DOM解析 异步 Firefox
 探讨了静态页面中的JavaScript/CSS的载入和解析对DOM渲染的影响。
 本文接着讨论异步渲染场景下JavaScript/CSS对DOM解析（Parsing）和渲染（Rendering）的影响。
 
-# TL;DR
+## TL;DR
 
 * 动态插入的外部样式表或脚本不阻塞DOM解析或渲染。
 * 动态插入的内联样式表或脚本会阻塞DOM解析和渲染。
@@ -16,7 +16,7 @@ tags: CSS Chrome DOM DOM解析 异步 Firefox
 
 <!--more-->
 
-# 外部样式表
+## 外部样式表
 
 动态插入的外联样式表不阻塞DOM渲染，当然也不阻塞解析。
 我们可以通过插入一个样式表、再插入一些脚本和文字来测试：
@@ -43,7 +43,7 @@ document.body.appendChild(h2);
 
 ![dynamic-link-not-block-rendering][dynamic-link-not-block-rendering]
 
-# 内联样式表
+## 内联样式表
 
 与外链样式表不同，内联样式表会阻塞DOM解析（当然渲染也会被阻塞）。
 其实不能叫阻塞啦，因为不涉及网络请求，内联样式表的解析本来就是同步的。
@@ -68,7 +68,7 @@ console.log(document.styleSheets[0].rules[0].cssText);
 * 插入前样式表为空，说明未连接到DOM树的内联样式不会被解析。
 * 插入后样式表会被立即解析，甚至不会进入下一个[事件循环][event-loop]。
 
-# 外部脚本
+## 外部脚本
 
 动态插入的外部脚本的载入是异步的，不会阻塞解析或者渲染。
 这意味着动态插入一个外部脚本后不可立即使用其内容，需要等待加载完毕。
@@ -85,7 +85,7 @@ console.log('after script', window.React);
 
 ![dynamic-external-script-wont-block][dynamic-external-script-wont-block]
 
-# 内联脚本 
+## 内联脚本 
 
 与静态内联脚本一样，动态插入内联脚本也会阻塞DOM解析（Parsing）。
 
@@ -104,7 +104,7 @@ console.log('after script');
 1. `"before script"`出现在`"from script"`之前，说明未连接到DOM树的脚本不会被执行。
 2. `"after script"`出现在`"from script"`之后，说明内联脚本的插入会阻塞DOM解析。
 
-# 未连接的CSS/JS不会被载入
+## 未连接的CSS/JS不会被载入
 
 通过上述实验我们知道没有连接到DOM树的内联CSS/JS不会被解析，
 事实上没有连接到DOM树
@@ -140,7 +140,7 @@ document.body.append(script);
 > `Image`与CSS/JS的行为非常不一样，只要设置`src`属性图片便会立即加载（`(new Image).src = 'foo'`）。
 > 这一特性常被用来发送[跨域][cors]访问日志。
 
-# 资源载入事件
+## 资源载入事件
 
 脚本和样式载入事件可以直接监听到，当然这只对非阻塞的资源获取有效。
 需要注意的是浏览器兼容性：绝大多数情况监听`onload`和`onerror`即可，
@@ -166,7 +166,7 @@ function createScript(src){
 
 嗯，在Chrome下触发了`onload`和`onerror`。
 
-# 扩展阅读
+## 扩展阅读
 
 * WHATWG Rendering: <https://html.spec.whatwg.org/multipage/rendering.html>
 * WHATWG Stylesheet: <https://html.spec.whatwg.org/multipage/semantics.html#link-type-stylesheet>

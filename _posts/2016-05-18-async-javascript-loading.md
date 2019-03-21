@@ -15,7 +15,7 @@ redirect_from: /2016/03/14/non-blocking-javascript-loading.html
 
 <!--more-->
 
-# DOM 渲染流程
+## DOM 渲染流程
 
 要理解异步脚本载入的用处首先要了解浏览器渲染DOM的流程，以及各阶段用户体验的差别。
 一般地，一个包含外部样式表文件和外部脚本文件的HTML载入和渲染过程是这样的：
@@ -30,7 +30,7 @@ redirect_from: /2016/03/14/non-blocking-javascript-loading.html
 此外，虽然浏览器会并行地下载资源文件（样式表、图片），但通常会限制并发下载数，一般为3-5个。
 资源文件的下载也可以进行优化，请参考：[Web 性能优化：prefetch, prerender][network]。
 
-# 脚本加载阻塞 DOM 渲染
+## 脚本加载阻塞 DOM 渲染
 
 脚本载入真的会暂停DOM渲染吗？非常真切。
 比如下面的HTML中，在脚本后面还有一个`<h1>`标签。
@@ -58,7 +58,7 @@ redirect_from: /2016/03/14/non-blocking-javascript-loading.html
 
 > 很多被墙的网站加载及其缓慢就是因为DOM主体前有脚本被挡在墙外了。
 
-# 异步加载脚本：插入外链脚本标签
+## 异步加载脚本：插入外链脚本标签
 
 浏览器“载入中”的提示会让用户感觉网页慢！事实上我们应该关心的网页性能就是用户感受的性能。
 这个“载入中”的提示消失的时机基本就是 `load` 事件发生的时机。所以问题就变成了如何提前 `load` 事件。
@@ -84,7 +84,7 @@ document.addEventListener('load', function(){
 即使在 `DOMContentLoaded` 事件时插入 `<script>` 也不起作用，
 因为 `DOMContentLoaded` 事件发生在 `load` 事件之前。
 
-# 异步加载脚本：XHR+Eval
+## 异步加载脚本：XHR+Eval
 
 我们知道[XHR][xhr]可以用来执行异步的网络请求，XHR Eval方法的原理便是通过XHR下载整个脚本，通过`eval()`函数来执行这个脚本。
 
@@ -99,7 +99,7 @@ JS的执行时间很短暂，可以认为页面始终不会停止响应。
 因为`eval()`方法是不安全的，可以创建一个`<script>`标签，并把XHR获取的脚本注入进去。
 再把 `<script>` 标签插入 DOM 它的内容就会执行。
 
-# 异步加载脚本：Defer/Async
+## 异步加载脚本：Defer/Async
 
 这是 HTML5 中标准的属性，用来在 HTML 标记中声名式地指定异步加载脚本。
 除了 Opera 之外的浏览器基本都有支持。这个机制包括两个属性：[defer][script]和[async][script]。
@@ -118,7 +118,7 @@ JS的执行时间很短暂，可以认为页面始终不会停止响应。
 * 设置 `defer`：在下载脚本时HTML仍然在解析，HTML解析完成后再执行脚本。延迟执行不会阻塞渲染，额外的好处是脚本执行时页面已经渲染结束。
 * 设置 `async`：在下载脚本时 HTML 仍然在解析，下载完成后暂停HTML解析立即执行脚本。
 
-# 参考代码
+## 参考代码
 
 本文所做实验服务器端都使用Node.js写成：
 

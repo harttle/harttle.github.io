@@ -17,13 +17,13 @@ Harttle曾使用过上百个Grunt/Gulp插件，尝试着去体会它们所承诺
 
 <!--more-->
 
-# Make能否满足前端的构建需求？
+## Make能否满足前端的构建需求？
 
 **make是通用构建工具，能满足一切构建需求。**
 
 而且比其他任何构建工具都更高效和简洁，下文中Harttle将从实际需求出发来证实这一点。
 
-# 合并文件
+## 合并文件
 
 是不是有一个叫做[grunt-contrib-concat][grunt-concat]的Grunt插件？
 是不是有一个叫做[gulp-concat][gulp-concat]的Gulp插件？
@@ -40,7 +40,7 @@ out.js: src/*.js
 [make][make]与Unix STDIN/STDOUT有着天然的亲和，
 上述代码甚至比[grunt-contrib-concat][grunt-concat]的配置还简洁。
 
-# 拷贝文件
+## 拷贝文件
 
 拷贝文件仍然不许任何插件，但支持通配：
 
@@ -49,7 +49,7 @@ build/foo.js: src/foo.js
 ```
 除了合并文件外，make还会检查文件的修改日期以避免不必要的重复构建。
 
-# 压缩静态文件
+## 压缩静态文件
 
 ```makefile
 dist/out.min.js: out.js lib/jquery.js
@@ -66,7 +66,7 @@ dist/out.min.js: out.js lib/jquery.js
 最后一条命令如果是`uglifyjs $^ > $@`同样可行，只是会多处理一些文件。
 从这里可以看到Make在表达更多逻辑的同时并未增加代码量。
 
-# 批量处理
+## 批量处理
 
 在JavaScript世界中我们通过Glob来批量选择文件，在Make中则需要借助于Shell通配符和命令。
 
@@ -87,7 +87,7 @@ $(TARGETS): build/%: src/%
 `%`的用法称为[静态模式][makefile]，用来定义批量的依赖规则。
 上述代码的意图是将`src/`下的源文件拷贝到`build/`下。
 
-# 强制执行
+## 强制执行
 
 Make默认会检查文件的新旧，这会导致有时我们运行`make`相关的命令并未执行，
 例如：
@@ -109,7 +109,7 @@ clean:
     rm -rf build
 ```
 
-# 替换静态资源
+## 替换静态资源
 
 因为在Web站点发布后需要使用与源码中不同的静态资源地址，
 通常是经过合并压缩，并且CDN化的。
@@ -140,7 +140,7 @@ $(VIEW_OBJS): build/%: src/%
 * `JS`变量中保存着所有被引用到的脚本列表，我们需要这个列表来生成`site.min.js`。
 * 生成`$(VIEW_OBJS)`的逻辑是：先移除所有的`<script>`标签，再在`<body>`尾添加`site.min.js`。
 
-# 生成MD5
+## 生成MD5
 
 对于MD5我们需要的只是`cksum`工具，而它在1995年就进入了BSD Unix。
 几乎所有的Linux和Mac都可用。下面这段脚本用来生成CSS/JS的MD5并写入`.manifest`：

@@ -13,7 +13,7 @@ tags: Bash GNU Linux Node.js Session Tmux Vim 快捷键
 
 <!--more-->
 
-# 什么是 Tmux
+## 什么是 Tmux
 
 [Tmux][tmux] 是一个 BSD 协议发布的终端复用软件，用来在服务器端托管同时运行的 Shell。那么 Tmux 用起来是怎样的呢？看图：
 
@@ -22,7 +22,7 @@ tags: Bash GNU Linux Node.js Session Tmux Vim 快捷键
 Tmux 最经典的使用场景便是用 Tmux+Vim 来做一个IDE，其中Vim部分的配置过程记录在了[这里][vim-ide]。
 本文介绍Tmux的安装配置，以及常见问题的解决方式。
 
-## iTerm 的窗格和 Tmux 有什么区别？
+### iTerm 的窗格和 Tmux 有什么区别？
 
 iTerm是一个GUI软件，它的窗格只是窗格而已！而Tmux是终端复用，在一个命令行窗口中不仅可以显示多个Shell的内容，而且可以保持多个会话。
 最重要的是：Tmux和Vim一样属于字符终端软件，不需要任何GUI的支持，在远程登录时尤其有用。
@@ -30,12 +30,12 @@ iTerm是一个GUI软件，它的窗格只是窗格而已！而Tmux是终端复�
 > 终端和 Shell 有什么区别？请参考 
 > [Shell的相关概念和配置方法](/2016/06/08/shell-config-files.html)。
 
-## Tmux 和 screen 有什么区别？
+### Tmux 和 screen 有什么区别？
 
 这两个都是做终端复用的，我在阿里云 ECS 上 [搭建Node.js API服务器][node-web] 时用过 `screen`，它是 GNU 软件，而 Tmux 是 BSD 的协议。
 它们最主要的区别是 Tmux 支持 Vi/Emacs 风格的键盘映射，更好的接口和文档，以及更好的脚本控制。所以建议使用 Tmux！
 
-# 安装使用
+## 安装使用
 
 首先进行安装：
 
@@ -60,14 +60,14 @@ yum install tmux        # Centos
 
     tmux a -t myname  (or at, or attach)
 
-# 基本配置
+## 基本配置
 
 默认的`<prefix>`是`Ctrl+b`，如果你觉得不好按可以调整为`Ctrl+a`，只需要在配置文件`~/.tmux.conf`中加入：
 
     unbind ^b
     set -g prefix 'C-a'
 
-## 载入配置
+### 载入配置
 
 为了能让Tmux动态载入配置而不是重启，我们设一个快捷键`<prefix>r`来重新载入配置：
 
@@ -75,7 +75,7 @@ yum install tmux        # Centos
 
 > 注意，通过`<prefix>r`重新载入配置并不等同于重启，只是增量地执行了配置文件中的所有命令而已。如果配置未生效，可以通过`tmux kill-server`来强行关闭Tmux。
 
-## 导出配置
+### 导出配置
 
 如果你想知道当前tmux的设置，可通过`tmux show -g`来查看（该命令需要tmux正在运行）。
 你可能会需要把这些设置导出为文件：
@@ -84,7 +84,7 @@ yum install tmux        # Centos
 tmux show -g >> current.tmux.conf
 ```
 
-# 拷贝粘贴
+## 拷贝粘贴
 
 在Tmux中通过`[`进入拷贝模式，按下`<space>`开始拷贝。然后用Vim/Emacs快捷键选择文本，按下`<Enter>`拷贝所选内容。然后通过`]`进行粘贴。
 
@@ -104,7 +104,7 @@ tmux show -g >> current.tmux.conf
 
 > 旧版本中开始选择和复制选中快捷键绑定方式不同，请参考 <https://github.com/tmux/tmux/issues/592>
 
-# 快捷键
+## 快捷键
 
 下面列出了在 Tmux 中经常使用的快捷键，在下面给出的按键之前需要先按下 `<prefix>`，
 如果你没有设置过它，默认是 `Ctrl+b`。
@@ -139,7 +139,7 @@ bind J resize-pane -D 5     # 向下扩展
 
 > 完整的快捷键列表可以参考： <https://gist.github.com/MohamedAlaa/2961058>
 
-# Unicode 显示问题
+## Unicode 显示问题
 
 Tmux 通过 `LC_ALL`, `LC_CTYPE`, `LANG` 环境变量来判断是否终端支持 UTF-8。
 这样的判断有时是不准确的，导致 Tmux 中无法显示 Unicode。解决思路有两个：
@@ -151,7 +151,7 @@ Tmux 通过 `LC_ALL`, `LC_CTYPE`, `LANG` 环境变量来判断是否终端支持
     tmux -u
     ```
 
-# 启用鼠标
+## 启用鼠标
 
 Tmux 和 Vim 风格非常像，也可以设置鼠标模式。下面的设置开启了所有鼠标功能：
 点击选择窗格/窗口，拖动窗格大小，以及拖动鼠标复制文字。
@@ -162,7 +162,7 @@ Tmux 和 Vim 风格非常像，也可以设置鼠标模式。下面的设置开�
 > 等4 个选项来开启所有鼠标功能，现在只需要设置 `mouse` 选项了。
 > 使用 `tmux -V` 可以查看当前安装的 tmux 版本，版本更新日志见 [Tmux Changelog][changelog]。
 
-# Attach 到用户空间
+## Attach 到用户空间
 
 有写童鞋会发现在 Tmux 中执行 `open`, `sudo` 等命令会有错误如下：
 
@@ -194,14 +194,14 @@ set -g default-command "reattach-to-user-namespace -l /usr/local/bin/zsh"
 > 这里的 `/usr/local/bin/zsh` 要对应于你的默认 Shell 的路径，如果你没做过手脚的话，应该在`/usr/bin/bash`。
 > 可以通过 `echo $SHELL` 查看当前 Shell 的路径。
 
-# Session 偶尔丢失
+## Session 偶尔丢失
 
 Tmux 中 Session 或 Window 丢失可能的原因有很多，需要仔细排查。检查 `tmux` 日志，以及检查 [Shell 的各级配置][shell]。
 
 * 比如 Shell 的 `TMOUT` 环境变量会让超时后的 Shell 自动退出，最终导致 Session 关闭。
 * 比如临时文件夹被清空导致 socket 丢失，参考：<https://community.webfaction.com/questions/9462/tmux-session-lost-in-unknown-pts-cause-and-possible-solution>
 
-## 新 Shell 的工作目录
+### 新 Shell 的工作目录
 
 我们发现当打开新窗格时 Shell 仍然在Home目录。
 这是 Tmux 的默认行为，可以在配置文件中设置为当前 Shell 所在目录：
@@ -211,7 +211,7 @@ bind '"' split-window -c '#{pane_current_path}'
 bind '%' split-window -h -c '#{pane_current_path}'
 ```
 
-# 扩展阅读
+## 扩展阅读
 
 * TMUX 与 Screen 的区别：<http://unix.stackexchange.com/questions/549/tmux-vs-gnu-screen>
 * Cheetsheet: <https://gist.github.com/MohamedAlaa/2961058>

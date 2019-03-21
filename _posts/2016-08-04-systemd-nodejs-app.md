@@ -9,7 +9,7 @@ tags: MongoDB Node.js Redis systemd
 在这些Linux系统中，用原生的systemd来托管[Node.js][node]进程足够满足一般开发者的要求。
 借由systemd可以很方便地处理依赖关系和监测日志。
 
-# systemctl
+## systemctl
 
 `systemctl`是查询和控制systemd的主要命令，下面以`mongod`为例介绍常用参数：
 
@@ -34,7 +34,7 @@ systemctl disable mongod
 
 > 更多信息可查阅man page：`man systemctl`
 
-# 单元文件
+## 单元文件
 
 每个systemd服务均由一个[单元文件][unitfile-arch]来定义。
 这些单元文件位于`/usr/lib/systemd/system/`和`/etc/systemd/system/`，
@@ -77,7 +77,7 @@ SyslogIdentifier=myapp
 
 > 更多信息可查询man page: `man systemd.unit`
 
-# 监测日志
+## 监测日志
 
 systemd采用cgroups来监测进程，这意味着fork得到的子进程也不会脱离日志。
 systemd单元默认的日志输出为syslog，可通过`journalctl`来查看：
@@ -93,7 +93,7 @@ journalctl -u myapp
 journalctl -f
 ```
 
-# 依赖关系
+## 依赖关系
 
 [Node.js][node]应用通常会依赖于其他的服务，比如[MongoDB][mongodb]、[Redis][redis]等。
 这意味着myapp在开机启动时可能会因这些进程未启动而失败。
@@ -106,7 +106,7 @@ Requires=mongodb.service redis.service
 After=mongodb.service redis.service
 ```
 
-# 环境与用户组
+## 环境与用户组
 
 systemd支持为每个单元文件设置用户组，以及环境变量。
 这在[Node.js][node]的Web应用部署和安全提供了方便。

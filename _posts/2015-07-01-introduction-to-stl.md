@@ -12,7 +12,7 @@ STL中有三个重要的概念：
 2. 迭代器：迭代器用来迭代地访问容器中的元素。
 3. 算法：用来操作容器中的元素，是一系列的函数模板。
 
-# STL 容器
+## STL 容器
 
 STL中的容器定义在`std`命名空间下，需要引入头文件
 `<vector>`, `<set>`, `<map>`, `<deque>`, `<list>`, `<stack>`
@@ -52,7 +52,7 @@ stack<string> strstk;         // string 型栈，deque实现
 stack<int, vector<int>> stk;  // int 型栈，vector实现
 ```
 
-# STL 迭代器
+## STL 迭代器
 
 只有第一类容器支持迭代器（容器适配器不支持迭代器）。来个例子：
 
@@ -84,7 +84,7 @@ for(list<int>::const_iterator i = l.begin(); i != l.end(); ++i){
 
 <!--more-->
 
-# STL 算法
+## STL 算法
 
 STL通过函数模板提供了很多作用于容器的通用算法，例如查找、插入、删除、排序等，需要引入头文件`<algorithm>`。
 
@@ -139,7 +139,7 @@ itup=mymap.upper_bound ('d');   // itup points to e (not d!)
 
 参见： <http://www.cplusplus.com/reference/map/map/upper_bound/>
 
-# 实现一个Iterator
+## 实现一个Iterator
 
 为了实现上述`ostream_iterator`，需要了解`copy`的实现方式：
 

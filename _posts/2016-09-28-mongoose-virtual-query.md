@@ -17,7 +17,7 @@ tags: MongoDB mongoose Schema
 
 <!--more-->
 
-# Mongoose 中的 Hook
+## Mongoose 中的 Hook
 
 Mongoose Schema几乎所有静态方法和对象方法都添加了
 [`.pre`][schema-pre]和[`.post`][schema-post]钩子。
@@ -46,7 +46,7 @@ Document.pre('save', function validate(next) {
 
 在`Document.save()`被调用时，上述`validate`函数就会被回调。
 
-# 添加查询钩子
+## 添加查询钩子
 
 Mongoose没有对[hooks-js][hooks-js]进一步封装，这意味着我们不能对所有Query方法设置钩子，
 只能一一枚举需要监视的方法。当然，这不影响我们进行代码复用。
@@ -58,7 +58,7 @@ CompanySchema.pre('findOne', preFind).pre('find', preFind);
 
 接下来便着手实现`preFind`函数。
 
-# 实现虚拟查询
+## 实现虚拟查询
 
 在钩子（`preFind`）中，我们可以更改查询条件借此实现虚拟查询。
 值得注意的是，完全可控的Query意味着我们可以实现任何形式的虚拟查询。

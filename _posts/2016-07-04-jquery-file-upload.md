@@ -10,7 +10,7 @@ Harttle认为，我们引入jQuery来进行异步上传可以获得更好的用�
 
 <!--more-->
 
-# HTML 
+## HTML 
 
 一个`type=file`的`<input>`就可以让用户来浏览并选择文件，
 一般会把输入控件放到一个`<form>`中，下面的一个简单的表单：
@@ -28,7 +28,7 @@ Harttle认为，我们引入jQuery来进行异步上传可以获得更好的用�
 <input type="file" id="avatar" name="avatar" multiple>
 ```
 
-# 获取文件列表
+## 获取文件列表
 
 上述的`<input>`将会拥有一个叫`files`的DOM属性，包含了所选的文件列表（`Array`）。
 
@@ -49,7 +49,7 @@ $('button').click(function(){
 
 > 见：<https://developer.mozilla.org/zh-CN/docs/Using_files_from_web_applications>
 
-# multipart/form-data
+## multipart/form-data
 
 上传文件比较特殊，其内容是二进制数据，而HTTP提供的是基于文本的通信协议。
 这时需要采用`multipart/form-data`编码的HTTP表单。其HTTP消息体格式如下所示：
@@ -72,7 +72,7 @@ Content-Type: image/png
 
 > 更多关于HTTP表单编码的细节，请参考：[HTTP 表单编码 enctype][form-enc]。
 
-# jQuery上传文件
+## jQuery上传文件
 
 这是XMLHttpRequest Level 2提供的`FormData`对象可以帮助我们进行二进制文件的
 `multipart/form-data`编码：
@@ -97,7 +97,7 @@ $('button').click(function(){
 
 `url`, `type`, `data`想必做前端的都很熟悉了，介绍其余三个参数：
 
-## cache
+### cache
 
 `cache`设为`false`可以禁止浏览器对该URL（以及对应的HTTP方法）的缓存。
 jQuery通过为URL添加一个冗余参数来实现。
@@ -107,7 +107,7 @@ jQuery通过为URL添加一个冗余参数来实现。
 
 > 参考：<http://api.jquery.com/jquery.ajax/>
 
-## contentType
+### contentType
 
 jQuery中`content-type`默认值为`application/x-www-form-urlencoded`，
 因此传给`data`参数的对象会默认被转换为query string（见[HTTP 表单编码 enctype][form-enc]）。
@@ -115,7 +115,7 @@ jQuery中`content-type`默认值为`application/x-www-form-urlencoded`，
 我们不需要jQuery做这个转换，否则会破坏掉`multipart/form-data`的编码格式。
 因此设置`contentType: false`来禁止jQuery的转换操作。
 
-## processData
+### processData
 
 jQuery会将`data`对象转换为字符串来发送HTTP请求，默认情况下会用
 `application/x-www-form-urlencoded`编码来进行转换。
@@ -123,7 +123,7 @@ jQuery会将`data`对象转换为字符串来发送HTTP请求，默认情况下�
 
 > 我们给的`data`就是已经用`FormData`编码好的数据，不需要jQuery进行字符串转换。
 
-# 兼容性与其他选择
+## 兼容性与其他选择
 
 本文介绍的jQuery文件上传方式依赖于[`FormData`][formdata]对象， 
 这是XMLHttpRequest Level 2接口，

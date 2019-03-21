@@ -14,7 +14,7 @@ HTML style属性拥有最高优先级，浏览器默认样式（UA Default）优
 
 <!--more-->
 
-# CSS标准
+## CSS标准
 
 根据[CSS3标准中关于选择符优先级的说明][css3-spec]，CSS选择器的优先级计算方式如下：
 
@@ -31,7 +31,7 @@ HTML style属性拥有最高优先级，浏览器默认样式（UA Default）优
 * [CSS2.1标准][css21-spec]中指出，HTML`style`属性比样式表拥有更高的优先级。
 * 重复同样的选择符可用来增加优先级（例如`.active.active`）。
 
-# 一个例子
+## 一个例子
 
 ```css
 *               /* a=0 b=0 c=0 -> 优先级 =   0 */
@@ -47,7 +47,7 @@ li.red.level    /* a=0 b=2 c=1 -> 优先级 =  21 */
 
 > 代码来源：<https://www.w3.org/TR/css3-selectors/#specificity>
 
-# 外部样式表
+## 外部样式表
 
 外部样式表（`<link>`）与文件内样式表（`<style>`）具有相同的优先级。
 Demo如下：
@@ -70,7 +70,7 @@ h2{
 
 `index.html`的`<h2>`在Chrome中显示为蓝色，证明`<style>`优先级并不比`<link>`高。
 
-# 参考阅读
+## 参考阅读
 
 * <http://www.w3.org/wiki/CSS/Training/Priority_level_of_selector>
 * <http://www.hongkiat.com/blog/css-priority-level/>

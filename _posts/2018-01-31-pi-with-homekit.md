@@ -11,7 +11,7 @@ tags: GPIO Node.js UART HomeKit Raspberry
 
 <!--more-->
 
-# 原理介绍
+## 原理介绍
 
 从 iOS 8（2014年9月）开始，苹果内置了[名为 Home 的应用][home]，让 iPhone/iPad 可以控制智能设备。
 设备间通信采用基于 HTTP（视频相关是 RTCP）的控制协议，叫做 HomeKit，协议标准可以在 Apple Developer 网站下载到：<https://developer.apple.com/homekit/specification/>。
@@ -24,7 +24,7 @@ HomeKit 是苹果设备之间的协议，只要你买的设备支持 HomeKit，�
 
 ![home](/assets/img/blog/iot/homebridge@2x.png)
 
-# 准备材料
+## 准备材料
 
 * 任意一台 iOS 设备，如果需要远程操作，需要有一台 Apple TV, HomePod, 或 iPad 放在家里。
 * 一个树莓派，或者可以 24h 常开的 PC。如果使用 PC 需要 UART -&lt; USB 转接器来连接 UART 传输协议的设备。
@@ -36,19 +36,19 @@ HomeKit 是苹果设备之间的协议，只要你买的设备支持 HomeKit，�
 对于可以遥控的非智能设备，可以通过空调伴侣来控制它，而空调伴侣是有 homebridge 插件的。
 理论上可以控制任何红外线控制的设备。
 
-# 硬件组装
+## 硬件组装
 
 [Harttle](/) 有一台[小米空气净化器](https://www.mi.com/air2/)、
 一个 [PMS5003ST](http://www.plantower.com/content/?95.html) 传感器、
 一个 [DS-CO2-20](http://www.plantower.com/content/?99.html) 传感器。
 
-## 空气净化器
+### 空气净化器
 
 我有一个2代的小米空气净化器：<https://www.mi.com/air2/>。
 它本身就是智能设备，只是不支持 HomeKit。
 我们保证它连接到局域网即可，不需做任何改造。
 
-## PMS5003ST
+### PMS5003ST
 
 攀藤科技的 PMS 系列的产品都是 PM2.5 检测器，5003ST 集成了温湿度、甲醛传感器。
 该传感器采用 UART 协议传输数据，正好 Raspberry Pi 3 提供了一个板载 UART 模块。
@@ -58,7 +58,7 @@ HomeKit 是苹果设备之间的协议，只要你买的设备支持 HomeKit，�
 其中 RX 可以不连，因为数据默认是被动接收的，不需要控制命令。
 Raspberry 的 GPIO 接口可以参考官方文档：<https://www.raspberrypi.org/documentation/usage/gpio/>
 
-## DS-CO2-20
+### DS-CO2-20
 
 这也是攀藤科技的产品，用来测量 CO2 浓度的，自然的值是 500ppm，室内略高，到 800ppm 会感到困。
 可以用这个值设置一个报警，提醒 Harttle 及时通风。
@@ -70,7 +70,7 @@ DS-CO2-20 也是 UART 协议，但树莓派3只有一个硬解码 UART。选项�
 
 DS-CO2-20 的数据是被动的，需要发命令给它才会发数据，所以 RX 和 TX 都要连接。
 
-## 组装图
+### 组装图
 
 附上 Harttle 的组装效果图：
 
@@ -78,7 +78,7 @@ DS-CO2-20 的数据是被动的，需要发命令给它才会发数据，所以 
 
 其中蓝色的块是 PMS5003ST，银色的块是 DS-CO2-20，插在一个转接口上。
 
-# 软件
+## 软件
 
 先安装 Node.js：<http://nodejs.org>
 
@@ -107,7 +107,7 @@ $ homebridge
 
 红色灯是电源，会闪动的黄色灯是 CO2 传感器，蓝色灯是 CO2 传感器的转接头。
 
-# 远程操作和隐私
+## 远程操作和隐私
 
 Home 数据虽然是通过 HomeKit 在局域网传输的，但必须开启 iCloud 才可用 Home App，
 这意味你的数据一定会流经 iCloud（云上贵州？），因而完全可以远程操作。

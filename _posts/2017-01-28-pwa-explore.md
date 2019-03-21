@@ -17,7 +17,7 @@ PWA 具有这些特性：Reliable, Fast, Engaging。
 
 <!--more-->
 
-# Native or Web?
+## Native or Web?
 
 从 HTTP 的发明到 AJAX 的流行，Web 在整个应用市场中获得了极大的胜利，
 但智能手机带来的移动互联网潮流中，Native 应用凭借更好的系统集成以及快速的技术迭代成为这一时代的弄潮儿。
@@ -41,7 +41,7 @@ PWA 具有这些特性：Reliable, Fast, Engaging。
 
 下文关于 PWA 系列技术标准的介绍，回答了如何以 Web 的方式满足移动互联网的需求。
 
-# What is a Progressive Web App?
+## What is a Progressive Web App?
 
 PWA 就是提供类似 App 体验的网站，其具体技术包括
 [Service worker][service-worker]、
@@ -64,7 +64,7 @@ PWA 就是提供类似 App 体验的网站，其具体技术包括
 这一切都是 Web，有着开放的标准和文档，以及开放的解决方案。
 下文中就 PWA 中的关键技术做概述性的介绍。
 
-# Service Worker
+## Service Worker
 
 既 HTML5 [AppCache][appcache]（Application Cache） 的失败之后，新的 Service Worker 标准意在提供更加灵活的
 [Cache API][api-cache]，加上新的 Fetch API （见下文）可以完全控制客户端缓存。
@@ -106,7 +106,7 @@ self.addEventListener('fetch', function(event) {
 上述代码来自 [The Offline Cookbook][offline-cookbook]。
 其中调用了 `fetch()` 来进行真正的网络请求，即下文的 Fetch API。
 
-# Fetch API
+## Fetch API
 
 [Fetch API][fetch-api] 设计为比 [XMLHttpRequest][xhr] 更低层的 API，
 意在统一页面中的各种 Fetch（包括 `img`、`script`、`lint`、`importScripts()`, `cursor` 等），
@@ -124,7 +124,7 @@ Fetch API 不是 Magic，同样遵循 [HTTP 缓存机制][http-cache]，它与`x
 但回调函数的上下文现在是 [ServiceWorkerGlobalScope][swgs]，而不是页面脚本中的 `window`。
 `fetch` CORS 资源并需要读取其内容时，不仅服务器需要返回 CORS 相关状态码，在发送请求时也需要[声明 `cors`][fetch-cors]。
 
-# Push Notification
+## Push Notification
 
 [推送通知][push]（Push Notification）是 Engagement 特性的技术支撑，这可能商业网站最关心的一点。
 需要 Chrome 50（Android Chrome 55）。离线推送时 Service Worker 并不在运行，
@@ -165,7 +165,7 @@ https://tools.ietf.org/html/draft-ietf-webpush-protocol-12
         |                      |                      |
 ```
 
-# Web App Manifest
+## Web App Manifest
 
 Web App 也可以启用一些像 Native App 一样的特性：
 比如添加图标到主屏幕，以全屏方式打开（不带任何浏览器 UI）。
@@ -182,7 +182,7 @@ Web App 也可以启用一些像 Native App 一样的特性：
 * 标准状态：Working Draft
 * 兼容性：Chrome38+, Opera 32+, Chrome for Android 57+, Opera Mobile 37+, Samsung Internet 4+, QQ Browser 1.2+
 
-## 添加到主屏
+### 添加到主屏
 
 如果你设置了下面的 Manifest 字段且拥有一个 service worker，
 只要用户在5分钟内访问两次 Chrome 便会提示用户添加到主屏。
@@ -195,7 +195,7 @@ Web App 也可以启用一些像 Native App 一样的特性：
 如果为了测试可以在 `chrome://flags` 中直接关掉 `user engagement detection`，Chrome 的具体策略见
 [increasing engagement with app install banners in chrome for android][engagement]一文。
 
-## 启动过程动画
+### 启动过程动画
 
 在 Chrome 中，PWA 桌面图标的启动动画是由 `manifest` 中 `name`, `background_color`, `icons` 字段动态生成的。
 目前尚不可自定义，可以预见这里还有不少的标准化工作。
@@ -206,7 +206,7 @@ Web App 也可以启用一些像 Native App 一样的特性：
 还有一些其他特性也很有用，比如利用 [Background Sync][bg-sync] 可以让浏览器在下一次联网时后台发送未完成的请求。
 最后 Harttle 给一个简单的 PWA Demo，以供参考和点评：<https://weatherpwa.baidu.com>
 
-# 扩展阅读
+## 扩展阅读
 
 * PWA (by Google Developers): <https://developers.google.com/web/progressive-web-apps/>
 * PWA (by Alex Russell) <https://infrequently.org/2015/06/progressive-apps-escaping-tabs-without-losing-our-soul/>

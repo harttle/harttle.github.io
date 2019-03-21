@@ -14,7 +14,7 @@ Git-daemon 文档：<https://git-scm.com/docs/git-daemon>
 
 <!--more-->
 
-# 安装git-daemon
+## 安装git-daemon
 
 安装git软件包，git-daemon就会随之安装。
 
@@ -25,7 +25,7 @@ yaourt -S git
 sudo apt-get install git git-core
 ```
 
-# 创建Git目录
+## 创建Git目录
 
 在创建Git服务目录前，需要创建一个git用户。
 
@@ -51,7 +51,7 @@ cd /srv/git/my-first-repo.git
 git config daemon.receivepack true
 ```
 
-# 配置SSH Key
+## 配置SSH Key
 
 我们希望通过SSH方式来进行Git访问，
 只需把你的公钥添加到git用户的`authorized_keys`下即可。
@@ -71,7 +71,7 @@ touch .ssh/authorized_keys && chmod 600 .ssh/authorized_keys
 默认公钥文件名是`~/.ssh/id_rsa.pub`。
 
 
-# 启动Git服务
+## 启动Git服务
 
 在采用systemd服务管理器的Linux发行版中，通过`systemctl`启动git-daemon：
 
@@ -85,7 +85,7 @@ sudo systemctl enable git-daemon.socket
 如果没看到错误的话Git服务器已经启动啦！
 可以通过`systemctl status git-daemon.socket`来查看启动状态。
 
-# Clone and Push！
+## Clone and Push！
 
 现在就可以使用该Git服务了！现在克隆一下前面创建的仓库：`/srv/git/my-first-repo.git`
 

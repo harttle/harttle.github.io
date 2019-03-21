@@ -9,7 +9,7 @@ tags: ES6 Symbol 迭代器
 
 <!--more-->
 
-# 解决了什么问题
+## 解决了什么问题
 
 在 JavaScript 中要判断一个对象支持的功能，常常需要做一些 Duck Test。
 比如经常需要判断一个对象是否可以按照数组的方式去迭代，这类对象称为 Array-like。
@@ -32,13 +32,13 @@ if (Symbol.iterator in arr) {
 }
 ```
 
-# 其他用例
+## 其他用例
 
 上述例子中 Symbol 标识了这个对象是可迭代的（Iterables），是一个典型的 Symbol 用例。
 详情可以参考 [ES6 迭代器](/2018/09/29/es6-iterators.html) 一文。
 此外利用 Symbol 还可以做很多其他事情，例如：
 
-## 常量枚举
+### 常量枚举
 
 JavaScript 没有枚举类型，常量概念也通常用字符串或数字表示。例如：
 
@@ -66,7 +66,7 @@ const COLOR_RED = Symbol('red')
 即使字符串写错或重复也不重要，因为每次调用 `Symbol()` 都会给出独一无二的值。
 这样就可以确保所有 `isSafe()` 调用都传入这两个 Symbol 之一。
 
-## 私有属性
+### 私有属性
 
 由于没有访问限制，JavaScript 曾经有一个惯例：私有属性以下划线起始来命名。
 这样不仅无法隐藏这些名字，而且会搞坏代码风格。
@@ -94,7 +94,7 @@ for(let key in p) console.log(key)  // <empty>
 但 Symbol 只能隐藏这些函数，并不能阻止未授权访问。
 仍然可以通过 `Object.getOwnPerpertySymbols()`, `Reflect.ownKeys(p)` 来枚举到 `speak` 属性。
 
-# 新的基本类型
+## 新的基本类型
 
 Symbol 是新的基本类型，从此 [JavaScript 有 7 种类型][js-type]：
 
@@ -106,21 +106,21 @@ Symbol 是新的基本类型，从此 [JavaScript 有 7 种类型][js-type]：
 * `Symbol`
 * `Object`
 
-## 转换为字符串
+### 转换为字符串
 
 Symbol 支持 `symbol.toString()` 方法以及 `String(symbol)`，
 但不能通过 `+` 转换为字符串，也不能直接用于模板字符串输出。
 后两种情况都会产生 `TypeError`，是为了避免把它当做字符串属性名来使用。
 
-## 转换为数字
+### 转换为数字
 
 不可转换为数字。`Number(symbol)` 或四则运算都会产生 `TypeError`。
 
-## 转换为布尔
+### 转换为布尔
 
 `Boolean(symbol)` 和取非运算都 OK。这是为了方便判断是否包含属性。
 
-## 包裹对象
+### 包裹对象
 
 Symbol 是基本类型，但不能用 `new Symbol(sym)` 来包裹成对象，需要使用 `Object(sym)`。
 除了判等不成立外，包裹对象的使用与原基本类型几乎相同：
@@ -136,11 +136,11 @@ obj[sym]                    // 'harttle'
 obj[wrapped]                // 'harttle'
 ```
 
-# 常见的 Symbol
+## 常见的 Symbol
 
 文章最前面的例子提到的 `Symbol.iterator` 是一个内置 Symbol。除此之外常见的内置 Symbol 还有：
 
-## Symbol.match
+### Symbol.match
 
 `Symbol.match` 在 `String.prototype.match()` 中用于获取 `RegExp` 对象的匹配方法。
 我们来改写一下 `Symbol.match` 标识的方法，观察 `String.prototype.match()` 的表现，
@@ -159,7 +159,7 @@ console.log('2012-07-02'.match(new RegExp1('([0-9]+)-([0-9]+)-([0-9]+)')));
 // expected output: "VALID"
 ```
 
-## Symbol.toPrimitive
+### Symbol.toPrimitive
 
 在对象进行运算时经常会变成 `"[object Object]"`，
 这是对象转换为字符串（基本数据类型）的默认行为，定义在 `Object.prototype.toString`。
@@ -184,7 +184,7 @@ count + 2     // 5
 
 更多内置 Symbol 请参考 MDN 文档： <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol#Well-known_symbols>
 
-# 跨 Realm 使用
+## 跨 Realm 使用
 
 JavaScript Realm 是指当前代码片段运行的上下文，包括全局变量，比如 `Array`, `Date` 这些全局函数。
 在打开新标签页、 加载 iframe 或加载 Worker 进程时，都会产生多个 JavaScript Realm。

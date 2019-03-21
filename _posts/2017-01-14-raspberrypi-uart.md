@@ -13,11 +13,11 @@ tags: Raspberry GPIO UART
 
 <!--more-->
 
-# 相关概念
+## 相关概念
 
 > 只关心如何配置可跳过本节。
 
-# PL011 vs Mini
+## PL011 vs Mini
 
 [串口][serial-port]区别于并口，是指逐位传输数据的接口。所以理论上只需要三根线（全双工的话）：
 接收线、发送线和地线。 本文的重点 UART（Universal Asynchronouse Receiver/Transmitter）
@@ -27,7 +27,7 @@ Async 是指不依赖于 CPU 时钟（类似 MMU，UART 也有独立的 IC 电�
 Raspberry Pi 3 之前 GPIO 使用 UART 设备工作，但 Raspberry Pi 3 引入蓝牙后占用了该设备。
 让 GPIO 去使用半软件实现的 Mini UART，因此速度差了很多。
 
-## 驱动与设备
+### 驱动与设备
 
 所有设备在 Unix 下都被抽象为文件，可通过标准输入输出对其操作。
 无论是 PL011 还是 Mini 都需要将驱动加载到内核中，而这些驱动会创建对应的字符设备以供读写。
@@ -43,7 +43,7 @@ Raspbian 是 ARM 架构的因此其串口命名为`/dev/ttyAMA0`（TeleTyper ARM
 
 > 上述串口是指 CPU 串行接口，不同于 Windows 的 COM1（RS232-C）。
 
-# 使用 GPIO
+## 使用 GPIO
 
 GPIO 默认是关闭的，首先需要在`/boot/config.txt`中开启它：
 
@@ -66,7 +66,7 @@ sudo systemctl disable serial-getty@ttyS0.service
 dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait fbcon=map:10 fbcon=font:ProFont6x11 logo.nologo
 ```
 
-# 访问权限
+## 访问权限
 
 为了以编程方式访问这些设备，我们需要为它们设置正确的权限。
 相比于 Shell 脚本（比如`/etc/rc.local`），通过[udev][udev]设备管理工具配置还支持热插拔，
@@ -86,7 +86,7 @@ KERNEL=="ttyS0", MODE="666", OWNER="pi", GROUP="dialout"
 > 可以通过 `sudo udevadm trigger` 来立即应用 udev 配置。
 > 如果你遇到问题，还可以在 `/var/log/syslog` 中查看 udev 的日志。
 
-# 切换到 UART
+## 切换到 UART
 
 由于 Mini UART 性能稍差，可以关闭蓝牙或让蓝牙去使用 Mini，让 GPIO 继续使用 UART。
 表现为 GPIO 上的信号继续从 `ttyMAM0`（UART） 读取，而不是 `ttyS0` （Mini UART）。

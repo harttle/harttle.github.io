@@ -14,7 +14,7 @@ Cookie和Session是为了在无状态的HTTP协议之上维护会话状态，使
 
 <!--more-->
 
-# Cookie 的实现机制
+## Cookie 的实现机制
 
 [Cookie][cookie]是由客户端保存的小型文本文件，其内容为一系列的键值对。
 **Cookie是由HTTP服务器设置的，保存在浏览器中**，
@@ -54,7 +54,7 @@ Cookie的实现标准定义在[RFC2109: HTTP State Management Mechanism][2109]�
 浏览器通过`Cookie`请求头字段来告诉服务器之前的状态。
 Cookie中包含若干个键值对，每个键值对可以设置过期时间。
 
-# Cookie 的安全隐患
+## Cookie 的安全隐患
 
 Cookie提供了一种手段使得HTTP请求可以附加当前状态，
 现今的网站也是靠Cookie来标识用户的登录状态的：
@@ -72,7 +72,7 @@ Cookie提供了一种手段使得HTTP请求可以附加当前状态，
 假如我们直接设置`Cookie`字段为`authed=true`并发送该HTTP请求，
 服务器岂不是被欺骗了？**这种攻击非常容易，Cookie是可以被篡改的！**
 
-# Cookie 防篡改机制
+## Cookie 防篡改机制
 
 服务器可以为每个Cookie项生成签名，由于用户篡改Cookie后无法生成对应的签名，
 服务器便可以得知用户对Cookie进行了篡改。一个简单的校验过程可能是这样的：
@@ -95,7 +95,7 @@ Cookie提供了一种手段使得HTTP请求可以附加当前状态，
 以后就可以用这个签名来欺骗服务器了。因此Cookie中最好不要放敏感数据。
 一般来讲Cookie中只会放一个Session Id，而Session存储在服务器端。
 
-# Session 的实现机制
+## Session 的实现机制
 
 Session 是存储在服务器端的，避免了在客户端Cookie中存储敏感数据。
 Session 可以存储在HTTP服务器的内存中，也可以存在内存数据库（如redis）中，

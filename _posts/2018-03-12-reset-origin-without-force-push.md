@@ -13,7 +13,7 @@ tags: Git Github Git-Workflow
 
 <!--more-->
 
-# 找到历史版本
+## 找到历史版本
 
 首先，通过 [git log][log] 确认你要回滚到的版本的 commit hash。
 例如，我们有 4 个版本其中后两个是坏的，要回滚到 version 2，它对应的 commit hash 就是 `4a50c9f`：
@@ -25,7 +25,7 @@ tags: Git Github Git-Workflow
 * 491c6e0 version 1
 ```
 
-# 签出历史版本
+## 签出历史版本
 
 为了便于操作，我们给这个版本一个分支名，比如 `v2`：
 
@@ -42,7 +42,7 @@ git checkout -b v2 4a50c9f
 * 491c6e0 version 1
 ```
 
-# 假合并 master
+## 假合并 master
 
 为了不更改 Git 记录，我们只能生成一个新的 Commit 让代码状态回到 v2。
 这意味着必须在 version 4 的基础上进行，思路和手动操作无异。
@@ -74,7 +74,7 @@ git diff HEAD..4a50c9f
 
 至此我们已经产生了一个 **代码状态与历史版本完全一致，但基于 master 的一个 Commit**。
 
-# push 到远程
+## push 到远程
 
 在产生可用的 Commit 后，可以从当前分支 v2 直接发往 origin/master：
 

@@ -17,7 +17,7 @@ TEX 是一个文档排版系统，通过内容与样式的分离使作者能够�
 
 <!--more-->
 
-# 安装MacTex
+## 安装MacTex
 
 可以说[MacTex][mactex]是Mac下使用LaTeX的最佳选择，
 其中包括Tex Live以及一些Mac平台的工具。
@@ -40,7 +40,7 @@ xetex
 ps4pdf
 ```
 
-# XeTeX
+## XeTeX
 
 在多念奋战于LaTeX后的今天，Harttle已经投入[XeTeX][xetex]的怀抱了。
 零四年XeTex第一个版本就发布在Mac平台且只支持Mac，难道这都是宿命！
@@ -51,7 +51,7 @@ XeTeX是一种使用Unicode的TeX排版引擎，可以在不进行额外配置�
 
 > XeTeX直接使用操作系统字体的方式会造成跨平台问题，因此源文件在跨平台编译时需要重新设置字体。
 
-# 使用中文字体
+## 使用中文字体
 
 我们引入一个叫[fontspec][fontspec]的字体选择工具，它是XeTex下非常健壮和强大的工具。
 引入后我们分别设置主字体（用于正文）、无衬线字体（用于强调和标题），
@@ -69,7 +69,7 @@ XeTeX是一种使用Unicode的TeX排版引擎，可以在不进行额外配置�
 
 然后就可以写中文啦！
 
-# 关键字的中文翻译
+## 关键字的中文翻译
 
 即使我们可以编写中文文本，LaTeX默认的一些关键字仍然是英文。
 例如Contents（目录），Table（表），Figure（图），`\today`（当前日期）等等。
@@ -107,7 +107,7 @@ Beamer使用一个内置的叫做[translator][translator]的包来进行语言�
 \def\proofname{证明.}
 ```
 
-# 一个例子
+## 一个例子
 
 在此推荐一个简单的、现代化的Beamer模板：
 

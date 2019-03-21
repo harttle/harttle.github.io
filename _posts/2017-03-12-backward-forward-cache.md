@@ -12,7 +12,7 @@ BF Cache 本来是一项浏览器优化，但在某些情况下（比如前端�
 
 <!--more-->
 
-# 缓存行为
+## 缓存行为
 
 BF Cache 是一种浏览器优化，HTML 标准并未指定其如何进行缓存，因此缓存行为是与浏览器实现相关的。
 
@@ -35,7 +35,7 @@ Desktop Firefox 暂停计时器的行为非常有趣，以下 HTML 中显示一�
 </script>
 ```
 
-# pagehide/pageshow 事件
+## pagehide/pageshow 事件
 
 会话（Session）中的某一个页面显示/隐藏时，会触发 `pagehide` 和 `pageshow` 事件。
 这两个事件都有一个 `persisted` 属性用来指示当前页面是否被 BF Cache 缓存。
@@ -64,7 +64,7 @@ window.addEventListener('load', function () {
 })
 ```
 
-# XHR 缓存
+## XHR 缓存
 
 同步（阻塞加载的）脚本发出的 XMLHttpRequest 也会被 Chrome 强制缓存，
 因此即使在断网的情况下后退到访问过的页面仍然是可以完美渲染的。

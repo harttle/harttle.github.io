@@ -15,7 +15,7 @@ Generator（生成器）和 Generator Function（生成器函数），
 
 <!--more-->
 
-# Iterables 和 Iterators
+## Iterables 和 Iterators
 
 实现了 Iterable Protocol 的对象称为 **可迭代对象（Iterables）**，这种对象可以用 `for...of` 来遍历。
 [Map][map], [Set][set], Array, String 都属于可迭代对象。
@@ -27,7 +27,7 @@ Generator（生成器）和 Generator Function（生成器函数），
 
 **Iterator Protocol**：又称 Iteration Protocol，需要实现一个 `next()` 方法，每次调用会返回一个包含 `value`（当前指向的值）和 `done`（是否已经迭代完成）的对象。
 
-# 标准 Iterables 举例：Array
+## 标准 Iterables 举例：Array
 
 Array 可以用 `for...of` 来遍历，是一个可迭代对象。
 我们来观察它是如何实现上述 Protocol 的。首先拿到它的 `Symbol.iterator` 属性（Iterable Protocol）：
@@ -46,7 +46,7 @@ console.log(iterator.next())    // { value: 'Carol', done: false }
 console.log(iterator.next())    // { value: undefined, done: true }
 ```
 
-# 自定义 Iterables
+## 自定义 Iterables
 
 除了 Array、Map 等标准的全局对象外，我们的自定义对象也可以通过提供一个 `Symbol.iterator` 成为 Iteratable。
 比如实现一个 50 以内的 [斐波那契数列][fibonacci]：
@@ -79,7 +79,7 @@ for (let i of obj) {
 }
 ```
 
-# 利用 Generator
+## 利用 Generator
 
 上述迭代器中我们维护了 `a` 和 `b` 两个状态，以及每次调用进入的条件分支。
 ES6 提供了 [Generator Function][function*]（生成器方法）来方便上述迭代器的实现。
@@ -104,7 +104,7 @@ for (let i of obj) {
 }
 ```
 
-# Map, Set, String, Array 互相转换
+## Map, Set, String, Array 互相转换
 
 Iteration Protocol 给出了统一的迭代协议，使得不同类型的集合间转换更加方便，也方便了编写适用于不同类型集合的算法。
 这一概念类似 [Lodash](https://lodash.com) 中的 Collection，
@@ -162,7 +162,7 @@ let mapping = {
 new Set(Object.keys(mapping))    // {"foo"}
 ```
 
-# 参考链接
+## 参考链接
 
 * <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map>
 * <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set>

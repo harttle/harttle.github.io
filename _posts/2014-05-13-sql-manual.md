@@ -8,7 +8,7 @@ SQL 是一门 ANSI 的标准计算机语言，用来访问和操作数据库系�
 
 <!--more-->
 
-# DATABASE
+## DATABASE
 
 ```sql
 -- 创建新数据库
@@ -24,7 +24,7 @@ RENAME DATABASE my_db TO my_db1
 DROP DATABASE my_db1
 ```
 
-# TABLE
+## TABLE
 
 ```sql
 -- 创建表
@@ -56,7 +56,7 @@ DROP TABLE Person
 ```
 
 
-# SELECT
+## SELECT
 
 ```sql
 -- 从表中选择列
@@ -84,7 +84,7 @@ SELECT LastName,FirstName INTO Persons_backup FROM Persons
 SELECT * INTO Persons IN 'Backup.mdb' FROM Persons 
 ```
 
-# WHERE
+## WHERE
 
 ```sql
 -- 条件选取
@@ -111,7 +111,7 @@ _                           | 仅替代一个字符
 [charlist]                  | 字符列中的任何单一字符
 [^charlist] 或 [!charlist]  | 不在字符列中的任何单一字符
 
-# JOIN/UNION
+## JOIN/UNION
 
 ```sql
 -- 引用两个表
@@ -140,7 +140,7 @@ LEFT JOIN       | 即使右表中没有匹配，也从左表返回所有的行
 RIGHT JOIN      | 即使左表中没有匹配，也从右表返回所有的行
 FULL JOIN       | 只要其中一个表中存在匹配，就返回行
 
-# UPDATE
+## UPDATE
 
 ```sql
 -- 更新列
@@ -148,7 +148,7 @@ UPDATE Person SET FirstName = 'Fred' WHERE LastName = 'Wilson'
 UPDATE Person SET Address = 'Zhongshan 23', City = 'Nanjing'
 WHERE LastName = 'Wilson'
 ```
-# DELETE
+## DELETE
 
 ```sql
 -- 条件删除
@@ -159,7 +159,7 @@ DELETE FROM table_name
 DELETE * FROM table_name
 ```
 
-# INSERT INTO
+## INSERT INTO
 
 ```sql
 -- 插入行
@@ -169,7 +169,7 @@ INSERT INTO Persons VALUES ('Gates', 'Bill', 'Xuanwumen 10', 'Beijing')
 INSERT INTO Persons (LastName, Address) VALUES ('Wilson', 'Champs-Elysees')
 ```
 
-# INDEX
+## INDEX
 
 ```sql
 -- 创建索引
@@ -182,7 +182,7 @@ CREATE INDEX PersonIndex ON Person (LastName DESC, FirstName)
 ALTER TABLE table_name DROP INDEX index_name
 ```
 
-# VIEW
+## VIEW
 
 ```sql
 -- 创建/更新视图
@@ -204,7 +204,7 @@ DROP VIEW view_name
 SELECT * FROM [Products Above Average Price]
 ```
 
-# CONSTRAIN
+## CONSTRAIN
 
 数据类型
 

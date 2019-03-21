@@ -12,7 +12,7 @@ tags: HTML 响应式 媒体查询 图片
 
 <!--more-->
 
-# 图片相关的元素
+## 图片相关的元素
 
 [img](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img) 是 HTML4 时就有的标签，
 至今仍然是在网页中嵌入图片的最常用的方式。 与 `<span>`, `<em>` 等标签一样属于行内标签
@@ -45,7 +45,7 @@ tags: HTML 响应式 媒体查询 图片
 </figure>
 ```
 
-# 响应式：基于视口宽度
+## 响应式：基于视口宽度
 
 [响应式设计](https://en.wikipedia.org/wiki/Responsive_web_design) 是一种 Web 页面设计方式，
 使得不同 [视口宽度][viewport] 和 *设备像素密度* 下内容都可以很好地展示，都可以保证可用性和用户满足。
@@ -63,7 +63,7 @@ tags: HTML 响应式 媒体查询 图片
 比如屏幕宽度为 `500px`，那么就会调整图片大小为 `200px`，
 然后选择 `srcset` 中最匹配这个大小的 `avatar-200.png` 去下载。
 
-# 响应式：基于设备像素比
+## 响应式：基于设备像素比
 
 支持 HTML5 的浏览器中还可以基于 *设备像素比* 来选择资源。
 在刚出现 Retina 屏幕时有些网页图片展现模糊，
@@ -77,7 +77,7 @@ tags: HTML 响应式 媒体查询 图片
 用户代理可以根据用户屏幕像素密度、缩放级别，甚至用户的网络条件选择任何一个给出的资源。
 这里同时给出 `src` 也是为了向后兼容。
 
-# 响应式：基于媒体查询
+## 响应式：基于媒体查询
 
 上文提到在 `<img>` 元素的 `sizes` 中可以写媒体查询来计算宽高。
 `<picture>` 中也可以通过媒体查询来选择 `<source>` 可以给不同的设备大小下载不同的图片。
@@ -96,7 +96,7 @@ tags: HTML 响应式 媒体查询 图片
 基于媒体查询的选择在 HTML5 标准中称为
 [Art Direction](https://html.spec.whatwg.org/multipage/images.html#art-direction)。
 
-# 响应式：基于图片格式
+## 响应式：基于图片格式
 
 `<source>` 元素的 `type` 属性可以指定图片格式，浏览器可以选择自己支持的去下载。
 基于图片格式的选择可以用于性能优化，有些格式我们知道压缩比非常好但并非所有浏览器都支持。
@@ -114,7 +114,7 @@ tags: HTML 响应式 媒体查询 图片
 如果不支持 WebP，但支持 JPEG XR 就会选择第二个 source 元素。
 如果这两种都不支持，就会选择 img 元素。（这个例子来自 [HTML Standard](https://html.spec.whatwg.org/multipage/images.html#image-format-based-selection)）
 
-# 编写替代文本
+## 编写替代文本
 
 使用 `<img>` 元素最容易出错的地方其实在于容易忽略 [替代文本][alt-text]。
 大多数场景下替代文本指的就是其 `alt` 属性（见上述例子）。
@@ -143,7 +143,7 @@ tags: HTML 响应式 媒体查询 图片
 他是一个不太专业的 H5 制作工程师，还好会写博客。
 ```
 
-# 不适用标签的情况
+## 不适用标签的情况
 
 [内容与样式分离](https://en.wikipedia.org/wiki/Separation_of_content_and_presentation)
 是 Web 设计中的重要概念。这样的设计有利于可维护性，机器可读和互操作性等，总之就是让 HTML 更漂亮。

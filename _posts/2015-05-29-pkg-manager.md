@@ -6,7 +6,7 @@ tags: NPM Bower Grunt Makefile Gem Bundle
 包管理和构建系统是现代的软件开发团队中必不可少的工具，也是Linux软件系统的常见组织方式。
 现代编程语言大多给出了自己专用的包管理和构建系统，那么本文便来总结一下小编用过的那些包管理和构建系统。
 
-# JavaScript
+## JavaScript
 
 服务器端 Javascript 通常使用[NPM](http://npmjs.org/)作为依赖管理工具。
 
@@ -23,7 +23,7 @@ JavaScript 通常使用 [Grunt](http://gruntjs.com/) 进行构建。
 * NPM提供了众多的Grunt插件，当然你也可以手写。
 * Grunt任务继承了JavaScript的异步特性。
 
-# 前端 lib
+## 前端 lib
 
 前端 lib 可以通过 [Bower](http://bower.io/) 来下载。Bower 不仅可以下载已注册的软件包，还可以下载Github Repo，甚至是一个文件的URL。
 
@@ -36,7 +36,7 @@ JavaScript 通常使用 [Grunt](http://gruntjs.com/) 进行构建。
 
 <!--more-->
 
-# Java
+## Java
 
 [Maven](https://maven.apache.org/)是基于项目对象模型(POM)的项目管理工具，通过文本文件来描述项目的版本、URL、License、依赖等信息。
 
@@ -52,7 +52,7 @@ JavaScript 通常使用 [Grunt](http://gruntjs.com/) 进行构建。
 
 [Gradle](https://zh.wikipedia.org/wiki/Gradle)是一个基于Apache Ant和Apache Maven概念的项目自动化建构工具。它使用一种基于Groovy的特定领域语言来声明项目设置，而不是传统的XML。
 
-# Python
+## Python
 
 Python的包管理工具能讲一整天的故事：distribute、setuptools、distutils、easy_install、pip、distutils2、packaging、eggs、wheels、pyvenv、virtualenv……
 
@@ -72,7 +72,7 @@ Python的包管理工具能讲一整天的故事：distribute、setuptools、dis
 * [venv](https://docs.python.org/3/library/venv.html)在python3.3中引入，用于在自己的目录下创建轻量级的虚拟环境，也可以孤立于系统环境。
 * [virtualenv](http://virtualenv.readthedocs.org)则是一个python软件包，用于创建孤立的python环境。
 
-# Ruby
+## Ruby
 
 Ruby的软件包单元为[RubyGem](https://rubygems.org/)。
 

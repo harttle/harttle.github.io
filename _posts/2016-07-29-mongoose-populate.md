@@ -10,7 +10,7 @@ tags: JavaScript MongoDB NoSQL 引用 数组 集合 数据库 mongoose
 
 > 本文中部分代码来自[mongoose文档][mongoose-doc]。
 
-# 外键引用
+## 外键引用
 
 在Schema字段的定义中，可以添加`ref`属性来指向另一个Schema。
 该`ref`属性在此后被填充（[`populate`][populate]）时将被[mongoose][mongoose]读取。
@@ -40,7 +40,7 @@ var Person = mongoose.model('Person', personSchema);
 
 外键的类型可以是`ObjectId`, `Number`, `String`, `Buffer`中任何一种，在赋值与填充时保持一致即可（见下文）。
 
-# 保存与填充
+## 保存与填充
 
 `Story`中保存`Person`对象的`_id`，此后在Query上调用`.populate()`即可用`Person`的文档来替换掉原来的字段。
 
@@ -57,7 +57,7 @@ Story.findOne({title: 'yy'})
     });
 ```
 
-# 填充指定的字段
+## 填充指定的字段
 
 有时我们只想要很少的几个字段，这可以用[字段名语法][fieldname]来指定它们。
 
@@ -70,7 +70,7 @@ Story.findOne({title: 'xx'})
     });
 ```
 
-# 填充多个属性
+## 填充多个属性
 
 有时我们需要填充多个字段，这时可以多次调用`.populate()`，
 也可以在一次调用中指定多个字段：
@@ -87,7 +87,7 @@ Story.find(...)
 
 填充引用数组与填充单个引用的语法没有区别，[mongoose][mongoose]会识别字段类型的不同。
 
-# 填充选项
+## 填充选项
 
 在`.populate()`的同时，还可以指定过滤器以及限制大小。
 将`.populate()`的参数换为一个对象即可。
@@ -107,7 +107,7 @@ Story.find(...)
 
 > 完整的选项请访问：<http://mongoosejs.com/docs/api.html#model_Model.populate>
 
-# 多级填充
+## 多级填充
 
 想填充引用的引用怎么办？给`.populate()`传入嵌套的参数即可。
 比如填充用户的朋友的朋友（两级）：
@@ -128,7 +128,7 @@ User.
 注意多级填充和嵌套属性填充的区别。如果是填充属性的属性（都在当前模型中保存）
 则只需要用`.`分隔，比如：`.populate('relations.mother')`。
 
-# 动态引用
+## 动态引用
 
 上文中调用`.populate()`之前有一个条件：被填充的字段已被设置过`ref`选项。
 [mongoose][mongoose]会去`ref`指定的集合中去查找对应ID。
@@ -148,12 +148,12 @@ User.
     })
 ```
 
-# 任意对象填充
+## 任意对象填充
 
 [mongoose][mongoose]不仅可以填充Query中的对象，还可以填充任何对象。
 当然这时就需要指定用哪个模型来填充，有两种方式来指定填充模型。
 
-## 设置populate的model参数
+### 设置populate的model参数
 
 与动态填充类似，填充时可以直接设置`model`参数。
 这时用任意一个Schema都可以操作，比如`User`：
@@ -165,7 +165,7 @@ User.populate(user, { path: 'weapon', model: 'Weapon' }, function (err, users) {
 });
 ```
 
-## 直接使用对应Schema
+### 直接使用对应Schema
 
 直接使用`Weapon`来填充该类型的属性，则不需要设置`model`字段：
 

@@ -10,7 +10,7 @@ URL Encoding 又叫[百分号编码](/2017/05/23/percentage-encoding.html)，定
 
 <!--more-->
 
-# 编码（encodeURIComponent）
+## 编码（encodeURIComponent）
 
 百分号编码中，ASCII 范围内的数字和字母是不编码的，这里为了简单对所有字符都进行编码（仍然是合法的）。
 比如把 `"harttle"` 编码成百分号编码：
@@ -23,7 +23,7 @@ echo -n harttle | xxd -p | tr -d '\n' | sed 's/\(..\)/%\1/g'
 
 注意：sed 正则表达式中的正则关键字需要转义，例如：`\1` `\(`, `\)`。
 
-# 解码（decodeURIComponent）
+## 解码（decodeURIComponent）
 
 解码相对麻烦，因为非编码的部分要保持原状：
 
@@ -33,7 +33,7 @@ echo -n https%3a%2f%2fharttle.land | sed 's/%/\\x/g' | xargs -0 printf '%b'
 
 同样地，首先 `-n` 禁止 echo 添加行尾回车，用 sed 把百分号替换为 `\x`，再用 printf 把它作为二进制输入打出来。详细讨论请参考：<https://unix.stackexchange.com/questions/159253/decoding-url-encoding-percent-encoding>
 
-# 添加为命令
+## 添加为命令
 
 上述命令可以加入到 `~/.bashrc` 以方便使用，唯一要做 注意的就是转义：
 

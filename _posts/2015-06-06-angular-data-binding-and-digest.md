@@ -7,7 +7,7 @@ tags: AngularJS DOM HTML HTTP JavaScript MVC WebSocket 事件 回调函数 数�
 数据绑定可以说是[AngularJS][angular]最大的特色。在Angular中，视图和模型的数据不仅是双向绑定的，并而且是实时的。
 使用Angular可以做到良好的甚至是神奇的用户体验，例如用户在输入表单的过程中实时地提示输入有误或者输入正确。
 
-# 双向绑定
+## 双向绑定
 
 下图是模板引擎中常见的单向数据绑定：
 
@@ -28,7 +28,7 @@ Angular会自动添加DOM事件，并在`$scope`发生改变时自动进行DOM�
 
 <!--more-->
 
-# Scope
+## Scope
 
 `scope`在Angular中代表着应用模型，它是模板中表达式的上下文。在`scope`中，你可以`watch`（监听）表达式值的变化，可以传播事件。
 在编写控制器时，我们往往会注入一个`$scope`Service来设置当前模板的上下文：
@@ -57,7 +57,7 @@ app.controller('worldCtrl', ['$scope', '$http', function($scope, $http) {
 
 官方文档： <https://docs.angularjs.org/api/ng/type/$rootScope.Scope>
 
-# Scope通信
+## Scope通信
 
 因为Angular的Controller可以嵌套，子controller的`$scope`中可以直接访问父`$scope`中的属性。
 子`$scope`中可以通过`$emit`方法来发射一个事件，父`$scope`中通过`$on`来监听该事件：
@@ -75,7 +75,7 @@ $scope.$on('alienDestroyed', function(event, args, ...){});
 > Angular虽然提供了Scope之间的通信机制，但滥用事件和通知将会使得你的控制器难以理解和维护。
 > 如果Controller间有数据共享，把数据抽取为Service更加合适。
 
-# $watch
+## $watch
 
 在`scope`中，有时我们希望监听某个表达式的变化。在Angular的`scope`中，监听表达式的值就像注册事件处理函数一样简单：
 
@@ -97,14 +97,14 @@ $scope.$watch('username', function(newValue, oldValue){
 
 图片来源： <https://docs.angularjs.org/guide/scope>
 
-# $digest循环
+## $digest循环
 
 > 曾经有过Angular阴谋论，生成Angular是通过无限的循环来实时地刷新视图。事实上Angular要聪明地多，因为只有操作发生时视图才需要更新。
 > 而这些有限的用户操作都会产生DOM事件，只需监听这些事件便可以做到实时地刷新视图。
 
 Angular会监听网络和DOM事件来自动更新视图，下面以DOM事件为例来描述Angular如何进行视图的更新：
 
-## 模板编译阶段
+### 模板编译阶段
 
 拥有`ng-app`属性的HTML元素会成为Angular模板，在页面载入时Angular会对它（以及它的子元素）进行编译（递归地匹配directive、controller并绑定DOM事件）。
 主要有两个过程（以`<input>`和`ng-model`为例）：
@@ -114,7 +114,7 @@ Angular会监听网络和DOM事件来自动更新视图，下面以DOM事件为�
 
 > `input`是Angular内置的一个Directive，它会匹配`<input>`元素，并对它实现双向的数据绑定。Angular对几乎所有输入型控件都编写了Directive。
 
-## 运行阶段
+### 运行阶段
 
 1. 用户按键`x`，浏览器触发了`keydown`事件。
 2. `input`Directive中的事件处理函数被调用，该处理函数中会执行`$apply("name = 'x'")`。
@@ -127,17 +127,17 @@ Angular会监听网络和DOM事件来自动更新视图，下面以DOM事件为�
 
 ![](/assets/img/blog/angular/concepts-runtime.png)
 
-# 强制刷新视图
+## 强制刷新视图
 
 让刷新视图有很多方法：`$scope.$digest`, `$scope.$apply`, `$timeout`。它们有各自的使用情景：
 
-## $digest
+### $digest
 
 `$digest`是`$scope`下的方法，调用它会导致当前上下文的所有listener被执行。
 
 因为listener可能会改变数据，因此Angular会一遍一遍地调用这些listener直到数据不再改变。但我们通常不会使用`$digest`，而是使用下面的`$apply`。
 
-## $apply
+### $apply
 
 `$apply`也是`$scope`下的方法，它会导致`$digest`被调用。`$apply`有一个可选参数（表达式字符串）。被调用时，传入的表达式会被`$eval`执行，接着`$digest`会被调用。
 
@@ -146,7 +146,7 @@ Angular会监听网络和DOM事件来自动更新视图，下面以DOM事件为�
 > Angular监听了DOM事件、`$http`事件来刷新视图。但当我们使用实现自定义事件（尤其是使用第三方库）时，事件发生时Angular并不知道视图需要更新，此时便需要显示地调用`$apply`。
 > 例如，Bootstrap事件发生时、使用jQuery进行AJAX时，websocket消息到达时。
 
-## $timeout
+### $timeout
 
 `$timeout`也是`ng`Module下的Service，它是`window.setTimeout`的包装，用来延迟执行一个函数。当我们在Controller中更改了数据模型时，此时DOM还没有得到更新（`$digest`循环还没开始）。如果我们希望DOM刷新后执行某些操作，就可以使用`$timeout`。例如：
 

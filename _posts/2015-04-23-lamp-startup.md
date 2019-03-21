@@ -9,13 +9,13 @@ tags: Apache Linux PHP 数据库
 
 <!--more-->
 
-# 下载安装
+## 下载安装
 
 [php](http://www.php.net)
 [mysql](http://httpd.apache.org)
 [apache](http://www.mysql.com/)
 
-# 配置apache
+## 配置apache
 
 设置apache的配置文件`httpd.conf`，更改后要`restart httpd`
 
@@ -46,7 +46,7 @@ tags: Apache Linux PHP 数据库
 
 * 路径访问权限，更改要与 DocumentRoot 一致
 
-# Apache使用
+## Apache使用
 
 以下关注Debian兼容的操作系统。文档：http://man.ddvip.com/linux/debian/apache2/
 

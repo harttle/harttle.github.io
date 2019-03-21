@@ -8,7 +8,7 @@ SessionStorage, LocalStorage, Cookie这三者都可以被用来在浏览器端�
 区别在于前两者属于WebStorage，创建它们的目的便是存储客户端数据。
 而Cookie早在网景公司的浏览器中就开始支持，最初目的是为了保持HTTP的状态。
 
-# 概念的异同
+## 概念的异同
 
 **Cookie**是存储在客户端的小型文本文件，可以包含若干键值对，每个键值对可以设置过期时间（默认过期时间为关闭浏览器时）。
 Cookie会在每次发送HTTP请求时附加到`Cookie`头字段，服务器以此得知用户所处的状态。
@@ -24,7 +24,7 @@ Cookie会在每次发送HTTP请求时附加到`Cookie`头字段，服务器以�
 
 <!--more-->
 
-# Cookie的使用
+## Cookie的使用
 
 [Cookie/Session的机制与安全][s-c]中提到了服务器可以在HTTP响应中设置`set-cookie`字段来设置Cookie。
 事实上客户端也可以操作Cookie，比如之前的电商网站会使用Cookie来存储购物车信息。
@@ -59,7 +59,7 @@ $.cookie('name');   // "value"
 $.cookie();         // { "name": "value" }
 ```
 
-# Storage的使用
+## Storage的使用
 
 LocalStorage/SessionStorage提供的存储也是基于字符串的键值对。可以通过`setItem`，`getItem`来访问其中的存储项：
 

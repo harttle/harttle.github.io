@@ -9,7 +9,7 @@ tags: DOM JavaScript jQuery
 而且需要理解 DOM 的一些基本概念。
 本文整理一下相关操作，并给出可用的代码片段。
 
-## TL;DR
+### TL;DR
 
 * HTML 选中可以添加 `checked` Attribute（Content Attribute）：`<input type="radio" checked>`；
 * 脚本选中需要设置 `checked` Property（IDL Attribute）：`contactChoice3.checked=true`；
@@ -17,7 +17,7 @@ tags: DOM JavaScript jQuery
 
 <!--more-->
 
-# 相关概念
+## 相关概念
 
 为啥叫 `radio`？老司机说是因为单选按钮特别像老式收音机上的按钮，按下一个时其余的就会自动弹起。
 继续讨论“属性”之前我们需要明确 **Attribute** 与 **Property** 的区别。
@@ -39,7 +39,7 @@ tags: DOM JavaScript jQuery
 更详细的讨论可参考 [Reflecting content attributes in IDL attributes - HTML5 Living Standard](https://html.spec.whatwg.org/multipage/common-dom-interfaces.html#reflecting-content-attributes-in-idl-attributes)
 或 [HTML Attribute - MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes)。
 
-# 标签的使用
+## 标签的使用
 
 [radio](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio)
 是 `input` 的 `type` 属性（Attribute）的一种取值，表示一个单选按钮。
@@ -69,7 +69,7 @@ tags: DOM JavaScript jQuery
 [提交表单](/2015/08/03/form-submit.html) 后它的编码格式与 `input[type=text]` 并无区别，
 对于上面的例子如果选中 Mail，请求参数就是 `?contact=mail`。
 
-# 设置选中状态
+## 设置选中状态
 
 设置选中状态需要设置 `input` 元素的 `checked` 属性（Property），
 同一组的（即 `name` 值相同的）`input[radio]` 都会被取消选中。
@@ -93,7 +93,7 @@ $('input[value=phone]').prop('checked', true)
 contactChoice3.setAttribute('checked', 'checked')
 ```
 
-# 监听选中变化
+## 监听选中变化
 
 用户交互和脚本逻辑都可能使当单选按钮的选中项发生变化。所以怎么监听选中变化呢？
 DOM Level2 和后来的 HTML5 只在表单控件元素上提供了

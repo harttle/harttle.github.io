@@ -17,7 +17,7 @@ tags: Archlinux SSH systemd 多媒体
 
 <!--more-->
 
-# 软件介绍
+## 软件介绍
 
 * [Plex][plex] 是一套软件，包括媒体服务器、Android 等终端设备 App。支持转码和基于元数据的分类，以及播放时选择不同的码率。
 
@@ -25,7 +25,7 @@ tags: Archlinux SSH systemd 多媒体
 
 * [systemd][systemd] 是 Linux 下很先进的守护进程管理工具，使用方式很简单。一个简单的使用例子可以参考这篇文章：[使用systemd管理Node.js应用](/2016/08/04/systemd-nodejs-app.html)
 
-# 搭建 Syncthing 服务
+## 搭建 Syncthing 服务
 
 Syncthing 有很多 binary 可以下载，可以挑一个合适的下载安装即可。Archlinux 可以从 AUR 安装：
 
@@ -54,7 +54,7 @@ ssh 192.168.1.xx -L 8384:localhost:8384
 
 然后访问本地的 <localhost:8384>。后面的 Plex Web 端口也是一样，不再赘述。
 
-# 搭建 Plex 服务
+## 搭建 Plex 服务
 
 同样地，安装 [AUR plex][aur-plex] 并启动：
 
@@ -67,7 +67,7 @@ systemctl enable plexmediaserver
 为了让 Plex 可以读写 Syncthing 的文件，需要让 Plex 也运行在 `harttle` 用户。
 需要做下面的两件事情。
 
-## 1. 更改启动用户
+### 1. 更改启动用户
 
 编辑 Systemd Unit 文件 `/etc/systemd/system/multi-user.target.wants/plexmediaserver.service`，把 User 和 Group 改成你的：
 
@@ -77,7 +77,7 @@ User=harttle
 Group=users
 ```
 
-## 2. 更改运行时文件权限
+### 2. 更改运行时文件权限
 
 由于我们更改了 Plex 启动用户，也需要相应更改 Plex 的工作区目录 `/var/lib/plex`。
 这个目录的 Owner 应当与启动用户一致，否则无法正常启动。
@@ -99,7 +99,7 @@ systemctl restart plexmediaserver
 要借助 Syncthing 上传到 Plex，只需要把 Syncthing 和 Plex 目录设成一样的，
 上传 Syncthing 结点的对应文件夹的模式设为仅发送，接收侧勾选`ignoreDelete`（在右上角高级设置，对应的文件夹选项中）。
 
-# 客户端
+## 客户端
 
 如果你从局域网其他机器也可以访问 Plex Media Server 就说明服务已经成功启动了。
 在启动 Plex 后就可以从小米电视访问 DLNA 服务了。安装 Plex Android 客户端后会更容易使用，从这里下载：

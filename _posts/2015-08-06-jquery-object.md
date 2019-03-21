@@ -22,7 +22,7 @@ jQuery的`$()`函数的用法包括：
 * DOM创建，可以指定所属的document、属性、事件、甚至所有jQuery方法；
 * DOM加载完成事件监听，是`$(document).ready()`的简化写法。
 
-# DOM选择
+## DOM选择
 
 最常用的便是通过选择符来选择：
 
@@ -47,7 +47,7 @@ $li = $ul.find('li');
 
 <!--more-->
 
-# DOM创建
+## DOM创建
 
 用jQuery来创建DOM也是常见操作，例如在`ul`下创建一个`li`：
 
@@ -91,7 +91,7 @@ $( "<div/>", {
 }).appendTo( "body" );
 ```
 
-# DOM加载完成
+## DOM加载完成
 
 通常JavaScript需要在DOM加载完成后执行，否则DOM操作可能会失效。jQuery提供了一个方便的方法来监听DOM加载完成：
 

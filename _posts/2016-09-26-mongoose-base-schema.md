@@ -14,7 +14,7 @@ Mongoose并未直接地提供改选项，本文实现一个基本的模型间继
 
 <!--more-->
 
-# 实现机制
+## 实现机制
 
 在Mongoose中，Schema实例是通过`mongoose.Schema`建立的。
 因此为了Schema间的继承关系，我们需要一个`BaseSchema`先继承自`mongoose.Schema`，
@@ -24,7 +24,7 @@ Mongoose并未直接地提供改选项，本文实现一个基本的模型间继
 我们希望`UserSchema`拥有`BaseSchema`的全部属性和方法，
 同时`UserSchema`的构造参数仍然可以直接传递给`mongoose.Schema`。
 
-## util.inherits
+### util.inherits
 
 使用`util.inherits(constructor, superConstructor)`实现父子模型的继承关系：
 
@@ -45,7 +45,7 @@ constructor.prototype = Object.create(superConstructor.prototype);
 > 且[两者的语义并不兼容][semantic-diff]。
 > 但为了兼容目前的代码，本文仍然借助`util.inherits`来实现继承。
 
-## Schema.apply
+### Schema.apply
 
 `UserSchema`除了继承`BaseSchema`，还需要将它的构造参数通过`BaseSchema`传递给`mongoose.Schema`。这一过程尤为简单：
 
@@ -55,7 +55,7 @@ function BaseSchema(){
 }
 ```
 
-# 基类模型代码
+## 基类模型代码
 
 这里给出完整的`BaseSchema`声明，由于[mongoose.Schema][schema]只有两个参数因此
 我们用`call`来更方便地完成任务。
@@ -98,7 +98,7 @@ util.inherits(BaseSchema, mongoose.Schema);
 module.exports = BaseSchema;
 ```
 
-# 子类模型代码
+## 子类模型代码
 
 ```javascript
 // models/user.js

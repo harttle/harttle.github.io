@@ -14,7 +14,7 @@ tags: Vim-Practice Bash Linux Vim 快捷键
 
 <!--more-->
 
-# 打开与关闭
+## 打开与关闭
 
 [标签页][vim-tab]是最常见的多文件编辑方式吧，熟悉IDE的小伙伴一定能很快上手！
 使用`-p`参数来用多个标签页启动Vim：
@@ -37,7 +37,7 @@ vim -p main.cpp my-oj-toolkit.h /private/etc/hosts
 
 > 中括号中的部分可以省略，在Vim中`:h tabedit`可以查看命令帮助。
 
-# 移动标签
+## 移动标签
 
 ```
 :tabs         list all tabs including their displayed window
@@ -46,7 +46,7 @@ vim -p main.cpp my-oj-toolkit.h /private/etc/hosts
 :tabm {i}     move current tab to position i+1
 ```
 
-# 标签跳转
+## 标签跳转
 
 ```
 :tabn         go to next tab

@@ -14,7 +14,7 @@ CSS 将 DOM 树转换为由矩形 Box 构成的树，并通过设置这些 Box �
 
 更多信息请参考：[W3C 标准：CSS3-Box][css-box]
 
-# line Box
+## line Box
 
 下面的小节中介绍的CSS属性只适用于LineBox，那么什么是LineBox呢？请看下面的HTML片段：
 
@@ -33,7 +33,7 @@ CSS 将 DOM 树转换为由矩形 Box 构成的树，并通过设置这些 Box �
 
 <!--more-->
 
-# white-space
+## white-space
 
 [white-space][white-space]属性描述了如何处理空白（空格、制表、换行）字符。它有5种取值：
 
@@ -49,7 +49,7 @@ white-space: normal | pre | nowrap | pre-wrap | pre-line;
 
 > 合并的空白宽度由`word-spacing`属性设置。
 
-# word-wrap
+## word-wrap
 
 只有出现空白字符时，才可以设置`white-space`来折行。如果需要切分单词，你需要设置[word-wrap][word-wrap]属性。
 `word-wrap`指定了当一个不能被分开的单词太长引起溢出时，是否允许中断换行。有两种取值：
@@ -62,7 +62,7 @@ word-wrap: normal | break-word;
 
 ![@2x](/assets/img/blog/css/word-break-break-word.png)
 
-# word-break
+## word-break
 
 [word-break][word-break]指定了怎样在单词内换行。有三种取值：
 
@@ -83,7 +83,7 @@ word-break: normal | break-all | break-word | keep-all
 
 * `keep-all`：同`normal`，但 CJK 文本不断行。
 
-# text-overflow
+## text-overflow
 
 [text-overflow][text-overflow]指定了溢出的内容如何显示，只在`inline`方向溢出时起作用，有3种取值：
 

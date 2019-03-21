@@ -13,7 +13,7 @@ tags: Node.js Redis Socket.IO NPM
 
 <!--more-->
 
-# 安装软件
+## 安装软件
 
 1. [Redis][redis]。可以参照官网 <http://redis.io/> 来安装，在[这里][redis-down]可以下载。
 2. [Node.js][node]。也可以在官网 <https://nodejs.org/> 直接下载。
@@ -24,7 +24,7 @@ tags: Node.js Redis Socket.IO NPM
 npm install Socket.IO redis --save
 ```
 
-# 简单的Socket.IO服务
+## 简单的Socket.IO服务
 
 创建`app.js`文件，写一个基于Node.js HTTP模块的Socket.IO服务器。
 我们创建两个命名空间，一个`notification`，一个`chatting`。
@@ -57,7 +57,7 @@ socket.on('message', function (msg) {
 
 > 需要在HTML中引入`<script src="/path/to/Socket.IO.js"></script>`，见<http://Socket.IO/download/>。更多Socket.IO的例子，请参考： <http://Socket.IO/docs/#how-to-use>
 
-# 订阅Redis Channel
+## 订阅Redis Channel
 
 在上述服务器文件中引入`redis`并创建一个客户端，可以收到所有频道的信息。
 可以通过`switch-case`来分发各频道的消息。
@@ -86,7 +86,7 @@ redisClient.subscribe(CHATTING_CHANNEL);
 在`redis.createClient()`的参数中可以设置Redis服务器的主机名、端口、密码等信息，
 参见对应的[文档][npm-redis]。
 
-# 测试执行
+## 测试执行
 
 启动Socket.IO服务器：
 

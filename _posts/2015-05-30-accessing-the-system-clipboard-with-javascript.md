@@ -8,7 +8,7 @@ Origin Post: <https://brooknovak.wordpress.com/2009/07/28/accessing-the-system-c
 
 > I am developing an API written in JavaScript for a project which requires the ability to copy data to, and retrieve data from, a clipboard within a web browser. A simple/common problem definition – but due to tight browser security, finding a solution is a bit of a nightmare. This article outlines and discusses a number of approaches for implementing a clipboard feature into your JavaScript applications.
 
-# The Ideal JavaScript Clipboard Interface
+## The Ideal JavaScript Clipboard Interface
 
 The concept of the “clipboard” is simple; it is essentially a place for storing and retrieving a single unit/piece of cloned data. The code snippet below describes this clipboard concept in terms of a JavaScript interface.
 
@@ -25,15 +25,15 @@ Clipboard = {
 
 A simple concept, a self explanatory interface. However, the description above is vague; it does not state where “the clipboard” resides, nor does it mention if there can be more than one clipboard.
 
-## Multiple Clipboards
+### Multiple Clipboards
 
 Unfortunately there can be more than one clipboard present. There is one “System clipboard” present when a user is logged into their profile/account (some strange people might install/configure some features on their OS to support multiple system clipboards). Ideally, all applications should use the system clipboard when copying and pasting so its users can copy and paste between all applications. However this is not always the case. For example, Cygwin uses its own clipboard for Cygwin applications and unless the user explicitly turns on a clipboard integration option, the user cannot copy and paste between Cygwin applications and non-Cygwin applications.
 
-## The Web’s Sandbox Environment
+### The Web’s Sandbox Environment
 
 Web applications run in a sandbox environment to prevent malicious scripts from infecting a visitor’s computer. The sandbox environment restricts access to system resources, such as the file system, and unfortunately, the system clipboard. Check out this article for one example why the system clipboard is a restricted resource. Fortunately restrictions for accessing the system clipboard can be overcome. There are many approaches for accessing the system clipboard – each approach has its own trade-offs.
 
-# Internet Explorer’s clipboardData Object
+## Internet Explorer’s clipboardData Object
 
 Microsoft’s Internet Explorer family makes life very easy to access the system clipboard. To set the system clipboard’s text, just use the clipboardData object. Here is an example:
 
@@ -62,7 +62,7 @@ Note: the verification method will not display two prompts, since the first prom
 
 <!--more-->
 
-# A Sketchy Work-around: The Flash Copy Hack
+## A Sketchy Work-around: The Flash Copy Hack
 
 Jeffrey Larson came up with a nifty solution using Adobe Flash. To copy text to the system clipboard a small flash object is embedded into the document by manipulating the DOM, and the text to be copied is passed as a parameter to the embedded object. The Flash program then takes this text and copies it to the system clipboard via the Flash API. This was a security hole in Flash up-to and including versions 9, and was patched in version 10 so that unsolicited access to the system clipboard is denied. That is, Flash requires users to physically trigger the ActionScript clipboard code via a mouse click in order to grant access.
 
@@ -76,11 +76,11 @@ Flash version 9 has a bug in Linux systems where Web browsers are unable to supp
 
 ZeroClipboard should be named ZeroSysCopy or something similar since it only provide unidirectional access to the system clipboard. I attempted to pursue a bidirectional implementation, but the ActionScript API does not provide any way of clipboard retrieval due to security risks. Adobe’s ActionScript API for the Flex environment does provide ways of getting to the system clipboard, but only on paste events from a paste button click on a context menu, or paste commands like CTRL+V.
 
-# Using Java Applets
+## Using Java Applets
 
 Jeffrey Larson’s Flash copy hack got me thinking: what about taking a similar approach using Java applets instead of Flash movies. The beauty of Java is that it can communicate directly with JavaScript, thus can support both copy and paste operations. This is possible via a technology called Liveconnect. This solution has some pricey trade-offs though.
 
-## Liveconnect
+### Liveconnect
 
 Netscape developed an API called NP API (Netscape Plugin API) which is a cross browser plugin architecture supported by all major browsers except IE today (although some IE browsers do support it – IE’s equivalent is ActiveX). Liveconnect is one way to implement NP API-based plugins using JavaScript and Java. It was first supported in Netscape 4. A plugin could implement and return an instance to a Java class. The public methods exposed by this class was the scriptable interface for the plugin. The class could be called from JavaScript and even from other Java applets running within the page with the browser marshalling the calls between the various contexts. (see <http://en.wikipedia.org/wiki/NPAPI#LiveConnect>). The technology has matured since then and is still supported by Mozilla browsers, and Opera. Webkit does not seem to support it anymore.
 
@@ -88,7 +88,7 @@ Some browsers, such as Firefox, do not ship with a Java Virtual Machine plugin, 
 
 Sun has respecified and reimplemented the Liveconnect technology as of version 6 update 10, which to my understandings just means that it is faster, more reliable and contains a bunch of extra features not needed for the purposes of some simple clipboard code.
 
-## Implementation
+### Implementation
 
 There are many issues and quirks with this technology. Luckily the code will be very small and simple for the clipboard. Most browsers support the ability to directly use Java inside of JavaScript, but some browsers have issues with some things such as creating new class instances. A more reliable approach would be to store the Java clipboard code into an applet.
 
@@ -98,23 +98,23 @@ Hopefully the demo code is self-explanatory. In order to break out of the JVM sa
 
 Another implication worth noting is that on the first time the JavaScript talks to the Java applet, it will take a little while to load the JVM (several seconds). Once the JVM is loaded it runs smoothly.
 
-# Using Silverlight?
+## Using Silverlight?
 
 To the point: None of the Silverlight versions (currently up to version 3) does not provide system clipboard access. This is a shame because it interacts well with JavaScript and is supported by all the common browsers (even on Linux via Moonlight).
 
-# Mozilla’s XUL Approach
+## Mozilla’s XUL Approach
 
 Mozilla has this inbuilt plugin called “clipboard helper” which can be accessed with JavaScript using the XUL API. Dion Almaer explored this approach, click here(missing) for a demo (try downloading it and viewing it locally on your machine).
 
 The XUL approach has some issues, as pointed out by Dion. If you run the script locally an ugly dialog pops up containing a vague (and scary) message warning the user about the possibility of malicious code being executed. The user’s decision can be remembered. However it fails to access the clipboard when not running script from a local file. This can be overcome: One option is to set some obscure user preferences for Mozilla to allow access. This might not be practical, especially if you are planning to use the script on public sites. Another option is to digitally sign the JavaScript containing the XUL clipboard code – which of coarse is a pricey option.
 
-# Making use of execCommand
+## Making use of execCommand
 
 The execCommand JavaScript function is supported by all major browsers. The browsers all support the “Copy” and “Paste” commands. All browsers except for IE only expose the execCommand function for documents with design-mode turned on (for wizzywig editing).
 
 Webkit does not protect the copy command, I wrote a post about this security hole. In both Chrome 2 and Safari 4 (on windows and mac) I managed to copy text to the system clipboard without any security warnings/promptings what-so-ever via execCommand. My assumption is that this will be the same for older versions of Webkit. This is very concerning. Mozilla throws security exceptions which can be only avoided via setting the user preferences or signing the JavaScript code. Opera and Konqueror just does not work. For IE it is possible to use this approach, as well as other approaches with MicrosoftTextRange objects, but it has no benefits over using the clipboardData object since it safeguards the copy and paste operations in the same way.
 
-## Implementation
+### Implementation
 
 Try it out here(missing). The first time the copy operation is invoked, an inline document in design mode is dynamically created and appended to the main document – thus exposing the execCommand. The inline document contains an textarea and is always hidden from the user. So to copy text to the system clipboard, the textarea‘s value is set to the text to be copied, then the textarea is displayed, focused and selected, and finally the execCommand("copy") method is invoked. The textarea will never be rendered (i.e. the user will not see a random flash on the page) because it is hidden straight after the copy command has executed (the UI will not refresh until after the script finishes executing).
 
@@ -122,11 +122,11 @@ The demo does have a scrolling issue: since the textarea is selected and focused
 
 This script will work in IE, the first time the copy operation is executed a dialog will pop up asking the user for the script for permission to access the clipboard. Unfortunately there is no way of telling whether the user allowed or denied access. The MSDN docs specifies that execCommand returns true of false depending if the command succeeds or fails, however it will always return true even if the user denies access. Furthermore, while the prompt is displayed the users will see the internal frame rendered which might be confusing for the user (although this could be better concealed by using floats). The window.clipboardData object would be a better option, even if the user denies access via window.clipboardData, you probably would not want to blast them with any more security-risk dialogs.
 
-# Fabricating DOM Events
+## Fabricating DOM Events
 
 This is merely an idea, which is a similar approach to the execCommand approach. If it were possible to manually fire CTRL+C and CTRL+V events such that the browsers execute their “default” handlers, then by using similar trickery used with the execCommand implementation on demand access to the clipboard would be possible. However, the Web’s sandbox environment does not let JavaScript simulate user interactions (that would be very bad!). Just a thought.
 
-# Clipboard Events
+## Clipboard Events
 
 IE, Webkit and FF 3+ supports up to six different clipboard events which can be invoked from context menus or key-commands like CTRL+C:
 
@@ -163,7 +163,7 @@ Note: preventing the default behavior is necessary if you are planning to handle
 
 Ideally the code would be similar for setting the clipboard data upon copy events. Unfortunately Webkit has a bug where you cannot set clipboard data in any of the clipboard events! You can use a work-around by using the same approach in the following section.
 
-# Using Keyboard Events
+## Using Keyboard Events
 
 In most Web applications you do not have to worry about setting/getting the system clipboard data via key presses like CTRL+C, all browsers implement this for you. However, my API needs to get/set system clipboard data whenever the user presses clipboard key combinations like CTRL+C, on an non-editable document. Specifically: on CTRL/CMD+C/X keystrokes, the text to be copied is not the selected text in the document. And, on CTRL/CMD+V keystrokes, no matter where the focus is, the API must be able to retrieve the system clipboard text.
 
@@ -179,7 +179,7 @@ Originally I developed a bulky solution(missing) without floats, but I stumbled 
 
 It is important to avoid race conditions while showing and hiding the textarea before and after the browsers’ default handlers for clipboard operations. Clipboard events are guaranteed to work. Opera queues a settimeout with zero delay after all events in the current event batch – onkeydown, onkeypress, onkeyup event sequence is seen as an event batch (see timing-and-synchronization-in-javascript) – so it is safe to use onkeydown in Opera. From my own experiments, my observations are that Firefox’s clipboard operations are executed on keypress events. IE and Webkit can only use keydown since clipboard key combinations do not get keypress events. There was no luck with getting Konqureror to work with this approach – KHTML has problems with selecting and focusing on an input element (it works sometimes).
 
-# Summary & Conclusion
+## Summary & Conclusion
 
 Go here to see a summary(missing) of the explored approaches and their demos (sorry about the external link but my blog layout does not handle large tables!).
 

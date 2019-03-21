@@ -5,7 +5,7 @@ tags: ArchLinux Linux 镜像 磁盘 网络 操作系统
 
 本文介绍如何安装 Arch Linux，一个轻量级、简单的 Linux 发行版。
 
-# 制作镜像并启动
+## 制作镜像并启动
 
 在 [Arch 官网下载][download] 下载镜像（x86 和 x86_64是同一镜像）。
 然后[刻录 USB 安装盘][usb-flash]：
@@ -23,7 +23,7 @@ tags: ArchLinux Linux 镜像 磁盘 网络 操作系统
 
 <!--more-->
 
-# 连接网络
+## 连接网络
 
 * 无线网络通过`netcfg`来连接，需要先创建配置文件。（也可直接使用`wifi-menu`连接无线网）
 
@@ -42,7 +42,7 @@ tags: ArchLinux Linux 镜像 磁盘 网络 操作系统
 
 > 使用 `iwconfig` 可查看网络设备(wlan0,eth0等)，若没有识别请参照wiki
 
-## 准备硬盘
+### 准备硬盘
 
 对目标磁盘进行分区，至少要有一个主分区。
 
@@ -86,7 +86,7 @@ No data：error: failed to update core (invalid or corrupted database (PGP signa
 genfstab -U -p /mnt >> /mnt/etc/fstab
 ```
 
-## 使用交换文件
+### 使用交换文件
 
 如果你不喜欢交换分区，可以用一个交换文件来代替：
 
@@ -103,14 +103,14 @@ swapon /swapfile
 /swapfile none swap defaults 0 0
 ```
 
-# 配置系统
+## 配置系统
 
-## 进入新系统
+### 进入新系统
 
 * 更换主目录：`arch-chroot /mnt`
 * 更新系统：`pacman -Syu`（需要先配置`/etc/pacman.d/mirrorlist`）
  
-## 设置区域
+### 设置区域
 
 * 设置地区：`ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime`
 * 设置硬件时钟：`hwclock --systohc --utc`
@@ -121,13 +121,13 @@ swapon /swapfile
 * add a DWORD value with hexadecimal value 1 to the registry: `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\RealTimeIsUniversal `
 * disable time auto sync
 
-## 设置语言
+### 设置语言
 
 * 设置语言选项：修改 `/etc/locale.gen` 并 `locale-gen`
 * 设置语言：`echo LANG=en_US.UTF-8 > /etc/locale.conf`
 * 设置主机：`echo myhostname > /etc/hostname`
 
-## 配置网络
+### 配置网络
 
 [`netctl`][netctl] 是 `base` 组中已经安装到了系统，
 但你还需要安装一些依赖来增强它的功能（比如下面用到的`wifi-menu`）：
@@ -161,14 +161,14 @@ netctl start wlp4s0-tiny-router
 netctl enable wlp4s0-tiny-router
 ```
 
-## 设置用户
+### 设置用户
 
 * 设置root密码：`passwd`
 * 添加用户：`useradd -m -g users -s /bin/bash harttle`
 * 设置用户密码：`passwd harttle`
 * 删除用户：`userdel -r harttle`
 
-# 重建引导
+## 重建引导
 
 以grub为例，可选syslinux
 
@@ -187,7 +187,7 @@ netctl enable wlp4s0-tiny-router
 
 > `/etc/default/grub`中添加`GRUB_SAVEDEFAULT="TRUE"`后再次`grub-mkconfig`将会默认选中上次启动的系统。
 
-# 安装工具
+## 安装工具
 
 * 启用 AUR
 
@@ -206,11 +206,11 @@ netctl enable wlp4s0-tiny-router
 
 * 其他软件：`vim`, `openssh`, `zsh`, `git`, `node`
 
-# 安装图形界面
+## 安装图形界面
 
 下面以 KDE 安装为例，也可选 Gnome。
 
-## 基本安装
+### 基本安装
 
 1. 安装驱动：`mesa(3D)`,`xf86-video-vesa(Default)`,`xf86-video-nouveau(open nvidia)`,`nouveau-dri`(open nvidia)
 
@@ -225,24 +225,24 @@ netctl enable wlp4s0-tiny-router
     * 安装 `kdebase-workspace`，编辑 `~/.xprofile`
     * 设置 kdm 启动：`systemctl enable kdm`
 
-## 定制功能
+### 定制功能
 
-### kde 的 gtk 支持
+#### kde 的 gtk 支持
 
 安装 `oxygen-gtk2`，`oxygen-gtk3`，`kde-gtk-config`(AUR) 进入系统设置->公共外观行为->应用程序外观->gtk configuration相关设置
 
-### 桌面网络管理工具
+#### 桌面网络管理工具
 
 ```bash
 pacman -S networkmanager kdeplasma-applets-networkmanagement
 systemctl enable NetworkManager.service 
 ```
 
-### 登录屏幕主题
+#### 登录屏幕主题
 
 需要安装`archlinux-themes-kdm(AUR)`，直接在 kde systemsettings 中设置不起作用。
 
-### 挂载 Windows NTFS 分区
+#### 挂载 Windows NTFS 分区
 
 直接在 fstab 加入开机挂载的分区，需要安装 `ntfs-3g`(AUR)
 
@@ -250,9 +250,9 @@ systemctl enable NetworkManager.service
 /dev/hda1        /mnt/winC        ntfs-3g iocharset=utf8,umask=022,noatime 0 0
 ```
 
-# 汉化
+## 汉化
 
-## X默认字符集
+### X默认字符集
 
 设置X默认字符集：在 `~/.bashrc`、`~/.xinitrc` 或 `~/.xprofile` 中加入
 
@@ -262,11 +262,11 @@ export LANG=zh_CN.UTF-8
 export LC_ALL="zh_CN.UTF-8"
 ```
 
-## 安装字体库
+### 安装字体库
 
 中文字体库有很多不错的：`wqy-bitmapfont`，`wqy-zenhei`，`ttf-arphic-ukai`，`ttf-arphic-uming`，`ttf-fireflysung`，`wqy-microhei`（AUR），`wqy-microhei-lite`（AUR）
 
-## 输入法
+### 输入法
 
 安装 fcitx： `pacman -S fcitx fcitx-gtk2 fcitx-gtk3 fcitx-qt`
 
@@ -285,7 +285,7 @@ export QT_IM_MODULE=fcitx
 
 > 关于终端字体配置和终端输入法配置可参考[ArchLinux TTY 中文字体渲染](/2016/06/13/archlinux-tty-font.html)一文。
 
-# 字体
+## 字体
 
 可在AUR中直接安装 Ubuntu字体、开源字体、Adobe字体，甚至 Windows 字体。
 以效果奇佳的Ubuntu字体设置为例：
@@ -396,7 +396,7 @@ export QT_IM_MODULE=fcitx
 
 > Ubuntu 的`hintstyle`选择`slighthint`较好。有些桌面环境的字体配置模块会在桌面启动时对`~/.config/fontconfig/fonts.conf`进行修改，此时应保持字体模块的设置与此相同。
 
-# Konsole 字体配置
+## Konsole 字体配置
 
 对于konsole终端字体，可以在`~/.kde4/share/apps/konsole/Shell.profile`配置（设置页面的配置文件)，在页面中只允许更改monospace字体，可以在这里任意修改字体，如：
 
@@ -415,7 +415,7 @@ QFont::DemiBold | 63    |  63
 QFont::Bold     | 75    |  75
 QFont::Black    | 87    |  87
 
-# 参考阅读
+## 参考阅读
 
 * [Beginner's Guide](https://wiki.archlinux.org/index.php/Beginners'_Guide) 
 * [ArchLinux汉化][localization]

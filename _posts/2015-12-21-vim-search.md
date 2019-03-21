@@ -12,7 +12,7 @@ tags: Vim-Practice Vim Vundle grep 快捷键
 
 <!--more-->
 
-# 安装Ag
+## 安装Ag
 
 Ag是一个命令行工具，用来全局搜索代码文件。
 除了速度快之外，还会自动排除`.gitignore`, `.hgignore`里排除的文件。
@@ -33,7 +33,7 @@ apt-get install silversearcher-ag
 ack test_blah ~/code/
 ```
 
-# 安装Ack.vim
+## 安装Ack.vim
 
 [Ack.vim][ack.vim] 是[Ack][ack]的Vim插件，通过[Quickfix][quickfix]来提供搜索结果。
 但它允许用户定义外部程序，所以我们可以用它来显示[Ag][ag]的搜索结果。
@@ -54,7 +54,7 @@ vim +PluginInstall
 > 在运行`PluginInstall`前，需要确保安装了[Vundle][vundle]。
 > Vundle是Vim插件的包管理工具，可以参见[如何用Vim搭建IDE?][vim-ide]。
 
-# 基本使用
+## 基本使用
 
 然后在Vim中输入`:Ack test_blah`便可以在当前项目代码中搜索`"test_blah"`了。
 常用快捷键如下：

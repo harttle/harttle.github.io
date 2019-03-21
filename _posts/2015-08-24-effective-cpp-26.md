@@ -23,7 +23,7 @@ string encryptPassword(const string& password){
 
 <!--more-->
 
-# 推迟构造函数的执行
+## 推迟构造函数的执行
 
 当`encryptPassword`抛出异常时，`encrypted`是无用的根本不需要构造它。所以更好的写法是推迟`encrypted`的构造：
 
@@ -41,7 +41,7 @@ string encryptPassword(const string& password){
 
 这样我们可以提升有异常抛出时的执行效率。
 
-# 推迟到有构造参数时
+## 推迟到有构造参数时
 
 另外[Item 4：确保变量的初始化][item4]中提到“构造一个对象再给它赋值不如直接用一个值初始化它”，
 所以上述代码还有改进的余地：直接用`password`来初始化`encrypted`：
@@ -59,7 +59,7 @@ string encryptPassword(const string& password){
 
 标题中的“尽量推迟”在此有了更深刻的含义：变量定义可以一直推迟到你有初始化参数时再进行。
 
-# 循环中的变量
+## 循环中的变量
 
 循环中的变量定义也是一个常见的争论点。这里援引Scott Meyers的例子，比如我们有两种写法：
 

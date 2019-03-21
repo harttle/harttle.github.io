@@ -15,7 +15,7 @@ tags: DOM HTML iframe jQuery
 
 <!--more-->
 
-# .html()
+## .html()
 
 获取jQuery集合中首个元素的HTML内容，相当于`HTMLElement.innerHTML`。
 该方法通常用于获取`<script>`的内容，设置渲染结果，
@@ -25,7 +25,7 @@ tags: DOM HTML iframe jQuery
 
 > 注意，设置表单元素的内容需要使用`.val()`方法而非`.html()`。
 
-# .text()
+## .text()
 
 获取jQuery集合中每个HTML元素的文本内容，相当于很多模板引擎中的`strip_html`。
 相当于DOM API中的[Node.textContent][textContent]。
@@ -43,14 +43,14 @@ $("p").text() === 'Test Paragraph.'
 
 文档：<http://api.jquery.com/text/>
 
-# .children()
+## .children()
 
 获取jQuery集合中每个HTML元素的子元素，只获得元素节点（`nodeType===1`）。
 与`.find()`唯一的区别就是只取直接子元素。
 
 > 文档：<http://api.jquery.com/children/>
 
-# .contents()
+## .contents()
 
 获取所有子节点，包括元素节点（`nodeType===1`）、文本节点（`nodeType===3`）
 以及注释节点（`nodeType===8`）。

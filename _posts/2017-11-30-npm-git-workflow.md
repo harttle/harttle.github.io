@@ -14,7 +14,7 @@ tags: Git-Workflow Git Github NPM 测试 编译 版本
 
 <!--more-->
 
-# 项目初始化
+## 项目初始化
 
 `npm init` 会根据当前目录、Git 等信息来生成 [package.json][package.json]。
 因此建议先建立目录和 Git，再初始化 `package.json`：
@@ -36,7 +36,7 @@ hello-world/
 
 > 关于初始化 Git 的细节可以看这里 [仓库初始化](/2016/08/29/git-workflow-init.html)
 
-# 合入协作分支
+## 合入协作分支
 
 典型地主干分支（master）往往用来保存当前的稳定版本。
 由于主流的 Github CI 都不会阻止 Push，主干分支的合入建议通过 PR 的方式，
@@ -71,7 +71,7 @@ npm test
 
 > 在这里整理了 [分支管理](/2016/09/02/git-workflow-branch.html) 的一些常见操作。
 
-# 如何同步上游
+## 如何同步上游
 
 PR 是 Github 协作的重要环节，也是很多 Git 工具链的基础。通过发送 PR 而不是直接合入，
 可以通过 CI 工具发现测试情况、代码风格情况等。
@@ -104,7 +104,7 @@ git push origin feature-xxx
 
 现在就可以从你仓库的 `feature-xxx` 分支向上游仓库的 master 发 PR 了。
 
-# 版本发布
+## 版本发布
 
 [NPM 仓库][npm] 中会保存每个版本的软件，但我们希望能够方便地查看每个版本对应的源码。
 还希望 Github 的 [Release 页面][release] 与 npm 保持同步。
@@ -124,7 +124,7 @@ git log v2.0.1..v2.0.2
 
 > 注意需要 `git push --tags` 才能 Push Tag 到远端仓库，我们可以把它加到 `postversion` 脚本中。
 
-# 发版脚本
+## 发版脚本
 
 类似地，编译构建、单元测试等流程都可以加到 `preversion` 脚本中，这样单元测试挂了就会终止发布。
 一个 `package.json` 例子如下：

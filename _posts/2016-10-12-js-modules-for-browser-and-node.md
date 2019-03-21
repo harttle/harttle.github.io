@@ -18,7 +18,7 @@ ES6中终于给出了`from`, `import`等关键字来进行模块化的代码组�
 
 <!--more-->
 
-# 避开全局的名称空间
+## 避开全局的名称空间
 
 CommonJS中，每个源文件中的局部变量在其他文件中不可见。
 然而浏览器中，所有全局名称空间的变量对所有JavaScript文件都可见。
@@ -44,7 +44,7 @@ person.js: index.js
 
 > 如果你对Make构建前端项目感兴趣，可以看看Harttle的尝试：[Makefile构建前端项目](/2016/09/21/make-frontend.html)
 
-# 一个简单的类
+## 一个简单的类
 
 当然，『类』指的就是一个函数。假设我们的JavaScript模块提供一个叫做`Person`的类：
 
@@ -58,7 +58,7 @@ person.js: index.js
 
 下文将会考虑如何将这个类提供给其他模块使用。
 
-# 检测CommonJS环境
+## 检测CommonJS环境
 
 要使用`typeof`来检测一个变量是否曾被声明，因为`if`对于未声明的变量会抛出错误。
 例如：
@@ -83,7 +83,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 }
 ```
 
-# 检测浏览器环境
+## 检测浏览器环境
 
 浏览器环境也包括引入了AMD框架的，以及没有做模块化的。
 对于前者我们应当使用AMD框架来声明一个模块，而对于后者我们只需要暴露一个全局变量。

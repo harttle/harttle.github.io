@@ -26,7 +26,7 @@ namespace std{
 
 <!--more-->
 
-# 类的Swap
+## 类的Swap
 
 先不提异常安全，有时`std::swap`并不高效（对自定义类型而言）。
 比如采用 pimpl idiom（见[Item 31][item31]）设计的类中，只需要交换实现对象的指针即可：
@@ -74,7 +74,7 @@ namespace std {
 到此为止，我们得到了完美的`swap`代码。上述实现与STL容器是一致的：**提供共有`swap`成员函数，
 并特化`std::swap`来调用那个成员函数**。
 
-# 类模板的Swap
+## 类模板的Swap
 
 当`Widget`是类模板时，情况会更加复杂。按照上面的Swap实现方式，你可能会这样写：
 
@@ -149,7 +149,7 @@ void doSomething(T& obj1, T& obj2){
 此时，C++编译器还是会优先调用指定了T的`std::swap`，其次是`obj1`的类型`T`所在命名空间下的对应`swap`函数，
 最后才会匹配`std::swap`的默认实现。
 
-# 最佳实践
+## 最佳实践
 
 如何实现Swap呢？总结一下：
 

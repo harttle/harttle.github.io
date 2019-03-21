@@ -9,7 +9,7 @@ tags:  C++ 运算符 类型转换
 
 <!--more-->
 
-# 优先级与结合性
+## 优先级与结合性
 
 <p>下表列出了C++运算符的优先级和结合性。从上到下，运算符的优先级逐渐减弱.</p>
 
@@ -237,7 +237,7 @@ tags:  C++ 运算符 类型转换
 <td> Left-to-right
 </td></tr></tbody></table>
 
-# 运算符列表
+## 运算符列表
 
 <table class="wikitable table">
 

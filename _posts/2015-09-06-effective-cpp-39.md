@@ -32,7 +32,7 @@ private继承和对象组合类似，都可以表示"is-implemented-in-terms-wit
 
 <!--more-->
 
-# private继承
+## private继承
 
 我们的`Widget`类需要执行周期性任务，于是希望继承`Timer`的实现。
 因为`Widget`不是一个`Timer`，所以我们选择了private继承：
@@ -57,7 +57,7 @@ private继承的实现非常简单，而且有时只能使用private继承：
 1. 当`Widget`需要访问`Timer`的protected成员时。因为对象组合后只能访问public成员，而private继承后可以访问protected成员。
 2. 当`Widget`需要重写`Timer`的虚函数时。比如上面的例子中，由于需要重写`onTick`单纯的对象组合是做不到的。
 
-# 对象组合
+## 对象组合
 
 我们知道对象组合也可以表达"is-implemented-in-terms-of"的关系，
 上面的需求当然也可以使用对象组合的方式实现。但由于需要重写（override）`Timer`的虚函数，所以还是需要一个继承关系的：
@@ -82,7 +82,7 @@ private:
 但如果采用对象组合的方式，你可以把`WidgetTimer`放到另一个文件中，在`Widget`中保存`WidgetTimer`的指针并声明`WidgetTimer`即可，
 见[Item 31][item31]。
 
-# EBO特性
+## EBO特性
 
 我们讲虽然对象组合优于private继承，但有些特殊情况下仍然可以选择private继承。
 需要EBO（empty base optimization）的场景便是另一个特例。
@@ -116,7 +116,7 @@ private:
 （因为虚函数的存在会导致一个徐函数指针，它将不再是空对象）。
 STL就定义了很多有用的空对象，比如`unary_function`, `binary_function`等。
 
-# 总结
+## 总结
 
 * private继承的语义是"is-implemented-in-terms-of"，通常不如对象组合。但有时却是有用的：比如方法protected成员、重写虚函数。
 * 不同于对象组合，private继承可以应用EBO，库的开发者可以用它来减小对象大小。

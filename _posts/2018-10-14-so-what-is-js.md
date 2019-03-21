@@ -10,7 +10,7 @@ redirect_from: /2016/01/18/elegant-javascript.html
 
 <!--more-->
 
-# JS 的地位
+## JS 的地位
 
 要讨论 JS 的地位必须要提起“网页”（Web Page），顾名思义是 Web 中的一个页面，而 Web 是一个巨大的分布式文档。
 这一架构的基石是 [HTML][http]、HTTP 和 URI。之所以没有 JavaScript 或 Flash、CSS 这些东西，
@@ -21,7 +21,7 @@ JS 的地位如此之高，要归功于 Web App 的繁荣和开放网页的衰�
 
 综上，**JS 是 Web App 的开发语言**。
 
-# JS 的繁荣
+## JS 的繁荣
 
 Web 的设计是成功的，可链接的、人人可访问的分布式文档。
 原本只希望在欧洲核子中心共享数据，短短几年内连接了整个世界，并成功地推动了互联网的普及。
@@ -40,7 +40,7 @@ JavaScript 是让 WebPage 变成 WebApp 的推手，类似 jQuery、Backbone、A
 3. Node.js 的流行（09年已经发布），从此 JavaScript 名正言顺地成为通用（General Purpose）编程语言。
 4. ECMA 组织重新关注 ECMAScript 标准，从 ES6（2015）开始加速迭代。
 
-# 繁荣的代价
+## 繁荣的代价
 
 **Web 的成功一部分来自开放和互联的初始设计，另一部分则来自向后兼容的原则。**
 很难想象 Android 2.0 的软件能够运行在今天的 Android 平台上，
@@ -61,7 +61,7 @@ Web 平台的向后兼容是很严格的，包括旧的 Bug 也要保持不变�
 这就是为什么同样是 JavaScript 可以写出不同时代的代码。
 **就是向后兼容的要求让 JS 变得今天这样庞杂。**
 
-# 为什么说庞杂？
+## 为什么说庞杂？
 
 **JS 标准较多**，需要理解什么宿主环境支持写怎样的语法，哪些语法需要开解释器参数。
 比如 Node 6 中可以写 Arrow function 但不可使用 async/await。
@@ -76,7 +76,7 @@ URI/HTTP Spec 由 IETF 维护，而 HTML Spec 由 W3C 维护，今天 WHATWG 又
 （harttle 宁愿手写一个[liquidjs][liquidjs]都不去开发[liquid-node][liquid-node]）、TypeScript，
 这些都有额外的学习成本而且不一定符合长期标准。这也是 JS 比较杂的一个原因。
 
-# JS 的不一致
+## JS 的不一致
 
 下面到了举例环节。
 
@@ -99,7 +99,7 @@ URI/HTTP Spec 由 IETF 维护，而 HTML Spec 由 W3C 维护，今天 WHATWG 又
 * <https://www.reddit.com/r/ProgrammerHumor/comments/88gniv/old_meme_format_timeless_javascript_quirks/>
 * <https://ponyfoo.com/articles/more-es6-proxy-traps-in-depth>
 
-# 技术展望
+## 技术展望
 
 今天已经很少有人直接写 JavaScript 了，更多的是去写 ES6（遵循 ECMAScript 6th Edition 的 JavaScript），
 或者 TypeScript、JSX 等，经过编译得到运行在浏览器或 Node 中的 JavaScript。

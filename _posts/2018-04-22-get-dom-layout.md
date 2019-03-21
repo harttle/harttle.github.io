@@ -13,7 +13,7 @@ tags: DOM HTML CSS
 
 <!--more-->
 
-# 概述
+## 概述
 
 这些是本文涉及的 API 对应的文档和标准，供查阅：
 
@@ -25,7 +25,7 @@ API | 用途 | 文档 | 标准
 `.getClientRects()` | 所有子 CSS 盒子的大小和位置 | [MDN][getClientRects] | [CSSOM View Module][cssom-view-module-getclientrects]
 `.getComputedStyle()` | 应用所有样式表和计算之后的 CSS 属性 | [MDN][getComputedStyle] | [DOM Level 2 Style][DOM Level 2 Style] [CSSOM][CSSOM]
 
-# offsetTop/offsetLeft
+## offsetTop/offsetLeft
 
 [HTMLElement.offsetTop][offsettop] 用来获取当前元素（不包括上边框）
 相对于定位容器（positioning container）的位置。也就是说，
@@ -46,7 +46,7 @@ function getOffsetTop(el){
 
 兼容性和限制：几乎所有浏览器都支持该属性。如果元素被隐藏它的值就是 0，但在 IE9 下没有影响。
 
-# clientTop/clientLeft
+## clientTop/clientLeft
 
 不要被名字误导，[Element.clientTop][clientTop] 是指当前元素的 **上边框的宽度** 的整数值。
 总是等于 `getComputedStyle()` 返回的 `border-top-width` 属性的四舍五入为整数后的值。
@@ -58,7 +58,7 @@ offset 总是指包含边框的渲染盒子（边框+内边距+内容大小）�
 
 兼容性和限制：同 offsetTop/offsetLeft
 
-# .getBoundingClientRect()
+## .getBoundingClientRect()
 
 [Element.getBoundingClientRect()][getBoundingClientRect] 用于获取元素的大小，以及相对于视口（viewport）的位置，
 返回一个 [DOMRect][DOMRect] 对象。
@@ -95,7 +95,7 @@ IE 下窗口的左上角可能不是 0,0，[在 IE9 可以这样把它设置为 
 <meta http-equiv="x-ua-compatible" content="ie=edge"/>
 ```
 
-# .getClientRects()
+## .getClientRects()
 
 [Element.getClientRects()][getClientRects] 用来获得 DOM 元素中的所有
 [CSS 盒模型][css-box-model] 对应的 [DOMRect][DOMRect] 组成的集合。
@@ -117,7 +117,7 @@ DOMRectList {0: DOMRect, 1: DOMRect, 2: DOMRect, length: 5}
 这个对象不具有 `width` 和 `height` 属性，而且无法给它设置属性。参考：
 <https://webplatform.github.io/docs/dom/HTMLElement/getClientRects/>
 
-# .getComputedStyle()
+## .getComputedStyle()
 
 [Window.getComputedStyle()][getComputedStyle] 可以得到一个元素的所有计算后的 CSS 属性。
 对于简单的绝对定位元素，可以通过这个 API 返回的 `top`，`left` 等属性值获取元素的位置。
@@ -142,7 +142,7 @@ console.log('the generated content is: ', result); // returns ' rocks!'
 但它返回的值是 CSS 属性，用它获取绝对位置时要注意值的类型。
 例如 `left` 可能是 `13px` 这样的绝对值，也可能是 `auto` 这样的 CSS 关键字。
 
-# 总结
+## 总结
 
 * 获取 DOM 元素相对于文档的位置，可以直接使用 `offsetTop`；
 * 获取 DOM 元素相对于视口的位置，可以使用 `.getBoundingClientRect()`；

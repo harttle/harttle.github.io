@@ -14,7 +14,7 @@ Node.js 下如何做单元测试，要确保软件的质量我们还需要 e2e �
 
 <!--more-->
 
-# 输入输出
+## 输入输出
 
 测试一个 cli 程序的输入输出很容易，几乎不需要借助任何工具。
 使用内置的 `child_process` 模块就足够了：
@@ -48,7 +48,7 @@ it('should print author', function () {
 
 > 更多细节请参考：[Mocha 下测试异步代码](/2016/07/12/async-test-with-chai-as-promised.html) 一文。
 
-# 文件系统
+## 文件系统
 
 在单元测试中，我们可以 [修改内置的 `fs` 模块][mock-fs] 达到测试的目的。
 其实文件并没有真正被读写，只是测试了调用读写的逻辑是否正确。
@@ -57,7 +57,7 @@ it('should print author', function () {
 
 在此 [Harttle](https://harttle.land) 介绍两种方式来初始化用于测试的工作区。
 
-## 临时目录
+### 临时目录
 
 如果文件读写较少，可以在测试开始前初始化一个临时目录，测试完成时删除。
 使用 [fs-extra][fs-extra] 会让这个工作变得非常简单：
@@ -69,7 +69,7 @@ import os from 'os'
 beforeEach(() => fs.emptyDir(os.tmpdir() + '/test'))
 ```
 
-## Ramdisk
+### Ramdisk
 
 也可以把一部分内存挂载到文件系统，有大量文件读写时比较快，同时可以保护 SSD（是这样吗？）。
 Node 下有一个不错的 [node-ramdisk][ramdisk] 工具来创建内存虚拟磁盘。
@@ -91,7 +91,7 @@ after(done => disk.delete(mountpoint, cb))
 创建 ramdisk 系统调用比较耗时，建议在 `before()` 时完成，`beforeEach()` 时清空目录。
 此外，因为设备根目录存在权限较高的隐藏文件，建议在 `mountpoint` 下创建一个子目录来进行测试。
 
-# 网络
+## 网络
 
 在单元测试中可以使用 [Sinon fakeXHR][fakeXHR] 或 [nock][nock] 来 Mock 掉 http 模块，
 但 e2e 测试中则需要启动真实的服务器。

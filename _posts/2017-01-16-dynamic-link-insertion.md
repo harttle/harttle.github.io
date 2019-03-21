@@ -13,7 +13,7 @@ tags: DOM HTML 事件 异步 CSS innerHTML
 
 <!--more-->
 
-# 插入方式
+## 插入方式
 
 鉴于浏览器的样式处理模型，即使是以`innerHTML`的方式插入的 `<link>` 
 也会被解析为 [外部样式表资源][ex-link-res] 并立即开始下载。
@@ -37,7 +37,7 @@ document.body.appendChild(link);
 > 上述情形对`<script>`却会不一样，`<script>`会被解析但不会执行。
 > 详细的讨论见[在DOM中动态插入脚本](/2017/01/16/dynamic-script-insertion.html)。
 
-# 触发下载
+## 触发下载
 
 可能你不会注意到外部样式表的下载是有条件的，浏览器以此来避免下载不必要的样式文件。
 最为重要的一个条件是`<link>`必须与当前[浏览上下文相连接][bcc]，
@@ -73,7 +73,7 @@ document.body.appendChild(link);
 document.body.appendChild(link);
 ```
 
-# 加载状态
+## 加载状态
 
 如果需要在脚本中获取外部样式表的加载状态，可以绑定其`onload`和`onerror`事件。
 为了兼容 IE 还可以绑定 `onreadystatechange ` 事件。

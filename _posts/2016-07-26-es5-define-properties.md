@@ -9,7 +9,7 @@ ES5定义的[Object.defineProperty()][mdn-defineproperty]方法提供了面向�
 ES5为此给出了一系列的对象属性管理方法，包括：`Object.defineProperty`, 
 `Object.preventExtensions`, `Object.seal`, `Object.freeze`等。
 
-# defineProperty参数
+## defineProperty参数
 
 `Object.defineProperty(obj, prop, descriptor)`用于在对象`obj`上添加（或修改）
 名为`prop`的属性，该方法接受三个参数：
@@ -38,7 +38,7 @@ ES5为此给出了一系列的对象属性管理方法，包括：`Object.define
 * `configurable`：为`true`时该属性才可被配置和删除，默认为`false`。
 * `enumerable`：为`true`时该属性才能出现在对象属性枚举中，默认为`false`。
 
-# 数据描述符示例
+## 数据描述符示例
 
 使用`writable`属性可禁止属性的值被赋值运算符更改。
 
@@ -73,7 +73,7 @@ console.log(post.author); // another
 
 > `enumerable`定义了对象属性是否可被枚举。值为`false`时，`for...in`将不会遍历到该属性。
 
-# 存取描述符示例
+## 存取描述符示例
 
 该示例来自[MDN][mdn-get-set]：
 
@@ -103,7 +103,7 @@ arc.temperature = 13;
 arc.getArchive(); // [{ val: 11 }, { val: 13 }]
 ```
 
-# 禁止属性扩展
+## 禁止属性扩展
 
 有些情况下我们希望禁止客户通过`defineProperty()`进行属性扩展，
 ES5提供了三级的限制：
@@ -114,7 +114,7 @@ ES5提供了三级的限制：
 
 > 注意上述三个方法都是浅的（Shallow），即对象属性的`isExtensible`, `isSealed`, `isFrozen`不会发生变化。
 
-# 参考阅读
+## 参考阅读
 
 * MDN-defineProperty: <https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty>
 * MDN-seal: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/seal>

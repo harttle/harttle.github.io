@@ -14,7 +14,7 @@ tags: DOM JavaScript jQuery 作用域 iframe
 
 <!--more-->
 
-# 先看例子
+## 先看例子
 
 设置父容器的`window.id="parent"`，在注入到iframe的脚本中把它打印出来。
 如果是与父容器共享上下文则会打印出`"parent"`，否则应是`undefined`。
@@ -44,7 +44,7 @@ $(idocument.body).append(el);
 输出为：`window.id == parent`，显然jQuery不是单纯调用`appendChild()`，还做了别的处理。
 下面来看jQuery源码。
 
-# 禁用脚本标签
+## 禁用脚本标签
 
 在Github可访问jQuery源码，看这个文件：[manipulation.js][manipulation.js]。
 在真正插入`<script>`标签之前，先进入`domManip`方法。
@@ -73,7 +73,7 @@ function disableScript( elem ) {
 `type = "true/text/javascript"`；对于未设置`type`的脚本，其`type`被重写为`false/`。
 总之，浏览器不再把该标签识别为页面脚本，从而禁止了浏览器对`<script>`的调度执行。
 
-# DOM 节点插入
+## DOM 节点插入
 
 接下来从`domManip`的`callback`才真正进入`.append()`方法。
 可以看到`.append()`是通过DOM API`appendChild`来实现的。
@@ -92,7 +92,7 @@ jQuery.fn.extend( {
     },
 ```
 
-# eval 脚本执行
+## eval 脚本执行
 
 `callback`返回后再次回到`doManip`函数中，调用`DOMEval`来执行脚本内容。
 

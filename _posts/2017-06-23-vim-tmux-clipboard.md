@@ -9,7 +9,7 @@ tags: Vim-Practice SSH Tmux Vim 剪切板 寄存器
 
 <!--more-->
 
-# Vim 与 Tmux Buffer 共享
+## Vim 与 Tmux Buffer 共享
 
 [vim-tmux-clipboard][vim-tmux-clipboard] 提供了 Vim 和 Tmux 的剪切板共享，
 它有一个依赖的插件 [vim-tmux-focus-events][vim-tmux-focus-events] 需要一起安装。
@@ -32,7 +32,7 @@ set -g focus-events on
 vim +PluginInstall
 ```
 
-# Tmux 与系统剪切板共享
+## Tmux 与系统剪切板共享
 
 最新版本的 Tmux（其实只要支持 -C 参数）可以把操作上交给 iTerm2，这时剪切板和操作系统是互通的，甚至 Tmux 运行在 ssh 中。
 
@@ -56,7 +56,7 @@ ssh -R 8234:localhost:22 yangjvn@126.com
 tmux save-buffer - | ssh -p 8234 localhost pbcopy
 ```
 
-## 快捷方式
+### 快捷方式
 
 如果上述 `tmux save-buffer` 命令好使的话，事实上可以把任何东西发送给本地剪切板。
 
@@ -74,7 +74,7 @@ map <leader>cp :redir! > /tmp/vimbuffer \| echo @" \| redir END \| !cat /tmp/vim
 
 > 上述代码大意如下：将剪切板寄存器写入 `/tmp/vimbuffer`，将该文件读出，重定向到 `ssh`，由 SSH 发送到 Mac。这里谁有更好的写法。。。求教。
 
-## 安全考虑
+### 安全考虑
 
 上述两个 `ssh` 命令可能会询问 SSH 密码，可以
 [配置 SSH 自动登录](/2016/09/14/ssh-auto-login.html)
@@ -97,7 +97,7 @@ tmux save-buffer - | ssh -p 8234 localhost
 在本地起一个服务来执行 pbcopy 会比远程调用更加安全，
 可参考：<https://seancoates.com/blogs/remote-pbcopy/>
 
-# Vim 与系统剪切板共享
+## Vim 与系统剪切板共享
 
 在 [Vim 寄存器](/2016/07/25/vim-registers.html) 中介绍过系统剪切板映射在 Vim
 中称为寄存器，包括主选区 `"*` 寄存器和剪切板 `"+` 寄存器（这是 X11 中的概念，

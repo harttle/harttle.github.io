@@ -19,13 +19,13 @@ Grub的手册在这里： <https://www.gnu.org/software/grub/manual/>
 
 <!--more-->
 
-# Grub Rescue 引导内核
+## Grub Rescue 引导内核
 
 Grub无法启动内核时，便会进入Grub Rescue模式，应该是像这样的：
 
 ![@2x](/assets/img/blog/grub-rescue.png)
 
-## 确定内核位置
+### 确定内核位置
 
 [ls]命令可以列出Grub能搜索到的所有设备，其中`(hdX, Y)`指硬盘驱动器`X`中的分区`Y`。
 然后继续[ls]来确认要启动的Linux内核所在的路径。
@@ -37,7 +37,7 @@ ls
 ls (hdX,Y)/boot/grub 
 ```
 
-## 环境设置
+### 环境设置
 
 [set]命令是用来设置Grub环境变量的。比如设置`prefix`之后我们便不需要写完整路径了，只需要给出以根路径开始的绝对路径即可（见下文）。
 [insmod]用来载入一些Grub的动态模块，比如`linux.mod`。
@@ -48,7 +48,7 @@ insmod (hdX,Y)/boot/grub/linux.mod # 可选，为了方便接下来的命令
 set root=(hdX,Y)
 ```
 
-## 启动内核
+### 启动内核
 
 [linux]命令用来从文件载入一个内核，载入之后用[initrd]命令载入初始化内核的内存（还可以在内存中设置一些参数）。
 最后用[boot]命令启动它！
@@ -60,7 +60,7 @@ initrd /initrd.img
 boot
 ```
 
-# 配置文件
+## 配置文件
 
 系统启动之后我们便可以解决问题了，重新配置内核或者重新配置Grub。 Grub配置文件路径：
 
@@ -84,7 +84,7 @@ grub-mkconfig -o /boot/grub/grub.cfg    #archlinux
 GRUB_DEFAULT=0,1,2...saved    
 ```
 
-# 写入MBR
+## 写入MBR
 
 上文通过Grub Rescue来手动引导内核的前提是Grub可以正常启动，只是Grub找不到内核了。但对于安装Windows导致的MBR被重写，Grub也是无法启动的。
 这时需要用一个Linux启动盘来进入系统，然后将Grub启动记录写入MBR：

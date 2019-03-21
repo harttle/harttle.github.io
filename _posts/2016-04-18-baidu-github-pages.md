@@ -14,7 +14,7 @@ Github对Baidu Spider的用户代理都会返回403状态码，因而百度无�
 * *实时同步*：不存在CDN的不同步的问题，同时也不存在CDN线路选择不确定的问题。
 * *不需备案*：使用Coding.net的域名做CNAME，不需自己备案。
 
-# 最终效果
+## 最终效果
 
 百度收录情况如下，21日创建镜像后22日就开始有页面被收录了。
 
@@ -26,7 +26,7 @@ Github对Baidu Spider的用户代理都会返回403状态码，因而百度无�
 
 ![baidu crawl](/assets/img/blog/baidu-crawl@2x.jpg)
 
-# 仓库同步
+## 仓库同步
 
 > 既然如今Gitcafe的Git仓库服务已经转移到了Coding.net，
 > 下文中以Coding.net中的配置为例。
@@ -43,7 +43,7 @@ git push coding.net coding-pages
 在Coding.net上看到自己的仓库代码后，在Pages设置页面中开启Pages服务。
 此时，可以访问<http://harttle.coding.me>来测试了（可能会有一分钟左右的延迟，之间会404）。
 
-# 域名配置
+## 域名配置
 
 首先在Coding.net的Pages页面绑定一个自定义域名：harttle.land。
 然后在域名解析控制台中，将百度线路来的harttle.land解析到pages.coding.me：
@@ -58,7 +58,7 @@ CNAME	    @	        百度	    pages.coding.me	    10分钟
 
 这样百度便可以正确地收到Github Pages页面了，我们只需要保持同步即可。
 
-# 同步脚本
+## 同步脚本
 
 我在这里写了一个同步脚本：
 
@@ -73,7 +73,7 @@ git checkout master
 
 你愿意的话也可以把它作为一个Github Hook来自动执行同步。
 
-# 镜像重定向
+## 镜像重定向
 
 上面在Coding.net创建的镜像站点有两种访问方式：
 
@@ -91,7 +91,7 @@ git checkout master
 
 这样，所有来自浏览器的访问就会被重定向到源站点，而搜索引擎则不会被影响。
 
-# Github Pages问题何在
+## Github Pages问题何在
 
 这不是技术问题。
 

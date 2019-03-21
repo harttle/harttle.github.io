@@ -11,7 +11,7 @@ tags: Safari iframe DOM JavaScript Wifi iOS 路由
 
 <!--more-->
 
-# 通用破解步骤
+## 通用破解步骤
 
 像我们这样的小白破解Wifi密码一般分两步走，首先接入网络，然后查看密码。
 接入网络的方法大概只有两种：
@@ -29,7 +29,7 @@ tags: Safari iframe DOM JavaScript Wifi iOS 路由
 为了让家里都上网并有良好信号，需要家里路由器桥接到邻家路由，
 说到底就是需要明文密码。
 
-# 登录路由器
+## 登录路由器
 
 既然已经接入目标网络，可以通过局域网地址访问路由管理页面。
 一般是`192.168.1.1`，不同产品也可能不同百度一下即可。
@@ -46,7 +46,7 @@ tags: Safari iframe DOM JavaScript Wifi iOS 路由
 
 ![router admin](/assets/img/blog/router-admin@2x.jpg)
 
-# Mac调试iPhone页面
+## Mac调试iPhone页面
 
 恰好小编是做Web前端的，网页上密码状的东西其实都是明文，可通过DOM API来访问。
 问题在于小编只有这台iPhone接入了目标网络，如何调试JavaScript呢？
@@ -60,7 +60,7 @@ Safari支持OSX/iOS联调，需要进行一些设置：
 
 ![safari debug](/assets/img/blog/safari-iphone-wifi-debug.jpg)
 
-# DOM API获取密码
+## DOM API获取密码
 
 经过分析发现密码输入框`<input type="password">`位于一个iframe下，难道是为了某种安全性？
 不过小编发现该Iframe与主DOM是同域的，Iframe中的DOM仍然可以访问。

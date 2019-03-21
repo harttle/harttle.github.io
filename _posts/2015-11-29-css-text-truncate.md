@@ -13,7 +13,7 @@ tags: CSS HTML 盒模型 text-overflow overflow line-clamp 优雅降级 inline
 
 <!--more-->
 
-# text-overflow
+## text-overflow
 
 `text-overflow: ellipsis`属性作用于块级元素，当文本溢出时显示省略号。
 要注意的是，设置`ellipsis`的同时需要禁止换行，并隐藏溢出部分：
@@ -28,7 +28,7 @@ tags: CSS HTML 盒模型 text-overflow overflow line-clamp 优雅降级 inline
 
 > 什么是块级元素？参考：[CSS Display属性与盒模型][css-display]
 
-# line-clamp
+## line-clamp
 
 有时我们希望显示两行文本，第二行溢出部分显示省略号。怎么办呢？
 其实这在理论上是不可能办到的，标准CSS并未提供这样的行为。
@@ -52,7 +52,7 @@ tags: CSS HTML 盒模型 text-overflow overflow line-clamp 优雅降级 inline
 }
 ```
 
-# 行内元素截断
+## 行内元素截断
 
 `text-overflow`只作用于块级元素，所以我们给一个`display:inline|inline-block`
 的元素设置该属性是无效的。例如：

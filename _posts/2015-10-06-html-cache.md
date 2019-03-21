@@ -18,7 +18,7 @@ excerpt: 本文从预加载的角度介绍如何优化页面载入和渲染的�
 
 <!--more-->
 
-# dns-prefetch
+## dns-prefetch
 
 `dns-prefetch`可以指示浏览器去预先解析DNS域名。这样可以减少将要打开页面的延迟，
 
@@ -31,7 +31,7 @@ excerpt: 本文从预加载的角度介绍如何优化页面载入和渲染的�
 
 对于重定向也是有用的，比如对于：host1.com/resource > 301 > host2.com/resource 也可以设置 `dns-prefetch: host2.com` 来省去最后一个页面访问的DNS延迟。
 
-# prefetch
+## prefetch
 
 `prefetch`用来初始化**对后续导航中资源的获取**。`prefetch`指定的资源获取优先级是最低的。
 
@@ -42,7 +42,7 @@ excerpt: 本文从预加载的角度介绍如何优化页面载入和渲染的�
 </head>
 ```
 
-# subresource
+## subresource
 
 `subresource`用来标识出重要的资源，**浏览器会在当前访问页面时立即下载它们**。
 
@@ -57,7 +57,7 @@ excerpt: 本文从预加载的角度介绍如何优化页面载入和渲染的�
 **`subresource`的优先级高于`prefetch`**。
 参见： <http://stackoverflow.com/questions/29475854/what-is-link-rel-subresource-used-for>
 
-# prerender
+## prerender
 
 合适的适合，你甚至可以**用`prerender`来让浏览器在后台事先渲染好整个页面**，这样它的打开速度将会是0秒！
 

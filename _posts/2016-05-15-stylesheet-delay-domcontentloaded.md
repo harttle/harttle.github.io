@@ -8,7 +8,7 @@ tags: CSS DOM JavaScript 事件 DOM解析
 本文讨论一个我们习以为常却很少了解的问题：
 **样式文件的载入会延迟脚本执行，以及`DOMContentLoaded`事件的触发。**
 
-# DOMContentLoaded事件
+## DOMContentLoaded事件
 
 页面文档（DOM）完全加载并解析完毕之后，会触发`DOMContentLoaded`事件，
 HTML文档不会等待样式文件，图片文件，Iframe页面的加载。
@@ -24,7 +24,7 @@ HTML文档不会等待样式文件，图片文件，Iframe页面的加载。
 
 <!--more-->
 
-# 浏览器为何延迟DOMContentLoaded
+## 浏览器为何延迟DOMContentLoaded
 
 对于很多脚本而言，它们被编写时就希望在样式载入之后再开始执行。
 JavaScript的作者往往会假设CSS规则已经生效，尤其是在进行一些显示相关的操作时，
@@ -35,7 +35,7 @@ JavaScript的作者往往会假设CSS规则已经生效，尤其是在进行一�
 如果脚本位于样式之后，浏览器通常会认为该脚本依赖于样式的渲染结果，
 也就更倾向于延迟脚本的执行（直到样式渲染结束）。
 
-# 不同浏览器的行为
+## 不同浏览器的行为
 
 既然浏览器有时会延迟`DOMContentLoaded`事件，
 但是何时会延迟`DOMContentLoaded`事件，还取决于行内脚本还是外部脚本，以及脚本与样式标签的相对位置。
@@ -52,7 +52,7 @@ Webkit (Safari, Chrome)  | 否 | 是 | 是
 Gecko (Firefox)          | 否 | 是 | 是
 Trident (MSIE)           |    | 是 | 是
 
-# HTML5标准及最佳实践
+## HTML5标准及最佳实践
 
 其实`DOMContentLoaded`是Firefox中最先提出的，
 此后JavaScript社区发现它确实比`load`事件（要求所有资源完全载入）更好，
@@ -80,7 +80,7 @@ DOM解析到`<script>`标签时会阻塞DOM解析，开始如下操作：
 
 > [jQuery文档][jq-ready]中也推荐这样的实践方式。
 
-# 参考阅读
+## 参考阅读
 
 * MDN `load` 事件：<https://developer.mozilla.org/en-US/docs/Web/Events/load>
 * MDN `DOMContentLoaded`事件：<https://developer.mozilla.org/zh-CN/docs/Web/Events/DOMContentLoaded>

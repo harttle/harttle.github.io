@@ -16,7 +16,7 @@ Electron 中的 Node.js 是一个后台进程的运行时（注意不是 Web 服
 
 <!--more-->
 
-# 通信模型
+## 通信模型
 
 Electron IPC 提供基于事件的 API，在渲染进程和后台进程中都可以向对方发送事件。
 也可以在事件处理函数中通过发送新的事件来回复向对方。
@@ -25,7 +25,7 @@ Electron IPC 提供基于事件的 API，在渲染进程和后台进程中都可
 * 发送事件需要指定对方句柄，不支持全局广播。
 * 支持同步事件来获得同步的返回值。
 
-# 发送与回复
+## 发送与回复
 
 [`IPCRender`][ipcrender]是渲染进程中的 [`EventEmitter`][event-emitter] 实例，通过它可以像后台进程发送事件。
 比如发送一个`create`事件并传递一个字符串参数`"harttle"`：
@@ -49,7 +49,7 @@ ipcRenderer.send('create', 'harttle')
 在收到事件时，可以通过[`event.sender`][event.sender]来得到对方[`webContents`][web-content]并回复消息。
 此外，[`webContents.send`][webContents.send]接受任意个参数，这些都会被依次传递给处理函数。
 
-# 同步事件
+## 同步事件
 
 事件也可以同步回复，可以通过[`sendSync`][ipcrender-sendsync]方法来做到：
 
@@ -63,7 +63,7 @@ console.log(ipcRenderer.sendSync('create-sync', 'harttle')) // 输出 "created"
 
 虽然 Electron 提供了此类 API，使用时仍然需要注意同步 IPC 会阻塞当前进程。
 
-# 指定窗口
+## 指定窗口
 
 因为[BrowserWindow][browser-window]都是由后台进程创建的，后台进程是可以把窗口都记录下来的。
 此后便可以向每个窗口发送事件。
@@ -73,7 +73,7 @@ var win = new BrowserWindow();
 win.webContents.send('born', 'harttle');
 ```
 
-# 寻找窗口
+## 寻找窗口
 
 如果没有窗口的实例，可以通过[`BrowserWindow.getFocusedWindow()`][browser-window]获取焦点窗口：
 

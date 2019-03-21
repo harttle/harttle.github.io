@@ -12,7 +12,7 @@ tags: Vim-Practice JavaScript Vim 代码风格 快捷键 ESLint
  
 <!--more-->
 
-# syntastic 与 vim-autoformat
+## syntastic 与 vim-autoformat
 
 工欲善其事必先利其器，首先介绍两个 Vim 插件。
 如果你不了解如何安装这些托管在 Github 上的 Vim 插件，
@@ -28,7 +28,7 @@ Plugin 'Chiel92/vim-autoformat'
 [vim-autoformat][vaf] 则可以调用外部命令行工具来格式化代码。
 下文要介绍的就是让两者都调用 [eslint][eslint-cli]，并使用同一份 `eslintrc`。
 
-# eslint 安装与配置
+## eslint 安装与配置
 
 eslint 可直接通过 npm 安装：
 
@@ -72,7 +72,7 @@ function a  (){}
 ✖ 3 problems (3 errors, 0 warnings)
 ```
 
-# 配置 syntastic
+## 配置 syntastic
 
 本小节的目的是让 Syntastic 用 eslint 来检查 JavaScript 语法风格。
 需要在`~/.vimrc`中将 JavaScript checker 设置为`eslint`：
@@ -91,7 +91,7 @@ let g:syntastic_always_populate_loc_list = 1
 
 更多 syntastic 配置可参考：<https://github.com/vim-syntastic/syntastic>
 
-# 配置 vim-autoformat
+## 配置 vim-autoformat
 
 既然可以检查语法风格，那么我需要用同样的规则进行代码格式化。
 恰好 `eslint --fix` 参数提供了格式化代码的特性，

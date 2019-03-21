@@ -25,7 +25,7 @@ Apple 在  [App Store Review Guidelines](https://developer.apple.com/app-store/r
 
 <!--more-->
 
-# touch 交互暂停动画
+## touch 交互暂停动画
 
 在发生手势交互时，页面中脚本线程会挂起，事件不再触发，动画也不会继续执行。
 `animation` 和 `transition` 都会冻结。
@@ -37,7 +37,7 @@ Apple 在  [App Store Review Guidelines](https://developer.apple.com/app-store/r
 
 这里有一个录屏： <https://harttle.land/animation-bugs/a-normal-animation-uiwebview.mp4>
 
-# 恢复滚动位置不触发 scroll 事件
+## 恢复滚动位置不触发 scroll 事件
 
 浏览器都会有一个恢复滚动位置的策略：当你刷新一个已经浏览过的页面时，
 页面加载后浏览器会恢复到上次滚动到的位置。
@@ -50,7 +50,7 @@ Apple 在  [App Store Review Guidelines](https://developer.apple.com/app-store/r
 2. 滚动到页面底部，刷新页面。
 3. 浏览器会恢复滚动位置到底部，然而右上角并未显示触发了 `scroll` 事件。
 
-# scroll 事件延迟
+## scroll 事件延迟
 
 几乎所有前端都听说过 scroll 事件节流，因为 Webkit 下 `scroll` 事件会非常频繁地触发。
 但 UIWebView 下却是每次开始滚动到结束滚动只触发一次 `scroll`。

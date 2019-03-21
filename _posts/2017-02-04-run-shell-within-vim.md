@@ -14,7 +14,7 @@ tags: Vim-Practice Shell Tmux Vim 进程 快捷键
 
 <!--more-->
 
-# :!cmd
+## :!cmd
 
 `:!{cmd}` 是 Vim 命令，用来执行一条 Shell 命令，命令完成后按任意键回到 Vim。
 可通过`:!zsh ls`来指定不同的 Shell。适合只执行一条命令的场景，比如编译、运行测试、查看 IP 等，例如：
@@ -26,7 +26,7 @@ tags: Vim-Practice Shell Tmux Vim 进程 快捷键
 
 `:!!` 为重复执行上一条命令（就像`@@`重复执行上一个宏一样），这在重复地编辑/编译时很方便。
 
-# c-z
+## c-z
 
 `<Ctrl+Z>` 是最基础的 Shell 快捷键，用来立即挂起当前进程（比如当前的 Vim）并进入 Shell。
 在完成一系列的命令后，使用`fg`来切换回 Vim。适合暂时离开 Vim 但需要执行多条命令的场景。
@@ -45,7 +45,7 @@ fg
 > 如果只是操作文件和目录，在 Vim 也可以做到。
 > 详见：[在 Vim 中进行文件目录操作](/2016/10/14/vim-file-and-directory.html)
 
-# :shell
+## :shell
 
 `:sh[ell]` 是 Vim 命令，可以从 Vim 中运行一个 Shell 出来。在完成一系列的命令后，
 按下`Ctrl-D`来结束当前 Shell 并回到 Vim。其行为相当于`<Ctrl-Z>`，但由于是 Vim 主动地启动 Shell 进程，

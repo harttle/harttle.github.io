@@ -14,7 +14,7 @@ tags: Chrome DOM HTML JavaScript jQuery 事件 Firefox Safari IE
 
 <!--more-->
 
-# DOM API 提供的事件
+## DOM API 提供的事件
 
 DOM API 在页面载入问题上主要提供了三个接口：
 
@@ -24,7 +24,7 @@ DOM API 在页面载入问题上主要提供了三个接口：
 
 我们看看这三者有什么区别：
 
-## DOMContentLoaded
+### DOMContentLoaded
 
 ```javascript
 document.addEventListener("DOMContentLoaded", function(event) {
@@ -47,7 +47,7 @@ jQuery也采用了这种实现。**
 
 考虑到IE8及以下不支持该事件，因此我们需要后面的两个 DOM 事件作为Fallback。
 
-## load
+### load
 
 ```javascript
 window.addEventListener("load", function(event) {
@@ -62,7 +62,7 @@ window.addEventListener("load", function(event) {
 > 注意IE8及以下不支持`addEventListener`，需要使用`attachEvent`来绑定事件处理函数。
 > 详见：[DOM 事件与 jQuery 源码：捕获与冒泡][event]一文。
 
-## document.readyState
+### document.readyState
 
 `document.readyState`属性用来表征DOM的加载状态，
 该属性值发生变化时会触发`redystatechange`事件。
@@ -78,7 +78,7 @@ window.addEventListener("load", function(event) {
 > 可以执行 `document.documentElement.doScroll("left")`，
 > 当DOM未就绪时执行该方法会抛出错误，以此检测DOM是否就绪。
 
-# jQuery 方法
+## jQuery 方法
 
 jQuery提供了三种方法来提供页面载入事件：
 
@@ -108,7 +108,7 @@ if ( document.readyState === "complete" ||
 `.load()`就是DOM`load`的包装，不再赘述。
 [DOM 事件与 jQuery 源码：捕获与冒泡][event]一文详述了jQuery如何包装DOM事件。
 
-# 参考阅读
+## 参考阅读
 
 * jQuery `.ready()`方法：<https://api.jquery.com/ready/>
 * MDN `load` 事件：<https://developer.mozilla.org/en-US/docs/Web/Events/load>

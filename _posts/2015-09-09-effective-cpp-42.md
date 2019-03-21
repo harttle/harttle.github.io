@@ -19,7 +19,7 @@ template<class T> class Widget;
 
 <!--more-->
 
-# 声明一个类型
+## 声明一个类型
 
 `typename`的第一个作用在于声明一个类型。为什么类型还需要声明呢？因为编译器并不是总会知道哪个名称是个类型。
 下面的代码会编译错：
@@ -44,7 +44,7 @@ void print2nd(const C& container){
 typename C::const_iterator it(container.begin());
 ```
 
-# 嵌套从属名称
+## 嵌套从属名称
 
 事实上类型`C::const_iterator`依赖于模板参数`C`，
 模板中依赖于模板参数的名称称为**从属名称**（dependent name），
@@ -71,7 +71,7 @@ void f(typename const C& container, typename C::iterator iter);
 error: expected a qualified name after 'typename'
 ```
 
-# 一个例外
+## 一个例外
 
 模板中的嵌套从属名称是需要`typename`声明的，然而有一个例外情况： 
 *在派生子类的基类列表中，以及构造函数的基类初始化列表中，不允许`typename`声明*。
@@ -87,7 +87,7 @@ public:
 };
 ```
 
-# traits
+## traits
 
 C++提供了一系列的traits模板，用来提供类型信息。比如：
 

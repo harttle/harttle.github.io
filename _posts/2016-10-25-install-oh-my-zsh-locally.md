@@ -21,7 +21,7 @@ tags: Bash Linux Mac Zsh SSH Shell Unix
 
 <!--more-->
 
-# 安装Zsh
+## 安装Zsh
 
 从源码安装Zsh：
 
@@ -45,7 +45,7 @@ make install
 
 如果你成功地进入了另一个Shell那么Zsh安装就大功告成了，按下`Ctrl+D`返回刚才的Bash。
 
-# 安装Oh My Zsh
+## 安装Oh My Zsh
 
 [Oh My Zsh][omz]是一个社区驱动的（就像Arch一样！）Zsh配置框架，有很多漂亮的主题和插件可以选择。
 今天大多小伙伴们安装Zsh的原因居然是这个配置框架！
@@ -75,7 +75,7 @@ bash install.sh
                         /____/                       ....is now installed!
 ```
 
-# 登录 Shell
+## 登录 Shell
 
 **登录Shell**是指一个Unix用户在登录系统时为该用户启动的默认Shell，
 包括通过X11登录，通过TTY登录，以及通过SSH登录等。
@@ -107,7 +107,7 @@ exec $HOME/usr/bin/zsh
 > 不要使用`source $HOME/usr/bin/zsh`或`. $HOME/usr/bin/zsh`，这些命令会创建子进程。
 > 而`exec`会用新的命令替换当前进程的上下文，因而保持了PID不变。
 
-# 更新PATH
+## 更新PATH
 
 将Zsh加到PATH中来方便今后对`zsh`的调用，这个步骤是可选的。
 
@@ -119,7 +119,7 @@ export PATH="$HOME/usr/bin/zsh"
 
 > 注意`PATH`两边不能有空格，且必须使用双引号来让Bash解析`$HOME`的值。
 
-# 多余字符问题
+## 多余字符问题
 
 语言和地区配置不正确可能会导致 Z Shell 中敲 Tab 时出现多余的字符。尝试修复 `locale` 设置即可解决。
 

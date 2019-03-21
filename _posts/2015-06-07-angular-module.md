@@ -7,7 +7,7 @@ tags: AngularJS HTML JavaScript MVC 模块化 依赖注入 工厂方法 构造�
 [AngularJS][angular]使用模块化的组织方式，和依赖注入的设计。这使得模块之间耦合度较低，模块更容易复用。同时支持声明式的编程风格。
 在你创建Angular Module 或者 Service 之前，首先需要了解一下 Angular Module 和 Service 的工作方式。
 
-# 模块概念
+## 模块概念
 
 在Angular中，一个Module通常对应一个js文件，其中可以包括Controller、Service、Filter、Directive等。
 下面我们声明一个模块：`helloApp`，并在其中声明一个Controller：`worldCtrl`，一个Directive：`customer`，和一个Filter：`count`。
@@ -23,7 +23,7 @@ tags: AngularJS HTML JavaScript MVC 模块化 依赖注入 工厂方法 构造�
 
 <!--more-->
 
-# 依赖注入
+## 依赖注入
 
 在Angular中，Directive、Service、Filter、Controller都是以工厂方法的方式给出，而工厂方法的参数名对应着该工厂方法依赖的Service。如：
 
@@ -55,12 +55,12 @@ worldCtrl.$inject = ['$scope', '$http'];
 app.controller('worldCtrl', worldCtrl);
 ```
 
-# Service声明
+## Service声明
 
 如上所述，Service以依赖注入的方式被 Controller、Filter、Directive 或其他 Service 使用。Service 是 Angular 中最常见的代码复用机制。
 本节便来探索如何创建自己的 Service。
 
-## 最常见的方式：工厂方法
+### 最常见的方式：工厂方法
 
 ```javascript
 app.factory('someService', function(dependency1, ...){
@@ -73,7 +73,7 @@ app.factory('someService', function(dependency1, ...){
 
 当`someService`被依赖时，Angular Injector 会调用上述工厂方法，将返回值作为Service的实例传入依赖它的工厂方法。
 
-## 最直接的方式：构造函数
+### 最直接的方式：构造函数
 
 ```javascript
 app.service('someService', someService(dependency1, ...){
@@ -84,7 +84,7 @@ app.service('someService', someService(dependency1, ...){
 
 当`someService`被依赖时，Angular Injector 会以`new`的方式调用该构造函数，将返回值作为 Service 的实例传入依赖它的工厂方法。
 
-## 最简单的方式：Value/Constant
+### 最简单的方式：Value/Constant
 
 ```javascript
 app.value('someService', { property1: value1, property2: value2});
@@ -96,7 +96,7 @@ app.constant('anotherService', 'I am a simple string');
 
 > 显然，`constant`和`value`的区别在于是否允许修改。
 
-## 最通用的方式：Provider
+### 最通用的方式：Provider
 
 上述的 Service 构建方式都是 Service Provider 的特例，事实上它们都是调用 Service Provider 来实现 Service 声明的。下面给出一个典型的 Service Provider 声明：
 

@@ -11,7 +11,7 @@ Web 开发者可能会使用 jQuery [`.html()`][jq-html] 和 [`.text()`][jq-text
 
 <!--more-->
 
-# innerHTML/outerHTML
+## innerHTML/outerHTML
 
 [`outerHTML`][outerHTML] 和 [`innerHTML`][innerHTML]
 DOM 属性用来设置 DOM 的 HTML 内容。
@@ -33,7 +33,7 @@ document.body.innerHTML = '';
 `document.getElementById('foo').innerHTML` 的结果是 `&gt;`。
 正因为转义的存在，使用 `<template>` 容纳的模板字符串是安全的。这也是为什么 [AMP 可以在保证安全的同时引入模板引擎][amp-mustache]。
 
-# innerText/outerText
+## innerText/outerText
 
 与 `innerHTML`,  `outerHTML` 相同，inner 只会设置内容而 outer 会更改整个元素。
 不同的是，[`innerText`][innerText] 与 `outerText` 则用来获取和设置渲染后的结果。
@@ -62,7 +62,7 @@ function escape(str){
 escape('<h2 id="foo">');
 ```
 
-# text/textContent
+## text/textContent
 
 [`textContent`][textContent] 与 `innerText` 表现相似，但有一些细节不同：
 
@@ -79,7 +79,7 @@ escape('<h2 id="foo">');
 
 * `<script>` 元素的 `text` 用来设置其脚本的内容，这时完全等同于`textContent`,`innerText`,`innerHTML`。
 
-# jQuery .html()
+## jQuery .html()
 
 jQuery 的 [.html()][jq-html] 用来设置 HTML 元素的 HTML 内容。
 不同于 `innherHTML`，jQuery 的 `.html()` 会执行字符串中的脚本。
@@ -124,7 +124,7 @@ function DOMEval( code, doc ) {
 会导致立即执行（以及必要的下载）脚本。对于动态执行脚本在
 [DOM 中动态插入并执行脚本](/2017/01/16/dynamic-script-insertion.html) 一文有详细讨论。
 
-# jQuery .text()
+## jQuery .text()
 
 jQuery [.text()][jq-text] 就非常简单，它的实现只有 11 行，
 使用的 DOM API 正是上文中讨论的 `textContent`：
@@ -143,7 +143,7 @@ text: function( value ) {
 },
 ```
 
-# 扩展阅读
+## 扩展阅读
 
 * <http://stackoverflow.com/questions/24427621/innertext-vs-innerhtml-vs-label-vs-text-vs-textcontent-vs-outertext>
 * <https://w3c.github.io/DOM-Parsing/>

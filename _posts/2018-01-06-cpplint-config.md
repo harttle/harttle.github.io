@@ -12,7 +12,7 @@ tags: cpplint Syntastic C++ Vim
 
 <!--more-->
 
-# 安装 Syntastic
+## 安装 Syntastic
 
 Syntastic 是 Vim 中的语法检查框架，可以对不同的文件应用不同的外部检查工具。
 并将所有检查错误聚合并显示在 Vim 中。如果你在使用 [Vundle][vundle]，
@@ -37,7 +37,7 @@ let g:syntastic_cpp_compiler = 'clang++'
 
 参考文档：<https://github.com/vim-syntastic/syntastic/wiki/(v3.1.0)---C--:---gcc>
 
-# 安装 cpplint
+## 安装 cpplint
 
 除了**语法检查**外，我们还想进行**代码风格检查**，比如空格、缩进、命名等问题。
 这时我们就需要 [cpplint][cpplint]，这时一个外部程序。先安装这个工具（可能需要管理员权限）：
@@ -63,7 +63,7 @@ filter=-build/namespace,-legal/copyright
 
 多个 filter 以逗号分隔，更多参数请参考 `cpplint --help`。
 
-# 配置到 Vim
+## 配置到 Vim
 
 现在 cpplint 已经可以用了，我们把这个外部工具配置到 Syntastic，
 用作 C++ 文件类型的检查就大功告成了。
@@ -86,7 +86,7 @@ let syntastic_aggregate_errors = 1
 
 参考文档：<https://github.com/vim-syntastic/syntastic/wiki/(v3.1.0)---C--:---cpplint>
 
-# 最终效果
+## 最终效果
 
 至此，Harttle 的 Vim 中已经可以同时显示语法错误和代码风格错误了。
 语法错误显示为 "✗"，代码风格错误显示为 "!"：

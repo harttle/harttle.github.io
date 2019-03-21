@@ -12,7 +12,7 @@ CORS 推荐使用额外的响应头字段来允许跨域发送 Cookie。
 
 <!--more-->
 
-# 客户端代码
+## 客户端代码
 
 在`open` [XMLHttpRequest][xhr]后，设置`withCredentials`为`true`即可让该跨域请求携带 Cookie。
 注意携带的是目标页面所在域的 Cookie。
@@ -42,7 +42,7 @@ $.ajax({
 > True when user credentials are to be included in a cross-origin request. False when they are to be excluded in a cross-origin request and when cookies are to be ignored in its response. Initially false.
 > When set: throws an InvalidStateError exception if state is not unsent or opened, or if the send() flag is set. -- WHATWG XMLHttpRequest
 
-# Access-Control-Allow-Credentials
+## Access-Control-Allow-Credentials
 
 只设置客户端当然是没用的，还需要目标服务器接受你跨域发送的 Cookie。
 否则会被浏览器的同源策略挡住：
@@ -52,7 +52,7 @@ $.ajax({
 服务器同时设置[`Access-Control-Allow-Credentials`][acac]响应头为`"true"`，
 即可允许跨域请求携带 Cookie。
 
-# Access-Control-Allow-Origin
+## Access-Control-Allow-Origin
 
 除了`Access-Control-Allow-Credentials`之外，跨域发送 Cookie 还要求
 `Access-Control-Allow-Origin`[不允许使用通配符][cors-mdn]。
@@ -64,7 +64,7 @@ $.ajax({
 
 ![wildcard-Access-Control-Allow-Credentials][wildcard-AC]
 
-# 计算 Access-Control-Allow-Origin
+## 计算 Access-Control-Allow-Origin
 
 既然`Access-Control-Allow-Origin`只允许单一域名，
 服务器可能需要维护一个接受 Cookie 的 Origin 列表，
@@ -88,7 +88,7 @@ Referer:http://index.com:4001/
 User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36
 ```
 
-# 服务器端代码
+## 服务器端代码
 
 ```javascript
 const express = require('express');

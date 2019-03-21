@@ -8,7 +8,7 @@ tags: Chrome Github HTML JavaScript PKU
 此后该插件历经了Chrome `Notification` 的标准化、PKU 网关接口的变化、以及整个Web前端技术的革新，
 [鸟人团队][birdmen]于近期意识到更新该插件的必要性。现已修复了既有BUG，并重写了设置页面。
 
-# 安装与使用
+## 安装与使用
 
 2.0版本已经更新在Chrome商店了：
 
@@ -22,7 +22,7 @@ tags: Chrome Github HTML JavaScript PKU
 
 <!--more-->
 
-# 安全与隐私
+## 安全与隐私
 
 网关登录涉及到PKU用户可能关注的账号隐私问题。所有用户信息是保存在本地的（HTML5的`localStorage`），[鸟人团队][birdmen]不会获取和保存你的任何信息。
 在Chrome的『扩展程序』页面也可以审查整个后台程序的源码。
@@ -31,7 +31,7 @@ tags: Chrome Github HTML JavaScript PKU
 
 [https://github.com/pku-birdmen/pkuwebmaster][repo]
 
-# 反馈与意见
+## 反馈与意见
 
 如果有任何的反馈意见或Bug报告，可直接在[Github Issue 页面][issue]创建一个Issue，改进或修复后你会得到通知。
 

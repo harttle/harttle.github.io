@@ -7,14 +7,14 @@ tags: 搜索引擎 倒排索引 PageRank Web
 
 采用 Heritix + Lucene 搭建搜索引擎原型，支持网站排名（PageRank）和倒排索引（Inverted Index），并评估其性能。
 
-# 爬虫（Heritrix）
+## 爬虫（Heritrix）
 
 Heritrix 是用作 Web 归档的爬虫框架，java语言实现，具有 Apache License 自由软件许可。我们采用heritrix抓取网页数据。
 可参照官方 Guide：<https://webarchive.jira.com/wiki/display/Heritrix/Heritrix+3.0+and+3.1+User+Guide>
 
 <!--more-->
 
-## 依赖项
+### 依赖项
 
 可选择 open-jdk 或者 oracle jre。
 
@@ -27,7 +27,7 @@ sudo rpm -ivh open-jdk-7        # centos
 
 oracle jre 安装可参考 <http://www.liberiangeek.net/2012/04/install-oracle-java-runtime-jre-7-in-ubuntu-12-04-precise-pangolin/>
 
-## 安装
+### 安装
 
 1. 下载并解压
 
@@ -58,7 +58,7 @@ oracle jre 安装可参考 <http://www.liberiangeek.net/2012/04/install-oracle-j
     
     然后在浏览器打开 <https://localhost:8843> ，登录后根据提示新建一个job。
 
-## 配置
+### 配置
 
 建立job后，可编辑 crawler-beans.cxml 文件进行设置。heritrix 支持在网页中直接编辑该文件。
 
@@ -127,9 +127,9 @@ oracle jre 安装可参考 <http://www.liberiangeek.net/2012/04/install-oracle-j
     在 Web-based UI 中，依次执行 build、launch、unpause 即可启动 heritix。
 
 
-# 网站排名（Page-Rank）
+## 网站排名（Page-Rank）
 
-## 提取链接关系
+### 提取链接关系
 
 我们现在要进行 Page-Rank，需要获得网页之间的链接关系。可以通过heritrix生成的日志文件（`crawl.log`）来提取。
 
@@ -141,7 +141,7 @@ cat crawl.log | awk '$7=="text/html"{print $6 " => " $4}' > links
 
 现在我们得到了包含链接关系的文件 `links`。
 
-## 进行 Page Rank
+### 进行 Page Rank
 
 Page Rank 是 Google 搜索引擎进行网站排名的重要算法之一。[wiki](http://en.wikipedia.org/wiki/Pagerank) 给出了 Matlab 实现：
 
@@ -193,13 +193,13 @@ rank(M, 0.80, 0.001)
 
 > Page Rank 的其他语言实现可以从 GitHub 获得：<https://github.com/louridas/pagerank>
 
-# 倒排索引（Lucene）
+## 倒排索引（Lucene）
 
 倒排索引（Inverted index）被广泛应用在搜索引擎中，它存储着在全文搜索下某个单词在一个文档或者一组文档中的存储位置的映射。以下通过 Lucene 框架实现索引以及查询。
 
 官方 Guide：<http://lucene.apache.org/core/4_5_1/demo/overview-summary.html>
 
-## 获取页面文件
+### 获取页面文件
 
 在使用 Lucene 进行全文索引之前，我们需要得到包含页面文件的目录。下面的 shell 脚本将完成 `.warc.gz` 到页面文件目录的转换。运行该脚本将产生 `files` 目录，其中包含所有的页面文件。
 
@@ -254,7 +254,7 @@ done
 
 ```
 
-## 建立索引
+### 建立索引
 
 2. 安装与配置
 

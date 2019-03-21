@@ -13,7 +13,7 @@ tags: JavaScript Number 浮点数 二进制 运算符
 
 <!--more-->
 
-# 二进制表示
+## 二进制表示
 
 JavaScript 数字占 64 位，与 C++ 中的 `double` 类型一样，采用
 [IEEE 754][IEEE 754] 规范的 [双精度浮点数][double-format]。
@@ -39,7 +39,7 @@ $$
 特殊值（`0`, `NaN`, `Infinity`）和 subnormal number 不同于上述公式，
 见[下文](/2018/06/29/javascript-numbers.html#header-4)。
 
-# normal number
+## normal number
 
 **语法**：指数部分 $1 \leq e \leq 2046$ 的值会被解析为 [normal number][normal]。
 0 和 2047 分别被用于 subnormal number 和特殊值，见[下文](http://localhost:4000/2018/06/29/javascript-numbers.html#header-4)。
@@ -79,7 +79,7 @@ $$
 
 注意后四位小数是 2014 哈哈，normal number 能够表达的最大负数也是上面的大小，符号位变负。
 
-# subnormal number
+## subnormal number
 
 **语法**：指数部分 $e = 0$，且分数部分 $fraction \neq 0$ 的值会被解析为 [subnormal number][subnormal]。
 
@@ -108,22 +108,22 @@ $$
 2^{-52} \times 2^{-1022} = 2^{-1074} \approx 4.9 \times 10^{−324}
 $$
 
-# spetial values
+## spetial values
 
-## 0
+### 0
 
 **语法**：指数部分 $e = 0$，且分数部分 $fraction = 0$ 的值会被解析为零。
 
 **概念**：根据 $sign$ 的取值，有 $+0$, $-0$ 两种 0 的表示。
 
-## Infinity
+### Infinity
 
 **语法**：指数部分 $e = 11111111111_2$，且分数部分 $fraction = 0$ 的值会被解析为 $\infty$。
 
 **概念**：根据 $sign$ 的取值，有 [Number.NEGATIVE_INFINITY][Number.NEGATIVE_INFINITY],
 [Number.POSITIVE_INFINITY][Number.POSITIVE_INFINITY] 两个值。
 
-## NaN
+### NaN
 
 **语法**：指数部分 $e = 11111111111_2$，且分数部分 $fraction \neq 0$ 的值会被解析为 [NaN][NaN]。
 
@@ -132,7 +132,7 @@ $$
 符号位可以取任意值（$2$ 种），分数只是不可取零（$2^{52} - 1$），
 因此共有 $(2^{52}-1)\times 2 = 2^{53} - 2$ 种。
 
-# 整数的表示
+## 整数的表示
 
 所有的非零整数都属于 normal number（0 属于特殊值，见下文），
 它们的指数部分刚好能够把所有分数移出到小数点左侧，数学地表示为：
@@ -195,9 +195,9 @@ console.log(Number.MAX_SAFE_INTEGER+2);
 所以为什么不用四舍五入呢？因为四舍五入中每次遇到中间值时总是“入”的，在累加时会放大误差；
 选择绑定到最近的奇数/偶数则会两两抵消，避免误差放大。
 
-# 一些讨论
+## 一些讨论
 
-## Number 一共多少种值？
+### Number 一共多少种值？
 
 [Number][number-type] 使用64位双精度浮点数实现，根据指数部分的值来区分不同的表示法。
 
@@ -217,14 +217,14 @@ $$
 2^{64} - (2^{53} - 2 - 1) = 2^{64} - 2^{53} + 3
 $$
 
-## Number 精度到底如何？
+### Number 精度到底如何？
 
 所以 **浮点数的精度如何** 呢？精度取决于连续两个双精度浮点数之间的差，这个差取决于指数的大小。
 
 * 对于 normal number（绝对值大于等于 $2^{-1022}$）来讲，指数越大（通常数字越大）精度越小，1 附近的精度由 `Number.EPSILON` 给出（见[上文](/2018/06/29/javascript-numbers.html#header-2)）；
 * 对于 subnormal number（绝对值小于 $2^{-1022}$）来讲，指数是固定的，精度是确定的 $2^{-1074}$；
 
-## Number 转换为 32 位整数
+### Number 转换为 32 位整数
 
 虽然 Number 都适用浮点数运算（Floating point arithmetic），但有些运算符和方法只支持 32 位整数。
 这时会进行 [JavaScript 类型转换][js-type-conv]，

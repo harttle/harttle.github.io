@@ -11,7 +11,7 @@ Vim是从vi发展出来的一个文本编辑器。代码补全、编译及错误
 * 英文文档：<http://vimdoc.sourceforge.net/htmldoc/>
 * 中文文档：<http://vimcdoc.sourceforge.net/doc/>
 
-# 模式
+## 模式
 
 在开始尝试复杂操作前务必要了解 Vim 的工作模式：
 
@@ -24,7 +24,7 @@ Vim是从vi发展出来的一个文本编辑器。代码补全、编译及错误
 
 > 参考：[Learning the vi Editor/Vim/Modes](https://en.wikibooks.org/wiki/Learning_the_vi_Editor/Vim/Modes)
 
-# 选中编辑
+## 选中编辑
 
 `v` 可进入 **可视模式**（visual），[使用标准快捷键移动光标][vim-cursor] 可进行文本选区，之后的编辑命令对整个选中区域生效。
 例如把选中区域的所有 `author` 替换为 `harttle`：
@@ -32,7 +32,7 @@ Vim是从vi发展出来的一个文本编辑器。代码补全、编译及错误
 1. 进入 Visual 模式并选三行文本：`vjjj`。
 2. 对选中部分进行替换：`:s/author/harttle/g`。
 
-# 块编辑
+## 块编辑
 
 按下 `<Ctrl>v` 进入列编辑模式 **列编辑** 模式（block Visual mode），移动光标可跨行选择矩形的文本块，之后的编辑命令对整个块生效。
 例如注释 N 行代码（添加 `//`）：
@@ -46,7 +46,7 @@ Normal 模式下 `<Ctrl>v` 进入列编辑模式，`jjj` 选中下面三行，`I
 
 > 参考：[Vim Tips Wiki: Inserting text in multiple lines](http://vim.wikia.com/wiki/Inserting_text_in_multiple_lines)
 
-# filetype on
+## filetype on
 
 Vim可针对特定的文件，加载指定插件。以此来实现文件类型的特殊配置以及语法高亮。
 
@@ -65,7 +65,7 @@ au BufRead,BufNewFile *.cpp setfiletype cpp
 调试时我们可以手动设置 `:set filetype=cpp`。
 `RUNTIMEPATH` 变量可通过 `:set rtp` 打印出来，详情请参考：<http://vimcdoc.sourceforge.net/doc/options.html#'runtimepath'>
 
-# filetype plugin on
+## filetype plugin on
 
 `filetype plugin on` 允许 Vim 通过 `filetype` 的当前值加载对应的 `$RUNTIMEPATH/ftplugin/<filetype>.vim`。
 如果你按照上一小节配置了 `filetype` 变量，在你打开 cpp 文件时 Vim 会尝试载入 `~/.vim/ftplugin/cpp.vim` 文件（如果有的话）。
@@ -74,7 +74,7 @@ au BufRead,BufNewFile *.cpp setfiletype cpp
 比如 `~/.vim/ftplugin/cpp.vim` 之后还会执行 `~/.vim/after/ftplugin/cpp.vim`，
 因此它里面的配置生效会更稳。
 
-# 手动载入插件
+## 手动载入插件
 
 `filetype` 只是提供一种方便的机制来定义不同文件类型的配置。
 我们也可以不用这种机制，手动载入对应文件的配置，例如：
@@ -86,7 +86,7 @@ au BufNewFile,BufRead *.plt  source ~/.vim/after/ftplugin/plt.vim`
 
 参考：<http://vimcdoc.sourceforge.net/doc/filetype.html#filetype-plugins>
 
-# 缩进设置
+## 缩进设置
 
 缩进的设置也可以通过不同的文件类型来载入，需要在 `~/.vimrc` 中设置 `filetype indent on`。
 与 `ftplugin` 机制类似在 Vim 加载一个有 `filetype` 的文件时会自动载入对应的缩进配置文件。
@@ -100,7 +100,7 @@ set tabsize=4
 set expandtab
 ```
 
-# 语法高亮
+## 语法高亮
 
 `syntax on` 允许 Vim 加载文件类型的语法高亮配置，Vim会在载入时寻找并加载 `RUNTIMEPATH/syntax/<filetype>.vim`。例如：`~/.vim/syntax/markdown.vim` 将会对文件类型`markdown` 进行语法高亮。
 
@@ -110,7 +110,7 @@ set expandtab
 * [如何用Vim搭建IDE？](/2015/11/04/vim-ide.html)
 * [在VIM下写C++能有多爽？](/2015/07/18/vim-cpp.html)
 
-# 键盘映射
+## 键盘映射
 
 Vim支持定义键盘映射来完成快捷键的功能，也就是将特定的按键映射为一系列按键与函数的序列。
 
@@ -157,7 +157,7 @@ c	|	命令行
 
 > 参考：[Mapping keys in Vim - Tutorial](http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_%28Part_1%29)
 
-# 函数
+## 函数
 
 现在我们可以自定义快捷键了，如果希望在键盘映射中执行更复杂的功能，我们需要定义Vim函数。
 
@@ -189,7 +189,7 @@ endfunction
 
 > 参考：[Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com/chapters/23.html)
 
-# 录制宏
+## 录制宏
 
 用户录制的宏保存在寄存器中，我们先来看看什么是寄存器。vim的寄存器分为数字寄存器和字母寄存器。
 

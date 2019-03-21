@@ -21,7 +21,7 @@ HTML 采用流式布局方式，CSS 的`float`在这种环境下非常重要。
 
 参考：<https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context>
 
-# 清除环绕效果
+## 清除环绕效果
 
 和其他的流式文档（包括Microsoft Word文档）一样，
 为了支持环绕布局 CSS 引入了浮动的概念。
@@ -63,7 +63,7 @@ HTML 采用流式布局方式，CSS 的`float`在这种环境下非常重要。
 </div>
 <p></p>
 
-# 包裹浮动元素
+## 包裹浮动元素
 
 > 如果一个父元素内只包含浮动元素，那么如何让父元素包裹子元素呢？
 
@@ -105,7 +105,7 @@ CSS决定这时就用父元素来包裹子元素吧！
   Parent
 </div>
 
-# 独立布局环境
+## 独立布局环境
 
 `overflow:hidden`可以开启一个布局上下文（BFC），内部布局不会受外部影响。这在嵌套的浮动布局中非常有用。
 考虑如下场景：

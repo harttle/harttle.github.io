@@ -24,7 +24,7 @@ console.log(b);   // 控制台输出 11
 
 <!--more-->
 
-# 转换为字符串
+## 转换为字符串
 
 转换为字符串是应用程序中的常见操作，几乎所有语言都提供了将任何类型转换为字符串的通用接口。
 比如Java和C#的`toString`方法、C++的函数`std::to_string`，当然还有JavaScript的`toString`方法。
@@ -63,7 +63,7 @@ toString.call(null); // [object Null]
 toString.call(new MyClass);   // [object Object]
 ```
 
-# 转换为数字
+## 转换为数字
 
 字符串转换为数字也是常见需求，通常用来从用户输入或文件来获得一个`Number`。
 在C++中可以用`atoi`、`cin`、`scanf`等函数，在JavaScript中可以直接用`parseInt`和`parseFloat`。
@@ -90,7 +90,7 @@ var iNum3 = parseInt("10", 10);	//返回 10
 
 > 上述例子来自 w3school.com.cn: http://www.w3school.com.cn/js/pro_js_typeconversion.asp
 
-# 强制类型转换
+## 强制类型转换
 
 强制类型转换在C++中有两种方式：用括号将类型声明在变量之前；或者调用构造函数。
 在JavaScript中没有类型关键字（只有一个`var`来声明变量），因而只能调用构造函数：
@@ -103,12 +103,12 @@ Number(null)	          // => 0
 String(null)	          // => "null"
 ```
 
-# 隐式类型转换
+## 隐式类型转换
 
 隐式类型转换是最为隐蔽的地方，不加注意的话很容易在这一点上出错，对这一点的掌握也体现了JavaScript程序员经验。
 JavaScript会自动转换表达式中对象的类型以完成表达式求值。
 
-## 四则运算
+### 四则运算
 
 加法运算符`+`是双目运算符，只要其中一个是`String`类型，表达式的值就是一个`String`，
 会隐式调用每个元的 `.toString()` 方法。
@@ -124,7 +124,7 @@ JavaScript会自动转换表达式中对象的类型以完成表达式求值。
 不同类型的相加的行为比较复杂，也不一致，可以参考这里：
 <https://www.andronio.me/2017/10/22/js-operators-incensistency/>
 
-## 判断语句
+### 判断语句
 
 判断语句中的判断条件需要是`Boolean`类型，所以条件表达式会被隐式转换为`Boolean`。
 其转换规则同`Boolean`的构造函数。比如：
@@ -136,7 +136,7 @@ if(obj){
 }
 ```
 
-## toString
+### toString
 
 有些接口只支持字符串参数，会对传入值进行 `toString`。
 比如 JavaScript 宿主环境提供的接口：

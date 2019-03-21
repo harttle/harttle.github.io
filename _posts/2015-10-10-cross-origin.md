@@ -20,7 +20,7 @@ excerpt: 这些办法大致可以分为两类： 一类是Hack，比如通过`ti
 
 <!--more-->
 
-# 设置 document.domain
+## 设置 document.domain
 
 * 原理：相同主域名不同子域名下的页面，可以设置`document.domain`让它们同域
 * 限制：同域document提供的是页面间的互操作，需要载入iframe页面
@@ -57,7 +57,7 @@ document.domain = 'a.com'
 Uncaught DOMException: Failed to set the 'domain' property on 'Document': 'baidu.com' is not a suffix of 'b.a.com'
 ```
 
-# 有src的标签
+## 有src的标签
 
 * 原理：所有具有`src`属性的HTML标签都是可以跨域的，包括`<img>`, `<script>`
 * 限制：需要创建一个DOM对象，只能用于GET方法
@@ -77,7 +77,7 @@ var ifr = $('<iframe>', {src: 'http://b.a.com/bar'});
 $('body').append(ifr);                  // 发送HTTP请求
 ```
 
-# JSONP
+## JSONP
 
 * 原理：`<script>`是可以跨域的，而且在跨域脚本中可以直接回调当前脚本的函数。
 * 限制：需要创建一个DOM对象并且添加到DOM树，只能用于GET方法
@@ -125,7 +125,7 @@ jQuery将会把它解释为一个JSONP请求，创建一个`<script>`标签来�
 
 > 在[如何理解HTTP响应的状态码？][statuscode]一文中有更多关于HTTP响应状态码的讨论。
 
-# navigation 对象
+## navigation 对象
 
 * 原理：iframe之间是共享`navigator`对象的，用它来传递信息
 * 要求：IE6/7
@@ -156,7 +156,7 @@ navigation.getData = function(){
 与`document.navigator`类似，`window.name`也是当前窗口所有页面所共享的。也可以用它来传递信息。
 同样蛋疼的办法还有传递Hash（有些人叫锚点），这是因为每次浏览器打开一个URL时，URL后面的`#xxx`部分会保留下来，那么新的页面可以从这里获得上一个页面的数据。
 
-# 跨域资源共享（CORS）
+## 跨域资源共享（CORS）
 
 * 原理：服务器设置`Access-Control-Allow-Origin`HTTP响应头之后，浏览器将会允许跨域请求
 * 限制：浏览器需要支持HTML5，**可以支持POST，PUT等方法**
@@ -180,7 +180,7 @@ Access-Control-Allow-Origin: http://a.com   # 只允许所有域名访问
 
 为 `xhr` 设置 `withCredentials` 后 CORS 方法跨域还可 [携带Cookie][cors-cookie]，但 PUT/POST 请求需要注意[处理 preflight 请求][cors-preflight]。
 
-# window.postMessage
+## window.postMessage
 
 * 原理：HTML5允许窗口之间发送消息
 * 限制：浏览器需要支持HTML5，获取窗口句柄后才能相互通信
@@ -205,7 +205,7 @@ window.addEventListener('message',function(event) {
 > 参见：[事件处理中的this：attachEvent, addEventListener, onclick][event-this]
 
 
-# 访问控制安全的讨论
+## 访问控制安全的讨论
 
 在HTML5之前，JSONP已经成为跨域的事实标准了，jQuery都给出了支持。
 值得注意的是它只是Hack，并没有产生额外的安全问题。

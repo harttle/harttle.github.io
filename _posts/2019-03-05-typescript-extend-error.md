@@ -12,7 +12,7 @@ tags: TypeScript Error 原型链
 
 <!--more-->
 
-# 我们需要怎样的 CustomError
+## 我们需要怎样的 CustomError
 
 为了容易讨论最佳实践，首先明确我们自定义的 CustomError 需要做到哪些功能。
 下面是 Harttle 的观点：
@@ -36,7 +36,7 @@ CustomError: intended
     at bootstrap_node.js:625:3
 ```
 
-# ES5 中如何继承 Error？
+## ES5 中如何继承 Error？
 
 Error 是一个特殊的对象，或者说 JavaScript 的 `new` 是一个奇葩的存在。
 为方便后续讨论，我们先讨论组 ES5 时代是怎样继承 Error 的。
@@ -68,7 +68,7 @@ CustomError.prototype = new Error()
 
 其中 `.captureStackTrace()` 会使用传入对象的 name 和 message 来生成 stack 的前缀；同时第二个参数用来指定在调用栈中忽略掉哪一部分，这样栈就会指向 `new CustomError` 的地方而不是 `captureStackTrace()` 的地方。
 
-# ES6 中如何继承 Error?
+## ES6 中如何继承 Error?
 
 既然 ES6 通过 `class` 和 `extends` 等关键字给出了类继承机制，
 那么想必通过编写 `CustomError` 类来继承 `Error`。事实也确实如此，只需要在构造函数中调用父类构造函数并赋值 `name` 即可实现文章开始提到的三个功能：
@@ -82,7 +82,7 @@ class CustomError extends Error {
 }
 ```
 
-# TypeScript 中如何继承 Error?
+## TypeScript 中如何继承 Error?
 
 ES6 中提供了 [new.target][new.target] 属性，
 使得 `Error` 的构造函数中可以获取 `CustomError` 的信息，以完成原型链的调整。
@@ -107,7 +107,7 @@ var CustomError = /** @class */ (function (_super) {
 
 > 题外话，这个分支可能会导致测试覆盖率中的 [分支未覆盖问题](https://github.com/gotwarlost/istanbul/issues/690)。可以只在 ES6 下产生测试覆盖报告来解决。
 
-## 1. 使用 [setPrototypeOf][setPrototypeOf] 还原原型链
+### 1. 使用 [setPrototypeOf][setPrototypeOf] 还原原型链
 
 这是 TypeScript 官方给出的解决方法，见 [这里][changelog]。
 
@@ -123,11 +123,11 @@ class CustomError extends Error {
 注意这是一个性能很差的方法，且在 ES6 中提出，兼容性也很差。在不兼容的环境下可以使用 `__proto__` 来替代。
 更多原型链的解释可以参考 [JavaScript 内置对象与原型链结构](/2015/09/21/js-prototype-chain.html)。
 
-## 2. 坚持使用 ES5 的方式
+### 2. 坚持使用 ES5 的方式
 
 不使用 ES6 特性，仍然使用本文前面介绍的 『ES5 中如何继承 Error？』给出的方法。
 
-## 3. 限制对象方法的使用
+### 3. 限制对象方法的使用
 
 虽然 `CustomError` 的对象函数无法使用，但 **`CustomError` 仍然支持 protected 级别的方法供子类使用，阉割的地方在于自己不能调用。**
 由于 JavaScript 中对象属性必须在构造函数内赋值，因此**对象属性也不会受到影响**。也就是说：

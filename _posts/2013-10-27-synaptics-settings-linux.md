@@ -7,15 +7,15 @@ excerpt: Arch Linux 下的触摸板配置：基本设置、输入时禁止触摸
 ---
 
 
-# 软件安装
+## 软件安装
 
-## 安装 Synaptics 驱动
+### 安装 Synaptics 驱动
 ```bash
 # arch linux:
 pacman -S xf86-input-synaptics
 ```
 
-## 管理工具
+### 管理工具
 
 ```bash
 # xf86-input-synaptics 自带了命令行管理工具：Synclient 
@@ -29,12 +29,12 @@ yaourt -S kcm_touchpad
 
 <!--more-->
 
-# 环境配置
+## 环境配置
 
 一般的设置工作可通过图形管理工具完成，如单击、双击、右键的识别，横向和纵向滚动、双指滚动。下面介绍一些高级配置。
 
 
-## 基本触摸板配置
+### 基本触摸板配置
 
 可通过修改 synaptics 的配置文件，修改触摸板配置。包括多指敲击、滚动、避免手掌触摸、精确度与快速滚动。
 
@@ -70,7 +70,7 @@ EndSection
 
 **注意**：同时安装 `kcm_synaptics` 会覆盖掉该配置信息。
 
-## 输入时禁止触摸板敲击
+### 输入时禁止触摸板敲击
 
 这样可以避免焦点变化，影响当前的输入。
 
@@ -87,7 +87,7 @@ man syndaemon
 ```
 
 
-## 外接鼠标时禁用触摸板
+### 外接鼠标时禁用触摸板
 
 在 arch linux 中，使用 udev 监测硬件的热拔插，通过修改其规则文件，来响应外接鼠标事件，从而禁用和启用触摸板。如下的规则文件，调用了 synclient。
 
@@ -99,7 +99,7 @@ ACTION=="remove", SUBSYSTEM=="input", KERNEL=="mouse[0-9]", ENV{DISPLAY}=":0.0",
 
 **注意**：该文件中每个操作必须单独一行，可以使用 `\` 来折行；`SUBSYSTEM` 与 `KERNEL` 指定了设备 `/dev/input/mouse[0-9]`（archwiki的中文页面中此处有误，我会找时间去修改）。了解更多 udev rules 语法：https://wiki.archlinux.org/index.php/Udev
 
-### 开机时鼠标检测
+#### 开机时鼠标检测
 
 PS/2 鼠标在开机时不会触发 udev 规则。我们做一个桌面环境的启动脚本，在 .xinitrc，profile 中调用，或者放在  KDE 的 Autostart 中：
 
@@ -109,7 +109,7 @@ ids=`ls /dev/input/by-id | grep -E '.*-mouse'`
 [ "$ids" ] && synclient TouchpadOff=1
 ```
 
-## 触摸板识别错误
+### 触摸板识别错误
 
 对于某些型号的机器，Arch 下触摸板识别会有问题（内核bug），官方建议从 AUR 安装 `psmouse-alps-driver`。
 受影响的机器有：

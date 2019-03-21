@@ -8,7 +8,7 @@ tags: CSS Chrome HTML inline inline-block 盒模型 IE
 根据`display`属性的不同，Box的呈现方式又有所不同。
 本文首先引入CSS盒模型，然后通过不同的`display`属性分别介绍Box常见的呈现方式。
 
-# Box Sizing：元素大小的计算方式
+## Box Sizing：元素大小的计算方式
 
 在HTML中，任何HTML元素都会被呈现为一个矩形。该矩形由内容、内边距、边框、外边距构成。举个例子：
 
@@ -39,7 +39,7 @@ tags: CSS Chrome HTML inline inline-block 盒模型 IE
 
 <!--more-->
 
-# Display：渲染类型
+## Display：渲染类型
 
 了解了`box-sizing`之后，我们回到**display**属性。`display`指定了元素渲染Box的类型（type of rendering box）。我们来看它常用的取值：
 
@@ -49,11 +49,11 @@ tags: CSS Chrome HTML inline inline-block 盒模型 IE
 * `inline-block`：以`block`的方式渲染，以`inline`的方式放置；
 * `table-cell`：以表格元素的方式显示。
 
-# 隐藏元素
+## 隐藏元素
 
 `none`是最容易理解的取值。当一个元素的`display`CSS属性被设为`none`时，该元素不会被渲染，也不会占位，就像不存在一样。对布局不会产生任何影响。
 
-# 行内元素
+## 行内元素
 
 行内（`inline`）元素不会打断文本流，默认（UA）显示为`inline`的元素包括：`<span>`，`<a>`，`<em>`等。它们的出现不会使得后续元素另起一行。行内元素可以设置`margin`与`padding`，但`margin`只在水平方向上起作用：
 
@@ -72,13 +72,13 @@ div{
 
 另外，对`inline`元素设置`width`与`height`是不起作用的。
 
-# 块元素
+## 块元素
 
 块（`block`）元素会中断当前的文本流，另起一行，并在父元素中尽可能地占据最大宽度。常见的块元素有`<p>`,`<div>`,`<section>`等。通常块元素不可包含在行内元素内部。例如下面的两个`<p>`标签，不论内容是否足够，都会占据整个`body`的宽：
 
 ![](/assets/img/blog/css/block@2x.png)
 
-# 行内块
+## 行内块
 
 行内块（`inline-block`）将会产生一个块元素，并以行内元素的方式放置。什么意思呢？该元素的样式是以块元素的方式来渲染的，例如可以设置宽和高，然后以行内元素的方式放置在其上下文中，就像在行内元素的位置上替换成这个块元素一样。
 
@@ -107,7 +107,7 @@ div{
 
 `inline-block`与`inline`的不同在于：垂直方向上的`margin`也会起作用，并且可以设置`width`和`height`。`inline-block`是非常常用的样式设置。
 
-# 表格元素
+## 表格元素
 
 `display`设为`table-cell`的元素与`<td>`标签的行为一致，即：可设置`padding`，不接受`margin`，可伸缩的`width`。
 

@@ -11,7 +11,7 @@ tags: HTTPS TCP TLS ALPN SNI
 
 <!--more-->
 
-# HTTPS 概要
+## HTTPS 概要
 
 HTTPS 是建立在安全通信之上的 [HTTP][http]，
 使用传输层加密（TLS 或 SSL）的手段。
@@ -29,7 +29,7 @@ TLS/SSL 是在传输层之上应用层之下的协议，因此 HTTP 协议的内
 [Let's Encrypt](https://en.wikipedia.org/wiki/Let%27s_Encrypt),
 [CloudFlare](https://cloudflare.com) 等可以选择。
 
-# HTTPS 交互示例
+## HTTPS 交互示例
 
 以下 Wireshark 日志记录了一个发往 <https://github.com/harttle> 的 GET 请求，
 可以看到主要的几个协议的交互过程：
@@ -42,7 +42,7 @@ TLS/SSL 是在传输层之上应用层之下的协议，因此 HTTP 协议的内
 
 > TCP 协议不在本文的讨论范围内，不清楚的可以翻阅《计算机网络》或查看 [这篇传输层笔记](/2014/04/21/computer-network-transport-layer.html) 上图来自 Wireshark 软件，开始录制后用 curl 请求 github.com 会得到与上图类似的结果。
 
-# TLS/SSL
+## TLS/SSL
 
 TLS 的前身是 SSL，TCP/IP 协议栈中运行在 [TCP][rfc793] 之上，
 用来交换密钥并形成一个加密层（Record Layer）。
@@ -86,7 +86,7 @@ struct {
 其中 `Extension` 定义为一个两字节的 `ExtensionType` 以及对应的不透明数据。
 下文的 SNI，NPN，ALPN 都是其中之一。
 
-# SNI
+## SNI
 
 [SNI][sni]（Server Name Indication）
 指定了 TLS 握手时要连接的 [主机名](https://en.wikipedia.org/wiki/Hostname)。
@@ -130,7 +130,7 @@ ExtensionType Length || PayloadLength Type      ServerLength ServerName
 sni(0)        15     || 13            host_name 10           github.com
 ```
 
-# ALPN/NPN
+## ALPN/NPN
 
 [ALPN][alpn]（Application-Layer Protocol Negotiation）也是 TLS 层的扩展，用于协商应用层使用的协议。
 用来确定建立 TLS 连接后接下来要使用的协议，比如是 HTTP1.1 还是 HTTP/2？
@@ -177,7 +177,7 @@ Extention 的消息体包含多个字符串（`protocol_name_list`），表示�
 
 这样 Server 和 Client 就利用 ALPN 协议达成了共识，将会在握手结束后使用 HTTP/1.1 协议进行通信。
 
-# 参考和致谢
+## 参考和致谢
 
 从 HTTPS 的关键一层 TLS 开始，介绍了一个典型的 HTTPS 交互过程。
 结合抓包给出的字节序列，依次介绍了 TLS、SNI、ALPN 等协议原理和主要内容。

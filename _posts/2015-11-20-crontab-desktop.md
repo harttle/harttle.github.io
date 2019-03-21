@@ -9,7 +9,7 @@ tags: HTML Linux Unix Vim awk crontab grep sed
 
 <!--more-->
 
-# 下载壁纸脚本
+## 下载壁纸脚本
 
 ```bash
 #!/usr/local/bin/bash
@@ -35,7 +35,7 @@ wget -O $file $href
 
 然后保存这个脚本到`~/bin/nasa-pic-of-day.sh`。运行一下！发现`~/Pictures/nasa/`下多了一个图片！OK，脚本正确。
 
-# Cron定时任务
+## Cron定时任务
 
 [Cron][cron]是Unix系统中用于周期执行任务的守护进程，被定时的任务由`crontab`文件提供。我们来写一个自己的`crontab`文件，保存为`~/bin/daily.cron`：
 
@@ -54,7 +54,7 @@ crontab ~/bin/daily.cron
 
 此后呢，我们的脚本就会在每天早上6:30执行。如果有问题我们可以查看日志文件`/var/harttle/cron`，这里有脚本的一切输出。
 
-# 编辑 crontab
+## 编辑 crontab
 
 crontab会把刚才载入的文件保存起来，以后我们可以通过`crontab -e`直接更改它（注意更改原文件是不起作用的）。
 在Mac上保存更改时会有错误：
@@ -71,7 +71,7 @@ autocmd filetype crontab setlocal nobackup nowritebackup
 
 这样就可以直接编辑crontab文件啦。
 
-# Cron 运行环境
+## Cron 运行环境
 
 Cron运行脚本的环境和交互式Shell是不一样的，这一点需要注意。你的脚本可以在交互式Shell中正常运行，但Cron中可能会有错误。
 

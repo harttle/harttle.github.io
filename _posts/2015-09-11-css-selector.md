@@ -28,7 +28,7 @@ CSS共有5种基本选择器：
 
 <!--more-->
 
-# 类型/类/ID
+## 类型/类/ID
 
 类型选择器、类选择器和ID选择器是最常用的，不解释了：
 
@@ -45,7 +45,7 @@ body{
 }
 ```
 
-# 伪类
+## 伪类
 
 **伪类**（如`:hover`,`:focus`）是浏览器生成的，不出现在HTML文件中，通常用于标识用户操作造成的元素状态改变。
 
@@ -90,7 +90,7 @@ table tr td:first-child{
 * <http://www.w3school.com.cn/css/css_pseudo_classes.asp>
 * <https://developer.mozilla.org/zh-CN/docs/Web/CSS/%3Anth-child>
 
-# 属性
+## 属性
 
 **属性选择器** 用来选择特定属性值的元素，例如`div[class=avatar]`可以选择`class`属性为`avatar`的`<div>`元素，当然HTML元素的属性很多，属性选择器可以匹配任何属性。
 属性选择器还支持更复杂的匹配，例如：
@@ -102,7 +102,7 @@ table tr td:first-child{
 * `img[src|="figure"]`：选择 src 属性的第一个单词是 "figure" 的元素，例如 "figure-1", "figure-2"
 * `[title~=flower]`：选择 titile 属性包含单词 "flower" 的元素
 
-# 组合选择符
+## 组合选择符
 
 **组合选择符** 可描述元素之间的层级关系，例如：`A > B`表示是`A`的子元素的所有`B`。组合选择符也有很多：
 

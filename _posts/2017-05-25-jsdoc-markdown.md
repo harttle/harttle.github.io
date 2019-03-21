@@ -11,7 +11,7 @@ tags: AMD ES6 Markdown 注释 ESLint JSDoc
 
 <!--more-->
 
-# 什么是 JSDoc？
+## 什么是 JSDoc？
 
 官网: <http://usejsdoc.org/>
 
@@ -43,7 +43,7 @@ ESLint 会 [检查 JSDoc 的合法性][valid-jsdoc]。
 > [Vim 中使用 eslint 检查代码风格](/2017/03/12/vim-eslint.html)
 > 来配置你的 Vim。
 
-# Markdown
+## Markdown
 
 在今天怎么可以接受非 Markdown 格式的文档？
 [jsdoc-to-markdown][jsdoc-to-markdown] 工具可以 [识别 JSDoc 语法][jsdoc-parse]
@@ -69,7 +69,7 @@ Represents a book.
 | author | <code>string</code> | The author of the book. |
 ```
 
-# ES6 Class
+## ES6 Class
 
 从前在 JSDoc 中通过 `@class` 或 `@constructor` 来标注构造函数。
 在 ES6 中由于直接引入了 `class` 关键字，Class 不再需要标注了。
@@ -93,7 +93,7 @@ class Dot extends Point {
 }
 ```
 
-# AMD 模块
+## AMD 模块
 
 由于 AMD 模块是由 `define` 包裹的，而且常常文件与模块名挂钩。在 JSDoc 注释中需要声明模块。
 此外，还可以引用另一个 AMD 模块。
@@ -142,7 +142,7 @@ define('my/jacket', function() {
 > 虽然 AMD 的代码结构更为复杂，但 AMD 和 CMD 有同样的模块组织的概念。
 > 因此上述规则同样适用于 CMD 模块。
 
-# 相关文档
+## 相关文档
 
 * JSDoc 标签文档：<http://usejsdoc.org/>
 * jsdoc2md 文档：<https://github.com/jsdoc2md/jsdoc-to-markdown/wiki>

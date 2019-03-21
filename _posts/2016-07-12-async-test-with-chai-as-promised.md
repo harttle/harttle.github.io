@@ -8,7 +8,7 @@ tags: JavaScript NPM Promise 回调函数 Chai Mocha 测试 BDD 异步
 这意味着在JavaScript测试中往往会需要异步断言。
 本文介绍如何使用[Chai][chai]和[chai-as-promised][chai-ap]来测试Promise。
 
-# Mocha测试异步代码
+## Mocha测试异步代码
 
 [Mocha][mocha]本身是支持异步测试的。只需要为`describe`回调函数添加一个`done`参数，
 成功时调用`done()`，失败时调用`done(err)`。例如：
@@ -44,12 +44,12 @@ it('#get', function(){
 > Mocha怎么知道是否要等待异步断言呢？因为JavaScript中的[Function][mdn-function]有一个`length`属性，
 > 通过它可以获得该函数的形参个数。Mocha通过传入回调的`length`来判断是否需要等待。
 
-# Mocha测试Promise
+## Mocha测试Promise
 
 测试Promise有两种方式：可以采用上述`done`的方式，也可以直接返回该Promise。
 注意Promise也属于异步代码，如果未采用上述方式，Mocha将无法捕捉到异步的断言失败。
 
-## done回调的方式
+### done回调的方式
 
 ```javascript
 describe('#find()', function() {
@@ -64,7 +64,7 @@ describe('#find()', function() {
 });
 ```
 
-## 直接返回Promise的方式
+### 直接返回Promise的方式
 
 ```javascript
 describe('#find()', function() {
@@ -81,7 +81,7 @@ describe('#find()', function() {
 
 > 注意两种方式不可同时使用，即返回了Promise就不要调用`done`，否则Mocha会报错。
 
-# Chai As Promised
+## Chai As Promised
 
 [chai-as-promised][chai-ap]是Chai的一个断言库插件，
 该插件可以大大简化Promise相关的断言。
@@ -111,7 +111,7 @@ describe('#find()', function() {
 });
 ```
 
-# 参考阅读
+## 参考阅读
 
 * Mocha Should/Expect API: <http://chaijs.com/api/bdd/>
 * Chai As Promised Document: <https://github.com/domenic/chai-as-promised>

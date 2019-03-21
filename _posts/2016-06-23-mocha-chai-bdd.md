@@ -11,9 +11,9 @@ tags: Mocha JavaScript NPM Node.js Chai 测试 BDD
 
 > 对于Github仓库，利用Mocha组织的测试还可以利用Git做持续集成，在Github上显示实时的代码测试状态，详见[跟踪Github项目的持续集成状态][github-ci]一文。
 
-# 编写一项测试
+## 编写一项测试
 
-## 环境配置
+### 环境配置
 
 创建一个叫做`my-project`的项目，以及一个空的测试文件`test.js`。
 [Mocha][mocha]可以通过NPM来安装，我们需要一个全局的`mocha`以供命令行调用，以及一个本地的`mocha`以供代码中`require`。
@@ -24,7 +24,7 @@ npm install -g mocha
 npm install mocha chai
 ```
 
-## 编写测试文件
+### 编写测试文件
 
 现在来编写第一个测试文件`my-project/test.js`：
 
@@ -52,7 +52,7 @@ describe('Array', function() {
   1 passing (11ms)
 ```
 
-# 测试代码组织
+## 测试代码组织
 
 有时一个模块可能会非常复杂，单个测试文件可能会很长：
 
@@ -99,7 +99,7 @@ describe('#map()', function () {
 });
 ```
 
-# BDD：should 还是 expect
+## BDD：should 还是 expect
 
 [Chai][chai]为Mocha提供了BDD风格的断言库，
 BDD（Behaviour Driven Development）是TDD的一种，
@@ -107,7 +107,7 @@ BDD（Behaviour Driven Development）是TDD的一种，
 [Chai][chai]的BDD风格断言库包括两部分：`expect`和`should`。
 Harttle推荐使用`expect`。先看例子：
 
-## expect测试
+### expect测试
 
 ```javascript
 var expect = require('chai').expect;
@@ -119,7 +119,7 @@ it('should return -1 when the value is not present', function () {
 
 > 可见`expect`是个函数，它接受的输入是被测试的值，返回值拥有`.to`属性。
 
-## should测试
+### should测试
 
 上述测试也可以使用`should`断言库来编写：
 
@@ -134,7 +134,7 @@ it('should return -1 when the value is not present', function () {
 > 可见`should`为`Object.prototype`增加了一个`.should`属性。
 > 该操作是在`require('chai').should()`的`should()`函数调用中完成的。
 
-## 区别之处
+### 区别之处
 
 `should`和`expect`只是语法有细微区别，都属于BDD风格测试断言。
 但Harttle推荐使用`expect`，因为当被测对象为空时`should`就会失效，

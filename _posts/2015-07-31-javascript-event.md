@@ -11,7 +11,7 @@ excerpt: 本文来讨论DOM标准中是如何规定这些JavaScript事件的，�
 [jQuery事件：bind、delegate、on的行为与性能][jquery-event]。
 本文来讨论[DOM标准][dom-spec]中是如何规定这些JavaScript事件的，以及jQuery源码中DOM事件的实现方式。
 
-# JavaScript 事件
+## JavaScript 事件
 
 首先我们来回顾一下DOM事件的行为，事件从发生开始经历了三个阶段：
 
@@ -36,7 +36,7 @@ DOM Level 2 Event提供了`addEventListener`, `removeEventListener`, `dispatchEv
 
 <!--more-->
 
-# DOM Level 0 Event
+## DOM Level 0 Event
 
 DOM Level 0 Event从Netscape浏览器开始就有支持，最初是通过在HTML中写入`onclick`属性来完成事件绑定：
 
@@ -73,7 +73,7 @@ el.onclick = function(){
 
 是因为`el.onclick`的本质是对DOM元素属性的赋值，后一次事件绑定会使得前一次事件绑定失效。
 
-# addEventListener
+## addEventListener
 
 2000年11月，W3C发布了DOM (Document Object Model) Level 2 Event，提供了更复杂的事件处理模型：
 
@@ -99,7 +99,7 @@ el.addEventListener("click", function(){
 
 这样，两个事件处理函数都会得到执行。
 
-# removeEventListener
+## removeEventListener
 
 DOM Level 2 Event还提供了`removeEventListener(type, listener[, useCapture])`方法，用来移除事件处理函数。
 `callback`是必选参数！`capture`默认值为`false`：
@@ -115,7 +115,7 @@ div.addEventListener('click', listener, false);
 div.removeEventListener('click', listener, false);
 ```
 
-# 捕获与冒泡
+## 捕获与冒泡
 
 本文最开始已经给出了事件处理的三个阶段：捕获、目标、冒泡。在DOM Level 2 Event中，
 如果`addEventListener`第三个参数为`true`则为添加捕获阶段的事件处理函数，否则为添加冒泡阶段的事件处理函数。
@@ -153,7 +153,7 @@ l1 bubbling
 其中，`l2 target, invalid capture`设置了捕获，但因为当前对象就是目标对象，捕获无效。该函数仍然作用于目标阶段。
 既然捕获失效，那么它的执行顺序就按照注册事件的顺序了，不会因为它设置了无效的捕获而提前得到执行。
 
-# DispatchEvent
+## DispatchEvent
 
 `target.DispatchEvent(event)`也是DOM Level 2 Event提供的方法。用来从`target`开始分发事件`event`。
 例如，我们可以创建一个`click`DOM事件：
@@ -185,7 +185,7 @@ l1 bubbling
 
 因为`l1`确实拥有子元素，所以事件仍然会下行和冒泡。但事件的`target`并非`l2`，所以`l2`不会触发目标阶段的事件处理函数。
 
-# jQuery Event 源码
+## jQuery Event 源码
 
 好了好了，DOM Level 2 Event的事件处理模型算是清楚了，在[DOM Level 3 Event][level3]的Working Draft中，
 仍然沿袭了三阶段的事件处理流程。接着我们来看jQuery的那些事件处理函数是怎样实现的。

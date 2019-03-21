@@ -10,7 +10,7 @@ tags: AngularJS CSS DOM HTML JavaScript MVC 模板 表单 模块化 数据绑定
 
 > 事实上，正是因为**实时的用户反馈**这个神奇的特性，我们团队在 <http://tianmaying.com> 中也继续引入了AngularJS，尽管此时我们对单页应用已经不感兴趣。
 
-# 一个简单的表单
+## 一个简单的表单
 
 Angular是模块化的，每个APP都是一个Angular Module。我们知道Module下可以包含这样四种内容：
 
@@ -38,7 +38,7 @@ Angular表单其实是Angular提供的Directive，它有一个别名叫`ng-form`
 
 <!--more-->
 
-# SELECT标签
+## SELECT标签
 
 HTML中的`select`标签是一个单选的下拉列表，Angular对`select`也提供了支持（事实上，是在`ng`Module里面提供了一个叫`select`的Directive）。假如上下文中有这样的对象：
 
@@ -58,7 +58,7 @@ $socpe.selectedValue = 1;
 
 > 事实上，因为`select`下拉项的样式不可通过CSS控制，`select`在追求视觉体验的网站不常使用。Bootstrap的`.dropdown`就是一个更好的替代品。Angular也有类似的Dropdown插件。
 
-# 表单嵌套
+## 表单嵌套
 
 多数浏览器不允许`form`嵌套，如果你出于自身的需求（例如：在账号表单中，头像表单需要单独提交）需要嵌套的表单，请使用`ng-form`标签：
 
@@ -79,7 +79,7 @@ $socpe.selectedValue = 1;
 
 > 至于你自己的Directive希望通过属性的方式来启用还是通过标签的方式来启用，可以在你的Directive中设置`restrict`字段。
 
-# 渐进呈现
+## 渐进呈现
 
 在页面载入时，由于Angular的控制器仍为完成构造过程，表单会短暂地显示为原始的HTML，比如：
 

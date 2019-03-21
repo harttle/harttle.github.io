@@ -8,9 +8,9 @@ tags: DOM scrollHeight scrollTop clientHeight innerHeight outerHeight offsetHeig
 本文就来介绍相关的DOM API：`window.innerHeight`, `window.outerHeight`,`clientHeight`,
 `offsetHeight`, `scrollHeight`, `scrollTop`等（当然每个属性都有对应的Width）。
 
-# 整个窗口大小
+## 整个窗口大小
 
-## innerHeight与outerHeight
+### innerHeight与outerHeight
 
 通过`window.innerHeight`和`window.outerHeight`可以得到整个窗口的高度。其中：
 
@@ -25,7 +25,7 @@ tags: DOM scrollHeight scrollTop clientHeight innerHeight outerHeight offsetHeig
 
 <!--more-->
 
-## clientHeight
+### clientHeight
 
 在不支持`window.innerHeight`的浏览器中，可以读取`documentElement`和`body`的高度，
 它们的大小和`window.innerHeight`是一样的（其实不太一样，见下一小节）。
@@ -41,7 +41,7 @@ document.body.clientHeight
 
 `body`顾名思义就是`<body>`标签了。这两种方式兼容性较好，可以一直兼容到IE6，就是写起来费劲。
 
-## 最佳实践
+### 最佳实践
 
 既然获取窗口大小存在浏览器兼容问题，在实践中通常使用下面的代码来兼容所有浏览器：
 
@@ -59,7 +59,7 @@ var height = window.innerHeight
 
 > 其实使用`offsetHeight`作为Fallback要比`clientHeight`更好，更多的讨论请见下文。
 
-# 滚动高度
+## 滚动高度
 
 在使用JavaScript控制页面滚动时（例如回到顶部），需要知道页面当前滚动到了哪里，以及滚动到的目标是哪里。
 这便是滚动高度。这涉及到4个DOM属性，`clientHeight`, `offsetHeight`, `scrollHeight`, `scrollTop`。
@@ -88,7 +88,7 @@ var height = window.innerHeight
 
 > 对应的横向属性为：`clientWidth`, `offsetWidth`, `scrollWidth`, `scrollLeft`。
 
-# 参考阅读
+## 参考阅读
 
 * Window - W3School: <http://www.w3school.com.cn/js/js_window.asp>
 * Window.innerHeight - MDN：<https://developer.mozilla.org/zh-CN/docs/Web/API/Window/innerHeight>

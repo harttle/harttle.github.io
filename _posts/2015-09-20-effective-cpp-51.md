@@ -16,7 +16,7 @@ excerpt: new需要无限循环地获取资源，如果没能获取则调用"new 
 
 <!--more-->
 
-# 外部operator new
+## 外部operator new
 
 [Item 49][item49]指出了如何将`operator new`重载为类的成员函数，在此我们先看看如何实现一个外部（非成员函数）的`operator new`：
 `operator new`应当有正确的返回值，在内存不足时应当调用"new handler"，请求申请大小为0的内存时也可以正常执行，避免隐藏全局的（"normal form"）`new`。
@@ -51,7 +51,7 @@ void * operator new(std::size_t size) throw(std::bad_alloc){
 * 两次`set_new_handler`调用先把全局"new handler"设置为空再设置回来，这是因为无法直接获取"new handler"，多线程环境下这里一定需要锁。
 * `while(true)`意味着这可能是一个死循环。所以[Item 49][item49]提到，"new handler"要么释放更多内存、要么安装一个新的"new handler"，如果你实现了一个无用的"new handler"这里就是死循环了。
 
-# 成员operator new
+## 成员operator new
 
 重载`operator new`为成员函数通常是为了对某个特定的类进行动态内存管理的优化，而不是用来给它的子类用的。
 因为在实现`Base::operator new()`时，是基于对象大小为`sizeof(Base)`来进行内存管理优化的。
@@ -87,7 +87,7 @@ void *Base::operator new(std::size_t size) throw(std::bad_alloc){
 1. 你不知道对象大小是什么。上面也提到了当继承发生时`size`不一定等于`sizeof(Base)`。
 2. `size`实参的值可能大于这些对象的大小之和。因为[Item 16][item16]中提到，数组的大小可能也需要存储。
 
-# 外部operator delete
+## 外部operator delete
 
 相比于`new`，实现`delete`的规则要简单很多。唯一需要注意的是C++保证了`delete`一个`NULL`总是安全的，你尊重该惯例即可。
 
@@ -100,7 +100,7 @@ void operator delete(void *rawMem) throw(){
 }
 ```
 
-# 成员operator delete
+## 成员operator delete
 
 成员函数的delete也很简单，但要注意如果你的`new`转发了其他`size`的申请，那么`delete`也应该转发其他`size`的申请。
 

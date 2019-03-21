@@ -25,7 +25,7 @@ void printer(int a, int b, T func){
 
 > `Less<int>`便是一个常见的函数对象，常用来配置容器或算法。`<functional>`中定义了很多这样的函数对象。
 
-# 函数指针
+## 函数指针
 
 函数指针通常用来将函数传参或存储。例如：
 
@@ -52,7 +52,7 @@ void printer(int a, int b, int (*func)(int, int)){
 > 如果你是python或者javascript程序员的话，上述过程没有什么特别的。
 > 唯一要注意的是`func`的声明方式，星号要和标识符括起来：`(*func)`。
 
-# 函数对象
+## 函数对象
 
 函数对象是重载了括号运算符的类的实例，它也可以这样调用：`func(a, b)`。例如：
 
@@ -82,7 +82,7 @@ void printer(int a, int b, Sum s){
 
 <!--more-->
 
-# std::accumulate
+## std::accumulate
 
 ```cpp
 #include <iostream>     // std::cout
@@ -120,7 +120,7 @@ int main () {
 
 摘自cplusplus.com： <http://www.cplusplus.com/reference/numeric/accumulate>
 
-# 比较器：std::sort
+## 比较器：std::sort
 
 需要比较元素大小的STL算法、容器的模板、容器的成员函数，都可以给定一个比较策略。它们的默认值通常是`Less<T>()`。
 
@@ -133,7 +133,7 @@ sort(v.begin(), v.end(), greater<int>());
 > `std::sort`要求随机存取迭代器，`list`不可用`std::sort`，可以使用`list::sort(Pred pr)`。
 > `std::sort`实际上是快排，复杂度为$O(n lgn)$，它是不稳定的。`stale_sort`则是稳定的归并排序。
 
-# 比较器：模板参数
+## 比较器：模板参数
 
 关联容器通常使用搜索树来实现，所以插入元素时需要进行比较操作。
 我们在使用容器模板时可以指定比较器：

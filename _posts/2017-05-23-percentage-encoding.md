@@ -8,7 +8,7 @@ tags: encodeURIComponent UTF-8 URL GB2312
 以及接着的两个字符表示 16 进制的一个字节。
 比如空格字符（`00100000`）编码后的结果为 `%20`。
 
-## TL;DR
+### TL;DR
 
 * URL 是 URI 的一种形式。
 * URI 的合法字符包括18个保留字符和66个非保留字符
@@ -17,7 +17,7 @@ tags: encodeURIComponent UTF-8 URL GB2312
 
 <!--more-->
 
-# URI 与 URL
+## URI 与 URL
 
 URI（统一资源标识）定义在 [RFC 3986][rfc3986] 中，
 [URL][url]（统一资源地址）是 URI 的一种特殊形式，提供了资源的网络位置。
@@ -31,7 +31,7 @@ URL 最初的标准 [RFC 1738][rfc1738] 已经废弃，
 > locating the resource by describing its primary access mechanism
 > (e.g., its network "location"). [1.1.3.  URI, URL, and URN][uri-url], RFC 3986
 
-# 字符集
+## 字符集
 
 URI 中合法的字符包括两种：保留字（18个）和非保留字（66个）。其中保留字又分为两部分：
 组件定界符（gen-delims）和子组件定界符（sub-delims）。
@@ -52,7 +52,7 @@ query = *( unreserved / "%" HEXDIG HEXDIG / sub-delims / ":" / "@" / "/" / "?" )
 
 可见 URL 参数部分除了非保留字、子组件定界符、百分号编码之外，只允许`:`, `@`, `/`, `?`。
 
-# 编解码
+## 编解码
 
 百分号编码在如下几种情况都会发生：
 
@@ -76,7 +76,7 @@ query = *( unreserved / "%" HEXDIG HEXDIG / sub-delims / ":" / "@" / "/" / "?" )
 > corresponding unreserved characters by URI normalizers.
 > -- [2. Characters, RFC 3986][uri-char]
 
-# encodeURIComponent 编码异常
+## encodeURIComponent 编码异常
 
 `encodeURIComponent()` 对不合法的百分号编码会抛出 `"URI malformed"` 异常。
 这通常是因为百分号编码前的字节流不是 UTF-8 编码。

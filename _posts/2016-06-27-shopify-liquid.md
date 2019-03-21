@@ -21,11 +21,11 @@ tags: NPM Node.js 模板 Liquid Express.js
 其中`"Name: %s"`是模板，`%s`是一种模板语法。而`str`则为上下文数据。
 这里有一个Live Demo：<https://harttle.land/liquidjs/>
 
-# 历数那些著名的模板引擎
+## 历数那些著名的模板引擎
 
 在讨论谁是最好的模板引擎之前，先来历数一下 Harttle 经历过的那些模板引擎，来讨论它们的优缺点。
 
-## Shopify Liquid
+### Shopify Liquid
 
 [Shopify Liquid][sl]是Liquid引擎的Ruby实现，Jekyll中的模板引擎即是Shipify Liquid。
 提供控制流、变量定义、迭代功能、继承和引入。不支持通用的表达式求值，但可以自定义过滤器和标签。
@@ -45,7 +45,7 @@ tags: NPM Node.js 模板 Liquid Express.js
 
 > [Django Templates][dt]也采用Liquid兼容的模板语法。
 
-## CodeCharge Studio
+### CodeCharge Studio
 
 [CodeCharge Studio][cs]是C#、JSP的默认模板引擎。
 
@@ -65,7 +65,7 @@ tags: NPM Node.js 模板 Liquid Express.js
 </t:genericpage>
 ```
 
-## Thymeleaf
+### Thymeleaf
 
 [Thymeleaf][Thymeleaf]是Java平台下的模板引擎，其特征包括：产生良构的HTML或XML，基于标签属性的、声明式的、HTML兼容的模板语法（这意味着Thymeleaf模板可以直接用浏览器打开）。
 不提供模板继承，其他特性同CodeCharge Studio。
@@ -89,7 +89,7 @@ tags: NPM Node.js 模板 Liquid Express.js
 
 > 为了产生良构的HTML默认采取Strict文档模式，这使得很多Copy来的代码会报错。
 
-## Handlebars
+### Handlebars
 
 [Handlebars][hbs]提倡无逻辑（logicless）的模板语法，致力于创建语义模板。只提供基本的控制流和迭代，不支持函数和通用表达式。Handlebars提出了一种新颖的上下文进入的语法。
 
@@ -103,7 +103,7 @@ tags: NPM Node.js 模板 Liquid Express.js
 ```
 Harttle 不再使用Handlebars的原因包括：上下文进入的语法使得代码维护困难，无逻辑的语法使得扩展标签变成常事，然而扩展一个标签并不容易。
 
-## AngularJS Template
+### AngularJS Template
 
 [AngularJS Template][ngt]是前端模板引擎。与[Thymeleaft][Thymeleaf]一样采用基于标签属性的、声明式的、HTML兼容的模板语法。这使得后端Thymeleaf前端AngularJS时会产生冲突。
 
@@ -123,7 +123,7 @@ AngularJS Template的强大之处在于完全的声明式语法、数据双向�
 </html>
 ```
 
-## Jade
+### Jade
 
 [Jade][jade]一度成为Express.js的默认模板引擎，致力于生成良构的HTML。提供了极其简洁的Emmet风格的模板语法，不兼容HTML，于是上手也有一些困难。
 
@@ -141,7 +141,7 @@ html(lang="en")
 
 从上面的代码可以看到，从网上Copy来的HTML不能直接作为Jade模板使用。
 
-## EJS
+### EJS
 
 [EJS][ejs]和PHP语法及其相似，采用HTML内嵌脚本语言的方式。Harttle不会喜欢这种方式，毕竟JavaScript是JavaScript，HTML是HTML。况且直接内嵌JavaScript还会增加安全风险。
 
@@ -153,12 +153,12 @@ html(lang="en")
 </ul>
 ```
 
-# 理想的模板引擎
+## 理想的模板引擎
 
 介绍了这么多模板引擎，我们来分析一下理想的模板引擎应该有哪些功能。
 一些必不可少的功能就不展开了，比如控制流、迭代、变量定义等，下文主要介绍那些可选的优秀特性。
 
-## 布局和片段
+### 布局和片段
 
 布局（layout）和片段（partial）这是模块化开发的基础。
 
@@ -168,7 +168,7 @@ html(lang="en")
 布局（layout）是指一个页面模板可以继承一个布局框架模板。比如，在布局框架中可以写好`<head>`部分、导航栏，以及底栏。
 其他页面模板通过继承该布局框架来填充其中的内容部分。
 
-## 布尔运算
+### 布尔运算
 
 对于是否提供表达式求值或函数调用，不同的模板引擎有着不同的观点。
 
@@ -195,7 +195,7 @@ Harttle认为模板应尽量避免运算以提高易读性，但布尔运算仍�
 {{/if}}
 ```
 
-## 数据格式化
+### 数据格式化
 
 模板引擎的作用在于将数据注入到模板中，于是到处都需要将数据模型中的值转换为用户可见的字符串。
 这个过程可以在控制器中完成，可以在数据模型中完成，也可以在模板中完成。
@@ -212,7 +212,7 @@ Harttle认为模板引擎更加了解如何进行数据的表示，这一过程�
 > Liquid过滤器是可以级联的，例如：`{{ list | split: ',' | join: '-' }}`。
 {% endraw %}
 
-# liquidjs 项目
+## liquidjs 项目
 
 最近Harttle发起了[harttle/liquidjs][hsl]项目，这是Node.JS下的Liquid实现，符合Shopify Liquid文档的要求。
 因此该模板引擎是与Jekyll或Github Pages兼容的。

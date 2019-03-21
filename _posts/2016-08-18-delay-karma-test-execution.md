@@ -15,7 +15,7 @@ tags: JavaScript Karma 测试 AMD 异步
 
 <!--more-->
 
-# 延迟Karma执行测试
+## 延迟Karma执行测试
 
 问题的关键在于一旦所有JavaScript文件就绪，Karma会立即启动测试（甚至不等待[DOM就绪][dom-ready]）。
 当浏览器通知Karma测试完成时，我们的异步JavaScript还未载入。
@@ -44,7 +44,7 @@ window.__karma__.loaded = function() {};
 require(['test1', 'test2', ...], window.__karma__.start);
 ```
 
-# 避免脚本多次执行
+## 避免脚本多次执行
 
 加入Karma[`files`][files]配置的脚本默认会被以`<script>`的形式插入在页面中，在页面载入时被执行。
 这会导致动态脚本（如AMD模块）被多次执行到。
@@ -70,7 +70,7 @@ config.set({
 
 > `files.included`指定了该文件是否需要以`<script>`方式来插入到测试页面中（即启动执行）。
 
-# 异步覆盖测试报告
+## 异步覆盖测试报告
 
 对于异步测试[`karma-coverage`][coverage]会获取不到源文件信息（instruments），因此也就会生成空的测试报告。
 为此我们可以在[`preprocessors`][pre-pro]中为`karma-coverage`生成这些信息。

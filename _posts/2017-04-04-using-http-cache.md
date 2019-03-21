@@ -19,7 +19,7 @@ Web 服务器（比如 Tomcat、Apache、Virgo）或服务器端框架（比如 
 
 > 除 HTTP 缓存之外，Web 性能优化还有很多其他途径，比如 [预加载和预渲染](/2015/10/06/html-cache.html)、[脚本异步载入](/2016/05/18/async-javascript-loading.html) 等。
 
-# HTTP 缓存简介
+## HTTP 缓存简介
 
 谈起 HTTP 缓存你首先想到的一定是磁盘缓存，以及 304 [状态码][status-code]。
 这是浏览器处理缓存的两种情况：
@@ -36,7 +36,7 @@ Web 服务器（比如 Tomcat、Apache、Virgo）或服务器端框架（比如 
 * [`Etag`][et] 响应头标识了资源的版本，此后浏览器可据此进行缓存以及询问服务器。
 * [`Last-Modified`][lm] 响应头标识了资源的修改时间，此后浏览器可据此进行缓存以及询问服务器。
 
-# Cache-Control
+## Cache-Control
 
 `Cache-Control` 在 HTTP 响应头中，用于指示代理和 UA 使用何种缓存策略（感谢 [Kingsley Chen](http://kingsamchen.github.io/) 指出此前对 no-cache 描述的错误）。比如：
 
@@ -68,7 +68,7 @@ server.listen(3333)
 
 > 除了 `Cache-Control` 中的 `max-age` 外，[`Expires`][expires]，[`Vary`][vary] 等头字段也可用来设置缓存的有效性。
 
-# Etag
+## Etag
 
 如果资源本身确实会随时发生改动，还用 `Cache-Control` 就会使用户看到的页面得不到更新。
 但如果还希望利用 HTTP 缓存（万一资源没变呢），这就需要有条件的（conditional）HTTP 请求。
@@ -100,7 +100,7 @@ let server = http.createServer((req, res) => {
 server.listen(3333)
 ```
 
-# Last-Modified
+## Last-Modified
 
 与 `Etag` 类似，`Last-Modified` HTTP 响应头也用来标识资源的有效性。
 不同的是使用修改时间而不是实体标签。对应的请求头字段为`If-Modified-Since`，
@@ -129,12 +129,12 @@ let server = http.createServer((req, res) => {
 server.listen(3333)
 ```
 
-# 浏览器刷新
+## 浏览器刷新
 
 撰写这篇文章的过程中，Harttle 使用了很多 Chrome 浏览器的截图。
 如果你使用浏览器调试，可能也需要了解刷新按钮的行为。
 
-## 正常重新加载
+### 正常重新加载
 
 按下刷新按钮或快捷键（在 MacOS 中是 Cmd+R）会触发浏览器的“正常重新加载”（normal reload），
 此时浏览器会执行一次 [Conditional GET][cond]。
@@ -149,7 +149,7 @@ Cache-Control:max-age=0
 注意：在地址栏重新输入当前页面地址并按下回车也会当做刷新处理，
 这意味着只有从新标签页或超链接打开时，才能观察到直接使用硬盘缓存的情况。
 
-## 强制重新加载
+### 强制重新加载
 
 在 Chrome 中按下 Cmd+Shift+R （MacOS）可以触发强制重新加载（Hard Reload），
 此时包括页面本身在内的所有资源都不会使用缓存。

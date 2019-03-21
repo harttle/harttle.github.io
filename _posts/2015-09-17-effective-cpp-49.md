@@ -10,7 +10,7 @@ excerpt: new申请内存失败时会抛出"bad alloc"异常，此前会调用一
 
 <!--more-->
 
-# set_new_handler()
+## set_new_handler()
 
 "new-handler"函数通过`std::set_new_handler()`来设置，`std::set_new_handler()`定义在`<new>`中：
 
@@ -44,7 +44,7 @@ int main(){
 * 抛出`bad_alloc`（或它的子类）异常；
 * 不返回，可以`abort`或者`exit`。
 
-# 类型相关错误处理
+## 类型相关错误处理
 
 `std::set_new_handler`设置的是全局的`bad_alloc`的错误处理函数，C++并未提供类型相关的`bad_alloc`异常处理机制。
 但我们可以重载类的`operator new`，当创建对象时暂时设置全局的错误处理函数，结束后再恢复全局的错误处理函数。
@@ -79,7 +79,7 @@ std::new_handler Widget::set_new_handler(std::new_handler p) throw(){
 3. 如果分配内存失败，`Widget::current`将会抛出异常；
 4. 不管成功与否，都卸载`Widget::current`，并安装调用`Widget::operator new`之前的全局错误处理函数。
 
-# 重载operator new
+## 重载operator new
 
 我们通过RAII类来保证原有的全局错误处理函数能够恢复，让异常继续传播。关于RAII可以参见[Item 13][item13]。
 先来编写一个保持错误处理函数的RAII类：
@@ -105,7 +105,7 @@ void * Widget::operator new(std::size_t size) throw(std::bad_alloc){
 }   // 函数调用结束，原有错误处理函数恢复
 ```
 
-# 使用Widget::operator new
+## 使用Widget::operator new
 
 客户使用`Widget`的方式也符合基本数据类型的惯例：
 
@@ -119,7 +119,7 @@ Widget::set_new_handler(0); // 把Widget的异常处理函数设为空
 Widget *p2 = new Widget;    // 如果失败，立即抛出异常
 ```
 
-# 通用基类
+## 通用基类
 
 仔细观察上面的代码，很容易发现自定义"new-handler"的逻辑其实和`Widget`是无关的。我们可以把这些逻辑抽取出来作为一个模板基类：
 
@@ -158,7 +158,7 @@ class Widget: public NewHandlerSupport<Widget>{ ... };
 
 其实`NewHandlerSupport`的实现和模板参数`T`完全无关，添加模板参数是因为`handler`是静态成员，这样编译器才能为每个类型生成一个`handler`实例。
 
-# nothrow new
+## nothrow new
 
 1993年之前C++的`operator new`在失败时会返回`null`而不是抛出异常。如今的C++仍然支持这种nothrow的`operator new`：
 

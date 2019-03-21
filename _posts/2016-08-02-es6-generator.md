@@ -6,7 +6,7 @@ tags: JavaScript 迭代器 生成器 ES6
 ES6（ECMAScript 2015）中提出了**生成器**的概念，进一步完整了JavaScript语言。
 本文介绍了可迭代协议与迭代器协议的概念区别，以及生成器的声明与使用方法。
 
-# 生成器函数
+## 生成器函数
 
 生成器函数是用来返回生成器的函数，生成器是一种有状态的迭代器，
 可实现较复杂的迭代行为，比如生成ID。
@@ -31,7 +31,7 @@ function* idMaker(){
 var gen = idMaker();
 ```
 
-# 生成器
+## 生成器
 
 ES6中生成器有三个方法：
 
@@ -50,7 +50,7 @@ console.log(gen.next().value); // 2
 console.log(gen.next().value); // undefined
 ```
 
-# 可迭代协议
+## 可迭代协议
 
 [可迭代协议][iteration-protocols]（iterable protocol）使得我们可以定制JavaScript对象
 的迭代行为，比如定义`for...of`时迭代出来怎样的值。
@@ -66,7 +66,7 @@ iterator.next();                             // { value: "i", done: false }
 iterator.next();                             // { value: undefined, done: true }
 ```
 
-# 迭代器协议
+## 迭代器协议
 
 [迭代器协议][iteration-protocols]（iterator protocol）又称生成器协议，
 该协议定义了什么是迭代器对象。其实迭代器协议很简单，
@@ -98,7 +98,7 @@ console.log(iterator.next());   // { value: 2, done: true }
 console.log(iterator.next());   // { value: undefined, done: true }
 ```
 
-# yield*
+## yield*
 
 `yield*`可以将需要`yield`的值委托给另一个**生成器**，或其他任何可迭代对象
 （由[ES6 迭代协议][iteration-protocols]规约）。例如：
@@ -146,7 +146,7 @@ console.log(iterator.next()); // { value: 6, done: false }
 console.log(iterator.next()); // { value: undefined, done: true }
 ```
 
-# 参考阅读
+## 参考阅读
 
 * iteration protocols: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols>
 * `function*`: <https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/function*>

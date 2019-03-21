@@ -15,7 +15,7 @@ Git 所做的不仅仅是同步文件，它更是一种编写和组织代码的�
 
 ![git log](/assets/img/blog/git/commit-message@2x.png)
 
-# 一个失败案例
+## 一个失败案例
 
 不难想象当你埋头改了一天的代码后，突然 Git 让你填写 Commit Message。头脑一片空白。
 于是出现了这些常见的 Commit 信息：
@@ -38,7 +38,7 @@ by harttle
 没有意义的 Message 在之后的维护和 Review 中也很难了解这个人（或这次提交）到底做了什么。
 下文集中地介绍如何编写有用的 Commit Message。
 
-# 描述变更
+## 描述变更
 
 **Commit Message 是用来描述变更的，不要说废话**。
 尤其不要填写改了哪些文件，作者是谁，这些 Git 会自动记录并关联。
@@ -59,7 +59,7 @@ fix: cache invalidation for message list
 refactor: account related models
 ```
 
-# 统一的格式
+## 统一的格式
 
 一致的格式会带来很多好处，比如便于阅读和自动化（比如自动生成 Changelog），
 就像我们 [使用一致的代码风格][vim-lint] 一样。
@@ -76,7 +76,7 @@ Refactor: user service & model
 甚至有人用统一的 Emoji 来标识每个 Commit Message，也有相当多的 Commit Message 生成软件。
 此外，如果写中文会让你的团队更舒服，完全可以用中文的消息。
 
-# 注意上下文
+## 注意上下文
 
 有没有发现没有上下文时完全听不懂别人说话，Commit Message 也是一样的。
 你在刚刚完成编写代码时，按照当时的上下文编写的 Commit Message 别人可能完全无法理解。
@@ -93,7 +93,7 @@ Fix: 不能打开的 Bug
 Fix: 账户设置页面无数据内容
 ```
 
-# 解释和例子
+## 解释和例子
 
 对于复杂的 Commit，尤其是新机制或者重构 Commit，建议增加一些描述以便理解。
 在一些大型的在线协作项目中，这种 Commit 会很常见。比如这个

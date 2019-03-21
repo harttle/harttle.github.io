@@ -14,7 +14,7 @@ tags: 跨域 CORS AJAX HTTP XHR
 
 <!--more-->
 
-# 简单请求
+## 简单请求
 
 **简单请求**具体是指请求方法是[简单方法][s-method]且请求头是[简单头][s-header]的 HTTP 请求。具体地，
 
@@ -42,7 +42,7 @@ Connection:keep-alive
 Content-Length:0
 ```
 
-# Access-Control-Request-Headers
+## Access-Control-Request-Headers
 
 [Access-Control-Request-Headers][acrh] 是 preflight 请求中用来标识真正请求将会包含哪些头部字段，
 preflight 请求本身不会发送这些头字段。
@@ -55,7 +55,7 @@ XMLHttpRequest cannot load http://mid.com:4001/access-control-allow-origin-wildc
 Request header field x-foo is not allowed by Access-Control-Allow-Headers in preflight response.
 ```
 
-# 关于 DNT 请求头
+## 关于 DNT 请求头
 
 有些浏览器（如 Safari 隐身模式）会在请求中添加[`DNT`][dnt]头，
 但浏览器不会（也不应）因此而发起 preflight。

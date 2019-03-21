@@ -7,7 +7,7 @@ tags: CSS HTML inline inline-block 盒模型
 元素对齐是CSS中最常见的问题之一，控制元素对齐的属性包括`text-align`, `verticle-align`, `margin`, `line-height`等。
 本文便来探讨inline元素的对齐行为，以及`text-align`和`verticle-align`的使用方法，并给出实例。
 
-# text-align
+## text-align
 
 [text-align][ta]指定了行内内容（例如文字）如何相对它的块父元素对齐。**作用于当前元素的子元素，且子元素需是`inline`的**。例如：
 
@@ -26,7 +26,7 @@ tags: CSS HTML inline inline-block 盒模型
 
 ![css: pull right](/assets/img/blog/css/pull-right@2x.png)
 
-# vertical-align
+## vertical-align
 
 [vertical-align][va]指定行内（inline）元素或表格单元格（table-cell）元素的垂直对齐方式。
 与`text-align`不同，**`vertical-align`作用于当前元素**。
@@ -81,7 +81,7 @@ tags: CSS HTML inline inline-block 盒模型
 
 ![vertical bottom failed](/assets/img/blog/css/vertical-bottom-failed@2x.png)
 
-# 实例：表单元素对齐
+## 实例：表单元素对齐
 
 输入控件（`input`）和标签（`label`）之间的对齐是Web开发中最常见的问题之一。来个例子：
 

@@ -11,13 +11,13 @@ tags: ArchLinux DHCP DNS IP MAC TCP 网络 路由 systemd
 
 <!--more-->
 
-# DHCP
+## DHCP
 
 DHCP是为客户端提供网络配置的服务器（[RFC 2131](https://www.ietf.org/rfc/rfc2131.txt)）。我们用它来配置局域网内的主机，让它们从我的linux主机路由。
 
 > 局域网内是允许多个DHCP服务器的，它们会同时响应客户端请求，客户端决定并广播其采纳的配置。所以最好关掉局域网内其他的DHCP服务器，尤其是路由器的DHCP功能。
 
-## 服务器配置
+### 服务器配置
 
 在配置DHCP服务器之前，我们需要为`wlp13s0`添加一个子网IP，该子网的地址提供给DHCP服务器。
 
@@ -43,7 +43,7 @@ subnet 192.168.3.0 netmask 255.255.255.0 {
 
 > 可以通过`nmap -sn 192.168.3.0/24`来扫描当前子网的主机IP；然后通过ARP协议（`arp <IP>`）得到其MAC地址。
 
-## 服务器启动
+### 服务器启动
 
 现在可以调用 `/usr/bin/dhcpd -4 wlp13s0` 来启动 dhcpd 服务了。
 为了使用方便我们为它制作一个`systemd`服务（类似于 Debian 的 `init.d`）。
@@ -84,11 +84,11 @@ $ tcpdump -i wlp13s0 -n port 67
 
 参见 [dhcpd-archwiki](https://wiki.archlinux.org/index.php/Dhcpd)
 
-# IP转发
+## IP转发
 
 上述的DHCP服务将客户端的路由设置到了`192.168.3.1`，该IP位于`wlp13s0`上。现在要对到来的IP报文进行NAT地址转换，并转发到`enp14s0`（拥有我们的出口IP）上。
 
-## 允许IP转发
+### 允许IP转发
 
 默认情况下，有线网卡只允许`INPUT`和`OUTPUT`流量，现在启用`FORWARD`流量以允许IP转发：
 
@@ -108,7 +108,7 @@ net.ipv6.conf.default.forwarding=1
 net.ipv6.conf.all.forwarding=1
 ```
 
-## 启动NAT
+### 启动NAT
 
 这里我们通过`iptables`启动NAT地址转换，将局域网Socket映射到出口Socket。
 
@@ -123,7 +123,7 @@ iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 iptables -t nat -A POSTROUTING -o enp14s0 -j MASQUERADE
 ```
 
-## 转发到代理
+### 转发到代理
 
 上述的`iptables`配置已经可以形成完整的局域网路由。而`iptables`的功能远不局限于此，不仅可以做端口转发、子网识别、IP过滤，还有很多的扩展模块可以用，上面提到的`conntrack`就是其中一种。
 
@@ -137,7 +137,7 @@ iptables -t nat -A PREROUTING -s 192.168.3.0/255.255.255.0 -p tcp -j DNAT --to-d
 iptables -t nat -A PREROUTING -s 192.168.3.0/255.255.255.0 -p tcp --dport 80 -j DNAT --to-destination 192.168.3.1:3128
 ```
 
-## 启动iptables
+### 启动iptables
 
 可以将`iptables`配置写入文件，该文件在`iptables`启动和重新载入时都会读取：
 
@@ -153,7 +153,7 @@ systemctl start iptables.service
 
 参考：[iptables-archwiki](https://wiki.archlinux.org/index.php/Iptables)
 
-# Web服务器
+## Web服务器
 
 上述的`iptables`可以将子网中的IP报文转发到代理服务器，例如`squid`就是一个很好的选择。`squid`可以调用子程序来进行重定向、url重写等。
 

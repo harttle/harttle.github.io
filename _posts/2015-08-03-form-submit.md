@@ -10,7 +10,7 @@ excerpt: 建议使用`button[type=submit]`来提交表单，而不是`input`；�
 * 只有单行文本控件时，回车会引发表单提交；
 * 通过`onsubmit`事件可阻止表单提交。
 
-# input[type=submit]
+## input[type=submit]
 
 这是最常见的提交方式。不多说了，看图：
 
@@ -49,7 +49,7 @@ excerpt: 建议使用`button[type=submit]`来提交表单，而不是`input`；�
 
 <!--more-->
 
-# button[type=submit]
+## button[type=submit]
 
 `button`的语义很明确，就是一个按钮不含数据，作用就是用户交互。但它也有`type`和`value`属性。
 `type`的默认值是`submit`，所以点击一个`button`会引起表单提交：
@@ -84,7 +84,7 @@ w3school给出了如下的示例：
 
 > IE 中`button`标签的`type`属性默认为`button`。
 
-# Enter 键提交表单
+## Enter 键提交表单
 
 Enter键是可以提交表单的！但是你可能已经注意到了，并非所有的表单都可以用Enter键来提交。来看[HTML2.0 标准][html2]：
 
@@ -96,7 +96,7 @@ Enter键是可以提交表单的！但是你可能已经注意到了，并非所
 其实在实践中，有多个单行的`input`也可以用Enter提交，比如登录页面（太典型了，不仅是这样开发的，而且是这样使用的）。
 要知道HTML2.0标准制定于1995，可以说这一句不起眼的条文影响着我的每次网站登录。W3C的这批人是有怎样的远见和智慧！
 
-# 阻止表单提交
+## 阻止表单提交
 
 阻止表单提交也是一个常见的话题，通常用于客户端的表单验证。通用的办法是设置`onsubmit`：
 

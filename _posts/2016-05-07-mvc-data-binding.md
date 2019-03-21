@@ -9,7 +9,7 @@ MVC也成为一整个系列的设计模式，衍生品包括PAC、HMVC、MVP、M
 本文从经典MVC模式谈起，讨论MVC下数据同步策略的设计，
 进一步引申出MVVM设计模式，并讨论其数据绑定的优缺点。
 
-# MVC
+## MVC
 
 **MVC**（Model-View-Controller）一词最初在1979年由Trygve Reenskaug提出（Smalltalk-79），
 此后Krasner和Pope在Smalltalk-80中再次进行了描述。
@@ -32,7 +32,7 @@ MVC模式中最重要的思想是**表示分离**（separated presentation），
 > 表示的分离也是Unix软件的风格，例如X11的CS架构。
 > 事实上，所有可以同时从GUI和命令行使用的软件都进行了表示的分离。
 
-# 流同步
+## 流同步
 
 软件设计中，通常有多个屏幕（或视图）显示着同样的数据。
 一个视图更改了数据时，其他视图应当得到更新。
@@ -52,7 +52,7 @@ MVC模式中最重要的思想是**表示分离**（separated presentation），
 当用户打开了多个子窗口，在一个窗口中更新了数据，就只能一一通知其他窗口。
 这导致所有窗口的代码都是紧耦合的，使用『观察者同步』来解决该问题。
 
-# 观察者同步
+## 观察者同步
 
 **观察者同步**（Observer Synchronization）中每个视图在整个会话中充当一个观察者（Observer）的角色。
 当会话中的数据更新时，这个观察者监听的事件会被触发，
@@ -64,7 +64,7 @@ MVC模式中最重要的思想是**表示分离**（separated presentation），
 
 > 当然，观察者同步也有其缺点：自动同步机制使得Debug变得困难，难以追踪执行过程。只能通过log的形式来分析Bug。
 
-# MVVM
+## MVVM
 
 到此为止，我们可以在MVC中实现模型与视图的解耦，同时采用观察者同步策略，还可以自动进行同步数据。
 然而在GUI应用中，模型（Model）并不能描述软件的所有状态。
@@ -79,7 +79,7 @@ MVC模式中最重要的思想是**表示分离**（separated presentation），
 * ViewModel：专门用来存储视图状态，所有状态都放在`$scope`变量下面。
 * Controller：用来负责ViewModel的初始化，以及根据视图的交互操作Model。
 
-# 数据绑定
+## 数据绑定
 
 MVVM 风格的架构中，视图和视图模型之间往往会进行**数据绑定**（Data Binding），
 因为视图模型就是专门为视图服务的，二者是紧耦合的，框架层面提供数据绑定一点也不奇怪。
@@ -102,7 +102,7 @@ John Gossman在2006年的[一篇博客][mvvm-ms]中也提到了WPF中MVVM的性�
 就像观察者同步机制一样，数据绑定同时存在着难以跟踪和调试的缺点，因为它们都会自动地进行数据（Bug）传播。
 比如页面上的Bug很难定位是出在ViewModel还是View上。
 
-# 参考资料
+## 参考资料
 
 * Givan.se: <http://givan.se/mvc-past-present-and-future/>
 * MVC - Martin Fowler: <http://martinfowler.com/eaaDev/uiArchs.html#ModelViewController>

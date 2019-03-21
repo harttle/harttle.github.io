@@ -14,7 +14,7 @@ tags: AngularJS HTML HTTP JavaScript 数组
 
 参考文档： <https://docs.angularjs.org/api/ngResource/service/$resource>
 
-# Resource Factory
+## Resource Factory
 
 `$resource`Service定义在`ngResource`Module中，需要在你的HTML中引入这个Module对应的JS，同时在你的APP中添加这样一个依赖：
 
@@ -34,7 +34,7 @@ app.factory('Notes', ['$resource', function($resource) {
 
 <!--more-->
 
-# CRUD
+## CRUD
 
 在你的控制器中就可以对资源进行增删改查了：
 
@@ -61,7 +61,7 @@ app.controller('NotesCtrl', ['$scope', 'Notes', function($scope, Notes) {
 }]);
 ```
 
-# PUT 操作
+## PUT 操作
 
 `$resource`提供了五种默认操作：`get`, `query`, `save`, `remove`, `delete`。你可以配置一个`update`操作来完成HTTP PUT：
 
@@ -99,7 +99,7 @@ Notes.update({ id:$id }, note);
 
 其中，success参数为`(value, responseHeaders)`，error参数为`(httpResponse)`。
 
-# 属性/URL映射
+## 属性/URL映射
 
 上述例子中，我们看到note对象的`id`属性会映射到URL中的`:id`（`/notes/:id`）。如果你的业务更加复杂，可以手动配置这个映射关系。例如：
 
@@ -141,7 +141,7 @@ note.$update({trusted: true});
 // PUT: /notes/123?operator=bob&trusted=true {id: 123, content: 'hello'}
 ```
 
-# 响应转换
+## 响应转换
 
 有时基于既定的后台设计，无法提供完全RESTful的API，比如`/notes`返回的是一个分页器对象，而非数组。此时，我们仍然可以使用`$resource`，但需要设置响应转换回调。例如：
 

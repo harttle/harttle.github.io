@@ -9,7 +9,7 @@ tags: DOM JavaScript 异步 性能 重绘
 因此 16ms 就成为页面渲染优化的一个关键时间。
 尤其在[异步渲染][async-render]中，要利用 [流式渲染][css-js-render] 就必须考虑到这个渲染帧间隔。
 
-## TL;DR
+### TL;DR
 
 为方便查阅源码和相关资料，本文以 Chromium 的 [Blink][blink] 引擎为例分析。如下是一些分析结论：
 
@@ -20,7 +20,7 @@ tags: DOM JavaScript 异步 性能 重绘
 
 <!--more-->
 
-# 渲染帧的流程
+## 渲染帧的流程
 
 渲染帧是指浏览器一次完整绘制过程，帧之间的时间间隔是 DOM 视图更新的最小间隔。
 由于主流的屏幕刷新率都在 60Hz，那么渲染一帧的时间就必须控制在 16ms 才能保证不掉帧。
@@ -37,7 +37,7 @@ tags: DOM JavaScript 异步 性能 重绘
 2014 年时开始 [使用显示器的 vsync 信号控制渲染][remove-timer]（其实直接控制的是合成这一步）。
 这意味着 16ms 内多次 commit 的 DOM 改动会合并为一次渲染。
 
-# 耗时 JS 会造成丢帧
+## 耗时 JS 会造成丢帧
 
 JavaScript 在并发编程上一个重要特点是“Run To Completion”。在事件循环的一次 Tick 中，
 如果要执行的逻辑太多会一直阻塞下一个 Tick，所有异步过程都会被阻塞。
@@ -79,7 +79,7 @@ while (true) {
 
 ![js block render](/assets/img/blog/dom/js-block-render.gif)
 
-# 测量渲染帧间隔 
+## 测量渲染帧间隔 
 
 浏览器的渲染间隔其实是很难测量的。即使通过 [clientHeight][client-size] 这样的接口也只能强制进行Layout，是否 Paint 上屏仍未可知。
 
@@ -109,18 +109,18 @@ nextFrame()
 
 ![render frame](/assets/img/blog/dom/render-frame.gif)
 
-# 渲染优化建议
+## 渲染优化建议
 
 现在我们知道浏览器需要在 16ms 内完成整个 JS->Style->Layout->Paint->Composite 流程，那么基于此有哪些页面渲染的优化方式呢？
 
-## 避免耗时的 JavaScript 代码
+### 避免耗时的 JavaScript 代码
 
 耗时超过 16ms 的 JavaScript 可能会丢帧让页面变卡。如果有太多事情要做可以把这些工作重新设计，分割到各个阶段中执行。并充分利用缓存和懒初始化等策略。不同执行时机的 JavaScript 有不同的优化方式：
 
 * 初始化脚本（以及其他同步脚本）。对于大型 SPA 中首页卡死浏览器也是常事，建议增加服务器端渲染或者应用懒初始化策略。
 * 事件处理函数（以及其他异步脚本）。在复杂交互的 Web 应用中，耗时脚本可以优化算法或者迁移到 Worker 中。Worker 在移动端的兼容性已经不很错了，可以生产环境使用。
 
-## 避免交错读写样式
+### 避免交错读写样式
 
 在编写涉及到布局的脚本时，常常会多次读写样式。比如：
 
@@ -144,7 +144,7 @@ div.style.height = h + 20
 div.style.width = w + 20
 ```
 
-## 小心事件触发的渲染
+### 小心事件触发的渲染
 
 我们知道 [DOM 事件的触发][dispatchEvent] 是异步的，但事件处理器的执行是可能在同一个渲染帧的，
 甚至就在同一个 Tick。例如异步地获取 HTML 并拼接到当前页面上，
@@ -169,7 +169,7 @@ xhr.send()
 
 > 关于异步渲染的阻塞行为，可参考 <https://harttle.land/2016/11/26/dynamic-dom-render-blocking.html>
 
-# 参考链接
+## 参考链接
 
 * [Thinking in Animation Frames: Tuning Blink for 60 Hz][thinking-60]
 * [The Blink Project][blink]

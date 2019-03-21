@@ -8,7 +8,7 @@ tags: 事件 异常 类型检查 测试 Mocha 测试桩 Mock
 本文介绍在[Mocha][mocha]下如何利用这些钩子构建测试上下文，
 以及如何使用[Sinonjs][sinon]构建测试桩。
 
-# Sinonjs
+## Sinonjs
 
 事实上[Sinonjs][sinon]提供了三种测试桩：Spies, Stubs, Mocks。
 以及一些虚拟环境：Timers、JSONP、XHR等。
@@ -26,7 +26,7 @@ npm install --save-dev sinon
 
 <!--more-->
 
-# Spies
+## Spies
 
 Spy 是Sinonjs提供的特殊函数，它会记录被调用时的参数、`this`，调用次数，
 以及返回值、异常等等。用来测试一个函数是否被正确地调用。
@@ -63,7 +63,7 @@ expect(spy.calledWith('message', 'stop')).to.equal(true);
 
 Sinonjs Spies 文档：<http://sinonjs.org/docs/#spies>
 
-# Stubs
+## Stubs
 
 Stub（测试桩）是有着预定义好的行为的函数，用来强制软件按照某个路径去执行。
 在软件工程中，Stub一般用于给定模块的边界条件。
@@ -110,7 +110,7 @@ jQuery.ajax.restore();
 
 Sinonjs Stubs 文档：<http://sinonjs.org/docs/#stubs>
 
-# Matchers
+## Matchers
 
 Matchers用于辅助`spy.calledWith`，`spy.returned`等断言，用来进一步指定期望的值，
 比如正则匹配、类型检查等。
@@ -135,7 +135,7 @@ expect(spy.calledWith(sinon.match.has("pages", 42))).to.equal(true);
 
 Sinonjs Matchers 文档：<http://sinonjs.org/docs/#matchers>
 
-# 测试上下文
+## 测试上下文
 
 [Mocha][mocha]测试框架中，每个`describe`块都可以有自己的
 `before()`, `beforeEach()`, `after()`, `afterEach()`钩子定义。

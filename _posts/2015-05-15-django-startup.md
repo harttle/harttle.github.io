@@ -11,7 +11,7 @@ tags: Bash Django Github Python SQL 数据库
 
 <!--more-->
 
-# 安装
+## 安装
 
 django
 
@@ -26,7 +26,7 @@ mysql
 apt-get install python-mysqldb mysql-server mysql-client libmysqld-dev
 ```
 
-# 配置数据库
+## 配置数据库
 
 1. 在数据库中创建一个database
 
@@ -49,7 +49,7 @@ apt-get install python-mysqldb mysql-server mysql-client libmysqld-dev
     }
     ```
 
-# 常用命令
+## 常用命令
 
 开启服务
 

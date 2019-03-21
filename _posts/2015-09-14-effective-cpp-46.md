@@ -12,7 +12,7 @@ excerpt: 如果所有参数都需要隐式类型转换，该函数应当声明�
 
 <!--more-->
 
-# 模板化的Rational
+## 模板化的Rational
 
 既然是[Item 24][item24]的推广，那么我们先把Item24中的`Rational`和`operator*`模板化。得到如下代码：
 
@@ -31,7 +31,7 @@ const Rational<T> operator*(const Rational<T>& lhs, const Rational<T>& rhs){}
 
 > [Item 20][item20]解释了为什么`Rational`的参数是常量引用；[Item 28][item28]解释了为什么`numerator()`返回的是值而不是引用；[Item 3][item3]解释了为什么`numerator()`返回的是`const`。
 
-# 模板参数推导出错
+## 模板参数推导出错
 
 上述代码是Item24直接模板化的结果，看起来很完美但它是有问题的。比如我们有如下的调用：
 
@@ -49,7 +49,7 @@ Rational<int> result = oneHalf * 2;     // Error!
 可能你会希望编译器将`2`的类型推导为`Rational<int>`，再进行隐式转换。但在编译器中模板推导和函数调用是两个过程：
 隐式类型转换发生在函数调用时，而在函数调用之前编译器需要实例化一个函数。而在模板实例化的过程中，编译器无从推导`T`的类型。
 
-# 声明为友元函数
+## 声明为友元函数
 
 为了让编译器知道`T`是什么，我们可以在类模板中通过`friend`声明来引用一个外部函数。
 
@@ -72,7 +72,7 @@ const Rational<T> operator*(const Rational<T>& lhs, const Rational<T>& rhs){}
 虽然在类中声明了`friend operator*`，然而编译器却不会实例化该声明对应的函数。
 因为函数是我们自己声明的，那么编译器认为我们有义务自己去定义那个函数。
 
-# 在类中给出定义
+## 在类中给出定义
 
 那我们就在声明`operator*`时直接给出定义：
 
@@ -93,7 +93,7 @@ public:
 3. 在类中声明非成员函数的唯一办法便是声明为`friend`；
 4. 声明的函数的同时我们有义务给出函数定义，所以在函数定义也应当放在`friend`声明中。
 
-# 调用辅助函数
+## 调用辅助函数
 
 虽然`operator*`可以成功运行了，但定义在类定义中的函数是inline函数，见[Item 30][item30]。
 如果`operator*`函数体变得很大，那么inline函数就不再合适了，这时我们可以让`operator*`调用外部的一个辅助函数：

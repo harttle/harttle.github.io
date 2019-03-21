@@ -18,7 +18,7 @@ tags: Flash iframe 视频 HTML5
 <!--more-->
 
 
-# 爱奇艺
+## 爱奇艺
 
 【嵌入文档】<http://open.iqiyi.com/lib/player.html>
 
@@ -42,7 +42,7 @@ Iframe 嵌入代码：
 <iframe src='http://open.iqiyi.com/developer/player_js/coopPlayerIndex.html?vid=0c2340bbe6cce1bde14e94e50cd754ac&tvId=386549000&accessToken=2.f22860a2479ad60d8da7697274de9346&appKey=3955c3425820435e86d0f4cdfe56f5e7&appId=1368&height=100%&width=100%' frameborder='0' width='320px' height='180px' allowfullscreen='true'></iframe>
 ```
 
-# 优酷
+## 优酷
 
 【嵌入文档】<http://www.youku.com>
 
@@ -60,7 +60,7 @@ Iframe 嵌入代码：
 <iframe height=498 width=510 src='http://player.youku.com/embed/XMTc1OTEwNTEwOA==' frameborder=0 'allowfullscreen'></iframe>
 ```
 
-# 搜狐视频
+## 搜狐视频
 
 【嵌入文档】<http://lm.tv.sohu.com/union/open_platform.do>
 
@@ -74,7 +74,7 @@ Flash 嵌入代码：
 
 搜狐视频的 JS SDK 需要创建应用并审核，需要经历一定的周期，不能立即使用。
 
-# 腾讯视频
+## 腾讯视频
 
 【嵌入文档】无
 
@@ -92,7 +92,7 @@ Iframe 方式：
 <iframe frameborder="0" width="640" height="498" src="http://v.qq.com/iframe/player.html?vid=k0015trfczz&tiny=0&auto=0" allowfullscreen></iframe>
 ```
 
-# 酷6
+## 酷6
 
 【嵌入文档】<http://dev.ku6.com/>
 
@@ -134,7 +134,7 @@ Javascript API 方式：
 </script>
 ```
 
-# 土豆
+## 土豆
 
 【嵌入文档】<http://api.tudou.com/wiki/index.php/%E7%AB%99%E5%A4%96%E6%92%AD%E6%94%BE%E5%99%A8%E8%AF%B4%E6%98%8E>
 
@@ -146,7 +146,7 @@ Flash 嵌入代码：
 <embed src="http://www.tudou.com/v/I7C_srs6TYo/&autoPlay=true/v.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="opaque" width="480" height="400"></embed>
 ```
 
-# 乐视视频
+## 乐视视频
 
 【嵌入文档】无
 

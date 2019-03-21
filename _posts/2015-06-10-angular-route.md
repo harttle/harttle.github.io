@@ -8,7 +8,7 @@ tags: AngularJS HTML JavaScript MVC 模板 路由
 通俗来讲，[ng-route][ng-route]模块中的`$route`Service监测`$location.url()`的变化，并将它映射到预先定义的控制器。也就是在客户端进行URL的路由。
 下面首先给出`$route`的使用示例，然后引入一个更加强大的客户端路由框架[ui-router][ui-router]。
 
-# Angular 路由
+## Angular 路由
 
 在APP中定义多个页面的控制器，并给出对应的模板。然后`$routeProvider`进行配置，即可将URL映射到这些控制器和视图。
 首先定义一个基本的Angular APP，并引入`ngRoute`：
@@ -56,7 +56,7 @@ var app = angular.module('ngRouteExample', ['ngRoute'])
 
 <!--more-->
 
-# 路由参数
+## 路由参数
 
 接着我们定义上述路由配置的子页面控制器和视图模板。用户列表页面：
 
@@ -96,7 +96,7 @@ $routeParams ==> {chapterId:'1', sectionId:'2', search:'moby'}
 
 除了[$routeParams][route-params]，Angular还提供了[$location][location]来获取和设置URL。
 
-# UI-Router
+## UI-Router
 
 [UI-Router][ui-router]是[Angular-UI][angular-ui]提供的客户端路由框架，它解决了原生的[ng-route][ng-route]的很多不足：
 
@@ -146,7 +146,7 @@ $state.go('contacts.detail', {contactId: 42});  // 相当于跳转到 /contacts/
 <a ui-sref="contacts.detail({contactId: 42})">Contact 42</a>
 ```
 
-# 嵌套视图
+## 嵌套视图
 
 不同于Angular原生的[ng-route][ng-route]，[ui-router][ui-router]的视图可以嵌套，视图嵌套通常对应着[$state][state]的嵌套。
 `contacts.detail`是`contacts`的子`$state`，`contacts.detail.html`也将作为`contacts.html`的子页面：
@@ -165,7 +165,7 @@ $state.go('contacts.detail', {contactId: 42});  // 相当于跳转到 /contacts/
 > 上述`ui-view`的用法和`ng-view`看起来很相似，但不同的是`ui-view`可以配合`$state`进行任意层级的嵌套，
 > 即`contacts.detail.html`中仍然可以包含一个`ui-view`，它的`$state`可能是`contacts.detail.hobbies`。
 
-# 命名视图
+## 命名视图
 
 在[ui-router][ui-router]中，一个`$state`下可以有多个视图，它们有各自的模板和控制器。这一点也是[ng-route][ng-route]所没有的，
 给了前端路由极大的灵活性。来看例子：

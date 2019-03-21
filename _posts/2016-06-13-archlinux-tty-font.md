@@ -16,7 +16,7 @@ Harttle找到了一种简单的配置方式，使得[ArchLinux][arch]可以显�
 
 <!--more-->
 
-# The Arch Way
+## The Arch Way
 
 在诸多Linux发行版中，系统提供了很漂亮的默认字体渲染效果（比如Ubuntu的文泉驿正黑）。
 与此同时，要在这些发行版中自定义字体则会需要大量的配置更改。
@@ -29,7 +29,7 @@ Harttle找到了一种简单的配置方式，使得[ArchLinux][arch]可以显�
 
 下文中给出一种在终端（TTY）显示中英文的方式，以及相应的字体渲染配置。
 
-# TTY显示中文字体
+## TTY显示中文字体
 
 > [Shell配置文件：.profile, .bashrc, .login][shell-config]一文详细介绍了终端、终端模拟器、Shell等概念的区别。
 
@@ -57,7 +57,7 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 ```
 
-## 配置FBTerm
+### 配置FBTerm
 
 `fbterm`的配置文件在`~/.fbtermrc`，在里面配置一下该终端（Terminal）的输入法，
 以及字体大小和光标形状：
@@ -75,7 +75,7 @@ cursor-interval=500
 
 > 设置20号字是因为Harttle近视又不愿意戴眼镜，你可以适当调小一点。
 
-## 登录Shell启动FBTerm
+### 登录Shell启动FBTerm
 
 在登录Shell时，自动运行FBTerm这个终端模拟器，同时启动`fcitx`中文输入法：
 
@@ -89,9 +89,9 @@ fi
 
 `~/.bash_login`是用户登录时会执行的Bash配置文件，参见[Shell配置文件：.profile, .bashrc, .login][shell-config]一文。
 
-# 字体渲染相关概念
+## 字体渲染相关概念
 
-## 反锯齿（Anti-aliasing）
+### 反锯齿（Anti-aliasing）
 
 显示矢量字体时，需要把它变成格点才能输出到显示器上。
 这一过程叫做[光栅化][raster]，在光栅化过程中，字体可能会出现锯齿。
@@ -99,31 +99,31 @@ fi
 
 因为不是所有字体都需要进行反锯齿，[ArchLinux][arch]中反锯齿是默认禁止的。
 
-## 字体微调（Hinting）
+### 字体微调（Hinting）
 
 [Hinting][hinting]是通过数学指令去调整字体显示的外形，
 使得字体更加鲜明和易读。同样地，并不是所有字体都需要Hinting。
 
-## Autohinter
+### Autohinter
 
 Autohinter是指自动进行字体微调，而无视既有的字体微调规则。
 同样地，Autohinter并不是总是产生好的效果。
 [ArchLinux][arch]也默认禁止了Autohinter。
 
-## Subpixel Renderering（亚像素渲染）
+### Subpixel Renderering（亚像素渲染）
 
 亚像素渲染使得字体更加圆滑，但[ArchLinux][arch]需要知道显示器的类型才能正确地进行亚像素渲染。
 在字体渲染配置中，需要给出的是显示屏的类型。
 多数显示器都采用RGB标准，但也存在BGR、V-RGB、V-BGR等其他标准。
 同样，亚像素渲染也是默认禁用的。
 
-## LCD Filter
+### LCD Filter
 
 使用亚像素渲染时需要启用LCD Filter来消除色差，[ArchLinux][arch]提供了多种过滤器：`lcddefault`，`lcdlight`，`lcdlegacy`等。
 
-# 安装和配置字体
+## 安装和配置字体
 
-## 安装字体文件
+### 安装字体文件
 
 字体文件是一种包含了某种字体的符号、形状、字母等信息的电子文件。
 [ArchLinux][arch]中每一种字体都需要单独安装，
@@ -136,7 +136,7 @@ yaourt -S adobe-source-han-sans-cn-fonts ttf-dejavu
 
 > 注意：安装何种字体与下面的渲染配置是对应的。
 
-## 配置文件路径
+### 配置文件路径
 
 字体渲染的配置文件为`/etc/fonts.conf`（系统级别），
 在`/etc/fonts/conf.d`中包含了更多的按优先级载入的字体配置文件。
@@ -152,7 +152,7 @@ ln -s ../conf.avail/10-sub-pixel-rgb.conf .
 
 下文中我们只对当前用户做配置，配置的文件是`~/.fonts.conf`。
 
-## 字体渲染配置
+### 字体渲染配置
 
 经过无数次的尝试，Harttle发现Adobe和Dejavu这两种字体只需要进行反锯齿和LCD Filter配置即可很好地显示。这是我的`~/.fonts.conf`：
 
@@ -171,7 +171,7 @@ ln -s ../conf.avail/10-sub-pixel-rgb.conf .
 </fontconfig>
 ```
 
-# 扩展阅读
+## 扩展阅读
 
 * Fontconfig：<https://wiki.archlinux.org/index.php/Font_configuration#Presets>
 * The Arch Way: <https://wiki.archlinux.org/index.php/Arch_terminology#The_Arch_Way>

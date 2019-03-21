@@ -3,7 +3,7 @@ title: 重定向 CORS 跨域请求
 tags: Chrome HTTP Safari iOS CORS 跨域 XHR
 ---
 
-# TL;DR
+## TL;DR
 
 * 非[简单请求][cors-preflight]不可重定向，包括第一个[preflight][preflight]请求和第二个真正的请求都不行。
 * 简单请求可以重定向任意多次，但如需兼容多数浏览器，只可进行一次重定向。
@@ -11,7 +11,7 @@ tags: Chrome HTTP Safari iOS CORS 跨域 XHR
 
 <!--more-->
 
-# 中间服务器设置
+## 中间服务器设置
 
 当跨域请求被重定向时，中间服务器返回的 CORS 相关的响应头应当与最终服务器保持一致。
 任何一级的 CORS 失败都会导致 CORS 失败。这些头字段包括[`Access-Control-Allow-Origin`][acao]，
@@ -41,7 +41,7 @@ Origin 'null' is therefore not allowed access.
 
 > Origin 变成 `null` 的解释见下文。
 
-# 重定向preflight 请求
+## 重定向preflight 请求
 
 **任何非 2xx 状态码都认为 preflight 失败**，
 所以 preflight 不允许重定向。各浏览器表现一致不再赘述，可参考 W3C：
@@ -56,7 +56,7 @@ Origin 'null' is therefore not allowed access.
 >
 > -- W3C CORS Recommandation: [Cross-Origin Request with Preflight][preflight]
 
-# 重定向简单请求
+## 重定向简单请求
 
 对于简单请求浏览器会跳过 preflight 直接发送真正的请求。
 该请求被重定向后浏览器会直接访问被重定向后的地址，也可以跟随多次重定向。
@@ -72,7 +72,7 @@ Origin 'null' is therefore not allowed access.
 
 OSX 下 Chrome 的行为是标准的，即使设置了[`DNT`][dnt]也会直接跟随重定向。
 
-## Safari 的怪异行为
+### Safari 的怪异行为
 
 Safari 在设置`DNT`字段后，会向重定向后的地址首先发起 preflight（可能是它忘记了该头部是自己设置的？）。
 这一行为在桌面 Safari 的隐身模式，以及 iOS 很多浏览器中都可以观察到。
@@ -96,7 +96,7 @@ Request header field DNT is not allowed by Access-Control-Allow-Headers.
 
 > 为了轻松地让 CORS preflight 成功，测试环境中可以简单地将请求头`Access-Control-Request-Headers`的内容直接设置到响应头的`Access-Control-Allow-Headers`。
 
-# 重定向非简单请求
+## 重定向非简单请求
 
 非简单请求是 [preflight][preflight] 成功后才发送实际的请求。
 preflight 后的实际请求不允许重定向，否则会导致 CORS 跨域失败。
@@ -124,7 +124,7 @@ XMLHttpRequest cannot load http://mid.com:4001/redirect.
 Cross-origin redirection denied by Cross-Origin Resource Sharing policy.
 ```
 
-# 多次重定向的讨论
+## 多次重定向的讨论
 
 多次重定向涉及的一个关键问题是：**preflight 后的请求不允许重定向**。因此：
 

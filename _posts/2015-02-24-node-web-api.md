@@ -15,9 +15,9 @@ brew install mongodb nodejs redis
 
 <!--more-->
 
-# Node
+## Node
 
-## 运行服务器
+### 运行服务器
 
 本文只是使用`screen`完成服务器软件的运行，并未完整地部署。实际的生产环境部署中，需要完整的日志记录、服务器性能监控等。
 
@@ -41,7 +41,7 @@ sudo npm start      # 启动node
 <C-a-d>             # detach当前任务
 ```
 
-## API Token
+### API Token
 
 Web API中的权限一般通过Token来识别。不同于 web page，API不方便使用 cookie 而通常通过 Token 来验证用户：
 
@@ -69,7 +69,7 @@ User.statics.findByToken = function(token, callback){
 }
 ```
 
-# MongoDB
+## MongoDB
 
 MongoDB是一种非关系型数据库（NoSQL），相比于SQL更为灵活。不同于SQL，每条记录是一个文档，而不是表中的一行。文档的概念很好的实现了面向对象思想。参见：[官网文档](http://docs.mongodb.org/)
 
@@ -77,7 +77,7 @@ MongoDB是一种非关系型数据库（NoSQL），相比于SQL更为灵活。�
 
 > 在`mongoose`中，`_id`包括引号，用户后台判断；`id`不包括引号，用于前台显示。
 
-## 运行
+### 运行
 
 ```bash
 # 创建数据目录，否则需要设置运行目录
@@ -106,7 +106,7 @@ db.<collection_name>.help()
 ```
 
 
-## CRUD
+### CRUD
 
 MongoDB中的document为BSON格式，即二进制的JSON表示加上类型信息，所有的document存储在collection中。每个查询将得到一个目标collection，查询需指定criteria来得到符号条件的collection，再通过modifier对集合元素进行处理（比如排序）。
 
@@ -118,7 +118,7 @@ MongoDB中的document为BSON格式，即二进制的JSON表示加上类型信息
 
 > CRUD即增伤改查：create，read，update，delete
 
-## 备份与恢复
+### 备份与恢复
 
 可以直接将数据文件`/data/db`备份。而`mongodump`和`mongorestore`可以在`mongod`运行时完成备份和恢复。
 

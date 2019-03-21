@@ -12,7 +12,7 @@ tags: CSS DOM JavaScript 性能
 > 关于动态插入HTML标签（异步渲染）的阻塞情况请参考
 > [异步渲染DOM元素的加载时机][async]一文。
 
-# TL;DR
+## TL;DR
 
 * CSS（外链或内联）会阻塞**整个**DOM的渲染（Rendering），然而DOM解析（Parsing）会正常进行
 * 很多浏览器中，CSS会延迟脚本执行和`DOMContentLoaded`事件
@@ -21,7 +21,7 @@ tags: CSS DOM JavaScript 性能
 
 <!--more-->
 
-# CSS阻塞DOM渲染
+## CSS阻塞DOM渲染
 
 **无论是外链CSS还是内联CSS都会阻塞DOM渲染（Rendering），然而DOM解析（Parsing）会正常进行**。
 这意味着在CSS下载并解析结束之前，它后面的HTML都不会显示。
@@ -47,7 +47,7 @@ Trident (MSIE)           |    | 是 | 是
 <link href="other.css" rel="stylesheet" media="(min-width: 40em)">
 ```
 
-# CSS阻塞DOM渲染：案例
+## CSS阻塞DOM渲染：案例
 
 为了验证CSS阻塞渲染但不阻塞解析以及脚本延迟行为，设计下列HTML。
 同步和异步地打印当前DOM内容，以及在样式表后添加测试脚本。
@@ -80,7 +80,7 @@ Trident (MSIE)           |    | 是 | 是
 3. 第二次输出有两个`<h2>`，说明样式载入过程中DOM已解析完毕，即样式表不会阻塞DOM解析。
 4. `"second script"`未被打印出来，说明在Chrome中样式表之后的行内脚本被延迟了。
 
-# JS 阻塞 DOM 解析
+## JS 阻塞 DOM 解析
 
 > 上文都在讲渲染，这里讲解析。解析是指浏览器生成 DOM 树结构（此时用户不一定能看到，但脚本比如 `querySelectorAll` 可以访问到）；渲染是指浏览器把 DOM 树与 CSS 结合进行布局并绘制到屏幕（此时用户是可以看到的）。
 

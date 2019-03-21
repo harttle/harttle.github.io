@@ -12,7 +12,7 @@ JavaScript的灵活性不亚于C++，你可以使用JavaScript尝试不同的程
 
 <!--more-->
 
-# 用户定义类型的原型链
+## 用户定义类型的原型链
 
 [如何检查JavaScript变量类型？][type-check]一文指出，[instanceof][instanceof]关键字可以基于原型链来检测变量的类型。
 马上来看看`instanceof`的使用方式：先构造一个原型链，再用`instanceof`来检测类型：
@@ -52,7 +52,7 @@ function instance_of(L, R) {
 }
 ```
 
-# 两个特殊的内置对象
+## 两个特殊的内置对象
 
 我们知道JavaScript除了5中基本数据类型（见[如何检查JavaScript变量类型？][type-check]）外，
 还提供了一系列的内置对象（如`Object`, `Function`, `Number`, `String`, `Date`, `RegExp`），
@@ -79,7 +79,7 @@ Function instanceof Function    // true, why??
 
 除了这两个特殊的对象，其他对象和用户定义类型拥有一样的原型链结构。
 
-# JavaScript 原型链
+## JavaScript 原型链
 
 我用下图给出JavaScript的原型链结构。悄悄告诉你理解原型链的小技巧：
 将`__proto__`箭头视作泛化（子类到父类）关系！那么图中所有的虚线将构成一个继承层级，而实线表示属性引用。

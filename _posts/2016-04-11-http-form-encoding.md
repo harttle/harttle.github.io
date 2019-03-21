@@ -17,7 +17,7 @@ redirect_from: /2016/04/11/http-form-endoding.html
 
 <!--more-->
 
-# URLencoded
+## URLencoded
 
 HTML中`<form>`标签的`enctype`属性用来指定表单编码格式，默认为`application/x-www-form-urlencoded`，即以下两个表单完全等价。
 
@@ -57,7 +57,7 @@ title=test&subtitle=%E4%B8%AD%E5%9B%BD
 > 这里你看到的`%E4%B8%AD%E5%9B%BD`即是`中国`按照base64编码（url通用的编码方式）后的结果。可以在Chrome Console中通过`decodeURI('%E4%B8%AD%E5%9B%BD')`来解码。
 
 
-# Multipart
+## Multipart
 
 multipart编码方式则需要设置`enctype`为`multipart/form-data`。
 
@@ -99,7 +99,7 @@ Content-Type: image/png
 
 > 除了`application/x-www-form-urlencoded`和`multipart/form-data`，HTML的`<form>`还支持`text/plain`。此外，如果想提交其他编码类型的表单，必须通过AJAX技术，接下来我们介绍一个常用的JSON数据的提交。
 
-# JSON
+## JSON
 
 从JavaScript中提交JSON数据真是再方便不过了，jquery、angularJS等框架都封装了更好用的AJAX方法。例如：
 
@@ -125,7 +125,7 @@ Content-Type: application/json;charset=utf-8
 {"title":"test","content":[1,2,3]}
 ```
 
-# XML
+## XML
 
 请求头：
 

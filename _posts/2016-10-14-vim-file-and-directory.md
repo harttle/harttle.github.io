@@ -16,7 +16,7 @@ Harttle当然希望在Vim中完成这些操作。
 
 <!--more-->
 
-# 当前文件名
+## 当前文件名
 
 我们知道Vim有48个寄存器，其中`%`只读寄存器中保存着当前文件路径。
 例如在`/home/harttle/`下打开`src/main.cpp`，我们打印`%`的值：
@@ -36,7 +36,7 @@ Harttle当然希望在Vim中完成这些操作。
 
 > `:p`理解为path, `:h`理解为head, `:t`理解为tail。可参考`:help expand`。
 
-# 利用 % 进行文件操作
+## 利用 % 进行文件操作
 
 备份当前文件`main.cpp`到`main.cpp.bak`:
 
@@ -62,7 +62,7 @@ Harttle当然希望在Vim中完成这些操作。
 :let @*=expand("%:t")
 ```
 
-# 直接打开目录
+## 直接打开目录
 
 Harttle发现Vim不仅可以打开文件，而且可以打开目录。
 直接`vim /home/harttle`即可打开，也可以在vim打开目录：
@@ -79,7 +79,7 @@ Harttle发现Vim不仅可以打开文件，而且可以打开目录。
 > 这里的水平分割是指上下两个窗口，垂直分割为左右两个窗口。
 > 貌似TMUX和VIM对水平和垂直的定义恰恰相反，Harttle也是醉了。
 
-# 万能方法
+## 万能方法
 
 如果你找不到合适的Vim命令，随时都可以在Vim中直接执行Bash命令。
 只需要在Ex模式中添加前导的`!`字符，例如：
@@ -95,7 +95,7 @@ Harttle发现Vim不仅可以打开文件，而且可以打开目录。
 > 当然也集成了文件和目录操作，需要熟悉其快捷键。
 
 
-# 参考阅读
+## 参考阅读
 
 * <http://vim.wikia.com/wiki/Get_the_name_of_the_current_file>
 * <https://harttle.land/2016/07/25/vim-registers.html>

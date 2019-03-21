@@ -8,7 +8,7 @@ tags: Chrome HTTP 缓存 进程 浏览器 Service-Worker PWA
 以及这一 App 的版本更新方式。
 本文重点关注 Service Worker 本身的更新机制，如何设置 HTTP 缓存，当前浏览器的更新机制，以及调试时如何快速更新。
 
-# Service Worker 更新
+## Service Worker 更新
 
 Service Worker 作为离线缓存的核心，它的更新意味着 App 版本的更新。
 它的更新是由浏览器触发、在独立进程中进行的。
@@ -19,7 +19,7 @@ Service Worker 作为离线缓存的核心，它的更新意味着 App 版本的
 
 <!--more-->
 
-# HTTP 缓存
+## HTTP 缓存
 
 Service Worker 控制着整个 App 的离线缓存。
 为了避免 Service Worker 缓存自己导致死锁无法升级，通常将 `sw.js` 本身的缓存直接交给 [HTTP 服务器缓存][http-cache]。
@@ -41,7 +41,7 @@ Service Worker 的更新算法（这里是指 [Soft Update][soft-update]）只�
 
 * <https://github.com/service-worker/demos/tree/master/sw-update>
 
-# SW 文件的 MD5
+## SW 文件的 MD5
 
 [合理使用 HTTP 缓存](/2017/04/04/http-cache-best-practice.html) 一文提到，静态文件的通常实践为 MD5 + 长时间 `max-age`。
 静态文件添加 MD5 的实践（又称 FileRev）基于这样一个逻辑：
@@ -58,7 +58,7 @@ Service Worker 的更新算法（这里是指 [Soft Update][soft-update]）只�
 虽然可以通过小心的编码避免上述问题，比如在 Service Worker 中对 HTML 总是采用网络优先的缓存策略，
 但是让软件能否正常更新依赖于小心的编码，总是不如依赖于固化的编译部署流程。
 
-# 缓存之外
+## 缓存之外
 
 Service Worker 的特殊之处除了由浏览器触发更新之外，还应用了特殊的缓存策略：
 如果该文件已 24 小时没有更新，当 [Update][update] 触发时会强制更新。这意味着最坏情况下 Service Worker 会每天更新一次。
@@ -70,7 +70,7 @@ Service Worker 的特殊之处除了由浏览器触发更新之外，还应用�
 >
 > -- [Soft Update][soft-update], W3C Service Worker
 
-# Registration.update()
+## Registration.update()
 
 Service Worker 标准中给出了 [`ServiceWorkerRegistration.update()`][reg-update] 方法，调用该方法会导致立即更新 Service Worker。
 但 Chrome 貌似还是不会跳过 HTTP 缓存，此处实现和标准尚存在差异。
@@ -79,7 +79,7 @@ Service Worker 标准中给出了 [`ServiceWorkerRegistration.update()`][reg-upd
 >
 > -- [ServiceWorkerRegistration.update()][reg-update], W3C Service Worker
 
-# 调试时更新
+## 调试时更新
 
 在 [Service Worker 调试技巧](/2017/04/08/service-worker-debug.html) 中提到很多调试手段，
 包括 Service Worker 被载入后立即激活：

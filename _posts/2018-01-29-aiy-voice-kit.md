@@ -11,7 +11,7 @@ Voice Kit 自带了麦克风和扬声器，借助 Google Assistant 可以实现�
 
 <!--more-->
 
-# Voice Kit 套装
+## Voice Kit 套装
 
 整个套件由纸板包装，其中有一本很厚的小册子。介绍了详细的组装步骤，以及软件执行步骤。
 搞定 Voice Kit 根本不需要会写代码，即使到最后的设备检查都可以通过鼠标双击来执行。
@@ -22,7 +22,7 @@ Voice Kit 自带了麦克风和扬声器，借助 Google Assistant 可以实现�
 盒子里包含了 Raspberry Pi 3、纸质外壳、按钮、Voice HAT、Mic Board，以及两条单独的排线。
 见这张图（来自 aiyprojects.withgoogle.com 在线手册）：<https://aiyprojects.withgoogle.com/static/images/aiy-projects-voice/materials.jpg>
 
-# Voice HAT 介绍
+## Voice HAT 介绍
 
 Voice HAT（Hardware Attached on Top）是插在树莓派板子上的扩展板，
 语音和按钮等设备占用了 6 个 GPIO，其余都重新排列在板子上。
@@ -46,7 +46,7 @@ GPIO | 用途
 1. Servo0-Servo5：5v/25mA，小电流的 Servo 适合连接类似 LED 之类的设备。 
 2. Dirver0-Driver4：5v/500mA，可以连接功率更大的设备，+/- 极来自在板子左下角的外接电源。可以参考这个接法：<https://www.raspberrypi.org/magpi/motor-aiy-voice-pi/>
 
-# 组装硬件
+## 组装硬件
 
 整个设备的核心是一个 Raspberry Pi-3，配备了一个扩展板（Voice HAT）用来连接音响和麦克风，都连接好后装入纸盒就完成了。
 
@@ -58,7 +58,7 @@ GPIO | 用途
 
 HDMI、USB、电源口都可以从纸盒的空缺处连接，左侧是电源线和 HDMI，右侧是 Harttle 的 Low 逼键盘和罗技无线鼠标。
 
-# 系统测试
+## 系统测试
 
 插入 SD 卡后通电并使用 HDMI 连接到显示器后，如果进入了 Raspbian 经典的桌面说明 Raspberry Pi、SD 卡、电源都没有问题：
 
@@ -69,7 +69,7 @@ HDMI、USB、电源口都可以从纸盒的空缺处连接，左侧是电源线�
 点击右上角的 Wifi 即可连接到网络，然后依次双击 Audio Check、Wifi Check 等快捷方式。
 按照提示进行，网络和线路的检查。如果连接有问题就需要拆箱检查所有连接，尤其是插口是否正确。
 
-# 软件准备工作
+## 软件准备工作
 
 终于到了软件部分，在开始执行软件前还需要一些准备工作：
 
@@ -78,7 +78,7 @@ HDMI、USB、电源口都可以从纸盒的空缺处连接，左侧是电源线�
     在注册过程中，Google 声称试用结束后除非转为付费账户才会自动扣费，不会像 Amazon ECS 那样欺负人民群众。
 * 为了让机器能连上 Google 服务，可以搞一个 vpn 或者代理。建议走 ss 提供 socks5 代理，然后通过 polipo 之类软件转换为 HTTP 代理。搞定后设置 `http_proxy` 环境变量即可正常使用 SD 卡中的软件。
 
-# 尝试执行 Demo
+## 尝试执行 Demo
 
 [Harttle](/) 觉得是时候打开命令行了，桌面上有一个 `dev_terminal`，双击它！
 如果是 SSH 登录的用户，可以 `source /home/pi/AIY-voice-kit-python/env/bin/activate` 来初始化开发环境。
@@ -98,7 +98,7 @@ Press the button and speak
 这套程序使用内建 pico2wave 来合成语音，因而不支持中文。。
 可以试试科大讯飞或百度语音合成，前者支持本地程序但文档惊人，胆大的值得一试。
 
-# Finally
+## Finally
 
 最后感谢我的小乌龟，陪伴我整个无聊的安装过程。
 

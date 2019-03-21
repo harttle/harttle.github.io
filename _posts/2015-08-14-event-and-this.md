@@ -20,7 +20,7 @@ jQuery的所有事件绑定最终调用的是`on`方法，参见：[jQuery事件
 
 <!--more-->
 
-# attachEvent与addEventListener的区别
+## attachEvent与addEventListener的区别
 
 坦白地讲我从不使用`attachEvent`，就连jQuery也更新到了版本2，并无支持IE的习惯。但基于面试中常常问到，
 还是来谈谈`attachEvent`与`addEventListener`的区别吧！它和`addEventListener`有何区别呢？
@@ -30,7 +30,7 @@ jQuery的所有事件绑定最终调用的是`on`方法，参见：[jQuery事件
 3. 事件名不同。`attachEvent`第一个参数事件名前要加`on`，比如`el.attachEvent('onclick', handleClick);`
 4. `this`不同。我们知道`this`总之指向当前函数的调用者，对于事件处理函数这一点较为复杂，这是本文的重点所在。
 
-# attachEvent方式的事件绑定
+## attachEvent方式的事件绑定
 
 `attachEvent`的`this`总是`Window`。例如：
 
@@ -42,7 +42,7 @@ el.attachEvent('onclick', function(){
 
 执行后会弹出对话框：`[object Window]`。
 
-# 脚本设置onclick方式的事件绑定
+## 脚本设置onclick方式的事件绑定
 
 在javascript中设置DOM对象的onclick属性，`this`总是指向被设置的DOM元素。例如：
 
@@ -60,7 +60,7 @@ document
 <div id="l1">...</div>
 ```
 
-# HTML中设置onclick方式的事件绑定
+## HTML中设置onclick方式的事件绑定
 
 在HTML中设置`onclick`属性相当于让Window来调用该处理函数，于是`this`总是`Window`。例如：
 
@@ -81,7 +81,7 @@ Window {top: Window, location: Location, document: document, window: Window, ext
 ```
 
 
-# addEventListener方式的事件绑定
+## addEventListener方式的事件绑定
 
 `addEventListener`的`this`总是当前正在处理事件的那个DOM对象。
 DOM Level 2 Event Model中提到，事件处理包括捕获阶段、目标阶段和冒泡阶段
@@ -122,7 +122,7 @@ l2 target <div id=​"l2">​</div>​
 l1 bubbling <div id=​"l1">​…​</div>​
 ```
 
-# target与currentTarget
+## target与currentTarget
 
 `addEventListener`的事件处理函数中`this`不一定指向事实上被点击的元素，
 但事件处理函数的参数Event对象提供了`target`和`currentTarget`属性来区分这当前对象与目标对象。

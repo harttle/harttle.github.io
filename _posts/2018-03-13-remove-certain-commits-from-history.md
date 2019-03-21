@@ -10,7 +10,7 @@ tags: Git Git-Workflow
 
 <!--more-->
 
-# 一个例子
+## 一个例子
 
 考虑这个例子，我们提交了 6 个版本，其中 3-4 包含了错误的代码需要被回滚掉。
 同时希望不影响到后续的 5-6。
@@ -31,7 +31,7 @@ tags: Git Git-Workflow
 下面的部分就开始介绍具体操作了，同时我们假设远程分支是受保护的（不允许 Force Push）。
 思路是从产生一个新的 Commit 撤销之前的错误提交。
 
-# git revert
+## git revert
 
 使用 `git revert <commit>` 可以撤销指定的提交，
 要撤销一串提交可以用 `<commit1>..<commit2>` 语法。
@@ -59,7 +59,7 @@ git commit -a -m 'This reverts commit 7e345c9 and 551c408'
 
 现在的 HEAD（`8fef80a`）就是我们想要的版本，把它 Push 到远程即可。
 
-# 确认 diff
+## 确认 diff
 
 如果你像不确定是否符合预期，毕竟批量干掉了别人一堆 Commit，可以做一下 diff 来确认。
 首先产生 version 4（`551c408`）与 version 6（`982d4f6`）的 diff，这些是我们想要保留的：
@@ -78,7 +78,7 @@ git diff f7742cd..HEAD
 可以人工确认一下，或者 grep 掉 description 之后做一次 diff。
 下面介绍的另一种方法可以容易地确认 diff。
 
-# 另外一种方式
+## 另外一种方式
 
 类似 [安全回滚远程分支](/2018/03/12/reset-origin-without-force-push.html)，
 我们先回到 version 2，让它合并 version 4 同时代码不变，

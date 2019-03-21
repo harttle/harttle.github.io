@@ -14,7 +14,7 @@ tags: Bash GNU Linux 快捷键
 
 <!--more-->
 
-# 光标移动
+## 光标移动
 
 快捷键 | 描述
 --- | ---
@@ -26,7 +26,7 @@ tags: Bash GNU Linux 快捷键
 `Ctrl + b` | 光标后退一个字母
 `Ctrl + xx`| 当前位置与行首之间光标切换
 
-# 剪切粘贴
+## 剪切粘贴
 
 快捷键 | 描述
 --- | ---
@@ -40,7 +40,7 @@ tags: Bash GNU Linux 快捷键
 `Ctrl + t` | swap(当前字母, 上一个字母)
 `Ctrl + y` | 粘贴上一次删除的文本
 
-# 大小写转换
+## 大小写转换
 
 快捷键 | 描述
 --- | ---
@@ -48,7 +48,7 @@ tags: Bash GNU Linux 快捷键
 `Alt + u` | 大写从当光标到单词尾
 `Alt + l` | 小写从当光标到单词尾
 
-# 历史命令
+## 历史命令
 
 快捷键 | 描述
 --- | ---
@@ -58,7 +58,7 @@ tags: Bash GNU Linux 快捷键
 `Ctrl + n` | 历史中下一个命令
 `Alt + .`  | 上一个命令的最后一个单词
 
-# 终端指令
+## 终端指令
 
 快捷键 | 描述
 --- | ---
@@ -69,7 +69,7 @@ tags: Bash GNU Linux 快捷键
 `Ctrl + z` | 挂起当前命令
 `Ctrl + d` | 结束输入（产生一个EOF）
 
-# 纯键盘写邮件？
+## 纯键盘写邮件？
 
 绝大多数操作系统（OSX，Windows，Linux）中的绝大多数软件（GUI的、命令行的）
 在底层都使用GNU Readline兼容的库来读取用户输入。
@@ -79,7 +79,7 @@ tags: Bash GNU Linux 快捷键
 * 上下行移动光标：`Ctrl-P`, `Ctrl-N`。
 * 剪切/粘贴：`Ctrl-W`, `Alt-D`等。
 
-# 相关阅读
+## 相关阅读
 
 * <http://www.skorks.com/2009/09/bash-shortcuts-for-maximum-productivity/>
 * <http://ss64.com/bash/syntax-keyboard.html>

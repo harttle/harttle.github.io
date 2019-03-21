@@ -8,11 +8,11 @@ tags: Vim-Practice CSS HTML JavaScript Vim YCM Syntastic
 
 <!--more-->
 
-# 文件类型设置
+## 文件类型设置
 
 前端文件有不同的类型，而每个人对于缩进又有不同都要求。Vim中我们可以为每种文件设置不同的缩进和Tab行为。
 
-## 查看当前文件类型
+### 查看当前文件类型
 
 使用`:set filetype`命令可以查看当前文件的类型。例如：
 
@@ -20,7 +20,7 @@ tags: Vim-Practice CSS HTML JavaScript Vim YCM Syntastic
 filetype=html.handlebars
 ```
 
-## 配置文件
+### 配置文件
 
 那么我们知道文件类型是`html`，子类型是`handlebars`。我们对这种文件类型的配置文件位于：`~/.vim/after/ftplugin/html.vim`，
 如果没有就创建一个。该文件的格式与`~/.vimrc`完全一致，在每次打开`filetype=html`的文件时都会被载入，我的配置是这样的：
@@ -35,7 +35,7 @@ set expandtab autoindent
 
 > 如果是JavaScript文件，则对应的配置目录是`~/.vim/after/ftplugin/javascript.vim`。
 
-# HTML
+## HTML
 
 你是否了解过[Jade模板引擎][jade]？Emmet提供了类似Jade语法的编写HTML的方式。
 例如输入`div>p#foo$*3>a`，按下快捷键`<c-y>,`，就会生成下面的HTML：
@@ -78,7 +78,7 @@ Emmet 中有用的快捷键还有：
 * `<c-y>D`：选中整个标签的内容
 * `<c-y>k`：删除当前标签
 
-# CSS 语法
+## CSS 语法
 
 CSS语法高亮可以引入这个插件：
 
@@ -111,7 +111,7 @@ let g:ycm_semantic_triggers = {
 
 这样，在以四空格起始的行，以及冒号后+空格的情况出现时，会触发自动补全。另外，当HTML关闭标签时，也可以触发一下自动补全。
 
-# Javascript
+## Javascript
 
 JavaScript 语法高亮只需要引入这个插件：
 
@@ -137,7 +137,7 @@ Javascript 的自动补全仍然是使用YCM，但我们用一个叫tern的插�
 Plugin 'marijnh/tern_for_vim'
 ```
 
-# 代码风格检查
+## 代码风格检查
 
 养成好的编程习惯，第一步是安装一个代码风格检查工具。
 [syntastic][syntastic] 是 Vim 中的一个代码风格检查工具，可以为不同的编程语言

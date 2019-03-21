@@ -9,13 +9,13 @@ URL 是 Web 三大基石之一，在 Web 开发、运维和使用过程中随处
 
 <!--more-->
 
-# 常见的失败设计
+## 常见的失败设计
 
 这是一篇关于 REST 的文章，但是在介绍这种设计之前我们先来探讨糟糕的 URL 设计会带来哪些问题。
 下文的案例有的来自创业公司和外包公司，也有的来自 BAT 等公司的 Web 站点，
 但进行了一次抽象假装不针对任何人。
 
-## 滥用路径
+### 滥用路径
 
 URL 分为协议、域名、路径、查询字符串、锚点几部分，其中锚点只由浏览器使用不发往服务器。
 Internet 早期 URL 路径会映射到文件系统路径，对应于资源位置，
@@ -35,7 +35,7 @@ MVC 架构的动态站点中路径直接对应于控制器而不是静态文件�
 * 基于路径的 Web 技术不可用。比如 [Cookie][cookie] 的 Path 机制、带 Scope 的 [Service Worker][sw]。
 * 给路径相关的前端 JavaScript 带来困难。虽然 OP 可能不关心 JavaScript 代码如何编写，业务 JavaScript 也不应依赖当前路径，但是一旦前端 JavaScript 需要判断路径（比如前端路由配置）这样的 URL 设计将会带来噩梦。
 
-## 不表示 anything
+### 不表示 anything
 
 URL 是用来定位资源的，偏有人设计 URL 不表示 anything。
 把用来定位资源的数据放到别的地方，比如 Cookie 中。看这个例子：
@@ -48,7 +48,7 @@ Cookie: word=harttle
 这是一个搜索页面，搜索词是 `harttle`。
 这样 HTTP 缓存会很难做，也让页面无法被收藏和分享。总之破坏了 Web：超链接不通了。
 
-## 随意命名
+### 随意命名
 
 比起滥用路径，命名带来的问题会小很多：最坏情况就是没人看得懂，但仍然机器可读。
 但命名问题仍然值得探讨，至少会让开发者和用户直观地看到它指向的资源。设想你的登录页面 URL 是：
@@ -63,7 +63,7 @@ Cookie: word=harttle
 * 可读。要别人能看懂，不然要 URL 干嘛。Harttle 甚至觉得拼音也 OK。
 * 名词。`/user-list` 比 `/show-users` 要好。设想你 POST 到 `/show-users` 语义如何解释呢？
 
-# REST 架构风格
+## REST 架构风格
 
 Web 最初用于共享静态的科学数据文件，随着用户和商业涌入，尤其是 Web Application 的出现，
 开发者和用户对 Web 的使用方式逐渐超出了 Web 的基础架构。
@@ -74,7 +74,7 @@ R. T. Fielding 是 [HTTP 1.0][http] 和 Apache httpd 的作者，
 并提出国际互联网的超媒体系统还应具有的架构约束，形成 REST 架构风格。
 REST 被广泛用于指导 HTTP 和 URI 设计。
 
-## 相关概念
+### 相关概念
 
 REST（Representational State Transfer）是指使用对应的 **representation** （表示）来操作 **resource**（资源）。与其他架构风格的核心区别在于所有组件采用统一的接口，
 这在 Web 应用架构中要求 URL 的设计（资源定位），HTTP 方法（资源的操作）都符合标准的语义。
@@ -83,7 +83,7 @@ REST（Representational State Transfer）是指使用对应的 **representation*
 
 **representation** 在 REST 中是指资源（*resource*）的当前状态或目标状态。包括一些字节，以及对应的 *representation metadata*，比如我们说的 HTML 就是资源的一个 representation。
 
-## URL/Web Server 设计
+### URL/Web Server 设计
 
 REST 的思想被用于 URI、HTTP、HTML 等标准的定义，以及众多 http 服务器和客户端的实现。
 在实践中 REST 表现出充分的简单性、可扩展性以及伸缩性（这里省略 10 个架构优势 orz）。
@@ -97,11 +97,11 @@ PUT 操作应该幂等，等等。
 它们的可缓存性在 [HTTP 标准][http-spec] 中也有明确的定义，
 你在设计 Web Server 时也需要满足这些要求。
 
-# 优秀的设计
+## 优秀的设计
 
 在说了这么多抽象的东西之后，在这里列举一些 Harttle 喜欢的 URL 设计，以供参考。
 
-## 资源层级
+### 资源层级
 
 URL 层级表示资源的层级，这给用户和开发者都带来很大的方便。
 
@@ -120,7 +120,7 @@ Github 是这样设计的：
 这里要提一个重要前提：产品和 URL 设计是强相关的。
 假如 PM 说我就要一个仓库不属于任何用户，你怎么破？
 
-## 资源与 ID
+### 资源与 ID
 
 在 Web 的 Stateless-Client-Server 架构中，每个请求都需要携带足够的信息，
 这时 ID 的重要性不言而喻。比如用来标识一个用户，一个图片，或者一条评论等等。
@@ -135,7 +135,7 @@ Github 是这样设计的：
 
 不敢想象如果 ID 使用 Hash 字符串，或者干脆存在 Session 中会让使用和开发变得多复杂。
 
-## HTTP 方法
+### HTTP 方法
 
 用 HTTP 方法来表示对资源的操作，这会很大程度上简化 HTML 和服务器实现。
 因为 Web 就是这样设计的。常见的 CRUD 操作对应的 HTTP 方法如下：
