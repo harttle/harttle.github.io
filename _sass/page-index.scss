@@ -141,6 +141,11 @@ $timeline-left-width: 95px;
         @include animation(width-percentage 1s linear infinite);
       }
     }
+    section.ads{
+      top: 20px;
+      position: sticky;
+      position: -webkit-sticky;
+    }
   }
 
   @include keyframes(width-percentage){
