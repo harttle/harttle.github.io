@@ -1,4 +1,7 @@
-var CACHE_NAME = 'v2';
+---
+---
+
+var CACHE_NAME = '{{site.time}}';
 var urlsToCache = [
     '/',
     '/assets/css/site.css',
