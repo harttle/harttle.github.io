@@ -59,7 +59,11 @@
     @content;
   }
 }
-
+@mixin media-sm{
+  @media(max-width: 1000px){
+    @content;
+  }
+}
 @mixin media-md{
   @media(min-width: 1200px){
     @content;

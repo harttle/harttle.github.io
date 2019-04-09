@@ -113,7 +113,6 @@ $timeline-left-width: 95px;
         vertical-align: top;
       }
       .social-share li a{
-        display:inline-block;
         transition:transform .5s;
         height:36px;
         width:36px;
@@ -175,6 +174,11 @@ $timeline-left-width: 95px;
       article:first-child details{
         padding-top: 40px;
       }
+    }
+  }
+  @include media-sm{
+    aside section.follow .social-share li:last-child {
+      display: none;
     }
   }
 }
