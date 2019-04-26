@@ -1,6 +1,6 @@
 ---
 title: OSX/iOS进行Safari联调破解Wifi密码
-tags: Safari iframe DOM JavaScript Wifi iOS 路由
+tags: Safari iframe DOM JavaScript WiFi iOS 路由
 ---
 
 五一假期来点黑科技:)，从技术角度介绍破解Wifi密码的通用方法。

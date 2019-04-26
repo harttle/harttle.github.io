@@ -4,12 +4,6 @@ title: 标签
 ---
 
 <div class="page-tags container">
-  <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-1726987624166668"
-     data-ad-slot="5022357000"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
   <section class="tags">
     {% for tag in site.tags %}<a class="tag" href="#{{tag|first}}">{{ tag | first }} ({{ tag | last | size }})</a>{% endfor %}
   </section>
