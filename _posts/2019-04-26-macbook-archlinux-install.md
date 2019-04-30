@@ -392,7 +392,7 @@ options i915 enable_fbc=1
 ```bash
 pacman -S xorg-xrandr
 xrandr  # 查看接口名字和连接状态
-xrandr --output HDMI2 --auto --left-of --output eDP1    # 让 HDMI2 的显示器放到主显示器的左边
+xrandr --output HDMI2 --auto --left-of eDP1    # 让 HDMI2 的显示器放到主显示器的左边
 ```
 
 调试好后把它存入 `/etc/X11/xorg.conf.d/10-monitor.conf`：
@@ -430,16 +430,8 @@ pacman -S xlockmore
 ```
 
 现在可以随时按下 xlock 来锁屏了，然后我们还要自动锁屏幕。
-从 AUR 安装 [xss-lock](https://www.mankier.com/1/xss-lock)，
+[从 AUR 安装][install-from-aur] [xss-lock-git](https://www.mankier.com/1/xss-lock)，
 它可以监听 systemd 的 suspend, hibernate, lock-session 等事件。
-
-```bash
-git clone https://aur.archlinux.org/xss-lock-git.git
-cd xss-lock-git
-makepkg -s
-sudo pacman -U *.xz
-```
-
 把下面的一行加入 `~/.xinitrc` 启动 i3 之前（具体参数请 `man xlock`）：
 
 ```bash
@@ -533,15 +525,8 @@ sudo pacman -S xbindkeys
 `pactl`, `macbook-lighter-screen`, `macbook-lighter-kbd`，
 后续小节中逐个安装。
 现在我们把 xbindkeys 放到 ~/.xinitrcx 中合适的地方即可。
-如果安装命令后功能键仍然不起作用，可以安装一个
-xbindkeys_config 来调试和可视化配置：
-
-```bash
-git clone https://aur.archlinux.org/xbindkeys_config-gtk2.git
-xbindkeys_config-gtk2
-makepkg -s
-sudo pacman -U *.xz
-```
+如果安装命令后功能键仍然不起作用，可以 [从 AUR 安装][install-from-aur] 安装一个
+[xbindkeys_config-gtk2](https://aur.archlinux.org/xbindkeys_config-gtk2.git) 来调试和可视化配置：
 
 ## 声卡驱动
 
@@ -580,13 +565,7 @@ autospawn = yes
 但因为中文都叫背光，就在本小节中一起解决。
 我们需要安装
 [macbook-lighter](https://github.com/harttle/macbook-lighter)，
-这又是一个 AUR 包，从 PKGBUILD 安装：
-
-```bash
-git clone https://github.com/harttle/macbook-lighter && cd macbook-lighter
-makepkg -s
-sudo pacman -U *.xz
-```
+这又是一个 AUR 包，需要 [从 AUR 安装][install-from-aur]。
 
 macbook-lighter 需要操作 /sys 文件系统，因此需要让你所在用户有权限。
 因为上面“用户与组”部分配置了 video，现在只需要让这些文件对 video 组用户可读写。
@@ -618,3 +597,6 @@ sudo systemctl enable macbook-lighter   # 开机自动启动
 * 字体选择和配置：<https://wiki.archlinux.org/index.php/Fonts_(简体中文)>
 * i3 官方教程文档：<https://i3wm.org/docs/userguide.html#multi_monitor>
 * PulseAudio 文档：<https://wiki.archlinux.org/index.php/PulseAudio>
+* 安装 AUR 软件包：<https://harttle.land/2019/04/30/install-aur-package.html>
+
+[install-from-aur]: https://harttle.land/2019/04/30/install-aur-package.html

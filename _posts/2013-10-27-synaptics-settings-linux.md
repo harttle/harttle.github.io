@@ -1,38 +1,30 @@
 ---
-layout: blog
-title: Linux下的触摸板设置 
-
-tags: ArchLinux Bash Linux X11 grep 事件 编译 触摸板
-excerpt: Arch Linux 下的触摸板配置：基本设置、输入时禁止触摸板敲击、外接鼠标时禁用触摸板。
+title: Linux 下的触摸板设置 
+tags: ArchLinux Linux X11 触摸板
 ---
 
+Arch Linux 下的触摸板配置：基本设置、输入时禁止触摸板敲击、外接鼠标时禁用触摸板。
 
 ## 软件安装
 
-### 安装 Synaptics 驱动
+安装 Synaptics 驱动：
+
 ```bash
-# arch linux:
 pacman -S xf86-input-synaptics
 ```
 
-### 管理工具
+xf86-input-synaptics 自带了命令行管理工具 synclient，
+还可以继续安装图形化的管理工具比如 GPointing Device Settings
+或者 KDE 的触摸板控制模块：
 
 ```bash
-# xf86-input-synaptics 自带了命令行管理工具：Synclient 
-    
-# 图形管理工具：GPointing Device Settings
 yaourt -S gpointing-device-settings
-    
-# KDE 触摸板控制模块
 yaourt -S kcm_touchpad
 ```
-
-<!--more-->
 
 ## 环境配置
 
 一般的设置工作可通过图形管理工具完成，如单击、双击、右键的识别，横向和纵向滚动、双指滚动。下面介绍一些高级配置。
-
 
 ### 基本触摸板配置
 
@@ -41,39 +33,36 @@ yaourt -S kcm_touchpad
 ```bash
 #file: /etc/X11/xorg.conf.d/50-synaptics.conf
 Section "InputClass"
-        Identifier "touchpad catchall"
-        Driver "synaptics"
-        MatchIsTouchpad "on"
+    Identifier "touchpad catchall"
+    Driver "synaptics"
+    MatchIsTouchpad "on"
         
-        Option "TapButton1" "1"            #单指敲击产生左键事件
-        Option "TapButton2" "2"            #双指敲击产生中键事件
-        Option "TapButton3" "3"            #三指敲击产生右键事件
+    Option "TapButton1" "1"            #单指敲击产生左键事件
+    Option "TapButton2" "2"            #双指敲击产生中键事件
+    Option "TapButton3" "3"            #三指敲击产生右键事件
         
-        Option "VertEdgeScroll" "on"       #滚动操作：横向、纵向、环形
-        Option "VertTwoFingerScroll" "on"
-        Option "HorizEdgeScroll" "on"
-        Option "HorizTwoFingerScroll" "on"
-        Option "CircularScrolling" "on"  
-        Option "CircScrollTrigger" "2"
+    Option "VertEdgeScroll" "on"       #滚动操作：横向、纵向、环形
+    Option "VertTwoFingerScroll" "on"
+    Option "HorizEdgeScroll" "on"
+    Option "HorizTwoFingerScroll" "on"
+    Option "CircularScrolling" "on"  
+    Option "CircScrollTrigger" "2"
         
-        Option "EmulateTwoFingerMinZ" "40" #精确度
-        Option "EmulateTwoFingerMinW" "8"
-        Option "CoastingSpeed" "20"        #触发快速滚动的滚动速度
+    Option "EmulateTwoFingerMinZ" "40" #精确度
+    Option "EmulateTwoFingerMinW" "8"
+    Option "CoastingSpeed" "20"        #触发快速滚动的滚动速度
         
-        Option "PalmDetect" "1"            #避免手掌触发触摸板
-        Option "PalmMinWidth" "3"          #认定为手掌的最小宽度
-        Option "PalmMinZ" "200"            #认定为手掌的最小压力值
+    Option "PalmDetect" "1"            #避免手掌触发触摸板
+    Option "PalmMinWidth" "3"          #认定为手掌的最小宽度
+    Option "PalmMinZ" "200"            #认定为手掌的最小压力值
 EndSection
 ```
 
-通过 `man synaptics` 了解更多信息。
+通过 `man synaptics` 了解更多信息。**注意**：同时安装 `kcm_synaptics` 会覆盖掉该配置信息。
 
-**注意**：同时安装 `kcm_synaptics` 会覆盖掉该配置信息。
+### 键入时禁止触摸板
 
-### 输入时禁止触摸板敲击
-
-这样可以避免焦点变化，影响当前的输入。
-
+键入时禁止触摸板可以避免焦点变化，影响当前的输入。
 对于使用 `startx` 来启动的桌面系统，可以修改其 `.xinitrc` 初始化配置文件来完成：
 
 ```bash
@@ -85,7 +74,6 @@ syndaemon -t -k -i 2 -d &
 ```bash
 man syndaemon
 ```
-
 
 ### 外接鼠标时禁用触摸板
 
@@ -111,8 +99,7 @@ ids=`ls /dev/input/by-id | grep -E '.*-mouse'`
 
 ### 触摸板识别错误
 
-对于某些型号的机器，Arch 下触摸板识别会有问题（内核bug），官方建议从 AUR 安装 `psmouse-alps-driver`。
-受影响的机器有：
+对于某些型号的机器，Arch 下触摸板识别会有问题（内核bug），官方建议从 AUR 安装 `psmouse-alps-driver`。受影响的机器有：
 
 * Acer Aspire 7750G
 * Dell Latitude E6230, E6520, E6430 and E6530 (ALPS DualPoint TouchPad), Inspiron N5110 (ALPS GlidePoint),  Inspiron 14R Turbo SE7420/SE7520 (ALPS GlidePoint)
@@ -121,14 +108,14 @@ ids=`ls /dev/input/by-id | grep -E '.*-mouse'`
 如果问题还没有解决，可以手动编译该模块载入内核。
 
 1. 卸载原有 Alps 触摸板驱动
-    
+
     ```bash
     pacman -R psmouse-alps-driver
     ```
-    
+
 1. 从这里下载：http://www.dahetral.com/public-download
 2. 解压缩，并拷贝至 `/usr/src`
-    
+
     ```bash
     tar -xvf alps-xxx.tar
     sudo cp -r usr /
@@ -140,9 +127,9 @@ ids=`ls /dev/input/by-id | grep -E '.*-mouse'`
     sudo dkms add psmouse/alps-xxx
     sudo dkms autoinstall
     ```
-    
+
 5. 卸载原有模块并载入新的内核模块
-    
+
     ```bash
     sudo rmmod psmouse || sudo modprobe psmouse
     ```
