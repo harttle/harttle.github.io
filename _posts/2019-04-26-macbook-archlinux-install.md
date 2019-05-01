@@ -1,6 +1,6 @@
 ---
 title: 在 MacBookPro 上安装 ArchLinux
-tags: ArchLinux MacBook 触摸板 WiFi 声卡驱动 屏幕亮度 键盘背光
+tags: ArchLinux MacBook WiFi 声卡驱动 屏幕亮度 键盘背光
 ---
 
 很久以前写过一篇 [安装 Arch Linux](/2013/11/07/arch-install.html) 的文章，解释在普通 PC 上安装 ArchLinux。
@@ -333,9 +333,8 @@ X11应用中的字体比较丰富，需要认真配置。可以参考 Harttle �
 ## 触摸板
 
 我们要尽量发挥 Mac 触摸板的优势：双指滚动、自然滚动（反向）、轻击作为按下。
-根据 [官网的教程](https://wiki.archlinux.org/index.php/Mac#Touchpad)，
-需要安装一个 [xf86-input-libinput](https://www.archlinux.org/packages/?name=xf86-input-libinput)。
-然后在 /etc/X11/xorg.conf.d/90-libinput.conf 编写配置，可以参考我的配置：
+xorg-server 已经依赖了 [xf86-input-libinput](https://www.archlinux.org/packages/?name=xf86-input-libinput)，
+在 /etc/X11/xorg.conf.d/90-libinput.conf 做简单的配置就可以用了：
 
 ```txt
 Section "InputClass"
@@ -349,7 +348,11 @@ Section "InputClass"
 EndSection
 ```
 
-语法可以参考：<https://jlk.fjfi.cvut.cz/arch/manpages/man/libinput.4>
+可以参考 [Arch Wiki](https://wiki.archlinux.org/index.php/Mac#Touchpad)
+或 [man libinput](https://jlk.fjfi.cvut.cz/arch/manpages/man/libinput.4)，
+如果要配置三指、四指滑动等复杂交互，需要引入另一个驱动 xf86-input-mtrack，
+Harttle 给了一个比较接近 OSX 手感的配置方法：
+[Linux 下 MacBook 触摸板设置](https://harttle.land/2019/05/01/linux-macbook-trackpad-settings.html)。
 
 ## CPU 和图形
 
