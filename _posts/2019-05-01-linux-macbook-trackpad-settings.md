@@ -232,6 +232,28 @@ EndSection
 向左滑去上一个还是下一个，可以把 .xbindkeysrc 里的配置反过来，
 也可以把 50-mtrack.conf 里的配置反过来。
 
+## 键入时禁止触摸板
+
+mtrack 的作者也写了一个 daemon 来监听键入和设置触摸板的 "Trackpad Disable Input" 属性。
+可以从 AUR 安装这个：<https://github.com/BlueDragonX/dispad>
+
+```bash
+pacaur -S dispad-git
+```
+
+只是禁止了点击、滚动、滑动等事件的产生，鼠标仍然可以移动。
+可以前台调试：
+
+```bash
+dispad -D -F
+```
+
+同时会安装一个 systemd 脚本，用于自启动：
+
+```bash
+systemctl enable --user dispad.service
+```
+
 ## 参考链接
 
 * mtrack.conf 文件：<https://github.com/harttle/macbook-mtrack-settings/blob/master/50-mtrack.conf>
