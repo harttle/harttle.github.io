@@ -32,7 +32,7 @@ foo.greeting();
 正是这一点使得`function foo`对依赖所处的位置和构建方法都完全无知，
 `function foo`成为可测试、可复用的代码单元。
 
-## DI框架的设计
+## DI 框架的设计
 
 注册服务和使用服务应该在不同时期进行。
 作为一种特殊的依赖解决工具，DI框架将软件单元的生命周期分为注册阶段和运行阶段。
@@ -48,7 +48,7 @@ foo.greeting();
 当有人使用服务时就从容器中查找提供者并生成一个服务实例。
 通常服务的实例可以被缓存。
 
-## DI框架的实现
+## DI 框架的实现
 
 先来实现最常见的接口函数`.service()`，该接口用来注册一个服务的构造器。
 被传入的函数将会被进行`new`操作。
@@ -77,7 +77,7 @@ function defineLazyProperty(name, getter){
 }
 ```
 
-[Object.defineProperty][defprop]在这里用来做服务缓存。
+[Object.defineProperty][defprop] 在这里用来做服务缓存。
 只在第一次构建服务时调用构造器，后续的访问就是直接读取IoC容器的属性。
 它是ES5的标准方法[兼容性非常好][caniuse-defprop]。
 有了`defineLazyProperty()`方法，这些常用的注册接口实现就很直观了：
@@ -101,7 +101,7 @@ di.value = function(name, val) {
 
 服务的定制接口就不再赘述了，值得一提的是统一的服务定制需要统一的服务构造方法，
 而不是直接调用`.defineLazyProperty()`生成属性。
-[AngularJS][ng]中这些策略都由Provider来实现，
+[AngularJS][ng] 中这些策略都由 Provider 来实现，
 其他的所有服务注册方法都借由Provider来实现。
 
 [BottleJS]: https://github.com/young-steveo/bottlejs
