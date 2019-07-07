@@ -591,6 +591,44 @@ sudo systemctl start macbook-lighter    # 立即启动
 sudo systemctl enable macbook-lighter   # 开机自动启动
 ```
 
+## 配置ICC色彩特性文件
+
+准备工作中拷贝出来的 Displays 文件包含了所有你的 Macbook 连接过的显示器的色彩配置。Macbook 自己的 Retina 屏幕叫 Color LCD-xxx。现在要做的是让 Arch 为 Macbook 显示屏载入这个色彩配置文件。
+
+如果你在用 Gnome 或 KDE 可以点点鼠标去载入。
+如果像我一样没有桌面系统，就按照
+[这个文档](https://wiki.archlinux.org/index.php/ICC_profiles#Loading_ICC_profiles) 来。
+先 [从 AUR 安装][install-from-aur] xiccd 并找一个窗口启动服务。
+
+```bash
+pacaur -S xiccd
+xiccd
+```
+
+拔掉所有外接显示器，在另一个窗口中查看当前设备，记下来 Device ID：
+
+```bash
+colormgr get-devices
+```
+
+在 Displays 下找到对应的 .icc 文件，
+我这里 .icc 文件名上的 MD5 和 Metadata 的 OutputEdidMd5 是一致的。
+然后找到这个 .icc 的 Profile ID：
+
+```bash
+colormgr get-profiles
+```
+
+然后把 Device 和 Profile 关联起来：
+
+```bash
+# colormgr device-add-profile <device id> <profile id>
+colormgr device-add-profile 'xrandr-Color LCD' icc-71f188d0fa2fb78f31a52c112efbbe9e
+colormgr device-make-profile-default 'xrandr-Color LCD' icc-71f188d0fa2fb78f31a52c112efbbe9e
+```
+
+最后通过 `/etc/xdg/autostart/xiccd.desktop` 文件让 xiccd 随着 X 启动。
+
 ## 相关链接
 
 下面是一些重要的链接，供安装时参考：

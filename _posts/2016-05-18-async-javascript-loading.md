@@ -13,6 +13,8 @@ redirect_from: /2016/03/14/non-blocking-javascript-loading.html
 * 载入方式二：XHR 获取内容后 Eval（不安全，且跨域不可用）。
 * 载入方式三：使用 `<script>` 的 `async` 和 `defer` 属性。
 
+> 本文用来探讨 HTML 渲染机制中，如何不阻塞地加载脚本。对于生产环境，建议直接使用类似 [AMD](http://requirejs.org/) 这样的成熟方案。
+
 <!--more-->
 
 ## DOM 渲染流程
@@ -62,10 +64,7 @@ redirect_from: /2016/03/14/non-blocking-javascript-loading.html
 
 浏览器“载入中”的提示会让用户感觉网页慢！事实上我们应该关心的网页性能就是用户感受的性能。
 这个“载入中”的提示消失的时机基本就是 `load` 事件发生的时机。所以问题就变成了如何提前 `load` 事件。
-
-除了懒加载图片、视频（Web 上已经有大量教程）之外，延迟加载非必须的页面脚本也很有效。
-[Harttle](/) 建议的上策是采用类似 [AMD](http://requirejs.org/) 的模块加载器。
-如果你的脚本很简单要手动实现，可以参考下面的代码：
+除了懒加载图片、视频（Web 上已经有大量教程）之外，延迟加载非必须的页面脚本也很有效：
 
 ```javascript
 document.addEventListener('load', function(){

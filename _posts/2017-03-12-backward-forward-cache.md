@@ -53,7 +53,7 @@ window.onpageshow = function(event) {
 因此需要检测事件的 `persisted` 属性，页面第一次加载时它的值是 `false`。
 
 另外 `pageshow` 的时机总是在 `load` 事件之后。
-这一点很容易检测，比如下面的代码中 `pageshow` 日志总在 `load` 之前打印：
+这一点很容易检测，比如下面的代码中 `pageshow` 日志总在 `load` 之后打印：
 
 ```javascript
 window.addEventListener('pageshow', function () {
