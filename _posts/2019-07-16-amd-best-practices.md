@@ -1,5 +1,6 @@
 ---
 title: AMD 模块化最佳实践
+tags: AMD JavaScript 异步 模块化
 ---
 
 [AMD](https://requirejs.org/docs/whyamd.html) 是 RequireJS 给出的模块加载方案。
