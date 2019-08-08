@@ -1,5 +1,5 @@
 ---
-title: 用Ag/Ack在Vim中搜索项目代码
+title: 用 Ag/Ack 在 Vim 中搜索项目代码
 tags: Vim-Practice Vim Vundle grep 快捷键
 ---
 
@@ -21,7 +21,7 @@ Ag是一个命令行工具，用来全局搜索代码文件。
 ```bash
 # OSX
 brew install the_silver_searcher
-# Archlinux
+# ArchLinux
 pacman -S the_silver_searcher
 # Ubuntu
 apt-get install silversearcher-ag

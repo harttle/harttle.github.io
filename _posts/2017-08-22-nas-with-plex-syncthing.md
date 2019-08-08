@@ -1,6 +1,6 @@
 ---
 title: 利用 Plex 和 Syncthing 搭建媒体中心
-tags: Archlinux SSH systemd 多媒体
+tags: ArchLinux SSH systemd 多媒体
 ---
 
 因为软件都是[朋友][oott]介绍的，这篇文章本来是不打算写的。
@@ -11,7 +11,7 @@ tags: Archlinux SSH systemd 多媒体
 * DLNA 媒体服务。
 * 随时上传媒体文件。
 
-笔者的设备：Acer 笔记本（[Archlinux][arch]），小米 TV（Android）。
+笔者的设备：Acer 笔记本（[ArchLinux][arch]），小米 TV（Android）。
 可能和您的设备有所区别，但原理类似。我了解到即使对 Windows 版本，用户和权限等策略都是一样的。
 或者你可以 [安装一个 Arch][arch-install]。
 
@@ -27,7 +27,7 @@ tags: Archlinux SSH systemd 多媒体
 
 ## 搭建 Syncthing 服务
 
-Syncthing 有很多 binary 可以下载，可以挑一个合适的下载安装即可。Archlinux 可以从 AUR 安装：
+Syncthing 有很多 binary 可以下载，可以挑一个合适的下载安装即可。ArchLinux 可以从 AUR 安装：
 
 ```bash
 yaourt -S syncthing

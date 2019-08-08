@@ -1,12 +1,12 @@
 ---
 title: 极简的 Git 服务器：git-daemon
-tags: Git Github IP Linux SSH Ubuntu Archlinux
+tags: Git Github IP Linux SSH Ubuntu ArchLinux
 ---
 
-git-daemon是Git软件包中内置的Git服务器。
-这是一个极简的Git服务器，没有权限控制，也没有Web控制台。
+git-daemon是Git软件包中内置的 Git 服务器。
+这是一个极简的Git服务器，没有权限控制，也没有 Web 控制台。
 但是不需要安装额外的Git服务器，安装和使用非常方便，适合局域网内使用。
-本文介绍如何在Archlinux下使用git-daemon。
+本文介绍如何在 ArchLinux 下使用 git-daemon。
 
 Git-daemon 文档：<https://git-scm.com/docs/git-daemon>
 
@@ -19,7 +19,7 @@ Git-daemon 文档：<https://git-scm.com/docs/git-daemon>
 安装git软件包，git-daemon就会随之安装。
 
 ```bash
-# Archlinux
+# ArchLinux
 yaourt -S git
 # Ubuntu
 sudo apt-get install git git-core

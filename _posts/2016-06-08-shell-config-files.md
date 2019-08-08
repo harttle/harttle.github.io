@@ -55,9 +55,17 @@ GNome中的Terminal，KDE中的Konsole，Mac下常用的iTerm2等。这些软件
 
 ## 什么是 Console
 
-**Console**（控制台）通常是指一台设备、一个软件或一个操作系统的Primary Terminal。
-Console的叫法是从物理意义上来的，直接连在设备上的那个终端就叫Console。
-比如Linux的TTY，Chrome的控制台，交换机的管理终端。
+**Console**（控制台）通常是指一台设备、一个软件或一个操作系统的 Primary Terminal。
+Console 的叫法是从物理意义上来的，直接连在设备上的那个终端就叫 Console，每个设备通常只有一个 Console。
+比如 Chrome 的控制台，交换机的管理终端。
+
+## PTY, VT
+
+在 /dev/tty{1-N} 可以看到 Linux 的 TTY 设备有多个。可以按下 Ctrl+Alt+数字 在不同的 TTY 之间切换。
+
+它们都不是 Console 本身，其实准确地讲不叫 TTY。是为方便多用户使用而提供的虚拟设备，
+叫做 [pseudotty](https://en.wikipedia.org/wiki/Pseudoterminal)（PTY），
+也叫 [Virtual Terminal](https://en.wikipedia.org/wiki/Virtual_console)（VT），Virtual Console（VC）。
 
 ## 什么是交互式 Shell
 

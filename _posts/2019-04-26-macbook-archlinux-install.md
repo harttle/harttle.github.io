@@ -12,7 +12,7 @@ tags: ArchLinux MacBook WiFi 声卡驱动 屏幕亮度 键盘背光
 
 ## 准备工作
 
-1. 升级系统到最新。选择 Archlinux Only 这样以后就无法（reliably）更新固件了。
+1. 升级系统到最新。选择 ArchLinux Only 这样以后就无法（reliably）更新固件了。
 2. 备份所有有用的东西。比如你的个人文件以及家目录下的各种配置文件。额外注意色彩配置文件：/Library/ColorSync/Profiles/Displays
 3. 准备一个 U 盘，准备多余的一台电脑（用于查文档）。
 4. 网线和以太网转换器。因为无线网卡驱动 broadcom-wl 不在启动盘中，[拷贝源码来编译](https://wiki.archlinux.org/index.php/MacBookPro11,x#Internet) 的方案很困难。因为，
@@ -27,7 +27,7 @@ dd bs=4M if=path/to/archlinux.iso of=/dev/sdx status=progress oflag=sync
 
 ## 分区、文件系统、挂载
 
-这一步是最关键的，如果有误后续步骤需要重来。[Arch Wiki](https://wiki.archlinux.org/index.php/Mac#Partitions) 上提供了很多方案，本文选择的是 Archlinux Only。
+这一步是最关键的，如果有误后续步骤需要重来。[Arch Wiki](https://wiki.archlinux.org/index.php/Mac#Partitions) 上提供了很多方案，本文选择的是 ArchLinux Only。
 由于 Mac 下需要使用 EFI 引导，所以需要一个 EFI 分区（EFI System Partition，后续叫 ESP），
 
 分区。直接进入 `fdisk /dev/sda`，先删除所有已有分区，建立 GPT 分区表，再依次分配 ESP、Swap、Linux Root 的分区。
