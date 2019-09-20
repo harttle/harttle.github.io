@@ -1,5 +1,5 @@
 ---
-title: TypeScript 中如何继承 Error 类
+title: TypeScript 中编写自定义 Error
 tags: TypeScript Error 原型链
 ---
 
@@ -44,18 +44,31 @@ Error 是一个特殊的对象，或者说 JavaScript 的 `new` 是一个奇葩�
 如果你熟悉 [原型继承的方式][prototype]，应该会写出如下代码：
 
 ```javascript
+// 实现 CustomError
 function CustomError (message) {
     Error.call(this, message)
 }
 CustomError.prototype = new Error()
+
+// 使用 CustomError
+throw new CustomError('intended')
+
+// 输出
+Error
+    at Object.<anonymous> (/home/harttle/tmp/a.js:5:25)
+    at Module._compile (internal/modules/cjs/loader.js:701:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:712:10)
+    at Module.load (internal/modules/cjs/loader.js:600:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:539:12)
 ```
 
-因为 stack 只在 `new` 的时候生成，上述实现不能满足功能 2 和功能 3，也就是说：
+因为 stack 只在第 5 行 `new` 的时候生成（参考：[在构造函数中判断是否是通过 new 调用的][detect-new]，上面的实现无法记录 new CustomError 的位置，即不支持功能 2 和 3。
+具体来讲有两个问题：
 
-* stack 的第一行是总是 `Error` 而不是 `CustomError` 且不包含 message 信息。
-* stack 总是指向 `new Error()` 的那一行，而不是 `new CustomError()`。
+* stack 的第一行是是 `Error`，我们希望是 `CustomError: intended`
+* stack 的第一条（at Object.../a.js:5:25）指向了 `CustomError.prototype = new Error()`，我们希望它指向 `throw new CustomError('intended')`
 
-[Node 文档](https://nodejs.org/api/errors.html#errors_error_capturestacktrace_targetobject_constructoropt) 中描述了一个 `captureStackTrace` 方法来解决这个问题，改动后的实现如下：
+[Node 文档][capture] 中描述了一个 `captureStackTrace` 方法来解决这个问题，改动后的实现如下：
 
 ```javascript
 function CustomError (msg) {
@@ -66,7 +79,9 @@ function CustomError (msg) {
 CustomError.prototype = new Error()
 ```
 
-其中 `.captureStackTrace()` 会使用传入对象的 name 和 message 来生成 stack 的前缀；同时第二个参数用来指定在调用栈中忽略掉哪一部分，这样栈就会指向 `new CustomError` 的地方而不是 `captureStackTrace()` 的地方。
+其中 `.captureStackTrace()` 会使用传入对象的 name 和 message 来生成 stack 的前缀；
+同时第二个参数用来指定在调用栈中忽略掉 `function CustomError` 内部的位置，不然会指向调用 `captureStackTrace()` 的那一行。
+即：`at new CustomError (/home/harttle/tmp/a.js:4:11)`
 
 ## ES6 中如何继承 Error?
 
@@ -101,11 +116,11 @@ var CustomError = /** @class */ (function (_super) {
 }(Error));
 ```
 
-注意 `var _this = _super.call(this, msg) || this;` 中 **this 被替换掉了**。
-在 TypeScript 2.1 的 [changelog][changelog] 中描述了这个 Breaking Change。
-**这会造成 `CustomError` 的所有对象方法都无法使用，这里介绍几种 workaround：
+注意 `var _this = _super.call(this, msg) || this;` 中 super 是 Node 提供的 `Error` 函数，它存在返回值。
+因此 **在 CustomError 的构造器中，this 会被替换成 Error，造成 CustomError 构造器中无法访问 CustomError 的实例方法**。
+在 TypeScript 2.1 的 [changelog][changelog] 中描述了这个 Breaking Change，这里介绍几种 workaround：
 
-> 题外话，这个分支可能会导致测试覆盖率中的 [分支未覆盖问题](https://github.com/gotwarlost/istanbul/issues/690)。可以只在 ES6 下产生测试覆盖报告来解决。
+> 注意：这些 workaround 可能会导致测试覆盖率中的 [分支未覆盖问题](https://github.com/gotwarlost/istanbul/issues/690)。可以只在 ES6 下产生测试覆盖报告来解决。
 
 ### 1. 使用 [setPrototypeOf][setPrototypeOf] 还原原型链
 
@@ -158,3 +173,5 @@ class DerivedError extends CustomError {
 [new.target]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new.target
 [changelog]: https://github.com/Microsoft/TypeScript-wiki/blob/master/Breaking-Changes.md#extending-built-ins-like-error-array-and-map-may-no-longer-work
 [setPrototypeOf]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf
+[detect-new]: https://stackoverflow.com/questions/367768/how-to-detect-if-a-function-is-called-as-constructor
+[capture]: https://nodejs.org/api/errors.html#errors_error_capturestacktrace_targetobject_constructoropt

@@ -1,6 +1,6 @@
 ---
 title: 设置和获取 radio input 的状态：checked, prop, attr, val
-tags: DOM JavaScript jQuery
+tags: DOM JavaScript radio checked
 ---
 
 [Web 表单][form-tutorial] 是 HTML 文档与用户交互的重要部分，
@@ -43,8 +43,7 @@ tags: DOM JavaScript jQuery
 
 [radio](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio)
 是 `input` 的 `type` 属性（Attribute）的一种取值，表示一个单选按钮。
-同一组单选按钮具有同样的 `name` 属性（Attribute），它们只是值不相同。
-
+同一组单选按钮有同样的 `name` Attribute，不同的 Value。
 下面的示例代码来自 MDN：<https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio>
 
 ```html
@@ -117,7 +116,7 @@ $('[name=contact]').change(function () {
 })
 ```
 
-只有与用户发生交互的控件会发生 `change` 事件，因此单选按钮被动取消选中时不会触发 `change`。参考：<https://stackoverflow.com/questions/14347952/why-isnt-jquery-detecting-when-a-radio-button-is-unchecked>
+只有你点的那个 radio 才会触发 `change` 事件，被取消选中的 radio 不会触发 `change`。参考：<https://stackoverflow.com/questions/14347952/why-isnt-jquery-detecting-when-a-radio-button-is-unchecked>
 
 [form-tutorial]: https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Forms
 [radio]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio
