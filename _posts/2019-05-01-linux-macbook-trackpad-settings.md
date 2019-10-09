@@ -235,14 +235,14 @@ EndSection
 ## 键入时禁止触摸板
 
 mtrack 的作者也写了一个 daemon 来监听键入和设置触摸板的 "Trackpad Disable Input" 属性。
-可以从 AUR 安装这个：<https://github.com/BlueDragonX/dispad>
+可以从 AUR 安装 `dispad`，它的功能是禁止了点击、滚动、滑动等事件的产生，不会影响光标的移动：
 
 ```bash
 pacaur -S dispad-git
 ```
 
-只是禁止了点击、滚动、滑动等事件的产生，鼠标仍然可以移动。
-可以前台调试：
+配置文件在 ~/.dispad，可参考 <https://github.com/BlueDragonX/dispad>。
+前台（foreground）调试方法：
 
 ```bash
 dispad -D -F
