@@ -1,5 +1,5 @@
 ---
-title: 让 ArchLinux 休眠到交换文件
+title: ArchLinux 休眠到交换文件
 tags: ArchLinux 交换文件 休眠
 ---
 
@@ -103,6 +103,47 @@ mkinitcpio -p linux
 
 至此配置工作都完成了，通过 `systemctl hibernate` 来休眠，再按下电源键开机来检查休眠功能是否正常。
 
+## 开着盖子无法挂起
+
+MacBook Pro 的显示器盖子开着默认会阻止挂起，可能会出现挂起屏幕变黑后立即结束挂起。
+这是因为显示器盖子默认可以唤醒休眠，在 /proc/acpi/wakeup 中可以查看哪些设备可以唤醒，其中 LID0 是显示器盖子：
+
+```
+> cat /proc/acpi/wakeup 
+Device	S-state	  Status   Sysfs node
+P0P2	  S3	*disabled
+EC	  S4	*disabled  platform:PNP0C09:00
+HDEF	  S3	*disabled  pci:0000:00:1b.0
+RP01	  S3	*enabled   pci:0000:00:1c.0
+RP02	  S3	*enabled   pci:0000:00:1c.1
+RP03	  S3	*enabled   pci:0000:00:1c.2
+ARPT	  S4	*disabled  pci:0000:03:00.0
+RP05	  S3	*enabled   pci:0000:00:1c.4
+RP06	  S3	*enabled   pci:0000:00:1c.5
+XHC1	  S3	*enabled   pci:0000:00:14.0
+ADP1	  S4	*disabled  platform:ACPI0003:00
+LID0	  S4	*enabled  platform:PNP0C0D:00
+```
+
+我们可以 `echo LID0 > /proc/acpi/wakeup` 来更改它的状态，然后再试休眠。
+我们希望它的状态默认就是 disabled，需要一个这样的 systemd 服务：
+
+```
+[Unit]
+Description=Disable LID0 wakeup triggers in /proc/acpi/wakeup
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c "echo LID0 > /proc/acpi/wakeup"
+ExecStop=/bin/sh -c  "echo LID0 > /proc/acpi/wakeup"
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+```
+
+把它添加到 /etc/systemd/system 并启用即可。
+
 ## 自动休眠
 
 自动休眠和其他电源管理功能，由很多不同的软件和配置方式来实现。为避免混淆先介绍几个常见的软件：
@@ -112,6 +153,8 @@ mkinitcpio -p linux
 因此 ArchLinux 装好之后就基本可以用了。
 
 **acpid**：[acpid][acpid] 是一个比较基础的电源管理工具，工作方式是响应 [ACPI][ACPI] 事件，做相应的处理比如关机还是休眠。注意 acpid 只是电源管理工具，ACPI 是设备配置接口跟它没关系。
+
+**dpms**：[dpms][dpms] 是 xorg 提供的显示器电源管理服务，用来控制显示器关闭等动作。有 standby, suspend, off 等阶段，跟 systemd 事件一样需要有人来订阅（比如xss-lock）才能执行具体操作。可以通过 xorg.conf 的 `StandbyTime`, `SuspendTime`, `OffTime` 等来配置，也可以在运行时用 `xset s` 来配置。
 
 **tlp**：[tlp][tlp] 是一个比较无脑的电源管理工具，提供类似电池模式、电源模式、性能优先这样级别的配置。
 
@@ -159,3 +202,4 @@ SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-5]",
 [acpi]: https://en.wikipedia.org/wiki/Advanced_Configuration_and_Power_Interface
 [hibernate]: https://wiki.archlinux.org/index.php/Power_management/Suspend_and_hibernate#Hibernation
 [archinstall]: https://harttle.land/2019/04/26/macbook-archlinux-install.html
+[dpms]: https://wiki.archlinux.org/index.php/DPMS
