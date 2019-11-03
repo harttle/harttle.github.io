@@ -103,7 +103,7 @@ MIT 教材中有另一种证明：因为 $gcd(a,b)  \mid  a$，且 $gcd(a,b)  \m
 ### 2. $gcd(a,b) \geq c$
 
 由于 gcd(a,b) 是最大公约数，我们通过证明 c 也是 a 和 b 的公约数，来证明 $gcd(a,b) \geq c$。
-只需要证明 $c  \mid  a$，根据对称性可以得到 $c  \mid  b$。设 a 除以 c 的商是 x，余数是 $0 \leq y \lt c$，则：
+为此只需要证明 $a  \mid  c$，根据对称性可以得到 $b  \mid  c$。设 a 除以 c 的商是 x，余数是 $0 \leq y \lt c$，则：
 
 $$
 a=xc+y=x(ma+nb)+y
