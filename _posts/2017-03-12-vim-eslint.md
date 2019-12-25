@@ -1,5 +1,5 @@
 ---
-title: Vim 中使用 eslint 检查代码风格
+title: Vim 中使用 Eslint 检查代码风格
 tags: Vim-Practice JavaScript Vim 代码风格 快捷键 ESLint
 ---
 
