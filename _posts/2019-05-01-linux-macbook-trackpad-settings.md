@@ -1,6 +1,6 @@
 ---
 title: Linux 下 MacBook 触摸板设置
-tags: Linux MacBook xinput xorg.conf 触摸板
+tags: Linux MacBook xinput X11 触摸板 i3wm
 ---
 
 [在 MacBookPro 上安装 ArchLinux](/2019/04/26/macbook-archlinux-install.html)

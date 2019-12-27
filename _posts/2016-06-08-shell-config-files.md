@@ -1,6 +1,6 @@
 ---
 title: Shell 的相关概念和配置方法
-tags: Shell Bash GNU Linux SSH Unix crontab 操作系统
+tags: Shell Bash Linux Terminal
 ---
 
 使用Linux的过程中少不了使用各种各样的Shell，

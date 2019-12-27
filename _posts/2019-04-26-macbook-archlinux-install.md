@@ -1,6 +1,6 @@
 ---
 title: 在 MacBookPro 上安装 ArchLinux
-tags: ArchLinux MacBook WiFi 声卡驱动 屏幕背光 键盘背光
+tags: ArchLinux MacBook WiFi 声卡驱动 屏幕背光 键盘背光 i3wm
 ---
 
 很久以前写过一篇 [安装 Arch Linux](/2013/11/07/arch-install.html) 的文章，解释在普通 PC 上安装 ArchLinux。

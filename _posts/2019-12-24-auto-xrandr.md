@@ -137,19 +137,21 @@ autorandr --change                      # 根据现在插入的显示器匹配�
 KERNEL=="card0", SUBSYSTEM=="drm", ENV{HOME}="/home/harttle", ENV{XAUTHORITY}="/home/harttle/.Xauthority", ENV{DISPLAY}=":0", ENV{XDG_CONFIG_HOME}="/home/harttle/.config", RUN+="/home/harttle/bin/autorandr"
 ```
 
+重启后生效，也可以通过 `udevadm` 让它立即生效：
+
+```bash
+udevadm control --reload
+```
+
 自定义需求：在插入外置显示器时，我还希望重新渲染一下桌面背景、跑一个新的 conky，或者发一个 libnotify 通知，下面是我的 /home/harttle/bin/autorandr。
 
 ```bash
 #!/usr/bin/env bash
 exec >> /home/harttle/log/autorandr.log 2>&1
 
-function refresh() {
-    /usr/bin/node --jitless /home/harttle/bin/autorandr.js --change
-    /home/harttle/bin/conky-update.sh
-    /home/harttle/bin/variety-update.sh
-}
-
-refresh &
+/usr/bin/node --jitless /home/harttle/bin/autorandr.js --change
+/home/harttle/bin/conky-update.sh
+/home/harttle/bin/variety-update.sh
 ```
 
 [xresource]: https://wiki.archlinux.org/index.php/X_resources
