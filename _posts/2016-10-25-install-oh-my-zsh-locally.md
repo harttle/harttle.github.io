@@ -1,5 +1,5 @@
 ---
-title: 没有Root权限Oh My Zsh使用攻略
+title: 没有 Root 权限 Oh My Zsh 使用攻略
 tags: Bash Linux Mac Zsh SSH Shell Unix
 ---
 
@@ -23,13 +23,15 @@ tags: Bash Linux Mac Zsh SSH Shell Unix
 
 ## 安装Zsh
 
-从源码安装Zsh：
+如果你有 root 或 sudo 权限可以直接用包管理去装，
+参考 [Installing-ZSH](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH)。
+以下介绍从源码安装 Zsh 到局部目录下：
 
 ```bash
 # 下载
-wget -O zsh.tar.gz https://sourceforge.net/projects/zsh/files/latest/download
+wget -O zsh.tar.xz https://sourceforge.net/projects/zsh/files/latest/download
 # 解压
-mkdir zsh && tar -xvzf.tar.gz -C zsh --strip-components 1
+mkdir zsh && tar -xvf zsh.tar.xz -C zsh --strip-components 1
 cd zsh
 # 配置，比如将Zsh安装到~/usr下
 ./configure --prefix=$HOME/usr/
@@ -37,26 +39,26 @@ make
 make install
 ```
 
-安装成功后找到`~/usr`下的zsh可执行文件，运行一下看是否安装成功了：
+安装成功后找到 `~/usr` 下的zsh可执行文件，运行一下看是否安装成功了：
 
 ```bash
 ~/usr/bin/zsh
 ```
 
-如果你成功地进入了另一个Shell那么Zsh安装就大功告成了，按下`Ctrl+D`返回刚才的Bash。
+如果你成功地进入了另一个 Shell 那么 Zsh 安装就大功告成了，按下 Ctrl+D 返回刚才的 Bash。
 
 ## 安装Oh My Zsh
 
-[Oh My Zsh][omz]是一个社区驱动的（就像Arch一样！）Zsh配置框架，有很多漂亮的主题和插件可以选择。
+[Oh My Zsh][omz] 是一个社区驱动的（就像Arch一样！）Zsh配置框架，有很多漂亮的主题和插件可以选择。
 今天大多小伙伴们安装Zsh的原因居然是这个配置框架！
-使用[Oh My Zsh][omz]提供的安装脚本即可安装（默认目录为`~/.oh-my-zsh`）。
+使用[Oh My Zsh][omz] 提供的安装脚本即可安装（默认目录为`~/.oh-my-zsh`）。
 如果你在此前尝试过安装Oh My Zsh，务必先删除之：`rm -rf ~/.oh-my-zsh`。
 
 ```bash
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 ```
 
-如果上述命名发生错误，可以通过其他途径获得这个`install.sh`，然后无情地运行它。
+如果上述命名发生错误，可以通过其他途径获得这个 `install.sh`，然后无情地运行它。
 比如wget时禁用SSL验证：
 
 ```bash
@@ -77,27 +79,28 @@ bash install.sh
 
 ## 登录 Shell
 
-**登录Shell**是指一个Unix用户在登录系统时为该用户启动的默认Shell，
-包括通过X11登录，通过TTY登录，以及通过SSH登录等。
-在多数Linux发行版以及MacOS中为`/usr/bin/bash`。
-既然说道这里Harttle就简单列一下登录Shell相关的配置文件以帮助理解：
+**登录Shell**是指一个 Unix 用户在登录系统时为该用户启动的默认 Shell，
+包括通过 X11 登录，通过 TTY 登录，以及通过 SSH 登录等。
+在多数 Linux 发行版以及 OSX 中都是`/usr/bin/bash`。
+以下是登录 Shell 相关的配置文件：
 
-* `/etc/passwd`(644)：所有用户的用户名、用户组、`$HOME`、登录Shell等信息
+* `/etc/passwd`(644)：所有用户的用户名、用户组、`$HOME`、登录 Shell 等信息
 * `/etc/shadow`(400)：所有用户的用户密码的Salt和Hash
 * `/etc/shells`(644)：登录Shell列表，`chsh -s <shell-name>`只能选自该列表
 
-注意`install.sh`会使用`chsh`更该你的登录Shell，
+更多 Shell 的概念可以参考 [Shell 的相关概念和配置方法](https://harttle.land/2016/06/08/shell-config-files.html) 一文。
+上述 oh-my-zsh 提供的 install.sh 会使用 `chsh` 更改你的登录 Shell：
 
 ```bash
 chsh -s $(grep /zsh$ /etc/shells | tail -1)
 ```
 
-**注意这行代码的危险**：它将会更改你的登录Shell为`/etc/shells`中的`zsh`。
+**注意这行代码的危险**：它将会更改你的登录 Shell 为 `/etc/shells` 中的 Zsh。
 而不是你在本地安装的那个[Zsh][zsh]。版本的区别足以让你的zsh完全不可用。
 
-因为我们没有Root权限，因此无法将本地安装的Zsh添加到`/etc/shells`。
-因此也就不能通过`chsh`切换到我们本地的[Zsh][zsh]。
-所以我们仍然使用Bash作为登录Shell，而在`~/.bashrc`中运行我们的Zsh。
+因为我们没有Root权限，因此无法将本地安装的Zsh添加到 `/etc/shells`。
+因此也就不能通过 `chsh` 切换到我们本地的[Zsh][zsh]。
+所以我们仍然使用 Bash 作为登录 Shell，而在 `~/.bashrc` 中运行我们的Zsh。
 在该配置文件尾加入：
 
 ```bash
