@@ -1,12 +1,11 @@
 ---
-layout: blog
-title: Cookie/Session的机制与安全
+title: Cookie/Session 的机制与安全
 tags: Cookie HTTP Node.js Session 内存数据库 Redis 表单 数据库
 ---
 
-Cookie和Session是为了在无状态的HTTP协议之上维护会话状态，使得服务器可以知道当前是和哪个客户在打交道。本文来详细讨论Cookie和Session的实现机制，以及其中涉及的安全问题。
+Cookie 和 Session 是为了在无状态的HTTP协议之上维护会话状态，使得服务器可以知道当前是和哪个客户在打交道。本文来详细讨论Cookie和Session的实现机制，以及其中涉及的安全问题。
 
-因为HTTP协议是无状态的，即每次用户请求到达服务器时，HTTP服务器并不知道这个用户是谁、是否登录过等。现在的服务器之所以知道我们是否已经登录，是因为服务器在登录时设置了浏览器的Cookie！Session则是借由Cookie而实现的更高层的服务器与浏览器之间的会话。
+因为 HTTP 协议是无状态的，即每次用户请求到达服务器时，HTTP 服务器并不知道这个用户是谁、是否登录过等。现在的服务器之所以知道我们是否已经登录，是因为服务器在登录时设置了浏览器的 Cookie！Session 则是借由 Cookie 而实现的更高层的服务器与浏览器之间的会话。
 
 > Cookie是由网景公司的前雇员Lou Montulli在1993年发明的，现今Cookie已经广泛使用了。
 
@@ -16,10 +15,10 @@ Cookie和Session是为了在无状态的HTTP协议之上维护会话状态，使
 
 ## Cookie 的实现机制
 
-[Cookie][cookie]是由客户端保存的小型文本文件，其内容为一系列的键值对。
+[Cookie][cookie] 是由客户端保存的小型文本文件，其内容为一系列的键值对。
 **Cookie是由HTTP服务器设置的，保存在浏览器中**，
 在用户访问其他页面时，会在HTTP请求中附上该服务器之前设置的Cookie。
-Cookie的实现标准定义在[RFC2109: HTTP State Management Mechanism][2109]中。 
+Cookie的实现标准定义在 [RFC2109: HTTP State Management Mechanism][2109] 中。 
 那么Cookie是怎样工作的呢？下面给出整个Cookie的传递流程：
 
 1. 浏览器向某个URL发起HTTP请求（可以是任何请求，比如GET一个页面、POST一个登录表单等）
@@ -29,7 +28,7 @@ Cookie的实现标准定义在[RFC2109: HTTP State Management Mechanism][2109]�
 
 3. 在响应头加入`Set-Cookie`字段，它的值是要设置的Cookie。
 
-    在[RFC2109 6.3 Implementation Limits][2109]中提到：
+    在 [RFC2109 6.3 Implementation Limits][2109] 中提到：
     UserAgent（浏览器就是一种用户代理）至少应支持300项Cookie，
     每项至少应支持到4096字节，每个域名至少支持20项Cookie。
 
