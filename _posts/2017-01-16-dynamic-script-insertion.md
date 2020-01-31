@@ -88,11 +88,11 @@ document.body.innerHTML = '<script>console.log("foo")</script>'
 源码在[src/core/DOMEval.js][domeval]：
 
 ```javascript
-function DOMEval( code, doc ) {
+function DOMEval(code, doc) {
     doc = doc || document;
-    var script = doc.createElement( "script" );
+    var script = doc.createElement("script");
     script.text = code;
-    doc.head.appendChild( script ).parentNode.removeChild( script );
+    doc.head.appendChild(script).parentNode.removeChild(script);
 }
 ```
 
