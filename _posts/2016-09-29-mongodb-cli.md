@@ -1,5 +1,5 @@
 ---
-title: 常用MongoDB命令
+title: 常用 MongoDB 命令手册
 tags: JavaScript MongoDB 数据库
 ---
 

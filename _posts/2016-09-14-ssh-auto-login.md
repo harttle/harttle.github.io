@@ -1,5 +1,5 @@
 ---
-title: 配置 SSH 自动登录
+title: 配置 SSH 免密码登录（Public Key）
 tags: Linux RSA SSH Shell TCP Unix X11
 ---
 

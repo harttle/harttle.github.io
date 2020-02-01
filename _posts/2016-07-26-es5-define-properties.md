@@ -1,5 +1,5 @@
 ---
-title: ES5 属性管理：defineProperty, preventExtensions, seal, freeze
+title: ES5 属性配置：writable，set/get，freeze，seal
 tags: JavaScript 封装 defineProperty
 ---
 

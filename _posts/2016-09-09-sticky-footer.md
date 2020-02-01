@@ -1,5 +1,5 @@
 ---
-title: CSS 总在底部的页脚
+title: CSS 实现 sticky 在底部的页脚
 tags: 页脚 CSS HTML
 ---
 

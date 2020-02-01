@@ -1,5 +1,5 @@
 ---
-title: Promise 回调的执行
+title: Promise 回调的执行时机分析
 tags: JavaScript Promise 异步
 ---
 

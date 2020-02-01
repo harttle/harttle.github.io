@@ -1,5 +1,5 @@
 ---
-title: ES6 Symbol 的用途
+title: ES6 Symbol 到底有什么用？
 tags: ES6 Symbol 迭代器
 ---
 

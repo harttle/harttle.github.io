@@ -5,7 +5,7 @@ layout: default
 <div class="page-collection">
   <div class="jumbotron container text-center"{%if page.background%} style="background:{{page.background}}"{%endif%}>
     <h1>{{page.title}}</h1>
-    <p>{{page.description}}</p>
+    <p>{{page.excerpt}}</p>
   </div>
   <section class="article-list container">
     {%for post in site.tags[page.tag] -%}

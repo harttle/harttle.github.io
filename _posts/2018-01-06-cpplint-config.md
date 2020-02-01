@@ -1,5 +1,5 @@
 ---
-title: vim 配置 cpplint
+title: Vim 中配置 C++ 编码风格检查
 tags: cpplint Syntastic C++ Vim
 ---
 
@@ -28,7 +28,7 @@ Plugin 'scrooloose/syntastic'
 
 ![syntastic cpp](/assets/img/blog/vim/syntastic-cpp@2x.png)
 
-现在给出的错误是通过一次编译得到**语法错误**，不是**代码风格问题**。
+现在给出的错误是通过一次编译得到 **语法错误**，不是 **代码风格问题**。
 如果没有 gcc，你可以把你的编译器设置上去：
 
 ```vim
@@ -39,7 +39,8 @@ let g:syntastic_cpp_compiler = 'clang++'
 
 ## 安装 cpplint
 
-除了**语法检查**外，我们还想进行**代码风格检查**，比如空格、缩进、命名等问题。
+除了编译期的 **语法检查** 外，为了便于团队协作，通常需要引入 **代码风格检查**。
+统一所有在这个仓库里开发的人的代码风格，比如如何使用空格、如何使用缩进、以及如何命名。
 这时我们就需要 [cpplint][cpplint]，这时一个外部程序。先安装这个工具（可能需要管理员权限）：
 
 ```bash

@@ -1,9 +1,11 @@
 ---
 layout: default
 title: 标签
+excerpt: "点击一个标签名，来过滤得到包含这个标签的文章列表。"
 ---
 
 <div class="page-tags container">
+  <h1>按标签过滤</h1>
   <section class="tags">
     {% for tag in site.tags %}<a class="tag" href="#{{tag|first}}">{{ tag | first }} ({{ tag | last | size }})</a>{% endfor %}
   </section>

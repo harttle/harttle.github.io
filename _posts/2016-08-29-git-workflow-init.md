@@ -1,5 +1,5 @@
 ---
-title: 仓库初始化
+title: Git 工作流：初始化一个 Git 仓库
 tags: Git-Workflow Git Github
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: 正则表达式参考手册
+title: 正则表达式参考手册（JavaScript 版本）
 tags: 字符串 正则表达式
 ---
 

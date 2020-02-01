@@ -1,5 +1,6 @@
 ---
-title: 合理地设计 URL
+title: 怎样合理地设计你的网站 URL
+subtitle: 常见的 URL 失败设计和 REST 的简要介绍
 tags: HTTP URL 路由
 ---
 
@@ -29,7 +30,7 @@ MVC 架构的动态站点中路径直接对应于控制器而不是静态文件�
 ```
 
 这个 URL 表示冲 Harttle 发往 Alice 的一条消息，消息内容可能在 HTTP body 中。
-这确实是一个[合法的 URL][url]，但它承载了动态的数据内容。这意味着：
+这确实是一个 [合法的 URL][url]，但它承载了动态的数据内容。这意味着：
 
 * 流量转发和负载均衡配置会更复杂（比如 [正则][reg] 而不是前缀），同时业务统计相关实现也会更困难。
 * 基于路径的 Web 技术不可用。比如 [Cookie][cookie] 的 Path 机制、带 Scope 的 [Service Worker][sw]。

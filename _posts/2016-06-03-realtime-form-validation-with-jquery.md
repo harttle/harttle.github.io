@@ -1,5 +1,5 @@
 ---
-title: jQuery实时表单验证
+title: 用 jQuery 实现实时的表单验证
 tags: CSS HTML jQuery 事件 表单
 ---
 

@@ -1,6 +1,5 @@
 ---
-title: 恢复 TMUX 工作区
-subtitle: The Easy Way
+title: 保存和恢复 TMUX 工作区 —— The Easy Way
 tags: Bash Session Tmux
 ---
 

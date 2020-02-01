@@ -2,6 +2,11 @@
 @import 'variables';
 
 .page-tags {
+  h1 {
+    color: #333;
+    font-size: 24px;
+    font-weight: normal;
+  }
   section.tags {
     height: 200px;
     overflow-x: hidden;
