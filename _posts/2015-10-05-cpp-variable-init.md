@@ -25,7 +25,7 @@ int arr[] = {1, 2, 3};
 int i(3);
 int i = int(3);
 int *p = new int(3);
-int[] arr = new int[]{1, 2, 3};
+int* arr = new int[3] {1, 2, 3};
 ```
 
 在C语言中`int a;`表示声明了整型`a`但未初始化，而C++中的对象总是会被初始化的，无论是否写了圆括号或者是否写了参数列表，例如：
