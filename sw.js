@@ -4,6 +4,7 @@
 var CACHE_NAME = '{{site.time}}';
 var urlsToCache = [
     '/',
+    '/assets/img/avatar.jpg',
     '/assets/css/site.css',
     '/assets/js/blog.min.js'
 ];

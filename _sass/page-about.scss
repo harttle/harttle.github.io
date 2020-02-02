@@ -4,6 +4,7 @@
   background: url('/assets/img/cover/4.jpg') #444;
   background-size: cover;
   background-attachment: fixed;
+  overflow: hidden;
   .avatar-wrapper{
     .avatar{
       margin-top: 120px;
@@ -14,15 +15,19 @@
     .lead{
       color: white;
       font-size: 24px;
-      margin-bottom: 100px;
+      margin-bottom: 24px;
+    }
+    .description {
+      color: #ccc;
+      font-size: 18px;
+      margin-bottom: 80px;
     }
   }
 
   .links{
-    padding-bottom: 70px;
     section{
       background: rgba(0, 0, 0, 0.39);
-      margin-bottom: 45px;
+      margin-bottom: 80px;
       $border-color: #555;
       border: 1px solid $border-color;
       border-radius: 3px;

@@ -21,15 +21,15 @@ Deep Linking 给用户带来的是非常顺滑的浏览体验，尤其在 Web �
 
 技术 | Universal Link | Android App Link | URI Scheme | Chrome Intent
 --- | --- | --- | --- | ---
-平台要求 | >= iOS 9 | >= Android 6 | Chrome<sup>1</sup> < 25, iOS |  Chrome<sup>1</sup> >= 25
+平台要求 | >= iOS 9 | >= Android 6 | Chrome <sup> 1 </sup> < 25, iOS |  Chrome<sup> 1 </sup> >= 25
 未安装表现 | 打开 Web 页面 | 打开 Web 页面 | 发生错误 | 可以打开 Web 页面
 能否不发生跳转 | 不能 | 不能 | 能 | 能
 能否去下载页面 | 能 | 能 | 不能 | 能
-iframe 触发 | 不支持 | 不支持 | Chrome<sup>1</sup> <= 18, iOS < 9 | 不支持
-链接格式 <sup>2</sup> | 正常的 URL | 正常的 URL | 自定义协议的 URL | intent 协议的 URL
+iframe 触发 | 不支持 | 不支持 | Chrome <sup> 1 </sup> <= 18, iOS < 9 | 不支持
+链接格式 <sup> 2 </sup> | 正常的 URL | 正常的 URL | 自定义协议的 URL | intent 协议的 URL
 
 1. 本文只针对移动端浏览器，其中 Chrome 表示 Chrome for Android，以及 Android Browser 的对应版本。
-2. 链接的作用方式有3种：用户点击这样的 `<a>` 标签；脚本中进行页面重定向；设置 `iframe` 的 `src`。
+2. 链接的作用方式有 3 种：用户点击这样的 `<a>` 标签；脚本中进行页面重定向；设置 `iframe` 的 `src`。
 
 ## URI Scheme
 
@@ -103,7 +103,7 @@ Universal Link 通过 Web 服务器验证的方式避免了 URI Scheme 的命名
 ## Android App Link
 
 类似 Universal Links，[Android App Link][android-app-links] 采取类似的机制：
-使用标准的 Web 页面 URL，同时绑定对应的 App。在 Android >=6 的系统中支持这一机制。
+使用标准的 Web 页面 URL，同时绑定对应的 App。在 Android >= 6 的系统中支持这一机制。
 例如下面的 URL：
 
 ```html
@@ -133,7 +133,7 @@ Universal Link 通过 Web 服务器验证的方式避免了 URI Scheme 的命名
 * Android 下它们会拦截掉所有页面调起。需要提示用户从系统浏览器中打开。
 * iOS 下它们会拦截 URI Scheme，既不会弹框也不会调起。对于 Universal Link 会直接打开 Web 页面而不调起。
 
-其中 UC 浏览器在 iOS <9 的环境下尝试 URI Scheme 调起很可能会直接崩溃。
+其中 UC 浏览器在 iOS < 9 的环境下尝试 URI Scheme 调起很可能会直接崩溃。
 由于浏览器兼容性问题，以及 App 安装率不可能是 100%，调起成功率一般会很低尤其在 Android 下。
 
 [deep-linking]: https://en.wikipedia.org/wiki/Deep_linking
