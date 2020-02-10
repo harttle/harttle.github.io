@@ -51,6 +51,9 @@
         margin-bottom: 50px;
         color: #333;
       }
+      .md p:last-child {
+        margin-top: 50px;
+      }
     }
     .toc-wrapper{
       flex: 0 0 $toc-width;
