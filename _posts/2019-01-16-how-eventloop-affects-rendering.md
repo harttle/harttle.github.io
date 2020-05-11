@@ -141,9 +141,7 @@ setImmediate 是为了让脚本更快地执行，与 [setTimeout][setTimeout] �
 > 12. Increment nesting level by one. 
 
 其中 nesting level 是指 [timer nesting level](https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#timer-nesting-level)，
-每一级可能是 setTimeout 也可能是 setInterval。也就是说在嵌套 5 层以上时，会设置最小 4ms 的延迟。
-setImmediate 意在让脚本有机会在 UA 事件和渲染发生后立即得到调用，从渲染的角度上类似于渲染之后调用的 requestAnimationFrame。
-由于没有广泛实现，使用 setImmediate 需要引入 Polyfill。请参考：
+每一级可能是 setTimeout 也可能是 setInterval。也就是说在嵌套 5 层以上时，会设置最小 4ms 的延迟。由于没有广泛实现，使用 setImmediate 需要引入 Polyfill。请参考：
 
 <https://github.com/YuzuJS/setImmediate/blob/master/README.md>
 
