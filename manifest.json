@@ -3,28 +3,28 @@
   "name": "Harttle Land",
   "icons": [
     {
-      "src": "/assets/img/favicon.svg",
-      "type": "image/svg+xml",
+      "src": "/assets/img/favicon-48x48.png",
+      "type": "image/png",
       "sizes": "48x48"
     },
     {
-      "src": "/assets/img/favicon.svg",
-      "type": "image/svg+xml",
+      "src": "/assets/img/favicon-96x96.png",
+      "type": "image/png",
       "sizes": "96x96"
     },
     {
-      "src": "/assets/img/favicon.svg",
-      "type": "image/svg+xml",
+      "src": "/assets/img/favicon-192x192.png",
+      "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/assets/img/favicon.svg",
-      "type": "image/svg+xml",
+      "src": "/assets/img/favicon-256x256.png",
+      "type": "image/png",
       "sizes": "256x256"
     },
     {
-      "src": "/assets/img/favicon.svg",
-      "type": "image/svg+xml",
+      "src": "/assets/img/favicon-512x512.png",
+      "type": "image/png",
       "sizes": "512x512"
     }
   ],
