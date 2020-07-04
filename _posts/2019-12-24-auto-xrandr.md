@@ -1,6 +1,6 @@
 ---
 title: X11 多显示器配置：玩转 XRandR
-tags: Mac X11 XRandR
+tags: Mac X11 XRandR HDMI
 ---
 
 RandR（Resize and Rotate）协议是基于 X Window 系统的一个扩展，它可以直接操作显示器模式、刷新率，属于 DDX 组件。
