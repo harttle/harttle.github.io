@@ -1,6 +1,7 @@
 ---
-title: 用 Ag/Ack 在 Vim 中搜索项目代码
+title: 在 Vim 中全文检索
 tags: Vim-Practice Vim Vundle grep 快捷键
+redirect_from: /2015/12/21/vim-search.html
 ---
 
 [Ag][ag](The Silver Searcher)和[Ack][ack]都是 CLI 的全局搜索工具，其中Ag更快一些，而Ack也比Vim自带的grep快很多。这些工具的Vim插件可以通过Vim Quickfix窗口来提供代码搜索的结果。
@@ -12,7 +13,7 @@ tags: Vim-Practice Vim Vundle grep 快捷键
 
 <!--more-->
 
-## 安装Ag
+## 安装 Ag
 
 Ag是一个命令行工具，用来全局搜索代码文件。
 除了速度快之外，还会自动排除`.gitignore`, `.hgignore`里排除的文件。
