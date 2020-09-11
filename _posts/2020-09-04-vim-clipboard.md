@@ -10,7 +10,7 @@ Vim 是运行在 Terminal 里的 Shell 程序，所以要把内容拷贝出来�
 
 所以完美的拷贝粘贴一定要通过 Vim 本身。Vim 中 `p`（paste）、`d`（delete）、`y`（yank）等拷贝粘贴操作使用的是 **匿名寄存器** `""`（unnamed register），本文就来解释怎么在 Mac/Windows/Linux 上把 Vim 的 **匿名寄存器** 映射到操作系统的剪切板。
 
-## TL;DR
+**TL; DR**
 
 1. 确保你的 vim 支持剪切板，通过 `vim --version | grep clipboard` 检查。
 2. 确定你的剪切板寄存器是 `"+`（XA\_SECONDARY）还是 `"*`（XA\_PRIMARY）。

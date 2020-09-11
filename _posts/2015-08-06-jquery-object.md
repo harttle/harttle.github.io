@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: jQuery中$()函数有几种用法
-tags: DOM HTML JavaScript jQuery 事件 选择符 链式调用
+tags: DOM HTML JavaScript jQuery 事件 选择器 链式调用
 excerpt: DOM选择，可以指定上下文；DOM创建，可以指定所属的document、属性、事件、甚至所有jQuery方法；DOM加载完成事件监听，是`$(document).ready()`的简化写法。
 ---
 
@@ -24,7 +24,7 @@ jQuery的`$()`函数的用法包括：
 
 ## DOM选择
 
-最常用的便是通过选择符来选择：
+最常用的便是通过选择器来选择：
 
 ```javascript
 jQuery( selector [, context ] )
@@ -43,7 +43,7 @@ $li = $.('li', $ul);
 $li = $ul.find('li');
 ```
 
-除了选择符，还可以用DOM对象、DOM对象数组、jQuery对象、甚至一个普通对象作为参数。它们将会被包装成jQuery对象。
+除了选择器，还可以用DOM对象、DOM对象数组、jQuery对象、甚至一个普通对象作为参数。它们将会被包装成jQuery对象。
 
 <!--more-->
 

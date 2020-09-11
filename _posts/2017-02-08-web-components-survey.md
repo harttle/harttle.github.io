@@ -195,7 +195,7 @@ Shadow DOM 为每个组件提供一个独立的 `#document` 节点，
 ![](/assets/img/blog/web-components/shadow-dom.png)
 
 除了独立的 DOM 外，Shadow DOM 还封装了组件 CSS。内外部的 CSS 不会相互影响。
-并给出 `:host` 和 `:slotted` 选择符来分别表示组件根元素和槽元素。
+并给出 `:host` 和 `:slotted` 选择器来分别表示组件根元素和槽元素。
 
 以下是 [caniuse][caniuse-shadow] 提供的兼容性数据：
 
