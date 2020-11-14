@@ -1,6 +1,7 @@
 ---
 title:  Modern Operating Systems 笔记 - File System
 tags: 操作系统 文件系统
+redirect_from: /2013/11/11/modern-os-introduction.html
 ---
 
 ## Files

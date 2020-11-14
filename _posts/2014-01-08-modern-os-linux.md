@@ -1,5 +1,4 @@
 ---
-layout: blog
 title:  Modern Operating Systems 笔记 - Linux
 tags: 操作系统 Unix Linux GNU Socket
 ---

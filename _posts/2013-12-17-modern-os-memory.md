@@ -1,5 +1,4 @@
 ---
-layout: blog
 title:  Modern Operating Systems 笔记 - Memory Management
 tags: 操作系统 虚拟内存 页表 LTB
 ---

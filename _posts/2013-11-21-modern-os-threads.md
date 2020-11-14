@@ -1,5 +1,4 @@
 ---
-layout: blog
 title:  Modern Operating Systems 笔记 - Threads
 tags: fork pthread sed 线程 内核空间 操作系统 用户空间 进程
 ---

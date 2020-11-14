@@ -1,7 +1,7 @@
 ---
-layout: blog
 title:  Modern Operating Systems 笔记 - Input/Output
 tags: 操作系统 DMA 内存映射 中断 Unix
+redirect_from: /2013/11/11/modern-os-introduction.html
 ---
 
 ## Principles of I/O Hardware
