@@ -1,6 +1,6 @@
 ---
 title: 状态码很重要
-tags: HTTP Web 搜索引擎 REST
+tags: HTTP Web 状态码 REST
 redirect_from: /2016/08/03/error-page-404-or-200.html
 ---
 
