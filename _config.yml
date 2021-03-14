@@ -23,7 +23,7 @@ exclude: ['README.md', '.*', 'bin/', 'Gemfile', 'node_modules', '*.log', 'packag
 kramdown:
   input: GFM
   hard_wrap: false
-
+math_engine: mathjax
 ga: 'UA-65795020-1'
 
 sass:
