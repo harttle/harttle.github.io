@@ -10,7 +10,6 @@
   visibility: hidden;
   color: #333;
   @include opacity(0);
-  @include transition(all .25s ease-in-out);
 }
 #btnScrolltop.show{
   visibility: visible;

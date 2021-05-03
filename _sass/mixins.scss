@@ -11,15 +11,6 @@
   -o-opacity: $value;
   -ms-opacity: $value;
 }
-
-@mixin transition($value){
-  transition: $value;
-  -webkit-transition: $value;
-  -moz-transition: $value;
-  -o-transition: $value;
-  -ms-transition: $value;
-}
-
 @mixin animation($v...){
   animation: $v; 
   -webkit-animation: $v; 
@@ -30,7 +21,6 @@
 
 @mixin link-hover($normal, $hover){
   color: $normal;
-  transition: all 0.1s;
   &:hover, &:active{
     color: $hover;
   }

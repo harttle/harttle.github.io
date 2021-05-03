@@ -44,6 +44,11 @@ $timeline-left-width: 95px;
             @include link-hover($grey, $blue);
             font-weight: normal;
           }
+          &::before {
+              content: '⯈';
+              margin-right: 5px;
+              cursor: pointer;
+          }
         }
         summary {
           list-style: none;
@@ -53,6 +58,11 @@ $timeline-left-width: 95px;
         }
         .tags .tag {
           margin-bottom: 0.3rem;
+        }
+      }
+      details[open] { 
+        h1::before {
+            content: '⯆'
         }
       }
     }

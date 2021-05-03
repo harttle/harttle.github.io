@@ -76,7 +76,6 @@ a:hover, a:active, a:focus{
   line-height: 1.4em;
   border: 1px solid $green;
   display: inline-block;
-  @include transition(color 0.3s);
 }
 .tag:hover, .tag:focus, .tag:active{
   color: white;
