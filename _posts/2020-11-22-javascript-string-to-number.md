@@ -1,9 +1,9 @@
 ---
 title: JavaScript 字符串转数字
-tags: JavaScript 字符串 Number
+tags: JavaScript 字符串 Number 类型转换
 ---
 
-我们知道 JavaScript 中字符串转为数字有 `parseInt`, `Number()`, `+` 等方式，但它们的转换规则很不一样适用范围也不同。比如 `parseInt` 可以解析数字字母的混合字符串而 `Number` 和 `+` 会直接产生 NaN，`Number` 和 `parseInt` 可以操作 `BigInt` 而 `+` 则会抛出 `TypeError`。**TL;DR** 三种字符串先给出对比表格如下：
+我们知道 JavaScript 中字符串转为数字有 `parseInt`, `Number()`, `+` 等方式，但它们的转换规则很不一样适用范围也不同。比如 `parseInt` 可以解析数字字母的混合字符串而 `Number` 和 `+` 会直接产生 `NaN`，`Number` 和 `parseInt` 可以操作 `BigInt` 而 `+` 则会抛出 `TypeError`。**TL;DR** 三种字符串先给出对比表格如下：
 
 value               | parseInt(value) | Number(value) | +value
 ---                 | ---             | ---           | ---
@@ -30,7 +30,7 @@ true                | NaN             | 1             | 1
 
 * 10 不是默认值。例如 `parseInt('0x10')` 为 16，此时 parseInt 采取了 16 进制。
 * 不是所有数字字符串都能 parseInt。parseInt 只认识 +/- 两种符号，因此 `parseInt((1e80).toString())` 会从 `e` 截断结果为 1。如果要产生 parseInt 能识别的字符串，需要 `BigInt(1e80).toString()`。
-* 不是所有非数字都会返回 NaN。第一个字符不是数字时才返回 NaN，例如 `parseInt('e3')` 为 NaN，但 `parseInt('3e')` 为 3。
+* 不是所有非数字都会返回 `NaN`。第一个字符不是数字时才返回 `NaN`，例如 `parseInt('e3')` 为 `NaN`，但 `parseInt('3e')` 为 3。
 
 因此使用 `parseInt` 时建议遵守以下规则：
 

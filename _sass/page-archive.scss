@@ -6,11 +6,9 @@
   h1 {
     color: #333;
     font-size: 24px;
-    font-weight: normal;
   }
-  h4{
+  h4 {
     color: $grey;
-    font-weight: normal;
     margin-top: 40px;
     padding-bottom: 7px;
     border-bottom: 1px solid $light-grey;
@@ -26,20 +24,15 @@
 
   li{
     line-height: 2rem;
-    time{
-      font-family: monospace;
-      color: $light-grey;
+    time {
       width: 150px;
       float: left;
     }
-    div{
+    div {
       margin-left: 160px;
     }
     .title{
       margin-right: 10px;
-    }
-    .tag{
-      line-height: 1rem;
     }
     @include media-xs{
       div{

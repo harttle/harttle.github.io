@@ -10,72 +10,29 @@ $timeline-left-width: 95px;
   .content {
     flex: 75%;
     flex-grow: 3;
-    padding-right: 30px;
-    overflow: hidden;
+    padding-right: 64px;
     article {
-      time{
-        float: left;
+      margin-top: 48px;
+      h2 {
+        margin: 0;
+        a{
+          @include link-hover(var(--primary-color), $blue);
+          font-weight: normal;
+        }
+      }
+      .meta {
+        margin: 12px 0 16px;
+      }
+      time {
+        float: right;
+        color: var(--primary-color);
+        font-size: 0.9em; 
+      }
+      .more {
         text-align: right;
-        width: $timeline-left-width;
-        padding: 4px 18px 10px 0;
-        border-bottom: 1px solid $light-grey;
-        color: $grey;
-        .day{
-          font-size: 22px;
-          line-height: 22px;
-          margin-top: 0;
-        }
-        .month{
-          font-size: 14px;
-          margin-bottom: 0;
-          font-style: italic;
-          font-family: cursive;
-        }
-      }
-      details{
-        display: block;
-        border-left: 6px solid $light-grey;
-        overflow: hidden;
-        padding: 0 0 40px 20px;
-        margin-left: $timeline-left-width;
-        h1 {
-          margin-top: 0;
-          a{
-            @include link-hover($grey, $blue);
-            font-weight: normal;
-          }
-          &::before {
-              content: '⯈';
-              margin-right: 5px;
-              cursor: pointer;
-          }
-        }
-        summary {
-          list-style: none;
-        }
-        summary::-webkit-details-marker {
-          display: none;
-        }
-        .tags .tag {
-          margin-bottom: 0.3rem;
-        }
-      }
-      details[open] { 
-        h1::before {
-            content: '⯆'
-        }
       }
     }
-    article:first-child{
-      details{
-        padding-top: $spliter-top-offset;
-      }
-      time{
-        margin-top: $spliter-top-offset;
-        border-top: none;
-      }
-    }
-    .pager{
+    .pager {
       margin: 15px 0 50px 0px;
       display: flex;
       a{
@@ -92,16 +49,16 @@ $timeline-left-width: 95px;
     flex: 25%;
     flex-grow: 1;
     min-width: 180px;
-    padding-top: 70px;
-    h4{
+    padding-top: 48px;
+    h4 {
       color: $grey;
       overflow: hidden;
       font-size: 18px;
-      margin: 0 0 20px;
+      margin: 0 0 8px;
       font-weight: normal;
       border-bottom: 1px solid #eee;
     }
-    h4::after{
+    h4::after {
       content: ' ';
       display: block;
       border-bottom: 1px solid $light-grey;
@@ -109,20 +66,16 @@ $timeline-left-width: 95px;
       margin-left: -100%;
       margin-top: 5px;
     }
-    section.author-block{
-      margin-bottom: 20px;
-    }
-    section.follow{
-      margin-bottom: 60px;
-      .social-share{
+    section.follow {
+      .social-share {
         padding-left:0;
       }
-      .social-share li{
+      .social-share li {
         display:inline-block;
         margin-right:5px;
         vertical-align: top;
       }
-      .social-share li a{
+      .social-share li a {
         transition:transform .5s;
         height:36px;
         width:36px;
@@ -130,36 +83,19 @@ $timeline-left-width: 95px;
         overflow: hidden;
         border-radius:18px;
       }
-      .social-share li a:hover{
+      .social-share li a:hover {
         transform:rotate(360deg);
       }
     }
-    section.collection-list{
-      margin-bottom: 60px;
-      li{
-        line-height: 40px;
-        a{
+    section.collection-list {
+      margin-top: 48px;
+      li {
+        line-height: 32px;
+        a {
           @include link-hover(#777, $blue);
         }
       } 
-      h4::after{
-        @include animation(width-percentage 14s linear 7s infinite);
-      }
-      &:hover h4::after{
-        border-bottom: 1px solid $blue;
-        @include animation(width-percentage 1s linear infinite);
-      }
     }
-    section.ads{
-      top: 20px;
-      position: sticky;
-      position: -webkit-sticky;
-    }
-  }
-
-  @include keyframes(width-percentage){
-    from{margin-left: -100%;}
-    to{margin-left: 100%;}
   }
 
   @include media-xs{
@@ -167,28 +103,21 @@ $timeline-left-width: 95px;
     > .content {
       padding-right: 0;
     }
-    > aside {
+    > aside, .meta .tag {
+      display: none;
+    }
+  }
+  @include media-sm {
+    aside section.follow .social-share li:last-child {
       display: none;
     }
     .content {
-      article {
-        time{
-          display: none;
-        }
-        details{
-          padding-left: 0;
-          margin-left: 0;
-          border-left: none;
-        }
-      }
-      article:first-child details{
-        padding-top: 40px;
-      }
+      padding-right: 32px;
     }
   }
-  @include media-sm{
-    aside section.follow .social-share li:last-child {
-      display: none;
+  @include media-md {
+    .content {
+      padding-right: 48px;
     }
   }
 }

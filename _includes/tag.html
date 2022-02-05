@@ -1,0 +1,5 @@
+{%if site.series[tag]%}
+  <a class="tag" href="{{site.series[tag]}}">{{tag}}</a>
+{%else%}
+  <span class="tag">{{tag}}</span>
+{%endif%}

@@ -5,7 +5,7 @@ excerpt: "2013 年至今的博客归档，这些文章主要介绍 Linux、Web�
 ---
 
 <div class="container page-archive">
-  <h1>文章归档（2013-至今）</h1>
+  <h1>文章归档</h1>
   <section class="archive-list">
     {%-for post in site.posts -%}
       {%- unless post.next -%}
@@ -21,21 +21,14 @@ excerpt: "2013 年至今的博客归档，这些文章主要介绍 Linux、Web�
         {%- endif -%}
       {%- endunless %}
       <li>
-        <time class="hidden-xs">{{ post.date | date: '%Y-%m-%d %a.' }} </time>
+        <time class="hidden-xs">{{ post.date | date: '%Y-%m-%d' }} </time>
         <div>
           <a class="title" href="{{ post.url }}">{{ post.title }}</a>
-          {% for tag in post.tags %} <a class="tag">{{tag}}</a>{% endfor %}
+          {% for tag in post.tags %}{%include tag.html%}{% endfor %}
         </div>
       </li>
     {%- endfor %}
     </ul>
   </section>
-  <script>
-var tags = document.querySelectorAll('.archive-list li .tag');
-for(var i = 0; i < tags.length; i++) {
-  var tag = tags[i];
-  tag.setAttribute('href', '/tags.html#' + tag.innerText);
-}
-  </script>
 </div>
 

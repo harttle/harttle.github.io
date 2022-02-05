@@ -106,13 +106,17 @@
   border: 1px solid #ddd;
   color: $red;
   background-color: #f8f8f8;
+  @include darkmode {
+    color: #ff797d;
+    background-color: black;
+  }
   border-radius: 3px;
   white-space: normal;
 }
 
 .md table {
   border-collapse: collapse;
-  margin: 20px 0;
+  margin: 16px 0;
   padding: 0;
 }
 
@@ -123,12 +127,15 @@
 
 .md table tr th, .md table tr td {
   border: 1px solid #ddd;
-  padding: 5px 20px;
+  padding: 1px 16px;
   font-size: 14px;
 }
 
 .md table tbody tr:nth-child(2n-1) {
   background-color: #F8F8F8;
+  @include darkmode {
+    background-color: #333;
+  }
 }
 
 .md div.mathjax {
@@ -156,10 +163,16 @@
 
 .md.excerpt {
   color: #555;
+  @include darkmode {
+    color: #ccc;
+  }
   p, h1, h2, h3, h4, h5, h6, b, strong, ul, ol, li{
     font-size: 1rem;
     margin: 0;
     color: #555;
+    @include darkmode {
+      color: #ccc;
+    }
     font-weight: normal;
     border-bottom: none;
   }

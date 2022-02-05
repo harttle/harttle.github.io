@@ -5,3 +5,16 @@ $yellow: #D1914D;
 $grey: #333;
 $light-grey: lighten(desaturate($blue, 40%), 20%);
 $toc-width: 280px;
+
+:root {
+  --bg-color: #fff;
+  --darken-bg-color: #333;
+  --primary-color: #333;
+  --darken-primary-color: #fff;
+
+  @media(prefers-color-scheme: dark) {
+    --bg-color: #333;
+    --darken-bg-color: #000;
+    --primary-color: #fff;
+  }
+}

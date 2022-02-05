@@ -2,43 +2,47 @@
 @import 'variables';
 
 .page-default {
-  svg.logo {
-    position: relative;
-    top: 2px;
-    height: 32px;
-    .h {
-      fill: #5ABA59;
-    }
-    .rest {
-      fill: #b6c0ce;
-      font: normal 350px sans-serif;
-    }
-  }
-
-  header{
-    padding-top: 16px;
-    padding-bottom: 16px;
+  header {
+    height: 64px;
+    line-height: 64px;
+    font-size: 0;
+    box-sizing: border-box;
     position: relative;
     z-index: 1000;
-    background: $grey;
-    nav a{
-      line-height: 38px;
+    background: var(--darken-bg-color);
+    .logo {
+      display: inline-block;
+      svg {
+        height: 32px;
+        vertical-align: middle;
+        .h {
+          fill: $green;
+        }
+        .rest {
+          fill: var(--darken-primary-color);
+          font: normal 350px sans-serif;
+        }
+      }
+    }
+    nav {
+      float: right;
+      height: 64px;
+    }
+    nav a {
       margin-left: 1rem;
-      @include link-hover($light-grey, white);
-      @include media-xs{
+      font-size: 16px;
+      color: var(--darken-primary-color);
+      @include media-xs {
         margin-left: 0.5rem;
       }
     }
   }
 
-  footer{
-    height: 50px;
-    padding: 10px 0 25px;
+  footer {
+    height: 64px;
+    line-height: 64px;
     text-align: center;
-    line-height: 50px;
     background-color: #333;
     color: #b6c0ce;
-    z-index: 200;
-    position: relative;
   }
 }

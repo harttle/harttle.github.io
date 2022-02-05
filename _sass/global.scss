@@ -9,9 +9,10 @@ html, body {
 }
 html {
   background: #333;
+  font-size: 16px;
 }
 body {
-  background: white;
+  background: var(--bg-color);
 }
 
 @media (max-width: 767px) {
@@ -31,58 +32,78 @@ a {
   color: $blue;
   text-decoration: none;
 }
-a:hover, a:active, a:focus{
+a:hover, a:active, a:focus {
   color: $blue;
   text-decoration: underline;
 }
 
-.btn-hover{
+.btn-hover {
   @include link-hover($blue, white);
   padding: 0.3em 1em;
-  font-size: 14px;
+  transition: background ease-out .4s;
 }
-.btn-hover:hover{
+.btn-hover:hover {
   background: $blue;
+  text-decoration: none;
 }
 
 .container {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 0 80px;
 }
 .clearfix:after {
   content: ' ';
   display: table;
   clear: both;
 }
-@media(min-width:768px){
+@include media-lg {
   .container {
-    padding: 0 30px;
+    padding: 0 48px;
+  }
+}
+@include media-md {
+  .container {
+    padding: 0 32px;
+  }
+}
+@include media-xs {
+  .container {
+    padding: 0 16px;
   }
 }
 
 .list-unstyled{
   padding-left: 0px;
   list-style: none;
+  margin: 0;
 }
 
-.text-center{
+.text-center {
   text-align: center;
 }
 
-.tag{
+.text-left {
+  text-align: left;
+}
+
+.tag {
   color: $green;
-  padding: 0.1em 0.6em;
+  padding: 0em 0.4em;
   font-size: 0.9em; 
   line-height: 1.4em;
   border: 1px solid $green;
+  border-radius: 8px;
   display: inline-block;
 }
-.tag:hover, .tag:focus, .tag:active{
-  color: white;
+a.tag {
+  text-decoration: underline;
+  transition: background ease-out .4s;
+}
+a.tag:hover {
   background: $green;
+  color: white;
   text-decoration: none;
 }
-.ellipsis{
+.ellipsis {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

@@ -4,11 +4,18 @@ layout: default
 
 <article class="page-blog">
   <div class="jumbotron container"{%if page.background%} style="background:{{page.background}}"{%endif%}>
-    <h1>{{page.title}} {% for tag in page.tags %}{% if site.series[tag] %}<a class="collection" href="{{site.series[tag]}}">{{tag}}</a>{% break %}{% endif %}{% endfor %}</h1>
-    <time class="pull-right">{{ page.date | date: "%Y/%m/%d" }}</time>
-    <p class="tag-list">
-      {% for tag in page.tags %}<a class="tag" href="/tags.html#{{tag}}">{{tag}}</a>{% endfor %}
-    </p>
+    <div class="title text-center">
+      <div>
+        <h1>{{page.title}}</h1>
+        <p class="tag-list">
+        {%for tag in page.tags%}{%include tag.html%}{%endfor%}
+        </p>
+      </div>
+    </div>
+    <time class="pull-right">{{ page.date | date: "%m/%d %Y" }}</time>
+    <a class="author" href="{{ site.twitterUrl }}" target="_blank">
+      <img src="/assets/img/avatar.jpg" alt="avatar"> Harttle
+    </a>
   </div>
   <div class="main-content container">
     <aside class="toc">

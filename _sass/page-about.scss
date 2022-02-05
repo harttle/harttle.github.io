@@ -5,74 +5,63 @@
   background-size: cover;
   background-attachment: fixed;
   overflow: hidden;
-  .avatar-wrapper{
-    .avatar{
+  .avatar-wrapper {
+    .avatar {
       margin-top: 120px;
       width: 160px;
-      border-radius: 80px;
-      margin-bottom: 20px;
-    }
-    .lead{
-      color: white;
-      font-size: 24px;
-      margin-bottom: 24px;
-    }
-    .description {
-      color: #ccc;
-      font-size: 18px;
-      margin-bottom: 80px;
+      border-radius: 50%;
     }
   }
 
-  .links{
-    section{
-      background: rgba(0, 0, 0, 0.39);
-      margin-bottom: 80px;
-      $border-color: #555;
-      border: 1px solid $border-color;
-      border-radius: 3px;
-      color: #ccc;
-      a{
-        color: #64a6ff;
-      }
-      h2{
-        margin: 0;
-        padding: 12px;
-        text-align: center;
-        color: white;
-        font-size: 18px;
-        border-bottom: 1px solid $border-color;
-      }
-      .content {
-        font-size: 15px;
-        padding: 20px;
-        margin: 0;
-      }
-      @media(max-width: 768px){
-        margin-bottom: 30px;
-      }
+  .description, .links {
+    background: rgba(0, 0, 0, 0.39);
+    $border-color: #555;
+    padding: 16px 32px;
+    margin: 80px 112px 80px;
+    border-radius: 16px;
+    color: #ccc;
+    a {
+      color: #64a6ff;
     }
-    .projects {
-      dt {
-        font-weight: bold;
-      }
-      dd {
-        margin-top: 10px;
-        margin-bottom: 10px;
-      }
-      dd:last-child {
-        margin-bottom: 0;
-      }
+    h2 {
+      width: 50%;
+      margin: 0 auto;
+      padding: 16px;
+      text-align: center;
+      color: white;
+      font-size: 18px;
+      border-bottom: 1px solid $border-color;
     }
-    .thanks {
-      li {
-        text-align: center;
-        min-width: 30%;
-        padding: 0 10px 0 0;
-        display: inline-block;
-        height: 30px;
-        line-height: 30px;
-      }
-    } 
+    .content {
+      font-size: 16px;
+      padding: 24px;
+      margin: 0;
+    }
+    @include media-lg {
+      margin: 80px 96px 80px;
+    }
+    @include media-md {
+      margin: 64px 64px 64px;
+    }
+    @include media-sm {
+      margin: 48px 32px 48px;
+    }
+    @include media-xs {
+      padding: 8px 16px;
+      margin: 32px 16px 32px;
+    }
   }
+
+  .description {
+    margin-bottom: 80px;
+  }
+  .links {
+    li {
+      min-width: 30%;
+      padding: 0 16px 0 0;
+      display: inline-block;
+      height: 32px;
+      line-height: 32px;
+    }
+  } 
 }

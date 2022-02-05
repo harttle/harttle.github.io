@@ -9,7 +9,8 @@ var urlsToCache = [
     '/assets/js/blog.min.js'
 ];
 var blackList = [
-    /google-analytics.com.*collect/
+    /google-analytics.com.*collect/,
+    /^chrome-extension:\/\//
 ];
 
 self.addEventListener('install', function (event) {

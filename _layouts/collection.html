@@ -4,7 +4,7 @@ layout: default
 
 <div class="page-collection">
   <div class="jumbotron container text-center"{%if page.background%} style="background:{{page.background}}"{%endif%}>
-    <h1>{{page.title}}</h1>
+    <h1 class="title">{{page.title}}</h1>
     <p>{{page.excerpt}}</p>
   </div>
   <section class="article-list container">
@@ -14,11 +14,12 @@ layout: default
         <a class="title" href="{{ post.url }}">{{ post.title }}</a>
       </h3>
       <p class="tag-list">
-        {% for tag in post.tags %}
-        <a class="tag" href="/tags.html#{{tag}}">{{tag}}</a>
-        {% endfor %}
+        {% for tag in post.tags %}{%include tag.html%}{% endfor %}
       </p>
-      <div class="md excerpt">{{ post.excerpt }}</div>
+      <div class="md excerpt">
+        <p>{{ post.excerpt | strip_html }}</p>
+        <div class="more"><a class="btn-hover" href="{{ post.url}}">继续阅读 ➤</a></div>
+      </div>
     </article>
     {%- endfor %}
   </section>
