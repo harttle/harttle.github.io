@@ -55,9 +55,8 @@ PWA 就是提供类似 App 体验的网站，其具体技术包括
 对于推送通知、indexedDB 等技术则需要更高版本的浏览器。
 
 在国内的移动互联网中 Safari、UC、QQ 等浏览器占有主要份额，
-因此目前基本处于生产环境不可用的试水阶段。然而在流量昂贵、Chrome 盛行的印度，
-只需少量流量便可安装、离线可用的 PWA 已经在不少公司开始研发
-（PropTiger、MagicBricks、Housing 等）。
+因此目前 PWA 仍然处于生产环境不可用的阶段。但是在 Chrome 市场份额较大的市场比如印度，
+由于 PWA 只需少量流量便可安装提供离线可用的 WebApp，已经有不少应用比如 PropTiger、MagicBricks、Housing 等。
 
 相比于开发一个 App，在原生的 Web 页面上启用 PWA 特性非常容易：
 通过 JavaScript API 完全控制页面缓存、通过 HTML 扩展支持清单文件，

@@ -1,4 +1,10 @@
 pre{ color: #fff; padding: 7px; background-color:var(--darken-bg-color)}
+.highlight {
+  --comment-color: #75715e;
+  @media (prefers-color-scheme: dark) {
+    --comment-color: #8a856e;
+  }
+}
 .highlight .hll { background-color: #49483e }
 .highlight .c { color: #4CAF50 } /* Comment */
 .highlight .k { color: #66d9ef } /* Keyword */
@@ -6,10 +12,10 @@ pre{ color: #fff; padding: 7px; background-color:var(--darken-bg-color)}
 .highlight .n { color: #f8f8f2 } /* Name */
 .highlight .o { color: #f92672 } /* Operator */
 .highlight .p { color: #f8f8f2 } /* Punctuation */
-.highlight .cm { color: #75715e } /* Comment.Multiline */
-.highlight .cp { color: #75715e } /* Comment.Preproc */
-.highlight .c1 { color: #75715e } /* Comment.Single */
-.highlight .cs { color: #75715e } /* Comment.Special */
+.highlight .cm { color: var(--comment-color) } /* Comment.Multiline */
+.highlight .cp { color: var(--comment-color) } /* Comment.Preproc */
+.highlight .c1 { color: var(--comment-color) } /* Comment.Single */
+.highlight .cs { color: var(--comment-color) } /* Comment.Special */
 .highlight .ge { font-style: italic } /* Generic.Emph */
 .highlight .gs { font-weight: bold } /* Generic.Strong */
 .highlight .kc { color: #66d9ef } /* Keyword.Constant */
@@ -59,7 +65,7 @@ pre{ color: #fff; padding: 7px; background-color:var(--darken-bg-color)}
 .highlight .il { color: #ae81ff } /* Literal.Number.Integer.Long */
 
 .highlight .gh { } /* Generic Heading & Diff Header */
-.highlight .gu { color: #75715e; } /* Generic.Subheading & Diff Unified/Comment? */
+.highlight .gu { color: var(--comment-color); } /* Generic.Subheading & Diff Unified/Comment? */
 .highlight .gd { color: #f92672; } /* Generic.Deleted & Diff Deleted */
 .highlight .gi { color: #a6e22e; } /* Generic.Inserted & Diff Inserted */
 

@@ -25,6 +25,7 @@
     {
       "src": "/assets/img/favicon-512x512.png",
       "type": "image/png",
+      "purpose": "any maskable",
       "sizes": "512x512"
     }
   ],

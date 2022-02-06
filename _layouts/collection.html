@@ -10,9 +10,9 @@ layout: default
   <section class="article-list container">
     {%for post in site.tags[page.tag] -%}
     <article>
-      <h3>
+      <h2>
         <a class="title" href="{{ post.url }}">{{ post.title }}</a>
-      </h3>
+      </h2>
       <p class="tag-list">
         {% for tag in post.tags %}{%include tag.html%}{% endfor %}
       </p>

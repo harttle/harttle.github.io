@@ -22,7 +22,8 @@
     flex: 48%;
     flex-grow: 0;
     margin: 56px 0 0;
-    h3 {
+    h2 {
+      font-size: 1rem;
       margin: 0 0 10px;
       a {
         @include link-hover(var(--primary-color), var(--link-color));

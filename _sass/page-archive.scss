@@ -2,14 +2,16 @@
   margin-bottom: 64px;
   h1 {
     font-size: 24px;
+    margin: 32px 0;
   }
-  h4 {
+  h2 {
+    font-size: 1rem;
     margin-top: 40px;
     padding-bottom: 8px;
     border-bottom: 1px solid var(--separator-color);
   }
 
-  h4 .year {
+  h2 .year {
     float: right;
     color: var(--secondary-color);
     font-family: cursive;
@@ -17,10 +19,10 @@
     font-style: italic;
   }
 
-  li{
+  li {
     line-height: 2rem;
     time {
-      width: 150px;
+      width: 120px;
       float: left;
     }
     div {

@@ -1,5 +1,8 @@
 .page-about {
   background: url('/assets/img/cover/4.jpg') #444;
+  background-image: -webkit-image-set(
+    url("/assets/img/cover/4.jpg") 1x,
+    url("/assets/img/cover/4.avif") 1x);
   background-size: cover;
   background-attachment: fixed;
   overflow: hidden;
@@ -7,6 +10,7 @@
     .avatar {
       margin-top: 120px;
       width: 160px;
+      height: 160px;
       border-radius: 50%;
     }
   }
