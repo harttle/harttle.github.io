@@ -8,7 +8,9 @@ html, body {
   font-family: sans-serif;
 }
 html {
-  background: #333;
+  /* same with footer/header for smooth bounce animation */
+  background: var(--darken-bg-color);
+  color: var(--primary-color);
   font-size: 16px;
 }
 body {
@@ -29,21 +31,21 @@ body {
 }
 
 a {
-  color: $blue;
+  color: var(--link-color);
   text-decoration: none;
 }
 a:hover, a:active, a:focus {
-  color: $blue;
+  color: var(--link-color);
   text-decoration: underline;
 }
 
 .btn-hover {
-  @include link-hover($blue, white);
+  @include link-hover(var(--link-color), white);
   padding: 0.3em 1em;
   transition: background ease-out .4s;
 }
 .btn-hover:hover {
-  background: $blue;
+  background: var(--link-color);
   text-decoration: none;
 }
 

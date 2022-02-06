@@ -1,5 +1,3 @@
-@import 'variables';
-@import 'mixins';
 $top-blank: 70px;
 $spliter-top-offset: 70px;
 $timeline-left-width: 95px;
@@ -16,7 +14,7 @@ $timeline-left-width: 95px;
       h2 {
         margin: 0;
         a{
-          @include link-hover(var(--primary-color), $blue);
+          @include link-hover(var(--primary-color), var(--link-color));
           font-weight: normal;
         }
       }
@@ -51,20 +49,11 @@ $timeline-left-width: 95px;
     min-width: 180px;
     padding-top: 48px;
     h4 {
-      color: $grey;
       overflow: hidden;
       font-size: 18px;
+      padding-bottom: 4px;
       margin: 0 0 8px;
-      font-weight: normal;
-      border-bottom: 1px solid #eee;
-    }
-    h4::after {
-      content: ' ';
-      display: block;
-      border-bottom: 1px solid $light-grey;
-      width: 100%;
-      margin-left: -100%;
-      margin-top: 5px;
+      border-bottom: 1px solid var(--separator-color);
     }
     section.follow {
       .social-share {
@@ -76,7 +65,9 @@ $timeline-left-width: 95px;
         vertical-align: top;
       }
       .social-share li a {
-        transition:transform .5s;
+        /* hardcode as white, for svg internal padding */
+        background: white;
+        transition:transform .4s;
         height:36px;
         width:36px;
         display: block;
@@ -92,7 +83,7 @@ $timeline-left-width: 95px;
       li {
         line-height: 32px;
         a {
-          @include link-hover(#777, $blue);
+          @include link-hover(var(--secondary-color), var(--link-color));
         }
       } 
     }

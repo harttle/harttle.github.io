@@ -1,27 +1,24 @@
-@import 'mixins';
-@import 'variables';
-$padding-horizontal: 25px;
+$padding-horizontal: 16px;
 
 aside.toc{
   width: $toc-width;
   margin-top: -38px;
-  .toc-wrapper{
+  .toc-wrapper {
     position: sticky;
     position: -webkit-sticky;
     top: 40px;
-    background: white;
   }
   .toc-slot{
-    margin-bottom: 30px;
+    margin-bottom: 32px;
   }
   ul{
     margin-top: 0;
     margin-bottom: 0;
+    background: var(--bg-color);
     padding-left: 0;
     > .active > a{
-      color: $grey;
       text-decoration: none;
-      border-left: 1px solid $green;
+      border: 1px solid $green;
     }
     > .active > ul {
       display: block;
@@ -29,10 +26,10 @@ aside.toc{
     > li > a {
       display: block;
       padding: 8px $padding-horizontal;
-      color: $light-grey;
+      color: var(--primary-color);
       text-decoration: none;
       &:hover {
-        background-color: lighten($light-grey,20%);
+        color: $green;
       }
     }
     ul{

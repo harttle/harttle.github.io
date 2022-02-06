@@ -1,5 +1,3 @@
-@import 'variables';
-
 @mixin size($value){ 
   width: $value;
   height: $value;
@@ -58,11 +56,6 @@
 }
 @mixin media-lg {
   @media(max-width: 1600px){
-    @content;
-  }
-}
-@mixin darkmode {
-  @media(prefers-color-scheme: dark) {
     @content;
   }
 }

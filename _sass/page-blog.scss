@@ -1,7 +1,3 @@
-@import 'variables';
-@import 'mixins';
-@import 'toc';
-
 .page-blog {
   .jumbotron{
     padding-bottom: 8px;
@@ -58,50 +54,49 @@
     .content {
       flex: 1;
       overflow: auto;
-      margin-top: 50px;
+      margin-top: 48px;
       @include media-xs{
-        margin-top: 30px;
+        margin-top: 32px;
         margin-left: 0;  
       }
       .md {
-        margin-bottom: 50px;
-        color: #333;
+        margin-bottom: 48px;
+        color: var(--primary-color);
       }
       .md > p:last-child {
-        margin-top: 50px;
+        margin-top: 48px;
       }
     }
-    .toc-wrapper{
+    .toc-wrapper {
       flex: 0 0 $toc-width;
-      margin-right: 30px;
+      margin-right: 40px;
     }
   }
 
   .wechat-banner{
     float: right;
     height: 64px;
-    width: 224;
+    width: 224px;
     border: 1px solid #2ba045;
+    @include media-sm {
+      float: none;
+    }
   }
 
   .post-pager{
     margin-top: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 48px;
     .btn-hover{
-      max-width: 380px;
+      max-width: 360px;
       min-width: 200px;
     }
-    .previous, .next, .recommend{
+    .previous, .next, .recommend {
       display: block;
-      border-left: 1px solid $blue;
+      border-left: 1px solid var(--link-color);
     }
     .recommend{
       display: none;
     }
-  }
-  .utterances{
-    margin-bottom: 50px;
-    max-width: none;
   }
 
   @mixin collapsed(){
@@ -113,6 +108,9 @@
     }
     .jumbotron{
       .tag-list{
+        margin-left: 0;
+      }
+      .author {
         margin-left: 0;
       }
     }

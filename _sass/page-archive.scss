@@ -1,22 +1,17 @@
-@import 'mixins';
-@import 'variables';
-
 .page-archive {
-  margin-bottom: 50px;
+  margin-bottom: 64px;
   h1 {
-    color: #333;
     font-size: 24px;
   }
   h4 {
-    color: $grey;
     margin-top: 40px;
-    padding-bottom: 7px;
-    border-bottom: 1px solid $light-grey;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--separator-color);
   }
 
-  h4 .year{
+  h4 .year {
     float: right;
-    color: $light-grey;
+    color: var(--secondary-color);
     font-family: cursive;
     font-size: 1.5rem;
     font-style: italic;
@@ -31,8 +26,8 @@
     div {
       margin-left: 160px;
     }
-    .title{
-      margin-right: 10px;
+    .title {
+      margin-right: 16px;
     }
     @include media-xs{
       div{

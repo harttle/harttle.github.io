@@ -1,22 +1,22 @@
 .author-block {
   height: 64px;
-  img{
+  img {
     width: 64px;
     height: 64px;
     float: left;
-    border-radius: 5px;
-    margin-right: 10px;
+    border-radius: 8px;
+    margin-right: 16px;
   }
-  h2{
+  h2 {
     font-size: 18px;
     font-weight: normal;
     margin-top: 5px;
     display: inline-block;
     margin-bottom: 0;
   }
-  p{
+  p {
     font-size: 14px;
     margin: 8px 0 0;
-    color: #888;
+    color: var(--secondary-color);
   }
 }
