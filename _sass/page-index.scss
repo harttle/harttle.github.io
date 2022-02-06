@@ -78,7 +78,7 @@ $timeline-left-width: 95px;
         transform:rotate(360deg);
       }
     }
-    section.collection-list {
+    section.collection-list, section.recent-list {
       margin-top: 48px;
       li {
         line-height: 32px;
