@@ -45,6 +45,7 @@ series:
   'Effective-C++': '/effective-cpp.html'
   'Vim-Practice': '/vim-practice.html'
   'Git-Workflow': '/git-workflow.html'
+  '跨域': '/cross-origin.html'
 
 plugins:
   - jekyll-sitemap
