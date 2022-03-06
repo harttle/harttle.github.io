@@ -60,6 +60,9 @@
   padding-left: 20px;
   margin-bottom: 15px;
 }
+.md ol ul, .md ul ol, .md ul ul, .md ol ol {
+  margin-bottom: 0;
+}
 
 .md br + br {
   line-height: 0;
