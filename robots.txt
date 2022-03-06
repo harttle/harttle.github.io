@@ -1,2 +1,3 @@
 Sitemap: https://harttle.land/sitemap.xml
 User-agent: *
+Disallow: /page*/$
