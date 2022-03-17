@@ -89,13 +89,9 @@ $timeline-left-width: 95px;
     }
   }
 
-  @include media-xs{
-    display: block;
-    > .content {
-      padding-right: 0;
-    }
-    > aside, .meta .tag {
-      display: none;
+  @include media-md {
+    .content {
+      padding-right: 48px;
     }
   }
   @include media-sm {
@@ -106,9 +102,13 @@ $timeline-left-width: 95px;
       padding-right: 32px;
     }
   }
-  @include media-md {
-    .content {
-      padding-right: 48px;
+  @include media-xs {
+    display: block;
+    > .content {
+      padding-right: 0;
+    }
+    > aside, .meta .tag {
+      display: none;
     }
   }
 }

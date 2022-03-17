@@ -6,6 +6,7 @@
     box-sizing: border-box;
     position: relative;
     z-index: 1000;
+    overflow: hidden;
     background: var(--darken-bg-color);
     .logo {
       display: inline-block;
