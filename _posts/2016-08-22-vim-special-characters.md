@@ -1,6 +1,6 @@
 ---
 title: Vim 查找/替换/输入非可见字符
-tags: Vim-Practice Unix Vim Windows 字符编码
+tags: Unix Vim Windows 字符编码
 ---
 
 在跨平台工作中由于不同编辑器处理换行和空白字符风格不一致，

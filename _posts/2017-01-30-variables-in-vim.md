@@ -1,6 +1,6 @@
 ---
 title: Vim 中的变量赋值、引用与作用域
-tags: Vim-Practice Vim 作用域 寄存器 环境变量 变量
+tags: Vim 作用域 寄存器 环境变量 变量
 ---
 
 使用 `let` 进行变量赋值，`echo` 打印变量的值, `unlet` 销毁变量。

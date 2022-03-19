@@ -1,6 +1,6 @@
 ---
 title: Vim 寄存器完全手册
-tags: Vim-Practice Linux Vim 寄存器
+tags: Linux Vim 寄存器
 ---
 
 常见文本编辑器都会提供剪切板来支持复制粘贴，Vim 也不例外。

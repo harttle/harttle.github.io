@@ -1,6 +1,6 @@
 ---
 title: Vim 中使用 Eslint 检查代码风格
-tags: Vim-Practice JavaScript Vim 代码风格 快捷键 ESLint
+tags: JavaScript Vim 代码风格 快捷键 ESLint
 ---
 
 [eslint][eslint] 是一款可配置的插件式架构的代码风格检查工具。可配置不足为奇，但插件式的架构却能带来很多方便。

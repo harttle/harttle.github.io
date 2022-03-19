@@ -1,6 +1,6 @@
 ---
 title: Vim 多文件编辑：标签页
-tags: Vim-Practice Bash Linux Vim 快捷键
+tags: Vim Bash Linux 快捷键
 ---
 
 多文件编辑的场景太常见了：代码比对、项目重构、模块构建... 

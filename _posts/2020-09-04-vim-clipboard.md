@@ -1,6 +1,6 @@
 ---
 title: Vim 使用系统剪切板
-tags: Vim 剪切板 寄存器 Vim-Practice
+tags: Vim 剪切板 寄存器
 ---
 
 Vim 是运行在 Terminal 里的 Shell 程序，所以要把内容拷贝出来可以通过 Terminal，也可以通过 Vim 自己。不配置 Vim 剪切板时只能通过 Shell 来拷贝粘贴：

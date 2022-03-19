@@ -1,6 +1,6 @@
 ---
 title: Vim 多文件编辑：缓冲区
-tags: Vim-Practice Bash Linux Vim 内存
+tags: Bash Linux Vim 内存
 ---
 
 感谢[idear][idear]网友的支持，现在把"Vim多文件编辑"的最后一篇文章更新上来了！本文介绍Vim下**缓冲区(Buffer)**的使用，

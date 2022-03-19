@@ -1,6 +1,6 @@
 ---
 title: 在 Vim 中全文检索
-tags: Vim-Practice Vim Vundle grep 快捷键
+tags: Vim Vundle grep 快捷键
 redirect_from: /2015/12/21/vim-search.html
 ---
 
@@ -83,4 +83,3 @@ map <c-u> :Ack<space>
 [quickfix]: http://vimdoc.sourceforge.net/htmldoc/quickfix.html#quickfix
 [vundle]: github.com/gmarik/vundle
 [vim-ide]: /2015/11/04/vim-ide.html
-

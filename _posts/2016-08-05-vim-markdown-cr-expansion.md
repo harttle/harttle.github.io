@@ -1,6 +1,6 @@
 ---
 title: Vim 中为 Markdown 配置回车展开
-tags: Vim-Practice Markdown Vim Jekyll
+tags: Markdown Vim Jekyll
 ---
 
 靠Vim写Jekyll博客已经很久了，编写代码块（Code Fence）时键入前后的```` ``` ````，
@@ -100,7 +100,7 @@ endfunction
 
     ---
     title: xxx
-    tags: Vim-Practice xxx
+    tags: tag1 tag2
     ---
 
 我希望输入`---`后回车便自动补全以上内容，可以继续修改上述`Expander`函数：

@@ -1,6 +1,6 @@
 ---
 title: 那些鲜为人知的 Vim 小技巧
-tags: Vim-Practice Bash GNU HTML Markdown Vim 寄存器 快捷键
+tags: Vim Bash HTML 存器 快捷键
 ---
 
 这里记录了 Vim 世界中鲜为人知的小技巧。点击更多吧！

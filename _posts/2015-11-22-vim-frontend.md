@@ -1,6 +1,6 @@
 ---
 title: 打造前端开发的 Vim 环境
-tags: Vim-Practice CSS HTML JavaScript Vim YCM Syntastic
+tags: CSS HTML JavaScript Vim YCM Syntastic
 ---
 
 前不久harttle着手搭建了[类似IDE的Vim环境][vim-ide]，然而对于前端开发者这还远远不够。

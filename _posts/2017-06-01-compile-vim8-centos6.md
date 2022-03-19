@@ -1,6 +1,6 @@
 ---
 title: 在 CentOS 6 上编译 Vim 8
-tags: Vim-Practice CentOS Vim 编译
+tags: CentOS Vim 编译
 ---
 
 十年后 Vim 发布了 [8.0 版本][vim-github]，为了尝鲜只能手动编译 Vim 8。本文记录了整个过程以及其中的坑，最终达到这几个目的：

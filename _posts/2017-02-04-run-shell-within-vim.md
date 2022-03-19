@@ -1,6 +1,6 @@
 ---
 title: 在 Vim 中执行 Shell 命令
-tags: Vim-Practice Shell Tmux Vim 进程 快捷键
+tags: Shell Tmux Vim 进程 快捷键
 ---
 
 刚开始使用终端和 Vim 工作时，桌面上总是铺满了执行各种任务的终端窗口，任务切换极其困难。

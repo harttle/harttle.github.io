@@ -1,6 +1,6 @@
 ---
 title: 在 Vim 中进行文件目录操作
-tags: Vim-Practice Vim 剪切板 寄存器 快捷键
+tags: Vim 剪切板 寄存器 快捷键
 ---
 
 很多时候我们希望在Vim中可以操作文件和目录，例如备份当前文件、

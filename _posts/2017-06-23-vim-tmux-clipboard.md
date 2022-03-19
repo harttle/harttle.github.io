@@ -1,6 +1,6 @@
 ---
 title: Vim、Tmux、系统共用剪切板
-tags: Vim-Practice SSH Tmux Vim 剪切板 寄存器
+tags: SSH Tmux Vim 剪切板 寄存器
 ---
 
 在 [Tmux 终端复用](/2015/11/06/tmux-startup.html) 中介绍过 Tmux 的使用，

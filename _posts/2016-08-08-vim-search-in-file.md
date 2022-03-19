@@ -1,6 +1,6 @@
 ---
 title: 在 Vim 中优雅地查找和替换
-tags: Vim-Practice Vim 字符串 快捷键 正则表达式
+tags: Vim 字符串 快捷键 正则表达式
 ---
 
 总有人问我 Vim 中能不能查找，当然能！而且是超级强的查找！
