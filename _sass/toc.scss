@@ -10,6 +10,7 @@ aside.toc{
   }
   .toc-slot{
     margin-bottom: 32px;
+    border: var(--light-separator-color) 0.5px solid
   }
   ul{
     margin-top: 0;
@@ -24,8 +25,12 @@ aside.toc{
       display: block;
     }
     > li > a {
-      display: block;
-      padding: 8px $padding-horizontal;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      border: 1px solid transparent;
+      padding: 0 $padding-horizontal;
       color: var(--primary-color);
       text-decoration: none;
       &:hover {
