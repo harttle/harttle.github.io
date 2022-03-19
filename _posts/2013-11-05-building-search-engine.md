@@ -1,8 +1,7 @@
 ---
-layout: blog
-redirect_from: /2013/11/05/se-project.html
 title: 搜索引擎搭建：Heritrix + Lucene
 tags: 搜索引擎 倒排索引 PageRank Web
+redirect_from: /2013/11/05/se-project.html
 ---
 
 采用 Heritix + Lucene 搭建搜索引擎原型，支持网站排名（PageRank）和倒排索引（Inverted Index），并评估其性能。
