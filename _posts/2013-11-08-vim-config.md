@@ -1,6 +1,6 @@
 ---
-title: Vim初级：配置和使用
-tags: Vim Bash Unix Vim sed 编译
+title: Vim 初级：配置和使用
+tags: Vim Bash Unix sed 编译
 ---
 
 Vim是从vi发展出来的一个文本编辑器。代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。和Emacs并列成为类Unix系统用户最喜欢的编辑器。
