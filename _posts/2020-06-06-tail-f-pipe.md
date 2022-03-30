@@ -47,18 +47,18 @@ tail -f log.txt | grep Error | grep ENOENT
 
 ## 缓冲区满
 
-既然 `tail -f` 日志看不到输出是因为缓冲区没有 flush，那么缓冲区 flush 有两种情况：
+既然 `tail -f` 日志看不到输出是因为缓冲区没有 flush，那么缓冲区什么时候会被 flush 呢？有两种情况：
 
-1. 写完了。比如 `cat log.txt | grep Error` 的场景 grep 会在写完后 flush 并退出。
-2. 缓冲区满。既然叫做 Buffer 一定是有大小的。
+1. 写入已经结束（类似 JavaScript 中的 `Stream.prototype.end()` 调用）。但是 `tail -f` 的输出流永远不会结束，因为 `-f` 会永远 follow 文件 append。作为对比，cat 命令的输出流会在读到文件尾时结束。比如执行 `cat log.txt | grep Error` 会立即 flush 并退出。
+2. 缓冲区满。既然叫做 Buffer 一定是有大小的，tail 写入足够多的内容后，grep 的缓冲区就会满，这时也会发生 flush。
 
-那么缓冲区是多大呢？既然 `tail -f` 不足以很快让缓冲区满，我们用下面的办法：
+那么 grep 的缓冲区是多大呢？既然 tail 的输出不足以填满缓冲区，我们用输出足够多的 yes 命令：
 
 ```bash
 yes Error ENOENT | grep Error | grep ENOENT
 ```
 
-yes 命令用来不断地循环输出它的参数，因此缓冲很快会满。因此上面的命令我们可以看到大量的输出。
+yes 命令用来不断地循环（死循环，直到被 `Ctrl-C`）输出它的参数，因此缓冲很快会满。果然上面的命令我们可以看到大量的输出。
 
 ## 避免缓冲
 

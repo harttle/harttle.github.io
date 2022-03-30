@@ -42,10 +42,21 @@ defaults:
       layout: "blog"
 
 series:
-  'Effective-C++': '/effective-cpp.html'
-  'Vim': '/vim-practice.html'
-  'Git-Workflow': '/git-workflow.html'
-  '跨域': '/cross-origin.html'
+  'Effective-C++':
+    path: /effective-cpp.html
+    title: 细读 Effective C++
+  'Vim':
+    path: /vim-practice.html
+    title: 完全用 Vim 工作
+  'Git-Workflow':
+    path: /git-workflow.html
+    title: Git 实践指南
+  '跨域':
+    path: /cross-origin.html
+    title: 浏览器跨域/CORS
+  '浏览器渲染':
+    path: /browser-rendering.html
+    title: 理解浏览器渲染
 
 plugins:
   - jekyll-sitemap

@@ -3,10 +3,6 @@ title: 『开发者体验』骗局（译）
 tags: Web 性能
 ---
 
-> 这是 Harttle 在去年发布在 [百度 Web 开发者中心][openweb] 的译文。为便于传播也转载在这里。
-> 原文：<https://infrequently.org/2018/09/the-developer-experience-bait-and-switch/>。
-> 作者：Alex Russell。翻译：Harttle
-
 摘要：如果我们继续使用这么多的 JavaScript，Web 就不会走向繁荣。现在多数开发者仍然在不加限制地使用 JS。即使有很多无 JS 和 TTI 友好的工具，但是我们陷入 JS 的泥潭无法自拔。鉴于 JS 的不对称成本，我们需要重新讨论“开发者体验”。
 
 <!--more-->
@@ -71,5 +67,9 @@ Just wanted to send my 💌 and 🙏 to the lovely souls at @gdsteam. -- Alex Ru
 但是我们目前无需讨论这个问题，直到我们认识到、推动并解决“开发者体验”骗局。
 
 诚挚地感谢 Ade Oshineye，Ojan Vafai，Frances Berriman，Dion Almaer，Addy Osmani，Gray Norton，Philip Walton，感谢他们对这篇文章草稿的反馈。
+
+> 译注：如上致谢来自原文，本文译文最初发布在 [百度 Web 开发者中心][openweb]（链接已失效），因此这篇翻译也维护在这里。
+> 原文：<https://infrequently.org/2018/09/the-developer-experience-bait-and-switch/>
+> 作者：Alex Russell
 
 [openweb]: https://openweb.baidu.com/the-developer-experience-bait-and-switch/

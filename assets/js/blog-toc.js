@@ -47,7 +47,7 @@
 
             var li = document.createElement('li');
             li.innerHTML =
-                '<a class="ellipsis" href="#' + id + '">' + header.textContent + '</a>' +
+                '<a class="ellipsis" href="#' + id + '" title="' + header.textContent.replace(/"/g, '\\"') + '">' + header.textContent + '</a>' +
                 '<ul class="list-unstyled level-' + (offset + 1) + '"/>';
 
             var container = document.createElement('div');

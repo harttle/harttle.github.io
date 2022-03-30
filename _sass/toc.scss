@@ -1,7 +1,5 @@
-$padding-horizontal: 16px;
-
 aside.toc{
-  width: $toc-width;
+  width: var(--toc-width);
   margin-top: -38px;
   .toc-wrapper {
     position: sticky;
@@ -13,10 +11,8 @@ aside.toc{
     border: var(--light-separator-color) 0.5px solid
   }
   ul{
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0;
     background: var(--bg-color);
-    padding-left: 0;
     > .active > a{
       text-decoration: none;
       border: 1px solid $green;
@@ -30,7 +26,7 @@ aside.toc{
       align-items: center;
       box-sizing: border-box;
       border: 1px solid transparent;
-      padding: 0 $padding-horizontal;
+      padding: 0 16px;
       color: var(--primary-color);
       text-decoration: none;
       &:hover {
@@ -40,23 +36,23 @@ aside.toc{
     ul{
       display: none;
       > li > a {
-        padding-left: 10px + $padding-horizontal;
+        margin-left: 8px;
         font-size: 90%;
       }
       ul{
         > li > a {
-          padding-left: 20px + $padding-horizontal;
+          margin-left: 16px;
         }
         ul{
           > li > a {
-            padding-left: 30px + $padding-horizontal;
+            margin-left: 24px;
           }
           ul{
             > li > a {
-              padding-left: 40px + $padding-horizontal;
+              margin-left: 32px;
             }
             ul{
-              padding-left: 50px + $padding-horizontal;
+              margin-left: 40px;
             }
           } 
         } 

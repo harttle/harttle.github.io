@@ -7,8 +7,7 @@ AUR（ArchLinux User Repository）是 ArchLinux 的社区驱动的软件仓库�
 属于不受支持的软件仓库（unsupported）。
 但它却是 Arch 社区最有活力的仓库，很多官方仓库（Official Repositories）中的包都来自于 AUR。
 AUR 之于 ArchLinux 官方仓库，类似于 Boost 社区之于 STL，类似于 PPA 之于 Ubuntu 官方仓库。
-Harttle [在 MacBookPro 上安装 ArchLinux](/2019/04/26/macbook-archlinux-install.html)
-时就用到了非常多的 AUR 包。
+比如 [在 MacBookPro 上安装 ArchLinux](/2019/04/26/macbook-archlinux-install.html) 时就用到了非常多的 AUR 包。
 
 由于 AUR 中的包不受支持，ArchLinux 的官方包管理工具 pacman 不支持从 AUR 安装。
 这就需要额外的工具，几年前 yaourt 独大，在很多 ArchLinux 安装教程中都会介绍如何安装 yaourt。

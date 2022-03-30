@@ -7,7 +7,6 @@
     position: relative;
     z-index: 1000;
     overflow: hidden;
-    background: var(--darken-bg-color);
     .logo {
       display: inline-block;
       svg {
@@ -17,7 +16,7 @@
           fill: $green;
         }
         .rest {
-          fill: var(--darken-primary-color);
+          fill: currentColor;
           font: normal 350px sans-serif;
         }
       }
@@ -29,7 +28,6 @@
     nav a {
       margin-left: 1rem;
       font-size: 16px;
-      color: var(--darken-primary-color);
       @include media-xs {
         margin-left: 0.5rem;
       }
@@ -40,7 +38,5 @@
     height: 64px;
     line-height: 64px;
     text-align: center;
-    background-color: var(--darken-bg-color);
-    color: #b6c0ce;
   }
 }

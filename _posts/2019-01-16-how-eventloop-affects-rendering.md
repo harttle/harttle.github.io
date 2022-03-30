@@ -63,8 +63,7 @@ setTimeout
 UI 渲染和交互的处理是通过 Task Queue 来调度的，因此耗时任务会导致渲染和交互任务得不到调用，也就是页面“卡死”。
 典型的浏览器会在每秒插入 60 个渲染帧，也就是说每 16ms 需要一次渲染。
 如果存在一个任务在 16ms 内未能执行结束，页面就会掉帧给人卡顿的感觉。
-渲染帧的详细讨论可以参考 [浏览器的 16ms 渲染帧](/2017/08/15/browser-render-frame.html) 一文，
-这里 Harttle 给一个例子：
+渲染帧的详细讨论可以参考 [浏览器的 16ms 渲染帧](/2017/08/15/browser-render-frame.html) 一文，也可以参考下面的例子：
 
 <http://harttle.github.io/async-and-render>
 

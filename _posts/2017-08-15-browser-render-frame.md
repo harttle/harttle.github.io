@@ -1,6 +1,6 @@
 ---
 title: 浏览器的 16ms 渲染帧
-tags: DOM JavaScript 异步 性能 重绘
+tags: DOM JavaScript 异步 性能 重绘 浏览器渲染
 ---
 
 由于现在广泛使用的屏幕都有固定的刷新率（比如最新的一般在 60Hz），

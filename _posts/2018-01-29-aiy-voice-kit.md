@@ -4,7 +4,7 @@ tags: Raspberry GPIO UART
 ---
 
 [AIY Voice Kit][voice] 是 Google 自然语言识别的一个 Demo 项目，是一个由小纸盒包装的智能设备。
-上个月朋友从美帝寄来一套，Harttle 却刚有时间把它组装起来，写这篇文章分享给喜欢折腾的同学。
+上个月朋友从美帝寄来一套，才刚有时间把它组装起来，写这篇文章分享给喜欢折腾的同学。
 
 Voice Kit 自带了麦克风和扬声器，借助 Google Assistant 可以实现类似 Siri 的人机对话，比如问问天气啊交通啊。
 此外，由于整个系统基于 Raspberry Pi，而且配备了很棒的扩展板，比原生的 Pi 能做更多的事情。
@@ -56,7 +56,7 @@ GPIO | 用途
 
 ![assembled](/assets/img/blog/iot/assembled@2x.jpg)
 
-HDMI、USB、电源口都可以从纸盒的空缺处连接，左侧是电源线和 HDMI，右侧是 Harttle 的 Low 逼键盘和罗技无线鼠标。
+HDMI、USB、电源口都可以从纸盒的空缺处连接，左侧是电源线和 HDMI，右侧是我的 Low 逼键盘和罗技无线鼠标。
 
 ## 系统测试
 
@@ -66,7 +66,7 @@ HDMI、USB、电源口都可以从纸盒的空缺处连接，左侧是电源线�
 
 ![desktop](/assets/img/blog/iot/workspace@2x.jpg)
 
-点击右上角的 Wifi 即可连接到网络，然后依次双击 Audio Check、Wifi Check 等快捷方式。
+点击右上角的 Wifi 即可连接到网络，然后依次双击 Audio Check、WiFi Check 等快捷方式。
 按照提示进行，网络和线路的检查。如果连接有问题就需要拆箱检查所有连接，尤其是插口是否正确。
 
 ## 软件准备工作
@@ -80,7 +80,7 @@ HDMI、USB、电源口都可以从纸盒的空缺处连接，左侧是电源线�
 
 ## 尝试执行 Demo
 
-[Harttle](/) 觉得是时候打开命令行了，桌面上有一个 `dev_terminal`，双击它！
+是时候打开命令行了，桌面上有一个 `dev_terminal`，双击它！
 如果是 SSH 登录的用户，可以 `source /home/pi/AIY-voice-kit-python/env/bin/activate` 来初始化开发环境。
 
 1. 使用语音识别需要 GCP 账号（见上一步），将你账号对应的 Credentials 下载到 `~/assistant.json`。

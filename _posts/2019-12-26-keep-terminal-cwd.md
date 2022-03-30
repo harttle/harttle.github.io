@@ -6,7 +6,7 @@ tags: Terminal Shell i3wm
 我们有很多工作区时，每次打开一个 Terminal 都需要先 cd 到和上一个 Terminal 一样的位置再开始工作。
 这个过程既然是固定的，那就一定能自动化。
 
-Harttle 遇到的具体场景是，[i3wm][i3wm] 有 workspace（工作区）的概念，每个工作区可以打开任意多个 Terminal。
+我遇到的具体场景是，[i3wm][i3wm] 有 workspace（工作区）的概念，每个工作区可以打开任意多个 Terminal。
 我希望同一个工作区的 Terminal 打开时都有一样的 CWD（Current Working Directory），
 不同的工作区有不同的 CWD。即：**打开 Terminal 时，自动 cd 到当前工作区其他 Terminal 所在的位置**。
 

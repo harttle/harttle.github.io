@@ -3,9 +3,9 @@ title: Vim 中为 Markdown 配置回车展开
 tags: Markdown Vim Jekyll
 ---
 
-靠Vim写Jekyll博客已经很久了，编写代码块（Code Fence）时键入前后的```` ``` ````，
+靠 Vim 写 Jekyll 博客已经很久了，编写代码块（Code Fence）时键入前后的```` ``` ````，
 以及手动编写文章头信息（Front Matter）一直是个麻烦的事情。
-Harttle今天就通过Vim键盘映射来对这两种语法提供回车展开支持。最终效果如下：
+今天就通过Vim键盘映射来对这两种语法提供回车展开支持。最终效果如下：
 
 <!--more-->
 

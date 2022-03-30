@@ -13,7 +13,7 @@
       }
     }
     .author {
-      margin: 0 0 0 $toc-width;
+      margin: 0 0 0 var(--toc-width);
       font-size: 1rem;
       display: flex;
       align-items: center;
@@ -68,7 +68,7 @@
       }
     }
     .toc-wrapper {
-      flex: 0 0 $toc-width;
+      flex: 0 0 var(--toc-width);
       margin-right: 40px;
     }
   }

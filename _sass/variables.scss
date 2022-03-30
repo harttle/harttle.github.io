@@ -1,5 +1,4 @@
 $green: #5ABA59;
-$toc-width: 240px;
 
 :root {
   --bg-color: #fff;
@@ -8,12 +7,22 @@ $toc-width: 240px;
   --separator-color: #b6c0ce;
   --light-separator-color: #0000001a;
   --link-color: #4D85D1;
+  --toc-width: 360px;
 
   --darken-bg-color: #333;
   --darken-primary-color: #fff;
+  --darken-secondary-color: #b6c0ce;
 
   --hl-bg-color: #f8f8f8;
   --code-color: #BA5A5D;
+
+  @include media-lg {
+    --toc-width: 300px;
+  }
+
+  @include media-sm {
+    --toc-width: 240px;
+  }
 
   @media(prefers-color-scheme: dark) {
     --bg-color: #333;
@@ -25,6 +34,7 @@ $toc-width: 240px;
 
     --darken-bg-color: #222;
     --darken-primary-color: #fff;
+    --darken-secondary-color: #b6c0ce;
 
     --hl-bg-color: #222;
     --code-color: #ff797d;

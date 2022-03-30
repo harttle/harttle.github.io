@@ -18,8 +18,8 @@ Linux 使用交换分区来休眠，首先冻结所有进程并申请足够的�
 
 ## 交换文件
 
-在[安装系统][archinstall]前需要创建交换分区，现在的机器普遍内存较大不太需要交换分区来扩展内存空间，
-而且磁盘一般使用读写快速但读写次数有限 SSD，因此 Harttle 的交换分区也很小根本不够用来休眠。
+在 [安装系统][archinstall] 前需要创建交换分区，现在的机器普遍内存较大不太需要交换分区来扩展内存空间，
+而且磁盘一般使用读写快速但读写次数有限 SSD，因此我的交换分区也很小根本不够用来休眠。
 
 > 你可以通过 swapiniss 来让你的交换分区只用于休眠。
 
@@ -33,7 +33,7 @@ cat /sys/power/image_size
 可以参考 [官方教程][https://wiki.archlinux.org/index.php/Swap#Swap_file] 来创建：
 
 ```bash
-# 按照你需要的大小创建，bs * count 是最终文件大小
+按照你需要的大小创建，bs * count 是最终文件大小
 dd if=/dev/zero of=/swapfile bs=1M count=4096 status=progress
 chmod 600 /swapfile
 # 检查大小和权限
@@ -59,7 +59,7 @@ Filename    Type    Size     Used    Priority
 
 我们需要设置 resume 和 resume_offset 两个内核参数，告诉内核在挂起时把内存写入到哪里。
 
-* 第一个参数是交换文件所在的磁盘分区，可以用任何 fstab 中接受的名字格式。比如 resume=/dev/sda1，或者 resume=UUID=xxx。如果你在上一步中创建的交换文件和 / 在同一分区下，可以复制已有的 root 内核参数的值。
+* 第一个参数是交换文件所在的磁盘分区，可以用任何 fstab 中接受的名字格式。比如 resume =/dev/sda1，或者 resume = UUID = xxx。如果你在上一步中创建的交换文件和 / 在同一分区下，可以复制已有的 root 内核参数的值。
 * 第二个参数是交换文件的偏移量，就是它在分区中的什么位置。因此这个参数给交换文件用的，如果是交换分区则不需要填写。可以通过 `filefrag -v /swapfile | awk '{ if($1=="0:"){print $4} }'` 命令得到。
 
 可以通过 `cat /proc/cmdline` 来查看当前的内核参数，但是在哪里设置取决于你的 Boot Loader。
@@ -97,7 +97,7 @@ HOOKS=(base udev resume autodetect modconf block filesystems keyboard fsck)
 然后重新编译 initramfs（就像更新内核时一样）：
 
 ```bash
-# 默认使用当前系统的内核，如果你现在位于启动盘的系统则需要指定宿主环境上的内核版本。
+默认使用当前系统的内核，如果你现在位于启动盘的系统则需要指定宿主环境上的内核版本。
 mkinitcpio -p linux
 ```
 
@@ -154,7 +154,7 @@ WantedBy=multi-user.target
 
 **acpid**：[acpid][acpid] 是一个比较基础的电源管理工具，工作方式是响应 [ACPI][ACPI] 事件，做相应的处理比如关机还是休眠。注意 acpid 只是电源管理工具，ACPI 是设备配置接口跟它没关系。
 
-**dpms**：[dpms][dpms] 是 xorg 提供的显示器电源管理服务，用来控制显示器关闭等动作。有 standby, suspend, off 等阶段，跟 systemd 事件一样需要有人来订阅（比如xss-lock）才能执行具体操作。可以通过 xorg.conf 的 `StandbyTime`, `SuspendTime`, `OffTime` 等来配置，也可以在运行时用 `xset s` 来配置。
+**dpms**：[dpms][dpms] 是 xorg 提供的显示器电源管理服务，用来控制显示器关闭等动作。有 standby, suspend, off 等阶段，跟 systemd 事件一样需要有人来订阅（比如 xss-lock）才能执行具体操作。可以通过 xorg.conf 的 `StandbyTime`, `SuspendTime`, `OffTime` 等来配置，也可以在运行时用 `xset s` 来配置。
 
 **tlp**：[tlp][tlp] 是一个比较无脑的电源管理工具，提供类似电池模式、电源模式、性能优先这样级别的配置。
 

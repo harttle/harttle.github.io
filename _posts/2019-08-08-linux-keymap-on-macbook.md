@@ -6,7 +6,7 @@ tags: ArchLinux hwdb scancode keycode Xmodmap MacBook
 笔者在几个月前 [切换到 Linux][macbook-arch] 下干活，使用 Xmodmap 交换掉 CapsLock 和 Ctrl。
 但 Xmodmap 只能改键无法区分是哪个键盘硬件设备（偏偏 HHKB 的 Caps 本来就在左边），而且只在 X11 下好使（Virtual Console 下不起作用）。
 于是近日研究了下 scancode 到 keycode 映射，通过 udev 匹配和配置特定的输入设备。
-Harttle 的环境是 Macbook 下的 ArchLinux，下面的命令以此为例，但其他环境也应该类似。
+我的环境是 MacBook 下的 ArchLinux，下面的命令以此为例，但其他环境也应该类似。
 
 > 注意：本文只讨论如何重新定义个别键的 keysym 的问题。更改键盘布局请参考 [kbdmap](https://wiki.archlinux.org/index.php/Xorg/Keyboard_configuration)，更改快捷键请使用 xbindkeys 或 i3 bindsym 或你的桌面系统配置。
 

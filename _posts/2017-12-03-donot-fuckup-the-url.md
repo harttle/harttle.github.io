@@ -29,7 +29,7 @@ MVC 架构的动态站点中路径直接对应于控制器而不是静态文件�
 /from=harttle/to=alice/message
 ```
 
-这个 URL 表示冲 Harttle 发往 Alice 的一条消息，消息内容可能在 HTTP body 中。
+这个 URL 表示从 Harttle 发往 Alice 的一条消息，消息内容可能在 HTTP body 中。
 这确实是一个 [合法的 URL][url]，但它承载了动态的数据内容。这意味着：
 
 * 流量转发和负载均衡配置会更复杂（比如 [正则][reg] 而不是前缀），同时业务统计相关实现也会更困难。
@@ -61,7 +61,7 @@ Cookie: word=harttle
 那么要打开或者指向一个登录页面一定会很头疼，设计成 `/account/login` 则会轻松很多。
 命名上的建议非常简单：使用可读的名词。
 
-* 可读。要别人能看懂，不然要 URL 干嘛。Harttle 甚至觉得拼音也 OK。
+* 可读。要别人能看懂，不然要 URL 干嘛。我甚至觉得拼音也 OK。
 * 名词。`/user-list` 比 `/show-users` 要好。设想你 POST 到 `/show-users` 语义如何解释呢？
 
 ## REST 架构风格
@@ -100,7 +100,7 @@ PUT 操作应该幂等，等等。
 
 ## 优秀的设计
 
-在说了这么多抽象的东西之后，在这里列举一些 Harttle 喜欢的 URL 设计，以供参考。
+在说了这么多抽象的东西之后，在这里列举一些我喜欢的 URL 设计，以供参考。
 
 ### 资源层级
 
@@ -165,7 +165,7 @@ HTTP `<button>` 的语法和语义请参考 [表单提交：button input submit 
 如果感兴趣表单的编码方式，请移步 [HTTP 表单编码 enctype](/2016/04/11/http-form-encoding.html)。
 
 由于历史原因 HTML 的 `<form>` 只支持 GET 和 POST，`XMLHttpRequest` 也不支持所有的 HTTP 方法。
-Harttle 通常会引入一个 [method overide][method-override] 来 Workaround，
+通常会引入一个 [method overide][method-override] 来 Workaround，
 虽然引入了 Trick 但至少保持了设计上的简单。
 
 [rt]: https://www.ics.uci.edu/~fielding/pubs/dissertation/fielding_dissertation_2up.pdf

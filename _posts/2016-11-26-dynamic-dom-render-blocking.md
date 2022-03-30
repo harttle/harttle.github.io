@@ -1,6 +1,6 @@
 ---
 title: 异步渲染的下载和阻塞行为
-tags: CSS Chrome DOM DOM解析 异步 Firefox
+tags: CSS DOM DOM解析 异步 浏览器渲染
 ---
 
 在[CSS/JS对DOM渲染的影响](/2016/11/26/static-dom-render-blocking.html)一文

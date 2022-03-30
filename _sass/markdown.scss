@@ -48,7 +48,7 @@
 }
 
 .md h6 {
-  color: #666;
+  color: var(--secondary-color);
   font-size: 16px;
   line-height: 26px;
   padding: 18px 0 0;
@@ -74,7 +74,7 @@
   margin: 10px 0;
   border-left: 4px solid #DDD;
   padding: 0 0 0 11px;
-  color: #555;
+  color: var(--secondary-color);
   font-size: 14px;
   p {
     margin-top: 5px;

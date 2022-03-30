@@ -5,7 +5,7 @@ tags: HTTPS TCP TLS ALPN SNI
 ---
 
 如今 [HTTPS][https] 已经普遍应用了，在带来安全性的同时也确实给 Web 引入了更多复杂的概念。
-这其中就包括一系列从没见过的网络协议。现在 [Harttle](/) 从一个发往 github.com 的请求谈起，
+这其中就包括一系列从没见过的网络协议。现在从一个发往 github.com 的请求开始，
 逐字节分析 HTTPS 的协议内容和相关概念，从 TCP 握手到 TLS 协议，
 并稍微介绍一些这个请求涉及的 TLS 扩展协议：SNI 和 ALPN。
 

@@ -1,6 +1,6 @@
 ---
-title: TypeScript 中编写自定义 Error
-tags: TypeScript Error 原型链
+title: 如何在 TypeScript 中继承 Error
+tags: TypeScript Error 继承
 ---
 
 在 JavaScript 中很多时候都需要自定义错误，尤其是开发 Node.js  应用的时候。
@@ -14,12 +14,11 @@ tags: TypeScript Error 原型链
 
 ## 我们需要怎样的 CustomError
 
-为了容易讨论最佳实践，首先明确我们自定义的 CustomError 需要做到哪些功能。
-下面是 Harttle 的观点：
+在讨论如何实现之前，先来定义这个 CustomError 需要提供哪些功能：
 
-1. 可以调用 `new CustomError()` 来创建，并且 `instanceof Error` 操作应该返回 `true`。可以用来创建是基本要求，能够被视为 `Error` 的实例能够兼容既有系统（比如 `toString()` 要返回调用栈），同时符合惯例。
-2. `.stack` 属性首行应为 `CustomeError: <message>`。如果是 `Error: <message>` 可能就没那么漂亮。
-3. `.stack` 属性应当包含调用栈并指向 `new CustomError()` 的那一行。这一点可能是关键，如果指向 `CustomError` 构造函数中的某一行，就会给这个类的使用方造成困惑。
+1. 可以通过 `new CustomError()` 来完成创建，并且 `instanceof Error` 操作应该返回 `true`。可以用来创建是基本要求，能够被视为 `Error` 的实例能够兼容既有系统（比如 `toString()` 要返回调用栈），同时符合惯例。
+2. `.stack` 属性首行应为 `CustomError: <message>`。如果是 `Error: <message>` 可能就没那么漂亮。
+3. `.stack` 属性应当包含调用栈并指向 `new CustomError()` 的那一行。这一点是关键，如果指向 `CustomError` 构造函数中的某一行，就会给这个类的使用方造成困惑。
 
 下面举个例子，这是一个 `message` 为 `"intended"` 的 `CustomError` 的 `.stack` 属性值：
 

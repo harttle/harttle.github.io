@@ -55,7 +55,7 @@ cpplint 装好之后就立即可用了，下图中我执行了 `cpplint /tmp/hel
 
 > 上图中的 `[5]` 表示错误级别是 5，可以通过这个级别进行错误过滤，见下文。
 
-[Harttle](/) 有个需求，我就是要写 `using namespace std;`，还有不要 Copyright 声明。
+但有时会出现特殊情况，就是要写 `using namespace std;`，还有不要 Copyright 声明。
 可以在项目根目录中加入 `CPPLINT.cfg` 文件，其内容如下：
 
 ```
@@ -89,12 +89,12 @@ let syntastic_aggregate_errors = 1
 
 ## 最终效果
 
-至此，Harttle 的 Vim 中已经可以同时显示语法错误和代码风格错误了。
+至此，Vim 中已经可以同时显示语法错误和代码风格错误了。
 语法错误显示为 "✗"，代码风格错误显示为 "!"：
 
 ![vim-cpplint](/assets/img/blog/vim/cpplint-vim@2x.png)
 
-有没有 Harttle 的 Vim 左侧的错误标识和你的不一样？这些字符可以设置的，
+有没有发现 Vim 左侧的错误标识和你的不一样？这些标识字符可以设置的，
 下面的设置分别是语法错误标识、语法警告标识、风格错误标识、风格警告标识：
 
 ```vim

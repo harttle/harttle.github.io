@@ -129,18 +129,18 @@ tags: HTML 响应式 媒体查询 图片
 **编写替代文本的原则是：如果你没法在这里引入图片时会怎么写？**这是一个不合格的例子：
 
 ```html
-这是一张 Harttle 的照片，
-<img src="https://harttle.land/assets/img/avatar.jpg" alt="harttle 的照片">
-他是一个不太专业的 H5 制作工程师，还好会写博客。
+这是一张照片，
+<img src="https://harttle.land/assets/img/avatar.jpg" alt="照片">
+他是一个前端搬砖工，还好会写博客。
 ```
 
-因为屏幕阅读器会把它读作：“这是一张 Harttle 的照片，harttle 的照片，
+因为屏幕阅读器会把它读作：“这是一张照片，harttle 的照片，
 他是一个不太专业的 H5 制作工程师，还好会写博客。”一个合格的例子是这样：
 
 ```html
-这是一张 Harttle 的照片，
-<img src="https://harttle.land/assets/img/avatar.jpg" alt="他有着大胡子，不戴眼镜。">
-他是一个不太专业的 H5 制作工程师，还好会写博客。
+这是一张照片，
+<img src="https://harttle.land/assets/img/avatar.jpg" alt="像红衣主教一样的一个人，正在吹笛子">
+他是一个前端搬砖工，还好会写博客。
 ```
 
 ## 不适用标签的情况

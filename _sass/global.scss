@@ -39,6 +39,14 @@ a:hover, a:active, a:focus {
   text-decoration: underline;
 }
 
+.darken {
+  color: var(--darken-secondary-color);
+  background: var(--darken-bg-color);
+  a {
+    @include link-hover(var(--darken-primary-color), var(--link-color));
+    text-decoration: none;
+  }
+}
 .btn-hover {
   @include link-hover(var(--link-color), white);
   padding: 0.3em 1em;

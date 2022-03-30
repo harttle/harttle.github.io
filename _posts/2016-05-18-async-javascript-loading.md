@@ -1,6 +1,6 @@
 ---
 title: Web 性能优化：异步加载脚本
-tags: DOM async defer JavaScript 异步 性能
+tags: async defer JavaScript 异步 性能 浏览器渲染
 redirect_from: /2016/03/14/non-blocking-javascript-loading.html
 ---
 

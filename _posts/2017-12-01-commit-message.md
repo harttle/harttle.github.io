@@ -6,7 +6,7 @@ tags: Git-Workflow Git 重构
 在 [基于 Git/npm 的开发流程实践](/2017/11/30/npm-git-workflow.html) 中提到，
 Git 所做的不仅仅是同步文件，它更是一种编写和组织代码的方式。
 我们知道 Commit Message 是每次 [提交代码][commit] 时的附加信息，
-为什么 Harttle 觉得 Commit Message 是一个问题呢？
+为什么 Commit Message 是一个问题呢？
 
 设想这样一个场景：你发现一个最近上的功能有 Bug，
 现在要马上回滚到上那个功能之前。但当你打开 [git log][log] 时看到了这样一幅场景：

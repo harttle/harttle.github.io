@@ -4,7 +4,7 @@ layout: default
 
 <div class="page-collection">
   <div class="jumbotron container text-center"{%if page.background%} style="background:{{page.background}}"{%endif%}>
-    <h1 class="title">{{page.title}}</h1>
+    <h1 class="title">{{site.tags[page.tag][1].title}}</h1>
     <p>{{page.excerpt}}</p>
   </div>
   <section class="article-list container">
