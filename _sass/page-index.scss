@@ -82,6 +82,9 @@ $timeline-left-width: 95px;
       margin-top: 48px;
       li {
         line-height: 32px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
         a {
           @include link-hover(var(--secondary-color), var(--link-color));
         }
