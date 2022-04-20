@@ -24,7 +24,6 @@ kramdown:
   input: GFM
   hard_wrap: false
   smart_quotes: ["apos", "apos", "quot", "quot"]
-ga: 'UA-65795020-1'
 
 sass:
     style: compressed
