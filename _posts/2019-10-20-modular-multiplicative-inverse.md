@@ -150,13 +150,17 @@ $$
 
 [扩展欧几里得算法][Extended_Euclidean_algorithm] 是在运行欧几里得算法的同时记录下系数 $x, y$。
 这一系数就是[贝祖数][bi]（Bézout's identity）。
-在模逆元问题中 a 和 n 互质（GCD 为 1 ），那么 a 对应的贝祖数就是 a 的模逆元 x：
+在模逆元问题中 $a = a, b = n$，且 $a$ 与 $n$ 互质（这时才存在逆元），代入后得到：
 
 $$
-xa = 1 mod(n) \iff xa = 1 + yn \iff xa - yn = 1
+xa + yn = gcd(a, n) = 1
 $$
 
-接下来的问题就是扩展欧几里得算法的实现：
+$$
+xa = 1 \mod(n)
+$$
+
+即 a 对应的贝祖数就是 a 的模逆元。接下来的问题就是扩展欧几里得算法的实现：
 
 ```cpp
 int extEuclid (int a, int b, LL& x, LL& y) {
