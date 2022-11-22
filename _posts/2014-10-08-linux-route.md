@@ -1,33 +1,30 @@
 ---
-title: Linux 路由表配置
-tags: ArchLinux DHCP DNS IP MAC TCP 网络 路由 systemd
+title: 用 Linux 做 WiFi 热点
+tags: Linux iptables dnsmasq WiFi 路由
 ---
 
-局域网基本都是通过路由器来接入Internet，其中的路由器提供了众多的功能与服务。不妨用linux做局域网的路由，开启DHCP服务、IP转发、HTTP代理。这样不仅可以高度定制局域网的网络结构，而且可以实时监测局域网流量。
+本文介绍如何在 Linux 下开一个 WiFi 热点，把有线网络共享给其他移动设备。相比于路由器，用 Linux 做路由不仅可以高度定制局域网的拓扑结构，而且可以更网络管理更灵活。
+需要至少两块网卡，其中无线网卡用来开热点，有线网卡作为网络出口。
 
-现在来让linux主机转发局域网流量，并设置代理对http数据进行有趣的修改。
+> 可以通过 `ip addr` 来查看网卡接口，比如我的无线网卡接口叫 `wlp13s0`，有线网卡接口叫 `enp14s0`。
 
-> 以下以我使用的linux发行版`ArchLinux`为例，并忽略了发行版相关的软件安装过程。我的linux有两块网卡，无线网卡`wlp13s0`用于开通子网，有线网卡`enp14s0`作为出口。
+我们需要把无线网卡设置到 AP 模式，并作为子网的网关。在 Linux 上提供 DHCP 服务给子网提供 IP 配置，再把子网的流量转发给有线网卡。
 
 <!--more-->
 
-## DHCP
+## 子网配置
 
-DHCP是为客户端提供网络配置的服务器（[RFC 2131](https://www.ietf.org/rfc/rfc2131.txt)）。我们用它来配置局域网内的主机，让它们从我的linux主机路由。
-
-> 局域网内是允许多个DHCP服务器的，它们会同时响应客户端请求，客户端决定并广播其采纳的配置。所以最好关掉局域网内其他的DHCP服务器，尤其是路由器的DHCP功能。
-
-### 服务器配置
-
-在配置DHCP服务器之前，我们需要为`wlp13s0`添加一个子网IP，该子网的地址提供给DHCP服务器。
+先给无线网卡 `wlp13s0` 设置 IP 为 `192.168.3.1`，掩码为 `255.255.255.0` 作为子网的路由：
 
 ```bash
 ifconfig wlp13s0 up 192.168.3.1 netmask 255.255.255.0 broadcast 192.168.3.255
 ```
 
-> 如果是要分享到有线网卡的话，可以使用`ip link <dev> up`启动，`ip addr add`分配地址；如果你的无线网卡支持`master`模式的话，甚至可以用它来开放热点（通过`iwconfig`设置wifi参数）。
+和 `ip` 命令对应，`ifconfig` 和 `iwconfig` 可以用来操作无线网络。更方便的方式是用 [NetworkManager](https://wiki.archlinux.org/title/NetworkManager)，它有个 `nmcli` 来提供命令行接口，更方便的方式是通过 `nmtui` 来可视化地配置。
 
-确保安装了`dhcp`服务器软件，然后添加配置文件，让DHCP来分配上述的子网IP。
+## DHCP 服务
+
+DHCP（[RFC 2131](https://www.ietf.org/rfc/rfc2131.txt)）服务为子网中的设备提供网络配置，这些配置里指定了 IP、网关、路由、DNS 等参数，让这些设备路由到无线网卡的 IP `192.168.3.1`。 `dpcpd` 服务由`dhcp` 软件包提供，配置在 `/etc/dhcpd.conf`：
 
 ```bash
 ddns-update-style none;
@@ -39,17 +36,11 @@ subnet 192.168.3.0 netmask 255.255.255.0 {
 }
 ```
 
-`domain-name-servers`也可以用本地（ISP）的DNS服务器（`/etc/resolv.conf`）。这里我们可以设置多个子网，之后对不同子网采取不同的转发策略。也可以设置静态IP，来确保某些机器位于某个子网中。
+这里我们可以设置多个子网，之后对不同子网采取不同的转发策略，也可以在这里给某些 MAC 地址绑定静态 IP。MAC 地址可以用 ARP 协议（`arp <IP>`）得到，参数 IP 可以通过 `nmap -sn 192.168.3.0/24` 来扫描。
 
-> 可以通过`nmap -sn 192.168.3.0/24`来扫描当前子网的主机IP；然后通过ARP协议（`arp <IP>`）得到其MAC地址。
-
-### 服务器启动
-
-现在可以调用 `/usr/bin/dhcpd -4 wlp13s0` 来启动 dhcpd 服务了。
-为了使用方便我们为它制作一个`systemd`服务（类似于 Debian 的 `init.d`）。
+配置好后就可以调用 `/usr/bin/dhcpd -4 wlp13s0` 来启动 dhcpd 服务了，有 `systemd` 的系统中，可以用 `systemctl` 来启动。如果你的 dhcp 软件没有提供 systemd 脚本，可以自己制作一个，写到文件 `/etc/systemd/system/dhcpd4@.service` 中：
 
 ```
- file: /etc/systemd/system/dhcpd4@.service
 [Unit]
 Description=IPv4 DHCP server on %I
 Wants=network.target
@@ -79,118 +70,52 @@ $ tcpdump -i wlp13s0 -n port 67
 ... IP 192.168.3.1.67 > 192.168.3.128.68:   BOOTP/DHCP, Reply, length 548
 ```
 
-> 第一行中，不知到自己IP（全0地址）的客户端发送DHCP广播（全1地址），DHCP客户端端口为68，服务器端口为67。
-> 第二行中，服务器（我们的linux主机）回复DHCP报文，客户端得到`192.168.3.128`的IP。此时客户端采用了`dhcpd.conf`中提供的配置。
+> 第一行中，不知到自己 IP（全 0 地址）的客户端发送DHCP广播（全 1 地址），DHCP客户端端口为 68，服务器端口为 67。
+> 第二行中，服务器（我们的 Linux 主机）回复 DHCP 报文，客户端得到 `192.168.3.128` 的 IP。此时客户端采用了 `dhcpd.conf` 中提供的配置。
 
-参见 [dhcpd-archwiki](https://wiki.archlinux.org/index.php/Dhcpd)
+参见 [dhcpd-archwiki](https://wiki.archlinux.org/index.php/Dhcpd)。
 
-## IP转发
+## 开启 IP 报文转发
 
-上述的DHCP服务将客户端的路由设置到了`192.168.3.1`，该IP位于`wlp13s0`上。现在要对到来的IP报文进行NAT地址转换，并转发到`enp14s0`（拥有我们的出口IP）上。
-
-### 允许IP转发
-
-默认情况下，有线网卡只允许`INPUT`和`OUTPUT`流量，现在启用`FORWARD`流量以允许IP转发：
+上述的DHCP服务将客户端的路由设置到了 `192.168.3.1`，该 IP 位于 `wlp13s0` 上。现在要对到来的 IP 报文进行 NAT 地址转换，并转发到出口网卡 `enp14s0` 上。需要先更改内核参数允许 IP 转发（默认情况下允许 INPUT 和 OUTPUT，不允许 FORWARD）：
 
 ```bash
 sysctl net.ipv4.ip_forward=1
-
-# 来看一下，确实变了
-sysctl -a | grep forward
 ```
 
-如果想让它重启后也生效，可以写入`sysctl`的配置文件：
+要持久化，需要在 `/etc/sysctl.d/30-ipforward.conf` 中增加：
 
 ```bash
-# file: /etc/sysctl.d/30-ipforward.conf
 net.ipv4.ip_forward=1
-net.ipv6.conf.default.forwarding=1
-net.ipv6.conf.all.forwarding=1
 ```
 
-### 启动NAT
+## 子网开启 NAT 地址转换
 
-这里我们通过`iptables`启动NAT地址转换，将局域网Socket映射到出口Socket。
-
-> NAT可以让多个主机使用同一出口IP。使用常用的NAT地址转换策略是将内网的IP+端口映射到TCP或UDP包的源端口，Internet返回的包则进行反向转换发给内网IP。
+子网设备需要共享入口无线网卡，需要通过 `iptables` （来自 `iptables` 软件包）启动 NAT 地址转换，将局域网 Socket 映射到出口 Socket。
 
 ```bash
 # 网卡间转发
 iptables -A FORWARD -i wlp13s0 -o enp14s0 -j ACCEPT
-# 采用conntrack模块来允许ICMP
+# 采用 conntrack 模块来允许 ICMP
 iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 # NAT
 iptables -t nat -A POSTROUTING -o enp14s0 -j MASQUERADE
 ```
 
-### 转发到代理
+至此，就已经把有线网络 `enp14s0` 的网络共享给了 `enp14s0` 上的子网，可以拿出手机来连接一下热点试试了。
 
-上述的`iptables`配置已经可以形成完整的局域网路由。而`iptables`的功能远不局限于此，不仅可以做端口转发、子网识别、IP过滤，还有很多的扩展模块可以用，上面提到的`conntrack`就是其中一种。
+## iptables 持久化
 
-该步骤继续配置`iptables`，把子网`192.168.3.0/24`来的IP报文转发到我们的代理或者web服务器。
-
-```bash
-# 转发至web服务器
-iptables -t nat -A PREROUTING -s 192.168.3.0/255.255.255.0 -p tcp -j DNAT --to-destination 192.168.3.1
-
-# 也可以转发到代理
-iptables -t nat -A PREROUTING -s 192.168.3.0/255.255.255.0 -p tcp --dport 80 -j DNAT --to-destination 192.168.3.1:3128
-```
-
-### 启动iptables
-
-可以将`iptables`配置写入文件，该文件在`iptables`启动和重新载入时都会读取：
+`iptables` 配置在重启后会丢失，一个办法是把它存下来，并在开机时加载。通过 `iptables-save` 获取当前配置并存到 `/etc` 下：
 
 ```bash
 iptables-save > /etc/iptables/iptables.rules
 ```
 
-启动`iptables`：
+在 ArchLinux 下启动 `iptables` 服务，它在启动时会自动读取 `/etc/iptables/iptables.rules`：
 
 ```bash
 systemctl start iptables.service
 ```
 
-参考：[iptables-archwiki](https://wiki.archlinux.org/index.php/Iptables)
-
-## Web服务器
-
-上述的`iptables`可以将子网中的IP报文转发到代理服务器，例如`squid`就是一个很好的选择。`squid`可以调用子程序来进行重定向、url重写等。
-
-> `squid`使用`redirect_program`时，可以设置不重写HTTP头部！这样用户不会知道自己被重定向！
-
-为了操作方便，我们使用一个web服务器来充当代理的功能。使用`nodejs`来运行下面这个简易的服务器：
-
-```javascript
-// file: proxy.js
-var http = require('http')
-http.createServer(function(req,res){
-  if(/.*\.(jpg)|(png)|(gif)/.exec(req.url))
-    var uri="http://h.hiphotos.baidu.com/image/pic/item/2fdda3cc7cd98d10764c38ad233fb80e7aec9095.jpg"
-  else
-    var uri='http://'+req.headers.host+req.url
-
-  console.log('get: '+uri)
-  http.get(uri, function(r) {
-    res.writeHead(200,r.headers)
-    r.on('data', function(chunk){ res.write(chunk) })
-    r.on('end',  function(){ res.end()})
-  })
-  .on('error',function(e){ console.log(e.message) })
-  
-}).listen(80,'192.168.3.1')
-
-console.log('server running at 192.168.3.1:80')
-```
-
-跑起来！
-
-```bash
-# 注意：绑定80端口需要管理员权限
-sudo node proxy.js
-```
-
-该服务器只对`GET`进行处理，将所有的图片请求都重定向到百度图片的`...0905.jpg`。这样，位于`192.168.3.0/24`子网下的主机在上网时都会有神奇的体验！
-
-> 这个简单的代理可以添加更多的功能，例如：将`Content-Tye: text/html`的`data`（需要探测字符集）拿出来，更改页面逻辑后再返回。
-
+参考 [iptables-archwiki](https://wiki.archlinux.org/index.php/Iptables)。有的发行版中 `iptables` 服务不会做这个工作，比如 Ubuntu 中需要另一个叫做 `iptables-persistent` 的包来加载配置。

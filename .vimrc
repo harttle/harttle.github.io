@@ -4,7 +4,7 @@
 
 nnoremap <leader>tg :read !./bin/generate_tags.sh % <cr>
 
-nnoremap <leader>yl :let @"=JekyllLink()<CR>
+nnoremap <leader>yl :let @*=JekyllLink()<CR>
 
 function! JekyllLink()
     " 2016-06-22-some-thing.md
