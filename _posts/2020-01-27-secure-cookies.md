@@ -5,7 +5,7 @@ tags: Chrome Cookie SameSite Secure 跨域
 
 根据 [时间线][chrome-release] Chrome 80 稳定版本将在 2020-02-04 发布。
 它的 [变更列表][chrome-80] 中有两项 [Cookie 安全][cookie] 相关的变更，
-对非安全连接下的 Cookie 设置和 Cookie 跨于发送做了更多限制。
+对非安全连接下的 Cookie 设置和 Cookie 跨域发送做了更多限制。
 这意味着通过 Cookie 跨域跟踪用户的相关功能可能会受到影响（比如日志、统计），
 且只能在 HTTPS 上修复（意味着可以避免针对非安全连接的 MitM 攻击）。
 具体地，有这两个 feature：

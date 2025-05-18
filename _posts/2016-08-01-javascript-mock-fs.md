@@ -57,7 +57,7 @@ describe('fs', function() {
 为了让`require`读取Mock文件，只能重写[`require`][require]方法。
 [`mock-require`][mock-require]便是封装了该操作。
 
-通过`mock`方法进行Mock，通过`mock.stopAll`停止Mock并恢复[`require`][require]。
+通过`mock`方法进行Mock，通过`mock.stopAll()`停止Mock并恢复[`require`][require]。
 
 ```javascript
 const mock = require('mock-require');
@@ -74,8 +74,8 @@ describe('parser', function() {
     afterEach(function() {
         mock.stopAll();
     });
+});
 ```
- 
 
 [mock-fs]: https://github.com/tschaub/mock-fs
 [mock-require]: https://github.com/boblauer/mock-require

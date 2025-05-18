@@ -74,16 +74,6 @@
     }
   }
 
-  .wechat-banner{
-    float: right;
-    height: 64px;
-    width: 224px;
-    border: 1px solid #2ba045;
-    @include media-sm {
-      float: none;
-    }
-  }
-
   .post-pager{
     margin-top: 10px;
     margin-bottom: 48px;
